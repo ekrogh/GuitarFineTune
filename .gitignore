@@ -1,0 +1,8 @@
+fineTune.VC.VC.opendb
+Debug
+Release
+x64
+*.suo
+*.db
+/Builds/VisualStudio2017/.vs/guitarFineTune/v15
+/Builds/VisualStudio2017/.vs/guitarFineTune/v15

@@ -1,0 +1,74 @@
+JuceDemo 
+Welcome! 
+Shortcut Keys 
+System Info 
+Tabs Widgets 
+Animation 
+Code Editor 
+Concertina Panels 
+Dialog Boxes 
+Live Constants 
+Look And Feel 
+MDI 
+Multi-touch 
+Property Panels 
+Transforms 
+Web Browser 
+Windows 
+2D Rendering 
+Fonts 
+Image forrnats 
+OpenGL 
+OpenGL 2D 
+Box 20 
+File Playback 
+Latency Detector 
+Recording 
+Synthesisers 
+MIDI i/o 
+Child Process Comms 
+Cryptography 
+H TTP 
+JavaScript 
+Multi-threading 
+Timers & Events 
+Unit Tests 
+ValueTrees 
+XML & JSON 
+Audio device type: 
+Output: 
+Input: 
+Active output channels: 
+Active input channels: 
+Sample rate: 
+Audio buffer size: 
+Active MIDI inputs: 
+MIDI Output: 
+Windows Audio (Exclusive Mode) 
+Speakers (Theatron DD Audio Device) 
+Microphone (Blue Snowflake) 
+Output channel I + 2 
+Input channel I 
+44100 Hz 
+480 samples (10.9 ms) 
+O MRU-401 
+none 
+Test 
+Current audio device type: Windows Audio (Exclusive Mode) 
+Current audio device: "Speakers (Theatron DD Audio Device)" 
+Sample rate: 44100 Hz 
+Block size: 480 samples 
+Sit depth: 32 
+Input channel names: Input channel 1 
+Active input channels: O 
+Output channel names: Output channel 1, Output channel 2 
+Active output channels: 0, 1 
+Current audio device type: Windows Audio (Exclusive Mode) 
+Current audio device: "Speakers (Theatron DD Audio Device)" 
+Sample rate: 44100 Hz 
+Block size: 480 samples 
+Sit depth: 32 
+Input channel names: Input channel 1 
+Active input channels: O 
+Output channel names: Output channel 1, Output channel 2 
+Active output channels: 0, 1 

@@ -1,0 +1,18 @@
+Mar 6, 2018 at 4:54 PM
+From Apple
+5. 1.1 Legal: Privacy - Data Collection and Storage
+Guideline 5.1.1 - Legal - Privacy - Data Collection and Storage
+
+
+We noticed that your app requests the user’s consent to access their microphone but does not clarify the use of this feature in the permission modal alert.
+
+Please see attached screenshots for details.
+
+Next Steps
+
+To resolve this issue, please revise the permission modal alert to specify why the app is requesting access to the user's microphone.
+
+Resources
+
+To learn more about requesting the user’s permission to access app features, visit the iOS Human Interface Guidelines. You may also want to review the Technical Q&A QA1937: Resolving the Privacy-Sensitive Data App Rejection page for details on how to provide a usage description for permission request alerts.
+

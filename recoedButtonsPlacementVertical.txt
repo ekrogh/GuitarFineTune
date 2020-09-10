@@ -1,0 +1,182 @@
+Vertical
+--------
+
+GroupComponent member name
+name
+virtual class
+focus order
+x
+y
+width height text layout outline
+recordGroupComponent
+recordGroupComponent
+0	
+0	mode
+280	mode
+296	mode
+80	mode
+Record	
+left	
+FFOOOOFF
+text
+FF6495ED
+
+
+| Label member name
+name
+virtual class
+rawSoundLabellabel
+rawSoundLabellabel
+tooltip
+focus order
+0
+X	8	mode
+y	296	mode
+width	96	mode
+height	24	mode
+	Raw sound
+text	
+	
+layout	centred
+font	Default font
+style	Regular
+15.0 0.000
+read-only
+size
+kerning
+editing
+background
+text
+outline
+editor text editor bkg highlight
+
+FF6495ED
+
+FFOOOOOO
+BFE0EC65
+00000000
+
+
+ToggleButton member name
+name
+virtual class
+recordRawToggleButton
+recordRawToggleButton
+tooltip
+focus order
+x
+y
+width
+height
+text
+callback radio group connected left connected right
+connected top connected bottom initial state
+12
+52	mode
+325	mode
+24	mode
+24	mode
+|7j Generate ButtcnListener 1
+Connected
+Connected
+Connected
+Connected
+off
+text colour
+FF6495ED
+
+
+| Label member name
+name
+virtual class
+FilteredSoundLabel
+FilteredSoundLabel
+tooltip
+focus order
+0
+X	100	mode
+y	296	mode
+width	116	mode
+height	24	mode
+	Filtered sound	
+text		
+		
+layout	centred	
+font	Default font	
+style	Regular	
+size
+kerning
+editing
+background
+text
+outline
+editor text editor bkg highlight
+15.0
+0.000 read-only
+
+FF6495ED
+
+FFOOOOOO
+BFE0EC65
+00000000
+
+
+ToggleButton	
+member name name virtual class	recordFilteredToggleB... recordFilteredToggleB...
+tooltip	
+focus order	13
+X	152	mode
+y	325	mode
+width	24	mode
+height	24	mode
+text	
+callback	Generate ButtcnListener
+radio group	1
+connected left	(y Connected
+connected right	(y Connected
+connected top connected bottom initial state text colour	Connected Connected off
+	FF6495ED
+	
+	
+	| Label	
+member name	offLabel
+name	offLabel
+virtual class	
+tooltip	
+focus order	0
+X	232	mode
+y	296	mode
+width	32	mode
+height	24	mode
+	Off
+text	
+layout	centred
+font	Default font
+style	Regular
+size	15.0
+kerning	0.000
+editing	read-only
+background	
+text	FF6495ED
+outline	
+editor text	FFOOOOOO
+	
+editor bkg	00000000
+highlight	BFE0EC65
+
+
+ToggleButton	
+member name name virtual class	recordi ngOfTToggleBut... recordi ngOfTToggleBut...
+tooltip	
+focus order	14
+X	247	mode
+y	325	mode
+width	24	mode
+height	24	mode
+text	
+callback	Generate ButtcnListener
+radio group	1
+connected left	0 Connected
+connected right	0 Connected
+connected top connected bottom initial state text colour	Connected Connected 0 on
+	FF6495ED

@@ -1,0 +1,210 @@
+Horizontal mode
+---------------
+| Label member name
+name
+virtual class
+tooltip
+focus order
+x
+y
+width
+height
+onLabel
+onLabel
+0	
+318	mode
+212	mode
+32	mode
+24	mode
+On	
+text
+
+
+ToggleButton
+member name
+name
+virtual class
+tooltip
+focus order
+x
+y
+width
+height
+recordingOnToggleButton
+recordingOnToggleButton
+14	
+336	mode
+238	mode
+24	mode
+24	mode
+
+
+S Label member name
+name
+virtual class
+tooltip
+focus order
+x
+y
+width
+height
+offLabel
+offLabel
+0	
+366	mode
+212	mode
+32	mode
+24	mode
+
+
+ToggleButton member name
+name
+virtual class
+recordingOffloggleBut...
+recordingOffloggleBut...
+tooltip
+focus order	14	
+X	384	mode
+y	238	mode
+width	24	mode
+height	24	mode
+
+
+
+Vertical mode
+-----------------
+| Label member name
+name
+virtual class
+tooltip
+focus order
+x
+y
+width
+height
+rawSoundLabellabel
+rawSoundLabellabel
+0	
+6	mode
+372	mode
+80	mode
+24	mode
+Raw sound	
+
+ToggleButton
+member name
+name
+virtual class
+tooltip
+focus order
+x
+y
+width
+height
+recordRawToggleButton
+recordRawToggleButton
+12	
+44	mode
+398	mode
+24	mode
+24	mode
+
+| Label member name
+name
+virtual class
+tooltip
+focus order
+x
+y
+width
+height
+FilteredSoundLabel
+FilteredSoundLabel
+0	
+88	mode
+372	mode
+112	mode
+24	mode
+
+ToggleButton
+member name
+name
+virtual class
+tooltip
+focus order
+x
+y
+width
+height
+recordFilteredToggleB.. recordFilteredToggleB..
+13	
+142	mode
+398	mode
+24	mode
+24	mode
+
+| Label member name
+name
+virtual class
+tooltip
+focus order
+x
+y
+width
+height
+onLabel
+onLabel
+0	
+209	mode
+372	mode
+32	mode
+24	mode
+
+ToggleButton member name
+name
+virtual class
+recordingOnToggleButton
+recordingOnToggleButton
+tooltip
+focus order	14	
+X	227	mode
+y	398	mode
+width	24	mode
+height	24	mode
+
+| Label member name
+name
+virtual class
+tooltip
+focus order
+x
+y
+width
+height
+offLabel
+offLabel
+0	
+254	mode
+372	mode
+32	mode
+24	mode
+r'l ee
+
+ToggleButton
+member name
+name
+virtual class
+tooltip
+focus order
+x
+y
+width
+height
+recordingOffloggleBut..
+recordingOffloggleBut..
+15	
+272	mode
+398	mode
+24	mode
+24	mode
+

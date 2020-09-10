@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<GUITARFINETUNECONFIG>
+  <DISPLAYCONTROL lowestFreq="69" highestFreq="343" noCalcsInAverage="5" globalThresholdForShowing="-1"
+                  E2threshold="1.3120497266917912694e-05" A2threshold="0.0005050112895234770043"
+                  D3threshold="1.6724181913068607801e-05" G3threshold="0.00035361676961456577203"
+                  B3threshold="1.9127937352851081165e-05" E4threshold="1.5047340244316142124e-05"
+                  fftOrder="8" showIndicators="1" showSpectrum="0" showFFT="0"
+                  showFFTMaxIndictr="0" showFilter="0" showStringsOffTuneValues="0"/>
+  <AUDIOCONTROL diaableOsAudioPreProcessing="1" allowAirPlay="1" allowBlueTooth="0"
+                use50HzFilter="0"/>
+</GUITARFINETUNECONFIG>

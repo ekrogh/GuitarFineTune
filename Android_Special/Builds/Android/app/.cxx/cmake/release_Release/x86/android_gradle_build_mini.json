@@ -1,0 +1,27 @@
+{
+  "buildFiles": [
+    "D:\\Users\\eigil\\AppData\\Local\\Android\\Sdk\\ndk\\21.0.6113669\\build\\cmake\\platforms.cmake",
+    "D:\\Users\\eigil\\projects\\juceProjs\\REFguitarFineTune\\Builds\\Android\\app\\CMakeLists.txt",
+    "D:\\Users\\eigil\\AppData\\Local\\Android\\Sdk\\ndk\\21.0.6113669\\build\\cmake\\android.toolchain.cmake"
+  ],
+  "cleanCommands": [
+    "D:\\Users\\eigil\\AppData\\Local\\Android\\Sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"D:\\Users\\eigil\\projects\\juceProjs\\REFguitarFineTune\\Builds\\Android\\app\\.cxx\\cmake\\release_Release\\x86\" clean"
+  ],
+  "buildTargetsCommand": "D:\\Users\\eigil\\AppData\\Local\\Android\\Sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe  -C \"D:\\Users\\eigil\\projects\\juceProjs\\REFguitarFineTune\\Builds\\Android\\app\\.cxx\\cmake\\release_Release\\x86\" {LIST_OF_TARGETS_TO_BUILD}",
+  "libraries": {
+    "cpufeatures-Release-x86": {
+      "artifactName": "cpufeatures",
+      "buildCommand": "D:\\Users\\eigil\\AppData\\Local\\Android\\Sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"D:\\Users\\eigil\\projects\\juceProjs\\REFguitarFineTune\\Builds\\Android\\app\\.cxx\\cmake\\release_Release\\x86\" cpufeatures",
+      "abi": "x86",
+      "output": "D:\\Users\\eigil\\projects\\juceProjs\\REFguitarFineTune\\Builds\\Android\\app\\.cxx\\cmake\\release_Release\\x86\\libcpufeatures.a",
+      "runtimeFiles": []
+    },
+    "juce_jni-Release-x86": {
+      "artifactName": "juce_jni",
+      "buildCommand": "D:\\Users\\eigil\\AppData\\Local\\Android\\Sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"D:\\Users\\eigil\\projects\\juceProjs\\REFguitarFineTune\\Builds\\Android\\app\\.cxx\\cmake\\release_Release\\x86\" juce_jni",
+      "abi": "x86",
+      "output": "D:\\Users\\eigil\\projects\\juceProjs\\REFguitarFineTune\\Builds\\Android\\app\\build\\intermediates\\cmake\\release_Release\\obj\\x86\\libjuce_jni.so",
+      "runtimeFiles": []
+    }
+  }
+}

@@ -1,0 +1,1 @@
+MainPackage=D:\Users\eigil\projects\juceProjs\guitarFineTune\Microsoft_Store\guitarFineTune_Pack\bin\ARM\Release\guitarFineTune_Pack_6.6.1.0_ARM.appx

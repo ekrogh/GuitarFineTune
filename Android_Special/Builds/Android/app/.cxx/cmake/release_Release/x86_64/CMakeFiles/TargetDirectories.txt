@@ -1,0 +1,4 @@
+D:/Users/eigil/projects/juceProjs/guitarFineTune/Builds/Android/app/.cxx/cmake/release_Release/x86_64/CMakeFiles/cpufeatures.dir
+D:/Users/eigil/projects/juceProjs/guitarFineTune/Builds/Android/app/.cxx/cmake/release_Release/x86_64/CMakeFiles/juce_jni.dir
+D:/Users/eigil/projects/juceProjs/guitarFineTune/Builds/Android/app/.cxx/cmake/release_Release/x86_64/CMakeFiles/edit_cache.dir
+D:/Users/eigil/projects/juceProjs/guitarFineTune/Builds/Android/app/.cxx/cmake/release_Release/x86_64/CMakeFiles/rebuild_cache.dir

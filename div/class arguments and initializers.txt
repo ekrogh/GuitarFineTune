@@ -1,0 +1,25 @@
+// display control
+std::weak_ptr<tuneComponent> pTC, std::shared_ptr<xmlGuitarFineTuneConfig> pXmlGFTConfig, std::shared_ptr<eksLookAndFeel> pGFTAF, bool addVWP
+
+rTuneComponent(*(pTC.lock())),
+pXmlGuitarFineTuneConfig(pXmlGFTConfig),
+pGuitarFineTuneLookAndFeel(pGFTAF),
+viewPortAdded(addVWP)
+
+
+// Audio Control
+std::shared_ptr<tuneComponent> pTC, std::shared_ptr<xmlGuitarFineTuneConfig> pXmlGFTCfg, std::shared_ptr<eksLookAndFeel> pGFTAF, bool addVWP
+
+pTuneComponent(pTC),
+pXmlGuitarFineTuneConfig(pXmlGFTCfg),
+pGuitarFineTuneLookAndFeel(pGFTAF),
+viewPortAdded(addVWP)
+
+// sounds control
+std::shared_ptr<tuneComponent> pTC, std::shared_ptr<xmlGuitarFineTuneConfig> pXmlGFTConfig, std::shared_ptr<eksLookAndFeel> pGFTAF, bool addVWP
+
+pTuneComponent(pTC),
+spAudioRecorderController(pTC->getAudioRecorderController()),
+pXmlGuitarFineTuneConfig(pXmlGFTConfig),
+pGuitarFineTuneLookAndFeel(pGFTAF),
+viewPortAdded(addVWP)

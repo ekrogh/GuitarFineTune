@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>4CFC0A98-E561-48A3-937A-0F7C113FBB1D</string>
+	<key>IDESourceControlProjectName</key>
+	<string>project</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>1A766E6939B492F2060CA3FF4DFC64B3C6C00845</key>
+		<string>https://eigilkrogh.visualstudio.com/DefaultCollection/_git/cppTraining</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>myrnyy_fft_source_code/myrnyy_fft/myrnyy_fft.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>1A766E6939B492F2060CA3FF4DFC64B3C6C00845</key>
+		<string>../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://eigilkrogh.visualstudio.com/DefaultCollection/_git/cppTraining</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>1A766E6939B492F2060CA3FF4DFC64B3C6C00845</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>1A766E6939B492F2060CA3FF4DFC64B3C6C00845</string>
+			<key>IDESourceControlWCCName</key>
+			<string>cppTraining</string>
+		</dict>
+	</array>
+</dict>
+</plist>

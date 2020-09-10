@@ -1,0 +1,3 @@
+[submodule "Builds/VisualStudio2019"]
+	path = Builds/VisualStudio2019
+	url = D:/projects/juceProjs/guitarFineTune_newGit

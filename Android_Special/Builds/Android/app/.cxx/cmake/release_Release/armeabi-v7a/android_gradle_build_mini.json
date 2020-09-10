@@ -1,0 +1,27 @@
+{
+  "buildFiles": [
+    "D:\\Users\\eigil\\AppData\\Local\\Android\\Sdk\\ndk\\21.0.6113669\\build\\cmake\\platforms.cmake",
+    "D:\\Users\\eigil\\projects\\juceProjs\\guitarFineTune\\Builds\\Android\\app\\CMakeLists.txt",
+    "D:\\Users\\eigil\\AppData\\Local\\Android\\Sdk\\ndk\\21.0.6113669\\build\\cmake\\android.toolchain.cmake"
+  ],
+  "cleanCommands": [
+    "D:\\Users\\eigil\\AppData\\Local\\Android\\Sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"D:\\Users\\eigil\\projects\\juceProjs\\guitarFineTune\\Builds\\Android\\app\\.cxx\\cmake\\release_Release\\armeabi-v7a\" clean"
+  ],
+  "buildTargetsCommand": "D:\\Users\\eigil\\AppData\\Local\\Android\\Sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe  -C \"D:\\Users\\eigil\\projects\\juceProjs\\guitarFineTune\\Builds\\Android\\app\\.cxx\\cmake\\release_Release\\armeabi-v7a\" {LIST_OF_TARGETS_TO_BUILD}",
+  "libraries": {
+    "juce_jni-Release-armeabi-v7a": {
+      "artifactName": "juce_jni",
+      "buildCommand": "D:\\Users\\eigil\\AppData\\Local\\Android\\Sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"D:\\Users\\eigil\\projects\\juceProjs\\guitarFineTune\\Builds\\Android\\app\\.cxx\\cmake\\release_Release\\armeabi-v7a\" juce_jni",
+      "abi": "armeabi-v7a",
+      "output": "D:\\Users\\eigil\\projects\\juceProjs\\guitarFineTune\\Builds\\Android\\app\\build\\intermediates\\cmake\\release_Release\\obj\\armeabi-v7a\\libjuce_jni.so",
+      "runtimeFiles": []
+    },
+    "cpufeatures-Release-armeabi-v7a": {
+      "artifactName": "cpufeatures",
+      "buildCommand": "D:\\Users\\eigil\\AppData\\Local\\Android\\Sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"D:\\Users\\eigil\\projects\\juceProjs\\guitarFineTune\\Builds\\Android\\app\\.cxx\\cmake\\release_Release\\armeabi-v7a\" cpufeatures",
+      "abi": "armeabi-v7a",
+      "output": "D:\\Users\\eigil\\projects\\juceProjs\\guitarFineTune\\Builds\\Android\\app\\.cxx\\cmake\\release_Release\\armeabi-v7a\\libcpufeatures.a",
+      "runtimeFiles": []
+    }
+  }
+}

@@ -1,0 +1,500 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module external.linked.project.id=":app" external.linked.project.path="$MODULE_DIR$/../../../app" external.root.project.path="$MODULE_DIR$/../../.." external.system.id="GRADLE" external.system.module.group="guitarFineTune" external.system.module.version="unspecified" type="JAVA_MODULE" version="4">
+  <component name="FacetManager">
+    <facet type="android-gradle" name="Android-Gradle">
+      <configuration>
+        <option name="GRADLE_PROJECT_PATH" value=":app" />
+        <option name="LAST_SUCCESSFUL_SYNC_AGP_VERSION" value="4.0.1" />
+        <option name="LAST_KNOWN_AGP_VERSION" value="4.0.1" />
+      </configuration>
+    </facet>
+    <facet type="native-android-gradle" name="Native-Android-Gradle">
+      <configuration>
+        <option name="SELECTED_BUILD_VARIANT" value="release_Release-x86" />
+      </configuration>
+    </facet>
+    <facet type="android" name="Android">
+      <configuration>
+        <option name="SELECTED_BUILD_VARIANT" value="release_Release" />
+        <option name="ASSEMBLE_TASK_NAME" value="assembleRelease_Release" />
+        <option name="COMPILE_JAVA_TASK_NAME" value="compileRelease_ReleaseSources" />
+        <afterSyncTasks>
+          <task>generateRelease_ReleaseSources</task>
+        </afterSyncTasks>
+        <option name="ALLOW_USER_CONFIGURATION" value="false" />
+        <option name="MANIFEST_FILE_RELATIVE_PATH" value="/src/main/AndroidManifest.xml" />
+        <option name="RES_FOLDER_RELATIVE_PATH" value="/src/main/res" />
+        <option name="RES_FOLDERS_RELATIVE_PATH" value="file://$MODULE_DIR$/../../../app/src/main/res;file://$MODULE_DIR$/../../../app/src/release_/res;file://$MODULE_DIR$/../../../app/src/release/res;file://$MODULE_DIR$/../../../app/src/release_Release/res;file://$MODULE_DIR$/../../../app/build/generated/res/rs/release_/release" />
+        <option name="TEST_RES_FOLDERS_RELATIVE_PATH" value="file://$MODULE_DIR$/../../../app/src/androidTest/res;file://$MODULE_DIR$/../../../app/src/test/res;file://$MODULE_DIR$/../../../app/src/androidTestRelease_/res;file://$MODULE_DIR$/../../../app/src/testRelease_/res;file://$MODULE_DIR$/../../../app/src/testRelease/res" />
+        <option name="ASSETS_FOLDER_RELATIVE_PATH" value="/src/main/assets" />
+      </configuration>
+    </facet>
+  </component>
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_7">
+    <output url="file://$MODULE_DIR$/../../../app/build/intermediates/javac/release_Release/classes" />
+    <output-test url="file://$MODULE_DIR$/../../../app/build/intermediates/javac/release_ReleaseUnitTest/classes" />
+    <exclude-output />
+    <content url="file://$USER_HOME$/AppData/Local/Android/Sdk/ndk/21.0.6113669/sources/android/cpufeatures">
+      <sourceFolder url="file://$USER_HOME$/AppData/Local/Android/Sdk/ndk/21.0.6113669/sources/android/cpufeatures" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../../JUCE/modules/juce_core/native/javacore/app">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../../JUCE/modules/juce_core/native/javacore/app" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../../JUCE/modules/juce_core/native/javacore/init">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../../JUCE/modules/juce_core/native/javacore/init" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../../JUCE/modules/juce_gui_basics/native/javaopt/app">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../../JUCE/modules/juce_gui_basics/native/javaopt/app" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../app">
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/build/generated/ap_generated_sources/release_Release/out" isTestSource="false" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/build/generated/aidl_source_output_dir/release_Release/out" isTestSource="false" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/build/generated/source/buildConfig/release_/release" isTestSource="false" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/build/generated/renderscript_source_output_dir/release_Release/out" isTestSource="false" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/build/generated/res/rs/release_/release" type="java-resource" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/release_Release/res" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/release_Release/resources" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/release_Release/assets" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/release_Release/aidl" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/release_Release/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/release_Release/jni" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/release_Release/rs" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/release_Release/shaders" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/build/generated/ap_generated_sources/release_ReleaseUnitTest/out" isTestSource="true" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/testRelease_Release/res" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/testRelease_Release/resources" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/testRelease_Release/assets" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/testRelease_Release/aidl" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/testRelease_Release/java" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/testRelease_Release/jni" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/testRelease_Release/rs" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/testRelease_Release/shaders" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/release_/res" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/release_/resources" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/release_/assets" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/release_/aidl" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/release_/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/release_/jni" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/release_/rs" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/release_/shaders" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/androidTestRelease_/res" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/androidTestRelease_/resources" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/androidTestRelease_/assets" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/androidTestRelease_/aidl" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/androidTestRelease_/java" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/androidTestRelease_/jni" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/androidTestRelease_/rs" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/androidTestRelease_/shaders" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/testRelease_/res" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/testRelease_/resources" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/testRelease_/assets" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/testRelease_/aidl" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/testRelease_/java" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/testRelease_/jni" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/testRelease_/rs" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/testRelease_/shaders" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/release/res" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/release/resources" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/release/assets" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/release/aidl" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/release/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/release/jni" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/release/rs" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/release/shaders" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/testRelease/res" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/testRelease/resources" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/testRelease/assets" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/testRelease/aidl" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/testRelease/java" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/testRelease/jni" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/testRelease/rs" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/testRelease/shaders" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/main/res" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/main/resources" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/main/assets" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/main/aidl" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/main/jni" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/main/rs" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/main/shaders" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/androidTest/res" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/androidTest/resources" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/androidTest/assets" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/androidTest/aidl" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/androidTest/java" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/androidTest/jni" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/androidTest/rs" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/androidTest/shaders" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/test/res" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/test/resources" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/test/assets" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/test/aidl" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/test/java" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/test/jni" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/test/rs" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/test/shaders" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../app/.cxx" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../app/.externalNativeBuild" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../app/build" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_basics">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_basics" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_basics/buffers">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_basics/buffers" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_basics/midi">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_basics/midi" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_basics/mpe">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_basics/mpe" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_basics/sources">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_basics/sources" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_basics/synthesisers">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_basics/synthesisers" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_basics/utilities">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_basics/utilities" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_devices">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_devices" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_devices/audio_io">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_devices/audio_io" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_devices/midi_io">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_devices/midi_io" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_devices/native">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_devices/native" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_devices/native/oboe">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_devices/native/oboe" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_devices/native/oboe/src/aaudio">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_devices/native/oboe/src/aaudio" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_devices/native/oboe/src/common">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_devices/native/oboe/src/common" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_devices/native/oboe/src/fifo">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_devices/native/oboe/src/fifo" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_devices/native/oboe/src/flowgraph">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_devices/native/oboe/src/flowgraph" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_devices/native/oboe/src/flowgraph/resampler">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_devices/native/oboe/src/flowgraph/resampler" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_devices/native/oboe/src/opensles">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_devices/native/oboe/src/opensles" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_devices/sources">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_devices/sources" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_formats">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_formats" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_formats/codecs">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_formats/codecs" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_formats/codecs/flac">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_formats/codecs/flac" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_formats/codecs/flac/libFLAC">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_formats/codecs/flac/libFLAC" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_formats/codecs/oggvorbis">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_formats/codecs/oggvorbis" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_formats/codecs/oggvorbis/libvorbis-1.3.2/lib">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_formats/codecs/oggvorbis/libvorbis-1.3.2/lib" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_formats/format">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_formats/format" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_formats/sampler">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_formats/sampler" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_processors">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_processors" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_processors/format">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_processors/format" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_processors/format_types">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_processors/format_types" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_processors/format_types/VST3_SDK">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_processors/format_types/VST3_SDK" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_processors/format_types/VST3_SDK/base">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_processors/format_types/VST3_SDK/base" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_processors/format_types/VST3_SDK/base/source">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_processors/format_types/VST3_SDK/base/source" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_processors/format_types/VST3_SDK/base/thread/source">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_processors/format_types/VST3_SDK/base/thread/source" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_processors/format_types/VST3_SDK/pluginterfaces">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_processors/format_types/VST3_SDK/pluginterfaces" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_processors/format_types/VST3_SDK/pluginterfaces/base">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_processors/format_types/VST3_SDK/pluginterfaces/base" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_processors/format_types/VST3_SDK/public.sdk">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_processors/format_types/VST3_SDK/public.sdk" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_processors/format_types/VST3_SDK/public.sdk/source/common">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_processors/format_types/VST3_SDK/public.sdk/source/common" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_processors/format_types/VST3_SDK/public.sdk/source/vst">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_processors/format_types/VST3_SDK/public.sdk/source/vst" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_processors/format_types/VST3_SDK/public.sdk/source/vst/hosting">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_processors/format_types/VST3_SDK/public.sdk/source/vst/hosting" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_processors/processors">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_processors/processors" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_processors/scanning">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_processors/scanning" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_processors/utilities">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_processors/utilities" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_utils">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_utils" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_utils/audio_cd">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_utils/audio_cd" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_utils/gui">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_utils/gui" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_utils/native">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_utils/native" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_utils/players">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_audio_utils/players" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_core">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_core" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_core/containers">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_core/containers" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_core/files">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_core/files" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_core/javascript">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_core/javascript" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_core/logging">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_core/logging" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_core/maths">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_core/maths" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_core/memory">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_core/memory" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_core/misc">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_core/misc" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_core/native">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_core/native" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_core/native/java">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_core/native/java" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_core/network">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_core/network" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_core/streams">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_core/streams" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_core/system">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_core/system" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_core/text">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_core/text" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_core/threads">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_core/threads" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_core/time">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_core/time" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_core/unit_tests">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_core/unit_tests" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_core/xml">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_core/xml" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_core/zip">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_core/zip" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_core/zip/zlib">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_core/zip/zlib" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_data_structures">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_data_structures" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_data_structures/app_properties">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_data_structures/app_properties" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_data_structures/undomanager">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_data_structures/undomanager" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_data_structures/values">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_data_structures/values" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_events">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_events" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_events/broadcasters">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_events/broadcasters" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_events/interprocess">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_events/interprocess" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_events/messages">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_events/messages" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_events/native">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_events/native" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_events/timers">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_events/timers" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_graphics">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_graphics" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_graphics/colour">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_graphics/colour" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_graphics/contexts">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_graphics/contexts" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_graphics/effects">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_graphics/effects" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_graphics/fonts">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_graphics/fonts" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_graphics/geometry">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_graphics/geometry" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_graphics/image_formats">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_graphics/image_formats" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_graphics/image_formats/jpglib">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_graphics/image_formats/jpglib" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_graphics/image_formats/pnglib">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_graphics/image_formats/pnglib" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_graphics/images">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_graphics/images" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_graphics/native">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_graphics/native" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_graphics/placement">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_graphics/placement" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_gui_basics">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_gui_basics" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_gui_basics/application">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_gui_basics/application" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_gui_basics/buttons">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_gui_basics/buttons" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_gui_basics/commands">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_gui_basics/commands" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_gui_basics/components">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_gui_basics/components" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_gui_basics/desktop">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_gui_basics/desktop" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_gui_basics/drawables">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_gui_basics/drawables" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_gui_basics/filebrowser">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_gui_basics/filebrowser" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_gui_basics/keyboard">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_gui_basics/keyboard" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_gui_basics/layout">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_gui_basics/layout" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_gui_basics/lookandfeel">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_gui_basics/lookandfeel" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_gui_basics/menus">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_gui_basics/menus" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_gui_basics/misc">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_gui_basics/misc" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_gui_basics/mouse">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_gui_basics/mouse" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_gui_basics/native">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_gui_basics/native" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_gui_basics/native/x11">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_gui_basics/native/x11" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_gui_basics/positioning">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_gui_basics/positioning" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_gui_basics/properties">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_gui_basics/properties" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_gui_basics/widgets">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_gui_basics/widgets" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_gui_basics/windows">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_gui_basics/windows" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_gui_extra">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_gui_extra" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_gui_extra/code_editor">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_gui_extra/code_editor" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_gui_extra/documents">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_gui_extra/documents" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_gui_extra/misc">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_gui_extra/misc" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_gui_extra/native">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode/modules/juce_gui_extra/native" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../Source">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../Source" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../Source/ekss.xcassets/AppIcon.appiconset">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../Source/ekss.xcassets/AppIcon.appiconset" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../iOS_Special">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../iOS_Special" isTestSource="false" />
+    </content>
+    <orderEntry type="jdk" jdkName="Android API 30 Platform" jdkType="Android SDK" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
