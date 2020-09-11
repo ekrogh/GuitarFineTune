@@ -210,6 +210,7 @@ bool tuneComponent::audioSysInit( )
 	{
 		if ( !openAudioDeviceThatWillOpenWithLegalSampleRate( ) )
 		{
+			JUCEApplication::getInstance( )->systemRequestedQuit( );
 			return false;
 		}
 	}

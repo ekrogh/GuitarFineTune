@@ -84,7 +84,12 @@ AudioDeviceManager& getSharedAudioDeviceManager( int numInputChannels, int numOu
 											 if ( granted )
 											 {
 												 getSharedAudioDeviceManager( numInputChannels, numOutputChannels );
-												 pTuneComponent->audioSysInit( );
+												 if ( !pTuneComponent->audioSysInit( ) )
+												 {
+													 JUCEApplication::getInstance( )->systemRequestedQuit( );
+													 errorInGetSharedAudioDeviceManager = true;
+													 return;
+												 }
 												 audioSysInitDone = true;
 											 }
 										 } );
@@ -96,7 +101,12 @@ AudioDeviceManager& getSharedAudioDeviceManager( int numInputChannels, int numOu
 	{
 		if ( !audioSysInitDone )
 		{
-			pTuneComponent->audioSysInit( );
+			if ( !pTuneComponent->audioSysInit( ) )
+			{
+				JUCEApplication::getInstance( )->systemRequestedQuit( );
+				errorInGetSharedAudioDeviceManager = true;
+				return *sharedAudioDeviceManager;
+			}
 			audioSysInitDone = true;
 		}
 	}
@@ -693,7 +703,7 @@ void guitarFineTuneFirstClass::closeButtonPressed( )
 
 guitarFineTuneFirstClass::~guitarFineTuneFirstClass( )
 { 
-	pTuneComponent.reset( );
+	pTuneComponent = nullptr;
 
 	Component::setLookAndFeel( nullptr );
 	LookAndFeel::setDefaultLookAndFeel( nullptr );
