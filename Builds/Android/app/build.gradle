@@ -81,7 +81,7 @@ android {
              "../../../../JUCE/modules/juce_gui_basics/native/javaopt/app"]
 
         main.res.srcDirs +=
-            []
+            ["../../../../../Android_Special/Builds/Android/app/src/main/res"]
     }
 
     repositories {

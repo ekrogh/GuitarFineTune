@@ -190,19 +190,6 @@ bool tuneComponent::openAudioDeviceThatWillOpenWithLegalSampleRate( )
 
 bool tuneComponent::audioSysInit( )
 {
-	// Save current audio config
-	if ( &deviceManager != sharedAudioDeviceManager.get( ) )
-	{
-		juce::AlertWindow::showMessageBox
-		(
-			juce::AlertWindow::WarningIcon
-			, "devicemanager != sharedAudioDeviceManager!"
-			, "Is that"
-			, "OK"
-			, nullptr
-		);
-	}
-
 	if ( ( sharedAudioDeviceManager->initialise( numInputChannels, numOutputChannels, nullptr, true, {}, nullptr ) ).isNotEmpty( ) )
 	{
 		if ( !openAudioDeviceThatWillOpenWithLegalSampleRate( ) )
@@ -213,6 +200,7 @@ bool tuneComponent::audioSysInit( )
 	}
 
 
+    // Save current audio config
 	audioDeviceTypeAtStartUp = sharedAudioDeviceManager->getCurrentAudioDeviceType( );
 
 	setAudioChannels( numInputChannels, numOutputChannels );

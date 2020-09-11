@@ -89,7 +89,7 @@ AudioDeviceManager& getSharedAudioDeviceManager( int numInputChannels, int numOu
 											 }
 										 } );
 
-			//numInputChannels = 0;
+			numInputChannels = 0;
 		}
 	}
 	else
@@ -161,7 +161,8 @@ guitarFineTuneFirstClass::guitarFineTuneFirstClass( )
 #if (JUCE_ANDROID)
 	: DocumentWindow( std::string( ProjectInfo::projectName )
 					  + " v. " + std::string( ProjectInfo::versionString )
-					  + "." + std::to_string( ANDROID_VERSION_CODE ), Colours::lightgrey
+					  + "." + std::to_string( ANDROID_VERSION_CODE )
+					  , Colours::lightgrey
 					  , DocumentWindow::allButtons )
 	, curCompntBnds( 0, 0, widthOfTuneWindow, hightOfTuneWindow )
 #else
