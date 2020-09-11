@@ -162,6 +162,7 @@ bool tuneComponent::openAudioDeviceThatWillOpenWithLegalSampleRate( )
 
 	if ( !foundUseableAudioDevice )
 	{
+	#if JUCE_MODAL_LOOPS_PERMITTED
 		juce::AlertWindow::showMessageBox
 		(
 			juce::AlertWindow::WarningIcon
@@ -170,6 +171,16 @@ bool tuneComponent::openAudioDeviceThatWillOpenWithLegalSampleRate( )
 			, "Quit"
 			, nullptr
 		);
+	#else
+		juce::AlertWindow::showMessageBoxAsync
+		(
+			juce::AlertWindow::WarningIcon
+			, "Found no usable audio device!"
+			, "Try to connect another\naudio device"
+			, "Quit"
+			, nullptr
+		);
+	#endif
 		return false;
 	}
 
