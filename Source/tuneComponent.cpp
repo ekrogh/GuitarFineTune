@@ -194,6 +194,7 @@ bool tuneComponent::audioSysInit( )
 	{
 		if ( !openAudioDeviceThatWillOpenWithLegalSampleRate( ) )
 		{
+            sharedAudioDeviceManager->closeAudioDevice();
 			JUCEApplication::getInstance( )->systemRequestedQuit( );
 			return false;
 		}
@@ -210,6 +211,7 @@ bool tuneComponent::audioSysInit( )
 	{
 		if ( !openAudioDeviceThatWillOpenWithLegalSampleRate( ) )
 		{
+            sharedAudioDeviceManager->closeAudioDevice();
 			JUCEApplication::getInstance( )->systemRequestedQuit( );
 			return false;
 		}
@@ -401,6 +403,7 @@ tuneComponent::~tuneComponent( )
 	weSpectrumDataReady.signal( );
 	stopThread( -10 );
 	shutdownAudio( );
+    sharedAudioDeviceManager->closeAudioDevice();
 	 // Make thread shut down
 	//stopThread( 6000 );
 
