@@ -43,8 +43,8 @@ tuneComponent::tuneComponent
 #if ( JUCE_IOS )
 	, ptrGuitarFineTuneFirstClass( pGuitarFineTuneFirstClass )
 #endif // #if ( JUCE_IOS )
+    , AudioAppComponent( *sharedAudioDeviceManager )
 	, pXmlGuitarFineTuneConfig( pXmlGFTConfig )
-	, AudioAppComponent( *sharedAudioDeviceManager )
 {
 	if ( errorInGetSharedAudioDeviceManager )
 	{

@@ -84,12 +84,17 @@ AudioDeviceManager& getSharedAudioDeviceManager( int numInputChannels, int numOu
 											 if ( granted )
 											 {
 												 getSharedAudioDeviceManager( numInputChannels, numOutputChannels );
-												 if ( !pTuneComponent->audioSysInit( ) )
-												 {
-													 JUCEApplication::getInstance( )->systemRequestedQuit( );
-													 errorInGetSharedAudioDeviceManager = true;
-													 return;
-												 }
+                                                 #if (JUCE_WINDOWS)
+                                                      if ( !pTuneComponent->audioSysInit( ) )
+                                                      {
+                                                          JUCEApplication::getInstance( )->systemRequestedQuit( );
+                                                          errorInGetSharedAudioDeviceManager = true;
+                                                          return;
+                                                      }
+                                                #else
+                                                    pTuneComponent->audioSysInit( );
+                                                #endif
+                                                 
 												 audioSysInitDone = true;
 											 }
 										 } );
@@ -101,13 +106,18 @@ AudioDeviceManager& getSharedAudioDeviceManager( int numInputChannels, int numOu
 	{
 		if ( !audioSysInitDone )
 		{
-			if ( !pTuneComponent->audioSysInit( ) )
-			{
-				JUCEApplication::getInstance( )->systemRequestedQuit( );
-				errorInGetSharedAudioDeviceManager = true;
-				return *sharedAudioDeviceManager;
-			}
-			audioSysInitDone = true;
+             #if (JUCE_WINDOWS)
+                  if ( !pTuneComponent->audioSysInit( ) )
+                  {
+                      JUCEApplication::getInstance( )->systemRequestedQuit( );
+                      errorInGetSharedAudioDeviceManager = true;
+                      return *sharedAudioDeviceManager;
+                  }
+            #else
+                pTuneComponent->audioSysInit( );
+            #endif
+
+            audioSysInitDone = true;
 		}
 	}
 
