@@ -78,6 +78,7 @@ AudioDeviceManager& getSharedAudioDeviceManager( int numInputChannels, int numOu
 	{
 		if ( numInputChannels > 0 )
 		{
+			audioSysInitDone = true;
 			RuntimePermissions::request( RuntimePermissions::recordAudio,
 										 [ numInputChannels, numOutputChannels ]( bool granted )
 										 {
@@ -85,8 +86,6 @@ AudioDeviceManager& getSharedAudioDeviceManager( int numInputChannels, int numOu
 											 {
 												 getSharedAudioDeviceManager( numInputChannels, numOutputChannels );
 												 pTuneComponent->audioSysInit( );
-
-												 audioSysInitDone = true;
 											 }
 											 else
 											 {
