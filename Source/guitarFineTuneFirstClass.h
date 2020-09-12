@@ -180,7 +180,6 @@ private:
 	std::shared_ptr<eksLookAndFeel> pGuitarFineTuneLookAndFeel = nullptr;
 	std::shared_ptr<eksTabbedComponent> pEksTabbedComponent = nullptr;
 	std::shared_ptr<xmlGuitarFineTuneConfig> pXmlGuitarFineTuneConfig = nullptr;
-	//std::shared_ptr<tuneComponent> pTuneComponent = nullptr;
 	std::shared_ptr<eksAudioControlComponent> pEksAudioControlComponent = nullptr;
 	std::shared_ptr<Viewport> pEksAudioControlComponentViewPort = nullptr;
 	std::shared_ptr<guitarStringSoundsControl> pGuitarStringSoundsControl = nullptr;

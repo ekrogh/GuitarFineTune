@@ -27,8 +27,8 @@
 // Init audio
 //==============================================================================
 bool errorInGetSharedAudioDeviceManager = false;
-std::unique_ptr<AudioDeviceManager> sharedAudioDeviceManager = nullptr;
-std::unique_ptr<tuneComponent> pTuneComponent = nullptr;
+std::shared_ptr<AudioDeviceManager> sharedAudioDeviceManager = nullptr;
+std::shared_ptr<tuneComponent> pTuneComponent = nullptr;
 
 bool audioSysInitDone = false;
 
@@ -51,7 +51,7 @@ String getCurrentDefaultAudioDeviceName( AudioDeviceManager& deviceManager, bool
 AudioDeviceManager& getSharedAudioDeviceManager( int numInputChannels, int numOutputChannels )
 {
 	if ( sharedAudioDeviceManager == nullptr )
-		sharedAudioDeviceManager.reset( new AudioDeviceManager( ) );
+		sharedAudioDeviceManager = make_shared< AudioDeviceManager>( );
 
 	auto* currentDevice = sharedAudioDeviceManager->getCurrentAudioDevice( );
 
@@ -84,18 +84,15 @@ AudioDeviceManager& getSharedAudioDeviceManager( int numInputChannels, int numOu
 											 if ( granted )
 											 {
 												 getSharedAudioDeviceManager( numInputChannels, numOutputChannels );
-                                                 #if (JUCE_WINDOWS)
-                                                      if ( !pTuneComponent->audioSysInit( ) )
-                                                      {
-                                                          JUCEApplication::getInstance( )->systemRequestedQuit( );
-                                                          errorInGetSharedAudioDeviceManager = true;
-                                                          return;
-                                                      }
-                                                #else
-                                                    pTuneComponent->audioSysInit( );
-                                                #endif
-                                                 
+												 pTuneComponent->audioSysInit( );
+
 												 audioSysInitDone = true;
+											 }
+											 else
+											 {
+												 errorInGetSharedAudioDeviceManager = true;
+												 JUCEApplication::getInstance( )->systemRequestedQuit( );
+												 return;
 											 }
 										 } );
 
@@ -106,18 +103,9 @@ AudioDeviceManager& getSharedAudioDeviceManager( int numInputChannels, int numOu
 	{
 		if ( !audioSysInitDone )
 		{
-             #if (JUCE_WINDOWS)
-                  if ( !pTuneComponent->audioSysInit( ) )
-                  {
-                      JUCEApplication::getInstance( )->systemRequestedQuit( );
-                      errorInGetSharedAudioDeviceManager = true;
-                      return *sharedAudioDeviceManager;
-                  }
-            #else
-                pTuneComponent->audioSysInit( );
-            #endif
+			pTuneComponent->audioSysInit( );
 
-            audioSysInitDone = true;
+			audioSysInitDone = true;
 		}
 	}
 
@@ -135,7 +123,6 @@ AudioDeviceManager& getSharedAudioDeviceManager( int numInputChannels, int numOu
 		{
 			if ( ( sharedAudioDeviceManager->initialise( numInputChannels, numOutputChannels, nullptr, true, {}, nullptr ) ).isNotEmpty( ) )
 			{
-				sharedAudioDeviceManager = nullptr;
 				errorInGetSharedAudioDeviceManager = true;
 				return *sharedAudioDeviceManager;
 			}
@@ -163,7 +150,6 @@ AudioDeviceManager& getSharedAudioDeviceManager( int numInputChannels, int numOu
 	{
 		if ( ( sharedAudioDeviceManager->initialise( numInputChannels, numOutputChannels, nullptr, true, {}, nullptr ) ).isNotEmpty( ) )
 		{
-			sharedAudioDeviceManager = nullptr;
 			errorInGetSharedAudioDeviceManager = true;
 			return *sharedAudioDeviceManager;
 		}
@@ -196,7 +182,9 @@ guitarFineTuneFirstClass::guitarFineTuneFirstClass( )
 {
 	// make sharedAudioDeviceManager
 	if ( sharedAudioDeviceManager == nullptr )
-		sharedAudioDeviceManager.reset( new AudioDeviceManager( ) );
+	{
+		sharedAudioDeviceManager = make_shared< AudioDeviceManager>( );
+	}
 
 #if (JUCE_ANDROID)
 	// Add viewport ?
@@ -244,23 +232,23 @@ guitarFineTuneFirstClass::guitarFineTuneFirstClass( )
 		std::make_shared<eksTabbedComponent>
 		(
 			SafePointer( this )
-        );
+			);
 
 #if ( JUCE_IOS )
 	{
 		pTuneComponent =
-			std::make_unique<tuneComponent>
+			std::make_shared<tuneComponent>
 			(
 				pXmlGuitarFineTuneConfig, SafePointer( this )
-            );
+				);
 	}
 #else
 	{
 		pTuneComponent =
-			std::make_unique<tuneComponent>
+			std::make_shared<tuneComponent>
 			(
 				pXmlGuitarFineTuneConfig
-            );
+				);
 	}
 #endif // #if ( JUCE_IOS )
 
@@ -712,7 +700,7 @@ void guitarFineTuneFirstClass::closeButtonPressed( )
 }
 
 guitarFineTuneFirstClass::~guitarFineTuneFirstClass( )
-{ 
+{
 	pTuneComponent = nullptr;
 
 	Component::setLookAndFeel( nullptr );

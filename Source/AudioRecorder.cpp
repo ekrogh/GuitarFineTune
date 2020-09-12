@@ -276,7 +276,7 @@ float AudioRecorder::getCurrentMaxLevel()
 }
 
 //==============================================================================
-extern std::unique_ptr<AudioDeviceManager> sharedAudioDeviceManager;
+extern std::shared_ptr<AudioDeviceManager> sharedAudioDeviceManager;
 
 AudioRecorderControl::AudioRecorderControl()
 {

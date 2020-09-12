@@ -28,7 +28,7 @@
 #include "tuneComponent.h"
 
 
-extern std::unique_ptr<AudioDeviceManager> sharedAudioDeviceManager;
+extern std::shared_ptr<AudioDeviceManager> sharedAudioDeviceManager;
 extern bool errorInGetSharedAudioDeviceManager;
 
 
@@ -403,7 +403,7 @@ tuneComponent::~tuneComponent( )
 	weSpectrumDataReady.signal( );
 	stopThread( -10 );
 	shutdownAudio( );
-    sharedAudioDeviceManager->closeAudioDevice();
+	sharedAudioDeviceManager->closeAudioDevice( );
 	 // Make thread shut down
 	//stopThread( 6000 );
 
