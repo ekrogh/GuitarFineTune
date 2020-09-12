@@ -40,10 +40,10 @@ tuneComponent::tuneComponent
 #endif // #if ( JUCE_IOS )
 )
 	: Thread( "Tune_Spectrogram_Drawings" )
-#if ( JUCE_IOS )
-	, ptrGuitarFineTuneFirstClass( pGuitarFineTuneFirstClass )
-#endif // #if ( JUCE_IOS )
     , AudioAppComponent( *sharedAudioDeviceManager )
+    #if ( JUCE_IOS )
+        , ptrGuitarFineTuneFirstClass( pGuitarFineTuneFirstClass )
+    #endif // #if ( JUCE_IOS )
 	, pXmlGuitarFineTuneConfig( pXmlGFTConfig )
 {
 	if ( errorInGetSharedAudioDeviceManager )

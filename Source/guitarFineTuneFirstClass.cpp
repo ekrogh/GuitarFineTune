@@ -244,15 +244,15 @@ guitarFineTuneFirstClass::guitarFineTuneFirstClass( )
 		std::make_shared<eksTabbedComponent>
 		(
 			SafePointer( this )
-			);
+        );
 
 #if ( JUCE_IOS )
 	{
 		pTuneComponent =
-			std::make_shared<tuneComponent>
+			std::make_unique<tuneComponent>
 			(
 				pXmlGuitarFineTuneConfig, SafePointer( this )
-				);
+            );
 	}
 #else
 	{
@@ -260,7 +260,7 @@ guitarFineTuneFirstClass::guitarFineTuneFirstClass( )
 			std::make_unique<tuneComponent>
 			(
 				pXmlGuitarFineTuneConfig
-				);
+            );
 	}
 #endif // #if ( JUCE_IOS )
 
