@@ -57,7 +57,6 @@
 		0570076174A69261AF69AFAD /* AssocVector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AssocVector.h; path = ../../Source/AssocVector.h; sourceTree = SOURCE_ROOT; };
 		08EF8E672632825EF5FDA59B /* JuceHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = JuceHeader.h; path = ../../JuceLibraryCode/JuceHeader.h; sourceTree = SOURCE_ROOT; };
 		0A6C967BBB5D4418A23463EB /* CoreAudioKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudioKit.framework; path = System/Library/Frameworks/CoreAudioKit.framework; sourceTree = SDKROOT; };
-		0DBBECD8250C0AB0008541C9 /* guitarFineTuneRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = guitarFineTuneRelease.entitlements; sourceTree = "<group>"; };
 		0DC6CFFB01133951B6601748 /* juce_audio_utils */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_audio_utils; path = ../../JuceLibraryCode/modules/juce_audio_utils; sourceTree = SOURCE_ROOT; };
 		0E943A9EF57CD424DA2E8959 /* juce_audio_processors */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_audio_processors; path = ../../JuceLibraryCode/modules/juce_audio_processors; sourceTree = SOURCE_ROOT; };
 		1C1C43188A054835D251C5F4 /* Typelist.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Typelist.h; path = ../../Source/Typelist.h; sourceTree = SOURCE_ROOT; };
@@ -213,7 +212,6 @@
 		4DB04A617E8DFE6D06731154 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				0DBBECD8250C0AB0008541C9 /* guitarFineTuneRelease.entitlements */,
 				9E39F32C1BF5217D902DEEE5 /* guitarFineTune */,
 				267EBA2B36C17379FA53260F /* JUCE Modules */,
 				51CFAB202470ECD7603B1CCA /* JUCE Library Code */,
@@ -449,9 +447,8 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_LINK_OBJC_RUNTIME = NO;
-				CODE_SIGN_ENTITLEMENTS = guitarFineTuneRelease.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = App.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				CONFIGURATION_BUILD_DIR = "$(PROJECT_DIR)/build/$(CONFIGURATION)";
 				DEAD_CODE_STRIPPING = YES;
@@ -498,8 +495,7 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_LINK_OBJC_RUNTIME = NO;
 				CODE_SIGN_ENTITLEMENTS = App.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				CONFIGURATION_BUILD_DIR = /Applications;
 				COPY_PHASE_STRIP = NO;

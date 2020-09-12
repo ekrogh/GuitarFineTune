@@ -69,6 +69,10 @@
 			isa = PBXBuildFile;
 			fileRef = E6783B2E53AFE454F3142B8E;
 		};
+		BA17570CEAFAB68B6386A524 = {
+			isa = PBXBuildFile;
+			fileRef = 1AB7862EFDF64106B638A54D;
+		};
 		C6A374FEE166D72577DBD712 = {
 			isa = PBXBuildFile;
 			fileRef = 45E0F99B16D18737074F0FCA;
@@ -237,6 +241,13 @@
 			name = "juce_audio_processors";
 			path = "../../JuceLibraryCode/modules/juce_audio_processors";
 			sourceTree = "SOURCE_ROOT";
+		};
+		1AB7862EFDF64106B638A54D = {
+			isa = PBXFileReference;
+			lastKnownFileType = file.storyboard;
+			name = "Launch Screen.storyboard";
+			path = "/Users/eks/projects/juceProjs/guitarFineTune/iOS_Special/Launch Screen.storyboard";
+			sourceTree = "<absolute>";
 		};
 		1C1C43188A054835D251C5F4 = {
 			isa = PBXFileReference;
@@ -922,6 +933,7 @@
 			children = (
 				5192F983556BFBE5044419E4,
 				E6783B2E53AFE454F3142B8E,
+				1AB7862EFDF64106B638A54D,
 				45E0F99B16D18737074F0FCA,
 				C9F9E8F883FAD092F16C8D8F,
 				6118B4D234223C62182B82BD,
@@ -1192,6 +1204,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				084A47D19D44CAA5AF1D746B,
+				BA17570CEAFAB68B6386A524,
 				C6A374FEE166D72577DBD712,
 				70AB18BB3265004C3D061BA9,
 				9B311FAFFA1679033D1F165A,
