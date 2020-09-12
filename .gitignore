@@ -6,3 +6,10 @@ x64
 *.db
 /Builds/VisualStudio2017/.vs/guitarFineTune/v15
 /Builds/VisualStudio2017/.vs/guitarFineTune/v15
+/Builds/Android/.gradle
+/Builds/Android/.idea
+/Builds/Android/app/.cxx
+/Builds/Android/app/build/intermediates
+/Builds/Android/app/build/outputs/logs
+/Builds/Android/app/build/tmp/compileDebug_DebugJavaWithJavac
+/Builds/VisualStudio2019/.vs/guitarFineTune/v16
