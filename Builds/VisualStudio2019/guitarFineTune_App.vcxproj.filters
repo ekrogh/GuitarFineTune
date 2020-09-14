@@ -424,6 +424,9 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\include_eksAudioInputAccessPermissions.mm">
+      <Filter>guitarFineTune\Source</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\AudioRecorder.cpp">
       <Filter>guitarFineTune\Source</Filter>
     </ClCompile>

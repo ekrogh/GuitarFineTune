@@ -5,5 +5,7 @@
 
 */
 
-#include "AppConfig.h"
-#include <eksAudioInputAccessPermissions.mm>
+#if (JUCE_IOS || JUCE_MAC)
+    #include "AppConfig.h"
+    #include <eksAudioInputAccessPermissions.mm>
+#endif

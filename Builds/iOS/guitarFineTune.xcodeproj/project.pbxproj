@@ -81,6 +81,10 @@
 			isa = PBXBuildFile;
 			fileRef = 6118B4D234223C62182B82BD;
 		};
+		DF49FEAA725D53B894FFD7FE = {
+			isa = PBXBuildFile;
+			fileRef = D3568E6FF004A6EC5F09CF75;
+		};
 		B7E6F5F4B373593565102AAD = {
 			isa = PBXBuildFile;
 			fileRef = 8A01971D90B2D6D952341A1A;
@@ -728,6 +732,13 @@
 			path = System/Library/Frameworks/MobileCoreServices.framework;
 			sourceTree = SDKROOT;
 		};
+		D3568E6FF004A6EC5F09CF75 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.objcpp;
+			name = "include_eksAudioInputAccessPermissions.mm";
+			path = "../../Source/include_eksAudioInputAccessPermissions.mm";
+			sourceTree = "SOURCE_ROOT";
+		};
 		DA0E44CCE765370592F7F300 = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.cpp.cpp;
@@ -824,6 +835,7 @@
 			isa = PBXGroup;
 			children = (
 				81A274A7B7D44B16EEDA1BE6,
+				D3568E6FF004A6EC5F09CF75,
 				8A01971D90B2D6D952341A1A,
 				88B8B6386C47D16D91AFC3CC,
 				8E089090ECC4288D875C6231,
@@ -1202,6 +1214,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF49FEAA725D53B894FFD7FE,
 				B7E6F5F4B373593565102AAD,
 				8434F036EBC05B7F72734A56,
 				BD735741B2636A595517B957,

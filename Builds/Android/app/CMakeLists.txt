@@ -31,6 +31,7 @@ add_library( ${BINARY_NAME}
     SHARED
 
     "../../../iOS_Special/Launch Screen.storyboard"
+    "../../../Source/include_eksAudioInputAccessPermissions.mm"
     "../../../Source/AudioRecorder.cpp"
     "../../../Source/AudioRecorder.h"
     "../../../Source/audioRecorderThread.cpp"
@@ -1486,6 +1487,7 @@ add_library( ${BINARY_NAME}
 )
 
 set_source_files_properties("../../../iOS_Special/Launch Screen.storyboard" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../Source/include_eksAudioInputAccessPermissions.mm" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../Source/AudioRecorder.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../Source/audioRecorderThread.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../Source/helpPage.h" PROPERTIES HEADER_FILE_ONLY TRUE)
