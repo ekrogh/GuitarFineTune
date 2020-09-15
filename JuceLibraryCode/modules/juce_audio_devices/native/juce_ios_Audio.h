@@ -40,6 +40,8 @@ public:
 
     bool setAudioPreprocessingEnabled (bool) override;
 
+    // eks 15. sept. 2020 added checkAudioInputAccessPermissions
+    bool checkAudioInputAccessPermissions( ) override;
     //==============================================================================
     bool isPlaying() override;
     bool isOpen() override;

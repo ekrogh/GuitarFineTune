@@ -83,7 +83,8 @@ tuneComponent::tuneComponent
 
 void tuneComponent::modalStateFinished( int /*result*/ )
 {
-	JUCEApplication::getInstance( )->systemRequestedQuit( );
+    sharedAudioDeviceManager->closeAudioDevice();
+    JUCEApplication::getInstance( )->systemRequestedQuit( );
 }
 
 
@@ -199,7 +200,23 @@ bool tuneComponent::audioSysInit( )
 			return false;
 		}
 	}
-
+    #if (JUCE_IOS)
+        AudioIODevice* CurrentAudioDevice = sharedAudioDeviceManager->getCurrentAudioDevice( );
+        if ( CurrentAudioDevice != nullptr )
+        {
+            if ( !(CurrentAudioDevice->checkAudioInputAccessPermissions( )) )
+            {
+                    juce::AlertWindow::showMessageBoxAsync
+                    (
+                        juce::AlertWindow::WarningIcon
+                        , "Access to audio input device\nNOT granted!"
+                        , "Enbale guitarFineTune in\nSettings -> Privacy -> Microphone\nOr try to UNinstall\nand REinstall guitarFineTune"
+                        , "OK"
+                        , nullptr
+                     );
+            }
+        }
+    #endif // (JUCE_IOS)
 
     // Save current audio config
 	audioDeviceTypeAtStartUp = sharedAudioDeviceManager->getCurrentAudioDeviceType( );

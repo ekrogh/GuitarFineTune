@@ -74,18 +74,7 @@ AudioDeviceManager& getSharedAudioDeviceManager( int numInputChannels, int numOu
 	if ( numOutputChannels < 0 )
 		numOutputChannels = ( currentDevice != nullptr ? currentDevice->getActiveOutputChannels( ).countNumberOfSetBits( ) : 2 );
 
-#if (JUCE_IOS)
-	AudioIODevice* CurrentAudioDevice = sharedAudioDeviceManager->getCurrentAudioDevice( );
-	if ( CurrentAudioDevice != nullptr )
-	{
-		if ( !(CurrentAudioDevice->checkAudioInputAccessPermissions( )) )
-		{
-			errorInGetSharedAudioDeviceManager = true;
-			JUCEApplication::getInstance( )->systemRequestedQuit( );
-			return;
-		}
-	}
-#else // (JUCE_IOS)
+
 	if ( !RuntimePermissions::isGranted( RuntimePermissions::recordAudio ) )
 	{
 		if ( numInputChannels > 0 )
@@ -110,7 +99,6 @@ AudioDeviceManager& getSharedAudioDeviceManager( int numInputChannels, int numOu
 			numInputChannels = 0;
 		}
 	}
-#endif // (JUCE_IOS)
 	else
 	{
 		if ( !audioSysInitDone )

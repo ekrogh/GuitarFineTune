@@ -545,8 +545,7 @@ struct iOSAudioIODevice::Pimpl      : public AudioPlayHead,
 // eks 15. sept. 2020 added checkAudioInputAccessPermissions
     bool checkAudioInputAccessPermissions( )
     {
-        NSString* mediaType = AVMediaTypeAudio;
-        AVAuthorizationStatus authStatus = [ AVCaptureDevice authorizationStatusForMediaType : mediaType ];
+        AVAuthorizationStatus authStatus = [ AVCaptureDevice authorizationStatusForMediaType : AVMediaTypeAudio ];
         if ( authStatus == AVAuthorizationStatusAuthorized )
         {
             return true;
@@ -561,23 +560,26 @@ struct iOSAudioIODevice::Pimpl      : public AudioPlayHead,
         }
         else if ( authStatus == AVAuthorizationStatusNotDetermined )
         {
-            [AVCaptureDevice requestAccessForMediaType : mediaType completionHandler : ^ ( BOOL granted )
-            {
-                if ( granted )
-                {
-                    NSLog( @"Granted access to %@", mediaType );
-                    return true;
-                }
-                else
-                {
-                    NSLog( @"Not granted access to %@", mediaType );
-                    return false;
-                }
-            }];
+            return true;
+//            __block bool isGranted;
+//            [AVCaptureDevice requestAccessForMediaType:AVMediaTypeAudio completionHandler:^(BOOL granted)
+//             {
+//                 if ( granted )
+//                 {
+//                    NSLog( @"Granted access to %@", mediaType );
+//                    isGranted = true;
+//                 }
+//                 else
+//                 {
+//                    NSLog( @"Not granted access to %@", mediaType );
+//                    isGranted = false;
+//                 }
+//             }];
+//            return true;
         }
         else
         {
-            return false;
+            return true;
         }
         return false;
     }
