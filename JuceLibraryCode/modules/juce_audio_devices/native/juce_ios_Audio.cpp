@@ -541,6 +541,47 @@ struct iOSAudioIODevice::Pimpl      : public AudioPlayHead,
         return session.mode == mode;
     }
 
+
+// eks 15. sept. 2020 added checkAudioInputAccessPermissions
+    bool checkAudioInputAccessPermissions( )
+    {
+        NSString* mediaType = AVMediaTypeAudio;
+        AVAuthorizationStatus authStatus = [ AVCaptureDevice authorizationStatusForMediaType : mediaType ];
+        if ( authStatus == AVAuthorizationStatusAuthorized )
+        {
+            return true;
+        }
+        else if ( authStatus == AVAuthorizationStatusDenied )
+        {
+            return false;
+        }
+        else if ( authStatus == AVAuthorizationStatusRestricted )
+        {
+            return true;
+        }
+        else if ( authStatus == AVAuthorizationStatusNotDetermined )
+        {
+            [AVCaptureDevice requestAccessForMediaType : mediaType completionHandler : ^ ( BOOL granted )
+            {
+                if ( granted )
+                {
+                    NSLog( @"Granted access to %@", mediaType );
+                    return true;
+                }
+                else
+                {
+                    NSLog( @"Not granted access to %@", mediaType );
+                    return false;
+                }
+            }];
+        }
+        else
+        {
+            return false;
+        }
+        return false;
+    }
+
     //==============================================================================
     bool canControlTransport() override                    { return interAppAudioConnected; }
 
@@ -1366,6 +1407,9 @@ Array<double> iOSAudioIODevice::getAvailableSampleRates()           { return pim
 Array<int> iOSAudioIODevice::getAvailableBufferSizes()              { return pimpl->availableBufferSizes; }
 
 bool iOSAudioIODevice::setAudioPreprocessingEnabled (bool enabled)  { return pimpl->setAudioPreprocessingEnabled (enabled); }
+
+// eks 15. sept. 2020 added checkAudioInputAccessPermissions
+bool iOSAudioIODevice::checkAudioInputAccessPermissions( )          { return pimpl->checkAudioInputAccessPermissions( ); }
 
 bool iOSAudioIODevice::isPlaying()                                  { return pimpl->isRunning && pimpl->callback != nullptr; }
 bool iOSAudioIODevice::isOpen()                                     { return pimpl->isRunning; }
