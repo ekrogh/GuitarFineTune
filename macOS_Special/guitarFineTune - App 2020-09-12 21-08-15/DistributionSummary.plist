@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>guitarFineTune - App.pkg</key>
+	<array>
+		<dict>
+			<key>architectures</key>
+			<array>
+				<string>x86_64</string>
+			</array>
+			<key>certificate</key>
+			<dict>
+				<key>SHA1</key>
+				<string>2BD787C0C18C96431AA20E70180CA621A40EB8FF</string>
+				<key>dateExpires</key>
+				<string>06/08/2021</string>
+				<key>type</key>
+				<string>Apple Distribution</string>
+			</dict>
+			<key>entitlements</key>
+			<dict>
+				<key>com.apple.security.app-sandbox</key>
+				<true/>
+				<key>com.apple.security.device.audio-input</key>
+				<true/>
+				<key>com.apple.security.device.bluetooth</key>
+				<true/>
+				<key>com.apple.security.device.microphone</key>
+				<true/>
+				<key>com.apple.security.files.user-selected.read-write</key>
+				<true/>
+			</dict>
+			<key>name</key>
+			<string>guitarFineTune.app</string>
+			<key>symbols</key>
+			<true/>
+			<key>team</key>
+			<dict>
+				<key>id</key>
+				<string>4657Q2Y6NH</string>
+				<key>name</key>
+				<string>Eigil Krogh</string>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>

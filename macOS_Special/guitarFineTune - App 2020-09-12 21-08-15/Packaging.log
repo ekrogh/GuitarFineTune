@@ -1,0 +1,138 @@
+2020-09-12 19:08:09 +0000  Initial pipeline context: <IDEDistributionProcessingPipelineContext: 0x7fe8f5679ff0; archive(resolved)='<IDEArchive: 0x7fe8f5548ec0>', distributionTask(resolved)='2', distributionDestination(resolved)='1', distributionMethod(resolved)='<IDEDistributionMethodMacAppStoreDistribution: 0x7fe8faeb5a90>', team(resolved)='<IDEProvisioningDisambiguatableBasicTeam: 0x7fe8f90d87d0; teamID='4657Q2Y6NH', teamName='Eigil Krogh', teamType='Individual', username='eigilkrogh@icloud.com', isFreeProvisioningTeam='0'>'>
+	Chain (12, self inclusive):
+	<IDEDistributionProcessingPipelineContext: 0x7fe8f5679ff0; archive = '<IDEArchive: 0x7fe8f5548ec0>', distributionMethod='<IDEDistributionMethodMacAppStoreDistribution: 0x7fe8faeb5a90>', team='<IDEProvisioningDisambiguatableBasicTeam: 0x7fe8f90d87d0; teamID='4657Q2Y6NH', teamName='Eigil Krogh', teamType='Individual', username='eigilkrogh@icloud.com', isFreeProvisioningTeam='0'>'>
+	<IDEDistributionProcessingPipelineContext: 0x7fe8f62d3060; archive = '<IDEArchive: 0x7fe8f5548ec0>', distributionMethod='<IDEDistributionMethodMacAppStoreDistribution: 0x7fe8faeb5a90>', team='<IDEProvisioningDisambiguatableBasicTeam: 0x7fe8f90d87d0; teamID='4657Q2Y6NH', teamName='Eigil Krogh', teamType='Individual', username='eigilkrogh@icloud.com', isFreeProvisioningTeam='0'>'>
+	<IDEDistributionContext: 0x7fe8e1b62040; archive = '<IDEArchive: 0x7fe8f5548ec0>', distributionMethod='<IDEDistributionMethodMacAppStoreDistribution: 0x7fe8faeb5a90>', team='<IDEProvisioningDisambiguatableBasicTeam: 0x7fe8f90d87d0; teamID='4657Q2Y6NH', teamName='Eigil Krogh', teamType='Individual', username='eigilkrogh@icloud.com', isFreeProvisioningTeam='0'>'>
+	<IDEDistributionContext: 0x7fe9008052b0; archive = '<IDEArchive: 0x7fe8f5548ec0>', distributionMethod='<IDEDistributionMethodMacAppStoreDistribution: 0x7fe8faeb5a90>', team='<IDEProvisioningDisambiguatableBasicTeam: 0x7fe8f90d87d0; teamID='4657Q2Y6NH', teamName='Eigil Krogh', teamType='Individual', username='eigilkrogh@icloud.com', isFreeProvisioningTeam='0'>'>
+	<IDEDistributionContext: 0x7fe8f8d94390; archive = '<IDEArchive: 0x7fe8f5548ec0>', distributionMethod='<IDEDistributionMethodMacAppStoreDistribution: 0x7fe8faeb5a90>', team='<IDEProvisioningDisambiguatableBasicTeam: 0x7fe8f90d87d0; teamID='4657Q2Y6NH', teamName='Eigil Krogh', teamType='Individual', username='eigilkrogh@icloud.com', isFreeProvisioningTeam='0'>'>
+	<IDEDistributionContext: 0x7fe900879250; archive = '<IDEArchive: 0x7fe8f5548ec0>', distributionMethod='<IDEDistributionMethodMacAppStoreDistribution: 0x7fe8faeb5a90>', team='<IDEProvisioningDisambiguatableBasicTeam: 0x7fe8f90d87d0; teamID='4657Q2Y6NH', teamName='Eigil Krogh', teamType='Individual', username='eigilkrogh@icloud.com', isFreeProvisioningTeam='0'>'>
+	<IDEDistributionContext: 0x7fe8f55c8c30; archive = '<IDEArchive: 0x7fe8f5548ec0>', distributionMethod='<IDEDistributionMethodMacAppStoreDistribution: 0x7fe8faeb5a90>', team='<IDEProvisioningDisambiguatableBasicTeam: 0x7fe8f90d87d0; teamID='4657Q2Y6NH', teamName='Eigil Krogh', teamType='Individual', username='eigilkrogh@icloud.com', isFreeProvisioningTeam='0'>'>
+	<IDEDistributionContext: 0x7fe8f55c9880; archive = '<IDEArchive: 0x7fe8f5548ec0>', distributionMethod='<IDEDistributionMethodMacAppStoreDistribution: 0x7fe8faeb5a90>', team='<IDEProvisioningDisambiguatableBasicTeam: 0x7fe8f90d87d0; teamID='4657Q2Y6NH', teamName='Eigil Krogh', teamType='Individual', username='eigilkrogh@icloud.com', isFreeProvisioningTeam='0'>'>
+	<IDEDistributionContext: 0x7fe8f567d760; archive = '<IDEArchive: 0x7fe8f5548ec0>', distributionMethod='<IDEDistributionMethodMacAppStoreDistribution: 0x7fe8faeb5a90>', team='<IDEProvisioningDisambiguatableBasicTeam: 0x7fe8f90d87d0; teamID='4657Q2Y6NH', teamName='Eigil Krogh', teamType='Individual', username='eigilkrogh@icloud.com', isFreeProvisioningTeam='0'>'>
+	<IDEDistributionContext: 0x7fe8f5691710; archive = '<IDEArchive: 0x7fe8f5548ec0>', distributionMethod='<IDEDistributionMethodMacAppStoreDistribution: 0x7fe8faeb5a90>', team='(null)'>
+	<IDEDistributionContext: 0x7fe8f6176a90; archive = '<IDEArchive: 0x7fe8f5548ec0>', distributionMethod='<IDEDistributionMethodMacAppStoreDistribution: 0x7fe8faeb5a90>', team='(null)'>
+	<IDEDistributionContext: 0x7fe8f8fa4a30; archive = '<IDEArchive: 0x7fe8f5548ec0>', distributionMethod='(null)', team='(null)'>
+</IDEDistributionProcessingPipelineContext: 0x7fe8f5679ff0>
+2020-09-12 19:08:09 +0000  Processing step: IDEDistributionCreateDestRootStep
+2020-09-12 19:08:09 +0000  Processing step: IDEDistributionCopyItemStep
+2020-09-12 19:08:09 +0000  Running /usr/bin/ditto '-V' '/Users/eks/Library/Developer/Xcode/Archives/2020-09-12/guitarFineTune - App 12-09-2020, 21.04.xcarchive/Products/Applications/guitarFineTune.app' '/var/folders/x9/kkvymd5s6zx2f8rhzjxfrxpr0000gn/T/XcodeDistPipeline.~~~ZMtdrM/Root/Applications/guitarFineTune.app'
+2020-09-12 19:08:09 +0000  >>> Copying /Users/eks/Library/Developer/Xcode/Archives/2020-09-12/guitarFineTune - App 12-09-2020, 21.04.xcarchive/Products/Applications/guitarFineTune.app 
+2020-09-12 19:08:09 +0000  copying file ./Contents/_CodeSignature/CodeResources ... 
+2020-09-12 19:08:09 +0000  3492 bytes for ./Contents/_CodeSignature/CodeResources
+2020-09-12 19:08:09 +0000  copying file ./Contents/MacOS/guitarFineTune ... 
+2020-09-12 19:08:09 +0000  6036688 bytes for ./Contents/MacOS/guitarFineTune
+2020-09-12 19:08:09 +0000  copying file ./Contents/Resources/fineTune_icon_Large.png ... 
+63138 bytes for ./Contents/Resources/fineTune_icon_Large.png
+copying file ./Contents/Resources/Icon.icns ... 
+97647 bytes for ./Contents/Resources/Icon.icns
+copying file ./Contents/Resources/fineTune_icon_Small.png ... 
+22126 bytes for ./Contents/Resources/fineTune_icon_Small.png
+copying file ./Contents/Resources/RecentFilesMenuTemplate.nib ... 
+2842 bytes for ./Contents/Resources/RecentFilesMenuTemplate.nib
+copying file ./Contents/Info.plist ... 
+2020-09-12 19:08:09 +0000  1666 bytes for ./Contents/Info.plist
+copying file ./Contents/PkgInfo ... 
+2020-09-12 19:08:09 +0000  8 bytes for ./Contents/PkgInfo
+2020-09-12 19:08:09 +0000  /usr/bin/ditto exited with 0
+2020-09-12 19:08:09 +0000  Processing step: IDEDistributionEmbedProfileStep
+2020-09-12 19:08:09 +0000  Skipping profile for item: <IDEDistributionItem: 0x7fe8f63d3710; bundleID='dk.eksIt.guitarFineTuneOSX', path='<DVTFilePath:0x7fe8f8f4b390:'/Users/eks/Library/Developer/Xcode/Archives/2020-09-12/guitarFineTune - App 12-09-2020, 21.04.xcarchive/Products/Applications/guitarFineTune.app'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fe8f7a227d0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fe8f6133d30; name='Apple Development: Eigil Krogh (M39X2ZPF3C)', hash='180082B9B73D47E33EDAD221B6642FD973A1889B', serialNumber='4B8D3CC8EDAFAF6F', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2020-09-05 14:41:53 +0000''>', entitlements='{
+    "com.apple.security.app-sandbox" = 1;
+    "com.apple.security.device.audio-input" = 1;
+    "com.apple.security.device.bluetooth" = 1;
+    "com.apple.security.device.microphone" = 1;
+    "com.apple.security.files.user-selected.read-write" = 1;
+}', teamID='4657Q2Y6NH', identifier='dk.eksIt.guitarFineTuneOSX', executablePath='<DVTFilePath:0x7fe8f62c2e10:'/Users/eks/Library/Developer/Xcode/Archives/2020-09-12/guitarFineTune - App 12-09-2020, 21.04.xcarchive/Products/Applications/guitarFineTune.app/Contents/MacOS/guitarFineTune'>', hardenedRuntime='1'>'>
+2020-09-12 19:08:09 +0000  Processing step: IDEDistributionInfoPlistStep
+2020-09-12 19:08:09 +0000  Skipping step: IDEDistributionInfoPlistStep because it said so
+2020-09-12 19:08:09 +0000  Processing step: IDEDistributionItemRemovalStep
+2020-09-12 19:08:09 +0000  Processing step: IDEDistributionAppThinningPlistStep
+2020-09-12 19:08:09 +0000  Processing step: IDEDistributionCompileBitcodeStep
+2020-09-12 19:08:09 +0000  Skipping step: IDEDistributionCompileBitcodeStep because it said so
+2020-09-12 19:08:09 +0000  Processing step: IDEDistributionCodeSlimmingStep
+2020-09-12 19:08:09 +0000  Processing step: IDEDistributionCopyBCSymbolMapsStep
+2020-09-12 19:08:09 +0000  Processing step: IDEDistributionSymbolsStep
+2020-09-12 19:08:09 +0000  Processing symbols for guitarFineTune.app
+2020-09-12 19:08:09 +0000  Running /usr/bin/rsync '-8aPhhE' '/var/folders/x9/kkvymd5s6zx2f8rhzjxfrxpr0000gn/T/XcodeDistPipeline.~~~ZMtdrM/Root/Applications/guitarFineTune.app' '--link-dest' '/var/folders/x9/kkvymd5s6zx2f8rhzjxfrxpr0000gn/T/XcodeDistPipeline.~~~ZMtdrM/Root/Applications' '/var/folders/x9/kkvymd5s6zx2f8rhzjxfrxpr0000gn/T/XcodeDistPipeline.~~~ZMtdrM'
+2020-09-12 19:08:09 +0000  building file list ... 
+2020-09-12 19:08:09 +0000   0 files...2020-09-12 19:08:09 +0000  13 files to consider
+2020-09-12 19:08:09 +0000  guitarFineTune.app/
+2020-09-12 19:08:09 +0000  guitarFineTune.app/Contents/
+guitarFineTune.app/Contents/MacOS/
+2020-09-12 19:08:09 +0000  guitarFineTune.app/Contents/Resources/
+guitarFineTune.app/Contents/_CodeSignature/
+2020-09-12 19:08:09 +0000  
+2020-09-12 19:08:09 +0000  sent 445 bytes  received 50 bytes  990.00 bytes/sec
+total size is 5.94M  speedup is 12581.02
+2020-09-12 19:08:09 +0000  /usr/bin/rsync exited with 0
+2020-09-12 19:08:09 +0000  Running /usr/bin/rsync '-8aPhhE' '/Users/eks/Library/Developer/Xcode/Archives/2020-09-12/guitarFineTune - App 12-09-2020, 21.04.xcarchive/dSYMs/' '--link-dest' '/Users/eks/Library/Developer/Xcode/Archives/2020-09-12/guitarFineTune - App 12-09-2020, 21.04.xcarchive/dSYMs/' '/var/folders/x9/kkvymd5s6zx2f8rhzjxfrxpr0000gn/T/XcodeDistPipeline.~~~ZMtdrM'
+2020-09-12 19:08:09 +0000  building file list ... 
+2020-09-12 19:08:09 +0000   0 files...2020-09-12 19:08:09 +0000  1 file to consider
+2020-09-12 19:08:09 +0000  ./
+2020-09-12 19:08:09 +0000  
+2020-09-12 19:08:09 +0000  sent 77 bytes  received 26 bytes  206.00 bytes/sec
+total size is 0  speedup is 0.00
+2020-09-12 19:08:09 +0000  /usr/bin/rsync exited with 0
+2020-09-12 19:08:09 +0000  Running /Applications/Xcode.app/Contents/Developer/usr/bin/symbols '-noTextInSOD' '-noDaemon' '-arch' 'all' '-symbolsPackageDir' '/var/folders/x9/kkvymd5s6zx2f8rhzjxfrxpr0000gn/T/XcodeDistPipeline.~~~ZMtdrM/Symbols' '/var/folders/x9/kkvymd5s6zx2f8rhzjxfrxpr0000gn/T/XcodeDistPipeline.~~~ZMtdrM/guitarFineTune.app/Contents/MacOS/guitarFineTune'
+2020-09-12 19:08:10 +0000  /var/folders/x9/kkvymd5s6zx2f8rhzjxfrxpr0000gn/T/XcodeDistPipeline.~~~ZMtdrM/guitarFineTune.app/Contents/MacOS/guitarFineTune [x86_64, 0.012467 seconds]:
+2020-09-12 19:08:10 +0000  /Applications/Xcode.app/Contents/Developer/usr/bin/symbols exited with 0
+2020-09-12 19:08:10 +0000  Processing step: IDEDistributionCopyAppleProvidedContentStep
+2020-09-12 19:08:10 +0000  Processing step: IDEDistributionAppThinningStep
+2020-09-12 19:08:10 +0000  Skipping step: IDEDistributionAppThinningStep because it said so
+2020-09-12 19:08:10 +0000  Processing step: IDEDistributionArchThinningStep
+2020-09-12 19:08:10 +0000  Running /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo '/var/folders/x9/kkvymd5s6zx2f8rhzjxfrxpr0000gn/T/XcodeDistPipeline.~~~ZMtdrM/Root/Applications/guitarFineTune.app/Contents/MacOS/guitarFineTune' '-verify_arch' 'arm64e'
+2020-09-12 19:08:10 +0000  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo exited with 1
+2020-09-12 19:08:10 +0000  Skipping architecture thinning for item "guitarFineTune" because arch "arm64e" wasn't found
+2020-09-12 19:08:10 +0000  Processing step: IDEDistributionODRStep
+2020-09-12 19:08:10 +0000  Processing step: IDEDistributionStripXattrsStep
+2020-09-12 19:08:10 +0000  Running /usr/bin/xattr '-crs' '/var/folders/x9/kkvymd5s6zx2f8rhzjxfrxpr0000gn/T/XcodeDistPipeline.~~~ZMtdrM/Root/Applications/guitarFineTune.app'
+2020-09-12 19:08:10 +0000  /usr/bin/xattr exited with 0
+2020-09-12 19:08:10 +0000  Processing step: IDEDistributionCodesignStep
+2020-09-12 19:08:10 +0000  Entitlements for <IDEDistributionItem: 0x7fe8f63d3710; bundleID='dk.eksIt.guitarFineTuneOSX', path='<DVTFilePath:0x7fe8f8f4b390:'/Users/eks/Library/Developer/Xcode/Archives/2020-09-12/guitarFineTune - App 12-09-2020, 21.04.xcarchive/Products/Applications/guitarFineTune.app'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fe8f7a227d0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fe8f8f2e070; name='Apple Development: Eigil Krogh (M39X2ZPF3C)', hash='180082B9B73D47E33EDAD221B6642FD973A1889B', serialNumber='4B8D3CC8EDAFAF6F', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2020-09-05 14:41:53 +0000''>', entitlements='{
+    "com.apple.security.app-sandbox" = 1;
+    "com.apple.security.device.audio-input" = 1;
+    "com.apple.security.device.bluetooth" = 1;
+    "com.apple.security.device.microphone" = 1;
+    "com.apple.security.files.user-selected.read-write" = 1;
+}', teamID='4657Q2Y6NH', identifier='dk.eksIt.guitarFineTuneOSX', executablePath='<DVTFilePath:0x7fe8f62c2e10:'/Users/eks/Library/Developer/Xcode/Archives/2020-09-12/guitarFineTune - App 12-09-2020, 21.04.xcarchive/Products/Applications/guitarFineTune.app/Contents/MacOS/guitarFineTune'>', hardenedRuntime='1'>'>: {
+    "com.apple.security.app-sandbox" = 1;
+    "com.apple.security.device.audio-input" = 1;
+    "com.apple.security.device.bluetooth" = 1;
+    "com.apple.security.device.microphone" = 1;
+    "com.apple.security.files.user-selected.read-write" = 1;
+}
+2020-09-12 19:08:10 +0000  Writing entitlements for <IDEDistributionItem: 0x7fe8f63d3710; bundleID='dk.eksIt.guitarFineTuneOSX', path='<DVTFilePath:0x7fe8f8f4b390:'/Users/eks/Library/Developer/Xcode/Archives/2020-09-12/guitarFineTune - App 12-09-2020, 21.04.xcarchive/Products/Applications/guitarFineTune.app'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fe8f7a227d0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fe900848450; name='Apple Development: Eigil Krogh (M39X2ZPF3C)', hash='180082B9B73D47E33EDAD221B6642FD973A1889B', serialNumber='4B8D3CC8EDAFAF6F', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2020-09-05 14:41:53 +0000''>', entitlements='{
+    "com.apple.security.app-sandbox" = 1;
+    "com.apple.security.device.audio-input" = 1;
+    "com.apple.security.device.bluetooth" = 1;
+    "com.apple.security.device.microphone" = 1;
+    "com.apple.security.files.user-selected.read-write" = 1;
+}', teamID='4657Q2Y6NH', identifier='dk.eksIt.guitarFineTuneOSX', executablePath='<DVTFilePath:0x7fe8f62c2e10:'/Users/eks/Library/Developer/Xcode/Archives/2020-09-12/guitarFineTune - App 12-09-2020, 21.04.xcarchive/Products/Applications/guitarFineTune.app/Contents/MacOS/guitarFineTune'>', hardenedRuntime='1'>'> to: /var/folders/x9/kkvymd5s6zx2f8rhzjxfrxpr0000gn/T/XcodeDistPipeline.~~~ZMtdrM/entitlements~~~OWXci3
+2020-09-12 19:08:10 +0000  Running /usr/bin/codesign '-vvv' '--force' '--sign' '2BD787C0C18C96431AA20E70180CA621A40EB8FF' '--entitlements' '/var/folders/x9/kkvymd5s6zx2f8rhzjxfrxpr0000gn/T/XcodeDistPipeline.~~~ZMtdrM/entitlements~~~OWXci3' '--preserve-metadata=identifier,flags,runtime' '/var/folders/x9/kkvymd5s6zx2f8rhzjxfrxpr0000gn/T/XcodeDistPipeline.~~~ZMtdrM/Root/Applications/guitarFineTune.app'
+2020-09-12 19:08:10 +0000  /var/folders/x9/kkvymd5s6zx2f8rhzjxfrxpr0000gn/T/XcodeDistPipeline.~~~ZMtdrM/Root/Applications/guitarFineTune.app: replacing existing signature
+2020-09-12 19:08:11 +0000  /var/folders/x9/kkvymd5s6zx2f8rhzjxfrxpr0000gn/T/XcodeDistPipeline.~~~ZMtdrM/Root/Applications/guitarFineTune.app: signed app bundle with Mach-O thin (x86_64) [dk.eksIt.guitarFineTuneOSX]
+2020-09-12 19:08:11 +0000  /usr/bin/codesign exited with 0
+2020-09-12 19:08:11 +0000  Processing step: IDEDistributionZipODRItemStep
+2020-09-12 19:08:11 +0000  Skipping step: IDEDistributionZipODRItemStep because it said so
+2020-09-12 19:08:11 +0000  Processing step: IDEDistributionCreatePKGStep
+2020-09-12 19:08:11 +0000  Running /usr/bin/productbuild '--sign' '3rd Party Mac Developer Installer: Eigil Krogh (4657Q2Y6NH)' '--symbolication' '/var/folders/x9/kkvymd5s6zx2f8rhzjxfrxpr0000gn/T/XcodeDistPipeline.~~~ZMtdrM/Symbols' '--component' '/var/folders/x9/kkvymd5s6zx2f8rhzjxfrxpr0000gn/T/XcodeDistPipeline.~~~ZMtdrM/Root/Applications/guitarFineTune.app' '/Applications' '/var/folders/x9/kkvymd5s6zx2f8rhzjxfrxpr0000gn/T/XcodeDistPipeline.~~~ZMtdrM/Packages/guitarFineTune - App.pkg'
+2020-09-12 19:08:12 +0000  productbuild: Adding component at /var/folders/x9/kkvymd5s6zx2f8rhzjxfrxpr0000gn/T/XcodeDistPipeline.~~~ZMtdrM/Root/Applications/guitarFineTune.app
+productbuild: Signing product with identity "3rd Party Mac Developer Installer: Eigil Krogh (4657Q2Y6NH)" from keychain /Users/eks/Library/Keychains/login.keychain-db
+productbuild: Adding certificate "Apple Worldwide Developer Relations Certification Authority"
+productbuild: Adding certificate "Apple Root CA"
+productbuild: Wrote product to /var/folders/x9/kkvymd5s6zx2f8rhzjxfrxpr0000gn/T/XcodeDistPipeline.~~~ZMtdrM/Packages/guitarFineTune - App.pkg
+productbuild: Supported OS versions: [10.11, )
+2020-09-12 19:08:12 +0000  /usr/bin/productbuild exited with 0
+2020-09-12 19:08:12 +0000  Processing step: IDEDistributionAppStoreInformationStep
+2020-09-12 19:08:12 +0000  Skipping step: IDEDistributionAppStoreInformationStep because it said so
+2020-09-12 19:08:12 +0000  Processing step: IDEDistributionGenerateProcessedDistributionItems
+2020-09-12 19:08:12 +0000  Processing step: IDEDistributionCreateManifestStep
+2020-09-12 19:08:12 +0000  Skipping step: IDEDistributionCreateManifestStep because it said so
