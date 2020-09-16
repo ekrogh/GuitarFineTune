@@ -935,10 +935,11 @@ public:
                        const String& deviceName,
                        AudioDeviceID inputDeviceId, int inputIndex_,
                        AudioDeviceID outputDeviceId, int outputIndex_)
-        : AudioIODevice (deviceName, "CoreAudio"),
-          deviceType (dt),
-          inputIndex (inputIndex_),
-          outputIndex (outputIndex_)
+        : AudioIODevice (deviceName, "CoreAudio")
+        , deviceType (dt)
+        , inputIndex (inputIndex_)
+        , outputIndex (outputIndex_)
+
     {
         CoreAudioInternal* device = nullptr;
 
@@ -1183,8 +1184,8 @@ private:
         return noErr;
     }
 
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (CoreAudioIODevice)
-};
+        JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (CoreAudioIODevice)
+    };
 
 //==============================================================================
 class AudioIODeviceCombiner    : public AudioIODevice,
@@ -1193,10 +1194,12 @@ class AudioIODeviceCombiner    : public AudioIODevice,
 {
 public:
     AudioIODeviceCombiner (const String& deviceName, CoreAudioIODeviceType* deviceType)
-        : AudioIODevice (deviceName, "CoreAudio"),
-          Thread (deviceName),
-          owner (deviceType)
-    {
+        : AudioIODevice (deviceName, "CoreAudio")
+        , Thread (deviceName)
+        , owner (deviceType)
+        // eks 16. sept. 2020 added Pimpl & checkAudioInputAccessPermissions
+        , pimpl (new Pimpl ())
+{
     }
 
     ~AudioIODeviceCombiner() override
@@ -1544,6 +1547,9 @@ public:
     {
         return lastError;
     }
+    
+    // eks 16. sept. 2020 added checkAudioInputAccessPermissions
+    bool checkAudioInputAccessPermissions( )  override        { return pimpl->checkAudioInputAccessPermissions( ); }
 
 private:
     WeakReference<CoreAudioIODeviceType> owner;
@@ -1980,6 +1986,70 @@ private:
     };
 
     OwnedArray<DeviceWrapper> devices;
+    
+        // eks 16. sept. 2020 added Pimpl
+        struct Pimpl;
+    //    friend struct Pimpl;
+        std::unique_ptr<Pimpl> pimpl;
+
+
+        
+        // eks 16. sept. 2020 added Pimpl
+    struct Pimpl
+        {
+            Pimpl ()
+            {
+    //            JUCE_IOS_AUDIO_LOG ("Creating macOS audio device");
+            }
+
+            ~Pimpl()
+            {
+            }
+
+        // eks 16. sept. 2020 added checkAudioInputAccessPermissions
+            bool checkAudioInputAccessPermissions( )
+            {
+                AVAuthorizationStatus authStatus = [ AVCaptureDevice authorizationStatusForMediaType : AVMediaTypeAudio ];
+                if ( authStatus == AVAuthorizationStatusAuthorized )
+                {
+                    return true;
+                }
+                else if ( authStatus == AVAuthorizationStatusDenied )
+                {
+                    return false;
+                }
+                else if ( authStatus == AVAuthorizationStatusRestricted )
+                {
+                    return true;
+                }
+                else if ( authStatus == AVAuthorizationStatusNotDetermined )
+                {
+                    return true;
+        //            __block bool isGranted;
+        //            [AVCaptureDevice requestAccessForMediaType:AVMediaTypeAudio completionHandler:^(BOOL granted)
+        //             {
+        //                 if ( granted )
+        //                 {
+        //                    NSLog( @"Granted access to %@", mediaType );
+        //                    isGranted = true;
+        //                 }
+        //                 else
+        //                 {
+        //                    NSLog( @"Not granted access to %@", mediaType );
+        //                    isGranted = false;
+        //                 }
+        //             }];
+        //            return true;
+                }
+                else
+                {
+                    return true;
+                }
+                return false;
+            }
+
+            JUCE_DECLARE_NON_COPYABLE (Pimpl)
+        };
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AudioIODeviceCombiner)
 };

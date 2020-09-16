@@ -216,6 +216,25 @@ bool tuneComponent::audioSysInit( )
                      );
             }
         }
+    #elif (JUCE_MAC)
+        if (SystemStats::getOperatingSystemType() >= SystemStats::MacOSX_10_14 )
+        {
+            AudioIODevice* CurrentAudioDevice = sharedAudioDeviceManager->getCurrentAudioDevice( );
+            if ( CurrentAudioDevice != nullptr )
+            {
+                if ( !(CurrentAudioDevice->checkAudioInputAccessPermissions( )) )
+                {
+                        juce::AlertWindow::showMessageBoxAsync
+                        (
+                            juce::AlertWindow::WarningIcon
+                            , "Access to audio input device\nNOT granted!"
+                            , "Enbale guitarFineTune in\nSystem Preferences -> Security & Privacy -> Privacy -> Microphone\nOr try to UNinstall and REinstall guitarFineTune"
+                            , "OK"
+                            , nullptr
+                         );
+                }
+            }
+        }
     #endif // (JUCE_IOS)
 
     // Save current audio config
