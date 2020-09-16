@@ -91,7 +91,8 @@
     <XCODE_MAC targetFolder="Builds/MacOSX" iosDevelopmentTeamID="4657Q2Y6NH"
                bigIcon="DzMVX4" smallIcon="RB4slw" keepCustomXcodeSchemes="1"
                extraLinkerFlags="" microphonePermissionNeeded="1" customPList="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#10;&#10;&lt;!DOCTYPE plist PUBLIC &quot;-//Apple//DTD PLIST 1.0//EN&quot; &quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&quot;&gt;&#10;&lt;plist&gt;&#10;  &lt;dict&gt;&#10;    &lt;key&gt;CFBundleIdentifier&lt;/key&gt;&#10;    &lt;string&gt;dk.eksIt.guitarFineTuneOSX&lt;/string&gt;&#10;&#9;&lt;key&gt;LSApplicationCategoryType&lt;/key&gt;&#10;    &lt;string&gt;public.app-category.utilities&lt;/string&gt;&#10;&#9;&lt;key&gt;LSMinimumSystemVersion&lt;/key&gt;&#10;    &lt;string&gt;10.11&lt;/string&gt;&#10;   &lt;/dict&gt;&#10;&lt;/plist&gt;&#10;"
-               pListPreprocess="1" appSandbox="1" appSandboxOptions="com.apple.security.device.bluetooth,com.apple.security.device.microphone,com.apple.security.files.user-selected.read-write">
+               pListPreprocess="1" appSandbox="1" appSandboxOptions="com.apple.security.device.bluetooth,com.apple.security.device.microphone,com.apple.security.files.user-selected.read-write"
+               extraFrameworks="AVFoundation">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" isDebug="1" targetName="guitarFineTune" binaryPath="/Applications"
                        cppLanguageStandard="c++14" libraryPath="" headerPath="" customXcodeFlags="INSTALL_PATH = &quot;/Applications&quot;"/>

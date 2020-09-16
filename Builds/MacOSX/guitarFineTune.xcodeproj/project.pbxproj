@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0DB38C25251234E400E6AE99 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DB38C24251234E400E6AE99 /* AVFoundation.framework */; };
 		1498E53CC5ABCDA39AFB5741 /* RecentFilesMenuTemplate.nib in Resources */ = {isa = PBXBuildFile; fileRef = A1C6587E1BCDCAC216C6853B /* RecentFilesMenuTemplate.nib */; };
 		15A1AC11DA2CFA4E19BD270D /* SimpleLevelMeter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3436E53BE3F49251423D332E /* SimpleLevelMeter.cpp */; };
 		18889B595A6C191595DE4138 /* Main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C86227F5F0CE8D63F78F5A3 /* Main.cpp */; };
@@ -25,6 +24,7 @@
 		5F3E28A9D8ABD4CC342D1965 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DCE8865F812F11BFE50B518 /* IOKit.framework */; };
 		6D8F1CDC011290A48F8F4FF1 /* include_juce_audio_utils.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8E2372BA8AF97FF946178E91 /* include_juce_audio_utils.mm */; };
 		70AB18BB3265004C3D061BA9 /* fineTune_icon_Small.png in Resources */ = {isa = PBXBuildFile; fileRef = C9F9E8F883FAD092F16C8D8F /* fineTune_icon_Small.png */; };
+		73163F759F77D81E035D01DC /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F96200A03AE92755D90A5C52 /* AVFoundation.framework */; };
 		7E555610E1CC9AD61857DFCD /* displayControlComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5C4D7D9DD7B11A0E6342DB5C /* displayControlComponent.cpp */; };
 		802CAC8A9C457A93FF4D7F44 /* include_juce_events.mm in Sources */ = {isa = PBXBuildFile; fileRef = CD1EED5A10971AA8EAF940B0 /* include_juce_events.mm */; };
 		829E5AAAC42C6142DD73326A /* CoreAudioKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A6C967BBB5D4418A23463EB /* CoreAudioKit.framework */; };
@@ -58,7 +58,6 @@
 		0570076174A69261AF69AFAD /* AssocVector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AssocVector.h; path = ../../Source/AssocVector.h; sourceTree = SOURCE_ROOT; };
 		08EF8E672632825EF5FDA59B /* JuceHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = JuceHeader.h; path = ../../JuceLibraryCode/JuceHeader.h; sourceTree = SOURCE_ROOT; };
 		0A6C967BBB5D4418A23463EB /* CoreAudioKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudioKit.framework; path = System/Library/Frameworks/CoreAudioKit.framework; sourceTree = SDKROOT; };
-		0DB38C24251234E400E6AE99 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		0DC6CFFB01133951B6601748 /* juce_audio_utils */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_audio_utils; path = ../../JuceLibraryCode/modules/juce_audio_utils; sourceTree = SOURCE_ROOT; };
 		0E943A9EF57CD424DA2E8959 /* juce_audio_processors */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_audio_processors; path = ../../JuceLibraryCode/modules/juce_audio_processors; sourceTree = SOURCE_ROOT; };
 		1C1C43188A054835D251C5F4 /* Typelist.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Typelist.h; path = ../../Source/Typelist.h; sourceTree = SOURCE_ROOT; };
@@ -138,6 +137,7 @@
 		EE0D3BCB57C6406D35958366 /* BinaryData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BinaryData.h; path = ../../JuceLibraryCode/BinaryData.h; sourceTree = SOURCE_ROOT; };
 		EE950B43055FE4BE1AEFFFA5 /* gfft.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = gfft.h; path = ../../Source/gfft.h; sourceTree = SOURCE_ROOT; };
 		EF31FEB33BE51DA1ADE85890 /* juce_data_structures */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_data_structures; path = ../../JuceLibraryCode/modules/juce_data_structures; sourceTree = SOURCE_ROOT; };
+		F96200A03AE92755D90A5C52 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		FF95EC7ADBED0BFF63E32827 /* include_juce_gui_basics.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_gui_basics.mm; path = ../../JuceLibraryCode/include_juce_gui_basics.mm; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -148,13 +148,13 @@
 			files = (
 				9D7FD54D83695FE355FF1D32 /* Accelerate.framework in Frameworks */,
 				C8531C8A2D23A2A5012B85A6 /* AudioToolbox.framework in Frameworks */,
+				73163F759F77D81E035D01DC /* AVFoundation.framework in Frameworks */,
 				8579C1D27AF705444FC8FFC2 /* Carbon.framework in Frameworks */,
 				BDB9FB88D7CD46170B0131B4 /* Cocoa.framework in Frameworks */,
 				1EE32CA237B6C0890E0D527D /* CoreAudio.framework in Frameworks */,
 				829E5AAAC42C6142DD73326A /* CoreAudioKit.framework in Frameworks */,
 				C9DA5848661CB3E7257B75A6 /* CoreMIDI.framework in Frameworks */,
 				F0E88D3D5F52185C0A75F733 /* DiscRecording.framework in Frameworks */,
-				0DB38C25251234E400E6AE99 /* AVFoundation.framework in Frameworks */,
 				5F3E28A9D8ABD4CC342D1965 /* IOKit.framework in Frameworks */,
 				25D4A7699E4D95E4562973C5 /* QuartzCore.framework in Frameworks */,
 				A76933CD947F74A1A340547E /* WebKit.framework in Frameworks */,
@@ -197,9 +197,9 @@
 		3E9AA92331ACE90F1BDE77D8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				0DB38C24251234E400E6AE99 /* AVFoundation.framework */,
 				5C8B7D09E34F63CFA71E119F /* Accelerate.framework */,
 				04362EB52A445AD4041F6952 /* AudioToolbox.framework */,
+				F96200A03AE92755D90A5C52 /* AVFoundation.framework */,
 				7FAD455FFE0B8905050C2115 /* Carbon.framework */,
 				7C9B9B7D98173CF92521CD90 /* Cocoa.framework */,
 				DB21D09A506A56B642270FE8 /* CoreAudio.framework */,
@@ -347,7 +347,7 @@
 		CF307CC82EF6FB552266854D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1100;
+				LastUpgradeCheck = 1170;
 				ORGANIZATIONNAME = eksit;
 				TargetAttributes = {
 					D0E4014BABB86AAE963C0EC0 = {
@@ -457,6 +457,7 @@
 				CONFIGURATION_BUILD_DIR = "$(PROJECT_DIR)/build/$(CONFIGURATION)";
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 4657Q2Y6NH;
+				ENABLE_HARDENED_RUNTIME = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -483,9 +484,9 @@
 				INFOPLIST_FILE = "Info-App.plist";
 				INFOPLIST_PREPROCESS = YES;
 				INSTALL_PATH = /Applications;
-				LLVM_LTO = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				PRODUCT_BUNDLE_IDENTIFIER = dk.eksIt.guitarFineTuneOSX;
+				LLVM_LTO = YES_THIN;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = dk.eksIt.guitarFineTune;
 				PRODUCT_NAME = guitarFineTune;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				USE_HEADERMAP = NO;
@@ -504,6 +505,7 @@
 				CONFIGURATION_BUILD_DIR = /Applications;
 				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = 4657Q2Y6NH;
+				ENABLE_HARDENED_RUNTIME = YES;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -530,8 +532,8 @@
 				INFOPLIST_FILE = "Info-App.plist";
 				INFOPLIST_PREPROCESS = YES;
 				INSTALL_PATH = /Applications;
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				PRODUCT_BUNDLE_IDENTIFIER = dk.eksIt.guitarFineTuneOSX;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = dk.eksIt.guitarFineTune;
 				PRODUCT_NAME = guitarFineTune;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				USE_HEADERMAP = NO;
@@ -611,7 +613,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = c11;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
 				GCC_MODEL_TUNING = G5;
