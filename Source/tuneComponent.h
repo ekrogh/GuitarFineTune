@@ -243,7 +243,7 @@ public:
 
 private:
     #if (JUCE_IOS || JUCE_MAC)
-       void timerCallback() override;
+        void timerCallback() override;
     #endif
     #if ( JUCE_IOS )
 		Component::SafePointer<guitarFineTuneFirstClass> ptrGuitarFineTuneFirstClass;	
