@@ -1,7 +1,7 @@
 /*
   ==============================================================================
 
-    guitarFineTuneGlobalEnums.h.h
+    guitarFineTuneGlobalEnums.h
     Created: 21 Jun 2016 3:09:03pm
     Author:  eks
 
@@ -86,4 +86,12 @@ enum  NumInAndOutputs
 {
 	  numInputChannels = 1
 	, numOutputChannels = 1
+};
+
+enum
+{
+      eksAVAuthorizationStatusNotDetermined    = 0
+    , eksAVAuthorizationStatusRestricted       = 1
+    , eksAVAuthorizationStatusDenied           = 2
+    , eksAVAuthorizationStatusAuthorized       = 3
 };

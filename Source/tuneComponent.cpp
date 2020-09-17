@@ -28,6 +28,20 @@
 #include "tuneComponent.h"
 
 
+// Called from messagqbox async if no audio inpu permission
+class audioInputAccessDeniedMsgboxFinishedCallBack
+    : public ModalComponentManager::Callback
+{
+public:
+    audioInputAccessDeniedMsgboxFinishedCallBack(){};
+    
+    void modalStateFinished( int /*result*/ )
+    {
+    //    sharedAudioDeviceManager->closeAudioDevice();
+        JUCEApplication::getInstance( )->systemRequestedQuit( );
+    }
+};
+
 extern std::shared_ptr<AudioDeviceManager> sharedAudioDeviceManager;
 extern bool errorInGetSharedAudioDeviceManager;
 
@@ -83,8 +97,8 @@ tuneComponent::tuneComponent
 
 void tuneComponent::modalStateFinished( int /*result*/ )
 {
-    sharedAudioDeviceManager->closeAudioDevice();
-    JUCEApplication::getInstance( )->systemRequestedQuit( );
+//    sharedAudioDeviceManager->closeAudioDevice();
+//    JUCEApplication::getInstance( )->systemRequestedQuit( );
 }
 
 
@@ -200,42 +214,58 @@ bool tuneComponent::audioSysInit( )
 			return false;
 		}
 	}
-    #if (JUCE_IOS)
-        AudioIODevice* CurrentAudioDevice = sharedAudioDeviceManager->getCurrentAudioDevice( );
-        if ( CurrentAudioDevice != nullptr )
-        {
-            if ( !(CurrentAudioDevice->checkAudioInputAccessPermissions( )) )
-            {
-                    juce::AlertWindow::showMessageBoxAsync
-                    (
-                        juce::AlertWindow::WarningIcon
-                        , "Access to audio input device\nNOT granted!"
-                        , "Enbale guitarFineTune in\nSettings -> Privacy -> Microphone\nOr try to UNinstall\nand REinstall guitarFineTune"
-                        , "OK"
-                        , nullptr
-                     );
-            }
-        }
-    #elif (JUCE_MAC)
+ 
+#if (JUCE_IOS || JUCE_MAC)
+#if (JUCE_MAC)
         if (SystemStats::getOperatingSystemType() >= SystemStats::MacOSX_10_14 )
         {
+#endif
             AudioIODevice* CurrentAudioDevice = sharedAudioDeviceManager->getCurrentAudioDevice( );
             if ( CurrentAudioDevice != nullptr )
             {
-                if ( !(CurrentAudioDevice->checkAudioInputAccessPermissions( )) )
+                int prmsnRslt = -1000;
+                while ((prmsnRslt = CurrentAudioDevice->checkAudioInputAccessPermissions( )) == eksAVAuthorizationStatusNotDetermined )
                 {
+                    Thread::wait(1000);
+                }
+                switch (prmsnRslt)
+                {
+                    case eksAVAuthorizationStatusDenied:
+                    {
                         juce::AlertWindow::showMessageBoxAsync
                         (
                             juce::AlertWindow::WarningIcon
                             , "Access to audio input device\nNOT granted!"
-                            , "Enbale guitarFineTune in\nSystem Preferences -> Security & Privacy -> Privacy -> Microphone\nOr try to UNinstall and REinstall guitarFineTune"
-                            , "OK"
-                            , nullptr
+#if (JUCE_IOS)
+                            , "You might try to\nEnbale guitarFineTune in\nSettings -> Privacy -> Microphone\nOr UNinstall\nand REinstall guitarFineTune"
+#else // JUCE_MAC
+                            , "You might try to\nEnbale guitarFineTune in\nSystem Preferences -> Security & Privacy -> Privacy -> Microphone\nOr UNinstall\nand REinstall guitarFineTune"
+#endif
+                            , "Quit"
+                            , this
+                            , new audioInputAccessDeniedMsgboxFinishedCallBack()
                          );
+                         break;
+                    }
+                    case eksAVAuthorizationStatusRestricted:
+                    case eksAVAuthorizationStatusAuthorized:
+                    {
+                        break;
+                    }
+                    case eksAVAuthorizationStatusNotDetermined:
+                    {
+                        break;
+                    }
+                    default:
+                    {
+                        break;
+                    }
                 }
             }
+#if (JUCE_MAC)
         }
-    #endif // (JUCE_IOS)
+#endif
+#endif // #if (JUCE_IOS || JUCE_MAC)
 
     // Save current audio config
 	audioDeviceTypeAtStartUp = sharedAudioDeviceManager->getCurrentAudioDeviceType( );
