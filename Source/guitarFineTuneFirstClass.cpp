@@ -22,6 +22,7 @@
 #include "xmlGuitarFineTuneConfig.h"
 #include "guitarFineTuneFirstClass.h"
 
+#include <thread>         // std::this_thread::sleep_for
 
 //==============================================================================
 // Init audio
@@ -185,6 +186,7 @@ guitarFineTuneFirstClass::guitarFineTuneFirstClass( )
 	{
 		sharedAudioDeviceManager = make_shared< AudioDeviceManager>( );
 	}
+
 
 #if (JUCE_ANDROID)
 	// Add viewport ?

@@ -61,6 +61,8 @@ class tuneComponent
 	, public AudioAppComponent
 	, public eksNotModalProgressWindowCallBacks
 	, public ModalComponentManager::Callback
+    , private Timer
+
 {
 public:
 	tuneComponent
@@ -240,6 +242,9 @@ public:
 
 
 private:
+    #if (JUCE_IOS || JUCE_MAC)
+       void timerCallback() override;
+    #endif
     #if ( JUCE_IOS )
 		Component::SafePointer<guitarFineTuneFirstClass> ptrGuitarFineTuneFirstClass;	
     #endif // #if ( JUCE_IOS )
