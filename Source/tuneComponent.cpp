@@ -1438,33 +1438,8 @@ void tuneComponent::run( )
                 {
                     case eksAVAuthorizationStatusDenied:
                     {
-#if JUCE_MODAL_LOOPS_PERMITTED
-                        juce::AlertWindow::showMessageBox
-                        (
-                            juce::AlertWindow::WarningIcon
-                            , "Access to audio input device\nNOT granted!"
-#if (JUCE_IOS)
-                            , "You might try to\nEnbale guitarFineTune in\nSettings -> Privacy -> Microphone\nOr UNinstall\nand REinstall guitarFineTune"
-#else // JUCE_MAC
-                            , "You might try to\nEnbale guitarFineTune in\nSystem Preferences -> Security & Privacy -> Privacy -> Microphone\nOr UNinstall\nand REinstall guitarFineTune"
-#endif
-                            , "Quit"
-                         );
-                        sharedAudioDeviceManager->closeAudioDevice();
-                        JUCEApplication::getInstance( )->systemRequestedQuit( );
-#else //#if JUCE_MODAL_LOOPS_PERMITTED
-                        juce::AlertWindow::showMessageBoxAsync
-                        (
-                            juce::AlertWindow::WarningIcon
-                            , "Access to audio input device\nNOT granted!"
-#if (JUCE_IOS)
-                            , "You might try to\nEnbale guitarFineTune in\nSettings -> Privacy -> Microphone\nOr UNinstall\nand REinstall guitarFineTune"
-#else // JUCE_MAC
-                            , "You might try to\nEnbale guitarFineTune in\nSystem Preferences -> Security & Privacy -> Privacy -> Microphone\nOr UNinstall\nand REinstall guitarFineTune"
-#endif
-                         );
-#endif //#if JUCE_MODAL_LOOPS_PERMITTED
-                         break;
+                        startTimer(2000);
+                        break;
                     }
                     case eksAVAuthorizationStatusRestricted:
                     case eksAVAuthorizationStatusAuthorized:
