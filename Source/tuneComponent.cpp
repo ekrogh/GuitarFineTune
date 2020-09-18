@@ -1438,7 +1438,7 @@ void tuneComponent::run( )
                 {
                     case eksAVAuthorizationStatusDenied:
                     {
-                        startTimer(2000);
+                        startTimer(1000);
                         break;
                     }
                     case eksAVAuthorizationStatusRestricted:
@@ -1448,7 +1448,7 @@ void tuneComponent::run( )
                     }
                     case eksAVAuthorizationStatusNotDetermined:
                     {
-                        startTimer(2000);
+                        startTimer(1000);
                         break;
                     }
                     default:
