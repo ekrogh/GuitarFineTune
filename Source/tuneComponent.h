@@ -61,8 +61,9 @@ class tuneComponent
 	, public AudioAppComponent
 	, public eksNotModalProgressWindowCallBacks
 	, public ModalComponentManager::Callback
-    , private Timer
-
+#if (JUCE_IOS || JUCE_MAC)
+	, private Timer
+#endif
 {
 public:
 	tuneComponent
