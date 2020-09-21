@@ -1,34 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-	<key>CFBundleDisplayName</key>
-	<string>guitarFineTune</string>
-	<key>CFBundleExecutable</key>
-	<string>${EXECUTABLE_NAME}</string>
-	<key>CFBundleIconFile</key>
-	<string>Icon.icns</string>
-	<key>CFBundleIdentifier</key>
-	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
-	<key>CFBundleName</key>
-	<string>guitarFineTune</string>
-	<key>CFBundlePackageType</key>
-	<string>APPL</string>
-	<key>CFBundleShortVersionString</key>
-	<string>6.7.1</string>
-	<key>CFBundleSignature</key>
-	<string>????</string>
-	<key>CFBundleVersion</key>
-	<string>6.7.1</string>
-	<key>LSApplicationCategoryType</key>
-	<string>public.app-category.utilities</string>
-	<key>LSMinimumSystemVersion</key>
-	<string>10.11</string>
-	<key>NSHighResolutionCapable</key>
-	<true/>
-	<key>NSHumanReadableCopyright</key>
-	<string>eksit</string>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>This app requires audio input. If you do not have an audio interface connected it will use the built-in microphone.</string>
-</dict>
+<plist>
+  <dict>
+    <key>CFBundleIdentifier</key>
+    <string>dk.eksIt.guitarFineTuneOSX</string>
+    <key>LSApplicationCategoryType</key>
+    <string>public.app-category.utilities</string>
+    <key>LSMinimumSystemVersion</key>
+    <string>10.11</string>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>This app requires audio input. If you do not have an audio interface connected it will use the built-in microphone.</string>
+    <key>CFBundleExecutable</key>
+    <string>${EXECUTABLE_NAME}</string>
+    <key>CFBundleIconFile</key>
+    <string>Icon.icns</string>
+    <key>CFBundleName</key>
+    <string>guitarFineTune</string>
+    <key>CFBundleDisplayName</key>
+    <string>guitarFineTune</string>
+    <key>CFBundlePackageType</key>
+    <string>APPL</string>
+    <key>CFBundleSignature</key>
+    <string>????</string>
+    <key>CFBundleShortVersionString</key>
+    <string>6.7.1</string>
+    <key>CFBundleVersion</key>
+    <string>6.7.1</string>
+    <key>NSHumanReadableCopyright</key>
+    <string>eksit</string>
+    <key>NSHighResolutionCapable</key>
+    <true/>
+  </dict>
 </plist>
