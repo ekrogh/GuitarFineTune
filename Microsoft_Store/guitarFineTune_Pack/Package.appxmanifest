@@ -9,7 +9,7 @@
   <Identity
     Name="57158guitarFineTune.guitarFineTune"
     Publisher="CN=C2E1AE67-4CF2-4308-9E4D-4A6C24FA7B0B"
-    Version="6.6.1.0" />
+    Version="6.7.1.0" />
 
   <Properties>
     <DisplayName>guitarFineTune</DisplayName>
