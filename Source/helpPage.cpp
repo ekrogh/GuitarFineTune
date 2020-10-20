@@ -83,16 +83,6 @@ aboutPage::aboutPage ()
 
     UsersGuide->setBounds (42, 65, 215, 24);
 
-    payHyperlinkButton.reset (new juce::HyperlinkButton (TRANS("Pay (optional)"),
-                                                         URL("http://eksit.dk/pay-optional/")));
-    addAndMakeVisible(payHyperlinkButton.get());
-    payHyperlinkButton->setTooltip(TRANS("http://eksit.dk/pay-optional/"));
-    payHyperlinkButton->setButtonText(TRANS("Pay (optional)"));
-    payHyperlinkButton->setColour(juce::HyperlinkButton::textColourId,
-                                  juce::Colours::cornflowerblue);
-
-    payHyperlinkButton->setBounds(42, 169, 215, 24);
-
 
     //[UserPreSize]
     aboutLabel->setText(std::string(ProjectInfo::projectName)
@@ -104,7 +94,7 @@ aboutPage::aboutPage ()
             , juce::NotificationType::dontSendNotification);
     //[/UserPreSize]
 
-    setSize(300, 260);
+    setSize (300, 260);
 
 
     //[Constructor] You can add your own custom stuff here..
@@ -121,7 +111,6 @@ aboutPage::~aboutPage()
     eigilLabel = nullptr;
     emailButton = nullptr;
     UsersGuide = nullptr;
-    payHyperlinkButton = nullptr;
 
 
     //[Destructor]. You can add your own custom destruction code here..
@@ -186,7 +175,6 @@ void aboutPage::scaleAllComponents()
         workRectangle.setBounds((300 - 215) / 2, 139, 215, 24);
         emailButton->setBounds(workRectangle * scaleUsedLastTime);
         workRectangle.setBounds((300 - 215) / 2 + 0, 169, 215, 24);
-        payHyperlinkButton->setBounds(workRectangle * scaleUsedLastTime);
 
         auto curbnds = getBounds();
 
@@ -273,10 +261,6 @@ BEGIN_JUCER_METADATA
                    virtualName="" explicitFocusOrder="0" pos="42 65 215 24" tooltip="http://eksit.dk/users-guide/"
                    textCol="ff6495ed" buttonText="User's Guide" connectedEdges="0"
                    needsCallback="0" radioGroupId="0" url="http://eksit.dk/users-guide/"/>
-  <HYPERLINKBUTTON name="payHyperlinkButton" id="af3991ce0f30c89b" memberName="payHyperlinkButton"
-                   virtualName="" explicitFocusOrder="0" pos="42 169 215 24" tooltip="http://eksit.dk/pay-optional/"
-                   textCol="ff6495ed" buttonText="Pay (optional)" connectedEdges="0"
-                   needsCallback="0" radioGroupId="0" url="http://eksit.dk/pay-optional/"/>
 </JUCER_COMPONENT>
 
 END_JUCER_METADATA

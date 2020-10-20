@@ -63,7 +63,6 @@ private:
     std::unique_ptr<juce::Label> eigilLabel;
     std::unique_ptr<juce::HyperlinkButton> emailButton;
     std::unique_ptr<juce::HyperlinkButton> UsersGuide;
-    std::unique_ptr<juce::HyperlinkButton> payHyperlinkButton;
 
 
     //==============================================================================

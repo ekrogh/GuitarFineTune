@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="cgcxPd" name="guitarFineTune" projectType="guiapp" version="6.7.1"
+<JUCERPROJECT id="cgcxPd" name="guitarFineTune" projectType="guiapp" version="6.8.2"
               bundleIdentifier="dk.eksIt.guitarFineTune" includeBinaryInAppConfig="1"
               reportAppUsage="1" companyCopyright="eksit" companyName="eksit"
               companyWebsite="eksit.dk" companyEmail="guitarFineTune@eksit.dk"
@@ -145,7 +145,7 @@
     <ANDROIDSTUDIO targetFolder="Builds/Android" androidSDKPath="${user.home}/AppData/Local/Android/Sdk"
                    androidNDKPath="${user.home}/AppData/Local/Android/Sdk/ndk-bundle"
                    microphonePermissionNeeded="1" cppLanguageStandard="-std=c++14"
-                   androidVersionCode="27" androidKeyStore="../../../Android_Special/keystore.jks"
+                   androidVersionCode="28" androidKeyStore="../../../Android_Special/keystore.jks"
                    androidKeyStorePass="6taura" androidKeyAlias="upload" androidKeyAliasPass="6taura"
                    buildToolsVersion="30" androidPushNotifications="0" androidEnableContentSharing="1"
                    androidTargetSDK="30" gradleWrapperVersion="4.0.1" gradleVersion="6.6"
@@ -180,32 +180,32 @@
         <CONFIGURATION isDebug="0" name="Release"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
-        <MODULEPATH id="juce_gui_extra"/>
-        <MODULEPATH id="juce_gui_basics"/>
-        <MODULEPATH id="juce_graphics"/>
-        <MODULEPATH id="juce_events"/>
-        <MODULEPATH id="juce_data_structures"/>
-        <MODULEPATH id="juce_core"/>
-        <MODULEPATH id="juce_audio_utils"/>
-        <MODULEPATH id="juce_audio_processors"/>
-        <MODULEPATH id="juce_audio_formats"/>
-        <MODULEPATH id="juce_audio_devices"/>
+        <MODULEPATH id="juce_gui_extra" path="D:\Users\eigil\projects\juceProjs\guitarFineTune\JUCE\modules"/>
+        <MODULEPATH id="juce_gui_basics" path="D:\Users\eigil\projects\juceProjs\guitarFineTune\JUCE\modules"/>
+        <MODULEPATH id="juce_graphics" path="D:\Users\eigil\projects\juceProjs\guitarFineTune\JUCE\modules"/>
+        <MODULEPATH id="juce_events" path="D:\Users\eigil\projects\juceProjs\guitarFineTune\JUCE\modules"/>
+        <MODULEPATH id="juce_data_structures" path="D:\Users\eigil\projects\juceProjs\guitarFineTune\JUCE\modules"/>
+        <MODULEPATH id="juce_core" path="D:\Users\eigil\projects\juceProjs\guitarFineTune\JUCE\modules"/>
+        <MODULEPATH id="juce_audio_utils" path="D:\Users\eigil\projects\juceProjs\guitarFineTune\JUCE\modules"/>
+        <MODULEPATH id="juce_audio_processors" path="D:\Users\eigil\projects\juceProjs\guitarFineTune\JUCE\modules"/>
+        <MODULEPATH id="juce_audio_formats" path="D:\Users\eigil\projects\juceProjs\guitarFineTune\JUCE\modules"/>
+        <MODULEPATH id="juce_audio_devices" path="D:\Users\eigil\projects\juceProjs\guitarFineTune\JUCE\modules"/>
         <MODULEPATH id="juce_audio_basics"/>
       </MODULEPATHS>
     </VS2019>
   </EXPORTFORMATS>
   <MODULES>
-    <MODULES id="juce_audio_basics" showAllCode="1" useLocalCopy="0"/>
-    <MODULES id="juce_audio_devices" showAllCode="1" useLocalCopy="0"/>
-    <MODULES id="juce_audio_formats" showAllCode="1" useLocalCopy="0"/>
-    <MODULES id="juce_audio_processors" showAllCode="1" useLocalCopy="0"/>
-    <MODULES id="juce_audio_utils" showAllCode="1" useLocalCopy="0"/>
-    <MODULES id="juce_core" showAllCode="1" useLocalCopy="0"/>
-    <MODULES id="juce_data_structures" showAllCode="1" useLocalCopy="0"/>
-    <MODULES id="juce_events" showAllCode="1" useLocalCopy="0"/>
-    <MODULES id="juce_graphics" showAllCode="1" useLocalCopy="0"/>
-    <MODULES id="juce_gui_basics" showAllCode="1" useLocalCopy="0"/>
-    <MODULES id="juce_gui_extra" showAllCode="1" useLocalCopy="0"/>
+    <MODULES id="juce_audio_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULES id="juce_audio_devices" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULES id="juce_audio_formats" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULES id="juce_audio_processors" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULES id="juce_audio_utils" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULES id="juce_core" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULES id="juce_data_structures" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULES id="juce_events" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULES id="juce_graphics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULES id="juce_gui_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULES id="juce_gui_extra" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
   </MODULES>
   <JUCEOPTIONS JUCE_USE_ANDROID_OBOE="0" JUCE_DISABLE_AUDIO_MIXING_WITH_OTHER_APPS="1"/>
   <LIVE_SETTINGS>
