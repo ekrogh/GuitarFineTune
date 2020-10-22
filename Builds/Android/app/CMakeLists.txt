@@ -12,7 +12,7 @@ add_definitions("-DJUCE_ANDROID=1" "-DJUCE_ANDROID_API_VERSION=16" "-DJUCE_CONTE
 
 include_directories( AFTER
     "../../../JuceLibraryCode"
-    "D:/Users/eigil/projects/juceProjs/guitarFineTune/JUCE/modules"
+    "/Users/eks/projects/juceProjs/guitarFineTune/JUCE/modules"
     "${ANDROID_NDK}/sources/android/cpufeatures"
 )
 
