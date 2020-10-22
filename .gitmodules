@@ -1,6 +1,3 @@
 [submodule "Builds/VisualStudio2019"]
 	path = Builds/VisualStudio2019
 	url = D:/projects/juceProjs/guitarFineTune_newGit
-[submodule "JUCE"]
-	path = JUCE
-	url = git@ssh.dev.azure.com:v3/ekrogh/JUCE/JUCE
