@@ -202,6 +202,13 @@
 			path = ../../Source/AssocVector.h;
 			sourceTree = "SOURCE_ROOT";
 		};
+		0771EDC905F80CF80A5B9F1A = {
+			isa = PBXFileReference;
+			lastKnownFileType = file;
+			name = "juce_gui_extra";
+			path = "~/JUCE/modules/juce_gui_extra";
+			sourceTree = "<absolute>";
+		};
 		08EF8E672632825EF5FDA59B = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.c.h;
@@ -216,11 +223,11 @@
 			path = System/Library/Frameworks/CoreAudioKit.framework;
 			sourceTree = SDKROOT;
 		};
-		1BD824A20C22FAEBA14A62B4 = {
+		19A4FF5727B3BE8D481DDDFA = {
 			isa = PBXFileReference;
 			lastKnownFileType = file;
-			name = "juce_audio_basics";
-			path = "/Users/eks/projects/juceProjs/guitarFineTune/JUCE/modules/juce_audio_basics";
+			name = "juce_events";
+			path = "~/JUCE/modules/juce_events";
 			sourceTree = "<absolute>";
 		};
 		1C1C43188A054835D251C5F4 = {
@@ -236,13 +243,6 @@
 			name = Main.cpp;
 			path = ../../Source/Main.cpp;
 			sourceTree = "SOURCE_ROOT";
-		};
-		1D517E0D6CE8A36BCC7B4664 = {
-			isa = PBXFileReference;
-			lastKnownFileType = file;
-			name = "juce_audio_formats";
-			path = "/Users/eks/projects/juceProjs/guitarFineTune/JUCE/modules/juce_audio_formats";
-			sourceTree = "<absolute>";
 		};
 		269F56875A5A8A228A302EE2 = {
 			isa = PBXFileReference;
@@ -279,13 +279,6 @@
 			path = "../../Source/post_decimation_NOTCH_filters_Coeffs.h";
 			sourceTree = "SOURCE_ROOT";
 		};
-		33F21D9FB74A052D7239BAB1 = {
-			isa = PBXFileReference;
-			lastKnownFileType = file;
-			name = "juce_graphics";
-			path = "/Users/eks/projects/juceProjs/guitarFineTune/JUCE/modules/juce_graphics";
-			sourceTree = "<absolute>";
-		};
 		34137BFFFF3A6B4EB306C276 = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.cpp.objcpp;
@@ -313,6 +306,13 @@
 			name = guitarStringSoundsControl.cpp;
 			path = ../../Source/guitarStringSoundsControl.cpp;
 			sourceTree = "SOURCE_ROOT";
+		};
+		3AD5EFC7BAEACAA5673A720B = {
+			isa = PBXFileReference;
+			lastKnownFileType = file;
+			name = "juce_audio_processors";
+			path = "~/JUCE/modules/juce_audio_processors";
+			sourceTree = "<absolute>";
 		};
 		3F7ACF28663706B2F9C2617C = {
 			isa = PBXFileReference;
@@ -342,13 +342,6 @@
 			path = "../../Source/pre_decimation_FIR_filter_Coeffs.h";
 			sourceTree = "SOURCE_ROOT";
 		};
-		45266F5B32E4683A365CC70D = {
-			isa = PBXFileReference;
-			lastKnownFileType = file;
-			name = "juce_data_structures";
-			path = "/Users/eks/projects/juceProjs/guitarFineTune/JUCE/modules/juce_data_structures";
-			sourceTree = "<absolute>";
-		};
 		45E0F99B16D18737074F0FCA = {
 			isa = PBXFileReference;
 			lastKnownFileType = file.icns;
@@ -356,11 +349,11 @@
 			path = Icon.icns;
 			sourceTree = "SOURCE_ROOT";
 		};
-		4933C7BA57E1076A0E5887FF = {
+		4B103A60CAB6211FDF462F20 = {
 			isa = PBXFileReference;
 			lastKnownFileType = file;
-			name = "juce_audio_processors";
-			path = "/Users/eks/projects/juceProjs/guitarFineTune/JUCE/modules/juce_audio_processors";
+			name = "juce_audio_basics";
+			path = "~/JUCE/modules/juce_audio_basics";
 			sourceTree = "<absolute>";
 		};
 		4C4854ABB7EFC25F0F95529D = {
@@ -384,26 +377,12 @@
 			path = ../../Source/LokiTypeInfo.h;
 			sourceTree = "SOURCE_ROOT";
 		};
-		56C706FF2D1C7DED05378A67 = {
-			isa = PBXFileReference;
-			lastKnownFileType = file;
-			name = "juce_core";
-			path = "/Users/eks/projects/juceProjs/guitarFineTune/JUCE/modules/juce_core";
-			sourceTree = "<absolute>";
-		};
 		5A3DBDB080CBC7DDA0DD9868 = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.cpp.objcpp;
 			name = "include_juce_audio_processors.mm";
 			path = "../../JuceLibraryCode/include_juce_audio_processors.mm";
 			sourceTree = "SOURCE_ROOT";
-		};
-		5B9933B067E8AD183181DAE3 = {
-			isa = PBXFileReference;
-			lastKnownFileType = file;
-			name = "juce_events";
-			path = "/Users/eks/projects/juceProjs/guitarFineTune/JUCE/modules/juce_events";
-			sourceTree = "<absolute>";
 		};
 		5C4D7D9DD7B11A0E6342DB5C = {
 			isa = PBXFileReference;
@@ -488,6 +467,13 @@
 			name = guitarFineTuneFirstClass.h;
 			path = ../../Source/guitarFineTuneFirstClass.h;
 			sourceTree = "SOURCE_ROOT";
+		};
+		7F9BE0DFA68212641FB67D95 = {
+			isa = PBXFileReference;
+			lastKnownFileType = file;
+			name = "juce_audio_utils";
+			path = "~/JUCE/modules/juce_audio_utils";
+			sourceTree = "<absolute>";
 		};
 		7FAD455FFE0B8905050C2115 = {
 			isa = PBXFileReference;
@@ -608,6 +594,13 @@
 			path = ../../Source/helpPage.h;
 			sourceTree = "SOURCE_ROOT";
 		};
+		A0C2BE58BA480A60F2D5D274 = {
+			isa = PBXFileReference;
+			lastKnownFileType = file;
+			name = "juce_audio_formats";
+			path = "~/JUCE/modules/juce_audio_formats";
+			sourceTree = "<absolute>";
+		};
 		A1C6587E1BCDCAC216C6853B = {
 			isa = PBXFileReference;
 			lastKnownFileType = file.nib;
@@ -629,11 +622,18 @@
 			path = ../../Source/eksNotModalProgressWindow.h;
 			sourceTree = "SOURCE_ROOT";
 		};
-		AE43E3D885B555E7284EA3C7 = {
+		A737F2ABFF4FB653BCF25283 = {
 			isa = PBXFileReference;
 			lastKnownFileType = file;
-			name = "juce_audio_devices";
-			path = "/Users/eks/projects/juceProjs/guitarFineTune/JUCE/modules/juce_audio_devices";
+			name = "juce_graphics";
+			path = "~/JUCE/modules/juce_graphics";
+			sourceTree = "<absolute>";
+		};
+		B46CE0584D2BDA840F705357 = {
+			isa = PBXFileReference;
+			lastKnownFileType = file;
+			name = "juce_gui_basics";
+			path = "~/JUCE/modules/juce_gui_basics";
 			sourceTree = "<absolute>";
 		};
 		B5540A720E3809D34A71A8E5 = {
@@ -664,13 +664,6 @@
 			path = "../../JuceLibraryCode/include_juce_core.mm";
 			sourceTree = "SOURCE_ROOT";
 		};
-		C27FB218D09D5AF0D550C122 = {
-			isa = PBXFileReference;
-			lastKnownFileType = file;
-			name = "juce_gui_basics";
-			path = "/Users/eks/projects/juceProjs/guitarFineTune/JUCE/modules/juce_gui_basics";
-			sourceTree = "<absolute>";
-		};
 		C2B38450ACA722D49B2D29A2 = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.cpp.cpp;
@@ -685,19 +678,19 @@
 			path = ../../Source/eksAudioControlComponent.cpp;
 			sourceTree = "SOURCE_ROOT";
 		};
-		C73771166450F94AAC1F9A4A = {
-			isa = PBXFileReference;
-			lastKnownFileType = file;
-			name = "juce_audio_utils";
-			path = "/Users/eks/projects/juceProjs/guitarFineTune/JUCE/modules/juce_audio_utils";
-			sourceTree = "<absolute>";
-		};
 		C9F9E8F883FAD092F16C8D8F = {
 			isa = PBXFileReference;
 			lastKnownFileType = image.png;
 			name = "fineTune_icon_Small.png";
 			path = "../../Source/fineTune_icon_Small.png";
 			sourceTree = "SOURCE_ROOT";
+		};
+		CB26D3747BAEE08EE33422AC = {
+			isa = PBXFileReference;
+			lastKnownFileType = file;
+			name = "juce_audio_devices";
+			path = "~/JUCE/modules/juce_audio_devices";
+			sourceTree = "<absolute>";
 		};
 		CCD63AFC809E66052D28C4CA = {
 			isa = PBXFileReference;
@@ -719,6 +712,13 @@
 			name = eksThreadWithProgressWindow.h;
 			path = ../../Source/eksThreadWithProgressWindow.h;
 			sourceTree = "SOURCE_ROOT";
+		};
+		D702F285125AD5BF4645020B = {
+			isa = PBXFileReference;
+			lastKnownFileType = file;
+			name = "juce_data_structures";
+			path = "~/JUCE/modules/juce_data_structures";
+			sourceTree = "<absolute>";
 		};
 		DA0E44CCE765370592F7F300 = {
 			isa = PBXFileReference;
@@ -762,19 +762,19 @@
 			path = ../../JuceLibraryCode/BinaryData.h;
 			sourceTree = "SOURCE_ROOT";
 		};
+		EE5CBD7C78E8EFFD160F5A7E = {
+			isa = PBXFileReference;
+			lastKnownFileType = file;
+			name = "juce_core";
+			path = "~/JUCE/modules/juce_core";
+			sourceTree = "<absolute>";
+		};
 		EE950B43055FE4BE1AEFFFA5 = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.c.h;
 			name = gfft.h;
 			path = ../../Source/gfft.h;
 			sourceTree = "SOURCE_ROOT";
-		};
-		F1B938DA83A03F04689A3C02 = {
-			isa = PBXFileReference;
-			lastKnownFileType = file;
-			name = "juce_gui_extra";
-			path = "/Users/eks/projects/juceProjs/guitarFineTune/JUCE/modules/juce_gui_extra";
-			sourceTree = "<absolute>";
 		};
 		F96200A03AE92755D90A5C52 = {
 			isa = PBXFileReference;
@@ -858,17 +858,17 @@
 		267EBA2B36C17379FA53260F = {
 			isa = PBXGroup;
 			children = (
-				1BD824A20C22FAEBA14A62B4,
-				AE43E3D885B555E7284EA3C7,
-				1D517E0D6CE8A36BCC7B4664,
-				4933C7BA57E1076A0E5887FF,
-				C73771166450F94AAC1F9A4A,
-				56C706FF2D1C7DED05378A67,
-				45266F5B32E4683A365CC70D,
-				5B9933B067E8AD183181DAE3,
-				33F21D9FB74A052D7239BAB1,
-				C27FB218D09D5AF0D550C122,
-				F1B938DA83A03F04689A3C02,
+				4B103A60CAB6211FDF462F20,
+				CB26D3747BAEE08EE33422AC,
+				A0C2BE58BA480A60F2D5D274,
+				3AD5EFC7BAEACAA5673A720B,
+				7F9BE0DFA68212641FB67D95,
+				EE5CBD7C78E8EFFD160F5A7E,
+				D702F285125AD5BF4645020B,
+				19A4FF5727B3BE8D481DDDFA,
+				A737F2ABFF4FB653BCF25283,
+				B46CE0584D2BDA840F705357,
+				0771EDC905F80CF80A5B9F1A,
 			);
 			name = "JUCE Modules";
 			sourceTree = "<group>";
@@ -980,7 +980,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = (
 					"../../JuceLibraryCode",
-					"/Users/eks/projects/juceProjs/guitarFineTune/JUCE/modules",
+					"$(HOME)/JUCE/modules",
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = Info-App.plist;
@@ -989,7 +989,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_HEADER_SEARCH_PATHS = (
 					"../../JuceLibraryCode",
-					"/Users/eks/projects/juceProjs/guitarFineTune/JUCE/modules",
+					"$(HOME)/JUCE/modules",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = dk.eksIt.guitarFineTune;
 				PRODUCT_NAME = "guitarFineTune";
@@ -1032,7 +1032,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = (
 					"../../JuceLibraryCode",
-					"/Users/eks/projects/juceProjs/guitarFineTune/JUCE/modules",
+					"$(HOME)/JUCE/modules",
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = Info-App.plist;
@@ -1042,7 +1042,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_HEADER_SEARCH_PATHS = (
 					"../../JuceLibraryCode",
-					"/Users/eks/projects/juceProjs/guitarFineTune/JUCE/modules",
+					"$(HOME)/JUCE/modules",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = dk.eksIt.guitarFineTune;
 				PRODUCT_NAME = "guitarFineTune";
