@@ -9,7 +9,7 @@
 #include <windows.h>
 
 VS_VERSION_INFO VERSIONINFO
-FILEVERSION  6,8,2,0
+FILEVERSION  6,9,1,0
 BEGIN
   BLOCK "StringFileInfo"
   BEGIN
@@ -18,9 +18,9 @@ BEGIN
       VALUE "CompanyName",  "eksit\0"
       VALUE "LegalCopyright",  "eksit\0"
       VALUE "FileDescription",  "guitarFineTune\0"
-      VALUE "FileVersion",  "6.8.2\0"
+      VALUE "FileVersion",  "6.9.1\0"
       VALUE "ProductName",  "guitarFineTune\0"
-      VALUE "ProductVersion",  "6.8.2\0"
+      VALUE "ProductVersion",  "6.9.1\0"
     END
   END
 
