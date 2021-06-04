@@ -155,7 +155,7 @@ void aboutPage::scaleAllComponents()
 
 		int tabBarDepth = parent->getTabBarDepth();
 
-        auto curUserArea = Desktop::getInstance().getDisplays().getMainDisplay().userArea;
+        auto curUserArea = Desktop::getInstance().getDisplays().getPrimaryDisplay()->userArea;
         float bndsScaleHoriz = (float) (curUserArea.getWidth()) / (float) (widthOfAboutPage);
         float bndsScaleVerti = ((float) (curUserArea.getHeight()) - (float) tabBarDepth) /
                                ((float) hightOfAboutPage);
