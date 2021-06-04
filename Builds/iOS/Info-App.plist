@@ -18,19 +18,19 @@
     <key>CFBundleExecutable</key>
     <string>${EXECUTABLE_NAME}</string>
     <key>CFBundleIdentifier</key>
-    <string>dk.eksIt.guitarFineTune</string>
+    <string>dk.eksIt.GuitarFineTuneP</string>
     <key>CFBundleName</key>
-    <string>guitarFineTune</string>
+    <string>GuitarFineTuneP</string>
     <key>CFBundleDisplayName</key>
-    <string>guitarFineTune</string>
+    <string>GuitarFineTuneP</string>
     <key>CFBundlePackageType</key>
     <string>APPL</string>
     <key>CFBundleSignature</key>
     <string>????</string>
     <key>CFBundleShortVersionString</key>
-    <string>6.9.2</string>
+    <string>8.1.1</string>
     <key>CFBundleVersion</key>
-    <string>6.9.2</string>
+    <string>8.1.1</string>
     <key>NSHumanReadableCopyright</key>
     <string>eksit</string>
     <key>NSHighResolutionCapable</key>

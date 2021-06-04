@@ -1,2 +1,2 @@
-rootProject.name = 'guitarFineTune'
+rootProject.name = 'GuitarFineTuneP'
 include ':app'
