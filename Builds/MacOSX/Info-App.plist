@@ -4,7 +4,7 @@
 <plist>
   <dict>
     <key>CFBundleIdentifier</key>
-    <string>dk.eksIt.guitarFineTuneOSX</string>
+    <string>dk.eksIt.GuitarFineTuneP</string>
     <key>LSApplicationCategoryType</key>
     <string>public.app-category.utilities</string>
     <key>LSMinimumSystemVersion</key>
@@ -16,17 +16,17 @@
     <key>CFBundleIconFile</key>
     <string>Icon.icns</string>
     <key>CFBundleName</key>
-    <string>guitarFineTune</string>
+    <string>GuitarFineTuneP</string>
     <key>CFBundleDisplayName</key>
-    <string>guitarFineTune</string>
+    <string>GuitarFineTuneP</string>
     <key>CFBundlePackageType</key>
     <string>APPL</string>
     <key>CFBundleSignature</key>
     <string>????</string>
     <key>CFBundleShortVersionString</key>
-    <string>6.9.2</string>
+    <string>8.1.1</string>
     <key>CFBundleVersion</key>
-    <string>6.9.2</string>
+    <string>8.1.1</string>
     <key>NSHumanReadableCopyright</key>
     <string>eksit</string>
     <key>NSHighResolutionCapable</key>
