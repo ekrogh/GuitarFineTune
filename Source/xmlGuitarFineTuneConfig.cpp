@@ -53,7 +53,7 @@ void xmlGuitarFineTuneConfig::makeNewVerConfigFile()
 			if (oldGuitarfinetuneconfig->hasTagName("GUITARFINETUNECONFIG"))
 			{
 				// now we'll iterate its sub-elements looking for 'DISPLAYCONTROL' elements..
-				forEachXmlChildElement(*oldGuitarfinetuneconfig, e)
+				for (auto* (e) : ((*oldGuitarfinetuneconfig).getChildIterator()))
 				{
 					if (e->hasTagName("SOUNDCONTROL"))
 					{

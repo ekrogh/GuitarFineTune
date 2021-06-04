@@ -190,7 +190,7 @@ guitarFineTuneFirstClass::guitarFineTuneFirstClass( )
 
 #if (JUCE_ANDROID)
 	// Add viewport ?
-	Rectangle<int> r = Desktop::getInstance( ).getDisplays( ).getMainDisplay( ).userArea;
+	Rectangle<int> r = Desktop::getInstance( ).getDisplays( ).getPrimaryDisplay()->userArea;
 	if
 		(
 			( ( r.getWidth( ) < r.getHeight( ) ) && ( r.getWidth( ) < 360 || r.getHeight( ) < 533 ) )
@@ -386,7 +386,7 @@ guitarFineTuneFirstClass::guitarFineTuneFirstClass( )
 	setSize( curCompntBnds.getWidth( ), curCompntBnds.getHeight( ) ); // This
 	DocumentWindow::centreWithSize( widthOfGuitarStringSoundsControlWindowHorizontal, hightOfGuitarStringSoundsControlWindowHorizontal );
 #elif (JUCE_ANDROID || JUCE_IOS)
-	curCompntBnds = Desktop::getInstance( ).getDisplays( ).getMainDisplay( ).userArea;
+	curCompntBnds = Desktop::getInstance( ).getDisplays( ).getPrimaryDisplay()->userArea;
 #if ( JUCE_IOS )
 	if ( thisiPhoneiPadNeedsSafeArea( ) )
 	{
@@ -427,7 +427,7 @@ void guitarFineTuneFirstClass::currentTabChanged( int newCurrentTabIndex, const 
 	if ( bGoSetSizes )
 	{
 	#if ( JUCE_ANDROID || JUCE_IOS )
-		curCompntBnds = Desktop::getInstance( ).getDisplays( ).getMainDisplay( ).userArea;
+		curCompntBnds = Desktop::getInstance( ).getDisplays( ).getPrimaryDisplay()->userArea;
 	#if ( JUCE_IOS )
 		if ( thisiPhoneiPadNeedsSafeArea( ) )
 		{
@@ -468,7 +468,7 @@ void guitarFineTuneFirstClass::currentTabChanged( int newCurrentTabIndex, const 
 				}
 			case tabNoGuitarStringSoundsControlWindow:
 				{
-					Rectangle<int> r = Desktop::getInstance( ).getDisplays( ).getMainDisplay( ).userArea;
+					Rectangle<int> r = Desktop::getInstance( ).getDisplays( ).getPrimaryDisplay()->userArea;
 					if ( r.getWidth( ) >= r.getHeight( ) )
 					{
 						curCompntBnds.setBounds( 0, 0, widthOfGuitarStringSoundsControlWindowHorizontal, hightOfGuitarStringSoundsControlWindowHorizontal );
@@ -481,7 +481,7 @@ void guitarFineTuneFirstClass::currentTabChanged( int newCurrentTabIndex, const 
 				}
 			case tabNoDisplayControlWindow:
 				{
-					Rectangle<int> r = Desktop::getInstance( ).getDisplays( ).getMainDisplay( ).userArea;
+					Rectangle<int> r = Desktop::getInstance( ).getDisplays( ).getPrimaryDisplay()->userArea;
 					if ( r.getWidth( ) >= r.getHeight( ) )
 					{
 						//Horizontal
