@@ -593,7 +593,7 @@ void guitarStringSoundsControl::resized()
     rawSoundLabellabel->setBounds (10, 280, 85, 24);
     startRecordingToggleButton->setBounds (220 - (24 / 2), 304, 24, 24);
     //[UserResized] Add your own custom resize handling here..
-		auto  curUserArea = Desktop::getInstance().getDisplays().getMainDisplay().userArea;
+		auto  curUserArea = Desktop::getInstance().getDisplays().getPrimaryDisplay()->userArea;
 		if (curUserArea.getWidth() >= curUserArea.getHeight())
 		{
 			// Horizontal
@@ -1007,7 +1007,7 @@ void guitarStringSoundsControl::scaleAllComponents()
 
 			int tabBarDepth = parent->getTabBarDepth();
 
-			auto  curUserArea = Desktop::getInstance().getDisplays().getMainDisplay().userArea;
+			auto  curUserArea = Desktop::getInstance().getDisplays().getPrimaryDisplay()->userArea;
 			float bndsScaleHoriz = (float)(curUserArea.getWidth()) / (float)(widthOfGuitarStringSoundsControlWindowHorizontal);
 			float bndsScaleVerti = ((float)(curUserArea.getHeight()) - (float)tabBarDepth) / ((float)hightOfGuitarStringSoundsControlWindowHorizontal);
 			float scaleNow = bndsScaleVerti;

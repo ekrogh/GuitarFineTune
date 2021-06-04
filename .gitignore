@@ -13,3 +13,5 @@ x64
 /Builds/Android/app/build/outputs/logs
 /Builds/Android/app/build/tmp/compileDebug_DebugJavaWithJavac
 /Builds/VisualStudio2019/.vs/guitarFineTune/v16
+*.opendb
+*.db-shm

@@ -22,7 +22,7 @@ eksTabbedComponent::eksTabbedComponent
 	, ptrGuitarFineTuneFirstClass(pGuitarFineTuneFirstClass)
 {
 #if (JUCE_IOS || JUCE_ANDROID)
-	curCompntBnds = Desktop::getInstance().getDisplays().getMainDisplay().userArea;
+	curCompntBnds = Desktop::getInstance().getDisplays().getPrimaryDisplay()->userArea;
 	if (curCompntBnds.getHeight() >= curCompntBnds.getWidth())
 	{
 		setTabBarDepth(tabBarDepthAndroidIosInVertical);
@@ -49,7 +49,7 @@ eksTabbedComponent::~eksTabbedComponent()
 //#if (JUCE_IOS)
 //void eksTabbedComponent::resized()
 //{
-//	curCompntBnds = Desktop::getInstance().getDisplays().getMainDisplay().userArea;
+//	curCompntBnds = Desktop::getInstance().getDisplays().getPrimaryDisplay()->userArea;
 //	if (curCompntBnds.getHeight() >= curCompntBnds.getWidth())
 //	{
 //		curCompntBnds.reduce(0, iOSSafeMargin);

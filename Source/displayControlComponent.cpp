@@ -387,7 +387,8 @@ void displayControlComponent::resized()
 	if (viewPortAdded)
 	{
 #endif // JUCE_ANDROID
-		auto  curUserArea = Desktop::getInstance().getDisplays().getMainDisplay().userArea;
+		auto  curUserArea = Desktop::getInstance().getDisplays().getPrimaryDisplay()->userArea;
+		//auto  curUserArea = Desktop::getInstance().getDisplays().getMainDisplay().userArea;
 		if (curUserArea.getWidth() >= curUserArea.getHeight())
 		{
 			// Horizontal
@@ -659,7 +660,7 @@ void displayControlComponent::scaleAllComponents()
 
 			int tabBarDepth = parent->getTabBarDepth();
 
-			auto  curUserArea = Desktop::getInstance().getDisplays().getMainDisplay().userArea;
+			auto  curUserArea = Desktop::getInstance().getDisplays().getPrimaryDisplay()->userArea;
 			float bndsScaleHoriz = (float)(curUserArea.getWidth()) / (float)(widthOfDisplayControlWindowHorizontal);
 			float bndsScaleVerti = ((float)(curUserArea.getHeight()) - (float)tabBarDepth) / ((float)hightOfDisplayControlWindowHorizontal);
 			float scaleNow = bndsScaleVerti;
