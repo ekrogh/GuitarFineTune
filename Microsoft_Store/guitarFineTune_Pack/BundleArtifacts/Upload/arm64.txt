@@ -1,5 +1,5 @@
-MainPackage=D:\Users\eigil\projects\juceProjs\guitarFineTune\Microsoft_Store\guitarFineTune_Pack\bin\ARM64\Release\Upload\guitarFineTune_Pack_6.8.3.0_ARM64.appx
-ResourcePack=D:\Users\eigil\projects\juceProjs\guitarFineTune\Microsoft_Store\guitarFineTune_Pack\bin\ARM64\Release\Upload\guitarFineTune_Pack_6.8.3.0_scale-100.appx
-ResourcePack=D:\Users\eigil\projects\juceProjs\guitarFineTune\Microsoft_Store\guitarFineTune_Pack\bin\ARM64\Release\Upload\guitarFineTune_Pack_6.8.3.0_scale-125.appx
-ResourcePack=D:\Users\eigil\projects\juceProjs\guitarFineTune\Microsoft_Store\guitarFineTune_Pack\bin\ARM64\Release\Upload\guitarFineTune_Pack_6.8.3.0_scale-150.appx
-ResourcePack=D:\Users\eigil\projects\juceProjs\guitarFineTune\Microsoft_Store\guitarFineTune_Pack\bin\ARM64\Release\Upload\guitarFineTune_Pack_6.8.3.0_scale-400.appx
+MainPackage=D:\Users\eigil\projects\juceProjs\guitarFineTune\Microsoft_Store\guitarFineTune_Pack\bin\ARM64\Release\Upload\GuitarFineTuneP_Pack_8.1.1.0_ARM64.appx
+ResourcePack=D:\Users\eigil\projects\juceProjs\guitarFineTune\Microsoft_Store\guitarFineTune_Pack\bin\ARM64\Release\Upload\GuitarFineTuneP_Pack_8.1.1.0_scale-100.appx
+ResourcePack=D:\Users\eigil\projects\juceProjs\guitarFineTune\Microsoft_Store\guitarFineTune_Pack\bin\ARM64\Release\Upload\GuitarFineTuneP_Pack_8.1.1.0_scale-125.appx
+ResourcePack=D:\Users\eigil\projects\juceProjs\guitarFineTune\Microsoft_Store\guitarFineTune_Pack\bin\ARM64\Release\Upload\GuitarFineTuneP_Pack_8.1.1.0_scale-150.appx
+ResourcePack=D:\Users\eigil\projects\juceProjs\guitarFineTune\Microsoft_Store\guitarFineTune_Pack\bin\ARM64\Release\Upload\GuitarFineTuneP_Pack_8.1.1.0_scale-400.appx
