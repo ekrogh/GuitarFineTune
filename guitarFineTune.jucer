@@ -92,7 +92,8 @@
                bigIcon="DzMVX4" smallIcon="RB4slw" keepCustomXcodeSchemes="1"
                extraLinkerFlags="" microphonePermissionNeeded="1" pListPreprocess="1"
                appSandbox="1" appSandboxOptions="com.apple.security.device.microphone,com.apple.security.files.user-selected.read-write"
-               extraFrameworks="AVFoundation" hardenedRuntime="1" hardenedRuntimeOptions="com.apple.security.device.audio-input">
+               extraFrameworks="AVFoundation" hardenedRuntime="1" hardenedRuntimeOptions="com.apple.security.device.audio-input"
+               bundleIdentifier="dk.eksIt.GuitarFineTunePmacOS">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" isDebug="1" targetName="GuitarFineTuneP" binaryPath="/Applications"
                        cppLanguageStandard="c++14" libraryPath="" headerPath="" customXcodeFlags="INSTALL_PATH = &quot;/Applications&quot;"/>
