@@ -1,18 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <Source>D:\Users\eigil\projects\juceProjs\guitarFineTune\Source\fineTune_icon_Large.png</Source>
-    <SmallTileSource>D:\Users\eigil\projects\juceProjs\guitarFineTune\Source\fineTune_icon_Large.png</SmallTileSource>
-    <MediumTileSource>D:\Users\eigil\projects\juceProjs\guitarFineTune\Source\fineTune_icon_Large.png</MediumTileSource>
-    <WideTileSource>D:\Users\eigil\projects\juceProjs\guitarFineTune\Source\fineTune_icon_Large.png</WideTileSource>
-    <LargeTileSource>D:\Users\eigil\projects\juceProjs\guitarFineTune\Source\fineTune_icon_Large.png</LargeTileSource>
-    <AppIconSource>D:\Users\eigil\projects\juceProjs\guitarFineTune\Source\fineTune_icon_Large.png</AppIconSource>
-    <SplashScreenSource>D:\Users\eigil\projects\juceProjs\guitarFineTune\Source\fineTune_icon_Large.png</SplashScreenSource>
-    <PackageLogoSource>D:\Users\eigil\projects\juceProjs\guitarFineTune\Source\fineTune_icon_Large.png</PackageLogoSource>
+    <Source>D:\Users\eigil\projects\juceProjs\guitarFineTune\Source\fineTune_icon_Small.png</Source>
+    <SmallTileSource>D:\Users\eigil\projects\juceProjs\guitarFineTune\Source\fineTune_icon_Small.png</SmallTileSource>
+    <MediumTileSource>D:\Users\eigil\projects\juceProjs\guitarFineTune\Source\fineTune_icon_Small.png</MediumTileSource>
+    <WideTileSource>D:\Users\eigil\projects\juceProjs\guitarFineTune\Source\fineTune_icon_Small.png</WideTileSource>
+    <LargeTileSource>D:\Users\eigil\projects\juceProjs\guitarFineTune\Source\fineTune_icon_Small.png</LargeTileSource>
+    <AppIconSource>D:\Users\eigil\projects\juceProjs\guitarFineTune\Source\fineTune_icon_Small.png</AppIconSource>
+    <SplashScreenSource>D:\Users\eigil\projects\juceProjs\guitarFineTune\Source\fineTune_icon_Small.png</SplashScreenSource>
+    <PackageLogoSource>D:\Users\eigil\projects\juceProjs\guitarFineTune\Source\fineTune_icon_Small.png</PackageLogoSource>
     <AppxShowAllApps>True</AppxShowAllApps>
     <UapAppxPackageBuildMode>StoreAndSideload</UapAppxPackageBuildMode>
     <AppxBuildConfigurationSelection>x86|x64|arm|arm64</AppxBuildConfigurationSelection>
-    <PackageOptionalProjectsInIdeBuilds>False</PackageOptionalProjectsInIdeBuilds>
+    <PackageOptionalProjectsInIdeBuilds>True</PackageOptionalProjectsInIdeBuilds>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <DebuggerFlavor>AppHostLocalDebugger</DebuggerFlavor>

@@ -1,1 +1,1 @@
-MainPackage=D:\Users\eigil\projects\juceProjs\guitarFineTune\Microsoft_Store\guitarFineTune_Pack\bin\x64\Release\GuitarFineTuneP_Pack_8.1.1.0_x64.appx
+MainPackage=D:\Users\eigil\projects\juceProjs\guitarFineTune\Microsoft_Store\guitarFineTune_Pack\bin\x64\Release\GuitarFineTuneP_Pack_8.2.1.0_x64.appx
