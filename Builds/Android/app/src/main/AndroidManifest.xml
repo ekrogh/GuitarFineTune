@@ -21,7 +21,7 @@
     </activity>
     <provider android:name="com.rmsl.juce.JuceSharingContentProvider" android:authorities="dk.eksit.guitarfinetune.sharingcontentprovider"
               android:grantUriPermissions="true" android:exported="true"/>
-    <provider android:name="com.rmsl.juce.JuceSharingContentProvider" android:authorities="dk.eksit.guitarfinetunep.sharingcontentprovider"
+    <provider android:name="com.rmsl.juce.JuceSharingContentProvider" android:authorities="dk.eksit.guitarfinetune.sharingcontentprovider"
               android:grantUriPermissions="true" android:exported="true"/>
   </application>
   <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
