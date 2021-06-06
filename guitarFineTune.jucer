@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <JUCERPROJECT id="cgcxPd" name="GuitarFineTuneP" projectType="guiapp" version="8.2.1"
-              bundleIdentifier="dk.eksIt.guitarFineTune" includeBinaryInAppConfig="1"
+              bundleIdentifier="dk.eksit.guitarFineTune" includeBinaryInAppConfig="1"
               reportAppUsage="1" companyCopyright="eksit" companyName="eksit"
               companyWebsite="eksit.dk" companyEmail="guitarFineTune@eksit.dk"
               cppLanguageStandard="17" jucerFormatVersion="1" displaySplashScreen="1">
@@ -93,7 +93,7 @@
                extraLinkerFlags="" microphonePermissionNeeded="1" pListPreprocess="1"
                appSandbox="1" appSandboxOptions="com.apple.security.device.microphone,com.apple.security.files.user-selected.read-write"
                extraFrameworks="AVFoundation" hardenedRuntime="1" hardenedRuntimeOptions="com.apple.security.device.audio-input"
-               bundleIdentifier="dk.eksIt.guitarFineTuneOSX">
+               bundleIdentifier="dk.eksit.guitarFineTuneOSX">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" isDebug="1" targetName="GuitarFineTuneP" binaryPath="/Applications"
                        cppLanguageStandard="c++14" libraryPath="" headerPath="" customXcodeFlags="INSTALL_PATH = &quot;/Applications&quot;"/>
@@ -146,13 +146,14 @@
     <ANDROIDSTUDIO targetFolder="Builds/Android" androidSDKPath="${user.home}/AppData/Local/Android/Sdk"
                    androidNDKPath="${user.home}/AppData/Local/Android/Sdk/ndk-bundle"
                    microphonePermissionNeeded="1" cppLanguageStandard="-std=c++14"
-                   androidVersionCode="31" androidKeyStore="../../../Android_Special/keystore.jks"
+                   androidVersionCode="32" androidKeyStore="../../../Android_Special/keystore.jks"
                    androidKeyStorePass="6taura" androidKeyAlias="upload" androidKeyAliasPass="6taura"
                    buildToolsVersion="30" androidPushNotifications="0" androidEnableContentSharing="1"
                    androidTargetSDK="30" gradleWrapperVersion="4.2.1" gradleVersion="7.0.2"
-                   androidManifestCustomXmlElements="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&#10;&#10;&lt;manifest xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot; package=&quot;dk.eksIt.GuitarFineTuneP&quot;&gt;&#10;  &lt;supports-screens android:smallScreens=&quot;true&quot; android:normalScreens=&quot;true&quot; android:largeScreens=&quot;true&quot; android:anyDensity=&quot;true&quot;&#10;                    android:xlargeScreens=&quot;true&quot;/&gt;&#10;  &lt;uses-permission android:name=&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot;/&gt;&#10;  &lt;uses-permission android:name=&quot;android.permission.READ_EXTERNAL_STORAGE&quot;/&gt;&#10;  &lt;uses-permission android:name=&quot;android.permission.ACCESS_COARSE_LOCATION&quot;/&gt;&#10;  &lt;uses-permission android:name=&quot;android.permission.BLUETOOTH_ADMIN&quot;/&gt;&#10;  &lt;uses-permission android:name=&quot;android.permission.BLUETOOTH&quot;/&gt;&#10;  &lt;uses-permission android:name=&quot;android.permission.RECORD_AUDIO&quot;/&gt;&#10;  &lt;application android:label=&quot;@string/app_name&quot; android:name=&quot;com.rmsl.juce.JuceApp&quot; android:hardwareAccelerated=&quot;false&quot;&#10;      android:icon=&quot;@mipmap/ic_launcher&quot;&#10;      android:roundIcon=&quot;@mipmap/ic_launcher_round&quot;&#10;      &gt;&#10;    &lt;activity android:name=&quot;android.app.Activity&quot; android:label=&quot;@string/app_name&quot; android:configChanges=&quot;keyboardHidden|orientation|screenSize&quot;&#10;              android:screenOrientation=&quot;unspecified&quot; android:launchMode=&quot;singleTask&quot; android:hardwareAccelerated=&quot;true&quot;&gt;&#10;      &lt;intent-filter&gt;&#10;        &lt;action android:name=&quot;android.intent.action.MAIN&quot;/&gt;&#10;        &lt;category android:name=&quot;android.intent.category.LAUNCHER&quot;/&gt;&#10;      &lt;/intent-filter&gt;&#10;    &lt;/activity&gt;&#10;    &lt;provider android:name=&quot;com.rmsl.juce.JuceSharingContentProvider&quot; android:authorities=&quot;dk.eksit.guitarfinetune.sharingcontentprovider&quot;&#10;              android:grantUriPermissions=&quot;true&quot; android:exported=&quot;true&quot;/&gt;&#10;  &lt;/application&gt;&#10;&lt;/manifest&gt;&#10;"
                    androidInternetNeeded="0" smallIcon="" bigIcon="" androidAdditionalResourceFolders="../../Android_Special/Builds/Android/app/src/main/res"
-                   androidExtraAssetsFolder="./app/src/main/res" extraDefs="ANDROID_VERSION_CODE=31&#10;">
+                   androidExtraAssetsFolder="./app/src/main/res" extraDefs="ANDROID_VERSION_CODE=32&#10;"
+                   androidManifestCustomXmlElements="&lt;manifest package=&quot;dk.eksit.guitarfinetunep&quot;&gt;&#10;&lt;/manifest&gt;&#10;"
+                   androidCustomAppBuildGradleContent="defaultConfig {&#10;&#9;applicationId &quot;dk.eksit.guitarfinetunep&quot;&#10;}&#10;">
       <CONFIGURATIONS>
         <CONFIGURATION name="Release" isDebug="0" targetName="GuitarFineTuneP" optimisation="3"
                        androidAdditionalXmlValueResources="src/main/res/values&#10;src/release/res/values"

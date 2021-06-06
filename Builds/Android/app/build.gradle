@@ -90,6 +90,9 @@ android {
     dependencies {
     }
 
+defaultConfig {
+	applicationId "dk.eksit.guitarfinetunep"
+}
 
 
 }

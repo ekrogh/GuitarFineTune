@@ -492,7 +492,7 @@
 				LLVM_LTO = YES_THIN;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_HEADER_SEARCH_PATHS = "$(SRCROOT)/../../JuceLibraryCode $(SRCROOT)/~/JUCE/modules";
-				PRODUCT_BUNDLE_IDENTIFIER = dk.eksIt.guitarFineTuneOSX;
+				PRODUCT_BUNDLE_IDENTIFIER = dk.eksit.guitarFineTuneOSX;
 				PRODUCT_NAME = "GuitarFineTuneP";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				USE_HEADERMAP = NO;
@@ -541,7 +541,7 @@
 				INSTALL_PATH = "/Applications";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_HEADER_SEARCH_PATHS = "$(SRCROOT)/../../JuceLibraryCode $(SRCROOT)/~/JUCE/modules";
-				PRODUCT_BUNDLE_IDENTIFIER = dk.eksIt.guitarFineTuneOSX;
+				PRODUCT_BUNDLE_IDENTIFIER = dk.eksit.guitarFineTuneOSX;
 				PRODUCT_NAME = "GuitarFineTuneP";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				USE_HEADERMAP = NO;
