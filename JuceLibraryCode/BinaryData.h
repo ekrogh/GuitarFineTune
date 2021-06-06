@@ -12,7 +12,7 @@ namespace BinaryData
     const int            fineTune_icon_Small_pngSize = 32321;
 
     extern const char*   fineTune_icon_Large_png;
-    const int            fineTune_icon_Large_pngSize = 84496;
+    const int            fineTune_icon_Large_pngSize = 72080;
 
     // Number of elements in the namedResourceList and originalFileNames arrays.
     const int namedResourceListSize = 2;

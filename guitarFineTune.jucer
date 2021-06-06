@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="cgcxPd" name="GuitarFineTuneP" projectType="guiapp" version="8.1.1"
+<JUCERPROJECT id="cgcxPd" name="GuitarFineTuneP" projectType="guiapp" version="8.2.1"
               bundleIdentifier="dk.eksIt.GuitarFineTuneP" includeBinaryInAppConfig="1"
               reportAppUsage="1" companyCopyright="eksit" companyName="eksit"
               companyWebsite="eksit.dk" companyEmail="guitarFineTune@eksit.dk"
@@ -93,7 +93,7 @@
                extraLinkerFlags="" microphonePermissionNeeded="1" pListPreprocess="1"
                appSandbox="1" appSandboxOptions="com.apple.security.device.microphone,com.apple.security.files.user-selected.read-write"
                extraFrameworks="AVFoundation" hardenedRuntime="1" hardenedRuntimeOptions="com.apple.security.device.audio-input"
-               bundleIdentifier="dk.eksIt.GuitarFineTunePmacOS">
+               bundleIdentifier="dk.eksit.GuitarFineTunePmacOS">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" isDebug="1" targetName="GuitarFineTuneP" binaryPath="/Applications"
                        cppLanguageStandard="c++14" libraryPath="" headerPath="" customXcodeFlags="INSTALL_PATH = &quot;/Applications&quot;"/>

@@ -9,17 +9,17 @@
 	<key>CFBundleIconFile</key>
 	<string>Icon.icns</string>
 	<key>CFBundleIdentifier</key>
-	<string>dk.eksIt.GuitarFineTunePmacOS</string>
+	<string>dk.eksit.GuitarFineTunePmacOS</string>
 	<key>CFBundleName</key>
 	<string>GuitarFineTuneP</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>8.1.1</string>
+	<string>8.2.1</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>8.1.1</string>
+	<string>8.2.1</string>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.utilities</string>
 	<key>NSHighResolutionCapable</key>
