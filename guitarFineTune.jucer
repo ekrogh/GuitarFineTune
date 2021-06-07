@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="cgcxPd" name="GuitarFineTuneP" projectType="guiapp" version="8.2.1"
+<JUCERPROJECT id="cgcxPd" name="GuitarFineTuneP" projectType="guiapp" version="8.2.2"
               bundleIdentifier="dk.eksIt.guitarFineTune" includeBinaryInAppConfig="1"
               reportAppUsage="1" companyCopyright="eksit" companyName="eksit"
               companyWebsite="eksit.dk" companyEmail="guitarFineTune@eksit.dk"
@@ -146,12 +146,12 @@
     <ANDROIDSTUDIO targetFolder="Builds/Android" androidSDKPath="${user.home}/AppData/Local/Android/Sdk"
                    androidNDKPath="${user.home}/AppData/Local/Android/Sdk/ndk-bundle"
                    microphonePermissionNeeded="1" cppLanguageStandard="-std=c++14"
-                   androidVersionCode="32" androidKeyStore="../../../Android_Special/keystore.jks"
+                   androidVersionCode="33" androidKeyStore="../../../Android_Special/keystore.jks"
                    androidKeyStorePass="6taura" androidKeyAlias="upload" androidKeyAliasPass="6taura"
                    buildToolsVersion="30" androidPushNotifications="0" androidEnableContentSharing="1"
                    androidTargetSDK="30" gradleWrapperVersion="4.2.1" gradleVersion="7.0.2"
                    androidInternetNeeded="0" smallIcon="" bigIcon="" androidAdditionalResourceFolders="../../Android_Special/Builds/Android/app/src/main/res"
-                   androidExtraAssetsFolder="./app/src/main/res" extraDefs="ANDROID_VERSION_CODE=32&#10;"
+                   androidExtraAssetsFolder="./app/src/main/res" extraDefs="ANDROID_VERSION_CODE=33&#10;"
                    androidManifestCustomXmlElements="&lt;manifest package=&quot;dk.eksit.guitarfinetunep&quot;&gt;&#10;&lt;/manifest&gt;&#10;"
                    androidCustomAppBuildGradleContent="defaultConfig {&#10;&#9;applicationId &quot;dk.eksit.guitarfinetunep&quot;&#10;}&#10;">
       <CONFIGURATIONS>
