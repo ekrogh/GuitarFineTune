@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<manifest package="dk.eksit.guitarfinetunep" xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="33"
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="dk.eksit.guitarfinetunep" android:versionCode="33"
           android:versionName="8.2.2">
   <supports-screens android:smallScreens="true" android:normalScreens="true" android:largeScreens="true" android:anyDensity="true"
                     android:xlargeScreens="true"/>
   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
   <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-  <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+  <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
   <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
   <uses-permission android:name="android.permission.BLUETOOTH"/>
   <uses-permission android:name="android.permission.RECORD_AUDIO"/>
-  <application android:label="@string/app_name" android:name="com.rmsl.juce.JuceApp" android:hardwareAccelerated="false">
+  <application android:label="@string/app_name" android:name="com.rmsl.juce.JuceApp" android:hardwareAccelerated="false"
+               android:icon="@mipmap/ic_launcher" android:roundIcon="@mipmap/ic_launcher_round">
     <activity android:name="android.app.Activity" android:label="@string/app_name" android:configChanges="keyboardHidden|orientation|screenSize"
               android:screenOrientation="unspecified" android:launchMode="singleTask" android:hardwareAccelerated="true">
       <intent-filter>
@@ -18,7 +19,10 @@
         <category android:name="android.intent.category.LAUNCHER"/>
       </intent-filter>
     </activity>
+    <provider android:name="com.rmsl.juce.JuceSharingContentProvider" android:authorities="dk.eksit.guitarfinetunep.sharingcontentprovider"
+              android:grantUriPermissions="true" android:exported="true"/>
     <provider android:name="com.rmsl.juce.JuceSharingContentProvider" android:authorities="dk.eksit.guitarfinetune.sharingcontentprovider"
               android:grantUriPermissions="true" android:exported="true"/>
   </application>
+  <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 </manifest>
