@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "VRLGccWEobpikmRxoTo7/LT7HZdu/lHrlnHFIRwy0QCBVd99iW5i7vPJn/lmRGL5nwbQToYGjzMz4sqUyG58ww==",
+  "success": true,
+  "projectFilePath": "D:\\Users\\eigil\\projects\\juceProjs\\guitarFineTune\\Builds\\WapProjTemplate1\\WapProjTemplate1.wapproj",
+  "expectedPackageFiles": [
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages\\microsoft.windows.sdk.buildtools\\10.0.19041.8\\microsoft.windows.sdk.buildtools.10.0.19041.8.nupkg.sha512"
+  ],
+  "logs": []
+}

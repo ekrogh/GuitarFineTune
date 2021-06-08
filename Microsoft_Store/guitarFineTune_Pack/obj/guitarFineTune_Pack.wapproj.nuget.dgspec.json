@@ -34,7 +34,7 @@
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "uap10.0.14393"
+          "uap10.0.17763"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
@@ -42,7 +42,7 @@
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "uap10.0.14393": {
+          "uap10.0.17763": {
             "targetAlias": "net451",
             "projectReferences": {
               "D:\\Users\\eigil\\projects\\juceProjs\\guitarFineTune\\Builds\\VisualStudio2019\\GuitarFineTuneP_App.vcxproj": {
@@ -53,8 +53,15 @@
         }
       },
       "frameworks": {
-        "uap10.0.14393": {
+        "uap10.0.17763": {
           "targetAlias": "net451",
+          "dependencies": {
+            "Microsoft.Windows.SDK.BuildTools": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[10.0.19041.8, )"
+            }
+          },
           "imports": [
             "netcoreapp3.1",
             "netcoreapp3.0",
@@ -64,8 +71,9 @@
             "net471",
             "net472",
             "net48",
-            "net5.0-windows10.0.14393",
-            "net6.0-windows10.0.14393"
+            "net5.0-windows10.0.17763",
+            "net6.0-windows10.0.17763",
+            "net461"
           ],
           "assetTargetFallback": true,
           "warn": true
