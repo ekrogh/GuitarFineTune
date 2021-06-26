@@ -5,7 +5,6 @@ x64
 *.suo
 *.db
 /Builds/VisualStudio2017/.vs/guitarFineTune/v15
-/Builds/VisualStudio2017/.vs/guitarFineTune/v15
 /Builds/Android/.gradle
 /Builds/Android/.idea
 /Builds/Android/app/.cxx
@@ -16,3 +15,4 @@ x64
 *.opendb
 *.db-shm
 /Builds/VisualStudio2019/.vs/GuitarFineTuneP/v16/Preview/Browse.VC.db-wal
+/Builds/
