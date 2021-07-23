@@ -113,7 +113,7 @@
         <MODULEPATH id="juce_audio_formats" path="../JUCE/modules"/>
         <MODULEPATH id="juce_audio_devices" path="../JUCE/modules"/>
         <MODULEPATH id="juce_audio_basics" path="../JUCE/modules"/>
-        <MODULEPATH id="juce_build_tools" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_build_tools" path="JUCE/extras/Build"/>
       </MODULEPATHS>
     </XCODE_MAC>
     <XCODE_IPHONE targetFolder="Builds/iOS" iosScreenOrientation="UIInterfaceOrientationLandscapeLeft,UIInterfaceOrientationLandscapeRight,UIInterfaceOrientationPortrait"
@@ -142,7 +142,7 @@
         <MODULEPATH id="juce_audio_formats" path="../JUCE/modules"/>
         <MODULEPATH id="juce_audio_devices" path="../JUCE/modules"/>
         <MODULEPATH id="juce_audio_basics" path="../JUCE/modules"/>
-        <MODULEPATH id="juce_build_tools" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_build_tools" path="JUCE/extras/Build"/>
       </MODULEPATHS>
     </XCODE_IPHONE>
     <ANDROIDSTUDIO targetFolder="Builds/Android" androidSDKPath="${user.home}/AppData/Local/Android/Sdk"
@@ -177,7 +177,7 @@
         <MODULEPATH id="juce_audio_formats" path="../JUCE/modules"/>
         <MODULEPATH id="juce_audio_devices" path="../JUCE/modules"/>
         <MODULEPATH id="juce_audio_basics" path="../JUCE/modules"/>
-        <MODULEPATH id="juce_build_tools" path="../../../../projects/juceProjs/guitarFineTune/JUCE/extras/Build/juce_build_tools"/>
+        <MODULEPATH id="juce_build_tools" path="JUCE/extras/Build"/>
       </MODULEPATHS>
     </ANDROIDSTUDIO>
     <VS2019 targetFolder="Builds/VisualStudio2019" smallIcon="RB4slw" bigIcon="DzMVX4">
@@ -197,7 +197,7 @@
         <MODULEPATH id="juce_audio_formats" path="D:\Users\eigil\projects\juceProjs\guitarFineTune\JUCE\modules"/>
         <MODULEPATH id="juce_audio_devices" path="D:\Users\eigil\projects\juceProjs\guitarFineTune\JUCE\modules"/>
         <MODULEPATH id="juce_audio_basics" path="D:\Users\eigil\projects\juceProjs\guitarFineTune\JUCE\modules"/>
-        <MODULEPATH id="juce_build_tools" path="D:\Users\eigil\projects\juceProjs\guitarFineTune\JUCE\modules"/>
+        <MODULEPATH id="juce_build_tools" path="JUCE/extras/Build"/>
       </MODULEPATHS>
     </VS2019>
     <CODEBLOCKS_LINUX targetFolder="Builds/CodeBlocksLinux" extraCompilerFlags="-fno-pie"
@@ -218,7 +218,7 @@
         <MODULEPATH id="juce_audio_formats" path="/home/eigil/projects/juceProjs/guitarFineTune/JUCE/modules"/>
         <MODULEPATH id="juce_audio_devices" path="/home/eigil/projects/juceProjs/guitarFineTune/JUCE/modules"/>
         <MODULEPATH id="juce_audio_basics" path="/home/eigil/projects/juceProjs/guitarFineTune/JUCE/modules"/>
-        <MODULEPATH id="juce_build_tools" path="/home/eigil/projects/juceProjs/guitarFineTune/JUCE/modules"/>
+        <MODULEPATH id="juce_build_tools" path="JUCE/extras/Build"/>
       </MODULEPATHS>
     </CODEBLOCKS_LINUX>
   </EXPORTFORMATS>
