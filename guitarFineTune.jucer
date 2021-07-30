@@ -154,8 +154,7 @@
                    androidTargetSDK="30" gradleWrapperVersion="7.0.0" gradleVersion="7.0.2"
                    androidInternetNeeded="0" smallIcon="RB4slw" bigIcon="DzMVX4"
                    extraDefs="ANDROID_VERSION_CODE=35" androidManifestCustomXmlElements="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&#10;&#10;&lt;manifest&#10;    package=&quot;dk.eksit.guitarfinetunep&quot;&#10;&gt;&#10; &lt;/manifest&gt;&#10;"
-                   androidCustomAppBuildGradleContent="defaultConfig {&#10;&#9;applicationId &quot;dk.eksit.guitarfinetunep&quot;&#10;}&#10;"
-                   androidProjectRepositories="google()">
+                   androidCustomAppBuildGradleContent="defaultConfig {&#10;&#9;applicationId &quot;dk.eksit.guitarfinetunep&quot;&#10;}&#10;">
       <CONFIGURATIONS>
         <CONFIGURATION name="Release" isDebug="0" targetName="GuitarFineTune" optimisation="3"/>
         <CONFIGURATION name="Debug" isDebug="1" targetName="GuitarFineTune" androidArchitectures="armeabi-v7a arm64-v8a x86 x86_64"/>
