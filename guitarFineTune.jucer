@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="cgcxPd" name="GuitarFineTune" projectType="guiapp" version="8.4.2"
+<JUCERPROJECT id="cgcxPd" name="GuitarFineTune" projectType="guiapp" version="8.5.3"
               bundleIdentifier="dk.eksIt.guitarFineTune" includeBinaryInAppConfig="1"
               reportAppUsage="1" companyCopyright="eksit" companyName="eksit"
               companyWebsite="eksit.dk" companyEmail="guitarFineTune@eksit.dk"
@@ -95,9 +95,9 @@
                extraFrameworks="AVFoundation" hardenedRuntime="1" hardenedRuntimeOptions="com.apple.security.device.audio-input"
                bundleIdentifier="dk.eksIt.guitarFineTuneOSX" applicationCategory="public.app-category.utilities">
       <CONFIGURATIONS>
-        <CONFIGURATION name="Debug" isDebug="1" targetName="GuitarFineTuneP" binaryPath="/Applications"
+        <CONFIGURATION name="Debug" isDebug="1" targetName="GuitarFineTune" binaryPath="/Applications"
                        cppLanguageStandard="c++14" libraryPath="" headerPath="" customXcodeFlags="INSTALL_PATH = &quot;/Applications&quot;"/>
-        <CONFIGURATION name="Release" isDebug="0" targetName="GuitarFineTuneP" binaryPath=""
+        <CONFIGURATION name="Release" isDebug="0" targetName="GuitarFineTune" binaryPath=""
                        defines="" cppLanguageStandard="c++14" headerPath="" libraryPath=""
                        customXcodeFlags="INSTALL_PATH = &quot;/Applications&quot;" linkTimeOptimisation="1"/>
       </CONFIGURATIONS>
@@ -125,9 +125,9 @@
                   iCloudPermissions="1" pListPreprocess="1" customLaunchStoryboard="/Users/eks/projects/juceProjs/guitarFineTune/iOS_Special/Launch Screen.storyboard"
                   UIFileSharingEnabled="1" UISupportsDocumentBrowser="1" iosBluetoothPermissionNeeded="1">
       <CONFIGURATIONS>
-        <CONFIGURATION name="Debug" isDebug="1" targetName="GuitarFineTuneP" cppLanguageStandard="c++14"
+        <CONFIGURATION name="Debug" isDebug="1" targetName="GuitarFineTune" cppLanguageStandard="c++14"
                        iosCompatibility="11.0" iosDeploymentTarget="11.0"/>
-        <CONFIGURATION name="Release" isDebug="0" targetName="GuitarFineTuneP" cppLanguageStandard="c++14"
+        <CONFIGURATION name="Release" isDebug="0" targetName="GuitarFineTune" cppLanguageStandard="c++14"
                        iosCompatibility="11.0" linkTimeOptimisation="1" iosDeploymentTarget="11.0"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
@@ -148,12 +148,12 @@
     <ANDROIDSTUDIO targetFolder="Builds/Android" androidSDKPath="${user.home}/AppData/Local/Android/Sdk"
                    androidNDKPath="${user.home}/AppData/Local/Android/Sdk/ndk-bundle"
                    microphonePermissionNeeded="1" cppLanguageStandard="-std=c++14"
-                   androidVersionCode="35" androidKeyStore="../../../Android_Special/keystore.jks"
+                   androidVersionCode="36" androidKeyStore="../../../Android_Special/keystore.jks"
                    androidKeyStorePass="6taura" androidKeyAlias="upload" androidKeyAliasPass="6taura"
                    buildToolsVersion="30" androidPushNotifications="0" androidEnableContentSharing="1"
                    androidTargetSDK="30" gradleWrapperVersion="7.0.0" gradleVersion="7.0.2"
                    androidInternetNeeded="0" smallIcon="RB4slw" bigIcon="DzMVX4"
-                   extraDefs="ANDROID_VERSION_CODE=35" androidManifestCustomXmlElements="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&#10;&#10;&lt;manifest&#10;    package=&quot;dk.eksit.guitarfinetunep&quot;&#10;&gt;&#10; &lt;/manifest&gt;&#10;"
+                   extraDefs="ANDROID_VERSION_CODE=36" androidManifestCustomXmlElements="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&#10;&#10;&lt;manifest&#10;    package=&quot;dk.eksit.guitarfinetunep&quot;&#10;&gt;&#10; &lt;/manifest&gt;&#10;"
                    androidCustomAppBuildGradleContent="defaultConfig {&#10;&#9;applicationId &quot;dk.eksit.guitarfinetunep&quot;&#10;}&#10;">
       <CONFIGURATIONS>
         <CONFIGURATION name="Release" isDebug="0" targetName="GuitarFineTune" optimisation="3"/>
@@ -176,7 +176,7 @@
     </ANDROIDSTUDIO>
     <VS2019 targetFolder="Builds/VisualStudio2019" smallIcon="RB4slw" bigIcon="DzMVX4">
       <CONFIGURATIONS>
-        <CONFIGURATION isDebug="1" name="Debug" targetName="GuitarFineTuneP"/>
+        <CONFIGURATION isDebug="1" name="Debug" targetName="GuitarFineTune"/>
         <CONFIGURATION isDebug="0" name="Release"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
