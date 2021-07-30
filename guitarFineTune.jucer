@@ -123,7 +123,7 @@
                   iPadScreenOrientation="UIInterfaceOrientationLandscapeLeft,UIInterfaceOrientationLandscapeRight,UIInterfaceOrientationPortrait,UIInterfaceOrientationPortraitUpsideDown"
                   iosPushNotifications="0" microphonePermissionsText="This is an audio app which requires audio input. If you do not have an external audio interface connected it will use the microphone."
                   iCloudPermissions="1" pListPreprocess="1" customLaunchStoryboard="/Users/eks/projects/juceProjs/guitarFineTune/iOS_Special/Launch Screen.storyboard"
-                  UIFileSharingEnabled="1" UISupportsDocumentBrowser="1" iosBluetoothPermissionNeeded="1">
+                  UIFileSharingEnabled="1" iosBluetoothPermissionNeeded="1">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" isDebug="1" targetName="GuitarFineTune" cppLanguageStandard="c++14"
                        iosCompatibility="11.0" iosDeploymentTarget="11.0"/>

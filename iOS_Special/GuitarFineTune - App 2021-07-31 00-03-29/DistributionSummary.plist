@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>GuitarFineTune.ipa</key>
+	<array>
+		<dict>
+			<key>architectures</key>
+			<array>
+				<string>arm64</string>
+			</array>
+			<key>certificate</key>
+			<dict>
+				<key>SHA1</key>
+				<string>F11C23BAF60037DE0FA3C891D4274462B7F06013</string>
+				<key>dateExpires</key>
+				<string>02/06/2022</string>
+				<key>type</key>
+				<string>Apple Development</string>
+			</dict>
+			<key>entitlements</key>
+			<dict>
+				<key>application-identifier</key>
+				<string>4657Q2Y6NH.dk.eksIt.guitarFineTune</string>
+				<key>com.apple.developer.icloud-container-identifiers</key>
+				<array/>
+				<key>com.apple.developer.icloud-services</key>
+				<array/>
+				<key>com.apple.developer.team-identifier</key>
+				<string>4657Q2Y6NH</string>
+				<key>get-task-allow</key>
+				<true/>
+			</dict>
+			<key>name</key>
+			<string>GuitarFineTune.app</string>
+			<key>profile</key>
+			<dict>
+				<key>UUID</key>
+				<string>32fc1e70-6a3f-475e-a7cc-7afa2b1d9c61</string>
+				<key>name</key>
+				<string>iOS Team Provisioning Profile: dk.eksIt.guitarFineTune</string>
+			</dict>
+			<key>team</key>
+			<dict>
+				<key>id</key>
+				<string>4657Q2Y6NH</string>
+				<key>name</key>
+				<string>Eigil Krogh</string>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>
