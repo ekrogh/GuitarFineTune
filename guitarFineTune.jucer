@@ -126,9 +126,9 @@
                   UIFileSharingEnabled="1" UISupportsDocumentBrowser="1" iosBluetoothPermissionNeeded="1">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" isDebug="1" targetName="GuitarFineTuneP" cppLanguageStandard="c++14"
-                       iosCompatibility="11.0"/>
+                       iosCompatibility="11.0" iosDeploymentTarget="11.0"/>
         <CONFIGURATION name="Release" isDebug="0" targetName="GuitarFineTuneP" cppLanguageStandard="c++14"
-                       iosCompatibility="11.0" linkTimeOptimisation="1"/>
+                       iosCompatibility="11.0" linkTimeOptimisation="1" iosDeploymentTarget="11.0"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_gui_extra" path="../JUCE/modules"/>
@@ -151,19 +151,14 @@
                    androidVersionCode="35" androidKeyStore="../../../Android_Special/keystore.jks"
                    androidKeyStorePass="6taura" androidKeyAlias="upload" androidKeyAliasPass="6taura"
                    buildToolsVersion="30" androidPushNotifications="0" androidEnableContentSharing="1"
-                   androidTargetSDK="30" gradleWrapperVersion="4.2.1" gradleVersion="7.0.2"
+                   androidTargetSDK="30" gradleWrapperVersion="7.0.0" gradleVersion="7.0.2"
                    androidInternetNeeded="0" smallIcon="RB4slw" bigIcon="DzMVX4"
-                   androidAdditionalResourceFolders="../../Android_Special/Builds/Android/app/src/main/res"
-                   androidExtraAssetsFolder="./app/src/main/res" extraDefs="ANDROID_VERSION_CODE=34"
-                   androidManifestCustomXmlElements="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&#10;&#10;&lt;manifest&#10;    package=&quot;dk.eksit.guitarfinetunep&quot;&#10;&gt;&#10; &lt;/manifest&gt;&#10;"
+                   extraDefs="ANDROID_VERSION_CODE=35" androidManifestCustomXmlElements="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&#10;&#10;&lt;manifest&#10;    package=&quot;dk.eksit.guitarfinetunep&quot;&#10;&gt;&#10; &lt;/manifest&gt;&#10;"
                    androidCustomAppBuildGradleContent="defaultConfig {&#10;&#9;applicationId &quot;dk.eksit.guitarfinetunep&quot;&#10;}&#10;"
                    androidProjectRepositories="google()">
       <CONFIGURATIONS>
-        <CONFIGURATION name="Release" isDebug="0" targetName="GuitarFineTuneP" optimisation="3"
-                       androidAdditionalXmlValueResources="src/main/res/values&#10;src/release/res/values"
-                       androidAdditionalDrawableResources="src/main/res/drawable&#10;&#10;src/main/res/mipmap-hdpi&#10;src/main/res/mipmap-xxhdpi&#10;src/main/res/mipmap-mdpi&#10;src/main/res/mipmap-xhdpi&#10;src/main/res/mipmap-xxxhdpi&#10;src/main/res/mipmap-anydpi-v26"
-                       androidAdditionalRawValueResources="src/release/res/raw&#10;src/release/res/raw"/>
-        <CONFIGURATION name="Debug" isDebug="1" targetName="GuitarFineTuneP" androidArchitectures="armeabi-v7a arm64-v8a x86 x86_64"/>
+        <CONFIGURATION name="Release" isDebug="0" targetName="GuitarFineTune" optimisation="3"/>
+        <CONFIGURATION name="Debug" isDebug="1" targetName="GuitarFineTune" androidArchitectures="armeabi-v7a arm64-v8a x86 x86_64"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_gui_extra" path="../JUCE/modules"/>

@@ -139,9 +139,6 @@ public:
     /** Destructor. */
     virtual ~AudioIODevice();
 
-    // eks 15. sept. 2020 added checkAudioInputAccessPermissions
-    virtual int checkAudioInputAccessPermissions( );
-    
     //==============================================================================
     /** Returns the device's name, (as set in the constructor). */
     const String& getName() const noexcept                          { return name; }
