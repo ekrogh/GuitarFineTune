@@ -9,10 +9,10 @@
   <Identity
     Name="57158guitarFineTune.guitarFineTune"
     Publisher="CN=C2E1AE67-4CF2-4308-9E4D-4A6C24FA7B0B"
-    Version="8.2.1.0" />
+    Version="8.4.2.0" />
 
   <Properties>
-    <DisplayName>GuitarFineTuneP</DisplayName>
+    <DisplayName>guitarFineTune</DisplayName>
     <PublisherDisplayName>Eigil Krogh</PublisherDisplayName>
     <Logo>Images\StoreLogo.png</Logo>
   </Properties>
@@ -31,8 +31,8 @@
       Executable="$targetnametoken$.exe"
       EntryPoint="$targetentrypoint$">
       <uap:VisualElements
-        DisplayName="GuitarFineTuneP"
-        Description="GuitarFineTuneP_Pack"
+        DisplayName="guitarFineTune"
+        Description="GuitarFineTune_Pack"
         BackgroundColor="transparent"
         Square150x150Logo="Images\Square150x150Logo.png"
         Square44x44Logo="Images\Square44x44Logo.png">

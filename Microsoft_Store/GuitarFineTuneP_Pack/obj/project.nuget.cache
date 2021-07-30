@@ -1,10 +1,27 @@
 {
   "version": 2,
-  "dgSpecHash": "On5g0YC8omW9HHbihA0QNhebAtEJjAsgbgL5GFK6ow+LRFZtVkmZflfmJZBWXivdRWv/kwvQmp4hvooqoB2/ug==",
-  "success": true,
-  "projectFilePath": "D:\\Users\\eigil\\projects\\juceProjs\\GuitarFineTune\\Microsoft_Store\\guitarFineTune_Pack\\guitarFineTune_Pack.wapproj",
+  "dgSpecHash": "hor37tP+8ZRSgHFfoS8Tb8tFd/gPidyvwneO0pyP55bZB+7J/7KiqnAAcMFr5bvdzokpt2+uqgXF7F6vTV00QQ==",
+  "success": false,
+  "projectFilePath": "D:\\Users\\eigil\\projects\\juceProjs\\GuitarFineTune\\Microsoft_Store\\GuitarFineTuneP_Pack\\guitarFineTune_Pack.wapproj",
   "expectedPackageFiles": [
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages\\microsoft.windows.sdk.buildtools\\10.0.19041.8\\microsoft.windows.sdk.buildtools.10.0.19041.8.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1104",
+      "level": "Error",
+      "message": "Unable to find project 'D:\\Users\\eigil\\projects\\juceProjs\\GuitarFineTune\\Builds\\VisualStudio2019\\GuitarFineTuneP_App.vcxproj'. Check that the project reference is valid and that the project file exists.",
+      "libraryId": "D:\\Users\\eigil\\projects\\juceProjs\\GuitarFineTune\\Builds\\VisualStudio2019\\GuitarFineTuneP_App.vcxproj",
+      "targetGraphs": [
+        "UAP,Version=v10.0.17763",
+        "UAP,Version=v10.0.17763/win10-arm",
+        "UAP,Version=v10.0.17763/win10-arm-aot",
+        "UAP,Version=v10.0.17763/win10-arm64-aot",
+        "UAP,Version=v10.0.17763/win10-x64",
+        "UAP,Version=v10.0.17763/win10-x64-aot",
+        "UAP,Version=v10.0.17763/win10-x86",
+        "UAP,Version=v10.0.17763/win10-x86-aot"
+      ]
+    }
+  ]
 }
