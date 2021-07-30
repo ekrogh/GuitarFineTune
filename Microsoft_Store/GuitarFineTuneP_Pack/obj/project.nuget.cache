@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "MYzX8PQxfqhKnyh+1x2jsrJ3PUU/XUeH4Xx5mJlylhbPeqV3pdB1FpblUm4P1mk7qMby1aGxEAyvJabbjDdajg==",
+  "dgSpecHash": "On5g0YC8omW9HHbihA0QNhebAtEJjAsgbgL5GFK6ow+LRFZtVkmZflfmJZBWXivdRWv/kwvQmp4hvooqoB2/ug==",
   "success": true,
-  "projectFilePath": "D:\\Users\\eigil\\projects\\juceProjs\\guitarFineTune\\Microsoft_Store\\guitarFineTune_Pack\\guitarFineTune_Pack.wapproj",
+  "projectFilePath": "D:\\Users\\eigil\\projects\\juceProjs\\GuitarFineTune\\Microsoft_Store\\guitarFineTune_Pack\\guitarFineTune_Pack.wapproj",
   "expectedPackageFiles": [
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages\\microsoft.windows.sdk.buildtools\\10.0.19041.8\\microsoft.windows.sdk.buildtools.10.0.19041.8.nupkg.sha512"
   ],
