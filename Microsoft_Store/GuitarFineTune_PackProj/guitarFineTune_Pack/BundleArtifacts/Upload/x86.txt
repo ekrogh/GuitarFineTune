@@ -1,2 +1,2 @@
-MainPackage=D:\Users\eigil\projects\juceProjs\guitarFineTune\Microsoft_Store\GuitarFineTune_PackProj\guitarFineTune_Pack\bin\x86\Release\Upload\GuitarFineTuneP_Pack_8.4.2.0_x86.appx
-SymbolPackage=D:\Users\eigil\projects\juceProjs\guitarFineTune\Microsoft_Store\GuitarFineTune_PackProj\guitarFineTune_Pack\bin\x86\Release\Upload\GuitarFineTuneP_Pack_8.4.2.0\GuitarFineTuneP_Pack_8.4.2.0_x86.appxsym
+MainPackage=D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\GuitarFineTune_PackProj\guitarFineTune_Pack\bin\x86\Release\Upload\GuitarFineTuneP_Pack_8.5.3.0_x86.appx
+SymbolPackage=D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\GuitarFineTune_PackProj\guitarFineTune_Pack\bin\x86\Release\Upload\GuitarFineTuneP_Pack_8.5.3.0\GuitarFineTuneP_Pack_8.5.3.0_x86.appxsym

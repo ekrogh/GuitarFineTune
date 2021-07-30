@@ -110,11 +110,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Users\\eigil\\projects\\juceProjs\\guitarFineTune\\Microsoft_Store\\GuitarFineTune_PackProj\\guitarFineTune_Pack\\GuitarFineTuneP_Pack.wapproj",
+      "projectUniqueName": "D:\\Users\\eigil\\projects\\juceProjs\\GuitarFineTune\\Microsoft_Store\\GuitarFineTune_PackProj\\guitarFineTune_Pack\\GuitarFineTuneP_Pack.wapproj",
       "projectName": "GuitarFineTuneP_Pack",
-      "projectPath": "D:\\Users\\eigil\\projects\\juceProjs\\guitarFineTune\\Microsoft_Store\\GuitarFineTune_PackProj\\guitarFineTune_Pack\\GuitarFineTuneP_Pack.wapproj",
+      "projectPath": "D:\\Users\\eigil\\projects\\juceProjs\\GuitarFineTune\\Microsoft_Store\\GuitarFineTune_PackProj\\guitarFineTune_Pack\\GuitarFineTuneP_Pack.wapproj",
       "packagesPath": "D:\\Users\\eigil\\.nuget\\packages\\",
-      "outputPath": "D:\\Users\\eigil\\projects\\juceProjs\\guitarFineTune\\Microsoft_Store\\GuitarFineTune_PackProj\\guitarFineTune_Pack\\obj\\",
+      "outputPath": "D:\\Users\\eigil\\projects\\juceProjs\\GuitarFineTune\\Microsoft_Store\\GuitarFineTune_PackProj\\guitarFineTune_Pack\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -138,8 +138,8 @@
         "uap10.0.14393": {
           "targetAlias": "net451",
           "projectReferences": {
-            "D:\\Users\\eigil\\projects\\juceProjs\\guitarFineTune\\Builds\\VisualStudio2019\\GuitarFineTune_App.vcxproj": {
-              "projectPath": "D:\\Users\\eigil\\projects\\juceProjs\\guitarFineTune\\Builds\\VisualStudio2019\\GuitarFineTune_App.vcxproj"
+            "D:\\Users\\eigil\\projects\\juceProjs\\GuitarFineTune\\Builds\\VisualStudio2019\\GuitarFineTune_App.vcxproj": {
+              "projectPath": "D:\\Users\\eigil\\projects\\juceProjs\\GuitarFineTune\\Builds\\VisualStudio2019\\GuitarFineTune_App.vcxproj"
             }
           }
         }
