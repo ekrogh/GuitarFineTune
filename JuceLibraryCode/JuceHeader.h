@@ -47,9 +47,9 @@
 #if ! JUCE_DONT_DECLARE_PROJECTINFO
 namespace ProjectInfo
 {
-    const char* const  projectName    = "GuitarFineTuneP";
+    const char* const  projectName    = "GuitarFineTune";
     const char* const  companyName    = "eksit";
-    const char* const  versionString  = "8.3.1";
-    const int          versionNumber  = 0x80301;
+    const char* const  versionString  = "8.4.2";
+    const int          versionNumber  = 0x80402;
 }
 #endif
