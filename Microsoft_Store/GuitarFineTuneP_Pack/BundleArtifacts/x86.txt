@@ -1,2 +1,0 @@
-MainPackage=D:\Users\eigil\projects\juceProjs\guitarFineTune\Microsoft_Store\guitarFineTune_Pack\bin\x86\Release\guitarFineTune_Pack_8.3.1.0_x86.msix
-SymbolPackage=D:\Users\eigil\projects\juceProjs\guitarFineTune\Microsoft_Store\guitarFineTune_Pack\obj\x86\Release\Symbols\guitarFineTune_Pack_8.3.1.0_x86.appxsym
