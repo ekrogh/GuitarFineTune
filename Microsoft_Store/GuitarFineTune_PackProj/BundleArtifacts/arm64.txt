@@ -1,0 +1,6 @@
+MainPackage=D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\GuitarFineTune_PackProj\bin\ARM64\Release\GuitarFineTune_PackProj_8.6.4.0_ARM64.msix
+SymbolPackage=D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\GuitarFineTune_PackProj\obj\ARM64\Release\Symbols\GuitarFineTune_PackProj_8.6.4.0_ARM64.appxsym
+ResourcePack=D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\GuitarFineTune_PackProj\bin\ARM64\Release\GuitarFineTune_PackProj_8.6.4.0_scale-100.msix
+ResourcePack=D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\GuitarFineTune_PackProj\bin\ARM64\Release\GuitarFineTune_PackProj_8.6.4.0_scale-125.msix
+ResourcePack=D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\GuitarFineTune_PackProj\bin\ARM64\Release\GuitarFineTune_PackProj_8.6.4.0_scale-150.msix
+ResourcePack=D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\GuitarFineTune_PackProj\bin\ARM64\Release\GuitarFineTune_PackProj_8.6.4.0_scale-400.msix
