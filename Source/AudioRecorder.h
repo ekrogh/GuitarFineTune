@@ -129,6 +129,8 @@ private:
 	int numSamplesPerBufferInUse = std::numeric_limits<int>::min();
 
 	std::weak_ptr<SimpleLevelMeter> pRecordingLevelMeter;
+
+
 };
 
 
@@ -176,5 +178,8 @@ private:
 	std::shared_ptr<AudioRecorder> spRecorder = std::make_shared<AudioRecorder>();
 
 	File lastRecording;
+
+	std::unique_ptr<FileChooser> myChooser;
+
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(AudioRecorderControl)
 };

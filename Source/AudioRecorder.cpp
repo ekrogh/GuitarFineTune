@@ -257,7 +257,7 @@ void AudioRecorder::setRecordingGain(float thegainToUse)
 
 float AudioRecorder::getCurrentRecordingGain()
 {
-		return gainToUse;
+	return gainToUse;
 }
 
 void AudioRecorder::setAutoGainOn(bool setAutoGainOn)
@@ -294,6 +294,12 @@ AudioRecorderControl::~AudioRecorderControl()
 	{
 		spRecorder = nullptr;
 		spRecorder.reset();
+	}
+
+	if (myChooser)
+	{
+		myChooser = nullptr;
+		myChooser.reset();
 	}
 
 }
@@ -363,10 +369,10 @@ void AudioRecorderControl::startRecording()
 
 		RuntimePermissions::request(RuntimePermissions::writeExternalStorage,
 			[safeThis](bool granted) mutable
-		{
-			if (granted)
-				safeThis->startRecording();
-		});
+			{
+				if (granted)
+					safeThis->startRecording();
+			});
 		return;
 	}
 
@@ -392,34 +398,72 @@ void AudioRecorderControl::stopRecording()
 
 	ContentSharer::getInstance()->shareFiles(Array<URL>({ URL(fileToShare) }),
 		[safeThis, fileToShare](bool success, const String& error)
-	{
-		if (fileToShare.existsAsFile())
-			fileToShare.deleteFile();
-
-		if (!success && error.isNotEmpty())
 		{
-			NativeMessageBox::showMessageBoxAsync(AlertWindow::WarningIcon,
-				"Sharing Error",
-				error);
-		}
-	});
+			if (fileToShare.existsAsFile())
+				fileToShare.deleteFile();
+
+			if (!success && error.isNotEmpty())
+			{
+				NativeMessageBox::showMessageBoxAsync(AlertWindow::WarningIcon,
+					"Sharing Error",
+					error);
+			}
+		});
 #else
 	auto fileToSave = lastRecording;
 	lastRecording = File(); // "Close" fille
 	auto theRecordedFile = fileToSave.getFullPathName();
 
-	FileChooser fc("Save Audio File as...",
-		File::getSpecialLocation(File::userDocumentsDirectory).getChildFile(fileToSave.getFileName()),
-		"*.wav", true);
+	//myChooser =
+	//	std::make_unique <FileChooser>("Save Audio File as...",
+	//		File::getSpecialLocation(File::userDocumentsDirectory).getChildFile(fileToSave.getFileName()),
+	//		"*.wav"/*, true*/);
 
-	if (fc.browseForFileToSave(true))
-	{
-		fileToSave.moveFileTo(fc.getResult());
-	}
-	else
-	{
-		fileToSave.deleteFile();
-	}
+	auto initialDirectory = File::getSpecialLocation(File::userDocumentsDirectory);
+	auto initialFilAndDirectory
+		= File::getSpecialLocation(File::userMusicDirectory).getChildFile(fileToSave.getFileName());
+	//auto initialFilAndDirectory
+	//	= File::getSpecialLocation(File::userDocumentsDirectory).getChildFile(fileToSave.getFileName());
+
+	myChooser =
+		std::make_unique <FileChooser>
+		(
+			"Save Audio File as...",
+			initialFilAndDirectory,
+			"*.wav"
+		);
+
+
+	myChooser->launchAsync
+	(
+		FileBrowserComponent::saveMode
+		|
+		FileBrowserComponent::canSelectFiles
+		|
+		FileBrowserComponent::warnAboutOverwriting
+		//|
+		//FileBrowserComponent::openMode
+		,
+		[fileToSave](const FileChooser& chooser)
+		{
+			auto result = chooser.getURLResult();
+			auto res = chooser.getResult();
+			if (res == File())
+				return;
+
+			File soundFile(chooser.getResult());
+			fileToSave.moveFileTo(soundFile);
+		}
+	);
+
+	//if (fc.browseForFileToSave(true))
+	//{
+	//	fileToSave.moveFileTo(fc.getResult());
+	//}
+	//else
+	//{
+	//	fileToSave.deleteFile();
+	//}
 #endif
 }
 

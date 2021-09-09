@@ -32,8 +32,8 @@ public:
 	{
 #if JUCE_WINDOWS || JUCE_MAC
 #ifndef _DEBUG
-		pSplash = new SplashScreen("Welcome to guitarFineTune!", ImageFileFormat::loadFrom(BinaryData::fineTune_icon_Small_png, (size_t)BinaryData::fineTune_icon_Small_pngSize), true);
-		juce::MessageManager::getInstance()->runDispatchLoopUntil(100);
+		pSplash = new SplashScreen("Welcome to GuitarFineTune!", ImageFileFormat::loadFrom(BinaryData::fineTune_icon_Small_png, (size_t)BinaryData::fineTune_icon_Small_pngSize), true);
+		//juce::MessageManager::getInstance()->runDispatchLoopUntil(100);
 #endif // _DEBUG
 #endif // JUCE_WINDOWS || JUCE_MAC
 	}
