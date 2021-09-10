@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="cgcxPd" name="GuitarFineTune" projectType="guiapp" version="8.6.4"
+<JUCERPROJECT id="cgcxPd" name="GuitarFineTune" projectType="guiapp" version="8.6.5"
               bundleIdentifier="dk.eksIt.guitarFineTune" includeBinaryInAppConfig="1"
               reportAppUsage="1" companyCopyright="eksit" companyName="eksit"
               companyWebsite="eksit.dk" companyEmail="guitarFineTune@eksit.dk"
@@ -148,12 +148,12 @@
     <ANDROIDSTUDIO targetFolder="Builds/Android" androidSDKPath="${user.home}/AppData/Local/Android/Sdk"
                    androidNDKPath="${user.home}/AppData/Local/Android/Sdk/ndk-bundle"
                    microphonePermissionNeeded="1" cppLanguageStandard="-std=c++14"
-                   androidVersionCode="37" androidKeyStore="../../../Android_Special/keystore.jks"
+                   androidVersionCode="38" androidKeyStore="../../../Android_Special/keystore.jks"
                    androidKeyStorePass="6taura" androidKeyAlias="upload" androidKeyAliasPass="6taura"
                    buildToolsVersion="30" androidPushNotifications="0" androidEnableContentSharing="1"
                    androidTargetSDK="30" gradleWrapperVersion="7.0.0" gradleVersion="7.0.2"
                    androidInternetNeeded="0" smallIcon="RB4slw" bigIcon="DzMVX4"
-                   extraDefs="ANDROID_VERSION_CODE=37" androidManifestCustomXmlElements="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&#10;&#10;&lt;manifest&#10;    package=&quot;dk.eksit.guitarfinetunep&quot;&#10;&gt;&#10; &lt;/manifest&gt;&#10;"
+                   extraDefs="ANDROID_VERSION_CODE=38" androidManifestCustomXmlElements="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&#10;&#10;&lt;manifest&#10;    package=&quot;dk.eksit.guitarfinetunep&quot;&#10;&gt;&#10; &lt;/manifest&gt;&#10;"
                    androidCustomAppBuildGradleContent="defaultConfig {&#10;&#9;applicationId &quot;dk.eksit.guitarfinetunep&quot;&#10;}&#10;">
       <CONFIGURATIONS>
         <CONFIGURATION name="Release" isDebug="0" targetName="GuitarFineTune" optimisation="3"/>

@@ -414,22 +414,16 @@ void AudioRecorderControl::stopRecording()
 	lastRecording = File(); // "Close" fille
 	auto theRecordedFile = fileToSave.getFullPathName();
 
-	//myChooser =
-	//	std::make_unique <FileChooser>("Save Audio File as...",
-	//		File::getSpecialLocation(File::userDocumentsDirectory).getChildFile(fileToSave.getFileName()),
-	//		"*.wav"/*, true*/);
-
-	auto initialDirectory = File::getSpecialLocation(File::userDocumentsDirectory);
 	auto initialFilAndDirectory
 		= File::getSpecialLocation(File::userMusicDirectory).getChildFile(fileToSave.getFileName());
-	//auto initialFilAndDirectory
-	//	= File::getSpecialLocation(File::userDocumentsDirectory).getChildFile(fileToSave.getFileName());
 
 	myChooser =
 		std::make_unique <FileChooser>
 		(
-			"Save Audio File as...",
-			initialFilAndDirectory,
+			"Save Audio File as..."
+			,
+			initialFilAndDirectory
+			,
 			"*.wav"
 		);
 
@@ -441,29 +435,17 @@ void AudioRecorderControl::stopRecording()
 		FileBrowserComponent::canSelectFiles
 		|
 		FileBrowserComponent::warnAboutOverwriting
-		//|
-		//FileBrowserComponent::openMode
 		,
 		[fileToSave](const FileChooser& chooser)
 		{
-			auto result = chooser.getURLResult();
-			auto res = chooser.getResult();
-			if (res == File())
+			auto rslt = chooser.getResult();
+			if (rslt == File{})
 				return;
 
-			File soundFile(chooser.getResult());
+			File soundFile(rslt);
 			fileToSave.moveFileTo(soundFile);
 		}
 	);
-
-	//if (fc.browseForFileToSave(true))
-	//{
-	//	fileToSave.moveFileTo(fc.getResult());
-	//}
-	//else
-	//{
-	//	fileToSave.deleteFile();
-	//}
 #endif
 }
 
