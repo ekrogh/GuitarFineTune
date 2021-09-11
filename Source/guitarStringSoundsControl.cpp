@@ -25,6 +25,9 @@
 
 #include "guitarStringSoundsControl.h"
 
+#include <memory>
+#include <utility>
+
 
 //[MiscUserDefs] You can add your own user definitions and misc code here...
 extern std::shared_ptr<tuneComponent> pTuneComponent;
@@ -33,31 +36,31 @@ extern std::shared_ptr<AudioDeviceManager> sharedAudioDeviceManager;
 
 //==============================================================================
 guitarStringSoundsControl::guitarStringSoundsControl (std::shared_ptr<xmlGuitarFineTuneConfig> pXmlGFTConfig, std::shared_ptr<eksLookAndFeel> pGFTAF, bool addVWP)
-    : pGuitarFineTuneLookAndFeel(pGFTAF),
+    : pGuitarFineTuneLookAndFeel(std::move(pGFTAF)),
       spAudioRecorderController( pTuneComponent->getAudioRecorderController()),
-      pXmlGuitarFineTuneConfig(pXmlGFTConfig),
+      pXmlGuitarFineTuneConfig(std::move(pXmlGFTConfig)),
       viewPortAdded(addVWP)
 {
     //[Constructor_pre] You can add your own custom stuff here..
     //[/Constructor_pre]
 
-    PlayToneGroupComponent.reset (new GroupComponent ("PlayToneGroupComponent",
-                                                      TRANS("Play tone for guitar string")));
+    PlayToneGroupComponent = std::make_unique<GroupComponent> ("PlayToneGroupComponent",
+                                                      TRANS("Play tone for guitar string"));
     addAndMakeVisible (PlayToneGroupComponent.get());
     PlayToneGroupComponent->setColour (juce::GroupComponent::outlineColourId, juce::Colours::blue);
     PlayToneGroupComponent->setColour (juce::GroupComponent::textColourId, juce::Colours::cornflowerblue);
 
     PlayToneGroupComponent->setBounds (0, 8, 296, 80);
 
-    outputMixGroupComponent.reset (new juce::GroupComponent ("outputMixGroupComponent",
-                                                             TRANS("Output mix")));
+    outputMixGroupComponent = std::make_unique<juce::GroupComponent> ("outputMixGroupComponent",
+                                                             TRANS("Output mix"));
     addAndMakeVisible (outputMixGroupComponent.get());
     outputMixGroupComponent->setColour (juce::GroupComponent::outlineColourId, juce::Colours::blue);
     outputMixGroupComponent->setColour (juce::GroupComponent::textColourId, juce::Colours::cornflowerblue);
 
     outputMixGroupComponent->setBounds (0, 89, 296, 176);
 
-    E2soundToggleButton.reset (new juce::ToggleButton ("E2soundToggleButton"));
+    E2soundToggleButton = std::make_unique<juce::ToggleButton> ("E2soundToggleButton");
     addAndMakeVisible (E2soundToggleButton.get());
     E2soundToggleButton->setTooltip (TRANS("Play guitar string E2 sound"));
     E2soundToggleButton->setExplicitFocusOrder (1);
@@ -67,7 +70,7 @@ guitarStringSoundsControl::guitarStringSoundsControl (std::shared_ptr<xmlGuitarF
 
     E2soundToggleButton->setBounds (18, 52, 28, 24);
 
-    A2soundToggleButton.reset (new juce::ToggleButton ("A2soundToggleButton"));
+    A2soundToggleButton = std::make_unique<juce::ToggleButton> ("A2soundToggleButton");
     addAndMakeVisible (A2soundToggleButton.get());
     A2soundToggleButton->setTooltip (TRANS("Play guitar string A2 sound"));
     A2soundToggleButton->setExplicitFocusOrder (2);
@@ -77,7 +80,7 @@ guitarStringSoundsControl::guitarStringSoundsControl (std::shared_ptr<xmlGuitarF
 
     A2soundToggleButton->setBounds (55, 52, 28, 24);
 
-    D3soundToggleButton.reset (new juce::ToggleButton ("D3soundToggleButton"));
+    D3soundToggleButton = std::make_unique<juce::ToggleButton> ("D3soundToggleButton");
     addAndMakeVisible (D3soundToggleButton.get());
     D3soundToggleButton->setTooltip (TRANS("Play guitar string D3 sound"));
     D3soundToggleButton->setExplicitFocusOrder (3);
