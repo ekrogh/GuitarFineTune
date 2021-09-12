@@ -93,7 +93,7 @@ eksAudioControlComponent::eksAudioControlComponent( std::shared_ptr<xmlGuitarFin
 #endif // JUCE_ANDROID
 	//[/UserPreSize]
 
-	setSize( 600, 400 );
+	setSize( 600, 500 );
 
 
 	//[Constructor] You can add your own custom stuff here..
