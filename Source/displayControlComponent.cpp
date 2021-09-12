@@ -382,7 +382,7 @@ void displayControlComponent::resized()
     //[UserResized] Add your own custom resize handling here..
 #endif  // !(JUCE_IOS || JUCE_ANDROID) End Avoid running Projucers code
 
-#if (JUCE_WINDOWS || JUCE_MAC || JUCE_ANDROID)
+#if (JUCE_WINDOWS || JUCE_MAC || JUCE_LINUX || JUCE_ANDROID)
 #if JUCE_ANDROID
 	if (viewPortAdded)
 	{
@@ -416,7 +416,7 @@ void displayControlComponent::resized()
 	#if JUCE_ANDROID
 	}
 #endif // JUCE_ANDROID
-#endif // (JUCE_WINDOWS || JUCE_MAC || JUCE_ANDROID)
+#endif // (JUCE_WINDOWS || JUCE_MAC || JUCE_LINUX || JUCE_ANDROID)
     //[/UserResized]
 }
 

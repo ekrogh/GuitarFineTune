@@ -61,7 +61,7 @@ class tuneComponent
 	, public AudioAppComponent
 	, public eksNotModalProgressWindowCallBacks
 	, public ModalComponentManager::Callback
-#if (JUCE_IOS || JUCE_MAC)
+#if (JUCE_IOS || JUCE_MAC || JUCE_LINUX)
 	, private Timer
 #endif
 {
@@ -243,7 +243,7 @@ public:
 
 
 private:
-    #if (JUCE_IOS || JUCE_MAC)
+    #if (JUCE_IOS || JUCE_MAC || JUCE_LINUX)
         void timerCallback() override;
     #endif
     #if ( JUCE_IOS )

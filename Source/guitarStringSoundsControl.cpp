@@ -582,7 +582,7 @@ void guitarStringSoundsControl::paint (juce::Graphics& g)
 void guitarStringSoundsControl::resized()
 {
     //[UserPreResize] Add your own custom resize code here..
-#if (JUCE_WINDOWS || JUCE_MAC || JUCE_ANDROID)
+#if (JUCE_WINDOWS || JUCE_MAC || JUCE_LINUX || JUCE_ANDROID)
 #if JUCE_ANDROID
 	if (viewPortAdded)
 	{
@@ -642,7 +642,7 @@ void guitarStringSoundsControl::resized()
 #if JUCE_ANDROID
 	}
 #endif // JUCE_ANDROID
-#endif // (JUCE_WINDOWS || JUCE_MAC || JUCE_ANDROID)
+#endif // (JUCE_WINDOWS || JUCE_MAC || JUCE_LINUX || JUCE_ANDROID)
     //[/UserResized]
 }
 

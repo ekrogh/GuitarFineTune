@@ -30,12 +30,12 @@ public:
 	//==============================================================================
 	guitarFineTune()
 	{
-#if JUCE_WINDOWS || JUCE_MAC
+#if JUCE_WINDOWS || JUCE_MAC || JUCE_LINUX
 #ifndef _DEBUG
 		pSplash = new SplashScreen("Welcome to GuitarFineTune!", ImageFileFormat::loadFrom(BinaryData::fineTune_icon_Small_png, (size_t)BinaryData::fineTune_icon_Small_pngSize), true);
 		//juce::MessageManager::getInstance()->runDispatchLoopUntil(100);
 #endif // _DEBUG
-#endif // JUCE_WINDOWS || JUCE_MAC
+#endif // JUCE_WINDOWS || JUCE_MAC || JUCE_LINUX
 	}
 
 	const String getApplicationName() override { return ProjectInfo::projectName; }
@@ -48,11 +48,11 @@ public:
 
 		ptrGuitarFineTuneFirstClass = std::make_shared<guitarFineTuneFirstClass>();
 
-#if JUCE_WINDOWS || JUCE_MAC
+#if JUCE_WINDOWS || JUCE_MAC || JUCE_LINUX
 #ifndef _DEBUG
 		pSplash->deleteAfterDelay(RelativeTime::milliseconds(1), true);
 #endif // _DEBUG
-#endif // JUCE_WINDOWS || JUCE_MAC
+#endif // JUCE_WINDOWS || JUCE_MAC || JUCE_LINUX
 
 	}
 

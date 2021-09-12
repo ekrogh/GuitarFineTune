@@ -1356,10 +1356,10 @@ void tuneComponent::resized( )
 
 }
 
-#if (JUCE_IOS || JUCE_MAC)
+#if (JUCE_IOS || JUCE_MAC || JUCE_LINUX)
     void tuneComponent::timerCallback()
     {
-#if (JUCE_MAC)
+#if (JUCE_MAC || JUCE_LINUX)
         if (SystemStats::getOperatingSystemType() >= SystemStats::MacOSX_10_14 )
         {
 #endif
@@ -1378,7 +1378,7 @@ void tuneComponent::resized( )
                             , "Access to audio input device\nNOT granted!"
 #if (JUCE_IOS)
                             , "You might try to\nEnbale guitarFineTune in\nSettings -> Privacy -> Microphone\nOr UNinstall\nand REinstall guitarFineTune"
-#else // JUCE_MAC
+#else // JUCE_MAC || JUCE_LINUX
                             , "You might try to\nEnbale guitarFineTune in\nSystem Preferences -> Security & Privacy -> Privacy -> Microphone\nOr UNinstall\nand REinstall guitarFineTune"
 #endif
                             , "Quit"
@@ -1392,7 +1392,7 @@ void tuneComponent::resized( )
                             , "Access to audio input device\nNOT granted!"
 #if (JUCE_IOS)
                             , "You might try to\nEnbale guitarFineTune in\nSettings -> Privacy -> Microphone\nOr UNinstall\nand REinstall guitarFineTune"
-#else // JUCE_MAC
+#else // JUCE_MAC || JUCE_LINUX
                             , "You might try to\nEnbale guitarFineTune in\nSystem Preferences -> Security & Privacy -> Privacy -> Microphone\nOr UNinstall\nand REinstall guitarFineTune"
 #endif
                          );
@@ -1415,19 +1415,19 @@ void tuneComponent::resized( )
                     }
                 }
             }
-#if (JUCE_MAC)
+#if (JUCE_MAC || JUCE_LINUX)
         }
 #endif
     }
-#endif // #if (JUCE_IOS || JUCE_MAC)
+#endif // #if (JUCE_IOS || JUCE_MAC || JUCE_LINUX)
 
 
 void tuneComponent::run( )
 {
 	bool adaptiveNoSecondsComboBoxInited = false;
 
-#if (JUCE_IOS || JUCE_MAC)
-#if (JUCE_MAC)
+#if (JUCE_IOS || JUCE_MAC || JUCE_LINUX)
+#if (JUCE_MAC || JUCE_LINUX)
         if (SystemStats::getOperatingSystemType() >= SystemStats::MacOSX_10_14 )
         {
 #endif
@@ -1457,10 +1457,10 @@ void tuneComponent::run( )
                     }
                 }
             }
-#if (JUCE_MAC)
+#if (JUCE_MAC || JUCE_LINUX)
         }
 #endif
-#endif // #if (JUCE_IOS || JUCE_MAC)
+#endif // #if (JUCE_IOS || JUCE_MAC || JUCE_LINUX)
 
 	while ( !threadShouldExit( ) && !adaptiveNoSecondsComboBoxInited )
 	{

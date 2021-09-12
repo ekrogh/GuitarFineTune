@@ -381,7 +381,7 @@ guitarFineTuneFirstClass::guitarFineTuneFirstClass()
 	pTuneComponent->initObjects(pDisplayControlComponent);
 	//	pDisplayControlComponent->initControls();
 
-#if (JUCE_WINDOWS || JUCE_MAC)
+#if (JUCE_WINDOWS || JUCE_MAC || JUCE_LINUX)
 	curCompntBnds.setBounds(0, 0, widthOfTuneWindow, hightOfTuneWindow + tabBarDepthMacWin);
 	setSize(curCompntBnds.getWidth(), curCompntBnds.getHeight()); // This
 	DocumentWindow::centreWithSize(widthOfGuitarStringSoundsControlWindowHorizontal, hightOfGuitarStringSoundsControlWindowHorizontal);
@@ -403,11 +403,11 @@ guitarFineTuneFirstClass::guitarFineTuneFirstClass()
 #endif
 #endif
 	setUsingNativeTitleBar(true);
-#if JUCE_MAC
+#if JUCE_MAC || JUCE_LINUX
 	setTitleBarButtonsRequired(closeButton | minimiseButton, true);
 #else // JUCE_WINDOWS
 	setTitleBarButtonsRequired(closeButton | minimiseButton, false);
-#endif // JUCE_MAC
+#endif // JUCE_MAC || JUCE_LINUX
 	setResizable(false, false);
 	//	setResizable(true, true);
 	DocumentWindow::setVisible(true);
@@ -453,7 +453,7 @@ void guitarFineTuneFirstClass::currentTabChanged(int newCurrentTabIndex, const S
 			}
 		}
 #endif // #if ( JUCE_IOS )
-#else // (JUCE Win || JUCE_MAC)
+#else // (JUCE Win || JUCE_MAC || JUCE_LINUX)
 		switch (newCurrentTabIndex)
 		{
 		case tabNoTuneWindow:

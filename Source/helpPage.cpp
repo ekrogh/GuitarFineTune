@@ -133,11 +133,11 @@ void aboutPage::paint (juce::Graphics& g)
 void aboutPage::resized()
 {
     //[UserPreResize] Add your own custom resize code here..
-#if (JUCE_WINDOWS || JUCE_MAC)
+#if (JUCE_WINDOWS || JUCE_MAC || JUCE_LINUX)
     //[/UserPreResize]
 
     //[UserResized] Add your own custom resize handling here..
-#endif // (JUCE_WINDOWS || JUCE_MAC)
+#endif // (JUCE_WINDOWS || JUCE_MAC || JUCE_LINUX)
     //[/UserResized]
 }
 

@@ -141,7 +141,7 @@ void eksAudioControlComponent::resized( )
 		Use_60_Hz_FilterToggleButton->setBounds( 147, heightAudioDeviceSelectorComponent + 1, 149, 24 );
 		preProcessingToggleButton->setBounds( 1, heightAudioDeviceSelectorComponent + 1 + 24, 231, 24 );
 	}
-#elif (JUCE_WINDOWS || JUCE_MAC)
+#elif (JUCE_WINDOWS || JUCE_MAC || JUCE_LINUX)
 	auto actHeightAudioDeviceSelectorComponent = pAudioDeviceSelectorComponent->getHeight( );
 	Use_50_Hz_FilterToggleButton->setBounds( 1, actHeightAudioDeviceSelectorComponent - 15, 150, 24 );
 	Use_60_Hz_FilterToggleButton->setBounds( 147, actHeightAudioDeviceSelectorComponent - 15, 149, 24 );

@@ -26,11 +26,11 @@ dumpWindow::dumpWindow()
 	setContentOwned(dumpWindowTextEditor, true);
 
 	setUsingNativeTitleBar(true);
-#if JUCE_MAC
+#if JUCE_MAC || JUCE_LINUX
 	setTitleBarButtonsRequired(closeButton | minimiseButton, true);
 #else // JUCE_WINDOWS
 	setTitleBarButtonsRequired(closeButton | minimiseButton, false);
-#endif // JUCE_MAC
+#endif // JUCE_MAC || JUCE_LINUX
 	DocumentWindow::centreWithSize(350, 330);
 	DocumentWindow::setVisible(true);
 
