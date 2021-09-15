@@ -43,7 +43,7 @@ enum
 	, hightOfEksAudioControlComponentWindow = 350
 #else
 	#if JUCE_LINUX
-		, hightOfEksAudioControlComponentWindow = 500
+		, hightOfEksAudioControlComponentWindow = 425
 	#else
 		, hightOfEksAudioControlComponentWindow = 400
 	#endif // JUCE_LINUX
