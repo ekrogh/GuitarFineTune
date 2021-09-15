@@ -42,8 +42,12 @@ enum
 #if (JUCE_IOS || JUCE_ANDROID)
 	, hightOfEksAudioControlComponentWindow = 350
 #else
-	, hightOfEksAudioControlComponentWindow = 400
-#endif
+	#if JUCE_LINUX
+		, hightOfEksAudioControlComponentWindow = 500
+	#else
+		, hightOfEksAudioControlComponentWindow = 400
+	#endif // JUCE_LINUX
+#endif // (JUCE_IOS || JUCE_ANDROID)
 
 	, tabNoAboutPage = 4
 	, widthOfAboutPage = 300
