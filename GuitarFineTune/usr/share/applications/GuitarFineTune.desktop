@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=8.6.5
+Type=Application
+Terminal=false
+Exec='/usr/local/bin/GuitarFineTune'
+Name=GuitarFineTune
+Comment=Guitar fine tuning aid
+Icon=GFTIcon.ico
