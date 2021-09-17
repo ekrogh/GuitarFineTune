@@ -5,4 +5,4 @@ Terminal=false
 Exec='/usr/local/bin/GuitarFineTune'
 Name=GuitarFineTune
 Comment=Guitar fine tuning aid
-Icon=GFTIcon.ico
+Icon=GuitarFineTune
