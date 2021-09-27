@@ -495,7 +495,7 @@
 				INFOPLIST_FILE = Info-App.plist;
 				INFOPLIST_PREPROCESS = YES;
 				INSTALL_PATH = "/Applications";
-				LLVM_LTO = YES;
+				LLVM_LTO = YES_THIN;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_HEADER_SEARCH_PATHS = "$(SRCROOT)/../../JuceLibraryCode $(SRCROOT)/../../JuceLibraryCode/modules";
 				PRODUCT_BUNDLE_IDENTIFIER = dk.eksIt.guitarFineTuneOSX;

@@ -504,7 +504,7 @@
 				INFOPLIST_FILE = Info-App.plist;
 				INFOPLIST_PREPROCESS = YES;
 				INSTALL_PATH = "$(HOME)/Applications";
-				LLVM_LTO = YES;
+				LLVM_LTO = YES_THIN;
 				MTL_HEADER_SEARCH_PATHS = "$(SRCROOT)/../../JuceLibraryCode $(SRCROOT)/../../JuceLibraryCode/modules";
 				PRODUCT_BUNDLE_IDENTIFIER = dk.eksIt.GuitarFineTuneP;
 				PRODUCT_NAME = "GuitarFineTune";
