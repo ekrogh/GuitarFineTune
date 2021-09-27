@@ -151,7 +151,7 @@
                    androidVersionCode="38" androidKeyStore="../../../Android_Special/keystore.jks"
                    androidKeyStorePass="6taura" androidKeyAlias="upload" androidKeyAliasPass="6taura"
                    buildToolsVersion="30" androidPushNotifications="0" androidEnableContentSharing="1"
-                   androidTargetSDK="30" gradleWrapperVersion="7.0.0" gradleVersion="7.0.2"
+                   androidTargetSDK="30" gradleWrapperVersion="7.0.2" gradleVersion="7.2"
                    androidInternetNeeded="0" smallIcon="RB4slw" bigIcon="DzMVX4"
                    extraDefs="ANDROID_VERSION_CODE=38" androidExternalWriteNeeded="1">
       <CONFIGURATIONS>
