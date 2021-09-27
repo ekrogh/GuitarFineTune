@@ -7,7 +7,7 @@
   the "//[xyz]" and "//[/xyz]" sections will be retained when the file is loaded
   and re-saved.
 
-  Created with Projucer version: 6.1.2
+  Created with Projucer version: 6.0.1
 
   ------------------------------------------------------------------------------
 
@@ -41,7 +41,7 @@ class eksAudioControlComponent  : public Component,
 {
 public:
     //==============================================================================
-    eksAudioControlComponent (std::shared_ptr<tuneComponent> pTC, std::shared_ptr<xmlGuitarFineTuneConfig> pXmlGFTCfg, std::shared_ptr<eksLookAndFeel> pGFTAF, bool addVWP);
+    eksAudioControlComponent( std::shared_ptr<xmlGuitarFineTuneConfig> pXmlGFTCfg, std::shared_ptr<eksLookAndFeel> pGFTAF, bool addVWP );
     ~eksAudioControlComponent() override;
 
     //==============================================================================
