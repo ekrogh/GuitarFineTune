@@ -1,0 +1,47 @@
+name: GuitarFineTune
+base: core18
+version: "8.6.5"
+summary: Guitar fine-tuning tool
+description: |
+  GuitarFineTune
+  compares the current frequencies of the guitar strings
+  with the frequencies that the strings should have.
+
+grade: devel # must be 'stable' to release into candidate/stable channels
+confinement: devmode # use 'strict' once you have the right plugs and slots
+base: core18
+
+parts:
+  GuitarFineTune:
+    plugin: autotools
+    source-type: git
+    source: https://github.com/ekrogh/GuitarFineTune.git
+    build-packages:
+      - g++
+      - make
+      - git
+      - libfreetype6-dev
+      - libx11-dev
+      - libxcomposite-dev
+      - libxext-dev
+      - libxinerama-dev
+      - libxrandr-dev
+      - libxrender-dev
+      - libxcursor-dev
+      - webkit2gtk-4.0
+      - libglu1-mesa-dev
+      - mesa-common-dev
+      - libasound2-dev
+      - libjack-jackd2-dev
+      - libcurl4-openssl-dev
+      - libfreetype6-dev
+      - freeglut3-dev
+      - libxcomposite-dev
+      - ladspa-sdk
+
+apps:
+  GuitarFineTune:
+    command: local/bin/GuitarFineTune
+    environment:
+      "LD_LIBRARY_PATH": "$SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/pulseaudio"
+      "DISABLE_WAYLAND": "1"
