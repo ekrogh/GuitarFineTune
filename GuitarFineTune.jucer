@@ -211,8 +211,8 @@
     </CODEBLOCKS_LINUX>
     <LINUX_MAKE targetFolder="./" smallIcon="RB4slw" bigIcon="DzMVX4">
       <CONFIGURATIONS>
-        <CONFIGURATION isDebug="1" name="Debug" linuxArchitecture="-m64"/>
-        <CONFIGURATION isDebug="0" name="Release"/>
+        <CONFIGURATION isDebug="1" name="Debug" linuxArchitecture="-m64" headerPath="/usr/include/freetype2"/>
+        <CONFIGURATION isDebug="0" name="Release" headerPath="/usr/include/freetype2"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_gui_extra"/>
