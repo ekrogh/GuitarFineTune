@@ -688,27 +688,6 @@ add_library( ${BINARY_NAME}
     "../../../JuceLibraryCode/modules/juce_audio_utils/juce_audio_utils.cpp"
     "../../../JuceLibraryCode/modules/juce_audio_utils/juce_audio_utils.mm"
     "../../../JuceLibraryCode/modules/juce_audio_utils/juce_audio_utils.h"
-    "../../../JuceLibraryCode/modules/juce_build_tools/utils/juce_BinaryResourceFile.cpp"
-    "../../../JuceLibraryCode/modules/juce_build_tools/utils/juce_BinaryResourceFile.h"
-    "../../../JuceLibraryCode/modules/juce_build_tools/utils/juce_BuildHelperFunctions.cpp"
-    "../../../JuceLibraryCode/modules/juce_build_tools/utils/juce_BuildHelperFunctions.h"
-    "../../../JuceLibraryCode/modules/juce_build_tools/utils/juce_CppTokeniserFunctions.cpp"
-    "../../../JuceLibraryCode/modules/juce_build_tools/utils/juce_Entitlements.cpp"
-    "../../../JuceLibraryCode/modules/juce_build_tools/utils/juce_Entitlements.h"
-    "../../../JuceLibraryCode/modules/juce_build_tools/utils/juce_Icons.cpp"
-    "../../../JuceLibraryCode/modules/juce_build_tools/utils/juce_Icons.h"
-    "../../../JuceLibraryCode/modules/juce_build_tools/utils/juce_PlistOptions.cpp"
-    "../../../JuceLibraryCode/modules/juce_build_tools/utils/juce_PlistOptions.h"
-    "../../../JuceLibraryCode/modules/juce_build_tools/utils/juce_ProjectType.h"
-    "../../../JuceLibraryCode/modules/juce_build_tools/utils/juce_RelativePath.h"
-    "../../../JuceLibraryCode/modules/juce_build_tools/utils/juce_ResourceFileHelpers.cpp"
-    "../../../JuceLibraryCode/modules/juce_build_tools/utils/juce_ResourceFileHelpers.h"
-    "../../../JuceLibraryCode/modules/juce_build_tools/utils/juce_ResourceRc.cpp"
-    "../../../JuceLibraryCode/modules/juce_build_tools/utils/juce_ResourceRc.h"
-    "../../../JuceLibraryCode/modules/juce_build_tools/utils/juce_VersionNumbers.cpp"
-    "../../../JuceLibraryCode/modules/juce_build_tools/utils/juce_VersionNumbers.h"
-    "../../../JuceLibraryCode/modules/juce_build_tools/juce_build_tools.cpp"
-    "../../../JuceLibraryCode/modules/juce_build_tools/juce_build_tools.h"
     "../../../JuceLibraryCode/modules/juce_core/containers/juce_AbstractFifo.cpp"
     "../../../JuceLibraryCode/modules/juce_core/containers/juce_AbstractFifo.h"
     "../../../JuceLibraryCode/modules/juce_core/containers/juce_Array.h"
@@ -1589,7 +1568,6 @@ add_library( ${BINARY_NAME}
     "../../../JuceLibraryCode/include_juce_audio_formats.cpp"
     "../../../JuceLibraryCode/include_juce_audio_processors.cpp"
     "../../../JuceLibraryCode/include_juce_audio_utils.cpp"
-    "../../../JuceLibraryCode/include_juce_build_tools.cpp"
     "../../../JuceLibraryCode/include_juce_core.cpp"
     "../../../JuceLibraryCode/include_juce_data_structures.cpp"
     "../../../JuceLibraryCode/include_juce_events.cpp"
@@ -2242,27 +2220,6 @@ set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_utils/p
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_utils/juce_audio_utils.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_utils/juce_audio_utils.mm" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_utils/juce_audio_utils.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties("../../../JuceLibraryCode/modules/juce_build_tools/utils/juce_BinaryResourceFile.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties("../../../JuceLibraryCode/modules/juce_build_tools/utils/juce_BinaryResourceFile.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties("../../../JuceLibraryCode/modules/juce_build_tools/utils/juce_BuildHelperFunctions.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties("../../../JuceLibraryCode/modules/juce_build_tools/utils/juce_BuildHelperFunctions.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties("../../../JuceLibraryCode/modules/juce_build_tools/utils/juce_CppTokeniserFunctions.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties("../../../JuceLibraryCode/modules/juce_build_tools/utils/juce_Entitlements.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties("../../../JuceLibraryCode/modules/juce_build_tools/utils/juce_Entitlements.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties("../../../JuceLibraryCode/modules/juce_build_tools/utils/juce_Icons.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties("../../../JuceLibraryCode/modules/juce_build_tools/utils/juce_Icons.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties("../../../JuceLibraryCode/modules/juce_build_tools/utils/juce_PlistOptions.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties("../../../JuceLibraryCode/modules/juce_build_tools/utils/juce_PlistOptions.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties("../../../JuceLibraryCode/modules/juce_build_tools/utils/juce_ProjectType.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties("../../../JuceLibraryCode/modules/juce_build_tools/utils/juce_RelativePath.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties("../../../JuceLibraryCode/modules/juce_build_tools/utils/juce_ResourceFileHelpers.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties("../../../JuceLibraryCode/modules/juce_build_tools/utils/juce_ResourceFileHelpers.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties("../../../JuceLibraryCode/modules/juce_build_tools/utils/juce_ResourceRc.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties("../../../JuceLibraryCode/modules/juce_build_tools/utils/juce_ResourceRc.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties("../../../JuceLibraryCode/modules/juce_build_tools/utils/juce_VersionNumbers.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties("../../../JuceLibraryCode/modules/juce_build_tools/utils/juce_VersionNumbers.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties("../../../JuceLibraryCode/modules/juce_build_tools/juce_build_tools.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties("../../../JuceLibraryCode/modules/juce_build_tools/juce_build_tools.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_core/containers/juce_AbstractFifo.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_core/containers/juce_AbstractFifo.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_core/containers/juce_Array.h" PROPERTIES HEADER_FILE_ONLY TRUE)

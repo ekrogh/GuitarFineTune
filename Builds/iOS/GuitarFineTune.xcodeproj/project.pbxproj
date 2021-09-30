@@ -22,7 +22,6 @@
 		3DE06854AEF3AC35AB59F039 /* eksAudioControlComponent.cpp */ = {isa = PBXBuildFile; fileRef = C30445FF2F4399E1396CC52A; };
 		40B04620A0DB7D69B8FB36B3 /* App */ = {isa = PBXBuildFile; fileRef = 8D8ED3E7474D65E7177750A8; };
 		46CBC32F4D35E3CB74BC07BA /* guitarFineTuneFirstClass.cpp */ = {isa = PBXBuildFile; fileRef = DA0E44CCE765370592F7F300; };
-		53FD2C818B50521805D8466B /* include_juce_build_tools.cpp */ = {isa = PBXBuildFile; fileRef = 136F6519433F26CD3445C097; };
 		5419FABA1445654FFC15BEF2 /* eksNotModalProgressWindow.cpp */ = {isa = PBXBuildFile; fileRef = 832DBF8B6ACEA1A84326E5E1; };
 		54CEEC46CBC59590F7CFFFA3 /* include_juce_graphics.mm */ = {isa = PBXBuildFile; fileRef = B5540A720E3809D34A71A8E5; };
 		56A011EC51220996D4F00254 /* include_juce_core.mm */ = {isa = PBXBuildFile; fileRef = BF256F6C10EF6FAFC2A585BB; };
@@ -65,7 +64,6 @@
 		0A6C967BBB5D4418A23463EB /* CoreAudioKit.framework */ /* CoreAudioKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudioKit.framework; path = System/Library/Frameworks/CoreAudioKit.framework; sourceTree = SDKROOT; };
 		0DC6CFFB01133951B6601748 /* juce_audio_utils */ /* juce_audio_utils */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_audio_utils; path = ../../JuceLibraryCode/modules/juce_audio_utils; sourceTree = SOURCE_ROOT; };
 		0E943A9EF57CD424DA2E8959 /* juce_audio_processors */ /* juce_audio_processors */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_audio_processors; path = ../../JuceLibraryCode/modules/juce_audio_processors; sourceTree = SOURCE_ROOT; };
-		136F6519433F26CD3445C097 /* include_juce_build_tools.cpp */ /* include_juce_build_tools.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = include_juce_build_tools.cpp; path = ../../JuceLibraryCode/include_juce_build_tools.cpp; sourceTree = SOURCE_ROOT; };
 		1C1C43188A054835D251C5F4 /* Typelist.h */ /* Typelist.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Typelist.h; path = ../../Source/Typelist.h; sourceTree = SOURCE_ROOT; };
 		1C86227F5F0CE8D63F78F5A3 /* Main.cpp */ /* Main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Main.cpp; path = ../../Source/Main.cpp; sourceTree = SOURCE_ROOT; };
 		269F56875A5A8A228A302EE2 /* Launch Screen.storyboard */ /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "Launch Screen.storyboard"; path = "../../iOS_Special/Launch Screen.storyboard"; sourceTree = SOURCE_ROOT; };
@@ -146,7 +144,6 @@
 		EE950B43055FE4BE1AEFFFA5 /* gfft.h */ /* gfft.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = gfft.h; path = ../../Source/gfft.h; sourceTree = SOURCE_ROOT; };
 		EF31FEB33BE51DA1ADE85890 /* juce_data_structures */ /* juce_data_structures */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_data_structures; path = ../../JuceLibraryCode/modules/juce_data_structures; sourceTree = SOURCE_ROOT; };
 		F96200A03AE92755D90A5C52 /* AVFoundation.framework */ /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		FB3E07E6847BD319FD36686B /* juce_build_tools */ /* juce_build_tools */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_build_tools; path = ../../JuceLibraryCode/modules/juce_build_tools; sourceTree = SOURCE_ROOT; };
 		FF95EC7ADBED0BFF63E32827 /* include_juce_gui_basics.mm */ /* include_juce_gui_basics.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_gui_basics.mm; path = ../../JuceLibraryCode/include_juce_gui_basics.mm; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -195,7 +192,6 @@
 				B4A1C884F9B234392458A2F7,
 				0E943A9EF57CD424DA2E8959,
 				0DC6CFFB01133951B6601748,
-				FB3E07E6847BD319FD36686B,
 				5F9168FA60857F7A8339A43F,
 				EF31FEB33BE51DA1ADE85890,
 				DD7F600D3E187FB812A4F6D1,
@@ -251,7 +247,6 @@
 				8CF038A507C97320B2BFE390,
 				5A3DBDB080CBC7DDA0DD9868,
 				8E2372BA8AF97FF946178E91,
-				136F6519433F26CD3445C097,
 				BF256F6C10EF6FAFC2A585BB,
 				34137BFFFF3A6B4EB306C276,
 				CD1EED5A10971AA8EAF940B0,
@@ -450,7 +445,6 @@
 				CA2A858D76797910F5D093C6,
 				D27EAA8BD2D3927E1B17A844,
 				6D8F1CDC011290A48F8F4FF1,
-				53FD2C818B50521805D8466B,
 				56A011EC51220996D4F00254,
 				8377B7FE2B3A637A45B04209,
 				802CAC8A9C457A93FF4D7F44,
