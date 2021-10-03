@@ -13,3 +13,5 @@ x64
 /.vscode/dryrun.log
 /.vscode/settings.json
 /guitarfinetune_8.6.5.git_amd64.snap
+/Builds/LinuxMakefile/build/GuitarFineTune
+/Builds/LinuxMakefile/snap/snapcraft.yaml
