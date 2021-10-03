@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <JUCERPROJECT id="cgcxPd" name="GuitarFineTune" projectType="guiapp" version="8.6.5"
-              bundleIdentifier="dk.eksIt.GuitarFineTuneP" includeBinaryInAppConfig="1"
+              bundleIdentifier="dk.eksIt.GuitarFineTune" includeBinaryInAppConfig="1"
               reportAppUsage="1" companyCopyright="eksit" companyName="eksit"
               companyWebsite="eksit.dk" companyEmail="guitarFineTune@eksit.dk"
               cppLanguageStandard="17" jucerFormatVersion="1" displaySplashScreen="1">
@@ -209,7 +209,7 @@
         <MODULEPATH id="juce_audio_basics" path="/home/eigil/projects/juceProjs/guitarFineTune/JUCE/modules"/>
       </MODULEPATHS>
     </CODEBLOCKS_LINUX>
-    <LINUX_MAKE targetFolder="./" smallIcon="RB4slw" bigIcon="DzMVX4">
+    <LINUX_MAKE targetFolder="Builds/LinuxMakefile" smallIcon="RB4slw" bigIcon="DzMVX4">
       <CONFIGURATIONS>
         <CONFIGURATION isDebug="1" name="Debug" linuxArchitecture="-m64" headerPath="/usr/include/freetype2"/>
         <CONFIGURATION isDebug="0" name="Release" headerPath="/usr/include/freetype2"/>

@@ -18,7 +18,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "dk.eksit.guitarfinetunep"
+        applicationId "dk.eksit.guitarfinetune"
         minSdkVersion    16
         targetSdkVersion 30
         externalNativeBuild {
