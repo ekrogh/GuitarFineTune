@@ -1,13 +1,13 @@
 name: guitarfinetune
 base: core18
-version: "8.6.5.git"
+version: "8.6.5."git
 summary: Guitar fine-tuning tool
 description: |
   guitarfinetune
   compares the current frequencies of the guitar strings
   with the frequencies that the strings should have.
 grade: devel # must be 'stable' to release into candidate/stable channels
-confinement: devmode # use 'strict' once you have the right plugs and slots
+confinement: strict # use 'strict' once you have the right plugs and slots
 
 parts:
   guitarfinetune:
