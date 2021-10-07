@@ -133,11 +133,14 @@ parts:
 
 apps:
   guitarfinetune:
+    extensions: [gnome-3-28]
     command: guitarfinetune
     environment:
       LD_LIBRARY_PATH: "$LD_LIBRARY_PATH:$SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/pulseaudio"
     plugs:
-      - x11
       - opengl
       - pulseaudio
+      - desktop
+      - desktop-legacy
       - wayland
+      - x11
