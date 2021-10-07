@@ -1,13 +1,13 @@
 name: guitarfinetune
 base: core18
-version: "8.6.5."git
+version: 8.6.5.git
 summary: Guitar fine-tuning tool
 description: |
   guitarfinetune
   compares the current frequencies of the guitar strings
   with the frequencies that the strings should have.
 grade: devel # must be 'stable' to release into candidate/stable channels
-confinement: strict # use 'strict' once you have the right plugs and slots
+confinement: devmode # use 'strict' once you have the right plugs and slots
 
 parts:
   guitarfinetune:
@@ -35,14 +35,35 @@ parts:
       - libxcursor-dev
       - libgtk-3-dev
       - libwebkit2gtk-4.0-dev
-      # - libglu1-mesa-dev
-      # - mesa-common-dev
+      - libglu1-mesa-dev
+      - mesa-common-dev
       - libasound2-dev
-      # - libjack-jackd2-dev
+      - libjack-jackd2-dev
       - libcurl4-openssl-dev
-      # - freeglut3-dev
-      # - ladspa-sdk
+      - freeglut3-dev
+      - ladspa-sdk
     stage-packages:
+      - libxfixes3
+      - libmd0
+      - libsqlite3-0
+      - libffi6
+      - libkeyutils1
+      - libtasn1-6
+      - libp11-kit0
+      - libkrb5support0
+      - libcomerr2
+      - libk5crypto3
+      - libkrb5-3
+      - libgmp10
+      - libnettle6
+      - libhogweed4
+      - libgnutls30
+      - libunistring2
+      - libgssapi-krb5-2
+      - libssl1.1
+      - libssh-4
+      - libidn2-0
+      - libbrotli1
       - libasn1-8-heimdal
       - libcurl4
       - libfreetype6
@@ -119,3 +140,4 @@ apps:
       - x11
       - opengl
       - pulseaudio
+      - wayland
