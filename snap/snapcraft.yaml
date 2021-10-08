@@ -16,7 +16,7 @@ parts:
       cd Builds/LinuxMakefile/
       pwd
       make clean
-      make
+      make CONFIG=Debug
       cp build/GuitarFineTune $SNAPCRAFT_PART_INSTALL/guitarfinetune
     source: .
     build-packages:
