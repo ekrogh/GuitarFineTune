@@ -20,11 +20,9 @@ parts:
       cp build/GuitarFineTune $SNAPCRAFT_PART_INSTALL/guitarfinetune
     source: .
     build-packages:
-      - tree
       - g++
       - make
       - git
-      - dpkg
       - libfreetype6-dev
       - libx11-dev
       - libxcomposite-dev
@@ -138,8 +136,11 @@ apps:
     environment:
       LD_LIBRARY_PATH: "$LD_LIBRARY_PATH:$SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/pulseaudio"
     plugs:
+      - alsa
       - opengl
       - pulseaudio
+      - audio-record
+      - audio-playback
       - desktop
       - desktop-legacy
       - wayland
