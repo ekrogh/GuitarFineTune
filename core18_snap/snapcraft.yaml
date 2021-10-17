@@ -1,6 +1,6 @@
 name: guitarfinetune
 base: core18
-version: "8.6.5"
+version: 8.6.5.git
 summary: Guitar fine-tuning tool
 description: |
   guitarfinetune
@@ -131,17 +131,17 @@ parts:
 
 apps:
   guitarfinetune:
-    extensions: [gnome-3-34]
+    extensions: [gnome-3-28]
     command: guitarfinetune
     plugs:
-      - screencast-legacy
-      - pulseaudio
       - alsa
-      - jack1
-      - audio-record
       - audio-playback
+      - audio-record
       - opengl
+      - pulseaudio
       - desktop
       - desktop-legacy
       - wayland
       - x11
+    environment:
+      ALWAYS_USE_PULSEAUDIO: '1'
