@@ -212,7 +212,7 @@
     <LINUX_MAKE targetFolder="Builds/LinuxMakefile" smallIcon="RB4slw" bigIcon="DzMVX4">
       <CONFIGURATIONS>
         <CONFIGURATION isDebug="1" name="Debug" linuxArchitecture="-m64"/>
-        <CONFIGURATION isDebug="0" name="Release"/>
+        <CONFIGURATION isDebug="0" name="Release" optimisation="6"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_gui_extra"/>

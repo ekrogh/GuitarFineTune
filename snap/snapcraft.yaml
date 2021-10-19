@@ -6,8 +6,9 @@ description: |
   guitarfinetune
   compares the current frequencies of the guitar strings
   to the frequencies that the strings should have.
-grade: devel # must be 'stable' to release into candidate/stable channels
-confinement: devmode # use 'strict' once you have the right plugs and slots
+grade: stable # must be 'stable' to release into candidate/stable channels
+confinement: strict # use 'strict' once you have the right plugs and slots
+# confinement: devmode # use 'strict' once you have the right plugs and slots
 
 parts:
   alsa-mixin:
@@ -48,7 +49,7 @@ parts:
       cd Builds/LinuxMakefile/
       pwd
       make clean
-      make CONFIG=Debug
+      make CONFIG=Release
       cp build/GuitarFineTune $SNAPCRAFT_PART_INSTALL/guitarfinetune
     source: .
     build-packages:
