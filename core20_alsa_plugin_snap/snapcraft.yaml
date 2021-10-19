@@ -1,11 +1,11 @@
 name: guitarfinetune
-base: core18
+base: core20
 version: "8.6.5"
 summary: Guitar fine-tuning tool
 description: |
   guitarfinetune
   compares the current frequencies of the guitar strings
-  to the frequencies that the strings should have.
+  with the frequencies that the strings should have.
 grade: devel # must be 'stable' to release into candidate/stable channels
 confinement: devmode # use 'strict' once you have the right plugs and slots
 
@@ -76,7 +76,7 @@ parts:
       - libxfixes3
       - libmd0
       - libsqlite3-0
-      - libffi6
+      - libffi7
       - libkeyutils1
       - libtasn1-6
       - libp11-kit0
@@ -85,8 +85,8 @@ parts:
       - libk5crypto3
       - libkrb5-3
       - libgmp10
-      - libnettle6
-      - libhogweed4
+      - libnettle7
+      - libhogweed5
       - libgnutls30
       - libunistring2
       - libgssapi-krb5-2
@@ -118,7 +118,7 @@ parts:
       - libxrandr2
       - libxrender1
       - libopenal1
-      - libsndio6.1
+      - libsndio7.0
       - libspeex1
       - libvorbisfile3
       - libwayland-client0
@@ -144,7 +144,7 @@ parts:
       - libogg0
       - libpng16-16
       - libpulse0
-      - libsdl1.2debian
+      - libsdl2-2.0-0
       - libslang2
       - libsndfile1
       - libstdc++6
@@ -169,13 +169,13 @@ layout:
 
 apps:
   guitarfinetune:
-    extensions: [gnome-3-34]
+    extensions: [gnome-3-38]
     command-chain: ["snap/command-chain/alsa-launch"]
     command: guitarfinetune
     plugs:
-      - alsa
       - audio-record
       - pulseaudio
+      - alsa
       - audio-playback
       - opengl
       - desktop
