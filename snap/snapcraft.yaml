@@ -13,7 +13,7 @@ confinement: strict # use 'strict' once you have the right plugs and slots
 parts:
   alsa-mixin:
     plugin: dump
-    source: https://github.com/diddlesnaps/snapcraft-alsa.git
+    source: https://github.com/ekrogh/snapcraft-alsa.git
     source-subdir: snapcraft-assets
     build-packages:
       - libasound2-dev
