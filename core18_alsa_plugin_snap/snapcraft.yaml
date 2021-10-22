@@ -1,22 +1,55 @@
 name: guitarfinetune
 base: core18
-version: 8.6.5.git
+version: "8.6.5"
 summary: Guitar fine-tuning tool
 description: |
   guitarfinetune
   compares the current frequencies of the guitar strings
-  with the frequencies that the strings should have.
-grade: devel # must be 'stable' to release into candidate/stable channels
-confinement: devmode # use 'strict' once you have the right plugs and slots
+  to the frequencies that the strings should have.
+grade: stable # must be 'stable' to release into candidate/stable channels
+confinement: strict # use 'strict' once you have the right plugs and slots
+# confinement: devmode # use 'strict' once you have the right plugs and slots
 
 parts:
+  alsa-mixin:
+    plugin: dump
+    source: https://github.com/ekrogh/snapcraft-alsa.git
+    source-subdir: snapcraft-assets
+    build-packages:
+      - libasound2-dev
+    stage-packages:
+      - libasound2
+      - libasound2-plugins
+      - yad
+    stage:
+      # restrict to only audio-related files - you need to ensure
+      # that gtk3 is staged for yad to work correctly, to prompt
+      # users to connect the alsa plug or proceed with pulseaudio.
+      #
+      # This helps prevent symbol conflicts in situations where
+      # you're using a non-default library, such as those that the
+      # gnome-3-34 extension for core18 provides.
+      - etc/asound.conf
+      - snap/command-chain/alsa-launch
+      - usr/bin/yad*
+      - usr/lib/$SNAPCRAFT_ARCH_TRIPLET/alsa-lib
+      - usr/lib/$SNAPCRAFT_ARCH_TRIPLET/libasound*
+      - usr/lib/$SNAPCRAFT_ARCH_TRIPLET/libdnsfile*
+      - usr/lib/$SNAPCRAFT_ARCH_TRIPLET/libFLAC*
+      - usr/lib/$SNAPCRAFT_ARCH_TRIPLET/libjack*
+      - usr/lib/$SNAPCRAFT_ARCH_TRIPLET/libpulse*
+      - usr/lib/$SNAPCRAFT_ARCH_TRIPLET/libsamplerate*
+      - usr/lib/$SNAPCRAFT_ARCH_TRIPLET/libspeex*
+      - usr/lib/$SNAPCRAFT_ARCH_TRIPLET/libvorbis*
+      - usr/lib/$SNAPCRAFT_ARCH_TRIPLET/pulseaudio
   guitarfinetune:
+    after: [alsa-mixin]
     plugin: nil
     override-build: |
       cd Builds/LinuxMakefile/
       pwd
       make clean
-      make CONFIG=Debug
+      make CONFIG=Release
       cp build/GuitarFineTune $SNAPCRAFT_PART_INSTALL/guitarfinetune
     source: .
     build-packages:
@@ -129,19 +162,26 @@ parts:
       - zlib1g
       - freeglut3
 
+layout:
+  /usr/lib/$SNAPCRAFT_ARCH_TRIPLET/alsa-lib:
+    bind: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/alsa-lib
+  /usr/share/alsa:
+    bind: $SNAP/usr/share/alsa
+
 apps:
   guitarfinetune:
     extensions: [gnome-3-28]
+    command-chain: ["snap/command-chain/alsa-launch"]
     command: guitarfinetune
     plugs:
       - alsa
-      - audio-playback
       - audio-record
-      - opengl
       - pulseaudio
+      - audio-playback
+      - opengl
       - desktop
       - desktop-legacy
       - wayland
       - x11
-    environment:
-      ALWAYS_USE_PULSEAUDIO: '1'
+    # environment:
+    #   ALWAYS_USE_PULSEAUDIO: '1'
