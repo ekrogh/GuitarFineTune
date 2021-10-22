@@ -130,7 +130,6 @@ parts:
       - libasound2
       - libasyncns0
       - libbsd0
-      - libcaca0
       - libdbus-1-3
       - libflac8
       - libgcc1
