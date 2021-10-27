@@ -167,6 +167,9 @@ layout:
   /usr/share/alsa:
     bind: $SNAP/usr/share/alsa
 
+architectures:
+  - build-on: [s390x, arm64, armhf, amd64]
+
 apps:
   guitarfinetune:
     extensions: [gnome-3-28]
