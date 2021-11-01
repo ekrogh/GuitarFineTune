@@ -1,6 +1,6 @@
 name: guitarfinetune
 base: core18
-version: "8.6.5"
+version: "8.6.6"
 summary: Guitar fine-tuning tool
 description: |
   guitarfinetune
@@ -9,6 +9,8 @@ description: |
 grade: stable # must be 'stable' to release into candidate/stable channels
 confinement: strict # use 'strict' once you have the right plugs and slots
 # confinement: devmode # use 'strict' once you have the right plugs and slots
+
+architectures: [amd64, s390x, arm64, armhf]
 
 parts:
   alsa-mixin:
