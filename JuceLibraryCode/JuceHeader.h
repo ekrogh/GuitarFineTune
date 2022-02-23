@@ -48,7 +48,7 @@ namespace ProjectInfo
 {
     const char* const  projectName    = "GuitarFineTune";
     const char* const  companyName    = "eksit";
-    const char* const  versionString  = "8.6.6";
-    const int          versionNumber  = 0x80606;
+    const char* const  versionString  = "8.6.7";
+    const int          versionNumber  = 0x80607;
 }
 #endif
