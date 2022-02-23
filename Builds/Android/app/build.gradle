@@ -1,0 +1,96 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 30
+    externalNativeBuild {
+        cmake {
+            path "CMakeLists.txt"
+        }
+    }
+    signingConfigs {
+        juceSigning {
+            storeFile     file("..${File.separator}..${File.separator}..${File.separator}Android_Special${File.separator}keystore.jks")
+            storePassword "6taura"
+            keyAlias      "upload"
+            keyPassword   "6taura"
+            storeType     "jks"
+        }
+    }
+
+    defaultConfig {
+        applicationId "dk.eksit.guitarfinetune"
+        minSdkVersion    16
+        targetSdkVersion 30
+        externalNativeBuild {
+            cmake {
+                arguments "-DANDROID_TOOLCHAIN=clang", "-DANDROID_PLATFORM=android-16", "-DANDROID_STL=c++_static", "-DANDROID_CPP_FEATURES=exceptions rtti", "-DANDROID_ARM_MODE=arm", "-DANDROID_ARM_NEON=TRUE", "-DCMAKE_CXX_STANDARD=17", "-DCMAKE_CXX_EXTENSIONS=OFF"
+            }
+        }
+    }
+
+    buildTypes {
+         debug {
+             initWith debug
+             debuggable    true
+             jniDebuggable true
+             signingConfig signingConfigs.juceSigning
+         }
+    }
+
+    flavorDimensions "default"
+    productFlavors {
+        release_ {
+            externalNativeBuild {
+                cmake {
+                    arguments "-DJUCE_BUILD_CONFIGURATION=RELEASE", "-DCMAKE_CXX_FLAGS_RELEASE=-O3", "-DCMAKE_C_FLAGS_RELEASE=-O3"
+                }
+            }
+
+            dimension "default"
+       }
+        debug_ {
+            ndk {
+                abiFilters "armeabi-v7a", "arm64-v8a", "x86", "x86_64"
+            }
+            externalNativeBuild {
+                cmake {
+                    arguments "-DJUCE_BUILD_CONFIGURATION=DEBUG", "-DCMAKE_CXX_FLAGS_DEBUG=-O0", "-DCMAKE_C_FLAGS_DEBUG=-O0"
+                }
+            }
+
+            dimension "default"
+       }
+    }
+
+    variantFilter { variant ->
+        def names = variant.flavors*.name
+        if (names.contains ("release_")
+              && variant.buildType.name != "release") {
+            setIgnore(true)
+        }
+        if (names.contains ("debug_")
+              && variant.buildType.name != "debug") {
+            setIgnore(true)
+        }
+    }
+
+    sourceSets {
+        main.java.srcDirs +=
+            ["../../../../JUCE/modules/juce_core/native/javacore/init",
+             "../../../../JUCE/modules/juce_core/native/javacore/app",
+             "../../../../JUCE/modules/juce_gui_basics/native/javaopt/app"]
+
+        main.res.srcDirs +=
+            []
+    }
+
+    repositories {
+    }
+
+    dependencies {
+    }
+
+
+
+}
+
