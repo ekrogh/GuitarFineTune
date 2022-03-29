@@ -1,5 +1,6 @@
+﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2019
+# Visual Studio Version 16
 
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GuitarFineTune - App", "GuitarFineTune_App.vcxproj", "{5F11C54A-E1F5-0119-1E0A-E26E0B8E911C}"
 EndProject

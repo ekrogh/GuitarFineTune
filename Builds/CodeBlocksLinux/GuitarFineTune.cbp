@@ -19,8 +19,8 @@
           <Add option="-DDEBUG=&quot;1&quot;"/>
           <Add option="-D_DEBUG=&quot;1&quot;"/>
           <Add option="-DJUCER_CODEBLOCKS_LINUX_191E0897=&quot;1&quot;"/>
-          <Add option="-DJUCE_APP_VERSION=&quot;8.6.7&quot;"/>
-          <Add option="-DJUCE_APP_VERSION_HEX=&quot;0x80607&quot;"/>
+          <Add option="-DJUCE_APP_VERSION=&quot;8.6.8&quot;"/>
+          <Add option="-DJUCE_APP_VERSION_HEX=&quot;0x80608&quot;"/>
           <Add option="-DJucePlugin_Build_VST=&quot;0&quot;"/>
           <Add option="-DJucePlugin_Build_VST3=&quot;0&quot;"/>
           <Add option="-DJucePlugin_Build_AU=&quot;0&quot;"/>
@@ -62,8 +62,8 @@
           <Add option="-DLINUX=&quot;1&quot;"/>
           <Add option="-DNDEBUG=&quot;1&quot;"/>
           <Add option="-DJUCER_CODEBLOCKS_LINUX_191E0897=&quot;1&quot;"/>
-          <Add option="-DJUCE_APP_VERSION=&quot;8.6.7&quot;"/>
-          <Add option="-DJUCE_APP_VERSION_HEX=&quot;0x80607&quot;"/>
+          <Add option="-DJUCE_APP_VERSION=&quot;8.6.8&quot;"/>
+          <Add option="-DJUCE_APP_VERSION_HEX=&quot;0x80608&quot;"/>
           <Add option="-DJucePlugin_Build_VST=&quot;0&quot;"/>
           <Add option="-DJucePlugin_Build_VST3=&quot;0&quot;"/>
           <Add option="-DJucePlugin_Build_AU=&quot;0&quot;"/>
@@ -3624,6 +3624,12 @@
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/processors/juce_HostedAudioProcessorParameter.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
     <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/processors/juce_PluginDescription.cpp">
       <Option target="App | Debug"/>
       <Option target="App | Release"/>
@@ -3906,6 +3912,18 @@
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_utils/gui/juce_KeyboardComponentBase.cpp">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_utils/gui/juce_KeyboardComponentBase.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
     <Unit filename="../../JuceLibraryCode/modules/juce_audio_utils/gui/juce_MidiKeyboardComponent.cpp">
       <Option target="App | Debug"/>
       <Option target="App | Release"/>
@@ -3913,6 +3931,18 @@
       <Option link="0"/>
     </Unit>
     <Unit filename="../../JuceLibraryCode/modules/juce_audio_utils/gui/juce_MidiKeyboardComponent.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_utils/gui/juce_MPEKeyboardComponent.cpp">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_utils/gui/juce_MPEKeyboardComponent.h">
       <Option target="App | Debug"/>
       <Option target="App | Release"/>
       <Option compile="0"/>
@@ -4147,6 +4177,12 @@
       <Option link="0"/>
     </Unit>
     <Unit filename="../../JuceLibraryCode/modules/juce_core/containers/juce_ScopedValueSetter.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_core/containers/juce_SingleThreadedAbstractFifo.h">
       <Option target="App | Debug"/>
       <Option target="App | Release"/>
       <Option compile="0"/>
@@ -4477,6 +4513,12 @@
       <Option link="0"/>
     </Unit>
     <Unit filename="../../JuceLibraryCode/modules/juce_core/memory/juce_ReferenceCountedObject.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_core/memory/juce_Reservoir.h">
       <Option target="App | Debug"/>
       <Option target="App | Release"/>
       <Option compile="0"/>
@@ -5610,6 +5652,18 @@
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_data_structures/values/juce_ValueTreePropertyWithDefault.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_data_structures/values/juce_ValueTreePropertyWithDefault_test.cpp">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
     <Unit filename="../../JuceLibraryCode/modules/juce_data_structures/values/juce_ValueTreeSynchroniser.cpp">
       <Option target="App | Debug"/>
       <Option target="App | Release"/>
@@ -6228,6 +6282,12 @@
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_graphics/geometry/juce_Rectangle_test.cpp">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
     <Unit filename="../../JuceLibraryCode/modules/juce_graphics/geometry/juce_RectangleList.h">
       <Option target="App | Debug"/>
       <Option target="App | Release"/>
@@ -6787,6 +6847,12 @@
       <Option link="0"/>
     </Unit>
     <Unit filename="../../JuceLibraryCode/modules/juce_graphics/images/juce_ImageFileFormat.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_graphics/images/juce_ScaledImage.h">
       <Option target="App | Debug"/>
       <Option target="App | Release"/>
       <Option compile="0"/>
@@ -7968,6 +8034,18 @@
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_gui_basics/misc/juce_FocusOutline.cpp">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_gui_basics/misc/juce_FocusOutline.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
     <Unit filename="../../JuceLibraryCode/modules/juce_gui_basics/misc/juce_JUCESplashScreen.cpp">
       <Option target="App | Debug"/>
       <Option target="App | Release"/>
@@ -8082,6 +8160,12 @@
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_gui_basics/mouse/juce_PointerState.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
     <Unit filename="../../JuceLibraryCode/modules/juce_gui_basics/mouse/juce_SelectedItemSet.h">
       <Option target="App | Debug"/>
       <Option target="App | Release"/>
@@ -8143,6 +8227,12 @@
       <Option link="0"/>
     </Unit>
     <Unit filename="../../JuceLibraryCode/modules/juce_gui_basics/native/accessibility/juce_win32_AccessibilityElement.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_gui_basics/native/accessibility/juce_win32_ComInterfaces.h">
       <Option target="App | Debug"/>
       <Option target="App | Release"/>
       <Option compile="0"/>
@@ -8359,6 +8449,12 @@
       <Option link="0"/>
     </Unit>
     <Unit filename="../../JuceLibraryCode/modules/juce_gui_basics/native/juce_MultiTouchMapper.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_gui_basics/native/juce_ScopedDPIAwarenessDisabler.h">
       <Option target="App | Debug"/>
       <Option target="App | Release"/>
       <Option compile="0"/>
@@ -9187,6 +9283,12 @@
       <Option link="0"/>
     </Unit>
     <Unit filename="../../JuceLibraryCode/modules/juce_gui_extra/native/juce_mac_NSViewComponent.mm">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_gui_extra/native/juce_mac_NSViewFrameWatcher.h">
       <Option target="App | Debug"/>
       <Option target="App | Release"/>
       <Option compile="0"/>
