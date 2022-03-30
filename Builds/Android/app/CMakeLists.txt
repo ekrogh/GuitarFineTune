@@ -964,8 +964,6 @@ add_library( ${BINARY_NAME}
     "../../../JuceLibraryCode/modules/juce_data_structures/values/juce_ValueTreePropertyWithDefault_test.cpp"
     "../../../JuceLibraryCode/modules/juce_data_structures/values/juce_ValueTreeSynchroniser.cpp"
     "../../../JuceLibraryCode/modules/juce_data_structures/values/juce_ValueTreeSynchroniser.h"
-    "../../../JuceLibraryCode/modules/juce_data_structures/values/juce_ValueWithDefault.cpp"
-    "../../../JuceLibraryCode/modules/juce_data_structures/values/juce_ValueWithDefault.h"
     "../../../JuceLibraryCode/modules/juce_data_structures/juce_data_structures.cpp"
     "../../../JuceLibraryCode/modules/juce_data_structures/juce_data_structures.mm"
     "../../../JuceLibraryCode/modules/juce_data_structures/juce_data_structures.h"
@@ -1530,7 +1528,6 @@ add_library( ${BINARY_NAME}
     "../../../JuceLibraryCode/modules/juce_gui_extra/embedding/juce_AndroidViewComponent.h"
     "../../../JuceLibraryCode/modules/juce_gui_extra/embedding/juce_HWNDComponent.h"
     "../../../JuceLibraryCode/modules/juce_gui_extra/embedding/juce_NSViewComponent.h"
-    "../../../JuceLibraryCode/modules/juce_gui_extra/embedding/juce_ScopedDPIAwarenessDisabler.h"
     "../../../JuceLibraryCode/modules/juce_gui_extra/embedding/juce_UIViewComponent.h"
     "../../../JuceLibraryCode/modules/juce_gui_extra/embedding/juce_XEmbedComponent.h"
     "../../../JuceLibraryCode/modules/juce_gui_extra/misc/juce_AnimatedAppComponent.cpp"
@@ -2513,8 +2510,6 @@ set_source_files_properties("../../../JuceLibraryCode/modules/juce_data_structur
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_data_structures/values/juce_ValueTreePropertyWithDefault_test.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_data_structures/values/juce_ValueTreeSynchroniser.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_data_structures/values/juce_ValueTreeSynchroniser.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties("../../../JuceLibraryCode/modules/juce_data_structures/values/juce_ValueWithDefault.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties("../../../JuceLibraryCode/modules/juce_data_structures/values/juce_ValueWithDefault.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_data_structures/juce_data_structures.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_data_structures/juce_data_structures.mm" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_data_structures/juce_data_structures.h" PROPERTIES HEADER_FILE_ONLY TRUE)
@@ -3079,7 +3074,6 @@ set_source_files_properties("../../../JuceLibraryCode/modules/juce_gui_extra/emb
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_gui_extra/embedding/juce_AndroidViewComponent.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_gui_extra/embedding/juce_HWNDComponent.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_gui_extra/embedding/juce_NSViewComponent.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties("../../../JuceLibraryCode/modules/juce_gui_extra/embedding/juce_ScopedDPIAwarenessDisabler.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_gui_extra/embedding/juce_UIViewComponent.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_gui_extra/embedding/juce_XEmbedComponent.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_gui_extra/misc/juce_AnimatedAppComponent.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)

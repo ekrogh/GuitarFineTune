@@ -370,7 +370,7 @@ private:
 	long double noSamplesWantedInMeasuredNoiseCalcsMinus1 = (long double)(noSamplesWantedInMeasuredNoiseCalcs - 1);
 
 
-	float float_2PI = float_Pi * 2.0f;
+	float float_2PI = MathConstants<float>::pi * 2.0f;
 
 	//% There are six strings on a guitar, each with an open notes of
 	//	% E2, A2, D3, G3, B3, and E4, each with corresponding frequencies of
@@ -455,8 +455,8 @@ private:
 	std::vector<float> guitarStringSoundsRamp;
 	std::vector<double> fullBffrLgthHalfSinePeriodValues;
 	std::vector<double> halfBffrLgthHalfSinePeriodValues;
-	const double threeQuatersOf2Pi = (double)3.0f * (double)juce::float_Pi / (double)2.0f;
-	const double piHalf = (double)juce::float_Pi / (double)2.0f;
+	const double threeQuatersOf2Pi = (double)3.0f * MathConstants<double>::pi / (double)2.0f;
+	const double piHalf = MathConstants<double>::pi / (double)2.0f;
 	bool playGuitarStringSoundsRamp = false;
 	float stringGainToUse = 1.0;
 	float stringsGain = 1.0;
