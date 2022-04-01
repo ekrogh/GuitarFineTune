@@ -42,6 +42,7 @@
 		A76933CD947F74A1A340547E /* WebKit.framework */ = {isa = PBXBuildFile; fileRef = 6A66D46C1FBEDAD6A106A536; };
 		A95D7EA8475526035C9B0DBE /* include_juce_audio_devices.mm */ = {isa = PBXBuildFile; fileRef = 005D3FDA17BBCA6D812854C9; };
 		B7E6F5F4B373593565102AAD /* AudioRecorder.cpp */ = {isa = PBXBuildFile; fileRef = 8A01971D90B2D6D952341A1A; };
+		BA17570CEAFAB68B6386A524 /* Launch Screen.storyboard */ = {isa = PBXBuildFile; fileRef = 1AB7862EFDF64106B638A54D; };
 		BD735741B2636A595517B957 /* helpPage.cpp */ = {isa = PBXBuildFile; fileRef = C2B38450ACA722D49B2D29A2; };
 		C12D3F18B2F263301E0B6E21 /* guitarStringSoundsControl.cpp */ = {isa = PBXBuildFile; fileRef = 39AAB04B7C11B150245B9A23; };
 		C6A374FEE166D72577DBD712 /* Icon.icns */ = {isa = PBXBuildFile; fileRef = 45E0F99B16D18737074F0FCA; };
@@ -64,6 +65,7 @@
 		0A6C967BBB5D4418A23463EB /* CoreAudioKit.framework */ /* CoreAudioKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudioKit.framework; path = System/Library/Frameworks/CoreAudioKit.framework; sourceTree = SDKROOT; };
 		0DC6CFFB01133951B6601748 /* juce_audio_utils */ /* juce_audio_utils */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_audio_utils; path = ../../JuceLibraryCode/modules/juce_audio_utils; sourceTree = SOURCE_ROOT; };
 		0E943A9EF57CD424DA2E8959 /* juce_audio_processors */ /* juce_audio_processors */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_audio_processors; path = ../../JuceLibraryCode/modules/juce_audio_processors; sourceTree = SOURCE_ROOT; };
+		1AB7862EFDF64106B638A54D /* Launch Screen.storyboard */ /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "Launch Screen.storyboard"; path = "/Users/eks/projects/juceProjs/guitarFineTune/iOS_Special/Launch Screen.storyboard"; sourceTree = "<absolute>"; };
 		1C1C43188A054835D251C5F4 /* Typelist.h */ /* Typelist.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Typelist.h; path = ../../Source/Typelist.h; sourceTree = SOURCE_ROOT; };
 		1C86227F5F0CE8D63F78F5A3 /* Main.cpp */ /* Main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Main.cpp; path = ../../Source/Main.cpp; sourceTree = SOURCE_ROOT; };
 		269F56875A5A8A228A302EE2 /* Launch Screen.storyboard */ /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "Launch Screen.storyboard"; path = "../../iOS_Special/Launch Screen.storyboard"; sourceTree = SOURCE_ROOT; };
@@ -177,6 +179,7 @@
 			children = (
 				5192F983556BFBE5044419E4,
 				08DA5704A75BCDDB331E974D,
+				1AB7862EFDF64106B638A54D,
 				45E0F99B16D18737074F0FCA,
 				C9F9E8F883FAD092F16C8D8F,
 				6118B4D234223C62182B82BD,
@@ -411,6 +414,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1DC0D160E6DA83C30C34ABEC,
+				BA17570CEAFAB68B6386A524,
 				C6A374FEE166D72577DBD712,
 				70AB18BB3265004C3D061BA9,
 				9B311FAFFA1679033D1F165A,
