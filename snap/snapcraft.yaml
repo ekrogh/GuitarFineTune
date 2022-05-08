@@ -65,6 +65,7 @@ parts:
       - usr/lib/$SNAPCRAFT_ARCH_TRIPLET/libspeex*
       - usr/lib/$SNAPCRAFT_ARCH_TRIPLET/libvorbis*
       - usr/lib/$SNAPCRAFT_ARCH_TRIPLET/pulseaudio
+      
   guitarfinetune:
     after: [alsa-mixin]
     plugin: nil
@@ -189,8 +190,7 @@ layout:
     bind: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/alsa-lib
   /usr/share/alsa:
     bind: $SNAP/usr/share/alsa
-  /etc/fonts/conf.d:
-    symlink: $SNAP/etc/fonts/conf.d
+
     
 apps:
   guitarfinetune:
@@ -202,10 +202,10 @@ apps:
       - audio-record
       - pulseaudio
       - audio-playback
-      - opengl
-      - desktop
-      - desktop-legacy
-      - wayland
-      - x11
+#      - opengl
+#      - desktop
+#      - desktop-legacy
+#      - wayland
+#      - x11
     # environment:
     #   ALWAYS_USE_PULSEAUDIO: '1'
