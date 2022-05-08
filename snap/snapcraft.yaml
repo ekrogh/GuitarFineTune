@@ -189,7 +189,9 @@ layout:
     bind: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/alsa-lib
   /usr/share/alsa:
     bind: $SNAP/usr/share/alsa
-
+  /etc/fonts/conf.d:
+    symlink: $SNAP/etc/fonts/conf.d
+    
 apps:
   guitarfinetune:
     extensions: [gnome-3-28]
