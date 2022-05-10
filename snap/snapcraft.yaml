@@ -1,5 +1,5 @@
 name: guitarfinetune
-base: core18
+base: core20
 version: "8.7.4"
 summary: Guitar fine-tuning tool
 description: |
@@ -194,7 +194,7 @@ layout:
     
 apps:
   guitarfinetune:
-    extensions: [gnome-3-28]
+    extensions: [gnome-3-38]
     command-chain: ["snap/command-chain/alsa-launch"]
     command: guitarfinetune
     plugs:
