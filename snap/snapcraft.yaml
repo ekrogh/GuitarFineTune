@@ -103,7 +103,7 @@ parts:
       - libxfixes3
       - libmd0
       - libsqlite3-0
-      - libffi7
+      - libffi6
       - libkeyutils1
       - libtasn1-6
       - libp11-kit0
@@ -113,7 +113,7 @@ parts:
       - libkrb5-3
       - libgmp10
       - libnettle7
-      - libhogweed5
+      - libhogweed4
       - libgnutls30
       - libunistring2
       - libgssapi-krb5-2
@@ -145,7 +145,7 @@ parts:
       - libxrandr2
       - libxrender1
       - libopenal1
-      - libsndio7.0
+      - libsndio6.1
       - libspeex1
       - libvorbisfile3
       - libwayland-client0
