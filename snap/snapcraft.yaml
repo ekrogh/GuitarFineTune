@@ -16,12 +16,7 @@ architectures:
   - build-on: arm64
   - build-on: armhf
   - build-on: amd64
-  # - build-on: i386
-  # - build-on: amd64
-  # - build-on: s390x
-  # - build-on: arm64
-  # - build-on: armhf
-  # - build-on: i386
+  - build-on: i386
 
 # architectures: [amd64, s390x, arm64, armhf]
 # architectures:
@@ -209,10 +204,3 @@ apps:
       - audio-record
       - pulseaudio
       - audio-playback
-#      - opengl
-#      - desktop
-#      - desktop-legacy
-#      - wayland
-#      - x11
-    # environment:
-    #   ALWAYS_USE_PULSEAUDIO: '1'
