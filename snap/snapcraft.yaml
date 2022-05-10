@@ -10,7 +10,13 @@ grade: stable # must be 'stable' to release into candidate/stable channels
 confinement: strict # use 'strict' once you have the right plugs and slots
 # confinement: devmode # use 'strict' once you have the right plugs and slots
 
-architectures: [ s390x, ppc64el, arm64, armhf, amd64 ]
+architectures:
+  - build-on: s390x
+  - build-on: ppc64el
+  - build-on: arm64
+  - build-on: armhf
+  - build-on: amd64
+  # - build-on: i386
   # - build-on: amd64
   # - build-on: s390x
   # - build-on: arm64
