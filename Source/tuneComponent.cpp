@@ -1090,6 +1090,9 @@ void tuneComponent::filterAndPushNextSampleIntoFifo( float sample )
 		yNew = (double)sample;
 	}
 
+	// Hann window
+	yNew = yNew * std::pow(2, std::sin(hannArgCoefficient * (double)noOfInputValues));
+
 	if ( recorderSourceFilteredAudioOn )
 	{
 		audioRecordBufferIn[ noOfInputValues ] = (float)yNew;
@@ -3560,6 +3563,8 @@ void tuneComponent::setFftOrder( int newFftOrder )
 	fftSize = 1 << newFftOrder;
 	fftSizeHalf = 1 << ( newFftOrder - 1 );
 	fftSizeDouble = 1 << ( newFftOrder + 1 );
+
+	hannArgCoefficient = M_PI / fftSize;
 
 	if ( recorderSourceFilteredAudioOn )
 	{

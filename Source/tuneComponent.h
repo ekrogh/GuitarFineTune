@@ -11,7 +11,7 @@
 #define _USE_MATH_DEFINES // For use in math.h
 #include "gfft.h"
 
-
+#include <math.h>
 #include <memory>
 #include <ctime>
 #include <chrono>
@@ -271,6 +271,8 @@ private:
 	int fftSize = 1 << fftOrderAtStart;
 	int fftSizeHalf = 1 << (fftOrderAtStart - 1);
 	int fftSizeDouble = 1 << (fftOrderAtStart + 1);
+
+	double hannArgCoefficient = M_PI / fftSize;
 
 	Image spectrogramImage{ Image::RGB, widthOfTuneWindow, hightOfTuneWindow, true };
 	juce::Graphics spectrImGraphcs{ spectrogramImage };

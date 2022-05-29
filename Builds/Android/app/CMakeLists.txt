@@ -8,7 +8,7 @@ set(BINARY_NAME "juce_jni")
 add_library("cpufeatures" STATIC "${ANDROID_NDK}/sources/android/cpufeatures/cpu-features.c")
 set_source_files_properties("${ANDROID_NDK}/sources/android/cpufeatures/cpu-features.c" PROPERTIES COMPILE_FLAGS "-Wno-sign-conversion -Wno-gnu-statement-expression")
 
-add_definitions([[-DJUCE_ANDROID=1]] [[-DJUCE_ANDROID_API_VERSION=16]] [[-DJUCE_CONTENT_SHARING=1]] [[-DANDROID_VERSION_CODE=48]] [[-DJUCER_ANDROIDSTUDIO_7F0E4A25=1]] [[-DJUCE_APP_VERSION=8.7.6]] [[-DJUCE_APP_VERSION_HEX=0x80706]])
+add_definitions([[-DJUCE_ANDROID=1]] [[-DJUCE_ANDROID_API_VERSION=16]] [[-DJUCE_CONTENT_SHARING=1]] [[-DANDROID_VERSION_CODE=49]] [[-DJUCER_ANDROIDSTUDIO_7F0E4A25=1]] [[-DJUCE_APP_VERSION=8.8.7]] [[-DJUCE_APP_VERSION_HEX=0x80807]])
 
 include_directories( AFTER
     "../../../JuceLibraryCode"
@@ -19,9 +19,9 @@ include_directories( AFTER
 enable_language(ASM)
 
 if(JUCE_BUILD_CONFIGURATION MATCHES "RELEASE")
-    add_definitions([[-DANDROID_VERSION_CODE=48]] [[-DJUCER_ANDROIDSTUDIO_7F0E4A25=1]] [[-DJUCE_APP_VERSION=8.7.6]] [[-DJUCE_APP_VERSION_HEX=0x80706]] [[-DNDEBUG=1]])
+    add_definitions([[-DANDROID_VERSION_CODE=49]] [[-DJUCER_ANDROIDSTUDIO_7F0E4A25=1]] [[-DJUCE_APP_VERSION=8.8.7]] [[-DJUCE_APP_VERSION_HEX=0x80807]] [[-DNDEBUG=1]])
 elseif(JUCE_BUILD_CONFIGURATION MATCHES "DEBUG")
-    add_definitions([[-DANDROID_VERSION_CODE=48]] [[-DJUCER_ANDROIDSTUDIO_7F0E4A25=1]] [[-DJUCE_APP_VERSION=8.7.6]] [[-DJUCE_APP_VERSION_HEX=0x80706]] [[-DDEBUG=1]] [[-D_DEBUG=1]])
+    add_definitions([[-DANDROID_VERSION_CODE=49]] [[-DJUCER_ANDROIDSTUDIO_7F0E4A25=1]] [[-DJUCE_APP_VERSION=8.8.7]] [[-DJUCE_APP_VERSION_HEX=0x80807]] [[-DDEBUG=1]] [[-D_DEBUG=1]])
 else()
     message( FATAL_ERROR "No matching build-configuration found." )
 endif()
