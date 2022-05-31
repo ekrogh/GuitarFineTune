@@ -204,3 +204,4 @@ apps:
       - audio-record
       - pulseaudio
       - audio-playback
+      - home
