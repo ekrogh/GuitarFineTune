@@ -78,6 +78,8 @@ tuneComponent::tuneComponent
 
 	spAudioRecorderController = std::make_shared<AudioRecorderControl>( );
 
+	makeHannWinCoefficients();
+
 }
 
 
@@ -1090,8 +1092,11 @@ void tuneComponent::filterAndPushNextSampleIntoFifo( float sample )
 		yNew = (double)sample;
 	}
 
-	// Hann window
-	yNew = yNew * std::pow(2, std::sin(hannArgCoefficient * (double)noOfInputValues));
+	if (!showFiltersToggleButtonOn)
+	{
+		// Hann window
+		yNew = yNew * hannWinCoefficients[noOfInputValues];
+	}
 
 	if ( recorderSourceFilteredAudioOn )
 	{
@@ -3530,6 +3535,23 @@ int tuneComponent::getCurrentBufferSizeInUse( )
 	return currentBufferSizeInUse;
 }
 
+void tuneComponent::makeHannWinCoefficients()
+{
+	// Make hann Window Coefficients
+	double hannArgCoefficient = M_PI / (fftSize - 1);
+	std::free(hannWinCoefficients);
+	hannWinCoefficients = nullptr;
+	hannWinCoefficients = (double*)std::calloc(fftSize, sizeof(double));
+
+	if (hannWinCoefficients)
+	{
+		for (int k = 0; k < fftSize; k++)
+		{
+			hannWinCoefficients[k] = std::pow(std::sin(hannArgCoefficient * (double)k), 2);
+		}
+	}
+}
+
 void tuneComponent::setAudioRecordingBuffers( )
 {
 	std::free( audioRecordBuffer1 );
@@ -3555,6 +3577,7 @@ int tuneComponent::getFftOrder( )
 	return fftOrder;
 }
 
+
 void tuneComponent::setFftOrder( int newFftOrder )
 {
 	const ScopedLock sl( drawSpectrogramLockMutex );
@@ -3564,7 +3587,7 @@ void tuneComponent::setFftOrder( int newFftOrder )
 	fftSizeHalf = 1 << ( newFftOrder - 1 );
 	fftSizeDouble = 1 << ( newFftOrder + 1 );
 
-	hannArgCoefficient = M_PI / fftSize;
+	makeHannWinCoefficients();
 
 	if ( recorderSourceFilteredAudioOn )
 	{

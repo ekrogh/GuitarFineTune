@@ -166,6 +166,8 @@ public:
 
 	void setThresholdResultMagnitudeSquaredForShowing(double newthresholdResultMagnitudeSquaredForShowing);
 	void startThresholdAutoCalibrate();
+	
+	void makeHannWinCoefficients();
 
 	int getCurrentBufferSizeInUse();
 	void setAudioRecordingBuffers();
@@ -272,7 +274,7 @@ private:
 	int fftSizeHalf = 1 << (fftOrderAtStart - 1);
 	int fftSizeDouble = 1 << (fftOrderAtStart + 1);
 
-	double hannArgCoefficient = M_PI / fftSize;
+	double* hannWinCoefficients = nullptr;
 
 	Image spectrogramImage{ Image::RGB, widthOfTuneWindow, hightOfTuneWindow, true };
 	juce::Graphics spectrImGraphcs{ spectrogramImage };
