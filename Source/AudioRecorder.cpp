@@ -398,23 +398,13 @@ void AudioRecorderControl::stopRecording()
 	
 	juce::File initialFilAndDirectory;
 
-#if (true)
-//#if (JUCE_LINUX)
+#if (JUCE_LINUX)
 
-	juce::String snapHome(std::getenv("SNAP_REAL_HOME"));
+	juce::String snapHome(std::getenv("SNAP_REAL_HOME")) +  '/';
 
 
 	if (snapHome != "")
 	{
-		juce::AlertWindow::showMessageBoxAsync
-		(
-			juce::AlertWindow::WarningIcon
-			, "The PATH"
-			, snapHome + fileToSave.getFileName()
-			, "OK"
-			, nullptr
-		);
-
 		initialFilAndDirectory =
 			juce::File(snapHome).getChildFile(fileToSave.getFileName());
 	}
