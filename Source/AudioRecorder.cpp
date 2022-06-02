@@ -395,12 +395,13 @@ void AudioRecorderControl::stopRecording()
 	auto fileToSave = lastRecording;
 	lastRecording = File(); // "Close" fille
 	auto theRecordedFile = fileToSave.getFullPathName();
-	
+
 	juce::File initialFilAndDirectory;
 
 #if (JUCE_LINUX)
 
-	juce::String snapHome(std::getenv("SNAP_REAL_HOME")) +  '/';
+	juce::String snapHome(std::getenv("SNAP_REAL_HOME"));
+    snapHome +=  +  '/';
 
 	if (snapHome != "")
 	{
