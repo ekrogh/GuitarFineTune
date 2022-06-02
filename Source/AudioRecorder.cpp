@@ -402,7 +402,6 @@ void AudioRecorderControl::stopRecording()
 
 	juce::String snapHome(std::getenv("SNAP_REAL_HOME")) +  '/';
 
-
 	if (snapHome != "")
 	{
 		initialFilAndDirectory =
