@@ -401,7 +401,7 @@ void AudioRecorderControl::stopRecording()
 #if (JUCE_LINUX)
 
 	juce::String snapHome(std::getenv("SNAP_REAL_HOME"));
-    snapHome +=  +  '/';
+    snapHome += '/';
 
 	if (snapHome != "")
 	{
