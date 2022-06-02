@@ -392,39 +392,31 @@ void AudioRecorderControl::stopRecording()
 {
 	spRecorder->stop();
 
-//#if (JUCE_ANDROID || JUCE_IOS)
-//	SafePointer<AudioRecorderControl> safeThis(this);
-//	File fileToShare = lastRecording;
-//
-//	ContentSharer::getInstance()->shareFiles(Array<URL>({ URL(fileToShare) }),
-//		[safeThis, fileToShare](bool success, const String& error)
-//		{
-//			if (fileToShare.existsAsFile())
-//				fileToShare.deleteFile();
-//
-//			if (!success && error.isNotEmpty())
-//			{
-//				NativeMessageBox::showMessageBoxAsync(AlertWindow::WarningIcon,
-//					"Sharing Error",
-//					error);
-//			}
-//		});
-//#else
 	auto fileToSave = lastRecording;
 	lastRecording = File(); // "Close" fille
 	auto theRecordedFile = fileToSave.getFullPathName();
 	
 	juce::File initialFilAndDirectory;
 
-#if (JUCE_LINUX)
+#if (true)
+//#if (JUCE_LINUX)
 
 	juce::String snapHome(std::getenv("SNAP_REAL_HOME"));
 
 
 	if (snapHome != "")
 	{
+		juce::AlertWindow::showMessageBoxAsync
+		(
+			juce::AlertWindow::WarningIcon
+			, "The PATH"
+			, snapHome + fileToSave.getFileName()
+			, "OK"
+			, nullptr
+		);
+
 		initialFilAndDirectory =
-			juce::File(snapHome + fileToSave.getFileName());
+			juce::File(snapHome).getChildFile(fileToSave.getFileName());
 	}
 	else
 	{
