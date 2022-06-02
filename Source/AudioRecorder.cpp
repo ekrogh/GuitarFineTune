@@ -413,9 +413,40 @@ void AudioRecorderControl::stopRecording()
 	auto fileToSave = lastRecording;
 	lastRecording = File(); // "Close" fille
 	auto theRecordedFile = fileToSave.getFullPathName();
+	
+	juce::File initialFilAndDirectory;
 
-	auto initialFilAndDirectory
-		= File::getSpecialLocation(File::userMusicDirectory).getChildFile(fileToSave.getFileName());
+#if (JUCE_LINUX)
+
+	juce::String snapHome(std::getenv("SNAP_REAL_HOME"));
+
+
+	if (snapHome != "")
+	{
+		initialFilAndDirectory =
+			juce::File(snapHome + fileToSave.getFileName());
+	}
+	else
+	{
+		initialFilAndDirectory =
+			File::getSpecialLocation
+				(
+					File::userMusicDirectory
+				).getChildFile
+					(
+						fileToSave.getFileName()
+					);
+	}
+#else
+	initialFilAndDirectory =
+		File::getSpecialLocation
+		(
+			File::userMusicDirectory
+		).getChildFile
+		(
+			fileToSave.getFileName()
+		);
+#endif
 
 	myChooser =
 		std::make_unique <FileChooser>
