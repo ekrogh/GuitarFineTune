@@ -78,6 +78,11 @@ tuneComponent::tuneComponent
 
 	spAudioRecorderController = std::make_shared<AudioRecorderControl>();
 
+#ifdef USE_JUCE_FFT
+	forwardFFT = std::make_unique<dsp::FFT>(p);
+#else
+#endif
+
 	makeHannWinCoefficients();
 
 }
@@ -476,9 +481,13 @@ tuneComponent::~tuneComponent()
 
 	if (showFFTToggleButtonOn) // FFT on ?
 	{
+#ifdef USE_JUCE_FFT
+		//dsp::FFT forwardFFT;
+#else
 		// Free resources
 		delete gfft;
 		gfft = nullptr;
+#endif
 	}
 	std::free(fftDataBuffer1);
 	fftDataBuffer1 = nullptr;
@@ -1145,7 +1154,7 @@ void tuneComponent::filterAndPushNextSampleIntoFifo(float sample)
 
 	if (showFFTToggleButtonOn)
 	{
-		inBuffer[noOfInputValues++] = yNew;
+		inBuffer[noOfInputValues++] = (float)yNew;
 	}
 	else
 	{
@@ -1549,7 +1558,15 @@ void tuneComponent::handleAsyncUpdate() // Called from AsyncUpdater
 }
 
 
+#ifdef USE_JUCE_FFT
+void tuneComponent::jucePerformFrequencyOnlyForwardTransform(float* d)
+{
+	// compute FFT
+		// then render our FFT data..
+	forwardFFT->performFrequencyOnlyForwardTransform(d);
 
+}
+#else
 void tuneComponent::gfftPerformFrequencyOnlyForwardTransform(double* d)
 {
 	// compute FFT
@@ -1563,6 +1580,7 @@ void tuneComponent::gfftPerformFrequencyOnlyForwardTransform(double* d)
 	}
 
 }
+#endif
 
 inline std::string tuneComponent::eksLongDoubleToString(long double valueToConvert)
 {
@@ -1616,14 +1634,22 @@ void tuneComponent::drawSpectrogram()
 	// then FFT data..
 	if (showFFTToggleButtonOn)
 	{
+#ifdef USE_JUCE_FFT
+		jucePerformFrequencyOnlyForwardTransform(fftData);
+#else
 		gfftPerformFrequencyOnlyForwardTransform(fftData);
+#endif
 		Thread::sleep(1);
 	}
 
 	goertzelCalcResults();
 	Thread::sleep(1);
 
+#ifdef USE_JUCE_FFT
+	float* pTheMaxElement;
+#else
 	double* pTheMaxElement;
+#endif
 	//static std::deque<float> vMaxLevels(vMaxLevelsSize, FLT_MAX);
 	float maxLevel = 0.;
 	static std::deque<int> vIdxOMaxs(vIdxOMaxsSize, 0);
@@ -3438,8 +3464,11 @@ void tuneComponent::doSetShowFFT(bool flagOn)
 	if (showFFTToggleButtonOn) // FFT on already ?
 	{
 		// Free resources
+#ifdef USE_JUCE_FFT
+#else
 		delete gfft;
 		gfft = nullptr;
+#endif
 		std::free(fftDataBuffer1);
 		fftDataBuffer1 = nullptr;
 		std::free(fftDataBuffer2);
@@ -3450,16 +3479,26 @@ void tuneComponent::doSetShowFFT(bool flagOn)
 		// runtime definition of the data length
 		p = fftOrder;
 		// initialization of the object factory
+#ifdef USE_JUCE_FFT
+		forwardFFT = std::make_unique<dsp::FFT>(p);
+
+		fftDataBuffer1 = (float*)std::calloc(fftSizeDouble, sizeof(float));
+		fftDataBuffer2 = (float*)std::calloc(fftSizeDouble, sizeof(float));
+		inBuffer1 = fftDataBuffer1;
+		inBuffer2 = fftDataBuffer2;
+#else
 		FactoryInit<GFFTList<GFFT, gfftMin, gfftMax>::Result>::apply(gfft_factory);
 		// create an instance of the GFFT
 		gfft = gfft_factory.CreateObject(p);
 
-		// Data buffers
 		fftDataBuffer1 = (double*)std::calloc(fftSizeDouble, sizeof(double));
 		fftDataBuffer2 = (double*)std::calloc(fftSizeDouble, sizeof(double));
 		inBuffer1 = (complex<double>*)fftDataBuffer1;
-		fftData1 = fftDataBuffer2;
 		inBuffer2 = (complex<double>*)fftDataBuffer2;
+#endif
+
+		// Data buffers
+		fftData1 = fftDataBuffer2;
 		fftData2 = fftDataBuffer1;
 		// buffer pointers used in the data processing
 		inBuffer = inBuffer2; // is toggeled buffer 2,1,2....

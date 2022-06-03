@@ -967,6 +967,90 @@ add_library( ${BINARY_NAME}
     "../../../JuceLibraryCode/modules/juce_data_structures/juce_data_structures.cpp"
     "../../../JuceLibraryCode/modules/juce_data_structures/juce_data_structures.mm"
     "../../../JuceLibraryCode/modules/juce_data_structures/juce_data_structures.h"
+    "../../../JuceLibraryCode/modules/juce_dsp/containers/juce_AudioBlock.h"
+    "../../../JuceLibraryCode/modules/juce_dsp/containers/juce_AudioBlock_test.cpp"
+    "../../../JuceLibraryCode/modules/juce_dsp/containers/juce_FixedSizeFunction.h"
+    "../../../JuceLibraryCode/modules/juce_dsp/containers/juce_FixedSizeFunction_test.cpp"
+    "../../../JuceLibraryCode/modules/juce_dsp/containers/juce_SIMDRegister.h"
+    "../../../JuceLibraryCode/modules/juce_dsp/containers/juce_SIMDRegister_Impl.h"
+    "../../../JuceLibraryCode/modules/juce_dsp/containers/juce_SIMDRegister_test.cpp"
+    "../../../JuceLibraryCode/modules/juce_dsp/filter_design/juce_FilterDesign.cpp"
+    "../../../JuceLibraryCode/modules/juce_dsp/filter_design/juce_FilterDesign.h"
+    "../../../JuceLibraryCode/modules/juce_dsp/frequency/juce_Convolution.cpp"
+    "../../../JuceLibraryCode/modules/juce_dsp/frequency/juce_Convolution.h"
+    "../../../JuceLibraryCode/modules/juce_dsp/frequency/juce_Convolution_test.cpp"
+    "../../../JuceLibraryCode/modules/juce_dsp/frequency/juce_FFT.cpp"
+    "../../../JuceLibraryCode/modules/juce_dsp/frequency/juce_FFT.h"
+    "../../../JuceLibraryCode/modules/juce_dsp/frequency/juce_FFT_test.cpp"
+    "../../../JuceLibraryCode/modules/juce_dsp/frequency/juce_Windowing.cpp"
+    "../../../JuceLibraryCode/modules/juce_dsp/frequency/juce_Windowing.h"
+    "../../../JuceLibraryCode/modules/juce_dsp/maths/juce_FastMathApproximations.h"
+    "../../../JuceLibraryCode/modules/juce_dsp/maths/juce_LogRampedValue.h"
+    "../../../JuceLibraryCode/modules/juce_dsp/maths/juce_LogRampedValue_test.cpp"
+    "../../../JuceLibraryCode/modules/juce_dsp/maths/juce_LookupTable.cpp"
+    "../../../JuceLibraryCode/modules/juce_dsp/maths/juce_LookupTable.h"
+    "../../../JuceLibraryCode/modules/juce_dsp/maths/juce_Matrix.cpp"
+    "../../../JuceLibraryCode/modules/juce_dsp/maths/juce_Matrix.h"
+    "../../../JuceLibraryCode/modules/juce_dsp/maths/juce_Matrix_test.cpp"
+    "../../../JuceLibraryCode/modules/juce_dsp/maths/juce_Phase.h"
+    "../../../JuceLibraryCode/modules/juce_dsp/maths/juce_Polynomial.h"
+    "../../../JuceLibraryCode/modules/juce_dsp/maths/juce_SpecialFunctions.cpp"
+    "../../../JuceLibraryCode/modules/juce_dsp/maths/juce_SpecialFunctions.h"
+    "../../../JuceLibraryCode/modules/juce_dsp/native/juce_avx_SIMDNativeOps.cpp"
+    "../../../JuceLibraryCode/modules/juce_dsp/native/juce_avx_SIMDNativeOps.h"
+    "../../../JuceLibraryCode/modules/juce_dsp/native/juce_fallback_SIMDNativeOps.h"
+    "../../../JuceLibraryCode/modules/juce_dsp/native/juce_neon_SIMDNativeOps.cpp"
+    "../../../JuceLibraryCode/modules/juce_dsp/native/juce_neon_SIMDNativeOps.h"
+    "../../../JuceLibraryCode/modules/juce_dsp/native/juce_sse_SIMDNativeOps.cpp"
+    "../../../JuceLibraryCode/modules/juce_dsp/native/juce_sse_SIMDNativeOps.h"
+    "../../../JuceLibraryCode/modules/juce_dsp/processors/juce_BallisticsFilter.cpp"
+    "../../../JuceLibraryCode/modules/juce_dsp/processors/juce_BallisticsFilter.h"
+    "../../../JuceLibraryCode/modules/juce_dsp/processors/juce_DelayLine.cpp"
+    "../../../JuceLibraryCode/modules/juce_dsp/processors/juce_DelayLine.h"
+    "../../../JuceLibraryCode/modules/juce_dsp/processors/juce_DryWetMixer.cpp"
+    "../../../JuceLibraryCode/modules/juce_dsp/processors/juce_DryWetMixer.h"
+    "../../../JuceLibraryCode/modules/juce_dsp/processors/juce_FIRFilter.cpp"
+    "../../../JuceLibraryCode/modules/juce_dsp/processors/juce_FIRFilter.h"
+    "../../../JuceLibraryCode/modules/juce_dsp/processors/juce_FIRFilter_test.cpp"
+    "../../../JuceLibraryCode/modules/juce_dsp/processors/juce_FirstOrderTPTFilter.cpp"
+    "../../../JuceLibraryCode/modules/juce_dsp/processors/juce_FirstOrderTPTFilter.h"
+    "../../../JuceLibraryCode/modules/juce_dsp/processors/juce_IIRFilter.cpp"
+    "../../../JuceLibraryCode/modules/juce_dsp/processors/juce_IIRFilter.h"
+    "../../../JuceLibraryCode/modules/juce_dsp/processors/juce_IIRFilter_Impl.h"
+    "../../../JuceLibraryCode/modules/juce_dsp/processors/juce_LinkwitzRileyFilter.cpp"
+    "../../../JuceLibraryCode/modules/juce_dsp/processors/juce_LinkwitzRileyFilter.h"
+    "../../../JuceLibraryCode/modules/juce_dsp/processors/juce_Oversampling.cpp"
+    "../../../JuceLibraryCode/modules/juce_dsp/processors/juce_Oversampling.h"
+    "../../../JuceLibraryCode/modules/juce_dsp/processors/juce_Panner.cpp"
+    "../../../JuceLibraryCode/modules/juce_dsp/processors/juce_Panner.h"
+    "../../../JuceLibraryCode/modules/juce_dsp/processors/juce_ProcessContext.h"
+    "../../../JuceLibraryCode/modules/juce_dsp/processors/juce_ProcessorChain.h"
+    "../../../JuceLibraryCode/modules/juce_dsp/processors/juce_ProcessorChain_test.cpp"
+    "../../../JuceLibraryCode/modules/juce_dsp/processors/juce_ProcessorDuplicator.h"
+    "../../../JuceLibraryCode/modules/juce_dsp/processors/juce_ProcessorWrapper.h"
+    "../../../JuceLibraryCode/modules/juce_dsp/processors/juce_StateVariableFilter.h"
+    "../../../JuceLibraryCode/modules/juce_dsp/processors/juce_StateVariableTPTFilter.cpp"
+    "../../../JuceLibraryCode/modules/juce_dsp/processors/juce_StateVariableTPTFilter.h"
+    "../../../JuceLibraryCode/modules/juce_dsp/widgets/juce_Bias.h"
+    "../../../JuceLibraryCode/modules/juce_dsp/widgets/juce_Chorus.cpp"
+    "../../../JuceLibraryCode/modules/juce_dsp/widgets/juce_Chorus.h"
+    "../../../JuceLibraryCode/modules/juce_dsp/widgets/juce_Compressor.cpp"
+    "../../../JuceLibraryCode/modules/juce_dsp/widgets/juce_Compressor.h"
+    "../../../JuceLibraryCode/modules/juce_dsp/widgets/juce_Gain.h"
+    "../../../JuceLibraryCode/modules/juce_dsp/widgets/juce_LadderFilter.cpp"
+    "../../../JuceLibraryCode/modules/juce_dsp/widgets/juce_LadderFilter.h"
+    "../../../JuceLibraryCode/modules/juce_dsp/widgets/juce_Limiter.cpp"
+    "../../../JuceLibraryCode/modules/juce_dsp/widgets/juce_Limiter.h"
+    "../../../JuceLibraryCode/modules/juce_dsp/widgets/juce_NoiseGate.cpp"
+    "../../../JuceLibraryCode/modules/juce_dsp/widgets/juce_NoiseGate.h"
+    "../../../JuceLibraryCode/modules/juce_dsp/widgets/juce_Oscillator.h"
+    "../../../JuceLibraryCode/modules/juce_dsp/widgets/juce_Phaser.cpp"
+    "../../../JuceLibraryCode/modules/juce_dsp/widgets/juce_Phaser.h"
+    "../../../JuceLibraryCode/modules/juce_dsp/widgets/juce_Reverb.h"
+    "../../../JuceLibraryCode/modules/juce_dsp/widgets/juce_WaveShaper.h"
+    "../../../JuceLibraryCode/modules/juce_dsp/juce_dsp.cpp"
+    "../../../JuceLibraryCode/modules/juce_dsp/juce_dsp.mm"
+    "../../../JuceLibraryCode/modules/juce_dsp/juce_dsp.h"
     "../../../JuceLibraryCode/modules/juce_events/broadcasters/juce_ActionBroadcaster.cpp"
     "../../../JuceLibraryCode/modules/juce_events/broadcasters/juce_ActionBroadcaster.h"
     "../../../JuceLibraryCode/modules/juce_events/broadcasters/juce_ActionListener.h"
@@ -1584,6 +1668,7 @@ add_library( ${BINARY_NAME}
     "../../../JuceLibraryCode/include_juce_audio_utils.cpp"
     "../../../JuceLibraryCode/include_juce_core.cpp"
     "../../../JuceLibraryCode/include_juce_data_structures.cpp"
+    "../../../JuceLibraryCode/include_juce_dsp.cpp"
     "../../../JuceLibraryCode/include_juce_events.cpp"
     "../../../JuceLibraryCode/include_juce_graphics.cpp"
     "../../../JuceLibraryCode/include_juce_gui_basics.cpp"
@@ -2513,6 +2598,90 @@ set_source_files_properties("../../../JuceLibraryCode/modules/juce_data_structur
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_data_structures/juce_data_structures.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_data_structures/juce_data_structures.mm" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_data_structures/juce_data_structures.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/containers/juce_AudioBlock.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/containers/juce_AudioBlock_test.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/containers/juce_FixedSizeFunction.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/containers/juce_FixedSizeFunction_test.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/containers/juce_SIMDRegister.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/containers/juce_SIMDRegister_Impl.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/containers/juce_SIMDRegister_test.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/filter_design/juce_FilterDesign.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/filter_design/juce_FilterDesign.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/frequency/juce_Convolution.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/frequency/juce_Convolution.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/frequency/juce_Convolution_test.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/frequency/juce_FFT.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/frequency/juce_FFT.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/frequency/juce_FFT_test.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/frequency/juce_Windowing.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/frequency/juce_Windowing.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/maths/juce_FastMathApproximations.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/maths/juce_LogRampedValue.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/maths/juce_LogRampedValue_test.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/maths/juce_LookupTable.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/maths/juce_LookupTable.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/maths/juce_Matrix.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/maths/juce_Matrix.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/maths/juce_Matrix_test.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/maths/juce_Phase.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/maths/juce_Polynomial.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/maths/juce_SpecialFunctions.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/maths/juce_SpecialFunctions.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/native/juce_avx_SIMDNativeOps.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/native/juce_avx_SIMDNativeOps.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/native/juce_fallback_SIMDNativeOps.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/native/juce_neon_SIMDNativeOps.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/native/juce_neon_SIMDNativeOps.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/native/juce_sse_SIMDNativeOps.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/native/juce_sse_SIMDNativeOps.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/processors/juce_BallisticsFilter.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/processors/juce_BallisticsFilter.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/processors/juce_DelayLine.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/processors/juce_DelayLine.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/processors/juce_DryWetMixer.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/processors/juce_DryWetMixer.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/processors/juce_FIRFilter.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/processors/juce_FIRFilter.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/processors/juce_FIRFilter_test.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/processors/juce_FirstOrderTPTFilter.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/processors/juce_FirstOrderTPTFilter.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/processors/juce_IIRFilter.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/processors/juce_IIRFilter.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/processors/juce_IIRFilter_Impl.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/processors/juce_LinkwitzRileyFilter.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/processors/juce_LinkwitzRileyFilter.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/processors/juce_Oversampling.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/processors/juce_Oversampling.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/processors/juce_Panner.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/processors/juce_Panner.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/processors/juce_ProcessContext.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/processors/juce_ProcessorChain.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/processors/juce_ProcessorChain_test.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/processors/juce_ProcessorDuplicator.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/processors/juce_ProcessorWrapper.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/processors/juce_StateVariableFilter.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/processors/juce_StateVariableTPTFilter.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/processors/juce_StateVariableTPTFilter.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/widgets/juce_Bias.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/widgets/juce_Chorus.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/widgets/juce_Chorus.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/widgets/juce_Compressor.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/widgets/juce_Compressor.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/widgets/juce_Gain.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/widgets/juce_LadderFilter.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/widgets/juce_LadderFilter.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/widgets/juce_Limiter.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/widgets/juce_Limiter.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/widgets/juce_NoiseGate.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/widgets/juce_NoiseGate.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/widgets/juce_Oscillator.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/widgets/juce_Phaser.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/widgets/juce_Phaser.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/widgets/juce_Reverb.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/widgets/juce_WaveShaper.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/juce_dsp.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/juce_dsp.mm" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_dsp/juce_dsp.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_events/broadcasters/juce_ActionBroadcaster.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_events/broadcasters/juce_ActionBroadcaster.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_events/broadcasters/juce_ActionListener.h" PROPERTIES HEADER_FILE_ONLY TRUE)

@@ -9,7 +9,13 @@
 #pragma once
 
 #define _USE_MATH_DEFINES // For use in math.h
-#include "gfft.h"
+
+#define USE_JUCE_FFT
+//#undef USE_JUCE_FFT
+
+#ifndef USE_JUCE_FFT
+	#include "gfft.h"
+#endif
 
 #include <math.h>
 #include <memory>
@@ -119,7 +125,12 @@ public:
 
 	void filterAndPushNextSampleIntoFifo(float sample);
 
-	void gfftPerformFrequencyOnlyForwardTransform(double* d) /*const noexcept*/;
+#ifdef USE_JUCE_FFT
+	void jucePerformFrequencyOnlyForwardTransform(float* d);
+#else
+	void gfftPerformFrequencyOnlyForwardTransform(double* d);
+#endif
+
 
 	void run() override; // Called from Thread
 
@@ -288,12 +299,16 @@ private:
 	juce::Graphics spectrImGraphcs{ spectrogramImage };
 
 
+#ifdef USE_JUCE_FFT
+	std::unique_ptr<dsp::FFT> forwardFFT;
+#else
 	////////// gfft /////////////////
 	// initialization of the object factory
 	Loki::Factory<AbstractFFT<double>, unsigned int> gfft_factory;
 
 	// create a "holder" for the GFFT
 	AbstractFFT<double>* gfft;
+#endif
 
 	// runtime definition of the data length
 	int p = fftOrderAtStart; //Same as JUCEs FFT
@@ -303,6 +318,20 @@ private:
 	float* audioRecordBuffer2 = nullptr;
 	float* audioRecordBufferOut = audioRecordBuffer1;
 	float* audioRecordBufferIn = audioRecordBuffer2;
+
+#ifdef USE_JUCE_FFT
+	float* fftDataBuffer1 = nullptr;
+	float* fftDataBuffer2 = nullptr;
+	// Holders for fftDataBuffer pointers:
+	// a complex<float>* and a float* to each fftDataBuffer
+	float* inBuffer1 = fftDataBuffer1;
+	float* fftData1 = fftDataBuffer2;
+	float* inBuffer2 = fftDataBuffer2;
+	float* fftData2 = fftDataBuffer1;
+	// buffer pointers used in the data processing
+	float* inBuffer = inBuffer2; // is toggeled buffer 2,1,2....
+	float* fftData = fftData2; // is toggled 1,2,1,...
+#else
 	double* fftDataBuffer1 = nullptr;
 	double* fftDataBuffer2 = nullptr;
 	// Holders for fftDataBuffer pointers:
@@ -314,6 +343,8 @@ private:
 	// buffer pointers used in the data processing
 	complex<double>* inBuffer = inBuffer2; // is toggeled buffer 2,1,2....
 	double* fftData = fftData2; // is toggled 1,2,1,...
+#endif
+
 	int firstFftDataToDisplay = 0;
 	int lastFftDataToDisplay = 0;
 	float resToDisply = 0;
