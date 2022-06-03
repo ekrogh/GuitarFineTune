@@ -74,14 +74,13 @@ parts:
     source: .
     override-build: |
       g++ --version
-      g++-11 --version
       cd Builds/LinuxMakefile/
       pwd
       make clean
       make CONFIG=Release
       cp build/GuitarFineTune $SNAPCRAFT_PART_INSTALL/guitarfinetune
     build-packages:
-      - g++-11
+      - g++
       - make
       - git
       - libfreetype6-dev
