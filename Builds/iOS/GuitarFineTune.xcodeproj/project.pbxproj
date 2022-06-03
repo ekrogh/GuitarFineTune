@@ -468,7 +468,7 @@
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_LINK_OBJC_RUNTIME = NO;
 				CODE_SIGN_ENTITLEMENTS = "App.entitlements";
@@ -484,8 +484,8 @@
 					"JUCE_CONTENT_SHARING=1",
 					"THIS_IS_IOS=1",
 					"JUCER_XCODE_IPHONE_5BC26AE3=1",
-					"JUCE_APP_VERSION=9.3.3",
-					"JUCE_APP_VERSION_HEX=0x90303",
+					"JUCE_APP_VERSION=9.3.4",
+					"JUCE_APP_VERSION_HEX=0x90304",
 					"JucePlugin_Build_VST=0",
 					"JucePlugin_Build_VST3=0",
 					"JucePlugin_Build_AU=0",
@@ -518,7 +518,7 @@
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_LINK_OBJC_RUNTIME = NO;
 				CODE_SIGN_ENTITLEMENTS = "App.entitlements";
@@ -534,8 +534,8 @@
 					"JUCE_CONTENT_SHARING=1",
 					"THIS_IS_IOS=1",
 					"JUCER_XCODE_IPHONE_5BC26AE3=1",
-					"JUCE_APP_VERSION=9.3.3",
-					"JUCE_APP_VERSION_HEX=0x90303",
+					"JUCE_APP_VERSION=9.3.4",
+					"JUCE_APP_VERSION_HEX=0x90304",
 					"JucePlugin_Build_VST=0",
 					"JucePlugin_Build_VST3=0",
 					"JucePlugin_Build_AU=0",

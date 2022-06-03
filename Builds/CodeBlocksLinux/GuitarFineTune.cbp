@@ -19,8 +19,8 @@
           <Add option="-DDEBUG=&quot;1&quot;"/>
           <Add option="-D_DEBUG=&quot;1&quot;"/>
           <Add option="-DJUCER_CODEBLOCKS_LINUX_191E0897=&quot;1&quot;"/>
-          <Add option="-DJUCE_APP_VERSION=&quot;9.3.3&quot;"/>
-          <Add option="-DJUCE_APP_VERSION_HEX=&quot;0x90303&quot;"/>
+          <Add option="-DJUCE_APP_VERSION=&quot;9.3.4&quot;"/>
+          <Add option="-DJUCE_APP_VERSION_HEX=&quot;0x90304&quot;"/>
           <Add option="-DJucePlugin_Build_VST=&quot;0&quot;"/>
           <Add option="-DJucePlugin_Build_VST3=&quot;0&quot;"/>
           <Add option="-DJucePlugin_Build_AU=&quot;0&quot;"/>
@@ -31,7 +31,7 @@
           <Add option="-DJucePlugin_Build_Unity=&quot;0&quot;"/>
           <Add option="-m64"/>
           <Add option="-O0"/>
-          <Add option="-std=c++20"/>
+          <Add option="-std=c++17"/>
           <Add option="-mstackrealign"/>
           <Add option="-g"/>
           <Add option="-fno-pie"/>
@@ -62,8 +62,8 @@
           <Add option="-DLINUX=&quot;1&quot;"/>
           <Add option="-DNDEBUG=&quot;1&quot;"/>
           <Add option="-DJUCER_CODEBLOCKS_LINUX_191E0897=&quot;1&quot;"/>
-          <Add option="-DJUCE_APP_VERSION=&quot;9.3.3&quot;"/>
-          <Add option="-DJUCE_APP_VERSION_HEX=&quot;0x90303&quot;"/>
+          <Add option="-DJUCE_APP_VERSION=&quot;9.3.4&quot;"/>
+          <Add option="-DJUCE_APP_VERSION_HEX=&quot;0x90304&quot;"/>
           <Add option="-DJucePlugin_Build_VST=&quot;0&quot;"/>
           <Add option="-DJucePlugin_Build_VST3=&quot;0&quot;"/>
           <Add option="-DJucePlugin_Build_AU=&quot;0&quot;"/>
@@ -74,7 +74,7 @@
           <Add option="-DJucePlugin_Build_Unity=&quot;0&quot;"/>
           <Add option="-m64"/>
           <Add option="-O3"/>
-          <Add option="-std=c++20"/>
+          <Add option="-std=c++17"/>
           <Add option="-mstackrealign"/>
           <Add option="-fno-pie"/>
           <Add option="&#96;pkg-config --cflags alsa freetype2 libcurl webkit2gtk-4.0 gtk+-x11-3.0&#96;"/>
