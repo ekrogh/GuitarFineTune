@@ -661,15 +661,19 @@ void guitarStringSoundsControl::buttonClicked (juce::Button* buttonThatWasClicke
 		if (guitarStringSoundsOn[tuneComponent::E2idx])
 		{
 			guitarStringTonesOffToggleButton->setToggleState(false, NotificationType::dontSendNotification);
-		}
-		else
-		{
-			if (!std::any_of(guitarStringSoundsOn.begin(), guitarStringSoundsOn.end(), [](bool i) { return i; }))
-			{
-				guitarStringTonesOffToggleButton->setToggleState(true, NotificationType::sendNotification);
-			}
-		}
-		pTuneComponent->controlGuitarStringSounds(guitarStringSoundsOn);
+            pTuneComponent->controlGuitarStringSounds(guitarStringSoundsOn);
+        }
+        else
+        {
+            if (!std::any_of(guitarStringSoundsOn.begin(), guitarStringSoundsOn.end(), [](bool i) { return i; }))
+            {
+                guitarStringTonesOffToggleButton->setToggleState(true, NotificationType::sendNotification);
+            }
+            else
+            {
+                pTuneComponent->controlGuitarStringSounds(guitarStringSoundsOn);
+            }
+        }
         //[/UserButtonCode_E2soundToggleButton]
     }
     else if (buttonThatWasClicked == A2soundToggleButton.get())
@@ -679,15 +683,19 @@ void guitarStringSoundsControl::buttonClicked (juce::Button* buttonThatWasClicke
 		if (guitarStringSoundsOn[tuneComponent::A2idx])
 		{
 			guitarStringTonesOffToggleButton->setToggleState(false, NotificationType::dontSendNotification);
-		}
-		else
-		{
-			if (!std::any_of(guitarStringSoundsOn.begin(), guitarStringSoundsOn.end(), [](bool i) { return i; }))
-			{
-				guitarStringTonesOffToggleButton->setToggleState(true, NotificationType::sendNotification);
-			}
-		}
-		pTuneComponent->controlGuitarStringSounds(guitarStringSoundsOn);
+            pTuneComponent->controlGuitarStringSounds(guitarStringSoundsOn);
+        }
+        else
+        {
+            if (!std::any_of(guitarStringSoundsOn.begin(), guitarStringSoundsOn.end(), [](bool i) { return i; }))
+            {
+                guitarStringTonesOffToggleButton->setToggleState(true, NotificationType::sendNotification);
+            }
+            else
+            {
+                pTuneComponent->controlGuitarStringSounds(guitarStringSoundsOn);
+            }
+        }
         //[/UserButtonCode_A2soundToggleButton]
     }
     else if (buttonThatWasClicked == D3soundToggleButton.get())
@@ -697,15 +705,19 @@ void guitarStringSoundsControl::buttonClicked (juce::Button* buttonThatWasClicke
 		if (guitarStringSoundsOn[tuneComponent::D3idx])
 		{
 			guitarStringTonesOffToggleButton->setToggleState(false, NotificationType::dontSendNotification);
-		}
-		else
-		{
-			if (!std::any_of(guitarStringSoundsOn.begin(), guitarStringSoundsOn.end(), [](bool i) { return i; }))
-			{
-				guitarStringTonesOffToggleButton->setToggleState(true, NotificationType::sendNotification);
-			}
-		}
-		pTuneComponent->controlGuitarStringSounds(guitarStringSoundsOn);
+            pTuneComponent->controlGuitarStringSounds(guitarStringSoundsOn);
+        }
+        else
+        {
+            if (!std::any_of(guitarStringSoundsOn.begin(), guitarStringSoundsOn.end(), [](bool i) { return i; }))
+            {
+                guitarStringTonesOffToggleButton->setToggleState(true, NotificationType::sendNotification);
+            }
+            else
+            {
+                pTuneComponent->controlGuitarStringSounds(guitarStringSoundsOn);
+            }
+        }
         //[/UserButtonCode_D3soundToggleButton]
     }
     else if (buttonThatWasClicked == G3soundToggleButton.get())
@@ -715,15 +727,19 @@ void guitarStringSoundsControl::buttonClicked (juce::Button* buttonThatWasClicke
 		if (guitarStringSoundsOn[tuneComponent::G3idx])
 		{
 			guitarStringTonesOffToggleButton->setToggleState(false, NotificationType::dontSendNotification);
-		}
+            pTuneComponent->controlGuitarStringSounds(guitarStringSoundsOn);
+        }
 		else
 		{
 			if (!std::any_of(guitarStringSoundsOn.begin(), guitarStringSoundsOn.end(), [](bool i) { return i; }))
 			{
 				guitarStringTonesOffToggleButton->setToggleState(true, NotificationType::sendNotification);
 			}
+            else
+            {
+                pTuneComponent->controlGuitarStringSounds(guitarStringSoundsOn);
+            }
 		}
-		pTuneComponent->controlGuitarStringSounds(guitarStringSoundsOn);
         //[/UserButtonCode_G3soundToggleButton]
     }
     else if (buttonThatWasClicked == B3soundToggleButton.get())
@@ -733,15 +749,19 @@ void guitarStringSoundsControl::buttonClicked (juce::Button* buttonThatWasClicke
 		if (guitarStringSoundsOn[tuneComponent::B3idx])
 		{
 			guitarStringTonesOffToggleButton->setToggleState(false, NotificationType::dontSendNotification);
-		}
-		else
-		{
-			if (!std::any_of(guitarStringSoundsOn.begin(), guitarStringSoundsOn.end(), [](bool i) { return i; }))
-			{
-				guitarStringTonesOffToggleButton->setToggleState(true, NotificationType::sendNotification);
-			}
-		}
-		pTuneComponent->controlGuitarStringSounds(guitarStringSoundsOn);
+            pTuneComponent->controlGuitarStringSounds(guitarStringSoundsOn);
+        }
+        else
+        {
+            if (!std::any_of(guitarStringSoundsOn.begin(), guitarStringSoundsOn.end(), [](bool i) { return i; }))
+            {
+                guitarStringTonesOffToggleButton->setToggleState(true, NotificationType::sendNotification);
+            }
+            else
+            {
+                pTuneComponent->controlGuitarStringSounds(guitarStringSoundsOn);
+            }
+        }
         //[/UserButtonCode_B3soundToggleButton]
     }
     else if (buttonThatWasClicked == E4soundToggleButton.get())
@@ -751,15 +771,19 @@ void guitarStringSoundsControl::buttonClicked (juce::Button* buttonThatWasClicke
 		if (guitarStringSoundsOn[tuneComponent::E4idx])
 		{
 			guitarStringTonesOffToggleButton->setToggleState(false, NotificationType::dontSendNotification);
-		}
-		else
-		{
-			if (!std::any_of(guitarStringSoundsOn.begin(), guitarStringSoundsOn.end(), [](bool i) { return i; }))
-			{
-				guitarStringTonesOffToggleButton->setToggleState(true, NotificationType::sendNotification);
-			}
-		}
-		pTuneComponent->controlGuitarStringSounds(guitarStringSoundsOn);
+            pTuneComponent->controlGuitarStringSounds(guitarStringSoundsOn);
+        }
+        else
+        {
+            if (!std::any_of(guitarStringSoundsOn.begin(), guitarStringSoundsOn.end(), [](bool i) { return i; }))
+            {
+                guitarStringTonesOffToggleButton->setToggleState(true, NotificationType::sendNotification);
+            }
+            else
+            {
+                pTuneComponent->controlGuitarStringSounds(guitarStringSoundsOn);
+            }
+        }
         //[/UserButtonCode_E4soundToggleButton]
     }
     else if (buttonThatWasClicked == inputMuteToggleButton.get())
