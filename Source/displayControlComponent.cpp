@@ -871,7 +871,7 @@ void displayControlComponent::initControls()
 	auto fftOrder = 5;
 	while (curSecondsPerBuffer < 5)
 	{
-		curSecondsPerBuffer = (double)(1 << fftOrder) * currentSecondsPerSampleAtDecimatedSampleRate;
+		curSecondsPerBuffer = (double)std::pow(2, fftOrder) * currentSecondsPerSampleAtDecimatedSampleRate;
 		if (curSecondsPerBuffer <= 5)
 		{
 			// Round to 3 decimals
@@ -916,7 +916,7 @@ void displayControlComponent::initControls()
 	}
 	pTuneComponent->setShowFFT(showFFTToggleButton->getToggleState());
 
-	showFFTMaxIndictrToggleButton->setToggleState(getXmlTagDISPLAYCONTROL()->getBoolAttribute("showFFT"), NotificationType::dontSendNotification);
+	showFFTMaxIndictrToggleButton->setToggleState(getXmlTagDISPLAYCONTROL()->getBoolAttribute("showFFTMaxIndictr"), NotificationType::dontSendNotification);
 	if (showFFTMaxIndictrToggleButton->getToggleState())
 	{
 		if (!showFFTToggleButton->getToggleState())
@@ -1009,7 +1009,7 @@ void displayControlComponent::initAdaptiveNoSecondsComboBox(float timeSecundsPer
 	auto noFullBuffersToselectFirst = std::numeric_limits<int>::min();
 	auto noFullBuffers = 1;
 
-	for (; noSeconds < adaptiveMaxNoOfSecondsAlways; noFullBuffers += noFullBuffersIncrmnts)
+	for (; noSeconds < static_cast<float>(adaptiveMaxNoOfSecondsAlways); noFullBuffers += noFullBuffersIncrmnts)
 	{
 		if (actNoOfFullAudioRecordBuffersPerStringInAdaptiveThresholdCalcs > 0)
 		{
@@ -1049,7 +1049,7 @@ void displayControlComponent::updateAdaptiveNoSecondsComboBox(float timeSecundsP
 	auto noSeconds = 0.0f;
 	adaptiveNoSecondsComboBox->clear(NotificationType::dontSendNotification);
 	auto noFullBuffersIncrmnts = (int)std::round((float)adaptiveMaxNoOfSecondsIncrements / timeSecundsPerFullAudioRecordBuffer);
-	for (auto noFullBuffers = 1; noSeconds < adaptiveMaxNoOfSecondsAlways; noFullBuffers += noFullBuffersIncrmnts)
+	for (auto noFullBuffers = 1; noSeconds < static_cast<float>(adaptiveMaxNoOfSecondsAlways); noFullBuffers += noFullBuffersIncrmnts)
 	{
 		noSeconds = timeSecundsPerFullAudioRecordBuffer * (float)noFullBuffers;
 		//find value nearest to the previous selected
@@ -1081,7 +1081,7 @@ void displayControlComponent::updateNoSecondsSoundPerCalcComboBox(double seconds
 	auto fftOrder = 5;
 	while (curValForItem < 5)
 	{
-		curValForItem = (double)(1 << fftOrder) * secondsPerSampleAtDecimatedSampleRate;
+		curValForItem = (double)std::pow(2, fftOrder) * secondsPerSampleAtDecimatedSampleRate;
 		if (curValForItem <= 5)
 		{
 			//find value nearest to the previous selected

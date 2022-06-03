@@ -817,8 +817,18 @@ bool tuneComponent::setPreAndPostFiltersAndConstantsBasedOnSampleRate(double new
 
 	if (bDisplayControlComponentReady)
 	{
-		pDisplayControlComponent.lock()->setLabelHighstFreqText(decimatedSampleRate, E2 - goertzelFreqsAroundGuitarStringFreqs, E4 + goertzelFreqsAroundGuitarStringFreqs);
-		pDisplayControlComponent.lock()->showLowestAndHighestFreqToDisplayDataForHz(decimatedSampleRate, E2 - goertzelFreqsAroundGuitarStringFreqs, E4 + goertzelFreqsAroundGuitarStringFreqs);
+		pDisplayControlComponent.lock()->setLabelHighstFreqText
+			(
+				decimatedSampleRate
+				, static_cast<int>(E2) - static_cast<int>(goertzelFreqsAroundGuitarStringFreqs)
+				, static_cast<int>(E4) + static_cast<int>(goertzelFreqsAroundGuitarStringFreqs)
+			);
+		pDisplayControlComponent.lock()->showLowestAndHighestFreqToDisplayDataForHz
+			(
+				decimatedSampleRate
+				, static_cast<int>(E2) - static_cast<int>(goertzelFreqsAroundGuitarStringFreqs)
+				, static_cast<int>(E4) + static_cast<int>(goertzelFreqsAroundGuitarStringFreqs)
+			);
 	}
 	if (adaptiveNoSecondsComboBoxReady)
 	{
@@ -1049,8 +1059,8 @@ double tuneComponent::getCurrentDecimatedSampleRate()
 void tuneComponent::getCurrentDecimatedSampleRateAndLowestAndHighestGoertzelFreq(double& curSampleRate, uint16& lowestGoertzelFreq, uint16& highestGoertzelFreq)
 {
 	curSampleRate = decimatedSampleRate;
-	lowestGoertzelFreq = E2 - goertzelFreqsAroundGuitarStringFreqs;
-	highestGoertzelFreq = E4 + goertzelFreqsAroundGuitarStringFreqs;
+	lowestGoertzelFreq = static_cast<int>(E2) - static_cast<int>(goertzelFreqsAroundGuitarStringFreqs);
+	highestGoertzelFreq = static_cast<int>(E4) + static_cast<int>(goertzelFreqsAroundGuitarStringFreqs);
 }
 
 void tuneComponent::setDisplayControlComponentReadyFlag(bool isReady)

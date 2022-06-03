@@ -444,7 +444,7 @@ private:
 	//Guitar strings xCoords and Names
 	typedef struct nameGUITARSTRINGTONEXCOORDANDNAME
 	{
-		float stringXCoord;
+		float stringXCoord = 0.0f;
 		std::string stringName = "E2";
 	} GUITARSTRINGTONEXCOORDANDNAME;
 	std::deque<GUITARSTRINGTONEXCOORDANDNAME> guitarStringsTonesXCoordsAndNames;
@@ -546,8 +546,8 @@ private:
 
 	WaitableEvent weSpectrumDataReady;
 
-	int lowestFreqToDisplayDataForHz = E2 - goertzelFreqsAroundGuitarStringFreqs;
-	int highestFreqToDisplayDataForHz = E4 + goertzelFreqsAroundGuitarStringFreqs;
+	int lowestFreqToDisplayDataForHz = static_cast<int>(E2) - static_cast<int>(goertzelFreqsAroundGuitarStringFreqs);
+	int highestFreqToDisplayDataForHz = static_cast<int>(E4) + static_cast<int>(goertzelFreqsAroundGuitarStringFreqs);
 	long double freqToXCoordFactor = (long double)widthOfTuneWindow / (long double)((long double)highestFreqToDisplayDataForHz - (long double)lowestFreqToDisplayDataForHz);
 	bool firstSampleIn = true;
 	double greenFactorForGuitarStringsOutOfTone = (double)(0x80 / goertzelFreqsAroundGuitarStringFreqs);
