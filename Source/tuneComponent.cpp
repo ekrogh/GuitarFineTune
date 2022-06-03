@@ -1092,16 +1092,17 @@ void tuneComponent::filterAndPushNextSampleIntoFifo( float sample )
 		yNew = (double)sample;
 	}
 
+	if (recorderSourceFilteredAudioOn)
+	{
+		audioRecordBufferIn[noOfInputValues] = (float)yNew;
+	}
+
 	if (!showFiltersToggleButtonOn)
 	{
 		// Hann window
-		yNew = yNew * hannWinCoefficients[noOfInputValues];
+		yNew *= hannWinCoefficients[noOfInputValues];
 	}
 
-	if ( recorderSourceFilteredAudioOn )
-	{
-		audioRecordBufferIn[ noOfInputValues ] = (float)yNew;
-	}
 	if ( showFFTToggleButtonOn )
 	{
 		inBuffer[ noOfInputValues++ ] = yNew;
