@@ -268,6 +268,16 @@ private:
 	std::string currentaudioDeviceTypeInUse;
 	int currentBufferSizeInUse = -10;
 	double currentSampleRateInUse;
+	File myAudioStateXmlFile =
+		File::getSpecialLocation(File::userApplicationDataDirectory).getFullPathName()
+		+ "/guitarFineTune/audioState_"
+		+ std::string(ProjectInfo::versionString)
+		+ ".Xml";
+
+	std::unique_ptr<XmlElement> curAudioState = nullptr;
+	bool audioStateXmlFileExistedAtStart = false;
+
+
 
 	int fftOrder = fftOrderAtStart;
 	int fftSize = 1 << fftOrderAtStart;

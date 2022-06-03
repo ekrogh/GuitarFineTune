@@ -45,75 +45,79 @@ void xmlGuitarFineTuneConfig::makeNewVerConfigFile()
 
 		// Find evt. old config files
 //		for (DirectoryIterator di(myXmlDir, true); di.next();)
-        for (DirectoryEntry di : RangedDirectoryIterator (myXmlDir, true))
-        {
-			oldGuitarfinetuneconfig = juce::XmlDocument::parse(di.getFile());
-
-			// check we're looking at the right kind of document..
-			if (oldGuitarfinetuneconfig->hasTagName("GUITARFINETUNECONFIG"))
+		for (DirectoryEntry di : RangedDirectoryIterator(myXmlDir, true))
+		{
+			File actXmlFile = di.getFile();
+			if (!actXmlFile.getFileName().containsIgnoreCase("audioState"))
 			{
-				// now we'll iterate its sub-elements looking for 'DISPLAYCONTROL' elements..
-				for (auto* (e) : ((*oldGuitarfinetuneconfig).getChildIterator()))
+				oldGuitarfinetuneconfig = juce::XmlDocument::parse(actXmlFile);
+
+				// check we're looking at the right kind of document..
+				if (oldGuitarfinetuneconfig->hasTagName("GUITARFINETUNECONFIG"))
 				{
-					if (e->hasTagName("SOUNDCONTROL"))
+					// now we'll iterate its sub-elements looking for 'DISPLAYCONTROL' elements..
+					for (auto* (e) : ((*oldGuitarfinetuneconfig).getChildIterator()))
 					{
-						// found a DISPLAYCONTROL, so use some of its attributes..
-						for (auto attriBute : soundControlAttributes)
+						if (e->hasTagName("SOUNDCONTROL"))
 						{
-							if ((attributeValueString = e->getStringAttribute(attriBute.attributeName, "notFound")) != "notFound")
+							// found a DISPLAYCONTROL, so use some of its attributes..
+							for (auto attriBute : soundControlAttributes)
 							{
-								if (attriBute.value.isString())
-									soundcontrol->setAttribute(attriBute.attributeName, attributeValueString);
-								else if (attriBute.value.isInt())
-									soundcontrol->setAttribute(attriBute.attributeName, e->getIntAttribute(attriBute.attributeName));
-								else if (attriBute.value.isDouble())
-									soundcontrol->setAttribute(attriBute.attributeName, e->getDoubleAttribute(attriBute.attributeName));
-								else if (attriBute.value.isBool())
-									soundcontrol->setAttribute(attriBute.attributeName, e->getBoolAttribute(attriBute.attributeName));
+								if ((attributeValueString = e->getStringAttribute(attriBute.attributeName, "notFound")) != "notFound")
+								{
+									if (attriBute.value.isString())
+										soundcontrol->setAttribute(attriBute.attributeName, attributeValueString);
+									else if (attriBute.value.isInt())
+										soundcontrol->setAttribute(attriBute.attributeName, e->getIntAttribute(attriBute.attributeName));
+									else if (attriBute.value.isDouble())
+										soundcontrol->setAttribute(attriBute.attributeName, e->getDoubleAttribute(attriBute.attributeName));
+									else if (attriBute.value.isBool())
+										soundcontrol->setAttribute(attriBute.attributeName, e->getBoolAttribute(attriBute.attributeName));
+								}
 							}
 						}
-					}
-					if (e->hasTagName("DISPLAYCONTROL"))
-					{
-						// found a DISPLAYCONTROL, so use some of its attributes..
-						for (auto attriBute : displayControlAttributes)
+						if (e->hasTagName("DISPLAYCONTROL"))
 						{
-							if ((attributeValueString = e->getStringAttribute(attriBute.attributeName, "notFound")) != "notFound")
+							// found a DISPLAYCONTROL, so use some of its attributes..
+							for (auto attriBute : displayControlAttributes)
 							{
-								if (attriBute.value.isString())
-									displaycontrol->setAttribute(attriBute.attributeName, attributeValueString);
-								else if (attriBute.value.isInt())
-									displaycontrol->setAttribute(attriBute.attributeName, e->getIntAttribute(attriBute.attributeName));
-								else if (attriBute.value.isDouble())
-									displaycontrol->setAttribute(attriBute.attributeName, e->getDoubleAttribute(attriBute.attributeName));
-								else if (attriBute.value.isBool())
-									displaycontrol->setAttribute(attriBute.attributeName, e->getBoolAttribute(attriBute.attributeName));
+								if ((attributeValueString = e->getStringAttribute(attriBute.attributeName, "notFound")) != "notFound")
+								{
+									if (attriBute.value.isString())
+										displaycontrol->setAttribute(attriBute.attributeName, attributeValueString);
+									else if (attriBute.value.isInt())
+										displaycontrol->setAttribute(attriBute.attributeName, e->getIntAttribute(attriBute.attributeName));
+									else if (attriBute.value.isDouble())
+										displaycontrol->setAttribute(attriBute.attributeName, e->getDoubleAttribute(attriBute.attributeName));
+									else if (attriBute.value.isBool())
+										displaycontrol->setAttribute(attriBute.attributeName, e->getBoolAttribute(attriBute.attributeName));
+								}
 							}
 						}
-					}
-					if (e->hasTagName("AUDIOCONTROL"))
-					{
-						// found a AUDIOCONTROL, so use some of its attributes..
-						for (auto attriBute : audioControlAttributes)
+						if (e->hasTagName("AUDIOCONTROL"))
 						{
-							if ((attributeValueString = e->getStringAttribute(attriBute.attributeName, "notFound")) != "notFound")
+							// found a AUDIOCONTROL, so use some of its attributes..
+							for (auto attriBute : audioControlAttributes)
 							{
-								if (attriBute.value.isString())
-									audiocontrol->setAttribute(attriBute.attributeName, attributeValueString);
-								else if (attriBute.value.isInt())
-									audiocontrol->setAttribute(attriBute.attributeName, e->getIntAttribute(attriBute.attributeName));
-								else if (attriBute.value.isDouble())
-									audiocontrol->setAttribute(attriBute.attributeName, e->getDoubleAttribute(attriBute.attributeName));
-								else if (attriBute.value.isBool())
-									audiocontrol->setAttribute(attriBute.attributeName, e->getBoolAttribute(attriBute.attributeName));
+								if ((attributeValueString = e->getStringAttribute(attriBute.attributeName, "notFound")) != "notFound")
+								{
+									if (attriBute.value.isString())
+										audiocontrol->setAttribute(attriBute.attributeName, attributeValueString);
+									else if (attriBute.value.isInt())
+										audiocontrol->setAttribute(attriBute.attributeName, e->getIntAttribute(attriBute.attributeName));
+									else if (attriBute.value.isDouble())
+										audiocontrol->setAttribute(attriBute.attributeName, e->getDoubleAttribute(attriBute.attributeName));
+									else if (attriBute.value.isBool())
+										audiocontrol->setAttribute(attriBute.attributeName, e->getBoolAttribute(attriBute.attributeName));
+								}
 							}
 						}
 					}
 				}
-			}
 
-			// Delete evt. old config files
-			di.getFile().deleteFile();
+				// Delete evt. old config files
+				di.getFile().deleteFile();
+			}
 		}
 	}
 

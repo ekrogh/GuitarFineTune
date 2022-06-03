@@ -31,7 +31,12 @@ private:
 	void makeNewVerConfigFile();
 
 	File myXmlDir = File::getSpecialLocation(File::userApplicationDataDirectory).getFullPathName() + "/guitarFineTune";
-	File myXmlFile = File::getSpecialLocation(File::userApplicationDataDirectory).getFullPathName() + "/guitarFineTune/config_" + std::string(ProjectInfo::versionString) + ".Xml";
+	File myXmlFile =
+		File::getSpecialLocation(File::userApplicationDataDirectory).getFullPathName()
+		+ "/guitarFineTune/config_"
+		+ std::string(ProjectInfo::versionString)
+		+ ".Xml";
+
 
 	std::unique_ptr<XmlElement> guitarfinetuneconfig = std::make_unique<XmlElement>("GUITARFINETUNECONFIG");
 	std::unique_ptr<XmlElement> soundcontrol = std::make_unique<XmlElement>("SOUNDCONTROL");

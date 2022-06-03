@@ -193,13 +193,41 @@ bool tuneComponent::openAudioDeviceThatWillOpenWithLegalSampleRate()
 
 bool tuneComponent::audioSysInit()
 {
-	if ((sharedAudioDeviceManager->initialise(numInputChannels, numOutputChannels, nullptr, true, {}, nullptr)).isNotEmpty())
+	audioStateXmlFileExistedAtStart = myAudioStateXmlFile.exists();
+
+	if (audioStateXmlFileExistedAtStart)
 	{
-		if (!openAudioDeviceThatWillOpenWithLegalSampleRate())
+		curAudioState = juce::XmlDocument::parse(myAudioStateXmlFile);
+
+		if ((sharedAudioDeviceManager->initialise
+			(
+				numInputChannels
+				, numOutputChannels
+				, curAudioState.get()
+				, true
+				, {}
+				, nullptr
+			)).isNotEmpty())
 		{
-			sharedAudioDeviceManager->closeAudioDevice();
-			JUCEApplication::getInstance()->systemRequestedQuit();
-			return false;
+			if (!openAudioDeviceThatWillOpenWithLegalSampleRate())
+			{
+				sharedAudioDeviceManager->closeAudioDevice();
+				JUCEApplication::getInstance()->systemRequestedQuit();
+				return false;
+			}
+		}
+
+	}
+	else
+	{
+		if ((sharedAudioDeviceManager->initialise(numInputChannels, numOutputChannels, nullptr, true, {}, nullptr)).isNotEmpty())
+		{
+			if (!openAudioDeviceThatWillOpenWithLegalSampleRate())
+			{
+				sharedAudioDeviceManager->closeAudioDevice();
+				JUCEApplication::getInstance()->systemRequestedQuit();
+				return false;
+			}
 		}
 	}
 
@@ -231,150 +259,157 @@ bool tuneComponent::audioSysInit()
 	// Get sample rates
 	juce::Array<double> availableSampleRates(sharedAudioDeviceManager->getCurrentAudioDevice()->getAvailableSampleRates());
 	availableSampleRates.sort();
-	//#endif // !(JUCE_IOS || JUCE_ANDROID)
+
+	if (!audioStateXmlFileExistedAtStart)
+	{
 #if JUCE_WINDOWS
-	{
-		//const StringArray devs(type.getDeviceNames(isInputs));
-		// Get input channel names
-		StringArray availableInputChannelNames(sharedAudioDeviceManager->getCurrentDeviceTypeObject()->getDeviceNames(true));
-		// Get output channel names
-		StringArray availableOutputChannelNames(sharedAudioDeviceManager->getCurrentDeviceTypeObject()->getDeviceNames(false));
+		{
+			//const StringArray devs(type.getDeviceNames(isInputs));
+			// Get input channel names
+			StringArray availableInputChannelNames(sharedAudioDeviceManager->getCurrentDeviceTypeObject()->getDeviceNames(true));
+			// Get output channel names
+			StringArray availableOutputChannelNames(sharedAudioDeviceManager->getCurrentDeviceTypeObject()->getDeviceNames(false));
 
-		// Set i/o devices to None
-		currentAudioConfig.inputDeviceName = "";
-		currentAudioConfig.outputDeviceName = "";
+			// Set i/o devices to None
+			currentAudioConfig.inputDeviceName = "";
+			currentAudioConfig.outputDeviceName = "";
 
-		// Make the changes
-		String possibleError = sharedAudioDeviceManager->setAudioDeviceSetup(currentAudioConfig, true);
-		if (possibleError.isNotEmpty())
-			//{
-			//	//int lastIndxOfSound = possibleError.lastIndexOfIgnoreCase("Sound");
-			//	//if (lastIndxOfSound > 0)
-			//	//{
-			//	//	possibleError = possibleError.replaceSection(possibleError.indexOfChar(lastIndxOfSound, ' '), 1, "\n");
-			//	//}
-			//	AlertWindow::showOkCancelBox
-			//	(
-			//		AlertWindow::WarningIcon
-			//		, TRANS("Error when trying to\nconfigure audio!")
-			//		, possibleError + "\nHave you enabled access to the Microphone in Privacy Settings?"
-			//		, ""
-			//		, ""
-			//		, nullptr
-			//		, nullptr
-			//	);
-			//}
-			// Reconfigure to preferred
+			// Make the changes
+			String possibleError = sharedAudioDeviceManager->setAudioDeviceSetup(currentAudioConfig, true);
+			if (possibleError.isNotEmpty())
+				//{
+				//	//int lastIndxOfSound = possibleError.lastIndexOfIgnoreCase("Sound");
+				//	//if (lastIndxOfSound > 0)
+				//	//{
+				//	//	possibleError = possibleError.replaceSection(possibleError.indexOfChar(lastIndxOfSound, ' '), 1, "\n");
+				//	//}
+				//	AlertWindow::showOkCancelBox
+				//	(
+				//		AlertWindow::WarningIcon
+				//		, TRANS("Error when trying to\nconfigure audio!")
+				//		, possibleError + "\nHave you enabled access to the Microphone in Privacy Settings?"
+				//		, ""
+				//		, ""
+				//		, nullptr
+				//		, nullptr
+				//	);
+				//}
+				// Reconfigure to preferred
+				sharedAudioDeviceManager->getAudioDeviceSetup(currentAudioConfig);
+
+			// Select buffer size
+			currentAudioConfig.bufferSize = availableBufferSizes.getLast();
+			if (currentAudioConfig.bufferSize > preferreAudioBufferSize)
+			{
+				if (availableBufferSizes.indexOf(preferreAudioBufferSize) >= 0)
+				{
+					currentAudioConfig.bufferSize = preferreAudioBufferSize;
+				}
+			}
+
+			// Select lowest sample rate
+			availableSampleRates.sort();
+			currentAudioConfig.sampleRate = availableSampleRates.getFirst();
+			if (currentAudioConfig.sampleRate < 44100)
+			{
+				currentAudioConfig.sampleRate = 44100;
+			}
+
+			// Select Input Channel
+			if (availableInputChannelNames.indexOf("Primary Sound Capture Driver") >= 0)
+			{
+				currentAudioConfig.inputDeviceName = "Primary Sound Capture Driver";
+			}
+
+			// Select Output Channel
+			if (availableOutputChannelNames.indexOf("Primary Sound Driver") >= 0)
+			{
+				currentAudioConfig.outputDeviceName = "Primary Sound Driver";
+			}
+
+			// Make the changes
+			possibleError = sharedAudioDeviceManager->setAudioDeviceSetup(currentAudioConfig, true);
+			if (possibleError.isNotEmpty())
+			{
+				//int lastIndxOfSound = possibleError.lastIndexOfIgnoreCase("Sound");
+				//if (lastIndxOfSound > 0)
+				//{
+				//	possibleError = possibleError.replaceSection(possibleError.indexOfChar(lastIndxOfSound, ' '), 1, "\n");
+				//}
+				AlertWindow::showOkCancelBox
+				(
+					AlertWindow::WarningIcon
+					, TRANS("Error when trying to\nconfigure audio!")
+					, possibleError + "\nHave you enabled access to the Microphone in Privacy Settings?"
+					, ""
+					, ""
+					, nullptr
+					, nullptr
+				);
+			}
+			// Get the actual config.
 			sharedAudioDeviceManager->getAudioDeviceSetup(currentAudioConfig);
-
-		// Select buffer size
-		currentAudioConfig.bufferSize = availableBufferSizes.getLast();
-		if (currentAudioConfig.bufferSize > preferreAudioBufferSize)
-		{
-			if (availableBufferSizes.indexOf(preferreAudioBufferSize) >= 0)
-			{
-				currentAudioConfig.bufferSize = preferreAudioBufferSize;
-			}
 		}
-
-		// Select lowest sample rate
-		availableSampleRates.sort();
-		currentAudioConfig.sampleRate = availableSampleRates.getFirst();
-		if (currentAudioConfig.sampleRate < 44100)
-		{
-			currentAudioConfig.sampleRate = 44100;
-		}
-
-		// Select Input Channel
-		if (availableInputChannelNames.indexOf("Primary Sound Capture Driver") >= 0)
-		{
-			currentAudioConfig.inputDeviceName = "Primary Sound Capture Driver";
-		}
-
-		// Select Output Channel
-		if (availableOutputChannelNames.indexOf("Primary Sound Driver") >= 0)
-		{
-			currentAudioConfig.outputDeviceName = "Primary Sound Driver";
-		}
-
-		// Make the changes
-		possibleError = sharedAudioDeviceManager->setAudioDeviceSetup(currentAudioConfig, true);
-		if (possibleError.isNotEmpty())
-		{
-			//int lastIndxOfSound = possibleError.lastIndexOfIgnoreCase("Sound");
-			//if (lastIndxOfSound > 0)
-			//{
-			//	possibleError = possibleError.replaceSection(possibleError.indexOfChar(lastIndxOfSound, ' '), 1, "\n");
-			//}
-			AlertWindow::showOkCancelBox
-			(
-				AlertWindow::WarningIcon
-				, TRANS("Error when trying to\nconfigure audio!")
-				, possibleError + "\nHave you enabled access to the Microphone in Privacy Settings?"
-				, ""
-				, ""
-				, nullptr
-				, nullptr
-			);
-		}
-		// Get the actual config.
-		sharedAudioDeviceManager->getAudioDeviceSetup(currentAudioConfig);
-	}
 #else
-	{
-#if !JUCE_ANDROID
-		// Select buffer size
-		currentAudioConfig.bufferSize = availableBufferSizes.getLast();
-		if (currentAudioConfig.bufferSize > preferreAudioBufferSize)
 		{
-			if (availableBufferSizes.indexOf(preferreAudioBufferSize) >= 0)
+#if !JUCE_ANDROID
+			// Select buffer size
+			currentAudioConfig.bufferSize = availableBufferSizes.getLast();
+			if (currentAudioConfig.bufferSize > preferreAudioBufferSize)
 			{
-				currentAudioConfig.bufferSize = preferreAudioBufferSize;
+				if (availableBufferSizes.indexOf(preferreAudioBufferSize) >= 0)
+				{
+					currentAudioConfig.bufferSize = preferreAudioBufferSize;
+				}
 			}
-		}
 #endif // !JUCE_ANDROID
 
 #if !(JUCE_IOS || JUCE_ANDROID)
-		// Select lowest sample rate
-		availableSampleRates.sort();
-		currentAudioConfig.sampleRate = availableSampleRates.getFirst();
-		if (currentAudioConfig.sampleRate < 44100)
-		{
-			currentAudioConfig.sampleRate = 44100;
-		}
+			// Select lowest sample rate
+			availableSampleRates.sort();
+			currentAudioConfig.sampleRate = availableSampleRates.getFirst();
+			if (currentAudioConfig.sampleRate < 44100)
+			{
+				currentAudioConfig.sampleRate = 44100;
+			}
 #endif // !(JUCE_IOS || JUCE_ANDROID)
-		// Make the changes
-		String possibleError = sharedAudioDeviceManager->setAudioDeviceSetup(currentAudioConfig, true);
-		if (possibleError.isNotEmpty())
-		{
-			//int lastIndxOfSound = possibleError.lastIndexOfIgnoreCase("Sound");
-			//if (lastIndxOfSound > 0)
-			//{
-			//	possibleError = possibleError.replaceSection(possibleError.indexOfChar(lastIndxOfSound, ' '), 1, "\n");
-			//}
-			AlertWindow::showOkCancelBox
-			(
-				AlertWindow::WarningIcon
-				, TRANS("Error when trying to\nconfigure audio!")
-				, possibleError
-				, ""
-				, ""
-				, nullptr
-				, nullptr
-			);
+			// Make the changes
+			String possibleError = sharedAudioDeviceManager->setAudioDeviceSetup(currentAudioConfig, true);
+			if (possibleError.isNotEmpty())
+			{
+				//int lastIndxOfSound = possibleError.lastIndexOfIgnoreCase("Sound");
+				//if (lastIndxOfSound > 0)
+				//{
+				//	possibleError = possibleError.replaceSection(possibleError.indexOfChar(lastIndxOfSound, ' '), 1, "\n");
+				//}
+				AlertWindow::showOkCancelBox
+				(
+					AlertWindow::WarningIcon
+					, TRANS("Error when trying to\nconfigure audio!")
+					, possibleError
+					, ""
+					, ""
+					, nullptr
+					, nullptr
+				);
+			}
+			// Get the actual config.
+			sharedAudioDeviceManager->getAudioDeviceSetup(currentAudioConfig);
 		}
-		// Get the actual config.
-		sharedAudioDeviceManager->getAudioDeviceSetup(currentAudioConfig);
-	}
 #endif // JUCE_WINDOWS
 
-	currentBufferSizeInUse = currentAudioConfig.bufferSize;
-	currentSampleRateInUse = currentAudioConfig.sampleRate;
+		currentBufferSizeInUse = currentAudioConfig.bufferSize;
+		currentSampleRateInUse = currentAudioConfig.sampleRate;
 
 #ifdef THIS_IS_IOS
-	//sharedAudioDeviceManager->getCurrentAudioDevice()->setAirPlayBlueToothOn(airPlayAllowed, false);
-	//sharedAudioDeviceManager->getCurrentAudioDevice()->setAirPlayBlueToothOn(airPlayAllowed, blueToothAllowed);
+		//sharedAudioDeviceManager->getCurrentAudioDevice()->setAirPlayBlueToothOn(airPlayAllowed, false);
+		//sharedAudioDeviceManager->getCurrentAudioDevice()->setAirPlayBlueToothOn(airPlayAllowed, blueToothAllowed);
 #endif // THIS_IS_IOS
+	}
+
+	// Save state
+	curAudioState = sharedAudioDeviceManager->createStateXml();
+	curAudioState->writeTo(myAudioStateXmlFile);
 
 	// ChangeListner = this
 	sharedAudioDeviceManager->addChangeListener(this);
@@ -934,6 +969,11 @@ void tuneComponent::changeListenerCallback(ChangeBroadcaster*)
 			}
 		}
 	}
+
+	// Save state
+	curAudioState = sharedAudioDeviceManager->createStateXml();
+	curAudioState->writeTo(myAudioStateXmlFile);
+
 }
 
 void tuneComponent::calcNewGuitarStringsSinePhasesFromSampleRate(double sampleRate)
