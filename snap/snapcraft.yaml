@@ -1,6 +1,6 @@
 name: guitarfinetune
 base: core20
-version: "9.3.4"
+version: "9.3.5"
 summary: Guitar fine-tuning tool
 description: |
   guitarfinetune

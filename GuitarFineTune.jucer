@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="cgcxPd" name="GuitarFineTune" projectType="guiapp" version="9.3.4"
+<JUCERPROJECT id="cgcxPd" name="GuitarFineTune" projectType="guiapp" version="9.3.5"
               bundleIdentifier="dk.eksIt.GuitarFineTune" includeBinaryInAppConfig="1"
               reportAppUsage="1" companyCopyright="eksit" companyName="eksit"
               companyWebsite="eksit.dk" companyEmail="guitarFineTune@eksit.dk"
@@ -148,12 +148,12 @@
     <ANDROIDSTUDIO targetFolder="Builds/Android" androidSDKPath="${user.home}/AppData/Local/Android/Sdk"
                    androidNDKPath="${user.home}/AppData/Local/Android/Sdk/ndk-bundle"
                    microphonePermissionNeeded="1" cppLanguageStandard="-std=c++14"
-                   androidVersionCode="54" androidKeyStore="../../../Android_Special/keystore.jks"
+                   androidVersionCode="55" androidKeyStore="../../../Android_Special/keystore.jks"
                    androidKeyStorePass="6taura" androidKeyAlias="upload" androidKeyAliasPass="6taura"
                    buildToolsVersion="30" androidPushNotifications="0" androidEnableContentSharing="1"
                    androidTargetSDK="30" gradleWrapperVersion="7.0.2" gradleVersion="7.2"
                    androidInternetNeeded="0" smallIcon="RB4slw" bigIcon="DzMVX4"
-                   extraDefs="ANDROID_VERSION_CODE=54" androidExternalWriteNeeded="1">
+                   extraDefs="ANDROID_VERSION_CODE=55" androidExternalWriteNeeded="1">
       <CONFIGURATIONS>
         <CONFIGURATION name="Release" isDebug="0" targetName="GuitarFineTune" optimisation="3"/>
         <CONFIGURATION name="Debug" isDebug="1" targetName="GuitarFineTune" androidArchitectures="armeabi-v7a arm64-v8a x86 x86_64"/>
