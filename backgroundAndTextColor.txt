@@ -1,5 +1,0 @@
-background
-FF20072B
-
-Text
-FF6495ED
