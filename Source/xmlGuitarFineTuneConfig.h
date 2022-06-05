@@ -53,6 +53,12 @@ private:
 	{
 		  { "autoGain", true }
 		, { "recordingGain", 0.0f }
+		, { "muteStrings", false }
+		, { "stringGain", 1.0f }
+		, { "muteInput", true }
+		, { "inputGain", 0.0f }
+		, { "muteOutput", false }
+		, { "outputGain", 1.0f }
 	};
 
 	std::deque<typATTRIBUTE> displayControlAttributes

@@ -868,8 +868,8 @@ void tuneComponent::guitarStringSoundsCleanUp
 		{
 			ptrGuitarStringSoundsControl->disableAllStringTonesAndMutes();
 		}
-		outputMuteToggleButtonOn = false;
-		stringsMuteToggleButtonOn = false;
+		//outputMuteToggleButtonOn = false;
+		//stringsMuteToggleButtonOn = false;
 
 		sampleRateLastTime = sampleRate;
 	}
