@@ -926,6 +926,12 @@ void displayControlComponent::initControls()
 	}
 	pTuneComponent->setshowFFTMaxIndictr(showFFTMaxIndictrToggleButton->getToggleState());
 
+	stringsOffTuneValuesToggleButton->setToggleState
+	(
+		getXmlTagDISPLAYCONTROL()->getBoolAttribute("showStringsOffTuneValues")
+		, juce::NotificationType::dontSendNotification
+	);
+	pTuneComponent->setShowstringsOffTuneValues(stringsOffTuneValuesToggleButton->getToggleState());
 
 
 }

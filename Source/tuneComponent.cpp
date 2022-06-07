@@ -1332,7 +1332,7 @@ void tuneComponent::getNextAudioBlock(const AudioSourceChannelInfo& bufferToFill
 						(
 							outBffrStart, outBffrEnd, outBffrStart,
 							[&currentPhase, phaseDeltaPerSample, &gainToUse]
-						(float guitarStringSoundsIn)
+							(float guitarStringSoundsIn)
 							{
 								currentPhase = std::fmod(currentPhase + phaseDeltaPerSample, (float)f2PI);
 								return guitarStringSoundsIn + (float)(gainToUse * std::sin(currentPhase));
