@@ -370,10 +370,10 @@ private:
 		long double Q1, Q2;
 		long double resultMagnitudeSquared;
 	} GOERTZELBIN;
-	std::deque<GOERTZELBIN> dqGoertzelBins1;
-	std::deque<GOERTZELBIN> dqGoertzelBins2;
-	std::deque<GOERTZELBIN>* pDqGoertzelBinsIn = &dqGoertzelBins2;
-	std::deque<GOERTZELBIN>* pDqGoertzelBinsOut = &dqGoertzelBins1;
+	std::vector<GOERTZELBIN> dqGoertzelBins1;
+	std::vector<GOERTZELBIN> dqGoertzelBins2;
+	std::vector<GOERTZELBIN>* pDqGoertzelBinsIn = &dqGoertzelBins2;
+	std::vector<GOERTZELBIN>* pDqGoertzelBinsOut = &dqGoertzelBins1;
 
 
 	// Goertzel result statistics
@@ -395,10 +395,9 @@ private:
 		std::deque<long double> freqsOutOfTune;
 		long double meanFreqsOutOfTune;
 		double meanOutOfTuneXCoordinat;
-		std::deque<double> oldMagnitudeSquareddResults;
+		std::vector<double> oldMagnitudeSquareddResults;
 	} GOERTZELRESULTSTATISTICS;
-	std::deque<GOERTZELRESULTSTATISTICS> dqGoertzelResultStatistics;
-
+	std::vector<GOERTZELRESULTSTATISTICS> dqGoertzelResultStatistics;
 
 	long double max_goertzelValue = -DBL_MAX + 1;
 
