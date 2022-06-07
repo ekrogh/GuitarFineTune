@@ -10,6 +10,7 @@
 
 #define _USE_MATH_DEFINES // For use in math.h
 
+
 //#define USE_JUCE_FFT
 #undef USE_JUCE_FFT
 
@@ -293,7 +294,7 @@ private:
 	int fftSizeHalf = 1 << (fftOrderAtStart - 1);
 	int fftSizeDouble = 1 << (fftOrderAtStart + 1);
 
-	double* hannWinCoefficients = nullptr;
+	std::vector<double> hannWinCoefficients;
 
 	Image spectrogramImage{ Image::RGB, widthOfTuneWindow, hightOfTuneWindow, true };
 	juce::Graphics spectrImGraphcs{ spectrogramImage };
