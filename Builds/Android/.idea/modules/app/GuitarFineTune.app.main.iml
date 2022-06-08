@@ -46,9 +46,6 @@
     <content url="file://$MODULE_DIR$/../../../../../Source">
       <sourceFolder url="file://$MODULE_DIR$/../../../../../Source" type="native-Source-root" />
     </content>
-    <content url="file://$MODULE_DIR$/../../../../../iOS_Special">
-      <sourceFolder url="file://$MODULE_DIR$/../../../../../iOS_Special" type="native-Source-root" />
-    </content>
     <content url="file://$MODULE_DIR$/../../../../../../JUCE">
       <sourceFolder url="file://$MODULE_DIR$/../../../../../../JUCE/modules/juce_core/native/javacore/app" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../../../../../JUCE/modules/juce_core/native/javacore/init" isTestSource="false" />
