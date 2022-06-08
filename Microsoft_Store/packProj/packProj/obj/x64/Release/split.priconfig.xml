@@ -6,7 +6,7 @@
     <autoResourcePackage qualifier="DXFeatureLevel" />
     <omitSchemaFromResourcePacks />
   </packaging>
-  <index root="\" startIndexAt="D:\Users\eigil\projects\juceProjs\GuitarFineTune\packProj\packProj\bin\x64\Release\resources.pri">
+  <index root="\" startIndexAt="D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\packProj\packProj\bin\x64\Release\resources.pri">
     <default>
       <qualifier name="Language" value="en-US" />
       <qualifier name="Contrast" value="standard" />

@@ -1,0 +1,339 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Machine>STENDELL</Machine>
+    <WindowsUser>eigil</WindowsUser>
+    <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
+    <TargetOsVersion>10.0</TargetOsVersion>
+    <TargetOsDescription>Windows 10.0</TargetOsDescription>
+    <SolutionConfiguration>Release|x64</SolutionConfiguration>
+    <PackageArchitecture>x64</PackageArchitecture>
+    <PackageIdentityName>57158guitarFineTune.guitarFineTune</PackageIdentityName>
+    <PackageIdentityPublisher>CN=C2E1AE67-4CF2-4308-9E4D-4A6C24FA7B0B</PackageIdentityPublisher>
+    <IntermediateOutputPath>D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\packProj\packProj\obj\x64\Release\</IntermediateOutputPath>
+    <RemoteDeploymentType>
+    </RemoteDeploymentType>
+    <PackageRegistrationPath>
+    </PackageRegistrationPath>
+    <RemoveNonLayoutFiles>true</RemoveNonLayoutFiles>
+    <DeployOptionalPackages>false</DeployOptionalPackages>
+    <WindowsSdkPath>
+    </WindowsSdkPath>
+    <LayoutDir>D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\packProj\packProj\bin\x64\Release\AppX</LayoutDir>
+    <RegisteredManifestChecksum>6EA41568B6EF3A91DCEF807882BEDBC4A7D416BD2B61F0FD43BC409FEBCF2A8D</RegisteredManifestChecksum>
+    <RegisteredPackageMoniker>57158guitarFineTune.guitarFineTune_9.4.7.0_x64__my9557tv9enda</RegisteredPackageMoniker>
+    <RegisteredUserModeAppID>57158guitarFineTune.guitarFineTune_my9557tv9enda!App</RegisteredUserModeAppID>
+    <RegisteredPackageID>57158guitarFineTune.guitarFineTune</RegisteredPackageID>
+    <RegisteredPackagePublisher>CN=C2E1AE67-4CF2-4308-9E4D-4A6C24FA7B0B</RegisteredPackagePublisher>
+    <RegisteredVersion>9.4.7.0</RegisteredVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <AppXManifest Include="D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\packProj\packProj\bin\x64\Release\AppxManifest.xml">
+      <PackagePath>AppxManifest.xml</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2022-06-08T16:49:16.951</Modified>
+    </AppXManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxPackagedFile Include="D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\packProj\packProj\Images\LargeTile.scale-100.png">
+      <PackagePath>Images\LargeTile.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2022-06-08T16:13:34.004</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\packProj\packProj\Images\LargeTile.scale-125.png">
+      <PackagePath>Images\LargeTile.scale-125.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2022-06-08T16:13:34.030</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\packProj\packProj\Images\LargeTile.scale-150.png">
+      <PackagePath>Images\LargeTile.scale-150.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2022-06-08T16:13:34.060</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\packProj\packProj\Images\LargeTile.scale-200.png">
+      <PackagePath>Images\LargeTile.scale-200.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2022-06-08T16:13:34.104</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\packProj\packProj\Images\LargeTile.scale-400.png">
+      <PackagePath>Images\LargeTile.scale-400.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2022-06-08T16:13:34.247</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\packProj\packProj\Images\SmallTile.scale-100.png">
+      <PackagePath>Images\SmallTile.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2022-06-08T16:13:33.626</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\packProj\packProj\Images\SmallTile.scale-125.png">
+      <PackagePath>Images\SmallTile.scale-125.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2022-06-08T16:13:33.640</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\packProj\packProj\Images\SmallTile.scale-150.png">
+      <PackagePath>Images\SmallTile.scale-150.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2022-06-08T16:13:33.654</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\packProj\packProj\Images\SmallTile.scale-200.png">
+      <PackagePath>Images\SmallTile.scale-200.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2022-06-08T16:13:33.669</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\packProj\packProj\Images\SmallTile.scale-400.png">
+      <PackagePath>Images\SmallTile.scale-400.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2022-06-08T16:13:33.697</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\packProj\packProj\Images\SplashScreen.scale-100.png">
+      <PackagePath>Images\SplashScreen.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2022-06-08T16:13:34.605</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\packProj\packProj\Images\SplashScreen.scale-125.png">
+      <PackagePath>Images\SplashScreen.scale-125.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2022-06-08T16:13:34.642</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\packProj\packProj\Images\SplashScreen.scale-150.png">
+      <PackagePath>Images\SplashScreen.scale-150.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2022-06-08T16:13:34.688</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\packProj\packProj\Images\SplashScreen.scale-200.png">
+      <PackagePath>Images\SplashScreen.scale-200.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2022-06-08T16:13:34.777</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\packProj\packProj\Images\LockScreenLogo.scale-200.png">
+      <PackagePath>Images\LockScreenLogo.scale-200.png</PackagePath>
+      <Modified>2022-06-04T18:13:42.573</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\packProj\packProj\Images\SplashScreen.scale-400.png">
+      <PackagePath>Images\SplashScreen.scale-400.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2022-06-08T16:13:35.056</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\packProj\packProj\Images\Square150x150Logo.scale-100.png">
+      <PackagePath>Images\Square150x150Logo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2022-06-08T16:13:33.719</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\packProj\packProj\Images\Square150x150Logo.scale-125.png">
+      <PackagePath>Images\Square150x150Logo.scale-125.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2022-06-08T16:13:33.743</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\packProj\packProj\Images\Square150x150Logo.scale-150.png">
+      <PackagePath>Images\Square150x150Logo.scale-150.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2022-06-08T16:13:33.763</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\packProj\packProj\Images\Square150x150Logo.scale-200.png">
+      <PackagePath>Images\Square150x150Logo.scale-200.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2022-06-08T16:13:33.783</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\packProj\packProj\Images\Square150x150Logo.scale-400.png">
+      <PackagePath>Images\Square150x150Logo.scale-400.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2022-06-08T16:13:33.826</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\packProj\packProj\Images\Square44x44Logo.altform-lightunplated_targetsize-16.png">
+      <PackagePath>Images\Square44x44Logo.altform-lightunplated_targetsize-16.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2022-06-08T16:13:34.501</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\packProj\packProj\Images\Square44x44Logo.altform-lightunplated_targetsize-24.png">
+      <PackagePath>Images\Square44x44Logo.altform-lightunplated_targetsize-24.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2022-06-08T16:13:34.514</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\packProj\packProj\Images\Square44x44Logo.altform-lightunplated_targetsize-256.png">
+      <PackagePath>Images\Square44x44Logo.altform-lightunplated_targetsize-256.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2022-06-08T16:13:34.577</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\packProj\packProj\Images\Square44x44Logo.altform-lightunplated_targetsize-32.png">
+      <PackagePath>Images\Square44x44Logo.altform-lightunplated_targetsize-32.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2022-06-08T16:13:34.528</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\packProj\packProj\Images\Square44x44Logo.altform-lightunplated_targetsize-48.png">
+      <PackagePath>Images\Square44x44Logo.altform-lightunplated_targetsize-48.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2022-06-08T16:13:34.546</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\packProj\packProj\Images\Square44x44Logo.altform-unplated_targetsize-16.png">
+      <PackagePath>Images\Square44x44Logo.altform-unplated_targetsize-16.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2022-06-08T16:13:34.415</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\packProj\packProj\Images\Square44x44Logo.altform-unplated_targetsize-256.png">
+      <PackagePath>Images\Square44x44Logo.altform-unplated_targetsize-256.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2022-06-08T16:13:34.486</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\packProj\packProj\Images\Square44x44Logo.altform-unplated_targetsize-32.png">
+      <PackagePath>Images\Square44x44Logo.altform-unplated_targetsize-32.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2022-06-08T16:13:34.443</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\packProj\packProj\Images\Square44x44Logo.altform-unplated_targetsize-48.png">
+      <PackagePath>Images\Square44x44Logo.altform-unplated_targetsize-48.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2022-06-08T16:13:34.461</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\packProj\packProj\Images\Square44x44Logo.scale-100.png">
+      <PackagePath>Images\Square44x44Logo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2022-06-08T16:13:34.261</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\packProj\packProj\Images\Square44x44Logo.scale-125.png">
+      <PackagePath>Images\Square44x44Logo.scale-125.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2022-06-08T16:13:34.276</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\packProj\packProj\Images\Square44x44Logo.scale-150.png">
+      <PackagePath>Images\Square44x44Logo.scale-150.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2022-06-08T16:13:34.289</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\packProj\packProj\Images\Square44x44Logo.scale-200.png">
+      <PackagePath>Images\Square44x44Logo.scale-200.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2022-06-08T16:13:34.303</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\packProj\packProj\Images\Square44x44Logo.scale-400.png">
+      <PackagePath>Images\Square44x44Logo.scale-400.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2022-06-08T16:13:34.321</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\packProj\packProj\Images\Square44x44Logo.targetsize-16.png">
+      <PackagePath>Images\Square44x44Logo.targetsize-16.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2022-06-08T16:13:34.333</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\packProj\packProj\Images\Square44x44Logo.targetsize-24.png">
+      <PackagePath>Images\Square44x44Logo.targetsize-24.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2022-06-08T16:13:34.345</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\packProj\packProj\Images\Square44x44Logo.targetsize-24_altform-unplated.png">
+      <PackagePath>Images\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2022-06-08T16:13:34.427</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\packProj\packProj\Images\Square44x44Logo.targetsize-256.png">
+      <PackagePath>Images\Square44x44Logo.targetsize-256.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2022-06-08T16:13:34.399</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\packProj\packProj\Images\Square44x44Logo.targetsize-32.png">
+      <PackagePath>Images\Square44x44Logo.targetsize-32.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2022-06-08T16:13:34.357</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\packProj\packProj\Images\Square44x44Logo.targetsize-48.png">
+      <PackagePath>Images\Square44x44Logo.targetsize-48.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2022-06-08T16:13:34.370</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\packProj\packProj\Images\StoreLogo.scale-100.png">
+      <PackagePath>Images\StoreLogo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2022-06-08T16:13:35.071</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\packProj\packProj\Images\StoreLogo.scale-125.png">
+      <PackagePath>Images\StoreLogo.scale-125.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2022-06-08T16:13:35.084</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\packProj\packProj\Images\StoreLogo.scale-150.png">
+      <PackagePath>Images\StoreLogo.scale-150.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2022-06-08T16:13:35.099</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\packProj\packProj\Images\StoreLogo.scale-200.png">
+      <PackagePath>Images\StoreLogo.scale-200.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2022-06-08T16:13:35.116</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\packProj\packProj\Images\StoreLogo.scale-400.png">
+      <PackagePath>Images\StoreLogo.scale-400.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2022-06-08T16:13:35.137</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\packProj\packProj\Images\Wide310x150Logo.scale-100.png">
+      <PackagePath>Images\Wide310x150Logo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2022-06-08T16:13:33.841</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\packProj\packProj\Images\Wide310x150Logo.scale-125.png">
+      <PackagePath>Images\Wide310x150Logo.scale-125.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2022-06-08T16:13:33.865</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\packProj\packProj\Images\Wide310x150Logo.scale-150.png">
+      <PackagePath>Images\Wide310x150Logo.scale-150.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2022-06-08T16:13:33.889</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\packProj\packProj\Images\Wide310x150Logo.scale-200.png">
+      <PackagePath>Images\Wide310x150Logo.scale-200.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2022-06-08T16:13:33.915</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\packProj\packProj\Images\Wide310x150Logo.scale-400.png">
+      <PackagePath>Images\Wide310x150Logo.scale-400.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2022-06-08T16:13:33.984</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\packProj\packProj\bin\x64\Release\resources.pri">
+      <PackagePath>resources.pri</PackagePath>
+      <Modified>2022-06-08T16:49:16.804</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Users\eigil\projects\juceProjs\GuitarFineTune\Builds\VisualStudio2022\x64\Release\App\GuitarFineTune.exe">
+      <PackagePath>GuitarFineTune_App\GuitarFineTune.exe</PackagePath>
+      <Modified>2022-06-08T16:33:37.223</Modified>
+    </AppxPackagedFile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs.Desktop\14.0\">
+      <Name>Microsoft.VCLibs.140.00.UWPDesktop</Name>
+      <Version>14.0.30704.0</Version>
+      <Architecture>x64</Architecture>
+      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.UWPDesktop, MinVersion = 14.0.30704.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs.Desktop\14.0\.\AppX\Retail\x64\Microsoft.VCLibs.x64.14.00.Desktop.appx</AppxLocation>
+      <MoreInfo>
+      </MoreInfo>
+    </ResolvedSDKReference>
+    <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs.Desktop\14.0\">
+      <Name>Microsoft.VCLibs.140.00.UWPDesktop</Name>
+      <Version>14.0.30704.0</Version>
+      <Architecture>ARM</Architecture>
+      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.UWPDesktop, MinVersion = 14.0.30704.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs.Desktop\14.0\.\AppX\Retail\ARM\Microsoft.VCLibs.ARM.14.00.Desktop.appx</AppxLocation>
+      <MoreInfo>
+      </MoreInfo>
+    </ResolvedSDKReference>
+    <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs.Desktop\14.0\">
+      <Name>Microsoft.VCLibs.140.00.UWPDesktop</Name>
+      <Version>14.0.30704.0</Version>
+      <Architecture>x64</Architecture>
+      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.UWPDesktop, MinVersion = 14.0.30704.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs.Desktop\14.0\.\AppX\Retail\x64\Microsoft.VCLibs.x64.14.00.Desktop.appx</AppxLocation>
+      <MoreInfo>
+      </MoreInfo>
+    </ResolvedSDKReference>
+    <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs.Desktop\14.0\">
+      <Name>Microsoft.VCLibs.140.00.UWPDesktop</Name>
+      <Version>14.0.30704.0</Version>
+      <Architecture>x86</Architecture>
+      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.UWPDesktop, MinVersion = 14.0.30704.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs.Desktop\14.0\.\AppX\Retail\x86\Microsoft.VCLibs.x86.14.00.Desktop.appx</AppxLocation>
+      <MoreInfo>
+      </MoreInfo>
+    </ResolvedSDKReference>
+  </ItemGroup>
+</Project>

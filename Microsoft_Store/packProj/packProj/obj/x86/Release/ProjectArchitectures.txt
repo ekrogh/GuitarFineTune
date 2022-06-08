@@ -1,1 +1,1 @@
-D:\Users\eigil\projects\juceProjs\GuitarFineTune\packProj\packProj\packProj.wapproj;x86
+D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\packProj\packProj\packProj.wapproj;x86

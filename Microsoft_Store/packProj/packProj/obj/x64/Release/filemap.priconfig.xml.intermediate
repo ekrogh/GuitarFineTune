@@ -5,7 +5,7 @@
     <autoResourcePackage qualifier="Scale" />
     <autoResourcePackage qualifier="DXFeatureLevel" />
   </packaging>
-  <index root="\" startIndexAt="D:\Users\eigil\projects\juceProjs\GuitarFineTune\packProj\packProj\obj\x64\Release\filtered.package.layout.resfiles">
+  <index root="\" startIndexAt="D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\packProj\packProj\obj\x64\Release\filtered.package.layout.resfiles">
     <default>
       <qualifier name="Language" value="en-US" />
       <qualifier name="Contrast" value="standard" />
