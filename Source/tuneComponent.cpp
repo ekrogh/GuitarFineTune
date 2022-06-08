@@ -414,7 +414,7 @@ bool tuneComponent::audioSysInit()
 
 	// Save state
 	curAudioState = sharedAudioDeviceManager->createStateXml();
-//	curAudioState->writeTo(myAudioStateXmlFile);
+	curAudioState->writeTo(myAudioStateXmlFile);
 
 	// ChangeListner = this
 	sharedAudioDeviceManager->addChangeListener(this);
@@ -1002,7 +1002,7 @@ void tuneComponent::changeListenerCallback(ChangeBroadcaster*)
 
 	// Save state
 	curAudioState = sharedAudioDeviceManager->createStateXml();
-//	curAudioState->writeTo(myAudioStateXmlFile);
+	curAudioState->writeTo(myAudioStateXmlFile);
 
 }
 

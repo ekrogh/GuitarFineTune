@@ -1,0 +1,55 @@
+{
+  "stringTable": {},
+  "buildFiles": [
+    "D:\\Users\\eigil\\projects\\juceProjs\\GuitarFineTune\\Builds\\Android\\app\\CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "D:\\Users\\eigil\\AppData\\Local\\Android\\Sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe",
+      "-C",
+      "D:\\Users\\eigil\\projects\\juceProjs\\GuitarFineTune\\Builds\\Android\\app\\.cxx\\Debug\\5l336573\\x86",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "D:\\Users\\eigil\\AppData\\Local\\Android\\Sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe",
+    "-C",
+    "D:\\Users\\eigil\\projects\\juceProjs\\GuitarFineTune\\Builds\\Android\\app\\.cxx\\Debug\\5l336573\\x86",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {
+    "cpufeatures-Debug-x86": {
+      "buildCommandComponents": [
+        "D:\\Users\\eigil\\AppData\\Local\\Android\\Sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe",
+        "-C",
+        "D:\\Users\\eigil\\projects\\juceProjs\\GuitarFineTune\\Builds\\Android\\app\\.cxx\\Debug\\5l336573\\x86",
+        "cpufeatures"
+      ],
+      "buildType": "debug",
+      "abi": "x86",
+      "artifactName": "cpufeatures",
+      "output": "D:\\Users\\eigil\\projects\\juceProjs\\GuitarFineTune\\Builds\\Android\\app\\.cxx\\Debug\\5l336573\\x86\\libcpufeatures.a"
+    },
+    "juce_jni-Debug-x86": {
+      "buildCommandComponents": [
+        "D:\\Users\\eigil\\AppData\\Local\\Android\\Sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe",
+        "-C",
+        "D:\\Users\\eigil\\projects\\juceProjs\\GuitarFineTune\\Builds\\Android\\app\\.cxx\\Debug\\5l336573\\x86",
+        "juce_jni"
+      ],
+      "buildType": "debug",
+      "abi": "x86",
+      "artifactName": "juce_jni",
+      "output": "D:\\Users\\eigil\\projects\\juceProjs\\GuitarFineTune\\Builds\\Android\\app\\build\\intermediates\\cxx\\Debug\\5l336573\\obj\\x86\\libjuce_jni.so",
+      "runtimeFiles": []
+    }
+  },
+  "toolchains": {},
+  "cFileExtensions": [
+    "c"
+  ],
+  "cppFileExtensions": [
+    "mm",
+    "cpp"
+  ]
+}

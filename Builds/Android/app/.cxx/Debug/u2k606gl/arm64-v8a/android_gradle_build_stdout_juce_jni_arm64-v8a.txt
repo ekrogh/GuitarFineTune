@@ -1,0 +1,51 @@
+ninja: Entering directory `D:\Users\eigil\projects\juceProjs\GuitarFineTune\Builds\Android\app\.cxx\Debug\u2k606gl\arm64-v8a'
+[1/31] Building C object CMakeFiles/cpufeatures.dir/D_/Users/eigil/AppData/Local/Android/Sdk/ndk/21.4.7075529/sources/android/cpufeatures/cpu-features.c.o
+[2/31] Building CXX object CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/Source/eksNotModalProgressWindowCallBacks.cpp.o
+[3/31] Linking C static library libcpufeatures.a
+[4/31] Building CXX object CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/Source/eksNotModalProgressWindow.cpp.o
+[5/31] Building CXX object CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/Source/helpPage.cpp.o
+[6/31] Building CXX object CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/Source/AudioRecorder.cpp.o
+[7/31] Building CXX object CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/Source/audioRecorderThread.cpp.o
+[8/31] Building CXX object CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/Source/eksAudioControlComponent.cpp.o
+[9/31] Building CXX object CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/JuceLibraryCode/BinaryData.cpp.o
+[10/31] Building CXX object CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/Source/Main.cpp.o
+[11/31] Building CXX object CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/Source/displayControlComponent.cpp.o
+[12/31] Building CXX object CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/Source/eksTabbedComponent.cpp.o
+[13/31] Building CXX object CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/Source/guitarFineTuneFirstClass.cpp.o
+D:/Users/eigil/projects/juceProjs/GuitarFineTune/Source/guitarFineTuneFirstClass.cpp:297:39: warning: 'setScrollOnDragEnabled' is deprecated: Use setScrollOnDragMode instead. [-Wdeprecated-declarations]
+                pGuitarStringSoundsControlViewPort->setScrollOnDragEnabled(true);
+                                                    ^
+../../../../../../../JuceLibraryCode/modules\juce_gui_basics/layout/juce_Viewport.h:280:7: note: 'setScrollOnDragEnabled' has been explicitly marked deprecated here
+    [[deprecated ("Use setScrollOnDragMode instead.")]]
+      ^
+D:/Users/eigil/projects/juceProjs/GuitarFineTune/Source/guitarFineTuneFirstClass.cpp:302:37: warning: 'setScrollOnDragEnabled' is deprecated: Use setScrollOnDragMode instead. [-Wdeprecated-declarations]
+                pDisplayControlComponentViewPort->setScrollOnDragEnabled(true);
+                                                  ^
+../../../../../../../JuceLibraryCode/modules\juce_gui_basics/layout/juce_Viewport.h:280:7: note: 'setScrollOnDragEnabled' has been explicitly marked deprecated here
+    [[deprecated ("Use setScrollOnDragMode instead.")]]
+      ^
+D:/Users/eigil/projects/juceProjs/GuitarFineTune/Source/guitarFineTuneFirstClass.cpp:307:38: warning: 'setScrollOnDragEnabled' is deprecated: Use setScrollOnDragMode instead. [-Wdeprecated-declarations]
+                pEksAudioControlComponentViewPort->setScrollOnDragEnabled(true);
+                                                   ^
+../../../../../../../JuceLibraryCode/modules\juce_gui_basics/layout/juce_Viewport.h:280:7: note: 'setScrollOnDragEnabled' has been explicitly marked deprecated here
+    [[deprecated ("Use setScrollOnDragMode instead.")]]
+      ^
+3 warnings generated.
+[14/31] Building CXX object CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/Source/eksThreadWithProgressWindow.cpp.o
+[15/31] Building CXX object CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/JuceLibraryCode/include_juce_audio_basics.cpp.o
+[16/31] Building CXX object CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/Source/SimpleLevelMeter.cpp.o
+[17/31] Building CXX object CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/Source/xmlGuitarFineTuneConfig.cpp.o
+[18/31] Building CXX object CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/JuceLibraryCode/include_juce_audio_devices.cpp.o
+[19/31] Building CXX object CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/Source/guitarStringSoundsControl.cpp.o
+[20/31] Building CXX object CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/JuceLibraryCode/include_juce_data_structures.cpp.o
+[21/31] Building CXX object CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/JuceLibraryCode/include_juce_audio_formats.cpp.o
+[22/31] Building CXX object CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/Source/tuneComponent.cpp.o
+[23/31] Building CXX object CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/JuceLibraryCode/include_juce_events.cpp.o
+[24/31] Building CXX object CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/JuceLibraryCode/include_juce_audio_utils.cpp.o
+[25/31] Building CXX object CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/JuceLibraryCode/include_juce_core.cpp.o
+[26/31] Building CXX object CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/JuceLibraryCode/include_juce_dsp.cpp.o
+[27/31] Building CXX object CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/JuceLibraryCode/include_juce_gui_extra.cpp.o
+[28/31] Building CXX object CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/JuceLibraryCode/include_juce_graphics.cpp.o
+[29/31] Building CXX object CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/JuceLibraryCode/include_juce_audio_processors.cpp.o
+[30/31] Building CXX object CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/JuceLibraryCode/include_juce_gui_basics.cpp.o
+[31/31] Linking CXX shared library ..\..\..\..\build\intermediates\cxx\Debug\u2k606gl\obj\arm64-v8a\libjuce_jni.so

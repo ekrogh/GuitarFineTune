@@ -1,0 +1,7 @@
+Executable : D:\Users\eigil\AppData\Local\Android\Sdk\cmake\3.10.2.4988404\bin\ninja.exe
+arguments : 
+-C
+D:\Users\eigil\projects\juceProjs\GuitarFineTune\Builds\Android\app\.cxx\RelWithDebInfo\x2b5x1pg\x86
+juce_jni
+jvmArgs : 
+
