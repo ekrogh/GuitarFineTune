@@ -1,0 +1,2 @@
+MainPackage=D:\Users\eigil\projects\juceProjs\GuitarFineTune\packProj\packProj\bin\ARM\Release\packProj_9.4.7.0_ARM.appx
+SymbolPackage=D:\Users\eigil\projects\juceProjs\GuitarFineTune\packProj\packProj\obj\ARM\Release\Symbols\packProj_9.4.7.0_ARM.appxsym
