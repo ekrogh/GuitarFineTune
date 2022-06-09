@@ -5,11 +5,6 @@ VisualStudioVersion = 17.2.32526.322
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GuitarFineTune_App", "GuitarFineTune_App.vcxproj", "{5F11C54A-E1F5-0119-1E0A-E26E0B8E911C}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MajorMinorBuildRevisionNumbersXmlFile", "MajorMinorBuildRevisionNumbersXmlFile", "{6052769F-7C2B-45A0-8FB9-E5AED46FF8A3}"
-	ProjectSection(SolutionItems) = preProject
-		MajorMinorBuildRevisionNumbers.xml = MajorMinorBuildRevisionNumbers.xml
-	EndProjectSection
-EndProject
 Project("{C7167F0D-BC9F-4E6E-AFE1-012C56B48DB5}") = "packProj", "..\..\Microsoft_Store\packProj\packProj\packProj.wapproj", "{6184B337-E253-4D5D-9C58-E5635E704DF1}"
 EndProject
 Global
@@ -81,6 +76,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {BBF30208-E5FF-4B84-B586-4F89446FC62F}
+		SolutionGuid = {75F5EA1C-75C9-4C3A-8843-60A8E141BA68}
 	EndGlobalSection
 EndGlobal
