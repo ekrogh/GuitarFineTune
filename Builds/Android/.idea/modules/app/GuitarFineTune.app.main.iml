@@ -3,48 +3,51 @@
   <component name="FacetManager">
     <facet type="android" name="Android">
       <configuration>
-        <option name="SELECTED_BUILD_VARIANT" value="debug_Debug" />
-        <option name="ASSEMBLE_TASK_NAME" value="assembleDebug_Debug" />
-        <option name="COMPILE_JAVA_TASK_NAME" value="compileDebug_DebugSources" />
+        <option name="SELECTED_BUILD_VARIANT" value="release_Release" />
+        <option name="ASSEMBLE_TASK_NAME" value="assembleRelease_Release" />
+        <option name="COMPILE_JAVA_TASK_NAME" value="compileRelease_ReleaseSources" />
         <afterSyncTasks>
-          <task>generateDebug_DebugSources</task>
+          <task>generateRelease_ReleaseSources</task>
         </afterSyncTasks>
         <option name="ALLOW_USER_CONFIGURATION" value="false" />
         <option name="MANIFEST_FILE_RELATIVE_PATH" value="/src/main/AndroidManifest.xml" />
         <option name="RES_FOLDER_RELATIVE_PATH" value="/src/main/res" />
-        <option name="RES_FOLDERS_RELATIVE_PATH" value="file://$MODULE_DIR$/../../../app/src/main/res;file://$MODULE_DIR$/../../../app/src/debug_/res;file://$MODULE_DIR$/../../../app/src/debug/res;file://$MODULE_DIR$/../../../app/src/debug_Debug/res;file://$MODULE_DIR$/../../../app/build/generated/res/rs/debug_/debug;file://$MODULE_DIR$/../../../app/build/generated/res/resValues/debug_/debug" />
-        <option name="TEST_RES_FOLDERS_RELATIVE_PATH" value="file://$MODULE_DIR$/../../../app/src/androidTest/res;file://$MODULE_DIR$/../../../app/src/androidTestDebug_/res;file://$MODULE_DIR$/../../../app/src/androidTestDebug/res;file://$MODULE_DIR$/../../../app/src/androidTestDebug_Debug/res;file://$MODULE_DIR$/../../../app/build/generated/res/rs/androidTest/debug_/debug;file://$MODULE_DIR$/../../../app/build/generated/res/resValues/androidTest/debug_/debug" />
+        <option name="RES_FOLDERS_RELATIVE_PATH" value="file://$MODULE_DIR$/../../../app/src/main/res;file://$MODULE_DIR$/../../../app/src/release_/res;file://$MODULE_DIR$/../../../app/src/release/res;file://$MODULE_DIR$/../../../app/src/release_Release/res;file://$MODULE_DIR$/../../../app/build/generated/res/rs/release_/release;file://$MODULE_DIR$/../../../app/build/generated/res/resValues/release_/release" />
+        <option name="TEST_RES_FOLDERS_RELATIVE_PATH" value="" />
         <option name="ASSETS_FOLDER_RELATIVE_PATH" value="/src/main/assets" />
       </configuration>
     </facet>
   </component>
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8" inherit-compiler-output="true">
     <exclude-output />
-    <content url="file://$MODULE_DIR$/../../../app/build/generated/aidl_source_output_dir/debug_Debug/out" />
-    <content url="file://$MODULE_DIR$/../../../app/build/generated/ap_generated_sources/debug_Debug/out">
-      <sourceFolder url="file://$MODULE_DIR$/../../../app/build/generated/ap_generated_sources/debug_Debug/out" isTestSource="false" generated="true" />
+    <content url="file://$MODULE_DIR$/../../../app/build/generated/aidl_source_output_dir/release_Release/out" />
+    <content url="file://$MODULE_DIR$/../../../app/build/generated/ap_generated_sources/release_Release/out">
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/build/generated/ap_generated_sources/release_Release/out" isTestSource="false" generated="true" />
     </content>
-    <content url="file://$MODULE_DIR$/../../../app/build/generated/renderscript_source_output_dir/debug_Debug/out" />
-    <content url="file://$MODULE_DIR$/../../../app/build/generated/res/resValues/debug_/debug">
-      <sourceFolder url="file://$MODULE_DIR$/../../../app/build/generated/res/resValues/debug_/debug" type="java-resource" />
+    <content url="file://$MODULE_DIR$/../../../app/build/generated/renderscript_source_output_dir/release_Release/out" />
+    <content url="file://$MODULE_DIR$/../../../app/build/generated/res/resValues/release_/release">
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/build/generated/res/resValues/release_/release" type="java-resource" />
     </content>
-    <content url="file://$MODULE_DIR$/../../../app/build/generated/res/rs/debug_/debug" />
-    <content url="file://$MODULE_DIR$/../../../app/build/generated/source/buildConfig/debug_/debug">
-      <sourceFolder url="file://$MODULE_DIR$/../../../app/build/generated/source/buildConfig/debug_/debug" isTestSource="false" generated="true" />
+    <content url="file://$MODULE_DIR$/../../../app/build/generated/res/rs/release_/release" />
+    <content url="file://$MODULE_DIR$/../../../app/build/generated/source/buildConfig/release_/release">
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/build/generated/source/buildConfig/release_/release" isTestSource="false" generated="true" />
     </content>
-    <content url="file://$MODULE_DIR$/../../../app/src/debug">
-      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/debug/res" type="java-resource" />
-    </content>
-    <content url="file://$MODULE_DIR$/../../../app/src/debug_" />
-    <content url="file://$MODULE_DIR$/../../../app/src/debug_Debug" />
     <content url="file://$MODULE_DIR$/../../../app/src/main">
       <sourceFolder url="file://$MODULE_DIR$/../../../app/src/main/res" type="java-resource" />
     </content>
+    <content url="file://$MODULE_DIR$/../../../app/src/release">
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/release/res" type="java-resource" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../app/src/release_" />
+    <content url="file://$MODULE_DIR$/../../../app/src/release_Release" />
     <content url="file://$MODULE_DIR$/../../../../../JuceLibraryCode">
       <sourceFolder url="file://$MODULE_DIR$/../../../../../JuceLibraryCode" type="native-Source-root" />
     </content>
     <content url="file://$MODULE_DIR$/../../../../../Source">
       <sourceFolder url="file://$MODULE_DIR$/../../../../../Source" type="native-Source-root" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../iOS_Special">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../iOS_Special" type="native-Source-root" />
     </content>
     <content url="file://$MODULE_DIR$/../../../../../../JUCE">
       <sourceFolder url="file://$MODULE_DIR$/../../../../../../JUCE/modules/juce_core/native/javacore/app" isTestSource="false" />

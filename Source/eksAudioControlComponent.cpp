@@ -151,7 +151,13 @@ void eksAudioControlComponent::resized( )
 	if ( CurrentAudioDevice != nullptr )
 	{
 		deviceSupportsDisableAudioPreprocessing = CurrentAudioDevice->setAudioPreprocessingEnabled( true );
-		if ( !deviceSupportsDisableAudioPreprocessing )
+		if ( deviceSupportsDisableAudioPreprocessing )
+		{
+			bool disableOsAudioPreProcessing = getXmlTagAUDIOCONTROL( )->getBoolAttribute( "disableOsAudioPreProcessing" );
+			sharedAudioDeviceManager->getCurrentAudioDevice( )->setAudioPreprocessingEnabled( disableOsAudioPreProcessing );
+			preProcessingToggleButton->setToggleState( disableOsAudioPreProcessing, dontSendNotification );
+		}
+		else
 		{
 			preProcessingToggleButton->setEnabled( false );
 			preProcessingToggleButton->setVisible( false );

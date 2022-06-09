@@ -77,7 +77,7 @@ void audioControlComponent::initControls()
 {
 	if (deviceSupportsDisableAudioPreprocessing)
 	{
-		bool preProcessingOn = getTagAUDIOCONTROL()->getStringAttribute("preProcessingOn").getIntValue();
+		bool preProcessingOn = getTagAUDIOCONTROL()->getBoolAttribute("preProcessingOn")..getIntValue();
 		rFineTuneFirstClass.getRSpectrogramComponent().getTheAudioDeviceManager().getCurrentAudioDevice()->setAudioPreprocessingEnabled(preProcessingOn);
 		preProcessingToggleButton->setToggleState(preProcessingOn, dontSendNotification);
 	}
