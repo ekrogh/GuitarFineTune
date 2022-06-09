@@ -414,7 +414,10 @@ bool tuneComponent::audioSysInit()
 
 	// Save state
 	curAudioState = sharedAudioDeviceManager->createStateXml();
-	curAudioState->writeTo(myAudioStateXmlFile);
+    if (!(curAudioState == nullptr))
+    {
+        curAudioState->writeTo(myAudioStateXmlFile);
+    }
 
 	// ChangeListner = this
 	sharedAudioDeviceManager->addChangeListener(this);
@@ -1002,8 +1005,10 @@ void tuneComponent::changeListenerCallback(ChangeBroadcaster*)
 
 	// Save state
 	curAudioState = sharedAudioDeviceManager->createStateXml();
-	curAudioState->writeTo(myAudioStateXmlFile);
-
+    if (!(curAudioState == nullptr))
+    {
+        curAudioState->writeTo(myAudioStateXmlFile);
+    }
 }
 
 void tuneComponent::calcNewGuitarStringsSinePhasesFromSampleRate(double sampleRate)
