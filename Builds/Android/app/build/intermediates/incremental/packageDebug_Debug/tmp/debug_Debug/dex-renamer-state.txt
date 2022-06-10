@@ -1,4 +1,0 @@
-#Fri Jun 10 20:32:33 CEST 2022
-base.0=D\:\\Users\\eigil\\projects\\juceProjs\\GuitarFineTune\\Builds\\Android\\app\\build\\intermediates\\dex\\debug_Debug\\mergeDexDebug_Debug\\classes.dex
-renamed.0=classes.dex
-path.0=classes.dex
