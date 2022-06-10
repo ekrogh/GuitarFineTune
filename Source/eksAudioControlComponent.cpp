@@ -74,13 +74,28 @@ eksAudioControlComponent::eksAudioControlComponent( std::shared_ptr<xmlGuitarFin
 	AudioIODevice* CurrentAudioDevice = sharedAudioDeviceManager->getCurrentAudioDevice( );
 	if ( CurrentAudioDevice != nullptr )
 	{
-		deviceSupportsDisableAudioPreprocessing = CurrentAudioDevice->setAudioPreprocessingEnabled( true );
-		if ( !deviceSupportsDisableAudioPreprocessing )
-		{
-			preProcessingToggleButton->setEnabled( false );
-			preProcessingToggleButton->setVisible( false );
-		}
-	}
+        changedDeviceSupportsDisableAudioPreprocessing =
+                previousDeviceSupportsDisableAudioPreprocessing !=
+                (deviceSupportsDisableAudioPreprocessing = CurrentAudioDevice->setAudioPreprocessingEnabled( true ));
+        previousDeviceSupportsDisableAudioPreprocessing = deviceSupportsDisableAudioPreprocessing;
+
+        if (deviceSupportsDisableAudioPreprocessing)
+        {
+			preProcessingToggleButton->setEnabled( true );
+			preProcessingToggleButton->setVisible( true );
+			if (changedDeviceSupportsDisableAudioPreprocessing)
+            {
+                bool disableOsAudioPreProcessing = getXmlTagAUDIOCONTROL()->getBoolAttribute("disableOsAudioPreProcessing");
+                sharedAudioDeviceManager->getCurrentAudioDevice()->setAudioPreprocessingEnabled(disableOsAudioPreProcessing);
+                preProcessingToggleButton->setToggleState(disableOsAudioPreProcessing, dontSendNotification);
+            }
+        }
+        else
+        {
+            preProcessingToggleButton->setEnabled( false );
+            preProcessingToggleButton->setVisible( false );
+        }
+    }
 #if JUCE_ANDROID
 	Use_50_Hz_FilterToggleButton->setBounds( 1, heightAudioDeviceSelectorComponent + 1, 150, 24 );
 	Use_60_Hz_FilterToggleButton->setBounds( 147, heightAudioDeviceSelectorComponent + 1, 149, 24 );
@@ -157,6 +172,8 @@ void eksAudioControlComponent::resized( )
 
 		if (deviceSupportsDisableAudioPreprocessing)
 		{
+			preProcessingToggleButton->setEnabled( true );
+			preProcessingToggleButton->setVisible( true );
 			if (changedDeviceSupportsDisableAudioPreprocessing)
 			{
 				bool disableOsAudioPreProcessing = getXmlTagAUDIOCONTROL()->getBoolAttribute("disableOsAudioPreProcessing");
