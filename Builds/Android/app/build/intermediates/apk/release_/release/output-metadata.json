@@ -1,0 +1,20 @@
+{
+  "version": 3,
+  "artifactType": {
+    "type": "APK",
+    "kind": "Directory"
+  },
+  "applicationId": "dk.eksit.guitarfinetune",
+  "variantName": "release_Release",
+  "elements": [
+    {
+      "type": "SINGLE",
+      "filters": [],
+      "attributes": [],
+      "versionCode": 59,
+      "versionName": "9.4.9",
+      "outputFile": "app-release_-release.apk"
+    }
+  ],
+  "elementType": "File"
+}
