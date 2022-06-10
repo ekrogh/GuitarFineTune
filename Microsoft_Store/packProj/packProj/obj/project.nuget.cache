@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "boGY6beedc5FgoGPInoT4TKp4ABWqMAPECyR+roSqoRCHoFstzZxf3EtgKqgxhcJRlRJjjF81dSZhCbxh8ECTQ==",
+  "success": true,
+  "projectFilePath": "D:\\Users\\eigil\\projects\\juceProjs\\GuitarFineTune\\Microsoft_Store\\packProj\\packProj\\packProj.wapproj",
+  "expectedPackageFiles": [
+    "D:\\Users\\eigil\\.nuget\\packages\\microsoft.windows.sdk.buildtools\\10.0.22000.197\\microsoft.windows.sdk.buildtools.10.0.22000.197.nupkg.sha512"
+  ],
+  "logs": []
+}

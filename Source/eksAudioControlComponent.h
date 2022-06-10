@@ -65,8 +65,10 @@ private:
 	std::shared_ptr<eksLookAndFeel> pGuitarFineTuneLookAndFeel = nullptr;
 	std::shared_ptr<xmlGuitarFineTuneConfig> pXmlGuitarFineTuneConfig = nullptr;
 	bool viewPortAdded = false;
-	bool deviceSupportsDisableAudioPreprocessing = false;
-	//Label colours
+    bool deviceSupportsDisableAudioPreprocessing = false;
+    bool previousDeviceSupportsDisableAudioPreprocessing = false;
+    bool changedDeviceSupportsDisableAudioPreprocessing = false;
+        //Label colours
 	int labelTextColorId = juce::Label::textColourId;
 	juce::Colour labelColor = juce::Colours::cornflowerblue;
     //[/UserVariables]
