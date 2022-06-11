@@ -1409,7 +1409,20 @@ void tuneComponent::resized()
 #if ( JUCE_ANDROID )
 	{
 		Rectangle<int> r = Desktop::getInstance().getDisplays().getPrimaryDisplay()->userArea;
-		double sizeScale = (double)(r.getWidth()) / (double)widthOfTuneWindow;
+		BorderSize<int>  nonSafeArea = Desktop::getInstance().getDisplays().getPrimaryDisplay()->safeAreaInsets;
+		nonSafeArea.subtractFrom(r); // Remove non Safe area
+
+        if (r.getWidth() >= r.getHeight())  // Landscape
+		{
+			r.setBounds
+					(
+							(double)(r.getX())
+							, (double)(r.getY())
+							, (double)(r.getWidth()) - (double)androidTuneTabSafeMargin
+							, (double)(r.getHeight())
+					);
+		}
+        double sizeScale = (double)(r.getWidth()) / (double)widthOfTuneWindow;
 		setSize((int)(widthOfTuneWindow * sizeScale), (int)(hightOfTuneWindow * sizeScale));
 	}
 #elif ( JUCE_IOS )

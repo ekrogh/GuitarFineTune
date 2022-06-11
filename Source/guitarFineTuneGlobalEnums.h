@@ -54,7 +54,7 @@ enum
 	, hightOfAboutPage = 260
 
 	, iOSSafeMargin = 40
-	, androidSafeTuneTabSafemargin = 50
+	, androidTuneTabSafeMargin = 50
 };
 
 

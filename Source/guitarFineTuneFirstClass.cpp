@@ -169,7 +169,7 @@ guitarFineTuneFirstClass::guitarFineTuneFirstClass()
 	: DocumentWindow(std::string(ProjectInfo::projectName)
 		+ " v. " + std::string(ProjectInfo::versionString)
 		+ "." + std::to_string(ANDROID_VERSION_CODE)
-		, Colours::lightgrey
+        , Colour(0xFF20072B)
 		, DocumentWindow::allButtons)
 	, curCompntBnds(0, 0, widthOfTuneWindow, hightOfTuneWindow)
 #else
@@ -234,7 +234,7 @@ guitarFineTuneFirstClass::guitarFineTuneFirstClass()
 		std::make_shared<eksTabbedComponent>
 		(
 			SafePointer(this)
-			);
+        );
 
 #if ( JUCE_IOS )
 	{
@@ -387,6 +387,20 @@ guitarFineTuneFirstClass::guitarFineTuneFirstClass()
 	DocumentWindow::centreWithSize(widthOfGuitarStringSoundsControlWindowHorizontal, hightOfGuitarStringSoundsControlWindowHorizontal);
 #elif (JUCE_ANDROID || JUCE_IOS)
 	curCompntBnds = Desktop::getInstance().getDisplays().getPrimaryDisplay()->userArea;
+	BorderSize<int>  nonSafeArea = Desktop::getInstance().getDisplays().getPrimaryDisplay()->safeAreaInsets;
+	nonSafeArea.subtractFrom(curCompntBnds); // Remove non Safe area
+#if ( JUCE_ANDROID )
+	if (curCompntBnds.getWidth() >= curCompntBnds.getHeight())  // Landscape
+	{
+		curCompntBnds.setBounds
+				(
+						(double)(curCompntBnds.getX())
+						, (double)(curCompntBnds.getY())
+						, (double)(curCompntBnds.getWidth()) - (double)androidTuneTabSafeMargin
+						, (double)(curCompntBnds.getHeight())
+				);
+	}
+#endif // #if ( JUCE_ANDROID )
 #if ( JUCE_IOS )
 	if (thisiPhoneiPadNeedsSafeArea())
 	{
@@ -444,7 +458,7 @@ void guitarFineTuneFirstClass::currentTabChanged(int newCurrentTabIndex, const S
 			(
 				(double)(curCompntBnds.getX())
 				, (double)(curCompntBnds.getY())
-				, (double)(curCompntBnds.getWidth()) - (double)androidSafeTuneTabSafemargin
+				, (double)(curCompntBnds.getWidth()) - (double)androidTuneTabSafeMargin
 				, (double)(curCompntBnds.getHeight())
 			);
 		}
