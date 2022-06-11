@@ -294,17 +294,17 @@ guitarFineTuneFirstClass::guitarFineTuneFirstClass()
 		pGuitarStringSoundsControlViewPort->setScrollBarsShown(true, true);
 		pGuitarStringSoundsControlViewPort->setScrollBarThickness(10);
 		pGuitarStringSoundsControlViewPort->setViewedComponent(pGuitarStringSoundsControl.get());
-		pGuitarStringSoundsControlViewPort->setScrollOnDragEnabled(true);
+		pGuitarStringSoundsControlViewPort->setScrollOnDragMode (juce::Viewport::ScrollOnDragMode::all);
 		pDisplayControlComponentViewPort = std::make_shared<Viewport>("pDisplayControlComponentViewPort");
 		pDisplayControlComponentViewPort->setScrollBarsShown(true, true);
 		pDisplayControlComponentViewPort->setScrollBarThickness(10);
 		pDisplayControlComponentViewPort->setViewedComponent(pDisplayControlComponent.get());
-		pDisplayControlComponentViewPort->setScrollOnDragEnabled(true);
+		pDisplayControlComponentViewPort->setScrollOnDragMode (juce::Viewport::ScrollOnDragMode::all);
 		pEksAudioControlComponentViewPort = std::make_shared<Viewport>("pEksAudioControlComponentViewPort");
 		pEksAudioControlComponentViewPort->setScrollBarsShown(true, true);
 		pEksAudioControlComponentViewPort->setScrollBarThickness(10);
 		pEksAudioControlComponentViewPort->setViewedComponent(pEksAudioControlComponent.get());
-		pEksAudioControlComponentViewPort->setScrollOnDragEnabled(true);
+		pEksAudioControlComponentViewPort->setScrollOnDragMode (juce::Viewport::ScrollOnDragMode::all);
 
 		pEksTabbedComponent->addTab
 		(
@@ -435,7 +435,7 @@ void guitarFineTuneFirstClass::currentTabChanged(int newCurrentTabIndex, const S
 #if ( JUCE_ANDROID )
 		if
 		(
-			(curCompntBnds.getWidth() >= curCompntBnds..getHeight())  // Landscape
+			(curCompntBnds.getWidth() >= curCompntBnds.getHeight())  // Landscape
 			&&
 			(newCurrentTabIndex == tabTuneWindow) // tune Window
 		)
