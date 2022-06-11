@@ -18,23 +18,23 @@ enum
 	, tabBarDepthAndroidIosInHorizontal = 27
 	, tabBarDepthMacWin = 27
 
-	, tabNoTuneWindow = 0
+	, tabTuneWindow = 0
 	, widthOfTuneWindow = 770
 	, hightOfTuneWindow = 200
 
-	, tabNoGuitarStringSoundsControlWindow = 1
+	, tabGuitarStringSoundsControlWindow = 1
 	, widthOfGuitarStringSoundsControlWindowHorizontal = 558
 	, hightOfGuitarStringSoundsControlWindowHorizontal = 295
 	, widthOfGuitarStringSoundsControlWindowVertical = 300
 	, hightOfGuitarStringSoundsControlWindowVertical = 430
 
-	, tabNoDisplayControlWindow = 2
+	, tabDisplayControlWindow = 2
 	, widthOfDisplayControlWindowHorizontal = 528
 	, hightOfDisplayControlWindowHorizontal = 325
 	, widthOfDisplayControlWindowVertical = 346
 	, hightOfDisplayControlWindowVertical = 468
 
-	, tabNoEksAudioControlComponent = 3
+	, tabEksAudioControlComponent = 3
 	, widthOfEksAudioControlComponentWindow = 330
 #if JUCE_ANDROID
 	, heightAudioDeviceSelectorComponent = 205
@@ -49,11 +49,12 @@ enum
 	#endif // JUCE_LINUX
 #endif // (JUCE_IOS || JUCE_ANDROID)
 
-	, tabNoAboutPage = 4
+	, tabAboutPage = 4
 	, widthOfAboutPage = 300
 	, hightOfAboutPage = 260
 
 	, iOSSafeMargin = 40
+	, androidSafeTuneTabSafemargin = 50
 };
 
 

@@ -190,7 +190,7 @@ private:
 
 	int audioDeviceSelectorComponentHight;
 
-	int currentTabIndex = tabNoTuneWindow;
+	int currentTabIndex = tabTuneWindow;
 
 	bool addViewPort = false;
 

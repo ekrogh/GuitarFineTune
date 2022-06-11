@@ -280,7 +280,7 @@ guitarFineTuneFirstClass::guitarFineTuneFirstClass()
 		TRANS("Tune")
 		, Colour(0xFF20072B)
 		, pTuneComponent.get()
-		, true, tabNoTuneWindow
+		, true, tabTuneWindow
 	);
 
 #if (JUCE_ANDROID)
@@ -311,7 +311,7 @@ guitarFineTuneFirstClass::guitarFineTuneFirstClass()
 			TRANS("Sound Control")
 			, Colour(0xFF20072B)
 			, pGuitarStringSoundsControlViewPort.get()
-			, true, tabNoGuitarStringSoundsControlWindow
+			, true, tabGuitarStringSoundsControlWindow
 		);
 
 		pEksTabbedComponent->addTab
@@ -319,7 +319,7 @@ guitarFineTuneFirstClass::guitarFineTuneFirstClass()
 			TRANS("Display Control")
 			, Colour(0xFF20072B)
 			, pDisplayControlComponentViewPort.get()
-			, true, tabNoDisplayControlWindow);
+			, true, tabDisplayControlWindow);
 		setColorOfAllLabels(pDisplayControlComponent.get());
 
 		// put ViewPorts in Tabbed Component
@@ -328,7 +328,7 @@ guitarFineTuneFirstClass::guitarFineTuneFirstClass()
 			TRANS("Audio Control")
 			, Colour(0xFF20072B)
 			, pEksAudioControlComponentViewPort.get()
-			, true, tabNoEksAudioControlComponent
+			, true, tabEksAudioControlComponent
 		);
 	}
 	else
@@ -340,7 +340,7 @@ guitarFineTuneFirstClass::guitarFineTuneFirstClass()
 			TRANS("Sound Control")
 			, Colour(0xFF20072B)
 			, pGuitarStringSoundsControl.get()
-			, true, tabNoGuitarStringSoundsControlWindow
+			, true, tabGuitarStringSoundsControlWindow
 		);
 
 		pEksTabbedComponent->addTab
@@ -348,7 +348,7 @@ guitarFineTuneFirstClass::guitarFineTuneFirstClass()
 			TRANS("Display Control")
 			, Colour(0xFF20072B)
 			, pDisplayControlComponent.get()
-			, true, tabNoDisplayControlWindow);
+			, true, tabDisplayControlWindow);
 		setColorOfAllLabels(pDisplayControlComponent.get());
 
 		pEksTabbedComponent->addTab
@@ -356,7 +356,7 @@ guitarFineTuneFirstClass::guitarFineTuneFirstClass()
 			TRANS("Audio Control")
 			, Colour(0xFF20072B)
 			, pEksAudioControlComponent.get()
-			, true, tabNoEksAudioControlComponent
+			, true, tabEksAudioControlComponent
 		);
 
 #if (JUCE_ANDROID)
@@ -368,11 +368,11 @@ guitarFineTuneFirstClass::guitarFineTuneFirstClass()
 		TRANS("Help")
 		, Colour(0xFF20072B)
 		, pAboutPage.get()
-		, true, tabNoAboutPage
+		, true, tabAboutPage
 	);
 	setColorOfAllLabels(pAboutPage.get());
 
-	pEksTabbedComponent->setCurrentTabIndex(tabNoTuneWindow);
+	pEksTabbedComponent->setCurrentTabIndex(tabTuneWindow);
 
 	getSharedAudioDeviceManager(numInputChannels, numOutputChannels);
 
@@ -426,9 +426,32 @@ void guitarFineTuneFirstClass::currentTabChanged(int newCurrentTabIndex, const S
 
 	if (bGoSetSizes)
 	{
+
 #if ( JUCE_ANDROID || JUCE_IOS )
 		curCompntBnds = Desktop::getInstance().getDisplays().getPrimaryDisplay()->userArea;
+		BorderSize<int>  nonSafeArea = Desktop::getInstance().getDisplays().getPrimaryDisplay()->safeAreaInsets;
+		nonSafeArea.subtractFrom(curCompntBnds); // Remove non Safe area
+
+#if ( JUCE_ANDROID )
+		if
+		(
+			(curCompntBnds.getWidth() >= curCompntBnds..getHeight())  // Landscape
+			&&
+			(newCurrentTabIndex == tabTuneWindow) // tune Window
+		)
+		{
+			curCompntBnds.setBounds
+			(
+				(double)(curCompntBnds.getX())
+				, (double)(curCompntBnds.getY())
+				, (double)(curCompntBnds.getWidth()) - (double)androidSafeTuneTabSafemargin
+				, (double)(curCompntBnds.getHeight())
+			);
+		}
+#endif // #if ( JUCE_ANDROID )
 #if ( JUCE_IOS )
+
+
 		if (thisiPhoneiPadNeedsSafeArea())
 		{
 			if (curCompntBnds.getHeight() >= curCompntBnds.getWidth()) // Portrait
@@ -456,17 +479,17 @@ void guitarFineTuneFirstClass::currentTabChanged(int newCurrentTabIndex, const S
 #else // (JUCE Win || JUCE_MAC || JUCE_LINUX)
 		switch (newCurrentTabIndex)
 		{
-		case tabNoTuneWindow:
+		case tabTuneWindow:
 		{
 			curCompntBnds.setBounds(0, 0, widthOfTuneWindow, hightOfTuneWindow + tabBarDepthMacWin);
 			break;
 		}
-		case tabNoEksAudioControlComponent:
+		case tabEksAudioControlComponent:
 		{
 			curCompntBnds.setBounds(0, 0, widthOfEksAudioControlComponentWindow, hightOfEksAudioControlComponentWindow);
 			break;
 		}
-		case tabNoGuitarStringSoundsControlWindow:
+		case tabGuitarStringSoundsControlWindow:
 		{
 			Rectangle<int> r = Desktop::getInstance().getDisplays().getPrimaryDisplay()->userArea;
 			if (r.getWidth() >= r.getHeight())
@@ -479,7 +502,7 @@ void guitarFineTuneFirstClass::currentTabChanged(int newCurrentTabIndex, const S
 			}
 			break;
 		}
-		case tabNoDisplayControlWindow:
+		case tabDisplayControlWindow:
 		{
 			Rectangle<int> r = Desktop::getInstance().getDisplays().getPrimaryDisplay()->userArea;
 			if (r.getWidth() >= r.getHeight())
@@ -494,7 +517,7 @@ void guitarFineTuneFirstClass::currentTabChanged(int newCurrentTabIndex, const S
 			}
 			break;
 		}
-		case tabNoAboutPage:
+		case tabAboutPage:
 		{
 			curCompntBnds.setBounds(0, 0, widthOfAboutPage, hightOfAboutPage);
 			break;
@@ -590,12 +613,12 @@ void guitarFineTuneFirstClass::resized()
 		float scaleNow;
 		switch (currentTabIndex)
 		{
-		case tabNoTuneWindow:
+		case tabTuneWindow:
 		{
 			scaleToGuitarStringSoundsControlWindow();
 			break;
 		}
-		case tabNoGuitarStringSoundsControlWindow:
+		case tabGuitarStringSoundsControlWindow:
 		{
 			scaleNow = scaleToGuitarStringSoundsControlWindow();
 			pGuitarFineTuneLookAndFeel->scaleEksLookAndFeelFonts(scaleNow);
@@ -603,7 +626,7 @@ void guitarFineTuneFirstClass::resized()
 			pGuitarStringSoundsControl->scaleAllComponents();
 			break;
 		}
-		case tabNoDisplayControlWindow:
+		case tabDisplayControlWindow:
 		{
 			if (curCompntBnds.getWidth() >= curCompntBnds.getHeight())
 			{
@@ -642,7 +665,7 @@ void guitarFineTuneFirstClass::resized()
 			pDisplayControlComponent->scaleAllComponents();
 			break;
 		}
-		case tabNoEksAudioControlComponent:
+		case tabEksAudioControlComponent:
 		{
 			bndsScaleHoriz = (float)(curCompntBnds.getWidth()) / (float)(widthOfEksAudioControlComponentWindow);
 			bndsScaleVerti = ((float)(curCompntBnds.getHeight())
@@ -670,7 +693,7 @@ void guitarFineTuneFirstClass::resized()
 			pEksAudioControlComponent->scaleAllComponents();
 			break;
 		}
-		case tabNoAboutPage:
+		case tabAboutPage:
 		{
 			scaleNow = scaleToGuitarStringSoundsControlWindow();
 			pGuitarFineTuneLookAndFeel->scaleEksLookAndFeelFonts(scaleNow);
