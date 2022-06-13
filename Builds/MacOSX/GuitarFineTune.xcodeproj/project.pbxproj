@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0DDFAED32856EEFD003FD50E /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 269F56875A5A8A228A302EE2 /* Launch Screen.storyboard */; };
 		1498E53CC5ABCDA39AFB5741 /* RecentFilesMenuTemplate.nib in Resources */ = {isa = PBXBuildFile; fileRef = A1C6587E1BCDCAC216C6853B /* RecentFilesMenuTemplate.nib */; };
 		1512CF295A23D592C1E8FC41 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A640E97D4B90CE3C55DC7600 /* Foundation.framework */; };
 		15A1AC11DA2CFA4E19BD270D /* SimpleLevelMeter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3436E53BE3F49251423D332E /* SimpleLevelMeter.cpp */; };
@@ -411,7 +410,6 @@
 				1498E53CC5ABCDA39AFB5741 /* RecentFilesMenuTemplate.nib in Resources */,
 				C6A374FEE166D72577DBD712 /* Icon.icns in Resources */,
 				70AB18BB3265004C3D061BA9 /* fineTune_icon_Small.png in Resources */,
-				0DDFAED32856EEFD003FD50E /* Launch Screen.storyboard in Resources */,
 				9B311FAFFA1679033D1F165A /* fineTune_icon_Large.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
