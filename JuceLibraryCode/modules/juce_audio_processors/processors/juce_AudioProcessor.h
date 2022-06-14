@@ -2,15 +2,15 @@
   ==============================================================================
 
    This file is part of the JUCE library.
-   Copyright (c) 2020 - Raw Material Software Limited
+   Copyright (c) 2022 - Raw Material Software Limited
 
    JUCE is an open source library subject to commercial or open-source
    licensing.
 
-   By using JUCE, you agree to the terms of both the JUCE 6 End-User License
-   Agreement and JUCE Privacy Policy (both effective as of the 16th June 2020).
+   By using JUCE, you agree to the terms of both the JUCE 7 End-User License
+   Agreement and JUCE Privacy Policy.
 
-   End User License Agreement: www.juce.com/juce-6-licence
+   End User License Agreement: www.juce.com/juce-7-licence
    Privacy Policy: www.juce.com/juce-privacy-policy
 
    Or: You may also use this code under the terms of the GPL v3 (see
@@ -31,7 +31,7 @@ namespace juce
     Base class for audio processing classes or plugins.
 
     This is intended to act as a base class of audio processor that is general enough
-    to be wrapped as a VST, AU, RTAS, etc, or used internally.
+    to be wrapped as a VST, AU, AAX, etc, or used internally.
 
     It is also used by the plugin hosting code as the wrapper around an instance
     of a loaded plugin.
@@ -76,6 +76,12 @@ public:
     {
         singlePrecision,
         doublePrecision
+    };
+
+    enum class Realtime
+    {
+        no,
+        yes
     };
 
     using ChangeDetails = AudioProcessorListener::ChangeDetails;
@@ -500,12 +506,12 @@ public:
     /** Returns the audio bus with a given index and direction.
         If busIndex is invalid then this method will return a nullptr.
     */
-    Bus* getBus (bool isInput, int busIndex) noexcept               { return (isInput ? inputBuses : outputBuses)[busIndex]; }
+    Bus* getBus (bool isInput, int busIndex) noexcept               { return getBusImpl (*this, isInput, busIndex); }
 
     /** Returns the audio bus with a given index and direction.
         If busIndex is invalid then this method will return a nullptr.
     */
-    const Bus* getBus (bool isInput, int busIndex) const noexcept   { return const_cast<AudioProcessor*> (this)->getBus (isInput, busIndex); }
+    const Bus* getBus (bool isInput, int busIndex) const noexcept   { return getBusImpl (*this, isInput, busIndex); }
 
     //==============================================================================
     /**  Callback to query if a bus can currently be added.
@@ -904,7 +910,7 @@ public:
         processBlockBypassed but use the returned parameter to control the bypass
         state instead.
 
-        A plug-in can override this function to return a parameter which control's your
+        A plug-in can override this function to return a parameter which controls your
         plug-in's bypass. You should always check the value of this parameter in your
         processBlock callback and bypass any effects if it is non-zero.
     */
@@ -922,6 +928,21 @@ public:
         @see setNonRealtime()
     */
     bool isNonRealtime() const noexcept                                 { return nonRealtime; }
+
+    /** Returns no if the processor is being run in an offline mode for rendering.
+
+        If the processor is being run live on realtime signals, this returns yes.
+        If the mode is unknown, this will assume it's realtime and return yes.
+
+        This value may be unreliable until the prepareToPlay() method has been called,
+        and could change each time prepareToPlay() is called.
+
+        @see setNonRealtime()
+    */
+    Realtime isRealtime() const noexcept
+    {
+        return isNonRealtime() ? Realtime::no : Realtime::yes;
+    }
 
     /** Called by the host to tell this processor whether it's being used in a non-realtime
         capacity for offline rendering or bouncing.
@@ -1133,6 +1154,51 @@ public:
     virtual void setPlayHead (AudioPlayHead* newPlayHead);
 
     //==============================================================================
+    /** Hosts may call this function to supply the system time corresponding to the
+        current audio buffer.
+
+        If you want to set a valid time, pass a pointer to a uint64_t holding the current time. The
+        value will be copied into the AudioProcessor instance without any allocation/deallocation.
+
+        If you want to clear any stored host time, pass nullptr.
+
+        Calls to this function must be synchronised (i.e. not simultaneous) with the audio callback.
+
+        @code
+        const auto currentHostTime = computeHostTimeNanos();
+        processor.setHostTimeNanos (&currentHostTime);  // Set a valid host time
+        // ...call processBlock etc.
+        processor.setHostTimeNanos (nullptr);           // Clear host time
+        @endcode
+    */
+    void setHostTimeNanos (const uint64_t* hostTimeIn)
+    {
+        hasHostTime = hostTimeIn != nullptr;
+        hostTime = hasHostTime ? *hostTimeIn : 0;
+    }
+
+    /** The plugin may call this function inside the processBlock function (and only there!)
+        to find the timestamp associated with the current audio block.
+
+        If a timestamp is available, this will return a pointer to that timestamp. You should
+        immediately copy the pointed-to value and use that in any following code. Do *not* free
+        any pointer returned by this function.
+
+        If no timestamp is provided, this will return nullptr.
+
+        @code
+        void processBlock (AudioBuffer<float>&, MidiBuffer&) override
+        {
+            if (auto* timestamp = getHostTimeNs())
+            {
+                // Use *timestamp here to compensate for callback jitter etc.
+            }
+        }
+        @endcode
+    */
+    const uint64_t* getHostTimeNs() const             { return hasHostTime ? &hostTime : nullptr; }
+
+    //==============================================================================
     /** This is called by the processor to specify its details before being played. Use this
         version of the function if you are not interested in any sidechain and/or aux buses
         and do not care about the layout of channels. Otherwise use setRateAndBufferSizeDetails.*/
@@ -1200,10 +1266,10 @@ public:
         wrapperType_VST3,
         wrapperType_AudioUnit,
         wrapperType_AudioUnitv3,
-        wrapperType_RTAS,
         wrapperType_AAX,
         wrapperType_Standalone,
-        wrapperType_Unity
+        wrapperType_Unity,
+        wrapperType_LV2
     };
 
     /** When loaded by a plugin wrapper, this flag will be set to indicate the type
@@ -1452,6 +1518,12 @@ private:
         return layouts;
     }
 
+    template <typename This>
+    static auto getBusImpl (This& t, bool isInput, int busIndex) -> decltype (t.getBus (isInput, busIndex))
+    {
+        return (isInput ? t.inputBuses : t.outputBuses)[busIndex];
+    }
+
     //==============================================================================
     static BusesProperties busesPropertiesFromLayoutArray (const Array<InOutChannelPair>&);
 
@@ -1480,6 +1552,9 @@ private:
     AudioProcessorParameterGroup parameterTree;
     Array<AudioProcessorParameter*> flatParameterList;
 
+    uint64_t hostTime = 0;
+    bool hasHostTime = false;
+
     AudioProcessorParameter* getParamChecked (int) const;
 
   #if JUCE_DEBUG
@@ -1495,7 +1570,7 @@ private:
   #endif
 
     void checkForDuplicateTrimmedParamID (AudioProcessorParameter*);
-    void checkForUnsafeParamID (AudioProcessorParameter*);
+    void validateParameter (AudioProcessorParameter*);
     void checkForDuplicateParamID (AudioProcessorParameter*);
     void checkForDuplicateGroupIDs (const AudioProcessorParameterGroup&);
 

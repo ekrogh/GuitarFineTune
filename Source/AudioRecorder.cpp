@@ -363,12 +363,13 @@ void AudioRecorderControl::setAutoGainOn(bool setAutoGainOn)
 
 void AudioRecorderControl::startRecording()
 {
+
 	if
 	(
 		!(
-			RuntimePermissions::isGranted(RuntimePermissions::writeExternalStorage)
+            RuntimePermissions::isGranted(RuntimePermissions::writeExternalStorage)
 			&&
-			RuntimePermissions::isGranted(RuntimePermissions::readExternalStorage)
+            RuntimePermissions::isGranted(RuntimePermissions::readExternalStorage)
 		)
 	)
 	{
