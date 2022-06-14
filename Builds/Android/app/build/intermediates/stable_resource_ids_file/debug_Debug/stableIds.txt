@@ -1,0 +1,2 @@
+dk.eksit.guitarfinetune:string/app_name = 0x7f020000
+dk.eksit.guitarfinetune:drawable/icon = 0x7f010000

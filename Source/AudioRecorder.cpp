@@ -363,17 +363,39 @@ void AudioRecorderControl::setAutoGainOn(bool setAutoGainOn)
 
 void AudioRecorderControl::startRecording()
 {
-	if (!RuntimePermissions::isGranted(RuntimePermissions::writeExternalStorage))
+	if
+	(
+		!(
+			RuntimePermissions::isGranted(RuntimePermissions::writeExternalStorage)
+			&&
+			RuntimePermissions::isGranted(RuntimePermissions::readExternalStorage)
+		)
+	)
 	{
 		SafePointer<AudioRecorderControl> safeThis(this);
 
-		RuntimePermissions::request(RuntimePermissions::writeExternalStorage,
-			[safeThis](bool granted) mutable
-			{
-				if (granted)
-					safeThis->startRecording();
-			});
-		return;
+		if (!RuntimePermissions::isGranted(RuntimePermissions::writeExternalStorage))
+		{
+
+			RuntimePermissions::request(RuntimePermissions::writeExternalStorage,
+				[safeThis](bool granted) mutable
+				{
+					if (granted)
+						safeThis->startRecording();
+				});
+			return;
+		}
+		if (!RuntimePermissions::isGranted(RuntimePermissions::readExternalStorage))
+		{
+
+			RuntimePermissions::request(RuntimePermissions::readExternalStorage,
+				[safeThis](bool granted) mutable
+				{
+					if (granted)
+						safeThis->startRecording();
+				});
+			return;
+		}
 	}
 
 	auto parentDir = File::getSpecialLocation(File::tempDirectory);
