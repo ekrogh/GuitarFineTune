@@ -464,7 +464,8 @@ void AudioRecorderControl::stopRecording()
 	initialFilAndDirectory =
 		File::getSpecialLocation
 		(
-			File::userMusicDirectory
+			File::userHomeDirectory
+			//File::userMusicDirectory
 		).getChildFile
 		(
 			fileToSave.getFileName()
@@ -497,6 +498,7 @@ void AudioRecorderControl::stopRecording()
 				return;
 
 			File soundFile(rslt);
+
 			fileToSave.moveFileTo(soundFile);
 		}
 	);
