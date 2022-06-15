@@ -482,12 +482,12 @@ void AudioRecorderControl::stopRecording()
 				}
 			}
 
-			AlertWindow::showAsync(MessageBoxOptions()
-				.withIconType(MessageBoxIconType::InfoIcon)
-				.withTitle("File Chooser...")
-				.withMessage("You picked: " + name)
-				.withButton("OK"),
-				nullptr);
+//			AlertWindow::showAsync(MessageBoxOptions()
+//				.withIconType(MessageBoxIconType::InfoIcon)
+//				.withTitle("File Chooser...")
+//				.withMessage("You picked: " + name)
+//				.withButton("OK"),
+//				nullptr);
 		}
 	);
 #else
