@@ -480,12 +480,6 @@
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../JuceLibraryCode/modules/juce_audio_basics/midi/ump/juce_UMPTests.cpp">
-      <Option target="App | Debug"/>
-      <Option target="App | Release"/>
-      <Option compile="0"/>
-      <Option link="0"/>
-    </Unit>
     <Unit filename="../../JuceLibraryCode/modules/juce_audio_basics/midi/ump/juce_UMPUtils.cpp">
       <Option target="App | Debug"/>
       <Option target="App | Release"/>
@@ -973,12 +967,6 @@
       <Option link="0"/>
     </Unit>
     <Unit filename="../../JuceLibraryCode/modules/juce_audio_devices/midi_io/ump/juce_UMPBytestreamInputHandler.h">
-      <Option target="App | Debug"/>
-      <Option target="App | Release"/>
-      <Option compile="0"/>
-      <Option link="0"/>
-    </Unit>
-    <Unit filename="../../JuceLibraryCode/modules/juce_audio_devices/midi_io/ump/juce_UMPTests.cpp">
       <Option target="App | Debug"/>
       <Option target="App | Release"/>
       <Option compile="0"/>
@@ -9774,12 +9762,6 @@
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../JuceLibraryCode/modules/juce_gui_basics/native/juce_common_MimeTypes.cpp">
-      <Option target="App | Debug"/>
-      <Option target="App | Release"/>
-      <Option compile="0"/>
-      <Option link="0"/>
-    </Unit>
     <Unit filename="../../JuceLibraryCode/modules/juce_gui_basics/native/juce_ios_ContentSharer.cpp">
       <Option target="App | Debug"/>
       <Option target="App | Release"/>
@@ -10669,12 +10651,6 @@
       <Option link="0"/>
     </Unit>
     <Unit filename="../../JuceLibraryCode/modules/juce_gui_extra/native/juce_mac_AppleRemote.mm">
-      <Option target="App | Debug"/>
-      <Option target="App | Release"/>
-      <Option compile="0"/>
-      <Option link="0"/>
-    </Unit>
-    <Unit filename="../../JuceLibraryCode/modules/juce_gui_extra/native/juce_mac_CarbonViewWrapperComponent.h">
       <Option target="App | Debug"/>
       <Option target="App | Release"/>
       <Option compile="0"/>

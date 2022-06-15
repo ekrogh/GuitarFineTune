@@ -98,7 +98,6 @@ add_library( ${BINARY_NAME}
     "../../../JuceLibraryCode/modules/juce_audio_basics/midi/ump/juce_UMPReceiver.h"
     "../../../JuceLibraryCode/modules/juce_audio_basics/midi/ump/juce_UMPSysEx7.cpp"
     "../../../JuceLibraryCode/modules/juce_audio_basics/midi/ump/juce_UMPSysEx7.h"
-    "../../../JuceLibraryCode/modules/juce_audio_basics/midi/ump/juce_UMPTests.cpp"
     "../../../JuceLibraryCode/modules/juce_audio_basics/midi/ump/juce_UMPUtils.cpp"
     "../../../JuceLibraryCode/modules/juce_audio_basics/midi/ump/juce_UMPUtils.h"
     "../../../JuceLibraryCode/modules/juce_audio_basics/midi/ump/juce_UMPView.cpp"
@@ -181,7 +180,6 @@ add_library( ${BINARY_NAME}
     "../../../JuceLibraryCode/modules/juce_audio_devices/audio_io/juce_SampleRateHelpers.cpp"
     "../../../JuceLibraryCode/modules/juce_audio_devices/audio_io/juce_SystemAudioVolume.h"
     "../../../JuceLibraryCode/modules/juce_audio_devices/midi_io/ump/juce_UMPBytestreamInputHandler.h"
-    "../../../JuceLibraryCode/modules/juce_audio_devices/midi_io/ump/juce_UMPTests.cpp"
     "../../../JuceLibraryCode/modules/juce_audio_devices/midi_io/ump/juce_UMPU32InputHandler.h"
     "../../../JuceLibraryCode/modules/juce_audio_devices/midi_io/juce_MidiDevices.cpp"
     "../../../JuceLibraryCode/modules/juce_audio_devices/midi_io/juce_MidiDevices.h"
@@ -1647,7 +1645,6 @@ add_library( ${BINARY_NAME}
     "../../../JuceLibraryCode/modules/juce_gui_basics/native/juce_android_ContentSharer.cpp"
     "../../../JuceLibraryCode/modules/juce_gui_basics/native/juce_android_FileChooser.cpp"
     "../../../JuceLibraryCode/modules/juce_gui_basics/native/juce_android_Windowing.cpp"
-    "../../../JuceLibraryCode/modules/juce_gui_basics/native/juce_common_MimeTypes.cpp"
     "../../../JuceLibraryCode/modules/juce_gui_basics/native/juce_ios_ContentSharer.cpp"
     "../../../JuceLibraryCode/modules/juce_gui_basics/native/juce_ios_FileChooser.mm"
     "../../../JuceLibraryCode/modules/juce_gui_basics/native/juce_ios_UIViewComponentPeer.mm"
@@ -1797,7 +1794,6 @@ add_library( ${BINARY_NAME}
     "../../../JuceLibraryCode/modules/juce_gui_extra/native/juce_linux_X11_WebBrowserComponent.cpp"
     "../../../JuceLibraryCode/modules/juce_gui_extra/native/juce_linux_XEmbedComponent.cpp"
     "../../../JuceLibraryCode/modules/juce_gui_extra/native/juce_mac_AppleRemote.mm"
-    "../../../JuceLibraryCode/modules/juce_gui_extra/native/juce_mac_CarbonViewWrapperComponent.h"
     "../../../JuceLibraryCode/modules/juce_gui_extra/native/juce_mac_NSViewComponent.mm"
     "../../../JuceLibraryCode/modules/juce_gui_extra/native/juce_mac_NSViewFrameWatcher.h"
     "../../../JuceLibraryCode/modules/juce_gui_extra/native/juce_mac_PushNotifications.cpp"
@@ -1883,7 +1879,6 @@ set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_basics/
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_basics/midi/ump/juce_UMPReceiver.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_basics/midi/ump/juce_UMPSysEx7.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_basics/midi/ump/juce_UMPSysEx7.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_basics/midi/ump/juce_UMPTests.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_basics/midi/ump/juce_UMPUtils.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_basics/midi/ump/juce_UMPUtils.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_basics/midi/ump/juce_UMPView.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
@@ -1966,7 +1961,6 @@ set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_devices
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_devices/audio_io/juce_SampleRateHelpers.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_devices/audio_io/juce_SystemAudioVolume.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_devices/midi_io/ump/juce_UMPBytestreamInputHandler.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_devices/midi_io/ump/juce_UMPTests.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_devices/midi_io/ump/juce_UMPU32InputHandler.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_devices/midi_io/juce_MidiDevices.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_devices/midi_io/juce_MidiDevices.h" PROPERTIES HEADER_FILE_ONLY TRUE)
@@ -3432,7 +3426,6 @@ set_source_files_properties("../../../JuceLibraryCode/modules/juce_gui_basics/na
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_gui_basics/native/juce_android_ContentSharer.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_gui_basics/native/juce_android_FileChooser.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_gui_basics/native/juce_android_Windowing.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties("../../../JuceLibraryCode/modules/juce_gui_basics/native/juce_common_MimeTypes.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_gui_basics/native/juce_ios_ContentSharer.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_gui_basics/native/juce_ios_FileChooser.mm" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_gui_basics/native/juce_ios_UIViewComponentPeer.mm" PROPERTIES HEADER_FILE_ONLY TRUE)
@@ -3582,7 +3575,6 @@ set_source_files_properties("../../../JuceLibraryCode/modules/juce_gui_extra/nat
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_gui_extra/native/juce_linux_X11_WebBrowserComponent.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_gui_extra/native/juce_linux_XEmbedComponent.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_gui_extra/native/juce_mac_AppleRemote.mm" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties("../../../JuceLibraryCode/modules/juce_gui_extra/native/juce_mac_CarbonViewWrapperComponent.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_gui_extra/native/juce_mac_NSViewComponent.mm" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_gui_extra/native/juce_mac_NSViewFrameWatcher.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_gui_extra/native/juce_mac_PushNotifications.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
