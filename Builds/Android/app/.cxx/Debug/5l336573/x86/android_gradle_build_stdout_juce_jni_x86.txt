@@ -1,7 +1,0 @@
-ninja: Entering directory `D:\Users\eigil\projects\juceProjs\GuitarFineTune\Builds\Android\app\.cxx\Debug\5l336573\x86'
-[1/6] Building CXX object CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/JuceLibraryCode/include_juce_gui_extra.cpp.o
-[2/6] Building CXX object CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/JuceLibraryCode/include_juce_graphics.cpp.o
-[3/6] Building CXX object CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/JuceLibraryCode/include_juce_core.cpp.o
-[4/6] Building CXX object CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/JuceLibraryCode/include_juce_audio_processors.cpp.o
-[5/6] Building CXX object CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/JuceLibraryCode/include_juce_gui_basics.cpp.o
-[6/6] Linking CXX shared library ..\..\..\..\build\intermediates\cxx\Debug\5l336573\obj\x86\libjuce_jni.so
