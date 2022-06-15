@@ -15,7 +15,6 @@
 		1EE32CA237B6C0890E0D527D /* CoreAudio.framework */ = {isa = PBXBuildFile; fileRef = DB21D09A506A56B642270FE8; };
 		25D4A7699E4D95E4562973C5 /* QuartzCore.framework */ = {isa = PBXBuildFile; fileRef = A44D165D613999DC222406FC; };
 		29C4E447DE915EDE71B69946 /* eksThreadWithProgressWindow.cpp */ = {isa = PBXBuildFile; fileRef = 2705345B21013135C78D354D; };
-		31283DB791CF5F682DEF07DE /* include_juce_audio_processors_ara.cpp */ = {isa = PBXBuildFile; fileRef = 2F6CC538521211C0B98C33C2; };
 		375D5475EFE7D060163B3839 /* include_juce_dsp.mm */ = {isa = PBXBuildFile; fileRef = 5AF7E8CD56847D9374659427; };
 		3A172850537D5C628F08AB22 /* include_juce_gui_extra.mm */ = {isa = PBXBuildFile; fileRef = 3495015450FA52F6D0A93D0A; };
 		3AFB50BCBD0E5284E438F800 /* BinaryData.cpp */ = {isa = PBXBuildFile; fileRef = 6F8389240FB603F9CDD9AED4; };
@@ -34,6 +33,7 @@
 		829E5AAAC42C6142DD73326A /* CoreAudioKit.framework */ = {isa = PBXBuildFile; fileRef = 0A6C967BBB5D4418A23463EB; };
 		8377B7FE2B3A637A45B04209 /* include_juce_data_structures.mm */ = {isa = PBXBuildFile; fileRef = 34137BFFFF3A6B4EB306C276; };
 		8434F036EBC05B7F72734A56 /* audioRecorderThread.cpp */ = {isa = PBXBuildFile; fileRef = 8E089090ECC4288D875C6231; };
+		8579C1D27AF705444FC8FFC2 /* Carbon.framework */ = {isa = PBXBuildFile; fileRef = 7FAD455FFE0B8905050C2115; };
 		865FA096794C9649C3E4080C /* include_juce_gui_basics.mm */ = {isa = PBXBuildFile; fileRef = FF95EC7ADBED0BFF63E32827; };
 		96754801B0CCC7C650CB75FB /* eksNotModalProgressWindowCallBacks.cpp */ = {isa = PBXBuildFile; fileRef = 41486511D23351627F58329B; };
 		9B311FAFFA1679033D1F165A /* fineTune_icon_Large.png */ = {isa = PBXBuildFile; fileRef = 6118B4D234223C62182B82BD; };
@@ -50,7 +50,6 @@
 		C9DA5848661CB3E7257B75A6 /* CoreMIDI.framework */ = {isa = PBXBuildFile; fileRef = CCD63AFC809E66052D28C4CA; };
 		CA2A858D76797910F5D093C6 /* include_juce_audio_formats.mm */ = {isa = PBXBuildFile; fileRef = 8CF038A507C97320B2BFE390; };
 		D27EAA8BD2D3927E1B17A844 /* include_juce_audio_processors.mm */ = {isa = PBXBuildFile; fileRef = 5A3DBDB080CBC7DDA0DD9868; };
-		E5167969A404110A9AA64046 /* include_juce_audio_processors_lv2_libs.cpp */ = {isa = PBXBuildFile; fileRef = CEE1DAAB315107D5D389B4A6; };
 		E6E556E527BBB88118CF602F /* xmlGuitarFineTuneConfig.cpp */ = {isa = PBXBuildFile; fileRef = DE04C8CA3FF610024C6D4532; };
 		E85CA4C004ECE7697ED5A421 /* tuneComponent.cpp */ = {isa = PBXBuildFile; fileRef = 9A1F14BFB81F76671EE8E50B; };
 		F0E88D3D5F52185C0A75F733 /* DiscRecording.framework */ = {isa = PBXBuildFile; fileRef = BDCED611BD3BAFC0FD2DB205; };
@@ -73,7 +72,6 @@
 		2DCE8865F812F11BFE50B518 /* IOKit.framework */ /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		2E37320A82655568C1B0A7A4 /* post_decimation_NOTCH_filters_Coeffs.h */ /* post_decimation_NOTCH_filters_Coeffs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = post_decimation_NOTCH_filters_Coeffs.h; path = ../../Source/post_decimation_NOTCH_filters_Coeffs.h; sourceTree = SOURCE_ROOT; };
 		2E5734A1AE3D8038FDA8A7E6 /* juce_dsp */ /* juce_dsp */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_dsp; path = ../../JuceLibraryCode/modules/juce_dsp; sourceTree = SOURCE_ROOT; };
-		2F6CC538521211C0B98C33C2 /* include_juce_audio_processors_ara.cpp */ /* include_juce_audio_processors_ara.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = include_juce_audio_processors_ara.cpp; path = ../../JuceLibraryCode/include_juce_audio_processors_ara.cpp; sourceTree = SOURCE_ROOT; };
 		34137BFFFF3A6B4EB306C276 /* include_juce_data_structures.mm */ /* include_juce_data_structures.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_data_structures.mm; path = ../../JuceLibraryCode/include_juce_data_structures.mm; sourceTree = SOURCE_ROOT; };
 		3436E53BE3F49251423D332E /* SimpleLevelMeter.cpp */ /* SimpleLevelMeter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = SimpleLevelMeter.cpp; path = ../../Source/SimpleLevelMeter.cpp; sourceTree = SOURCE_ROOT; };
 		3495015450FA52F6D0A93D0A /* include_juce_gui_extra.mm */ /* include_juce_gui_extra.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_gui_extra.mm; path = ../../JuceLibraryCode/include_juce_gui_extra.mm; sourceTree = SOURCE_ROOT; };
@@ -105,6 +103,7 @@
 		79FC77B26B376C278A4E8AF8 /* TypeManip.h */ /* TypeManip.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TypeManip.h; path = ../../Source/TypeManip.h; sourceTree = SOURCE_ROOT; };
 		7C9B9B7D98173CF92521CD90 /* Cocoa.framework */ /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		7C9EA3367E6747B93BA6B608 /* guitarFineTuneFirstClass.h */ /* guitarFineTuneFirstClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = guitarFineTuneFirstClass.h; path = ../../Source/guitarFineTuneFirstClass.h; sourceTree = SOURCE_ROOT; };
+		7FAD455FFE0B8905050C2115 /* Carbon.framework */ /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		832DBF8B6ACEA1A84326E5E1 /* eksNotModalProgressWindow.cpp */ /* eksNotModalProgressWindow.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = eksNotModalProgressWindow.cpp; path = ../../Source/eksNotModalProgressWindow.cpp; sourceTree = SOURCE_ROOT; };
 		85445E195118B009AC92356D /* NullType.h */ /* NullType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NullType.h; path = ../../Source/NullType.h; sourceTree = SOURCE_ROOT; };
 		86DF5309C02D008F4BF9C165 /* displayControlComponent.h */ /* displayControlComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = displayControlComponent.h; path = ../../Source/displayControlComponent.h; sourceTree = SOURCE_ROOT; };
@@ -135,7 +134,6 @@
 		C9F9E8F883FAD092F16C8D8F /* fineTune_icon_Small.png */ /* fineTune_icon_Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fineTune_icon_Small.png; path = ../../Source/fineTune_icon_Small.png; sourceTree = SOURCE_ROOT; };
 		CCD63AFC809E66052D28C4CA /* CoreMIDI.framework */ /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = System/Library/Frameworks/CoreMIDI.framework; sourceTree = SDKROOT; };
 		CD1EED5A10971AA8EAF940B0 /* include_juce_events.mm */ /* include_juce_events.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_events.mm; path = ../../JuceLibraryCode/include_juce_events.mm; sourceTree = SOURCE_ROOT; };
-		CEE1DAAB315107D5D389B4A6 /* include_juce_audio_processors_lv2_libs.cpp */ /* include_juce_audio_processors_lv2_libs.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = include_juce_audio_processors_lv2_libs.cpp; path = ../../JuceLibraryCode/include_juce_audio_processors_lv2_libs.cpp; sourceTree = SOURCE_ROOT; };
 		CF829283834766D80BA82FAD /* eksThreadWithProgressWindow.h */ /* eksThreadWithProgressWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = eksThreadWithProgressWindow.h; path = ../../Source/eksThreadWithProgressWindow.h; sourceTree = SOURCE_ROOT; };
 		DA0E44CCE765370592F7F300 /* guitarFineTuneFirstClass.cpp */ /* guitarFineTuneFirstClass.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = guitarFineTuneFirstClass.cpp; path = ../../Source/guitarFineTuneFirstClass.cpp; sourceTree = SOURCE_ROOT; };
 		DB21D09A506A56B642270FE8 /* CoreAudio.framework */ /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
@@ -158,6 +156,7 @@
 				9D7FD54D83695FE355FF1D32,
 				C8531C8A2D23A2A5012B85A6,
 				73163F759F77D81E035D01DC,
+				8579C1D27AF705444FC8FFC2,
 				BDB9FB88D7CD46170B0131B4,
 				1EE32CA237B6C0890E0D527D,
 				829E5AAAC42C6142DD73326A,
@@ -210,6 +209,7 @@
 				5C8B7D09E34F63CFA71E119F,
 				04362EB52A445AD4041F6952,
 				F96200A03AE92755D90A5C52,
+				7FAD455FFE0B8905050C2115,
 				7C9B9B7D98173CF92521CD90,
 				DB21D09A506A56B642270FE8,
 				0A6C967BBB5D4418A23463EB,
@@ -246,8 +246,6 @@
 				005D3FDA17BBCA6D812854C9,
 				8CF038A507C97320B2BFE390,
 				5A3DBDB080CBC7DDA0DD9868,
-				2F6CC538521211C0B98C33C2,
-				CEE1DAAB315107D5D389B4A6,
 				8E2372BA8AF97FF946178E91,
 				BF256F6C10EF6FAFC2A585BB,
 				34137BFFFF3A6B4EB306C276,
@@ -444,8 +442,6 @@
 				A95D7EA8475526035C9B0DBE,
 				CA2A858D76797910F5D093C6,
 				D27EAA8BD2D3927E1B17A844,
-				31283DB791CF5F682DEF07DE,
-				E5167969A404110A9AA64046,
 				6D8F1CDC011290A48F8F4FF1,
 				56A011EC51220996D4F00254,
 				8377B7FE2B3A637A45B04209,

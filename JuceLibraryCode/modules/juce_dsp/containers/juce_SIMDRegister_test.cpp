@@ -2,15 +2,15 @@
   ==============================================================================
 
    This file is part of the JUCE library.
-   Copyright (c) 2022 - Raw Material Software Limited
+   Copyright (c) 2020 - Raw Material Software Limited
 
    JUCE is an open source library subject to commercial or open-source
    licensing.
 
-   By using JUCE, you agree to the terms of both the JUCE 7 End-User License
-   Agreement and JUCE Privacy Policy.
+   By using JUCE, you agree to the terms of both the JUCE 6 End-User License
+   Agreement and JUCE Privacy Policy (both effective as of the 16th June 2020).
 
-   End User License Agreement: www.juce.com/juce-7-licence
+   End User License Agreement: www.juce.com/juce-6-licence
    Privacy Policy: www.juce.com/juce-privacy-policy
 
    Or: You may also use this code under the terms of the GPL v3 (see
@@ -39,6 +39,7 @@ namespace SIMDRegister_test_internal
         {
             return static_cast<type> (std::is_signed<type>::value ? (random.nextFloat() * 16.0) - 8.0
                                                                   : (random.nextFloat() * 8.0));
+
         }
     };
 
@@ -48,15 +49,11 @@ namespace SIMDRegister_test_internal
         static type next (Random& random)
         {
             return static_cast<type> (random.nextInt64());
+
         }
     };
 
-    template <typename type>
-    struct RandomValue
-    {
-        static type next (Random& random) { return RandomPrimitive<type>::next (random); }
-    };
-
+    template <typename type> struct RandomValue { static type next (Random& random) { return RandomPrimitive<type>::next (random); } };
     template <typename type>
     struct RandomValue<std::complex<type>>
     {
@@ -66,14 +63,45 @@ namespace SIMDRegister_test_internal
         }
     };
 
+
     template <typename type>
-    static void fillVec (type* dst, Random& random)
+    struct VecFiller
     {
-        std::generate_n (dst, SIMDRegister<type>::SIMDNumElements, [&]
+        static void fill (type* dst, const int size, Random& random)
         {
-            return RandomValue<type>::next (random);
-        });
-    }
+            for (int i = 0; i < size; ++i)
+                dst[i] = RandomValue<type>::next (random);
+        }
+    };
+
+    // We need to specialise for complex types: otherwise GCC 6 gives
+    // us an ICE internal compiler error after which the compiler seg faults.
+    template <typename type>
+    struct VecFiller<std::complex<type>>
+    {
+        static void fill (std::complex<type>* dst, const int size, Random& random)
+        {
+            for (int i = 0; i < size; ++i)
+                dst[i] = std::complex<type> (RandomValue<type>::next (random), RandomValue<type>::next (random));
+        }
+    };
+
+    template <typename type>
+    struct VecFiller<SIMDRegister<type>>
+    {
+        static SIMDRegister<type> fill (Random& random)
+        {
+            constexpr int size = (int) SIMDRegister<type>::SIMDNumElements;
+           #ifdef _MSC_VER
+            __declspec(align(sizeof (SIMDRegister<type>))) type elements[size];
+           #else
+            type elements[(size_t) size] __attribute__((aligned(sizeof (SIMDRegister<type>))));
+           #endif
+
+            VecFiller<type>::fill (elements, size, random);
+            return SIMDRegister<type>::fromRawArray (elements);
+        }
+    };
 
     // Avoid visual studio warning
     template <typename type>
@@ -99,7 +127,7 @@ namespace SIMDRegister_test_internal
     {
         return difference (a - b);
     }
-} // namespace SIMDRegister_test_internal
+}
 
 // These tests need to be strictly run on all platforms supported by JUCE as the
 // SIMD code is highly platform dependent.
@@ -107,8 +135,6 @@ namespace SIMDRegister_test_internal
 class SIMDRegisterUnitTests   : public UnitTest
 {
 public:
-    template <typename> struct Tag {};
-
     SIMDRegisterUnitTests()
         : UnitTest ("SIMDRegister UnitTests", UnitTestCategories::dsp)
     {}
@@ -264,7 +290,7 @@ public:
     struct InitializationTest
     {
         template <typename type>
-        static void run (UnitTest& u, Random& random, Tag<type>)
+        static void run (UnitTest& u, Random& random)
         {
             u.expect (allValuesEqualTo<type> (SIMDRegister<type>::expand (static_cast<type> (23)), 23));
 
@@ -274,7 +300,7 @@ public:
                #else
                 type elements[SIMDRegister<type>::SIMDNumElements] __attribute__((aligned(sizeof (SIMDRegister<type>))));
                #endif
-                SIMDRegister_test_internal::fillVec (elements, random);
+                SIMDRegister_test_internal::VecFiller<type>::fill (elements, SIMDRegister<type>::SIMDNumElements, random);
                 SIMDRegister<type> a (SIMDRegister<type>::fromRawArray (elements));
 
                 u.expect (vecEqualToArray (a, elements));
@@ -290,13 +316,13 @@ public:
     struct AccessTest
     {
         template <typename type>
-        static void run (UnitTest& u, Random& random, Tag<type>)
+        static void run (UnitTest& u, Random& random)
         {
             // set-up
             SIMDRegister<type> a;
             type array [SIMDRegister<type>::SIMDNumElements];
 
-            SIMDRegister_test_internal::fillVec (array, random);
+            SIMDRegister_test_internal::VecFiller<type>::fill (array, SIMDRegister<type>::SIMDNumElements, random);
 
             // Test non-const access operator
             for (size_t i = 0; i < SIMDRegister<type>::SIMDNumElements; ++i)
@@ -316,7 +342,7 @@ public:
     struct OperatorTests
     {
         template <typename type>
-        static void run (UnitTest& u, Random& random, Tag<type>)
+        static void run (UnitTest& u, Random& random)
         {
             for (int n = 0; n < 100; ++n)
             {
@@ -329,9 +355,9 @@ public:
                 type array_b [SIMDRegister<type>::SIMDNumElements];
                 type array_c [SIMDRegister<type>::SIMDNumElements];
 
-                SIMDRegister_test_internal::fillVec (array_a, random);
-                SIMDRegister_test_internal::fillVec (array_b, random);
-                SIMDRegister_test_internal::fillVec (array_c, random);
+                SIMDRegister_test_internal::VecFiller<type>::fill (array_a, SIMDRegister<type>::SIMDNumElements, random);
+                SIMDRegister_test_internal::VecFiller<type>::fill (array_b, SIMDRegister<type>::SIMDNumElements, random);
+                SIMDRegister_test_internal::VecFiller<type>::fill (array_c, SIMDRegister<type>::SIMDNumElements, random);
 
                 copy (a, array_a); copy (b, array_b); copy (c, array_c);
 
@@ -344,9 +370,9 @@ public:
                 u.expect (vecEqualToArray (a, array_a));
                 u.expect (vecEqualToArray (b, array_b));
 
-                SIMDRegister_test_internal::fillVec (array_a, random);
-                SIMDRegister_test_internal::fillVec (array_b, random);
-                SIMDRegister_test_internal::fillVec (array_c, random);
+                SIMDRegister_test_internal::VecFiller<type>::fill (array_a, SIMDRegister<type>::SIMDNumElements, random);
+                SIMDRegister_test_internal::VecFiller<type>::fill (array_b, SIMDRegister<type>::SIMDNumElements, random);
+                SIMDRegister_test_internal::VecFiller<type>::fill (array_c, SIMDRegister<type>::SIMDNumElements, random);
 
                 copy (a, array_a); copy (b, array_b); copy (c, array_c);
 
@@ -360,9 +386,9 @@ public:
                 u.expect (vecEqualToArray (b, array_b));
 
                 // set-up again
-                SIMDRegister_test_internal::fillVec (array_a, random);
-                SIMDRegister_test_internal::fillVec (array_b, random);
-                SIMDRegister_test_internal::fillVec (array_c, random);
+                SIMDRegister_test_internal::VecFiller<type>::fill (array_a, SIMDRegister<type>::SIMDNumElements, random);
+                SIMDRegister_test_internal::VecFiller<type>::fill (array_b, SIMDRegister<type>::SIMDNumElements, random);
+                SIMDRegister_test_internal::VecFiller<type>::fill (array_c, SIMDRegister<type>::SIMDNumElements, random);
                 copy (a, array_a); copy (b, array_b); copy (c, array_c);
 
                 // test out-of-place with both params being vectors
@@ -392,7 +418,7 @@ public:
     struct BitOperatorTests
     {
         template <typename type>
-        static void run (UnitTest& u, Random& random, Tag<type>)
+        static void run (UnitTest& u, Random& random)
         {
             typedef typename SIMDRegister<type>::vMaskType vMaskType;
             typedef typename SIMDRegister<type>::MaskType MaskType;
@@ -412,7 +438,7 @@ public:
                     } a, b;
 
                     vMaskType bitmask = vMaskType::expand (static_cast<MaskType> (1) << (sizeof (MaskType) - 1));
-                    SIMDRegister_test_internal::fillVec (array_a, random);
+                    SIMDRegister_test_internal::VecFiller<type>::fill (array_a, SIMDRegister<type>::SIMDNumElements, random);
                     copy (a.floatVersion, array_a);
                     copy (b.floatVersion, array_a);
 
@@ -440,9 +466,9 @@ public:
                 type float_a [SIMDRegister<type>::SIMDNumElements];
                 type float_c [SIMDRegister<type>::SIMDNumElements];
 
-                SIMDRegister_test_internal::fillVec (float_a, random);
-                SIMDRegister_test_internal::fillVec (array_b, random);
-                SIMDRegister_test_internal::fillVec (float_c, random);
+                SIMDRegister_test_internal::VecFiller<type>::fill (float_a, SIMDRegister<type>::SIMDNumElements, random);
+                SIMDRegister_test_internal::VecFiller<MaskType>::fill (array_b, SIMDRegister<MaskType>::SIMDNumElements, random);
+                SIMDRegister_test_internal::VecFiller<type>::fill (float_c, SIMDRegister<type>::SIMDNumElements, random);
 
                 memcpy (array_a, float_a, sizeof (type) * SIMDRegister<type>::SIMDNumElements);
                 memcpy (array_c, float_c, sizeof (type) * SIMDRegister<type>::SIMDNumElements);
@@ -458,9 +484,9 @@ public:
                 u.expect (vecEqualToArray (a, float_a));
                 u.expect (vecEqualToArray (b, array_b));
 
-                SIMDRegister_test_internal::fillVec (float_a, random);
-                SIMDRegister_test_internal::fillVec (array_b, random);
-                SIMDRegister_test_internal::fillVec (float_c, random);
+                SIMDRegister_test_internal::VecFiller<type>::fill (float_a, SIMDRegister<type>::SIMDNumElements, random);
+                SIMDRegister_test_internal::VecFiller<MaskType>::fill (array_b, SIMDRegister<MaskType>::SIMDNumElements, random);
+                SIMDRegister_test_internal::VecFiller<type>::fill (float_c, SIMDRegister<type>::SIMDNumElements, random);
                 memcpy (array_a, float_a, sizeof (type) * SIMDRegister<type>::SIMDNumElements);
                 memcpy (array_c, float_c, sizeof (type) * SIMDRegister<type>::SIMDNumElements);
                 copy (a, float_a); copy (b, array_b); copy (c, float_c);
@@ -476,9 +502,9 @@ public:
                 u.expect (vecEqualToArray (b, array_b));
 
                 // set-up again
-                SIMDRegister_test_internal::fillVec (float_a, random);
-                SIMDRegister_test_internal::fillVec (array_b, random);
-                SIMDRegister_test_internal::fillVec (float_c, random);
+                SIMDRegister_test_internal::VecFiller<type>::fill (float_a, SIMDRegister<type>::SIMDNumElements, random);
+                SIMDRegister_test_internal::VecFiller<MaskType>::fill (array_b, SIMDRegister<MaskType>::SIMDNumElements, random);
+                SIMDRegister_test_internal::VecFiller<type>::fill (float_c, SIMDRegister<type>::SIMDNumElements, random);
                 memcpy (array_a, float_a, sizeof (type) * SIMDRegister<type>::SIMDNumElements);
                 memcpy (array_c, float_c, sizeof (type) * SIMDRegister<type>::SIMDNumElements);
                 copy (a, float_a); copy (b, array_b); copy (c, float_c);
@@ -516,7 +542,7 @@ public:
     struct CheckComparisonOps
     {
         template <typename type>
-        static void run (UnitTest& u, Random& random, Tag<type>)
+        static void run (UnitTest& u, Random& random)
         {
             typedef typename SIMDRegister<type>::vMaskType vMaskType;
             typedef typename SIMDRegister<type>::MaskType MaskType;
@@ -534,8 +560,8 @@ public:
                 MaskType array_ge  [SIMDRegister<type>::SIMDNumElements];
 
 
-                SIMDRegister_test_internal::fillVec (array_a, random);
-                SIMDRegister_test_internal::fillVec (array_b, random);
+                SIMDRegister_test_internal::VecFiller<type>::fill (array_a, SIMDRegister<type>::SIMDNumElements, random);
+                SIMDRegister_test_internal::VecFiller<type>::fill (array_b, SIMDRegister<type>::SIMDNumElements, random);
 
                 // do check
                 for (size_t j = 0; j < SIMDRegister<type>::SIMDNumElements; ++j)
@@ -572,8 +598,8 @@ public:
 
                 do
                 {
-                    SIMDRegister_test_internal::fillVec (array_a, random);
-                    SIMDRegister_test_internal::fillVec (array_b, random);
+                    SIMDRegister_test_internal::VecFiller<type>::fill (array_a, SIMDRegister<type>::SIMDNumElements, random);
+                    SIMDRegister_test_internal::VecFiller<type>::fill (array_b, SIMDRegister<type>::SIMDNumElements, random);
                 } while (std::equal (array_a, array_a + SIMDRegister<type>::SIMDNumElements, array_b));
 
                 copy (a, array_a);
@@ -583,7 +609,7 @@ public:
                 u.expect (! (a == b));
                 u.expect (! (b == a));
 
-                SIMDRegister_test_internal::fillVec (array_a, random);
+                SIMDRegister_test_internal::VecFiller<type>::fill (array_a, SIMDRegister<type>::SIMDNumElements, random);
                 copy (a, array_a);
                 copy (b, array_a);
 
@@ -609,7 +635,7 @@ public:
     struct CheckMultiplyAdd
     {
         template <typename type>
-        static void run (UnitTest& u, Random& random, Tag<type>)
+        static void run (UnitTest& u, Random& random)
         {
             // set-up
             type array_a [SIMDRegister<type>::SIMDNumElements];
@@ -617,10 +643,10 @@ public:
             type array_c [SIMDRegister<type>::SIMDNumElements];
             type array_d [SIMDRegister<type>::SIMDNumElements];
 
-            SIMDRegister_test_internal::fillVec (array_a, random);
-            SIMDRegister_test_internal::fillVec (array_b, random);
-            SIMDRegister_test_internal::fillVec (array_c, random);
-            SIMDRegister_test_internal::fillVec (array_d, random);
+            SIMDRegister_test_internal::VecFiller<type>::fill (array_a, SIMDRegister<type>::SIMDNumElements, random);
+            SIMDRegister_test_internal::VecFiller<type>::fill (array_b, SIMDRegister<type>::SIMDNumElements, random);
+            SIMDRegister_test_internal::VecFiller<type>::fill (array_c, SIMDRegister<type>::SIMDNumElements, random);
+            SIMDRegister_test_internal::VecFiller<type>::fill (array_d, SIMDRegister<type>::SIMDNumElements, random);
 
             // check
             for (size_t i = 0; i < SIMDRegister<type>::SIMDNumElements; ++i)
@@ -641,7 +667,7 @@ public:
     struct CheckMinMax
     {
         template <typename type>
-        static void run (UnitTest& u, Random& random, Tag<type>)
+        static void run (UnitTest& u, Random& random)
         {
             for (int i = 0; i < 100; ++i)
             {
@@ -691,14 +717,17 @@ public:
     struct CheckSum
     {
         template <typename type>
-        static void run (UnitTest& u, Random& random, Tag<type>)
+        static void run (UnitTest& u, Random& random)
         {
             type array [SIMDRegister<type>::SIMDNumElements];
+            type sumCheck = 0;
 
-            SIMDRegister_test_internal::fillVec (array, random);
+            SIMDRegister_test_internal::VecFiller<type>::fill (array, SIMDRegister<type>::SIMDNumElements, random);
 
-            using AddedType = decltype (type{} + type{});
-            const auto sumCheck = (type) std::accumulate (std::begin (array), std::end (array), AddedType{});
+            for (size_t j = 0; j < SIMDRegister<type>::SIMDNumElements; ++j)
+            {
+                sumCheck += array[j];
+            }
 
             SIMDRegister<type> a;
             copy (a, array);
@@ -710,12 +739,12 @@ public:
     struct CheckAbs
     {
         template <typename type>
-        static void run (UnitTest& u, Random& random, Tag<type>)
+        static void run (UnitTest& u, Random& random)
         {
             type inArray[SIMDRegister<type>::SIMDNumElements];
             type outArray[SIMDRegister<type>::SIMDNumElements];
 
-            SIMDRegister_test_internal::fillVec (inArray, random);
+            SIMDRegister_test_internal::VecFiller<type>::fill (inArray, SIMDRegister<type>::SIMDNumElements, random);
 
             SIMDRegister<type> a;
             copy (a, inArray);
@@ -733,12 +762,12 @@ public:
     struct CheckTruncate
     {
         template <typename type>
-        static void run (UnitTest& u, Random& random, Tag<type>)
+        static void run (UnitTest& u, Random& random)
         {
             type inArray[SIMDRegister<type>::SIMDNumElements];
             type outArray[SIMDRegister<type>::SIMDNumElements];
 
-            SIMDRegister_test_internal::fillVec (inArray, random);
+            SIMDRegister_test_internal::VecFiller<type>::fill (inArray, SIMDRegister<type>::SIMDNumElements, random);
 
             SIMDRegister<type> a;
             copy (a, inArray);
@@ -754,7 +783,7 @@ public:
     struct CheckBoolEquals
     {
         template <typename type>
-        static void run (UnitTest& u, Random& random, Tag<type>)
+        static void run (UnitTest& u, Random& random)
         {
             bool is_signed = std::is_signed<type>::value;
             type array [SIMDRegister<type>::SIMDNumElements];
@@ -773,14 +802,14 @@ public:
             u.expect (a != value);
             u.expect (! (a == value));
 
-            SIMDRegister_test_internal::fillVec (array, random);
+            SIMDRegister_test_internal::VecFiller<type>::fill (array, SIMDRegister<type>::SIMDNumElements, random);
             copy (a, array);
             copy (b, array);
 
             u.expect (a == b);
             u.expect (! (a != b));
 
-            SIMDRegister_test_internal::fillVec (array, random);
+            SIMDRegister_test_internal::VecFiller<type>::fill (array, SIMDRegister<type>::SIMDNumElements, random);
             copy (b, array);
 
             u.expect (a != b);
@@ -790,96 +819,96 @@ public:
 
     //==============================================================================
     template <class TheTest>
-    void runTestFloatingPoint (const char* unitTestName, TheTest)
+    void runTestFloatingPoint (const char* unitTestName)
     {
         beginTest (unitTestName);
 
         Random random = getRandom();
 
-        TheTest::run (*this, random, Tag<float> {});
-        TheTest::run (*this, random, Tag<double>{});
+        TheTest::template run<float>  (*this, random);
+        TheTest::template run<double> (*this, random);
     }
 
     //==============================================================================
     template <class TheTest>
-    void runTestForAllTypes (const char* unitTestName, TheTest)
+    void runTestForAllTypes (const char* unitTestName)
     {
         beginTest (unitTestName);
 
         Random random = getRandom();
 
-        TheTest::run (*this, random, Tag<float>               {});
-        TheTest::run (*this, random, Tag<double>              {});
-        TheTest::run (*this, random, Tag<int8_t>              {});
-        TheTest::run (*this, random, Tag<uint8_t>             {});
-        TheTest::run (*this, random, Tag<int16_t>             {});
-        TheTest::run (*this, random, Tag<uint16_t>            {});
-        TheTest::run (*this, random, Tag<int32_t>             {});
-        TheTest::run (*this, random, Tag<uint32_t>            {});
-        TheTest::run (*this, random, Tag<int64_t>             {});
-        TheTest::run (*this, random, Tag<uint64_t>            {});
-        TheTest::run (*this, random, Tag<std::complex<float>> {});
-        TheTest::run (*this, random, Tag<std::complex<double>>{});
+        TheTest::template run<float>   (*this, random);
+        TheTest::template run<double>  (*this, random);
+        TheTest::template run<int8_t>  (*this, random);
+        TheTest::template run<uint8_t> (*this, random);
+        TheTest::template run<int16_t> (*this, random);
+        TheTest::template run<uint16_t>(*this, random);
+        TheTest::template run<int32_t> (*this, random);
+        TheTest::template run<uint32_t>(*this, random);
+        TheTest::template run<int64_t> (*this, random);
+        TheTest::template run<uint64_t>(*this, random);
+        TheTest::template run<std::complex<float>>   (*this, random);
+        TheTest::template run<std::complex<double>>  (*this, random);
     }
 
     template <class TheTest>
-    void runTestNonComplex (const char* unitTestName, TheTest)
+    void runTestNonComplex (const char* unitTestName)
     {
         beginTest (unitTestName);
 
         Random random = getRandom();
 
-        TheTest::run (*this, random, Tag<float>   {});
-        TheTest::run (*this, random, Tag<double>  {});
-        TheTest::run (*this, random, Tag<int8_t>  {});
-        TheTest::run (*this, random, Tag<uint8_t> {});
-        TheTest::run (*this, random, Tag<int16_t> {});
-        TheTest::run (*this, random, Tag<uint16_t>{});
-        TheTest::run (*this, random, Tag<int32_t> {});
-        TheTest::run (*this, random, Tag<uint32_t>{});
-        TheTest::run (*this, random, Tag<int64_t> {});
-        TheTest::run (*this, random, Tag<uint64_t>{});
+        TheTest::template run<float>   (*this, random);
+        TheTest::template run<double>  (*this, random);
+        TheTest::template run<int8_t>  (*this, random);
+        TheTest::template run<uint8_t> (*this, random);
+        TheTest::template run<int16_t> (*this, random);
+        TheTest::template run<uint16_t>(*this, random);
+        TheTest::template run<int32_t> (*this, random);
+        TheTest::template run<uint32_t>(*this, random);
+        TheTest::template run<int64_t> (*this, random);
+        TheTest::template run<uint64_t>(*this, random);
     }
 
     template <class TheTest>
-    void runTestSigned (const char* unitTestName, TheTest)
+    void runTestSigned (const char* unitTestName)
     {
         beginTest (unitTestName);
 
         Random random = getRandom();
 
-        TheTest::run (*this, random, Tag<float>  {});
-        TheTest::run (*this, random, Tag<double> {});
-        TheTest::run (*this, random, Tag<int8_t> {});
-        TheTest::run (*this, random, Tag<int16_t>{});
-        TheTest::run (*this, random, Tag<int32_t>{});
-        TheTest::run (*this, random, Tag<int64_t>{});
+        TheTest::template run<float>   (*this, random);
+        TheTest::template run<double>  (*this, random);
+        TheTest::template run<int8_t>  (*this, random);
+        TheTest::template run<int16_t> (*this, random);
+        TheTest::template run<int32_t> (*this, random);
+        TheTest::template run<int64_t> (*this, random);
     }
 
     void runTest()
     {
-        runTestForAllTypes ("InitializationTest", InitializationTest{});
+        runTestForAllTypes<InitializationTest> ("InitializationTest");
 
-        runTestForAllTypes ("AccessTest", AccessTest{});
+        runTestForAllTypes<AccessTest> ("AccessTest");
 
-        runTestForAllTypes ("AdditionOperators", OperatorTests<Addition>{});
-        runTestForAllTypes ("SubtractionOperators", OperatorTests<Subtraction>{});
-        runTestForAllTypes ("MultiplicationOperators", OperatorTests<Multiplication>{});
+        runTestForAllTypes<OperatorTests<Addition>> ("AdditionOperators");
+        runTestForAllTypes<OperatorTests<Subtraction>> ("SubtractionOperators");
+        runTestForAllTypes<OperatorTests<Multiplication>> ("MultiplicationOperators");
 
-        runTestForAllTypes ("BitANDOperators", BitOperatorTests<BitAND>{});
-        runTestForAllTypes ("BitOROperators", BitOperatorTests<BitOR>{});
-        runTestForAllTypes ("BitXOROperators", BitOperatorTests<BitXOR>{});
+        runTestForAllTypes<BitOperatorTests<BitAND>> ("BitANDOperators");
+        runTestForAllTypes<BitOperatorTests<BitOR>>  ("BitOROperators");
+        runTestForAllTypes<BitOperatorTests<BitXOR>> ("BitXOROperators");
 
-        runTestNonComplex ("CheckComparisons", CheckComparisonOps{});
-        runTestNonComplex ("CheckBoolEquals", CheckBoolEquals{});
-        runTestNonComplex ("CheckMinMax", CheckMinMax{});
+        runTestNonComplex<CheckComparisonOps> ("CheckComparisons");
+        runTestNonComplex<CheckBoolEquals> ("CheckBoolEquals");
+        runTestNonComplex<CheckMinMax> ("CheckMinMax");
 
-        runTestForAllTypes ("CheckMultiplyAdd", CheckMultiplyAdd{});
-        runTestForAllTypes ("CheckSum", CheckSum{});
+        runTestForAllTypes<CheckMultiplyAdd> ("CheckMultiplyAdd");
+        runTestForAllTypes<CheckSum> ("CheckSum");
 
-        runTestSigned ("CheckAbs", CheckAbs{});
+        runTestSigned<CheckAbs> ("CheckAbs");
 
-        runTestFloatingPoint ("CheckTruncate", CheckTruncate{});
+        runTestFloatingPoint<CheckTruncate> ("CheckTruncate");
     }
 };
 

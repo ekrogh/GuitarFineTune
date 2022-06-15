@@ -2,15 +2,15 @@
   ==============================================================================
 
    This file is part of the JUCE library.
-   Copyright (c) 2022 - Raw Material Software Limited
+   Copyright (c) 2020 - Raw Material Software Limited
 
    JUCE is an open source library subject to commercial or open-source
    licensing.
 
-   By using JUCE, you agree to the terms of both the JUCE 7 End-User License
-   Agreement and JUCE Privacy Policy.
+   By using JUCE, you agree to the terms of both the JUCE 6 End-User License
+   Agreement and JUCE Privacy Policy (both effective as of the 16th June 2020).
 
-   End User License Agreement: www.juce.com/juce-7-licence
+   End User License Agreement: www.juce.com/juce-6-licence
    Privacy Policy: www.juce.com/juce-privacy-policy
 
    Or: You may also use this code under the terms of the GPL v3 (see
@@ -32,82 +32,44 @@ AudioPluginFormatManager::~AudioPluginFormatManager() {}
 //==============================================================================
 void AudioPluginFormatManager::addDefaultFormats()
 {
-   #if JUCE_PLUGINHOST_VST && (JUCE_MAC || JUCE_WINDOWS || JUCE_LINUX || JUCE_BSD || JUCE_IOS)
-    #define HAS_VST 1
-   #else
-    #define HAS_VST 0
-   #endif
-
-   #if JUCE_PLUGINHOST_VST3 && (JUCE_MAC || JUCE_WINDOWS || JUCE_LINUX || JUCE_BSD)
-    #define HAS_VST3 1
-   #else
-    #define HAS_VST3 0
-   #endif
-
-   #if JUCE_PLUGINHOST_AU && (JUCE_MAC || JUCE_IOS)
-    #define HAS_AU 1
-   #else
-    #define HAS_AU 0
-   #endif
-
-   #if JUCE_PLUGINHOST_LADSPA && (JUCE_LINUX || JUCE_BSD)
-    #define HAS_LADSPA 1
-   #else
-    #define HAS_LADSPA 0
-   #endif
-
-   #if JUCE_PLUGINHOST_LV2 && (JUCE_MAC || JUCE_LINUX || JUCE_BSD || JUCE_WINDOWS)
-    #define HAS_LV2 1
-   #else
-    #define HAS_LV2 0
-   #endif
-
    #if JUCE_DEBUG
     // you should only call this method once!
     for (auto* format : formats)
     {
         ignoreUnused (format);
 
-       #if HAS_VST
+       #if JUCE_PLUGINHOST_VST && (JUCE_MAC || JUCE_WINDOWS || JUCE_LINUX || JUCE_BSD || JUCE_IOS)
         jassert (dynamic_cast<VSTPluginFormat*> (format) == nullptr);
        #endif
 
-       #if HAS_VST3
+       #if JUCE_PLUGINHOST_VST3 && (JUCE_MAC || JUCE_WINDOWS || JUCE_LINUX || JUCE_BSD)
         jassert (dynamic_cast<VST3PluginFormat*> (format) == nullptr);
        #endif
 
-       #if HAS_AU
+       #if JUCE_PLUGINHOST_AU && (JUCE_MAC || JUCE_IOS)
         jassert (dynamic_cast<AudioUnitPluginFormat*> (format) == nullptr);
        #endif
 
-       #if HAS_LADSPA
+       #if JUCE_PLUGINHOST_LADSPA && (JUCE_LINUX || JUCE_BSD)
         jassert (dynamic_cast<LADSPAPluginFormat*> (format) == nullptr);
-       #endif
-
-       #if HAS_LV2
-        jassert (dynamic_cast<LV2PluginFormat*> (format) == nullptr);
        #endif
     }
    #endif
 
-   #if HAS_AU
+   #if JUCE_PLUGINHOST_AU && (JUCE_MAC || JUCE_IOS)
     formats.add (new AudioUnitPluginFormat());
    #endif
 
-   #if HAS_VST
+   #if JUCE_PLUGINHOST_VST && (JUCE_MAC || JUCE_WINDOWS || JUCE_LINUX || JUCE_BSD || JUCE_IOS)
     formats.add (new VSTPluginFormat());
    #endif
 
-   #if HAS_VST3
+   #if JUCE_PLUGINHOST_VST3 && (JUCE_MAC || JUCE_WINDOWS || JUCE_LINUX || JUCE_BSD)
     formats.add (new VST3PluginFormat());
    #endif
 
-   #if HAS_LADSPA
+   #if JUCE_PLUGINHOST_LADSPA && (JUCE_LINUX || JUCE_BSD)
     formats.add (new LADSPAPluginFormat());
-   #endif
-
-   #if HAS_LV2
-    formats.add (new LV2PluginFormat());
    #endif
 }
 
@@ -134,22 +96,6 @@ std::unique_ptr<AudioPluginInstance> AudioPluginFormatManager::createPluginInsta
         return format->createInstanceFromDescription (description, rate, blockSize, errorMessage);
 
     return {};
-}
-
-void AudioPluginFormatManager::createARAFactoryAsync (const PluginDescription& description,
-                                                      AudioPluginFormat::ARAFactoryCreationCallback callback) const
-{
-    String errorMessage;
-
-    if (auto* format = findFormatForDescription (description, errorMessage))
-    {
-        format->createARAFactoryAsync (description, callback);
-    }
-    else
-    {
-        errorMessage = NEEDS_TRANS ("Couldn't find format for the provided description");
-        callback ({ {}, std::move (errorMessage) });
-    }
 }
 
 void AudioPluginFormatManager::createPluginInstanceAsync (const PluginDescription& description,

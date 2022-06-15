@@ -2,15 +2,15 @@
   ==============================================================================
 
    This file is part of the JUCE library.
-   Copyright (c) 2022 - Raw Material Software Limited
+   Copyright (c) 2020 - Raw Material Software Limited
 
    JUCE is an open source library subject to commercial or open-source
    licensing.
 
-   By using JUCE, you agree to the terms of both the JUCE 7 End-User License
-   Agreement and JUCE Privacy Policy.
+   By using JUCE, you agree to the terms of both the JUCE 6 End-User License
+   Agreement and JUCE Privacy Policy (both effective as of the 16th June 2020).
 
-   End User License Agreement: www.juce.com/juce-7-licence
+   End User License Agreement: www.juce.com/juce-6-licence
    Privacy Policy: www.juce.com/juce-privacy-policy
 
    Or: You may also use this code under the terms of the GPL v3 (see
@@ -23,8 +23,6 @@
   ==============================================================================
 */
 
-#include "juce_mac_CGMetalLayerRenderer.h"
-
 @interface NSEvent (DeviceDelta)
 - (float)deviceDeltaX;
 - (float)deviceDeltaY;
@@ -33,36 +31,16 @@
 //==============================================================================
 namespace juce
 {
-
-using AppFocusChangeCallback = void (*)();
-extern AppFocusChangeCallback appFocusChangeCallback;
-using CheckEventBlockedByModalComps = bool (*) (NSEvent*);
-extern CheckEventBlockedByModalComps isEventBlockedByModalComps;
-
-//==============================================================================
-static void resetTrackingArea (NSView* view)
-{
-    const auto trackingAreas = [view trackingAreas];
-
-    jassert ([trackingAreas count] <= 1);
-
-    for (NSTrackingArea* area in trackingAreas)
-        [view removeTrackingArea: area];
-
-    const auto options = NSTrackingMouseEnteredAndExited
-                         | NSTrackingMouseMoved
-                         | NSTrackingEnabledDuringMouseDrag
-                         | NSTrackingActiveAlways
-                         | NSTrackingInVisibleRect;
-
-    const NSUniquePtr<NSTrackingArea> trackingArea { [[NSTrackingArea alloc] initWithRect: [view bounds]
-                                                                                  options: options
-                                                                                    owner: view
-                                                                                 userInfo: nil] };
-
-    [view addTrackingArea: trackingArea.get()];
+    typedef void (*AppFocusChangeCallback)();
+    extern AppFocusChangeCallback appFocusChangeCallback;
+    typedef bool (*CheckEventBlockedByModalComps) (NSEvent*);
+    extern CheckEventBlockedByModalComps isEventBlockedByModalComps;
 }
 
+namespace juce
+{
+
+//==============================================================================
 static constexpr int translateVirtualToAsciiKeyCode (int keyCode) noexcept
 {
     switch (keyCode)
@@ -123,7 +101,8 @@ static constexpr int translateVirtualToAsciiKeyCode (int keyCode) noexcept
 constexpr int extendedKeyModifier = 0x30000;
 
 //==============================================================================
-class NSViewComponentPeer  : public ComponentPeer
+class NSViewComponentPeer  : public ComponentPeer,
+                             private Timer
 {
 public:
     NSViewComponentPeer (Component& comp, const int windowStyleFlags, NSView* viewToAttachTo)
@@ -142,7 +121,16 @@ public:
 
         [view registerForDraggedTypes: getSupportedDragTypes()];
 
-        resetTrackingArea (view);
+        const auto options = NSTrackingMouseEnteredAndExited
+                           | NSTrackingMouseMoved
+                           | NSTrackingEnabledDuringMouseDrag
+                           | NSTrackingActiveAlways
+                           | NSTrackingInVisibleRect;
+        const NSUniquePtr<NSTrackingArea> trackingArea { [[NSTrackingArea alloc] initWithRect: r
+                                                                                      options: options
+                                                                                        owner: view
+                                                                                     userInfo: nil] };
+        [view addTrackingArea: trackingArea.get()];
 
         notificationCenter = [NSNotificationCenter defaultCenter];
 
@@ -153,8 +141,8 @@ public:
 
         [view setPostsFrameChangedNotifications: YES];
 
-       #if USE_COREGRAPHICS_RENDERING
-        if ((windowStyleFlags & ComponentPeer::windowRequiresSynchronousCoreGraphicsRendering) == 0)
+       #if USE_COREGRAPHICS_RENDERING && JUCE_COREGRAPHICS_DRAW_ASYNC
+        if (! getComponentAsyncLayerBackedViewDisabled (component))
         {
             if (@available (macOS 10.8, *))
             {
@@ -163,8 +151,6 @@ public:
             }
         }
        #endif
-
-        createCVDisplayLink();
 
         if (isSharedWindow)
         {
@@ -260,9 +246,6 @@ public:
 
     ~NSViewComponentPeer() override
     {
-        CVDisplayLinkStop (displayLink);
-        dispatch_source_cancel (displaySource);
-
         [notificationCenter removeObserver: view];
         setOwner (view, nullptr);
 
@@ -800,13 +783,11 @@ public:
                                           name: NSWindowWillMiniaturizeNotification
                                         object: currentWindow];
 
+           #if JUCE_COREGRAPHICS_DRAW_ASYNC
             [notificationCenter removeObserver: view
                                           name: NSWindowDidBecomeKeyNotification
                                         object: currentWindow];
-
-            [notificationCenter removeObserver: view
-                                          name: NSWindowDidChangeScreenNotification
-                                        object: currentWindow];
+           #endif
         }
 
         if (isSharedWindow && [view window] == window && newWindow == nullptr)
@@ -938,11 +919,6 @@ public:
             JUCE_END_IGNORE_WARNINGS_GCC_LIKE
         }();
 
-        drawRectWithContext (cg, r);
-    }
-
-    void drawRectWithContext (CGContextRef cg, NSRect r)
-    {
         if (! component.isOpaque())
             CGContextClearRect (cg, CGContextGetClipBoundingBox (cg));
 
@@ -961,12 +937,10 @@ public:
         };
 
        #if USE_COREGRAPHICS_RENDERING && JUCE_COREGRAPHICS_RENDER_WITH_MULTIPLE_PAINT_CALLS
-        // This was a workaround for a CGContext not having a way of finding whether a rectangle
-        // falls within its clip region. However Apple removed the capability of
-        // [view getRectsBeingDrawn: ...] sometime around 10.13, so on later versions of macOS
-        // numRects will always be 1 and you'll need to use a CoreGraphicsMetalLayerRenderer
-        // to avoid CoreGraphics consolidating disparate rects.
-        if (usingCoreGraphics && metalRenderer == nullptr)
+        // This option invokes a separate paint call for each rectangle of the clip region.
+        // It's a long story, but this is a basically a workaround for a CGContext not having
+        // a way of finding whether a rectangle falls within its clip region
+        if (usingCoreGraphics)
         {
             const NSRect* rects = nullptr;
             NSInteger numRects = 0;
@@ -979,7 +953,7 @@ public:
                     NSRect rect = rects[i];
                     CGContextSaveGState (cg);
                     CGContextClipToRect (cg, CGRectMake (rect.origin.x, rect.origin.y, rect.size.width, rect.size.height));
-                    renderRect (cg, rect, displayScale);
+                    drawRectWithContext (cg, rect, displayScale);
                     CGContextRestoreGState (cg);
                 }
 
@@ -989,11 +963,11 @@ public:
         }
        #endif
 
-        renderRect (cg, r, displayScale);
+        drawRectWithContext (cg, r, displayScale);
         invalidateTransparentWindowShadow();
     }
 
-    void renderRect (CGContextRef cg, NSRect r, float displayScale)
+    void drawRectWithContext (CGContextRef cg, NSRect r, float displayScale)
     {
        #if USE_COREGRAPHICS_RENDERING
         if (usingCoreGraphics)
@@ -1051,89 +1025,48 @@ public:
         // a few when there's a lot of activity.
         // As a work around for this, we use a RectangleList to do our own coalescing of regions before
         // asynchronously asking the OS to repaint them.
-        deferredRepaints.add (area.toFloat());
-    }
+        deferredRepaints.add ((float) area.getX(), (float) area.getY(),
+                              (float) area.getWidth(), (float) area.getHeight());
 
-    static bool shouldThrottleRepaint()
-    {
-        return areAnyWindowsInLiveResize();
-    }
-
-    void setNeedsDisplayRectangles()
-    {
-        if (deferredRepaints.isEmpty())
+        if (isTimerRunning())
             return;
 
         auto now = Time::getMillisecondCounter();
         auto msSinceLastRepaint = (lastRepaintTime >= now) ? now - lastRepaintTime
                                                            : (std::numeric_limits<uint32>::max() - lastRepaintTime) + now;
 
-        constexpr uint32 minimumRepaintInterval = 1000 / 30; // 30fps
+        static uint32 minimumRepaintInterval = 1000 / 30; // 30fps
 
         // When windows are being resized, artificially throttling high-frequency repaints helps
         // to stop the event queue getting clogged, and keeps everything working smoothly.
         // For some reason Logic also needs this throttling to record parameter events correctly.
         if (msSinceLastRepaint < minimumRepaintInterval && shouldThrottleRepaint())
+        {
+            startTimer (static_cast<int> (minimumRepaintInterval - msSinceLastRepaint));
             return;
-
-       #if USE_COREGRAPHICS_RENDERING && JUCE_COREGRAPHICS_RENDER_WITH_MULTIPLE_PAINT_CALLS
-        // We require macOS 10.14 to use the Metal layer renderer
-        if (@available (macOS 10.14, *))
-        {
-            const auto& comp = getComponent();
-
-            // If we are resizing we need to fall back to synchronous drawing to avoid artefacts
-            if (areAnyWindowsInLiveResize())
-            {
-                if (metalRenderer != nullptr)
-                {
-                    metalRenderer.reset();
-                    view.wantsLayer = NO;
-                    view.layer = nil;
-                    deferredRepaints = comp.getLocalBounds().toFloat();
-                }
-            }
-            else
-            {
-                if (metalRenderer == nullptr)
-                {
-                    view.wantsLayer = YES;
-                    view.layerContentsRedrawPolicy = NSViewLayerContentsRedrawDuringViewResize;
-                    view.layerContentsPlacement = NSViewLayerContentsPlacementTopLeft;
-                    view.layer = [CAMetalLayer layer];
-                    metalRenderer = std::make_unique<CoreGraphicsMetalLayerRenderer> ((CAMetalLayer*) view.layer, getComponent());
-                    deferredRepaints = comp.getLocalBounds().toFloat();
-                }
-            }
         }
-       #endif
 
-        auto dispatchRectangles = [this] ()
-        {
-            if (@available (macOS 10.14, *))
-            {
-                if (metalRenderer != nullptr)
-                {
-                    return metalRenderer->drawRectangleList ((CAMetalLayer*) view.layer,
-                                                             (float) [[view window] backingScaleFactor],
-                                                             view.frame,
-                                                             getComponent(),
-                                                             [this] (CGContextRef ctx, CGRect r) { drawRectWithContext (ctx, r); },
-                                                             deferredRepaints);
-                }
-            }
+        setNeedsDisplayRectangles();
+    }
 
-            for (auto& i : deferredRepaints)
-                [view setNeedsDisplayInRect: makeNSRect (i)];
+    static bool shouldThrottleRepaint()
+    {
+        return areAnyWindowsInLiveResize() || ! JUCEApplication::isStandaloneApp();
+    }
 
-            return true;
-        };
+    void timerCallback() override
+    {
+        setNeedsDisplayRectangles();
+        stopTimer();
+    }
 
-        if (dispatchRectangles())
-        {
-            lastRepaintTime = Time::getMillisecondCounter();
-            deferredRepaints.clear();
-        }
+    void setNeedsDisplayRectangles()
+    {
+        for (auto& i : deferredRepaints)
+            [view setNeedsDisplayInRect: makeNSRect (i)];
+
+        lastRepaintTime = Time::getMillisecondCounter();
+        deferredRepaints.clear();
     }
 
     void performAnyPendingRepaintsNow() override
@@ -1237,12 +1170,6 @@ public:
     void redirectMovedOrResized()
     {
         handleMovedOrResized();
-        setNeedsDisplayRectangles();
-    }
-
-    void windowDidChangeScreen()
-    {
-        updateCVDisplayLinkScreen();
     }
 
     void viewMovedToWindow()
@@ -1279,13 +1206,6 @@ public:
                                    selector: resignKeySelector
                                        name: NSWindowDidResignKeyNotification
                                      object: currentWindow];
-
-            [notificationCenter addObserver: view
-                                   selector: @selector (windowDidChangeScreen:)
-                                       name: NSWindowDidChangeScreenNotification
-                                     object: currentWindow];
-
-            updateCVDisplayLinkScreen();
         }
     }
 
@@ -1406,7 +1326,35 @@ public:
         // has a Z label). Therefore, we need to query the current keyboard
         // layout to figure out what character the key would have produced
         // if the shift key was not pressed
-        String unmodified = nsStringToJuce ([ev charactersIgnoringModifiers]);
+        String unmodified;
+
+       #if JUCE_SUPPORT_CARBON
+        if (auto currentKeyboard = CFUniquePtr<TISInputSourceRef> (TISCopyCurrentKeyboardInputSource()))
+        {
+            if (auto layoutData = (CFDataRef) TISGetInputSourceProperty (currentKeyboard,
+                                                                         kTISPropertyUnicodeKeyLayoutData))
+            {
+                if (auto* layoutPtr = (const UCKeyboardLayout*) CFDataGetBytePtr (layoutData))
+                {
+                    UInt32 keysDown = 0;
+                    UniChar buffer[4];
+                    UniCharCount actual;
+
+                    if (UCKeyTranslate (layoutPtr, [ev keyCode], kUCKeyActionDown, 0, LMGetKbdType(),
+                                        kUCKeyTranslateNoDeadKeysBit, &keysDown, sizeof (buffer) / sizeof (UniChar),
+                                        &actual, buffer) == 0)
+                        unmodified = String (CharPointer_UTF16 (reinterpret_cast<CharPointer_UTF16::CharType*> (buffer)), 4);
+                }
+            }
+        }
+
+        // did the above layout conversion fail
+        if (unmodified.isEmpty())
+       #endif
+        {
+            unmodified = nsStringToJuce ([ev charactersIgnoringModifiers]);
+        }
+
         auto keyCode = (int) unmodified[0];
 
         if (keyCode == 0x19) // (backwards-tab)
@@ -1610,7 +1558,7 @@ public:
 
     void grabFocus() override
     {
-        if (window != nil)
+        if (window != nil && [window canBecomeKeyWindow])
         {
             [window makeKeyWindow];
             [window makeFirstResponder: view];
@@ -1621,7 +1569,7 @@ public:
 
     void textInputRequired (Point<int>, TextInputTarget&) override {}
 
-    void closeInputMethodContext() override
+    void dismissPendingTextInput() override
     {
         stringBeingComposed.clear();
         const auto* inputContext = [NSTextInputContext currentInputContext];
@@ -1841,59 +1789,11 @@ private:
 
     void setFullScreenSizeConstraints (const ComponentBoundsConstrainer& c)
     {
-        if (@available (macOS 10.11, *))
-        {
-            const auto minSize = NSMakeSize (static_cast<float> (c.getMinimumWidth()),
-                                             0.0f);
-            [window setMinFullScreenContentSize: minSize];
-            [window setMaxFullScreenContentSize: NSMakeSize (100000, 100000)];
-        }
+        const auto minSize = NSMakeSize (static_cast<float> (c.getMinimumWidth()),
+                                         0.0f);
+        [window setMinFullScreenContentSize: minSize];
+        [window setMaxFullScreenContentSize: NSMakeSize (100000, 100000)];
     }
-
-    //==============================================================================
-    void onDisplaySourceCallback()
-    {
-        setNeedsDisplayRectangles();
-    }
-
-    void onDisplayLinkCallback()
-    {
-        dispatch_source_merge_data (displaySource, 1);
-    }
-
-    static CVReturn displayLinkCallback (CVDisplayLinkRef, const CVTimeStamp*, const CVTimeStamp*,
-                                         CVOptionFlags, CVOptionFlags*, void* context)
-    {
-        static_cast<NSViewComponentPeer*> (context)->onDisplayLinkCallback();
-        return kCVReturnSuccess;
-    }
-
-    void updateCVDisplayLinkScreen()
-    {
-        auto viewDisplayID = (CGDirectDisplayID) [[window.screen.deviceDescription objectForKey: @"NSScreenNumber"] unsignedIntegerValue];
-        auto result = CVDisplayLinkSetCurrentCGDisplay (displayLink, viewDisplayID);
-        jassertquiet (result == kCVReturnSuccess);
-    }
-
-    void createCVDisplayLink()
-    {
-        displaySource = dispatch_source_create (DISPATCH_SOURCE_TYPE_DATA_ADD, 0, 0, dispatch_get_main_queue());
-        dispatch_source_set_event_handler (displaySource, ^(){ onDisplaySourceCallback(); });
-        dispatch_resume (displaySource);
-
-        auto cvReturn = CVDisplayLinkCreateWithActiveCGDisplays (&displayLink);
-        jassertquiet (cvReturn == kCVReturnSuccess);
-
-        cvReturn = CVDisplayLinkSetOutputCallback (displayLink, &displayLinkCallback, this);
-        jassertquiet (cvReturn == kCVReturnSuccess);
-
-        CVDisplayLinkStart (displayLink);
-    }
-
-    CVDisplayLinkRef displayLink = nullptr;
-    dispatch_source_t displaySource = nullptr;
-
-    std::unique_ptr<CoreGraphicsMetalLayerRenderer> metalRenderer;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (NSViewComponentPeer)
 };
@@ -1940,7 +1840,6 @@ struct JuceNSViewClass   : public NSViewComponentPeerWrapper<ObjCClass<NSView>>
     {
         addMethod (@selector (isOpaque),                      isOpaque);
         addMethod (@selector (drawRect:),                     drawRect);
-        addMethod (@selector (updateTrackingAreas),           updateTrackingAreas);
         addMethod (@selector (mouseDown:),                    mouseDown);
         addMethod (@selector (mouseUp:),                      mouseUp);
         addMethod (@selector (mouseDragged:),                 mouseDragged);
@@ -1958,7 +1857,6 @@ struct JuceNSViewClass   : public NSViewComponentPeerWrapper<ObjCClass<NSView>>
         addMethod (@selector (acceptsFirstMouse:),            acceptsFirstMouse);
         addMethod (@selector (windowWillMiniaturize:),        windowWillMiniaturize);
         addMethod (@selector (windowDidDeminiaturize:),       windowDidDeminiaturize);
-        addMethod (@selector (windowDidChangeScreen:),        windowDidChangeScreen);
         addMethod (@selector (wantsDefaultClipping),          wantsDefaultClipping);
         addMethod (@selector (worksWhenModal),                worksWhenModal);
         addMethod (@selector (viewDidMoveToWindow),           viewDidMoveToWindow);
@@ -2024,13 +1922,6 @@ struct JuceNSViewClass   : public NSViewComponentPeerWrapper<ObjCClass<NSView>>
     }
 
 private:
-    static void updateTrackingAreas (id self, SEL)
-    {
-        sendSuperclassMessage<void> (self, @selector (updateTrackingAreas));
-
-        resetTrackingArea (static_cast<NSView*> (self));
-    }
-
     static void mouseDown (id self, SEL s, NSEvent* ev)
     {
         if (JUCEApplicationBase::isStandaloneApp())
@@ -2130,12 +2021,6 @@ private:
 
             p->redirectMovedOrResized();
         }
-    }
-
-    static void windowDidChangeScreen (id self, SEL, NSNotification*)
-    {
-        if (auto* p = getOwner (self))
-            p->windowDidChangeScreen();
     }
 
     static BOOL isOpaque (id self, SEL)

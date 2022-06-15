@@ -521,7 +521,8 @@ void AudioRecorderControl::stopRecording()
 		(
 			fileToSave.getFileName()
 		);
-#endif
+#endif // #if (JUCE_LINUX)
+
 	myChooser =
 	std::make_unique <FileChooser>
 	(

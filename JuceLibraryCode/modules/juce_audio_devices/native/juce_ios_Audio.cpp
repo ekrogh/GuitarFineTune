@@ -2,7 +2,7 @@
   ==============================================================================
 
    This file is part of the JUCE library.
-   Copyright (c) 2022 - Raw Material Software Limited
+   Copyright (c) 2020 - Raw Material Software Limited
 
    JUCE is an open source library subject to commercial or open-source
    licensing.
@@ -19,8 +19,6 @@
 
   ==============================================================================
 */
-
-#include <juce_audio_basics/native/juce_mac_CoreAudioTimeConversions.h>
 
 namespace juce
 {
@@ -949,14 +947,9 @@ struct iOSAudioIODevice::Pimpl      : public AudioPlayHead,
                     zeromem (inputData[c], channelDataSize);
             }
 
-            const auto nanos = time != nullptr ? timeConversions.hostTimeToNanos (time->mHostTime) : 0;
-
-            callback->audioDeviceIOCallbackWithContext ((const float**) inputData,
-                                                        channelData.inputs ->numActiveChannels,
-                                                        outputData,
-                                                        channelData.outputs->numActiveChannels,
-                                                        (int) numFrames,
-                                                        { (time != nullptr && (time->mFlags & kAudioTimeStampHostTimeValid) != 0) ? &nanos : nullptr });
+            callback->audioDeviceIOCallback ((const float**) inputData,  channelData.inputs ->numActiveChannels,
+                                                             outputData, channelData.outputs->numActiveChannels,
+                                             (int) numFrames);
 
             for (int c = 0; c < channelData.outputs->numActiveChannels; ++c)
             {
@@ -1382,8 +1375,6 @@ struct iOSAudioIODevice::Pimpl      : public AudioPlayHead,
 
         AudioBuffer<float> audioData { 0, 0 };
     };
-
-    CoreAudioTimeConversions timeConversions;
 
     IOChannelData channelData;
 

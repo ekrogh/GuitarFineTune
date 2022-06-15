@@ -2,7 +2,7 @@
   ==============================================================================
 
    This file is part of the JUCE library.
-   Copyright (c) 2022 - Raw Material Software Limited
+   Copyright (c) 2020 - Raw Material Software Limited
 
    JUCE is an open source library subject to commercial or open-source
    licensing.
@@ -30,10 +30,6 @@ namespace juce
     To use it, call setSampleRate() with the current sample rate and give it some parameters
     with setParameters() then call getNextSample() to get the envelope value to be applied
     to each audio sample or applyEnvelopeToBuffer() to apply the envelope to a whole buffer.
-
-    Do not change the parameters during playback. If you change the parameters before the
-    release stage has completed then you must call reset() before the next call to
-    noteOn().
 
     @tags{Audio}
 */
@@ -157,54 +153,39 @@ public:
     */
     float getNextSample() noexcept
     {
-        switch (state)
+        if (state == State::idle)
+            return 0.0f;
+
+        if (state == State::attack)
         {
-            case State::idle:
+            envelopeVal += attackRate;
+
+            if (envelopeVal >= 1.0f)
             {
-                return 0.0f;
+                envelopeVal = 1.0f;
+                goToNextState();
             }
+        }
+        else if (state == State::decay)
+        {
+            envelopeVal -= decayRate;
 
-            case State::attack:
-            {
-                envelopeVal += attackRate;
-
-                if (envelopeVal >= 1.0f)
-                {
-                    envelopeVal = 1.0f;
-                    goToNextState();
-                }
-
-                break;
-            }
-
-            case State::decay:
-            {
-                envelopeVal -= decayRate;
-
-                if (envelopeVal <= parameters.sustain)
-                {
-                    envelopeVal = parameters.sustain;
-                    goToNextState();
-                }
-
-                break;
-            }
-
-            case State::sustain:
+            if (envelopeVal <= parameters.sustain)
             {
                 envelopeVal = parameters.sustain;
-                break;
+                goToNextState();
             }
+        }
+        else if (state == State::sustain)
+        {
+            envelopeVal = parameters.sustain;
+        }
+        else if (state == State::release)
+        {
+            envelopeVal -= releaseRate;
 
-            case State::release:
-            {
-                envelopeVal -= releaseRate;
-
-                if (envelopeVal <= 0.0f)
-                    goToNextState();
-
-                break;
-            }
+            if (envelopeVal <= 0.0f)
+                goToNextState();
         }
 
         return envelopeVal;
@@ -269,18 +250,10 @@ private:
     void goToNextState() noexcept
     {
         if (state == State::attack)
-        {
             state = (decayRate > 0.0f ? State::decay : State::sustain);
-            return;
-        }
-
-        if (state == State::decay)
-        {
+        else if (state == State::decay)
             state = State::sustain;
-            return;
-        }
-
-        if (state == State::release)
+        else if (state == State::release)
             reset();
     }
 

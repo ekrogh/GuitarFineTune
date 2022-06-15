@@ -2,15 +2,15 @@
   ==============================================================================
 
    This file is part of the JUCE library.
-   Copyright (c) 2022 - Raw Material Software Limited
+   Copyright (c) 2020 - Raw Material Software Limited
 
    JUCE is an open source library subject to commercial or open-source
    licensing.
 
-   By using JUCE, you agree to the terms of both the JUCE 7 End-User License
-   Agreement and JUCE Privacy Policy.
+   By using JUCE, you agree to the terms of both the JUCE 6 End-User License
+   Agreement and JUCE Privacy Policy (both effective as of the 16th June 2020).
 
-   End User License Agreement: www.juce.com/juce-7-licence
+   End User License Agreement: www.juce.com/juce-6-licence
    Privacy Policy: www.juce.com/juce-privacy-policy
 
    Or: You may also use this code under the terms of the GPL v3 (see
@@ -27,26 +27,40 @@ namespace juce
 {
 
 //==============================================================================
-
-AudioProcessorValueTreeState::Parameter::Parameter (const ParameterID& parameterID,
+AudioProcessorValueTreeState::Parameter::Parameter (const String& parameterID,
                                                     const String& parameterName,
+                                                    const String& labelText,
                                                     NormalisableRange<float> valueRange,
                                                     float defaultParameterValue,
-                                                    const AudioProcessorValueTreeStateParameterAttributes& attributes)
+                                                    std::function<String (float)> valueToTextFunction,
+                                                    std::function<float (const String&)> textToValueFunction,
+                                                    bool isMetaParameter,
+                                                    bool isAutomatableParameter,
+                                                    bool isDiscrete,
+                                                    AudioProcessorParameter::Category parameterCategory,
+                                                    bool isBoolean)
     : AudioParameterFloat (parameterID,
                            parameterName,
                            valueRange,
                            defaultParameterValue,
-                           attributes.getAudioParameterFloatAttributes()),
+                           labelText,
+                           parameterCategory,
+                           valueToTextFunction == nullptr ? std::function<String (float v, int)>()
+                                                          : [valueToTextFunction] (float v, int) { return valueToTextFunction (v); },
+                           std::move (textToValueFunction)),
       unsnappedDefault (valueRange.convertTo0to1 (defaultParameterValue)),
-      discrete (attributes.getDiscrete()),
-      boolean (attributes.getBoolean())
+      metaParameter (isMetaParameter),
+      automatable (isAutomatableParameter),
+      discrete (isDiscrete),
+      boolean (isBoolean)
 {
 }
 
 float AudioProcessorValueTreeState::Parameter::getDefaultValue() const  { return unsnappedDefault; }
 int AudioProcessorValueTreeState::Parameter::getNumSteps() const        { return RangedAudioParameter::getNumSteps(); }
 
+bool AudioProcessorValueTreeState::Parameter::isMetaParameter() const   { return metaParameter; }
+bool AudioProcessorValueTreeState::Parameter::isAutomatable() const     { return automatable; }
 bool AudioProcessorValueTreeState::Parameter::isDiscrete() const        { return discrete; }
 bool AudioProcessorValueTreeState::Parameter::isBoolean() const         { return boolean; }
 
@@ -289,21 +303,18 @@ RangedAudioParameter* AudioProcessorValueTreeState::createAndAddParameter (const
                                                                            AudioProcessorParameter::Category category,
                                                                            bool isBooleanParameter)
 {
-    auto attributes = AudioProcessorValueTreeStateParameterAttributes()
-                          .withLabel (labelText)
-                          .withStringFromValueFunction ([fn = std::move (valueToTextFunction)] (float v, int) { return fn (v); })
-                          .withValueFromStringFunction (std::move (textToValueFunction))
-                          .withMeta (isMetaParameter)
-                          .withAutomatable (isAutomatableParameter)
-                          .withDiscrete (isDiscreteParameter)
-                          .withCategory (category)
-                          .withBoolean (isBooleanParameter);
-
     return createAndAddParameter (std::make_unique<Parameter> (paramID,
                                                                paramName,
+                                                               labelText,
                                                                range,
                                                                defaultVal,
-                                                               std::move (attributes)));
+                                                               std::move (valueToTextFunction),
+                                                               std::move (textToValueFunction),
+                                                               isMetaParameter,
+                                                               isAutomatableParameter,
+                                                               isDiscreteParameter,
+                                                               category,
+                                                               isBooleanParameter));
 }
 
 RangedAudioParameter* AudioProcessorValueTreeState::createAndAddParameter (std::unique_ptr<RangedAudioParameter> param)
@@ -522,7 +533,7 @@ struct ParameterAdapterTests  : public UnitTest
         {
             const auto test = [&] (NormalisableRange<float> range, float value)
             {
-                AudioParameterFloat param ({}, {}, range, value);
+                AudioParameterFloat param ({}, {}, range, value, {});
 
                 AudioProcessorValueTreeState::ParameterAdapter adapter (param);
 
@@ -537,7 +548,7 @@ struct ParameterAdapterTests  : public UnitTest
         {
             const auto test = [&] (NormalisableRange<float> range, float value)
             {
-                AudioParameterFloat param ({}, {}, range, {});
+                AudioParameterFloat param ({}, {}, range, {}, {});
                 AudioProcessorValueTreeState::ParameterAdapter adapter (param);
 
                 adapter.setDenormalisedValue (value);
@@ -554,7 +565,7 @@ struct ParameterAdapterTests  : public UnitTest
         {
             const auto test = [&] (NormalisableRange<float> range, float value, String expected)
             {
-                AudioParameterFloat param ({}, {}, range, {});
+                AudioParameterFloat param ({}, {}, range, {}, {});
                 AudioProcessorValueTreeState::ParameterAdapter adapter (param);
 
                 expectEquals (adapter.getTextForDenormalisedValue (value), expected);
@@ -570,7 +581,7 @@ struct ParameterAdapterTests  : public UnitTest
         {
             const auto test = [&] (NormalisableRange<float> range, String text, float expected)
             {
-                AudioParameterFloat param ({}, {}, range, {});
+                AudioParameterFloat param ({}, {}, range, {}, {});
                 AudioProcessorValueTreeState::ParameterAdapter adapter (param);
 
                 expectEquals (adapter.getDenormalisedValueForText (text), expected);
@@ -610,7 +621,6 @@ private:
     using Parameter = AudioProcessorValueTreeState::Parameter;
     using ParameterGroup = AudioProcessorParameterGroup;
     using ParameterLayout = AudioProcessorValueTreeState::ParameterLayout;
-    using Attributes = AudioProcessorValueTreeStateParameterAttributes;
 
     class TestAudioProcessor : public AudioProcessor
     {
@@ -667,11 +677,8 @@ public:
         {
             TestAudioProcessor proc;
 
-            proc.state.createAndAddParameter (std::make_unique<Parameter> (
-                String(),
-                String(),
-                NormalisableRange<float>(),
-                0.0f));
+            proc.state.createAndAddParameter (std::make_unique<Parameter> (String(), String(), String(), NormalisableRange<float>(),
+                                                                           0.0f, nullptr, nullptr));
 
             expectEquals (proc.getParameters().size(), 1);
         }
@@ -681,11 +688,8 @@ public:
             TestAudioProcessor proc;
 
             const auto key = "id";
-            const auto param = proc.state.createAndAddParameter (std::make_unique<Parameter> (
-                                   key,
-                                   String(),
-                                   NormalisableRange<float>(),
-                                   0.0f));
+            const auto param = proc.state.createAndAddParameter (std::make_unique<Parameter> (key, String(), String(), NormalisableRange<float>(),
+                                                                                              0.0f, nullptr, nullptr));
 
             expect (proc.state.getParameter (key) == param);
         }
@@ -717,12 +721,8 @@ public:
             TestAudioProcessor proc;
 
             const auto key = "id";
-            const auto param = proc.state.createAndAddParameter (std::make_unique<Parameter> (
-                                   key,
-                                   String(),
-                                   NormalisableRange<float>(),
-                                   0.0f,
-                                   Attributes().withMeta (true)));
+            const auto param = proc.state.createAndAddParameter (std::make_unique<Parameter> (key, String(), String(), NormalisableRange<float>(),
+                                                                                              0.0f, nullptr, nullptr, true));
 
             expect (param->isMetaParameter());
         }
@@ -732,12 +732,8 @@ public:
             TestAudioProcessor proc;
 
             const auto key = "id";
-            const auto param = proc.state.createAndAddParameter (std::make_unique<Parameter> (
-                                   key,
-                                   String(),
-                                   NormalisableRange<float>(),
-                                   0.0f,
-                                   Attributes().withAutomatable (true)));
+            const auto param = proc.state.createAndAddParameter (std::make_unique<Parameter> (key, String(), String(), NormalisableRange<float>(),
+                                                                                              0.0f, nullptr, nullptr, false, true));
 
             expect (param->isAutomatable());
         }
@@ -747,12 +743,8 @@ public:
             TestAudioProcessor proc;
 
             const auto key = "id";
-            const auto param = proc.state.createAndAddParameter (std::make_unique<Parameter> (
-                                   key,
-                                   String(),
-                                   NormalisableRange<float>(),
-                                   0.0f,
-                                   Attributes().withDiscrete (true)));
+            const auto param = proc.state.createAndAddParameter (std::make_unique<Parameter> (key, String(), String(), NormalisableRange<float>(),
+                                                                                              0.0f, nullptr, nullptr, false, false, true));
 
             expect (param->isDiscrete());
         }
@@ -762,12 +754,9 @@ public:
             TestAudioProcessor proc;
 
             const auto key = "id";
-            const auto param = proc.state.createAndAddParameter (std::make_unique<Parameter> (
-                                   key,
-                                   String(),
-                                   NormalisableRange<float>(),
-                                   0.0f,
-                                   Attributes().withCategory (AudioProcessorParameter::Category::inputMeter)));
+            const auto param = proc.state.createAndAddParameter (std::make_unique<Parameter> (key, String(), String(), NormalisableRange<float>(),
+                                                                                              0.0f, nullptr, nullptr, false, false, false,
+                                                                                              AudioProcessorParameter::Category::inputMeter));
 
             expect (param->category == AudioProcessorParameter::Category::inputMeter);
         }
@@ -777,12 +766,9 @@ public:
             TestAudioProcessor proc;
 
             const auto key = "id";
-            const auto param = proc.state.createAndAddParameter (std::make_unique<Parameter> (
-                                   key,
-                                   String(),
-                                   NormalisableRange<float>(),
-                                   0.0f,
-                                   Attributes().withBoolean (true)));
+            const auto param = proc.state.createAndAddParameter (std::make_unique<Parameter> (key, String(), String(), NormalisableRange<float>(),
+                                                                                              0.0f, nullptr, nullptr, false, false, false,
+                                                                                              AudioProcessorParameter::Category::genericParameter, true));
 
             expect (param->isBoolean());
         }
@@ -802,17 +788,11 @@ public:
         {
             TestAudioProcessor proc;
             const auto key = "id";
-            const auto param = proc.state.createAndAddParameter (std::make_unique<Parameter> (
-                                   key,
-                                   String(),
-                                   NormalisableRange<float>(),
-                                   0.0f));
+            const auto param = proc.state.createAndAddParameter (std::make_unique<Parameter> (key, String(), String(), NormalisableRange<float>(),
+                                                                                              0.0f, nullptr, nullptr));
 
-            proc.state.createAndAddParameter (std::make_unique<Parameter> (
-                key,
-                String(),
-                NormalisableRange<float>(),
-                0.0f));
+            proc.state.createAndAddParameter (std::make_unique<Parameter> (key, String(), String(), NormalisableRange<float>(),
+                                                                           0.0f, nullptr, nullptr));
 
             expectEquals (proc.getParameters().size(), 1);
             expect (proc.getParameters().getFirst() == param);
@@ -822,11 +802,8 @@ public:
         {
             TestAudioProcessor proc;
             const auto key = "id";
-            const auto param = proc.state.createAndAddParameter (std::make_unique<Parameter> (
-                                   key,
-                                   String(),
-                                   NormalisableRange<float>(),
-                                   0.0f));
+            const auto param = proc.state.createAndAddParameter (std::make_unique<Parameter> (key, String(), String(), NormalisableRange<float>(),
+                                                                                              0.0f, nullptr, nullptr));
 
             const auto value = 0.5f;
             param->setValueNotifyingHost (value);
@@ -843,8 +820,11 @@ public:
             proc.state.createAndAddParameter (std::make_unique<Parameter> (
                 key,
                 String(),
+                String(),
                 NormalisableRange<float> (0.0f, 100.0f, 10.0f),
-                value));
+                value,
+                nullptr,
+                nullptr));
 
             expectEquals (proc.state.getRawParameterValue (key)->load(), value);
         }
@@ -854,11 +834,8 @@ public:
             Listener listener;
             TestAudioProcessor proc;
             const auto key = "id";
-            const auto param = proc.state.createAndAddParameter (std::make_unique<Parameter> (
-                                   key,
-                                   String(),
-                                   NormalisableRange<float>(),
-                                   0.0f));
+            const auto param = proc.state.createAndAddParameter (std::make_unique<Parameter> (key, String(), String(), NormalisableRange<float>(),
+                                                                                              0.0f, nullptr, nullptr));
             proc.state.addParameterListener (key, &listener);
 
             const auto value = 0.5f;
@@ -914,11 +891,8 @@ public:
             TestAudioProcessor proc;
             const auto key = "id";
             const auto initialValue = 0.2f;
-            auto param = proc.state.createAndAddParameter (std::make_unique<Parameter> (
-                             key,
-                             String(),
-                             NormalisableRange<float>(),
-                             initialValue));
+            auto param = proc.state.createAndAddParameter (std::make_unique<Parameter> (key, String(), String(), NormalisableRange<float>(),
+                                                                                        initialValue, nullptr, nullptr));
             proc.state.state = ValueTree { "state" };
 
             auto value = proc.state.getParameterAsValue (key);
@@ -952,11 +926,8 @@ public:
             Listener listener;
             TestAudioProcessor proc;
             const auto key = "id";
-            proc.state.createAndAddParameter (std::make_unique<Parameter> (
-                key,
-                String(),
-                NormalisableRange<float>(),
-                0.0f));
+            proc.state.createAndAddParameter (std::make_unique<Parameter> (key, String(), String(), NormalisableRange<float>(),
+                                                                           0.0f, nullptr, nullptr));
             proc.state.addParameterListener (key, &listener);
             proc.state.state = ValueTree { "state" };
 

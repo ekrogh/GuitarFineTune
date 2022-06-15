@@ -2,15 +2,15 @@
   ==============================================================================
 
    This file is part of the JUCE library.
-   Copyright (c) 2022 - Raw Material Software Limited
+   Copyright (c) 2020 - Raw Material Software Limited
 
    JUCE is an open source library subject to commercial or open-source
    licensing.
 
-   By using JUCE, you agree to the terms of both the JUCE 7 End-User License
-   Agreement and JUCE Privacy Policy.
+   By using JUCE, you agree to the terms of both the JUCE 6 End-User License
+   Agreement and JUCE Privacy Policy (both effective as of the 16th June 2020).
 
-   End User License Agreement: www.juce.com/juce-7-licence
+   End User License Agreement: www.juce.com/juce-6-licence
    Privacy Policy: www.juce.com/juce-privacy-policy
 
    Or: You may also use this code under the terms of the GPL v3 (see
@@ -59,10 +59,7 @@ namespace juce
 #define JNI_CLASS_MEMBERS(METHOD, STATICMETHOD, FIELD, STATICFIELD, CALLBACK) \
  STATICMETHOD (obtain, "obtain", "(I)Landroid/view/accessibility/AccessibilityEvent;") \
  METHOD (setPackageName, "setPackageName", "(Ljava/lang/CharSequence;)V") \
- METHOD (setSource, "setSource","(Landroid/view/View;I)V") \
- METHOD (setAction, "setAction", "(I)V") \
- METHOD (setFromIndex, "setFromIndex", "(I)V") \
- METHOD (setToIndex, "setToIndex", "(I)V") \
+ METHOD (setSource,      "setSource",      "(Landroid/view/View;I)V") \
 
  DECLARE_JNI_CLASS (AndroidAccessibilityEvent, "android/view/accessibility/AccessibilityEvent")
 #undef JNI_CLASS_MEMBERS
@@ -77,14 +74,13 @@ namespace
 {
     constexpr int HOST_VIEW_ID = -1;
 
-    constexpr int TYPE_VIEW_CLICKED                                = 0x00000001,
-                  TYPE_VIEW_SELECTED                               = 0x00000004,
-                  TYPE_VIEW_ACCESSIBILITY_FOCUSED                  = 0x00008000,
-                  TYPE_VIEW_ACCESSIBILITY_FOCUS_CLEARED            = 0x00010000,
-                  TYPE_WINDOW_CONTENT_CHANGED                      = 0x00000800,
-                  TYPE_VIEW_TEXT_SELECTION_CHANGED                 = 0x00002000,
-                  TYPE_VIEW_TEXT_CHANGED                           = 0x00000010,
-                  TYPE_VIEW_TEXT_TRAVERSED_AT_MOVEMENT_GRANULARITY = 0x00020000;
+    constexpr int TYPE_VIEW_CLICKED                     = 0x00000001,
+                  TYPE_VIEW_SELECTED                    = 0x00000004,
+                  TYPE_VIEW_ACCESSIBILITY_FOCUSED       = 0x00008000,
+                  TYPE_VIEW_ACCESSIBILITY_FOCUS_CLEARED = 0x00010000,
+                  TYPE_WINDOW_CONTENT_CHANGED           = 0x00000800,
+                  TYPE_VIEW_TEXT_SELECTION_CHANGED      = 0x00002000,
+                  TYPE_VIEW_TEXT_CHANGED                = 0x00000010;
 
     constexpr int CONTENT_CHANGE_TYPE_SUBTREE             = 0x00000001,
                   CONTENT_CHANGE_TYPE_CONTENT_DESCRIPTION = 0x00000004;
@@ -201,6 +197,8 @@ static jobject getSourceView (const AccessibilityHandler& handler)
 
     return nullptr;
 }
+
+void sendAccessibilityEventImpl (const AccessibilityHandler& handler, int eventType, int contentChangeTypes);
 
 //==============================================================================
 class AccessibilityNativeHandle
@@ -379,7 +377,7 @@ public:
         {
             env->CallVoidMethod (info,
                                  AndroidAccessibilityNodeInfo.setText,
-                                 javaString (textInterface->getAllText()).get());
+                                 javaString (textInterface->getText ({ 0, textInterface->getTotalNumCharacters() })).get());
 
             const auto isReadOnly = textInterface->isReadOnly();
 
@@ -483,15 +481,10 @@ public:
 
             case ACTION_CLICK:
             {
-                // Invoking the action may delete this handler
-                const WeakReference<AccessibilityNativeHandle> savedHandle { this };
-
                 if ((accessibilityHandler.getCurrentState().isCheckable() && accessibilityHandler.getActions().invoke (AccessibilityActionType::toggle))
                     || accessibilityHandler.getActions().invoke (AccessibilityActionType::press))
                 {
-                    if (savedHandle != nullptr)
-                        sendAccessibilityEventImpl (accessibilityHandler, TYPE_VIEW_CLICKED, 0);
-
+                    sendAccessibilityEventImpl (accessibilityHandler, TYPE_VIEW_CLICKED, 0);
                     return true;
                 }
 
@@ -563,10 +556,7 @@ public:
                                 return env->CallIntMethod (arguments, AndroidBundle.getInt, key.get());
                             };
 
-                            const auto start = getKey (selectionStartKey);
-                            const auto end   = getKey (selectionEndKey);
-
-                            return Range<int>::between (start, end);
+                            return { getKey (selectionStartKey), getKey (selectionEndKey) };
                         }
 
                         return {};
@@ -646,78 +636,6 @@ public:
 
     bool isInPopulateNodeInfo() const noexcept  { return inPopulateNodeInfo; }
 
-    static bool areAnyAccessibilityClientsActive()
-    {
-        auto* env = getEnv();
-        auto appContext = getAppContext();
-
-        if (appContext.get() != nullptr)
-        {
-            LocalRef<jobject> accessibilityManager (env->CallObjectMethod (appContext.get(), AndroidContext.getSystemService,
-                                                                           javaString ("accessibility").get()));
-
-            if (accessibilityManager != nullptr)
-                return env->CallBooleanMethod (accessibilityManager.get(), AndroidAccessibilityManager.isEnabled);
-        }
-
-        return false;
-    }
-
-    template <typename ModificationCallback>
-    static void sendAccessibilityEventExtendedImpl (const AccessibilityHandler& handler,
-                                                    int eventType,
-                                                    ModificationCallback&& modificationCallback)
-    {
-        if (! areAnyAccessibilityClientsActive())
-            return;
-
-        if (const auto sourceView = getSourceView (handler))
-        {
-            const auto* nativeImpl = handler.getNativeImplementation();
-
-            if (nativeImpl == nullptr || nativeImpl->isInPopulateNodeInfo())
-                return;
-
-            auto* env = getEnv();
-            auto appContext = getAppContext();
-
-            if (appContext.get() == nullptr)
-                return;
-
-            LocalRef<jobject> event (env->CallStaticObjectMethod (AndroidAccessibilityEvent,
-                                                                  AndroidAccessibilityEvent.obtain,
-                                                                  eventType));
-
-            env->CallVoidMethod (event,
-                                 AndroidAccessibilityEvent.setPackageName,
-                                 env->CallObjectMethod (appContext.get(),
-                                                        AndroidContext.getPackageName));
-
-            env->CallVoidMethod (event,
-                                 AndroidAccessibilityEvent.setSource,
-                                 sourceView,
-                                 nativeImpl->getVirtualViewId());
-
-            modificationCallback (event);
-
-            env->CallBooleanMethod (sourceView,
-                                    AndroidViewGroup.requestSendAccessibilityEvent,
-                                    sourceView,
-                                    event.get());
-        }
-    }
-
-    static void sendAccessibilityEventImpl (const AccessibilityHandler& handler, int eventType, int contentChangeTypes)
-    {
-        sendAccessibilityEventExtendedImpl (handler, eventType, [contentChangeTypes] (auto event)
-        {
-            if (contentChangeTypes != 0 && accessibilityEventSetContentChangeTypes != nullptr)
-                getEnv()->CallVoidMethod (event,
-                                          accessibilityEventSetContentChangeTypes,
-                                          contentChangeTypes);
-        });
-    }
-
 private:
     static std::unordered_map<int, AccessibilityHandler*> virtualViewIdMap;
 
@@ -736,7 +654,7 @@ private:
         const auto valueString = [this]() -> String
         {
             if (auto* textInterface = accessibilityHandler.getTextInterface())
-                return textInterface->getAllText();
+                return textInterface->getText ({ 0, textInterface->getTotalNumCharacters() });
 
             if (auto* valueInterface = accessibilityHandler.getValueInterface())
                 return valueInterface->getCurrentValueAsString();
@@ -756,68 +674,66 @@ private:
 
     bool moveCursor (jobject arguments, bool forwards)
     {
-        using ATH = AccessibilityTextHelpers;
-
-        auto* textInterface = accessibilityHandler.getTextInterface();
-
-        if (textInterface == nullptr)
-            return false;
-
-        const auto granularityKey = javaString ("ACTION_ARGUMENT_MOVEMENT_GRANULARITY_INT");
-        const auto extendSelectionKey = javaString ("ACTION_ARGUMENT_EXTEND_SELECTION_BOOLEAN");
-
-        auto* env = getEnv();
-
-        const auto boundaryType = [&]
+        if (auto* textInterface = accessibilityHandler.getTextInterface())
         {
-            const auto granularity = env->CallIntMethod (arguments, AndroidBundle.getInt, granularityKey.get());
+            const auto granularityKey = javaString ("ACTION_ARGUMENT_MOVEMENT_GRANULARITY_INT");
+            const auto extendSelectionKey = javaString ("ACTION_ARGUMENT_EXTEND_SELECTION_BOOLEAN");
 
-            using BoundaryType = ATH::BoundaryType;
+            auto* env = getEnv();
 
-            switch (granularity)
+            const auto boundaryType = [&]
             {
-                case MOVEMENT_GRANULARITY_CHARACTER:  return BoundaryType::character;
-                case MOVEMENT_GRANULARITY_WORD:       return BoundaryType::word;
-                case MOVEMENT_GRANULARITY_LINE:       return BoundaryType::line;
-                case MOVEMENT_GRANULARITY_PARAGRAPH:
-                case MOVEMENT_GRANULARITY_PAGE:       return BoundaryType::document;
-            }
+                const auto granularity = env->CallIntMethod (arguments,
+                                                             AndroidBundle.getInt,
+                                                             granularityKey.get());
 
-            jassertfalse;
-            return BoundaryType::character;
-        }();
+                using BoundaryType = AccessibilityTextHelpers::BoundaryType;
 
-        const auto direction = forwards
-                             ? ATH::Direction::forwards
-                             : ATH::Direction::backwards;
+                switch (granularity)
+                {
+                    case MOVEMENT_GRANULARITY_CHARACTER:  return BoundaryType::character;
+                    case MOVEMENT_GRANULARITY_WORD:       return BoundaryType::word;
+                    case MOVEMENT_GRANULARITY_LINE:       return BoundaryType::line;
+                    case MOVEMENT_GRANULARITY_PARAGRAPH:
+                    case MOVEMENT_GRANULARITY_PAGE:       return BoundaryType::document;
+                }
 
-        const auto extend = env->CallBooleanMethod (arguments, AndroidBundle.getBoolean, extendSelectionKey.get())
-                          ? ATH::ExtendSelection::yes
-                          : ATH::ExtendSelection::no;
+                jassertfalse;
+                return BoundaryType::character;
+            }();
 
-        const auto oldSelection = textInterface->getSelection();
-        const auto newSelection = ATH::findNewSelectionRangeAndroid (*textInterface, boundaryType, extend, direction);
-        textInterface->setSelection (newSelection);
+            using Direction = AccessibilityTextHelpers::Direction;
 
-        // Required for Android to read back the text that the cursor moved over
-        sendAccessibilityEventExtendedImpl (accessibilityHandler, TYPE_VIEW_TEXT_TRAVERSED_AT_MOVEMENT_GRANULARITY, [&] (auto event)
-        {
-            env->CallVoidMethod (event,
-                                 AndroidAccessibilityEvent.setAction,
-                                 forwards ? ACTION_NEXT_AT_MOVEMENT_GRANULARITY : ACTION_PREVIOUS_AT_MOVEMENT_GRANULARITY);
+            const auto cursorPos = AccessibilityTextHelpers::findTextBoundary (*textInterface,
+                                                                               textInterface->getTextInsertionOffset(),
+                                                                               boundaryType,
+                                                                               forwards ? Direction::forwards
+                                                                                        : Direction::backwards);
 
-            env->CallVoidMethod (event,
-                                 AndroidAccessibilityEvent.setFromIndex,
-                                 oldSelection.getStart() != newSelection.getStart() ? oldSelection.getStart()
-                                                                                    : oldSelection.getEnd());
+            const auto newSelection = [&]() -> Range<int>
+            {
+                const auto currentSelection = textInterface->getSelection();
+                const auto extendSelection = env->CallBooleanMethod (arguments,
+                                                                     AndroidBundle.getBoolean,
+                                                                     extendSelectionKey.get());
 
-            env->CallVoidMethod (event,
-                                 AndroidAccessibilityEvent.setToIndex,
-                                 oldSelection.getStart() != newSelection.getStart() ? newSelection.getStart()
-                                                                                    : newSelection.getEnd());
-        });
+                if (! extendSelection)
+                    return { cursorPos, cursorPos };
 
-        return true;
+                const auto start = currentSelection.getStart();
+                const auto end = currentSelection.getEnd();
+
+                if (forwards)
+                    return { start, jmax (start, cursorPos) };
+
+                return { jmin (start, cursorPos), end };
+            }();
+
+            textInterface->setSelection (newSelection);
+            return true;
+        }
+
+        return false;
     }
 
     AccessibilityHandler& accessibilityHandler;
@@ -826,8 +742,6 @@ private:
 
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AccessibilityNativeHandle)
-
-    JUCE_DECLARE_WEAK_REFERENCEABLE (AccessibilityNativeHandle)
 };
 
 std::unordered_map<int, AccessibilityHandler*> AccessibilityNativeHandle::virtualViewIdMap;
@@ -844,6 +758,67 @@ AccessibilityNativeHandle* AccessibilityHandler::getNativeImplementation() const
     return nativeImpl.get();
 }
 
+static bool areAnyAccessibilityClientsActive()
+{
+    auto* env = getEnv();
+    auto appContext = getAppContext();
+
+    if (appContext.get() != nullptr)
+    {
+        LocalRef<jobject> accessibilityManager (env->CallObjectMethod (appContext.get(), AndroidContext.getSystemService,
+                                                                       javaString ("accessibility").get()));
+
+        if (accessibilityManager != nullptr)
+            return env->CallBooleanMethod (accessibilityManager.get(), AndroidAccessibilityManager.isEnabled);
+    }
+
+    return false;
+}
+
+void sendAccessibilityEventImpl (const AccessibilityHandler& handler, int eventType, int contentChangeTypes)
+{
+    if (! areAnyAccessibilityClientsActive())
+        return;
+
+    if (const auto sourceView = getSourceView (handler))
+    {
+        const auto* nativeImpl = handler.getNativeImplementation();
+
+        if (nativeImpl == nullptr || nativeImpl->isInPopulateNodeInfo())
+            return;
+
+        auto* env = getEnv();
+        auto appContext = getAppContext();
+
+        if (appContext.get() == nullptr)
+            return;
+
+        LocalRef<jobject> event (env->CallStaticObjectMethod (AndroidAccessibilityEvent,
+                                                              AndroidAccessibilityEvent.obtain,
+                                                              eventType));
+
+        env->CallVoidMethod (event,
+                             AndroidAccessibilityEvent.setPackageName,
+                             env->CallObjectMethod (appContext.get(),
+                                                    AndroidContext.getPackageName));
+
+        env->CallVoidMethod (event,
+                             AndroidAccessibilityEvent.setSource,
+                             sourceView,
+                             nativeImpl->getVirtualViewId());
+
+        if (contentChangeTypes != 0 && accessibilityEventSetContentChangeTypes != nullptr)
+            env->CallVoidMethod (event,
+                                 accessibilityEventSetContentChangeTypes,
+                                 contentChangeTypes);
+
+        env->CallBooleanMethod (sourceView,
+                                AndroidViewGroup.requestSendAccessibilityEvent,
+                                sourceView,
+                                event.get());
+    }
+}
+
 void notifyAccessibilityEventInternal (const AccessibilityHandler& handler,
                                        InternalAccessibilityEvent eventType)
 {
@@ -852,7 +827,7 @@ void notifyAccessibilityEventInternal (const AccessibilityHandler& handler,
         || eventType == InternalAccessibilityEvent::elementMovedOrResized)
     {
         if (auto* parent = handler.getParent())
-            AccessibilityNativeHandle::sendAccessibilityEventImpl (*parent, TYPE_WINDOW_CONTENT_CHANGED, CONTENT_CHANGE_TYPE_SUBTREE);
+            sendAccessibilityEventImpl (*parent, TYPE_WINDOW_CONTENT_CHANGED, CONTENT_CHANGE_TYPE_SUBTREE);
 
         return;
     }
@@ -877,7 +852,7 @@ void notifyAccessibilityEventInternal (const AccessibilityHandler& handler,
     }();
 
     if (notification != 0)
-        AccessibilityNativeHandle::sendAccessibilityEventImpl (handler, notification, 0);
+        sendAccessibilityEventImpl (handler, notification, 0);
 }
 
 void AccessibilityHandler::notifyAccessibilityEvent (AccessibilityEvent eventType) const
@@ -910,13 +885,13 @@ void AccessibilityHandler::notifyAccessibilityEvent (AccessibilityEvent eventTyp
         return 0;
     }();
 
-    AccessibilityNativeHandle::sendAccessibilityEventImpl (*this, notification, contentChangeTypes);
+    sendAccessibilityEventImpl (*this, notification, contentChangeTypes);
 }
 
 void AccessibilityHandler::postAnnouncement (const String& announcementString,
                                              AnnouncementPriority)
 {
-    if (! AccessibilityNativeHandle::areAnyAccessibilityClientsActive())
+    if (! areAnyAccessibilityClientsActive())
         return;
 
     const auto rootView = []
