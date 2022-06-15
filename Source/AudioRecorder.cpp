@@ -439,39 +439,9 @@ void AudioRecorderControl::stopRecording()
 
 	juce::File initialFilAndDirectory;
 
-#if (JUCE_LINUX)
 
-	juce::String snapHome(std::getenv("SNAP_REAL_HOME"));
-	snapHome += '/';
 
-	if (snapHome != "")
-	{
-		initialFilAndDirectory =
-			juce::File(snapHome).getChildFile(fileToSave.getFileName());
-	}
-	else
-	{
-		initialFilAndDirectory =
-			File::getSpecialLocation
-			(
-				File::userMusicDirectory
-			).getChildFile
-			(
-				fileToSave.getFileName()
-			);
-	}
-#else
-	initialFilAndDirectory =
-		File::getSpecialLocation
-		(
-			File::userHomeDirectory
-			//File::userMusicDirectory
-		).getChildFile
-		(
-			fileToSave.getFileName()
-		);
-#endif
-
+#if (JUCE_ANDROID)
 	myChooser =
 		std::make_unique <FileChooser>
 		(
@@ -480,18 +450,8 @@ void AudioRecorderControl::stopRecording()
 			fileToSave
 			,
 			"*.wav"
-			);
-	//myChooser =
-	//	std::make_unique <FileChooser>
-	//	(
-	//		"Save Audio File as..."
-	//		,
-	//		initialFilAndDirectory
-	//		,
-	//		"*.wav"
-	//	);
+		);
 
-#if (JUCE_ANDROID)
 	myChooser->launchAsync
 	(
 		FileBrowserComponent::saveMode
@@ -531,6 +491,47 @@ void AudioRecorderControl::stopRecording()
 		}
 	);
 #else
+#if (JUCE_LINUX)
+
+	juce::String snapHome(std::getenv("SNAP_REAL_HOME"));
+	snapHome += '/';
+
+	if (snapHome != "")
+	{
+		initialFilAndDirectory =
+			juce::File(snapHome).getChildFile(fileToSave.getFileName());
+	}
+	else
+	{
+		initialFilAndDirectory =
+			File::getSpecialLocation
+			(
+				File::userMusicDirectory
+			).getChildFile
+			(
+				fileToSave.getFileName()
+			);
+	}
+#else
+	initialFilAndDirectory =
+		File::getSpecialLocation
+		(
+			File::userMusicDirectory
+		).getChildFile
+		(
+			fileToSave.getFileName()
+		);
+#endif
+	myChooser =
+	std::make_unique <FileChooser>
+	(
+		"Save Audio File as..."
+		,
+		initialFilAndDirectory
+		,
+		"*.wav"
+	);
+
 	myChooser->launchAsync
 	(
 		FileBrowserComponent::saveMode
@@ -541,7 +542,6 @@ void AudioRecorderControl::stopRecording()
 		,
 		[fileToSave](const FileChooser& chooser)
 		{
-			return;
 			auto rslt = chooser.getResult();
 			if (rslt == File{})
 				return;
