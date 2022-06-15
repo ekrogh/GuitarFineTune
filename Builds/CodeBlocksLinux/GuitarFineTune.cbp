@@ -390,6 +390,12 @@
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_basics/midi/ump/juce_UMP_test.cpp">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
     <Unit filename="../../JuceLibraryCode/modules/juce_audio_basics/midi/ump/juce_UMPacket.h">
       <Option target="App | Debug"/>
       <Option target="App | Release"/>
@@ -696,6 +702,12 @@
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_basics/native/juce_mac_CoreAudioTimeConversions.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
     <Unit filename="../../JuceLibraryCode/modules/juce_audio_basics/sources/juce_AudioSource.h">
       <Option target="App | Debug"/>
       <Option target="App | Release"/>
@@ -943,6 +955,12 @@
       <Option link="0"/>
     </Unit>
     <Unit filename="../../JuceLibraryCode/modules/juce_audio_devices/audio_io/juce_AudioIODeviceType.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_devices/audio_io/juce_SampleRateHelpers.cpp">
       <Option target="App | Debug"/>
       <Option target="App | Release"/>
       <Option compile="0"/>
@@ -2724,6 +2742,18 @@
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_formats/format/juce_ARAAudioReaders.cpp">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_formats/format/juce_ARAAudioReaders.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
     <Unit filename="../../JuceLibraryCode/modules/juce_audio_formats/format/juce_AudioFormat.cpp">
       <Option target="App | Debug"/>
       <Option target="App | Release"/>
@@ -2863,6 +2893,666 @@
       <Option link="0"/>
     </Unit>
     <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format/juce_AudioPluginFormatManager.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lilv/lilv/lilv.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lilv/lilv/lilvmm.hpp">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lilv/src/zix/common.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lilv/src/zix/tree.c">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lilv/src/zix/tree.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lilv/src/collections.c">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lilv/src/filesystem.c">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lilv/src/filesystem.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lilv/src/instance.c">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lilv/src/lib.c">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lilv/src/lilv_internal.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lilv/src/node.c">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lilv/src/plugin.c">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lilv/src/pluginclass.c">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lilv/src/port.c">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lilv/src/query.c">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lilv/src/scalepoint.c">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lilv/src/state.c">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lilv/src/ui.c">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lilv/src/util.c">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lilv/src/world.c">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/atom/atom-test-utils.c">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/atom/atom-test.c">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/atom/atom.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/atom/forge-overflow-test.c">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/atom/forge.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/atom/util.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/buf-size/buf-size.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/core/attributes.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/core/lv2.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/core/lv2_util.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/data-access/data-access.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/dynmanifest/dynmanifest.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/event/event-helpers.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/event/event.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/instance-access/instance-access.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/log/log.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/log/logger.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/midi/midi.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/morph/morph.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/options/options.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/parameters/parameters.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/patch/patch.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/port-groups/port-groups.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/port-props/port-props.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/presets/presets.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/resize-port/resize-port.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/state/state.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/time/time.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/ui/ui.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/units/units.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/uri-map/uri-map.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/urid/urid.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/worker/worker.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/serd/serd/serd.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/serd/src/attributes.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/serd/src/base64.c">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/serd/src/base64.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/serd/src/byte_sink.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/serd/src/byte_source.c">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/serd/src/byte_source.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/serd/src/env.c">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/serd/src/n3.c">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/serd/src/node.c">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/serd/src/node.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/serd/src/reader.c">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/serd/src/reader.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/serd/src/serd_config.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/serd/src/serd_internal.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/serd/src/serdi.c">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/serd/src/stack.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/serd/src/string.c">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/serd/src/string_utils.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/serd/src/system.c">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/serd/src/system.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/serd/src/uri.c">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/serd/src/uri_utils.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/serd/src/writer.c">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/sord/sord/sord.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/sord/sord/sordmm.hpp">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/sord/src/zix/btree.c">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/sord/src/zix/btree.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/sord/src/zix/common.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/sord/src/zix/digest.c">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/sord/src/zix/digest.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/sord/src/zix/hash.c">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/sord/src/zix/hash.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/sord/src/sord.c">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/sord/src/sord_config.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/sord/src/sord_internal.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/sord/src/sord_test.c">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/sord/src/sord_validate.c">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/sord/src/sordi.c">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/sord/src/sordmm_test.cpp">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/sord/src/syntax.c">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/sratom/sratom/sratom.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/sratom/src/sratom.c">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/juce_lv2_config.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lilv_config.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/README.md">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/serd_config.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/sord_config.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/pslextensions/ipslcontextinfo.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/pslextensions/ipsleditcontroller.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/pslextensions/ipslgainreduction.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/pslextensions/ipslhostcommands.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/pslextensions/ipslviewembedding.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/pslextensions/ipslviewscaling.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/pslextensions/pslauextensions.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/pslextensions/pslvst2extensions.h">
       <Option target="App | Debug"/>
       <Option target="App | Release"/>
       <Option compile="0"/>
@@ -3450,6 +4140,30 @@
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/juce_ARACommon.cpp">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/juce_ARACommon.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/juce_ARAHosting.cpp">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/juce_ARAHosting.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
     <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/juce_AU_Shared.h">
       <Option target="App | Debug"/>
       <Option target="App | Release"/>
@@ -3486,6 +4200,42 @@
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/juce_LV2Common.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/juce_LV2PluginFormat.cpp">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/juce_LV2PluginFormat.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/juce_LV2PluginFormat_test.cpp">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/juce_LV2Resources.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/juce_LV2SupportLibs.cpp">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
     <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/juce_VST3Common.h">
       <Option target="App | Debug"/>
       <Option target="App | Release"/>
@@ -3505,6 +4255,12 @@
       <Option link="0"/>
     </Unit>
     <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/juce_VST3PluginFormat.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/format_types/juce_VST3PluginFormat_test.cpp">
       <Option target="App | Debug"/>
       <Option target="App | Release"/>
       <Option compile="0"/>
@@ -3678,6 +4434,72 @@
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/utilities/ARA/juce_ARA_utils.cpp">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/utilities/ARA/juce_ARA_utils.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/utilities/ARA/juce_ARADocumentController.cpp">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/utilities/ARA/juce_ARADocumentController.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/utilities/ARA/juce_ARADocumentControllerCommon.cpp">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/utilities/ARA/juce_ARAModelObjects.cpp">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/utilities/ARA/juce_ARAModelObjects.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/utilities/ARA/juce_ARAPlugInInstanceRoles.cpp">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/utilities/ARA/juce_ARAPlugInInstanceRoles.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/utilities/ARA/juce_AudioProcessor_ARAExtensions.cpp">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/utilities/ARA/juce_AudioProcessor_ARAExtensions.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
     <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/utilities/juce_AudioParameterBool.cpp">
       <Option target="App | Debug"/>
       <Option target="App | Release"/>
@@ -3756,6 +4578,24 @@
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/utilities/juce_FlagCache.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/utilities/juce_NativeScaleFactorNotifier.cpp">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/utilities/juce_NativeScaleFactorNotifier.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
     <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/utilities/juce_ParameterAttachments.cpp">
       <Option target="App | Debug"/>
       <Option target="App | Release"/>
@@ -3811,6 +4651,18 @@
       <Option link="0"/>
     </Unit>
     <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/juce_audio_processors.mm">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/juce_audio_processors_ara.cpp">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/juce_audio_processors_lv2_libs.cpp">
       <Option target="App | Debug"/>
       <Option target="App | Release"/>
       <Option compile="0"/>
@@ -4122,6 +4974,12 @@
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_core/containers/juce_ListenerList.cpp">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
     <Unit filename="../../JuceLibraryCode/modules/juce_core/containers/juce_ListenerList.h">
       <Option target="App | Debug"/>
       <Option target="App | Release"/>
@@ -4135,6 +4993,18 @@
       <Option link="0"/>
     </Unit>
     <Unit filename="../../JuceLibraryCode/modules/juce_core/containers/juce_NamedValueSet.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_core/containers/juce_Optional.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_core/containers/juce_Optional_test.cpp">
       <Option target="App | Debug"/>
       <Option target="App | Release"/>
       <Option compile="0"/>
@@ -4213,6 +5083,24 @@
       <Option link="0"/>
     </Unit>
     <Unit filename="../../JuceLibraryCode/modules/juce_core/containers/juce_Variant.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_core/files/juce_AndroidDocument.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_core/files/juce_common_MimeTypes.cpp">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_core/files/juce_common_MimeTypes.h">
       <Option target="App | Debug"/>
       <Option target="App | Release"/>
       <Option compile="0"/>
@@ -4609,6 +5497,12 @@
       <Option link="0"/>
     </Unit>
     <Unit filename="../../JuceLibraryCode/modules/juce_core/native/java/README.txt">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_core/native/juce_android_AndroidDocument.cpp">
       <Option target="App | Debug"/>
       <Option target="App | Release"/>
       <Option compile="0"/>
@@ -6385,6 +7279,12 @@
       <Option link="0"/>
     </Unit>
     <Unit filename="../../JuceLibraryCode/modules/juce_events/native/juce_linux_EventLoop.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_events/native/juce_linux_EventLoopInternal.h">
       <Option target="App | Debug"/>
       <Option target="App | Release"/>
       <Option compile="0"/>
@@ -8682,6 +9582,12 @@
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_gui_basics/native/accessibility/juce_AccessibilityTextHelpers_test.cpp">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
     <Unit filename="../../JuceLibraryCode/modules/juce_gui_basics/native/accessibility/juce_android_Accessibility.cpp">
       <Option target="App | Debug"/>
       <Option target="App | Release"/>
@@ -8905,6 +9811,12 @@
       <Option link="0"/>
     </Unit>
     <Unit filename="../../JuceLibraryCode/modules/juce_gui_basics/native/juce_linux_Windowing.cpp">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_gui_basics/native/juce_mac_CGMetalLayerRenderer.h">
       <Option target="App | Debug"/>
       <Option target="App | Release"/>
       <Option compile="0"/>
@@ -9869,6 +10781,14 @@
       <Option target="App | Release"/>
     </Unit>
     <Unit filename="../../JuceLibraryCode/include_juce_audio_processors.cpp">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/include_juce_audio_processors_ara.cpp">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/include_juce_audio_processors_lv2_libs.cpp">
       <Option target="App | Debug"/>
       <Option target="App | Release"/>
     </Unit>

@@ -1,0 +1,10 @@
+ninja: Entering directory `D:\Users\eigil\projects\juceProjs\GuitarFineTune\Builds\Android\app\.cxx\Debug\u2k606gl\x86'
+[1/2] Building CXX object CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/Source/AudioRecorder.cpp.o
+D:/Users/eigil/projects/juceProjs/GuitarFineTune/Source/AudioRecorder.cpp:514:24: warning: 'downloadToFile' is deprecated: Use the overload with a DownloadTaskOptions argument instead [-Wdeprecated-declarations]
+                        fileFileToShareFrom.downloadToFile(fileToShareTo);
+                                            ^
+../../../../../../../JuceLibraryCode/modules\juce_core/network/juce_URL.h:552:7: note: 'downloadToFile' has been explicitly marked deprecated here
+    [[deprecated ("Use the overload with a DownloadTaskOptions argument instead")]]
+      ^
+1 warning generated.
+[2/2] Linking CXX shared library ..\..\..\..\build\intermediates\cxx\Debug\u2k606gl\obj\x86\libjuce_jni.so

@@ -7,7 +7,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GuitarFineTune_App", "Guita
 EndProject
 Project("{C7167F0D-BC9F-4E6E-AFE1-012C56B48DB5}") = "packProj", "..\..\Microsoft_Store\packProj\packProj\packProj.wapproj", "{6184B337-E253-4D5D-9C58-E5635E704DF1}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MajorMinorBuildRevisionNumbersXmlFile", "MajorMinorBuildRevisionNumbersXmlFile", "{130624B4-F497-4C7C-BC7D-19B581CC7EC8}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MajorMinorBuildRevisionNumbersXmlFile", "MajorMinorBuildRevisionNumbersXmlFile", "{BFB20055-5B5D-4122-8801-01E282039C20}"
 	ProjectSection(SolutionItems) = preProject
 		MajorMinorBuildRevisionNumbers.xml = MajorMinorBuildRevisionNumbers.xml
 	EndProjectSection
@@ -81,6 +81,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {D66A0920-1C1A-4A04-AB54-C806826E486C}
+		SolutionGuid = {0F439EBF-1DBE-42A0-BAA8-7E6B3B5027F3}
 	EndGlobalSection
 EndGlobal

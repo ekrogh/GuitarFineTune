@@ -83,6 +83,7 @@ add_library( ${BINARY_NAME}
     "../../../JuceLibraryCode/modules/juce_audio_basics/buffers/juce_FloatVectorOperations.cpp"
     "../../../JuceLibraryCode/modules/juce_audio_basics/buffers/juce_FloatVectorOperations.h"
     "../../../JuceLibraryCode/modules/juce_audio_basics/midi/ump/juce_UMP.h"
+    "../../../JuceLibraryCode/modules/juce_audio_basics/midi/ump/juce_UMP_test.cpp"
     "../../../JuceLibraryCode/modules/juce_audio_basics/midi/ump/juce_UMPacket.h"
     "../../../JuceLibraryCode/modules/juce_audio_basics/midi/ump/juce_UMPackets.h"
     "../../../JuceLibraryCode/modules/juce_audio_basics/midi/ump/juce_UMPConversion.h"
@@ -134,6 +135,7 @@ add_library( ${BINARY_NAME}
     "../../../JuceLibraryCode/modules/juce_audio_basics/mpe/juce_MPEZoneLayout.cpp"
     "../../../JuceLibraryCode/modules/juce_audio_basics/mpe/juce_MPEZoneLayout.h"
     "../../../JuceLibraryCode/modules/juce_audio_basics/native/juce_mac_CoreAudioLayouts.h"
+    "../../../JuceLibraryCode/modules/juce_audio_basics/native/juce_mac_CoreAudioTimeConversions.h"
     "../../../JuceLibraryCode/modules/juce_audio_basics/sources/juce_AudioSource.h"
     "../../../JuceLibraryCode/modules/juce_audio_basics/sources/juce_BufferingAudioSource.cpp"
     "../../../JuceLibraryCode/modules/juce_audio_basics/sources/juce_BufferingAudioSource.h"
@@ -176,6 +178,7 @@ add_library( ${BINARY_NAME}
     "../../../JuceLibraryCode/modules/juce_audio_devices/audio_io/juce_AudioIODevice.h"
     "../../../JuceLibraryCode/modules/juce_audio_devices/audio_io/juce_AudioIODeviceType.cpp"
     "../../../JuceLibraryCode/modules/juce_audio_devices/audio_io/juce_AudioIODeviceType.h"
+    "../../../JuceLibraryCode/modules/juce_audio_devices/audio_io/juce_SampleRateHelpers.cpp"
     "../../../JuceLibraryCode/modules/juce_audio_devices/audio_io/juce_SystemAudioVolume.h"
     "../../../JuceLibraryCode/modules/juce_audio_devices/midi_io/ump/juce_UMPBytestreamInputHandler.h"
     "../../../JuceLibraryCode/modules/juce_audio_devices/midi_io/ump/juce_UMPTests.cpp"
@@ -472,6 +475,8 @@ add_library( ${BINARY_NAME}
     "../../../JuceLibraryCode/modules/juce_audio_formats/codecs/juce_WavAudioFormat.h"
     "../../../JuceLibraryCode/modules/juce_audio_formats/codecs/juce_WindowsMediaAudioFormat.cpp"
     "../../../JuceLibraryCode/modules/juce_audio_formats/codecs/juce_WindowsMediaAudioFormat.h"
+    "../../../JuceLibraryCode/modules/juce_audio_formats/format/juce_ARAAudioReaders.cpp"
+    "../../../JuceLibraryCode/modules/juce_audio_formats/format/juce_ARAAudioReaders.h"
     "../../../JuceLibraryCode/modules/juce_audio_formats/format/juce_AudioFormat.cpp"
     "../../../JuceLibraryCode/modules/juce_audio_formats/format/juce_AudioFormat.h"
     "../../../JuceLibraryCode/modules/juce_audio_formats/format/juce_AudioFormatManager.cpp"
@@ -496,6 +501,116 @@ add_library( ${BINARY_NAME}
     "../../../JuceLibraryCode/modules/juce_audio_processors/format/juce_AudioPluginFormat.h"
     "../../../JuceLibraryCode/modules/juce_audio_processors/format/juce_AudioPluginFormatManager.cpp"
     "../../../JuceLibraryCode/modules/juce_audio_processors/format/juce_AudioPluginFormatManager.h"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lilv/lilv/lilv.h"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lilv/lilv/lilvmm.hpp"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lilv/src/zix/common.h"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lilv/src/zix/tree.c"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lilv/src/zix/tree.h"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lilv/src/collections.c"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lilv/src/filesystem.c"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lilv/src/filesystem.h"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lilv/src/instance.c"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lilv/src/lib.c"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lilv/src/lilv_internal.h"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lilv/src/node.c"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lilv/src/plugin.c"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lilv/src/pluginclass.c"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lilv/src/port.c"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lilv/src/query.c"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lilv/src/scalepoint.c"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lilv/src/state.c"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lilv/src/ui.c"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lilv/src/util.c"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lilv/src/world.c"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/atom/atom-test-utils.c"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/atom/atom-test.c"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/atom/atom.h"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/atom/forge-overflow-test.c"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/atom/forge.h"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/atom/util.h"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/buf-size/buf-size.h"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/core/attributes.h"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/core/lv2.h"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/core/lv2_util.h"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/data-access/data-access.h"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/dynmanifest/dynmanifest.h"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/event/event-helpers.h"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/event/event.h"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/instance-access/instance-access.h"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/log/log.h"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/log/logger.h"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/midi/midi.h"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/morph/morph.h"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/options/options.h"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/parameters/parameters.h"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/patch/patch.h"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/port-groups/port-groups.h"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/port-props/port-props.h"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/presets/presets.h"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/resize-port/resize-port.h"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/state/state.h"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/time/time.h"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/ui/ui.h"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/units/units.h"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/uri-map/uri-map.h"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/urid/urid.h"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/worker/worker.h"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/serd/serd/serd.h"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/serd/src/attributes.h"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/serd/src/base64.c"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/serd/src/base64.h"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/serd/src/byte_sink.h"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/serd/src/byte_source.c"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/serd/src/byte_source.h"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/serd/src/env.c"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/serd/src/n3.c"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/serd/src/node.c"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/serd/src/node.h"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/serd/src/reader.c"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/serd/src/reader.h"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/serd/src/serd_config.h"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/serd/src/serd_internal.h"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/serd/src/serdi.c"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/serd/src/stack.h"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/serd/src/string.c"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/serd/src/string_utils.h"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/serd/src/system.c"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/serd/src/system.h"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/serd/src/uri.c"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/serd/src/uri_utils.h"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/serd/src/writer.c"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/sord/sord/sord.h"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/sord/sord/sordmm.hpp"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/sord/src/zix/btree.c"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/sord/src/zix/btree.h"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/sord/src/zix/common.h"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/sord/src/zix/digest.c"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/sord/src/zix/digest.h"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/sord/src/zix/hash.c"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/sord/src/zix/hash.h"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/sord/src/sord.c"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/sord/src/sord_config.h"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/sord/src/sord_internal.h"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/sord/src/sord_test.c"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/sord/src/sord_validate.c"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/sord/src/sordi.c"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/sord/src/sordmm_test.cpp"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/sord/src/syntax.c"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/sratom/sratom/sratom.h"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/sratom/src/sratom.c"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/juce_lv2_config.h"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lilv_config.h"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/README.md"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/serd_config.h"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/sord_config.h"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/pslextensions/ipslcontextinfo.h"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/pslextensions/ipsleditcontroller.h"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/pslextensions/ipslgainreduction.h"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/pslextensions/ipslhostcommands.h"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/pslextensions/ipslviewembedding.h"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/pslextensions/ipslviewscaling.h"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/pslextensions/pslauextensions.h"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/pslextensions/pslvst2extensions.h"
     "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/VST3_SDK/base/source/baseiids.cpp"
     "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/VST3_SDK/base/source/classfactoryhelpers.h"
     "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/VST3_SDK/base/source/fbuffer.cpp"
@@ -593,16 +708,27 @@ add_library( ${BINARY_NAME}
     "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/VST3_SDK/JUCE_README.md"
     "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/VST3_SDK/LICENSE.txt"
     "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/VST3_SDK/README.md"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/juce_ARACommon.cpp"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/juce_ARACommon.h"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/juce_ARAHosting.cpp"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/juce_ARAHosting.h"
     "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/juce_AU_Shared.h"
     "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/juce_AudioUnitPluginFormat.h"
     "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/juce_AudioUnitPluginFormat.mm"
     "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/juce_LADSPAPluginFormat.cpp"
     "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/juce_LADSPAPluginFormat.h"
     "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/juce_LegacyAudioParameter.cpp"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/juce_LV2Common.h"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/juce_LV2PluginFormat.cpp"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/juce_LV2PluginFormat.h"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/juce_LV2PluginFormat_test.cpp"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/juce_LV2Resources.h"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/juce_LV2SupportLibs.cpp"
     "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/juce_VST3Common.h"
     "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/juce_VST3Headers.h"
     "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/juce_VST3PluginFormat.cpp"
     "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/juce_VST3PluginFormat.h"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/juce_VST3PluginFormat_test.cpp"
     "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/juce_VSTCommon.h"
     "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/juce_VSTMidiEventList.h"
     "../../../JuceLibraryCode/modules/juce_audio_processors/format_types/juce_VSTPluginFormat.cpp"
@@ -631,6 +757,17 @@ add_library( ${BINARY_NAME}
     "../../../JuceLibraryCode/modules/juce_audio_processors/scanning/juce_PluginDirectoryScanner.h"
     "../../../JuceLibraryCode/modules/juce_audio_processors/scanning/juce_PluginListComponent.cpp"
     "../../../JuceLibraryCode/modules/juce_audio_processors/scanning/juce_PluginListComponent.h"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/utilities/ARA/juce_ARA_utils.cpp"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/utilities/ARA/juce_ARA_utils.h"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/utilities/ARA/juce_ARADocumentController.cpp"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/utilities/ARA/juce_ARADocumentController.h"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/utilities/ARA/juce_ARADocumentControllerCommon.cpp"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/utilities/ARA/juce_ARAModelObjects.cpp"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/utilities/ARA/juce_ARAModelObjects.h"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/utilities/ARA/juce_ARAPlugInInstanceRoles.cpp"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/utilities/ARA/juce_ARAPlugInInstanceRoles.h"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/utilities/ARA/juce_AudioProcessor_ARAExtensions.cpp"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/utilities/ARA/juce_AudioProcessor_ARAExtensions.h"
     "../../../JuceLibraryCode/modules/juce_audio_processors/utilities/juce_AudioParameterBool.cpp"
     "../../../JuceLibraryCode/modules/juce_audio_processors/utilities/juce_AudioParameterBool.h"
     "../../../JuceLibraryCode/modules/juce_audio_processors/utilities/juce_AudioParameterChoice.cpp"
@@ -644,6 +781,9 @@ add_library( ${BINARY_NAME}
     "../../../JuceLibraryCode/modules/juce_audio_processors/utilities/juce_AudioProcessorValueTreeState.cpp"
     "../../../JuceLibraryCode/modules/juce_audio_processors/utilities/juce_AudioProcessorValueTreeState.h"
     "../../../JuceLibraryCode/modules/juce_audio_processors/utilities/juce_ExtensionsVisitor.h"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/utilities/juce_FlagCache.h"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/utilities/juce_NativeScaleFactorNotifier.cpp"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/utilities/juce_NativeScaleFactorNotifier.h"
     "../../../JuceLibraryCode/modules/juce_audio_processors/utilities/juce_ParameterAttachments.cpp"
     "../../../JuceLibraryCode/modules/juce_audio_processors/utilities/juce_ParameterAttachments.h"
     "../../../JuceLibraryCode/modules/juce_audio_processors/utilities/juce_PluginHostType.cpp"
@@ -654,6 +794,8 @@ add_library( ${BINARY_NAME}
     "../../../JuceLibraryCode/modules/juce_audio_processors/utilities/juce_VSTCallbackHandler.h"
     "../../../JuceLibraryCode/modules/juce_audio_processors/juce_audio_processors.cpp"
     "../../../JuceLibraryCode/modules/juce_audio_processors/juce_audio_processors.mm"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/juce_audio_processors_ara.cpp"
+    "../../../JuceLibraryCode/modules/juce_audio_processors/juce_audio_processors_lv2_libs.cpp"
     "../../../JuceLibraryCode/modules/juce_audio_processors/juce_audio_processors.h"
     "../../../JuceLibraryCode/modules/juce_audio_utils/audio_cd/juce_AudioCDBurner.h"
     "../../../JuceLibraryCode/modules/juce_audio_utils/audio_cd/juce_AudioCDReader.cpp"
@@ -705,9 +847,12 @@ add_library( ${BINARY_NAME}
     "../../../JuceLibraryCode/modules/juce_core/containers/juce_HashMap.h"
     "../../../JuceLibraryCode/modules/juce_core/containers/juce_HashMap_test.cpp"
     "../../../JuceLibraryCode/modules/juce_core/containers/juce_LinkedListPointer.h"
+    "../../../JuceLibraryCode/modules/juce_core/containers/juce_ListenerList.cpp"
     "../../../JuceLibraryCode/modules/juce_core/containers/juce_ListenerList.h"
     "../../../JuceLibraryCode/modules/juce_core/containers/juce_NamedValueSet.cpp"
     "../../../JuceLibraryCode/modules/juce_core/containers/juce_NamedValueSet.h"
+    "../../../JuceLibraryCode/modules/juce_core/containers/juce_Optional.h"
+    "../../../JuceLibraryCode/modules/juce_core/containers/juce_Optional_test.cpp"
     "../../../JuceLibraryCode/modules/juce_core/containers/juce_OwnedArray.cpp"
     "../../../JuceLibraryCode/modules/juce_core/containers/juce_OwnedArray.h"
     "../../../JuceLibraryCode/modules/juce_core/containers/juce_PropertySet.cpp"
@@ -721,6 +866,9 @@ add_library( ${BINARY_NAME}
     "../../../JuceLibraryCode/modules/juce_core/containers/juce_SparseSet.h"
     "../../../JuceLibraryCode/modules/juce_core/containers/juce_Variant.cpp"
     "../../../JuceLibraryCode/modules/juce_core/containers/juce_Variant.h"
+    "../../../JuceLibraryCode/modules/juce_core/files/juce_AndroidDocument.h"
+    "../../../JuceLibraryCode/modules/juce_core/files/juce_common_MimeTypes.cpp"
+    "../../../JuceLibraryCode/modules/juce_core/files/juce_common_MimeTypes.h"
     "../../../JuceLibraryCode/modules/juce_core/files/juce_DirectoryIterator.cpp"
     "../../../JuceLibraryCode/modules/juce_core/files/juce_DirectoryIterator.h"
     "../../../JuceLibraryCode/modules/juce_core/files/juce_File.cpp"
@@ -787,6 +935,7 @@ add_library( ${BINARY_NAME}
     "../../../JuceLibraryCode/modules/juce_core/misc/juce_Uuid.h"
     "../../../JuceLibraryCode/modules/juce_core/misc/juce_WindowsRegistry.h"
     "../../../JuceLibraryCode/modules/juce_core/native/java/README.txt"
+    "../../../JuceLibraryCode/modules/juce_core/native/juce_android_AndroidDocument.cpp"
     "../../../JuceLibraryCode/modules/juce_core/native/juce_android_Files.cpp"
     "../../../JuceLibraryCode/modules/juce_core/native/juce_android_JNIHelpers.cpp"
     "../../../JuceLibraryCode/modules/juce_core/native/juce_android_JNIHelpers.h"
@@ -1083,6 +1232,7 @@ add_library( ${BINARY_NAME}
     "../../../JuceLibraryCode/modules/juce_events/native/juce_android_Messaging.cpp"
     "../../../JuceLibraryCode/modules/juce_events/native/juce_ios_MessageManager.mm"
     "../../../JuceLibraryCode/modules/juce_events/native/juce_linux_EventLoop.h"
+    "../../../JuceLibraryCode/modules/juce_events/native/juce_linux_EventLoopInternal.h"
     "../../../JuceLibraryCode/modules/juce_events/native/juce_linux_Messaging.cpp"
     "../../../JuceLibraryCode/modules/juce_events/native/juce_mac_MessageManager.mm"
     "../../../JuceLibraryCode/modules/juce_events/native/juce_osx_MessageQueue.h"
@@ -1465,6 +1615,7 @@ add_library( ${BINARY_NAME}
     "../../../JuceLibraryCode/modules/juce_gui_basics/mouse/juce_TextDragAndDropTarget.h"
     "../../../JuceLibraryCode/modules/juce_gui_basics/mouse/juce_TooltipClient.h"
     "../../../JuceLibraryCode/modules/juce_gui_basics/native/accessibility/juce_AccessibilityTextHelpers.h"
+    "../../../JuceLibraryCode/modules/juce_gui_basics/native/accessibility/juce_AccessibilityTextHelpers_test.cpp"
     "../../../JuceLibraryCode/modules/juce_gui_basics/native/accessibility/juce_android_Accessibility.cpp"
     "../../../JuceLibraryCode/modules/juce_gui_basics/native/accessibility/juce_ios_Accessibility.mm"
     "../../../JuceLibraryCode/modules/juce_gui_basics/native/accessibility/juce_mac_Accessibility.mm"
@@ -1503,6 +1654,7 @@ add_library( ${BINARY_NAME}
     "../../../JuceLibraryCode/modules/juce_gui_basics/native/juce_ios_Windowing.mm"
     "../../../JuceLibraryCode/modules/juce_gui_basics/native/juce_linux_FileChooser.cpp"
     "../../../JuceLibraryCode/modules/juce_gui_basics/native/juce_linux_Windowing.cpp"
+    "../../../JuceLibraryCode/modules/juce_gui_basics/native/juce_mac_CGMetalLayerRenderer.h"
     "../../../JuceLibraryCode/modules/juce_gui_basics/native/juce_mac_FileChooser.mm"
     "../../../JuceLibraryCode/modules/juce_gui_basics/native/juce_mac_MainMenu.mm"
     "../../../JuceLibraryCode/modules/juce_gui_basics/native/juce_mac_MouseCursor.mm"
@@ -1665,6 +1817,8 @@ add_library( ${BINARY_NAME}
     "../../../JuceLibraryCode/include_juce_audio_devices.cpp"
     "../../../JuceLibraryCode/include_juce_audio_formats.cpp"
     "../../../JuceLibraryCode/include_juce_audio_processors.cpp"
+    "../../../JuceLibraryCode/include_juce_audio_processors_ara.cpp"
+    "../../../JuceLibraryCode/include_juce_audio_processors_lv2_libs.cpp"
     "../../../JuceLibraryCode/include_juce_audio_utils.cpp"
     "../../../JuceLibraryCode/include_juce_core.cpp"
     "../../../JuceLibraryCode/include_juce_data_structures.cpp"
@@ -1714,6 +1868,7 @@ set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_basics/
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_basics/buffers/juce_FloatVectorOperations.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_basics/buffers/juce_FloatVectorOperations.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_basics/midi/ump/juce_UMP.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_basics/midi/ump/juce_UMP_test.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_basics/midi/ump/juce_UMPacket.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_basics/midi/ump/juce_UMPackets.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_basics/midi/ump/juce_UMPConversion.h" PROPERTIES HEADER_FILE_ONLY TRUE)
@@ -1765,6 +1920,7 @@ set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_basics/
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_basics/mpe/juce_MPEZoneLayout.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_basics/mpe/juce_MPEZoneLayout.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_basics/native/juce_mac_CoreAudioLayouts.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_basics/native/juce_mac_CoreAudioTimeConversions.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_basics/sources/juce_AudioSource.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_basics/sources/juce_BufferingAudioSource.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_basics/sources/juce_BufferingAudioSource.h" PROPERTIES HEADER_FILE_ONLY TRUE)
@@ -1807,6 +1963,7 @@ set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_devices
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_devices/audio_io/juce_AudioIODevice.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_devices/audio_io/juce_AudioIODeviceType.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_devices/audio_io/juce_AudioIODeviceType.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_devices/audio_io/juce_SampleRateHelpers.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_devices/audio_io/juce_SystemAudioVolume.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_devices/midi_io/ump/juce_UMPBytestreamInputHandler.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_devices/midi_io/ump/juce_UMPTests.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
@@ -2103,6 +2260,8 @@ set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_formats
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_formats/codecs/juce_WavAudioFormat.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_formats/codecs/juce_WindowsMediaAudioFormat.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_formats/codecs/juce_WindowsMediaAudioFormat.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_formats/format/juce_ARAAudioReaders.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_formats/format/juce_ARAAudioReaders.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_formats/format/juce_AudioFormat.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_formats/format/juce_AudioFormat.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_formats/format/juce_AudioFormatManager.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
@@ -2127,6 +2286,116 @@ set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_process
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format/juce_AudioPluginFormat.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format/juce_AudioPluginFormatManager.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format/juce_AudioPluginFormatManager.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lilv/lilv/lilv.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lilv/lilv/lilvmm.hpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lilv/src/zix/common.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lilv/src/zix/tree.c" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lilv/src/zix/tree.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lilv/src/collections.c" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lilv/src/filesystem.c" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lilv/src/filesystem.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lilv/src/instance.c" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lilv/src/lib.c" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lilv/src/lilv_internal.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lilv/src/node.c" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lilv/src/plugin.c" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lilv/src/pluginclass.c" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lilv/src/port.c" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lilv/src/query.c" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lilv/src/scalepoint.c" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lilv/src/state.c" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lilv/src/ui.c" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lilv/src/util.c" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lilv/src/world.c" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/atom/atom-test-utils.c" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/atom/atom-test.c" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/atom/atom.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/atom/forge-overflow-test.c" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/atom/forge.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/atom/util.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/buf-size/buf-size.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/core/attributes.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/core/lv2.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/core/lv2_util.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/data-access/data-access.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/dynmanifest/dynmanifest.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/event/event-helpers.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/event/event.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/instance-access/instance-access.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/log/log.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/log/logger.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/midi/midi.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/morph/morph.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/options/options.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/parameters/parameters.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/patch/patch.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/port-groups/port-groups.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/port-props/port-props.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/presets/presets.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/resize-port/resize-port.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/state/state.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/time/time.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/ui/ui.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/units/units.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/uri-map/uri-map.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/urid/urid.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lv2/lv2/worker/worker.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/serd/serd/serd.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/serd/src/attributes.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/serd/src/base64.c" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/serd/src/base64.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/serd/src/byte_sink.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/serd/src/byte_source.c" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/serd/src/byte_source.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/serd/src/env.c" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/serd/src/n3.c" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/serd/src/node.c" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/serd/src/node.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/serd/src/reader.c" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/serd/src/reader.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/serd/src/serd_config.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/serd/src/serd_internal.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/serd/src/serdi.c" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/serd/src/stack.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/serd/src/string.c" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/serd/src/string_utils.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/serd/src/system.c" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/serd/src/system.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/serd/src/uri.c" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/serd/src/uri_utils.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/serd/src/writer.c" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/sord/sord/sord.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/sord/sord/sordmm.hpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/sord/src/zix/btree.c" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/sord/src/zix/btree.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/sord/src/zix/common.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/sord/src/zix/digest.c" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/sord/src/zix/digest.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/sord/src/zix/hash.c" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/sord/src/zix/hash.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/sord/src/sord.c" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/sord/src/sord_config.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/sord/src/sord_internal.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/sord/src/sord_test.c" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/sord/src/sord_validate.c" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/sord/src/sordi.c" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/sord/src/sordmm_test.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/sord/src/syntax.c" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/sratom/sratom/sratom.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/sratom/src/sratom.c" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/juce_lv2_config.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/lilv_config.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/README.md" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/serd_config.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/LV2_SDK/sord_config.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/pslextensions/ipslcontextinfo.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/pslextensions/ipsleditcontroller.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/pslextensions/ipslgainreduction.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/pslextensions/ipslhostcommands.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/pslextensions/ipslviewembedding.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/pslextensions/ipslviewscaling.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/pslextensions/pslauextensions.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/pslextensions/pslvst2extensions.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/VST3_SDK/base/source/baseiids.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/VST3_SDK/base/source/classfactoryhelpers.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/VST3_SDK/base/source/fbuffer.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
@@ -2224,16 +2493,27 @@ set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_process
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/VST3_SDK/JUCE_README.md" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/VST3_SDK/LICENSE.txt" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/VST3_SDK/README.md" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/juce_ARACommon.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/juce_ARACommon.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/juce_ARAHosting.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/juce_ARAHosting.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/juce_AU_Shared.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/juce_AudioUnitPluginFormat.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/juce_AudioUnitPluginFormat.mm" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/juce_LADSPAPluginFormat.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/juce_LADSPAPluginFormat.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/juce_LegacyAudioParameter.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/juce_LV2Common.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/juce_LV2PluginFormat.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/juce_LV2PluginFormat.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/juce_LV2PluginFormat_test.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/juce_LV2Resources.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/juce_LV2SupportLibs.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/juce_VST3Common.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/juce_VST3Headers.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/juce_VST3PluginFormat.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/juce_VST3PluginFormat.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/juce_VST3PluginFormat_test.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/juce_VSTCommon.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/juce_VSTMidiEventList.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/format_types/juce_VSTPluginFormat.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
@@ -2262,6 +2542,17 @@ set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_process
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/scanning/juce_PluginDirectoryScanner.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/scanning/juce_PluginListComponent.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/scanning/juce_PluginListComponent.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/utilities/ARA/juce_ARA_utils.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/utilities/ARA/juce_ARA_utils.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/utilities/ARA/juce_ARADocumentController.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/utilities/ARA/juce_ARADocumentController.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/utilities/ARA/juce_ARADocumentControllerCommon.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/utilities/ARA/juce_ARAModelObjects.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/utilities/ARA/juce_ARAModelObjects.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/utilities/ARA/juce_ARAPlugInInstanceRoles.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/utilities/ARA/juce_ARAPlugInInstanceRoles.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/utilities/ARA/juce_AudioProcessor_ARAExtensions.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/utilities/ARA/juce_AudioProcessor_ARAExtensions.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/utilities/juce_AudioParameterBool.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/utilities/juce_AudioParameterBool.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/utilities/juce_AudioParameterChoice.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
@@ -2275,6 +2566,9 @@ set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_process
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/utilities/juce_AudioProcessorValueTreeState.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/utilities/juce_AudioProcessorValueTreeState.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/utilities/juce_ExtensionsVisitor.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/utilities/juce_FlagCache.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/utilities/juce_NativeScaleFactorNotifier.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/utilities/juce_NativeScaleFactorNotifier.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/utilities/juce_ParameterAttachments.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/utilities/juce_ParameterAttachments.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/utilities/juce_PluginHostType.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
@@ -2285,6 +2579,8 @@ set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_process
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/utilities/juce_VSTCallbackHandler.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/juce_audio_processors.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/juce_audio_processors.mm" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/juce_audio_processors_ara.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/juce_audio_processors_lv2_libs.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_processors/juce_audio_processors.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_utils/audio_cd/juce_AudioCDBurner.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_audio_utils/audio_cd/juce_AudioCDReader.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
@@ -2336,9 +2632,12 @@ set_source_files_properties("../../../JuceLibraryCode/modules/juce_core/containe
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_core/containers/juce_HashMap.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_core/containers/juce_HashMap_test.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_core/containers/juce_LinkedListPointer.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_core/containers/juce_ListenerList.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_core/containers/juce_ListenerList.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_core/containers/juce_NamedValueSet.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_core/containers/juce_NamedValueSet.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_core/containers/juce_Optional.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_core/containers/juce_Optional_test.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_core/containers/juce_OwnedArray.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_core/containers/juce_OwnedArray.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_core/containers/juce_PropertySet.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
@@ -2352,6 +2651,9 @@ set_source_files_properties("../../../JuceLibraryCode/modules/juce_core/containe
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_core/containers/juce_SparseSet.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_core/containers/juce_Variant.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_core/containers/juce_Variant.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_core/files/juce_AndroidDocument.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_core/files/juce_common_MimeTypes.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_core/files/juce_common_MimeTypes.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_core/files/juce_DirectoryIterator.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_core/files/juce_DirectoryIterator.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_core/files/juce_File.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
@@ -2418,6 +2720,7 @@ set_source_files_properties("../../../JuceLibraryCode/modules/juce_core/misc/juc
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_core/misc/juce_Uuid.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_core/misc/juce_WindowsRegistry.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_core/native/java/README.txt" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_core/native/juce_android_AndroidDocument.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_core/native/juce_android_Files.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_core/native/juce_android_JNIHelpers.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_core/native/juce_android_JNIHelpers.h" PROPERTIES HEADER_FILE_ONLY TRUE)
@@ -2714,6 +3017,7 @@ set_source_files_properties("../../../JuceLibraryCode/modules/juce_events/messag
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_events/native/juce_android_Messaging.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_events/native/juce_ios_MessageManager.mm" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_events/native/juce_linux_EventLoop.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_events/native/juce_linux_EventLoopInternal.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_events/native/juce_linux_Messaging.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_events/native/juce_mac_MessageManager.mm" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_events/native/juce_osx_MessageQueue.h" PROPERTIES HEADER_FILE_ONLY TRUE)
@@ -3096,6 +3400,7 @@ set_source_files_properties("../../../JuceLibraryCode/modules/juce_gui_basics/mo
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_gui_basics/mouse/juce_TextDragAndDropTarget.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_gui_basics/mouse/juce_TooltipClient.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_gui_basics/native/accessibility/juce_AccessibilityTextHelpers.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_gui_basics/native/accessibility/juce_AccessibilityTextHelpers_test.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_gui_basics/native/accessibility/juce_android_Accessibility.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_gui_basics/native/accessibility/juce_ios_Accessibility.mm" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_gui_basics/native/accessibility/juce_mac_Accessibility.mm" PROPERTIES HEADER_FILE_ONLY TRUE)
@@ -3134,6 +3439,7 @@ set_source_files_properties("../../../JuceLibraryCode/modules/juce_gui_basics/na
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_gui_basics/native/juce_ios_Windowing.mm" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_gui_basics/native/juce_linux_FileChooser.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_gui_basics/native/juce_linux_Windowing.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../JuceLibraryCode/modules/juce_gui_basics/native/juce_mac_CGMetalLayerRenderer.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_gui_basics/native/juce_mac_FileChooser.mm" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_gui_basics/native/juce_mac_MainMenu.mm" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/modules/juce_gui_basics/native/juce_mac_MouseCursor.mm" PROPERTIES HEADER_FILE_ONLY TRUE)
