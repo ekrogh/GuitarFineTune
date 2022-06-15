@@ -477,10 +477,19 @@ void AudioRecorderControl::stopRecording()
 		(
 			"Save Audio File as..."
 			,
-			initialFilAndDirectory
+			fileToSave
 			,
 			"*.wav"
-		);
+			);
+	//myChooser =
+	//	std::make_unique <FileChooser>
+	//	(
+	//		"Save Audio File as..."
+	//		,
+	//		initialFilAndDirectory
+	//		,
+	//		"*.wav"
+	//	);
 
 
 	myChooser->launchAsync
@@ -493,6 +502,7 @@ void AudioRecorderControl::stopRecording()
 		,
 		[fileToSave](const FileChooser& chooser)
 		{
+			return;
 			auto rslt = chooser.getResult();
 			if (rslt == File{})
 				return;
