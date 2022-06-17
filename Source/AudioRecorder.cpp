@@ -363,15 +363,14 @@ void AudioRecorderControl::setAutoGainOn(bool setAutoGainOn)
 
 void AudioRecorderControl::startRecording()
 {
-
 	if
-	(
-		!(
-            RuntimePermissions::isGranted(RuntimePermissions::writeExternalStorage)
-			&&
-            RuntimePermissions::isGranted(RuntimePermissions::readExternalStorage)
-		)
-	)
+		(
+			!(
+				RuntimePermissions::isGranted(RuntimePermissions::writeExternalStorage)
+				&&
+				RuntimePermissions::isGranted(RuntimePermissions::readExternalStorage)
+				)
+			)
 	{
 		SafePointer<AudioRecorderControl> safeThis(this);
 
@@ -440,10 +439,62 @@ void AudioRecorderControl::stopRecording()
 
 	juce::File initialFilAndDirectory;
 
+
+
+#if (JUCE_ANDROID)
+	myChooser =
+		std::make_unique <FileChooser>
+		(
+			"Save Audio File as..."
+			,
+			fileToSave
+			,
+			"*.wav"
+		);
+
+	myChooser->launchAsync
+	(
+		FileBrowserComponent::saveMode
+		|
+		FileBrowserComponent::canSelectFiles
+		|
+		FileBrowserComponent::warnAboutOverwriting
+		,
+		[fileToSave](const FileChooser& chooser)
+		{
+			auto result = chooser.getURLResult();
+			auto name = result.isEmpty() ? String()
+				: (result.isLocalFile() ? result.getLocalFile().getFullPathName()
+					: result.toString(true));
+
+			// Android and iOS file choosers will create placeholder files for chosen
+			// paths, so we may as well write into those files.
+			if (!result.isEmpty())
+			{
+				std::unique_ptr<InputStream>  wi(fileToSave.createInputStream());
+				std::unique_ptr<OutputStream> wo(result.createOutputStream());
+
+				if (wi.get() != nullptr && wo.get() != nullptr)
+				{
+					auto numWritten = wo->writeFromInputStream(*wi, -1);
+					jassertquiet(numWritten > 0);
+					wo->flush();
+				}
+			}
+
+//			AlertWindow::showAsync(MessageBoxOptions()
+//				.withIconType(MessageBoxIconType::InfoIcon)
+//				.withTitle("File Chooser...")
+//				.withMessage("You picked: " + name)
+//				.withButton("OK"),
+//				nullptr);
+		}
+	);
+#else
 #if (JUCE_LINUX)
 
 	juce::String snapHome(std::getenv("SNAP_REAL_HOME"));
-    snapHome += '/';
+	snapHome += '/';
 
 	if (snapHome != "")
 	{
@@ -454,35 +505,33 @@ void AudioRecorderControl::stopRecording()
 	{
 		initialFilAndDirectory =
 			File::getSpecialLocation
-				(
-					File::userMusicDirectory
-				).getChildFile
-					(
-						fileToSave.getFileName()
-					);
+			(
+				File::userMusicDirectory
+			).getChildFile
+			(
+				fileToSave.getFileName()
+			);
 	}
 #else
 	initialFilAndDirectory =
 		File::getSpecialLocation
 		(
-			File::userHomeDirectory
-			//File::userMusicDirectory
+			File::userMusicDirectory
 		).getChildFile
 		(
 			fileToSave.getFileName()
 		);
-#endif
+#endif // #if (JUCE_LINUX)
 
 	myChooser =
-		std::make_unique <FileChooser>
-		(
-			"Save Audio File as..."
-			,
-			initialFilAndDirectory
-			,
-			"*.wav"
-		);
-
+	std::make_unique <FileChooser>
+	(
+		"Save Audio File as..."
+		,
+		initialFilAndDirectory
+		,
+		"*.wav"
+	);
 
 	myChooser->launchAsync
 	(
@@ -503,7 +552,8 @@ void AudioRecorderControl::stopRecording()
 			fileToSave.moveFileTo(soundFile);
 		}
 	);
-#endif
+#endif // #if (JUCE_ANDROID)
+#endif // #if (JUCE_IOS)
 }
 
 

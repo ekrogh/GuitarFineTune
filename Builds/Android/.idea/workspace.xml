@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="4436ea39-b4fe-4229-ae7f-abc7b6921db7" name="Changes" comment="Android ver running.">
+      <change beforePath="$PROJECT_DIR$/.gradle/7.2/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.2/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.2/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.2/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.2/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.2/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.3.3/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.3.3/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/app/GuitarFineTune.app.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/GuitarFineTune.app.main.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/u2k606gl/x86/.cmake/api/v1/reply/cache-v2-8231d5842c656e3a6c69.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/u2k606gl/x86/.cmake/api/v1/reply/cmakeFiles-v1-1c449d12602a5d781f9a.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/u2k606gl/x86/.cmake/api/v1/reply/codemodel-v2-419ff680991ef3d1f94b.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/u2k606gl/x86/.cmake/api/v1/reply/index-2022-06-15T22-23-59-0522.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/u2k606gl/x86/.cmake/api/v1/reply/target-juce_jni-Debug-924277356f6b1357c921.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/u2k606gl/x86/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/.cxx/Debug/u2k606gl/x86/CMakeCache.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/u2k606gl/x86/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/app/.cxx/Debug/u2k606gl/x86/build.ninja" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/RelWithDebInfo/3b1c4v4r/x86/.cmake/api/v1/reply/cache-v2-e4acb8e286234c1eab96.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/RelWithDebInfo/3b1c4v4r/x86/.cmake/api/v1/reply/cmakeFiles-v1-554802e77650176542e9.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/RelWithDebInfo/3b1c4v4r/x86/.cmake/api/v1/reply/codemodel-v2-ffb40d3f3708d8056b14.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/RelWithDebInfo/3b1c4v4r/x86/.cmake/api/v1/reply/index-2022-06-15T22-24-40-0039.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/RelWithDebInfo/3b1c4v4r/x86/.cmake/api/v1/reply/target-juce_jni-RelWithDebInfo-f705bccad374f8fd6805.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/RelWithDebInfo/3b1c4v4r/x86/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/app/.cxx/RelWithDebInfo/3b1c4v4r/x86/.ninja_deps" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/RelWithDebInfo/3b1c4v4r/x86/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/app/.cxx/RelWithDebInfo/3b1c4v4r/x86/.ninja_log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/RelWithDebInfo/3b1c4v4r/x86/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/.cxx/RelWithDebInfo/3b1c4v4r/x86/CMakeCache.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/RelWithDebInfo/3b1c4v4r/x86/android_gradle_build_stdout_juce_jni_x86.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/.cxx/RelWithDebInfo/3b1c4v4r/x86/android_gradle_build_stdout_juce_jni_x86.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/RelWithDebInfo/3b1c4v4r/x86/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/app/.cxx/RelWithDebInfo/3b1c4v4r/x86/build.ninja" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../VisualStudio2022/x64/Release/App/GuitarFi.5F11C54A.tlog/CL.10220.write.1.tlog" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../VisualStudio2022/x64/Release/App/GuitarFi.5F11C54A.tlog/CL.command.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/../VisualStudio2022/x64/Release/App/GuitarFi.5F11C54A.tlog/CL.command.1.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../VisualStudio2022/x64/Release/App/GuitarFi.5F11C54A.tlog/CL.read.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/../VisualStudio2022/x64/Release/App/GuitarFi.5F11C54A.tlog/CL.read.1.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../VisualStudio2022/x64/Release/App/GuitarFi.5F11C54A.tlog/GuitarFineTune_App.write.1u.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/../VisualStudio2022/x64/Release/App/GuitarFi.5F11C54A.tlog/GuitarFineTune_App.write.1u.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../VisualStudio2022/x64/Release/App/GuitarFineTune.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../VisualStudio2022/x64/Release/App/GuitarFineTune.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../VisualStudio2022/x64/Release/App/GuitarFineTune.iobj" beforeDir="false" afterPath="$PROJECT_DIR$/../VisualStudio2022/x64/Release/App/GuitarFineTune.iobj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../VisualStudio2022/x64/Release/App/GuitarFineTune.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../VisualStudio2022/x64/Release/App/GuitarFineTune.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../VisualStudio2022/x64/Release/App/include_juce_audio_utils.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../VisualStudio2022/x64/Release/App/include_juce_audio_utils.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/bin/x64/Debug/GuitarFineTune_App/GuitarFineTune.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/bin/x64/Debug/GuitarFineTune_App/GuitarFineTune.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/bin/x64/Debug/GuitarFineTune_App/GuitarFineTune.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/bin/x64/Debug/GuitarFineTune_App/GuitarFineTune.pdb" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[D:\Users\eigil\.android\avd\pixel_3_xl_r_11_0_-_api_30.avd]" />
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="2AdFr4qywhKmWyVgaMujwhXueAw" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="cidr.known.project.marker" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Android_Special/keystore.jks" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.17" />
+    <property name="project.structure.side.proportion" value="0.10384216" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.CommitDialog" />
+  </component>
+  <component name="PsdUISettings">
+    <option name="MODULE_TAB" value="Signing Configs" />
+    <option name="LAST_EDITED_SIGNING_CONFIG" value="juceSigning" />
+    <option name="LAST_EDITED_BUILD_TYPE" value="release" />
+  </component>
+  <component name="RunManager">
+    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
+      <module name="GuitarFineTune.app" />
+      <option name="DEPLOY" value="true" />
+      <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
+      <option name="DEPLOY_AS_INSTANT" value="false" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="ALL_USERS" value="false" />
+      <option name="ALWAYS_INSTALL_WITH_PM" value="false" />
+      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="INSPECTION_WITHOUT_ACTIVITY_RESTART" value="false" />
+      <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Hybrid>
+      <Java />
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Java/Kotlin Method Sample (legacy)" />
+        <option name="STARTUP_NATIVE_MEMORY_PROFILING_ENABLED" value="false" />
+        <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <option name="SEARCH_ACTIVITY_IN_GLOBAL_SCOPE" value="false" />
+      <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4436ea39-b4fe-4229-ae7f-abc7b6921db7" name="Changes" comment="" />
+      <created>1655331754059</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1655331754059</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Android ver running.">
+      <created>1655332662085</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1655332662085</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Android ver running." />
+    <option name="LAST_COMMIT_MESSAGE" value="Android ver running." />
+  </component>
+</project>
