@@ -2,15 +2,15 @@
   ==============================================================================
 
    This file is part of the JUCE library.
-   Copyright (c) 2022 - Raw Material Software Limited
+   Copyright (c) 2020 - Raw Material Software Limited
 
    JUCE is an open source library subject to commercial or open-source
    licensing.
 
-   By using JUCE, you agree to the terms of both the JUCE 7 End-User License
-   Agreement and JUCE Privacy Policy.
+   By using JUCE, you agree to the terms of both the JUCE 6 End-User License
+   Agreement and JUCE Privacy Policy (both effective as of the 16th June 2020).
 
-   End User License Agreement: www.juce.com/juce-7-licence
+   End User License Agreement: www.juce.com/juce-6-licence
    Privacy Policy: www.juce.com/juce-privacy-policy
 
    Or: You may also use this code under the terms of the GPL v3 (see
@@ -63,8 +63,6 @@ bool BufferingAudioReader::readSamples (int** destSamples, int numDestChannels, 
     const ScopedLock sl (lock);
     nextReadPosition = startSampleInFile;
 
-    bool allSamplesRead = true;
-
     while (numSamples > 0)
     {
         if (auto block = getBlockContaining (startSampleInFile))
@@ -88,8 +86,6 @@ bool BufferingAudioReader::readSamples (int** destSamples, int numDestChannels, 
             startOffsetInDestBuffer += numToDo;
             startSampleInFile += numToDo;
             numSamples -= numToDo;
-
-            allSamplesRead = allSamplesRead && block->allSamplesRead;
         }
         else
         {
@@ -99,7 +95,6 @@ bool BufferingAudioReader::readSamples (int** destSamples, int numDestChannels, 
                     if (auto* dest = (float*) destSamples[j])
                         FloatVectorOperations::clear (dest + startOffsetInDestBuffer, numSamples);
 
-                allSamplesRead = false;
                 break;
             }
             else
@@ -110,14 +105,14 @@ bool BufferingAudioReader::readSamples (int** destSamples, int numDestChannels, 
         }
     }
 
-    return allSamplesRead;
+    return true;
 }
 
 BufferingAudioReader::BufferedBlock::BufferedBlock (AudioFormatReader& reader, int64 pos, int numSamples)
     : range (pos, pos + numSamples),
-      buffer ((int) reader.numChannels, numSamples),
-      allSamplesRead (reader.read (&buffer, 0, numSamples, pos, true, true))
+      buffer ((int) reader.numChannels, numSamples)
 {
+    reader.read (&buffer, 0, numSamples, pos, true, true);
 }
 
 BufferingAudioReader::BufferedBlock* BufferingAudioReader::getBlockContaining (int64 pos) const noexcept

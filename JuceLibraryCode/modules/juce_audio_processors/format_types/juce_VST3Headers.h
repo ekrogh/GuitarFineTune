@@ -2,15 +2,15 @@
   ==============================================================================
 
    This file is part of the JUCE library.
-   Copyright (c) 2022 - Raw Material Software Limited
+   Copyright (c) 2020 - Raw Material Software Limited
 
    JUCE is an open source library subject to commercial or open-source
    licensing.
 
-   By using JUCE, you agree to the terms of both the JUCE 7 End-User License
-   Agreement and JUCE Privacy Policy.
+   By using JUCE, you agree to the terms of both the JUCE 6 End-User License
+   Agreement and JUCE Privacy Policy (both effective as of the 16th June 2020).
 
-   End User License Agreement: www.juce.com/juce-7-licence
+   End User License Agreement: www.juce.com/juce-6-licence
    Privacy Policy: www.juce.com/juce-privacy-policy
 
    Or: You may also use this code under the terms of the GPL v3 (see
@@ -23,8 +23,6 @@
   ==============================================================================
 */
 
-#pragma once
-
 #if JUCE_BSD && ! JUCE_CUSTOM_VST3_SDK
  #error To build JUCE VST3 plug-ins on BSD you must use an external BSD-compatible VST3 SDK with JUCE_CUSTOM_VST3_SDK=1
 #endif
@@ -32,8 +30,7 @@
 // Wow, those Steinberg guys really don't worry too much about compiler warnings.
 JUCE_BEGIN_IGNORE_WARNINGS_LEVEL_MSVC (0, 4505 4702 6011 6031 6221 6386 6387 6330 6001 28199)
 
-JUCE_BEGIN_IGNORE_WARNINGS_GCC_LIKE ("-Wdeprecated-copy-dtor",
-                                     "-Wnon-virtual-dtor",
+JUCE_BEGIN_IGNORE_WARNINGS_GCC_LIKE ("-Wnon-virtual-dtor",
                                      "-Wreorder",
                                      "-Wunsequenced",
                                      "-Wint-to-pointer-cast",
@@ -66,8 +63,7 @@ JUCE_BEGIN_IGNORE_WARNINGS_GCC_LIKE ("-Wdeprecated-copy-dtor",
                                      "-Wmissing-prototypes",
                                      "-Wtype-limits",
                                      "-Wcpp",
-                                     "-W#warnings",
-                                     "-Wmaybe-uninitialized")
+                                     "-W#warnings")
 
 #undef DEVELOPMENT
 #define DEVELOPMENT 0  // This avoids a Clang warning in Steinberg code about unused values
@@ -107,8 +103,6 @@ JUCE_BEGIN_IGNORE_WARNINGS_GCC_LIKE ("-Wdeprecated-copy-dtor",
  #include <public.sdk/source/common/memorystream.h>
  #include <public.sdk/source/vst/vsteditcontroller.h>
  #include <public.sdk/source/vst/vstpresetfile.h>
-
- #include "pslextensions/ipslviewembedding.h"
 #else
  // needed for VST_VERSION
  #include <pluginterfaces/vst/vsttypes.h>
@@ -159,8 +153,6 @@ JUCE_BEGIN_IGNORE_WARNINGS_GCC_LIKE ("-Wdeprecated-copy-dtor",
   #include <public.sdk/source/vst/hosting/pluginterfacesupport.cpp>
  #endif
 
- #include "pslextensions/ipslviewembedding.h"
-
 //==============================================================================
 namespace Steinberg
 {
@@ -183,12 +175,6 @@ namespace Steinberg
     DEF_CLASS_IID (Linux::IEventHandler)
    #endif
 }
-
-namespace Presonus
-{
-    DEF_CLASS_IID (IPlugInViewEmbedding)
-}
-
 #endif // JUCE_VST3HEADERS_INCLUDE_HEADERS_ONLY
 
 JUCE_END_IGNORE_WARNINGS_MSVC
