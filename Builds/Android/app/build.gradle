@@ -8,8 +8,14 @@ android {
         }
     }
     signingConfigs {
+        debug {
+            storeFile file('D:\\Users\\eigil\\projects\\juceProjs\\GuitarFineTune\\Android_Special\\keystore.jks')
+            storePassword '6taura'
+            keyAlias 'upload'
+            keyPassword '6taura'
+        }
         juceSigning {
-            storeFile     file("..${File.separator}..${File.separator}..${File.separator}Android_Special${File.separator}keystore.jks")
+            storeFile file('D:\\Users\\eigil\\projects\\juceProjs\\GuitarFineTune\\Android_Special\\keystore.jks')
             storePassword "6taura"
             keyAlias      "upload"
             keyPassword   "6taura"
@@ -29,7 +35,10 @@ android {
     }
 
     buildTypes {
-         debug {
+         release {
+             signingConfig signingConfigs.juceSigning
+         }
+        debug {
              initWith debug
              debuggable    true
              jniDebuggable true

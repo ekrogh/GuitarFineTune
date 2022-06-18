@@ -443,28 +443,29 @@ void guitarFineTuneFirstClass::currentTabChanged(int newCurrentTabIndex, const S
 
 #if ( JUCE_ANDROID || JUCE_IOS )
 		curCompntBnds = Desktop::getInstance().getDisplays().getPrimaryDisplay()->userArea;
-		BorderSize<int>  nonSafeArea = Desktop::getInstance().getDisplays().getPrimaryDisplay()->safeAreaInsets;
-		nonSafeArea.subtractFrom(curCompntBnds); // Remove non Safe area
 
-#if ( JUCE_ANDROID )
-		if
-		(
-			(curCompntBnds.getWidth() >= curCompntBnds.getHeight())  // Landscape
-			&&
-			(newCurrentTabIndex == tabTuneWindow) // tune Window
-		)
-		{
-			curCompntBnds.setBounds
-			(
-				(double)(curCompntBnds.getX())
-				, (double)(curCompntBnds.getY())
-				, (double)(curCompntBnds.getWidth()) - (double)androidTuneTabSafeMargin
-				, (double)(curCompntBnds.getHeight())
-			);
-		}
-#endif // #if ( JUCE_ANDROID )
+
+//#if ( JUCE_ANDROID )
+//		if
+//		(
+//			(curCompntBnds.getWidth() >= curCompntBnds.getHeight())  // Landscape
+//			&&
+//			(newCurrentTabIndex == tabTuneWindow) // tune Window
+//		)
+//		{
+//			curCompntBnds.setBounds
+//			(
+//				(double)(curCompntBnds.getX())
+//				, (double)(curCompntBnds.getY())
+//				, (double)(curCompntBnds.getWidth()) - (double)androidTuneTabSafeMargin
+//				, (double)(curCompntBnds.getHeight())
+//			);
+//		}
+//#endif // #if ( JUCE_ANDROID )
 #if ( JUCE_IOS )
 
+		BorderSize<int>  nonSafeArea = Desktop::getInstance().getDisplays().getPrimaryDisplay()->safeAreaInsets;
+		nonSafeArea.subtractFrom(curCompntBnds); // Remove non Safe area
 
 		if (thisiPhoneiPadNeedsSafeArea())
 		{
