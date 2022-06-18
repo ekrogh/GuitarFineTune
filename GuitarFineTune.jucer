@@ -148,13 +148,12 @@
     <ANDROIDSTUDIO targetFolder="Builds/Android" androidSDKPath="${user.home}/AppData/Local/Android/Sdk"
                    androidNDKPath="${user.home}/AppData/Local/Android/Sdk/ndk-bundle"
                    microphonePermissionNeeded="1" cppLanguageStandard="-std=c++14"
-                   androidVersionCode="61" androidKeyStore="../../../Android_Special/keystore.jks"
+                   androidVersionCode="62" androidKeyStore="../../../Android_Special/keystore.jks"
                    androidKeyStorePass="6taura" androidKeyAlias="upload" androidKeyAliasPass="6taura"
                    buildToolsVersion="30" androidPushNotifications="0" androidEnableContentSharing="1"
                    androidTargetSDK="30" gradleWrapperVersion="7.2.1" gradleVersion="7.3.3"
                    androidInternetNeeded="0" smallIcon="RB4slw" bigIcon="DzMVX4"
-                   extraDefs="ANDROID_VERSION_CODE=61" androidExternalWriteNeeded="1"
-                   androidCustomApplicationClass="dk.eksit.guitarfinetunep">
+                   extraDefs="ANDROID_VERSION_CODE=62" androidExternalWriteNeeded="1">
       <CONFIGURATIONS>
         <CONFIGURATION name="Release" isDebug="0" targetName="GuitarFineTune" optimisation="3"/>
         <CONFIGURATION name="Debug" isDebug="1" targetName="GuitarFineTune" androidArchitectures="armeabi-v7a arm64-v8a x86 x86_64"/>
