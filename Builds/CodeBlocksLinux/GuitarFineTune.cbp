@@ -19,16 +19,16 @@
           <Add option="-DDEBUG=&quot;1&quot;"/>
           <Add option="-D_DEBUG=&quot;1&quot;"/>
           <Add option="-DJUCER_CODEBLOCKS_LINUX_191E0897=&quot;1&quot;"/>
-          <Add option="-DJUCE_APP_VERSION=&quot;9.5.1&quot;"/>
-          <Add option="-DJUCE_APP_VERSION_HEX=&quot;0x90501&quot;"/>
+          <Add option="-DJUCE_APP_VERSION=&quot;9.6.2&quot;"/>
+          <Add option="-DJUCE_APP_VERSION_HEX=&quot;0x90602&quot;"/>
           <Add option="-DJucePlugin_Build_VST=&quot;0&quot;"/>
           <Add option="-DJucePlugin_Build_VST3=&quot;0&quot;"/>
           <Add option="-DJucePlugin_Build_AU=&quot;0&quot;"/>
           <Add option="-DJucePlugin_Build_AUv3=&quot;0&quot;"/>
+          <Add option="-DJucePlugin_Build_RTAS=&quot;0&quot;"/>
           <Add option="-DJucePlugin_Build_AAX=&quot;0&quot;"/>
           <Add option="-DJucePlugin_Build_Standalone=&quot;0&quot;"/>
           <Add option="-DJucePlugin_Build_Unity=&quot;0&quot;"/>
-          <Add option="-DJucePlugin_Build_LV2=&quot;0&quot;"/>
           <Add option="-m64"/>
           <Add option="-O0"/>
           <Add option="-std=c++17"/>
@@ -62,16 +62,16 @@
           <Add option="-DLINUX=&quot;1&quot;"/>
           <Add option="-DNDEBUG=&quot;1&quot;"/>
           <Add option="-DJUCER_CODEBLOCKS_LINUX_191E0897=&quot;1&quot;"/>
-          <Add option="-DJUCE_APP_VERSION=&quot;9.5.1&quot;"/>
-          <Add option="-DJUCE_APP_VERSION_HEX=&quot;0x90501&quot;"/>
+          <Add option="-DJUCE_APP_VERSION=&quot;9.6.2&quot;"/>
+          <Add option="-DJUCE_APP_VERSION_HEX=&quot;0x90602&quot;"/>
           <Add option="-DJucePlugin_Build_VST=&quot;0&quot;"/>
           <Add option="-DJucePlugin_Build_VST3=&quot;0&quot;"/>
           <Add option="-DJucePlugin_Build_AU=&quot;0&quot;"/>
           <Add option="-DJucePlugin_Build_AUv3=&quot;0&quot;"/>
+          <Add option="-DJucePlugin_Build_RTAS=&quot;0&quot;"/>
           <Add option="-DJucePlugin_Build_AAX=&quot;0&quot;"/>
           <Add option="-DJucePlugin_Build_Standalone=&quot;0&quot;"/>
           <Add option="-DJucePlugin_Build_Unity=&quot;0&quot;"/>
-          <Add option="-DJucePlugin_Build_LV2=&quot;0&quot;"/>
           <Add option="-m64"/>
           <Add option="-O3"/>
           <Add option="-std=c++17"/>
