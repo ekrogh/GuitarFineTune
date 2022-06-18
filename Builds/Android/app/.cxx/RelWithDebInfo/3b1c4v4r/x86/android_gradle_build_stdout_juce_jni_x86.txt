@@ -1,0 +1,4 @@
+ninja: Entering directory `D:\Users\eigil\projects\juceProjs\GuitarFineTune\Builds\Android\app\.cxx\RelWithDebInfo\3b1c4v4r\x86'
+[1/3] Building CXX object CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/Source/guitarFineTuneFirstClass.cpp.o
+[2/3] Building CXX object CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/Source/tuneComponent.cpp.o
+[3/3] Linking CXX shared library ..\..\..\..\build\intermediates\cxx\RelWithDebInfo\3b1c4v4r\obj\x86\libjuce_jni.so

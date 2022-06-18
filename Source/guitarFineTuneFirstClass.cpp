@@ -445,6 +445,7 @@ void guitarFineTuneFirstClass::currentTabChanged(int newCurrentTabIndex, const S
 		curCompntBnds = Desktop::getInstance().getDisplays().getPrimaryDisplay()->userArea;
 
 
+        // JUCE 7 takes care of safe areas !!!!
 //#if ( JUCE_ANDROID )
 //		if
 //		(

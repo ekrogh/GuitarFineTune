@@ -1409,6 +1409,8 @@ void tuneComponent::resized()
 #if ( JUCE_ANDROID )
 	{
 		Rectangle<int> r = Desktop::getInstance().getDisplays().getPrimaryDisplay()->userArea;
+
+		// JUCE 7 takes care of safe areas !!!!
 //		BorderSize<int>  nonSafeArea = Desktop::getInstance().getDisplays().getPrimaryDisplay()->safeAreaInsets;
 //		nonSafeArea.subtractFrom(r); // Remove non Safe area
 
