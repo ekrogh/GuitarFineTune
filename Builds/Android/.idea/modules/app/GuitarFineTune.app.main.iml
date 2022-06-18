@@ -23,6 +23,7 @@
     <content url="file://$MODULE_DIR$/../../../app/build/generated/aidl_source_output_dir/release_Release/out" />
     <content url="file://$MODULE_DIR$/../../../app/build/generated/ap_generated_sources/release_Release/out">
       <sourceFolder url="file://$MODULE_DIR$/../../../app/build/generated/ap_generated_sources/release_Release/out" isTestSource="false" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/build/generated/ap_generated_sources/release_Release/out" isTestSource="false" generated="true" />
     </content>
     <content url="file://$MODULE_DIR$/../../../app/build/generated/renderscript_source_output_dir/release_Release/out" />
     <content url="file://$MODULE_DIR$/../../../app/build/generated/res/resValues/release_/release">
@@ -30,6 +31,7 @@
     </content>
     <content url="file://$MODULE_DIR$/../../../app/build/generated/res/rs/release_/release" />
     <content url="file://$MODULE_DIR$/../../../app/build/generated/source/buildConfig/release_/release">
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/build/generated/source/buildConfig/release_/release" isTestSource="false" generated="true" />
       <sourceFolder url="file://$MODULE_DIR$/../../../app/build/generated/source/buildConfig/release_/release" isTestSource="false" generated="true" />
     </content>
     <content url="file://$MODULE_DIR$/../../../app/src/main">
@@ -45,9 +47,6 @@
     </content>
     <content url="file://$MODULE_DIR$/../../../../../Source">
       <sourceFolder url="file://$MODULE_DIR$/../../../../../Source" type="native-Source-root" />
-    </content>
-    <content url="file://$MODULE_DIR$/../../../../../iOS_Special">
-      <sourceFolder url="file://$MODULE_DIR$/../../../../../iOS_Special" type="native-Source-root" />
     </content>
     <content url="file://$MODULE_DIR$/../../../../../../JUCE">
       <sourceFolder url="file://$MODULE_DIR$/../../../../../../JUCE/modules/juce_core/native/javacore/app" isTestSource="false" />
