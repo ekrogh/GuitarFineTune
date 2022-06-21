@@ -1,0 +1,13 @@
+/.ninja_deps
+/.ninja_log
+/CMakeCache.txt
+/android_gradle_build.json
+/android_gradle_build_command_juce_jni_x86_64.txt
+/android_gradle_build_stderr_juce_jni_x86_64.txt
+/android_gradle_build_stdout_juce_jni_x86_64.txt
+/build.ninja
+/cmake_install.cmake
+/compile_commands.json
+/compile_commands.json.bin
+/metadata_generation_command.txt
+/prefab_config.json
