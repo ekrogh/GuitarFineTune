@@ -1,6 +1,6 @@
-MainPackage=D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\packProj\packProj\bin\ARM64\Release\Upload\packProj_9.4.7.0_ARM64.appx
-SymbolPackage=D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\packProj\packProj\bin\ARM64\Release\Upload\packProj_9.4.7.0\packProj_9.4.7.0_ARM64.appxsym
-ResourcePack=D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\packProj\packProj\bin\ARM64\Release\Upload\packProj_9.4.7.0_scale-100.appx
-ResourcePack=D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\packProj\packProj\bin\ARM64\Release\Upload\packProj_9.4.7.0_scale-125.appx
-ResourcePack=D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\packProj\packProj\bin\ARM64\Release\Upload\packProj_9.4.7.0_scale-150.appx
-ResourcePack=D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\packProj\packProj\bin\ARM64\Release\Upload\packProj_9.4.7.0_scale-400.appx
+MainPackage=D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\packProj\packProj\bin\ARM64\Release\Upload\packProj_9.6.3.0_ARM64.appx
+SymbolPackage=D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\packProj\packProj\bin\ARM64\Release\Upload\packProj_9.6.3.0\packProj_9.6.3.0_ARM64.appxsym
+ResourcePack=D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\packProj\packProj\bin\ARM64\Release\Upload\packProj_9.6.3.0_scale-100.appx
+ResourcePack=D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\packProj\packProj\bin\ARM64\Release\Upload\packProj_9.6.3.0_scale-125.appx
+ResourcePack=D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\packProj\packProj\bin\ARM64\Release\Upload\packProj_9.6.3.0_scale-150.appx
+ResourcePack=D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\packProj\packProj\bin\ARM64\Release\Upload\packProj_9.6.3.0_scale-400.appx
