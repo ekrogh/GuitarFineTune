@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="cgcxPd" name="GuitarFineTune" projectType="guiapp" version="9.6.3"
+<JUCERPROJECT id="cgcxPd" name="GuitarFineTune" projectType="guiapp" version="9.7.1"
               bundleIdentifier="dk.eksIt.guitarFineTune" includeBinaryInAppConfig="1"
               reportAppUsage="1" companyCopyright="eksit" companyName="eksit"
               companyWebsite="eksit.dk" companyEmail="guitarFineTune@eksit.dk"
