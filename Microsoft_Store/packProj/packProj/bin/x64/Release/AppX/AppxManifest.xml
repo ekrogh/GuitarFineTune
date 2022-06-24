@@ -7,7 +7,7 @@
 
     For more information on package manifest files, see http://go.microsoft.com/fwlink/?LinkID=241727
   -->
-  <Identity Name="57158guitarFineTune.guitarFineTune" Publisher="CN=C2E1AE67-4CF2-4308-9E4D-4A6C24FA7B0B" Version="9.4.7.0" ProcessorArchitecture="x64" />
+  <Identity Name="57158guitarFineTune.guitarFineTune" Publisher="CN=C2E1AE67-4CF2-4308-9E4D-4A6C24FA7B0B" Version="9.7.1.0" ProcessorArchitecture="x64" />
   <Properties>
     <DisplayName>GuitarFineTune</DisplayName>
     <PublisherDisplayName>Eigil Krogh</PublisherDisplayName>
@@ -45,6 +45,6 @@
     <build:Item Name="OperatingSystem" Version="10.0.22621.1 (WinBuild.160101.0800)" />
     <build:Item Name="Microsoft.Build.AppxPackage.dll" Version="17.2.32427.441" />
     <build:Item Name="ProjectGUID" Value="6184b337-e253-4d5d-9c58-e5635e704df1" />
-    <build:Item Name="makepri.exe" Version="10.0.22000.194 (WinBuild.160101.0800)" />
+    <build:Item Name="makepri.exe" Version="10.0.22621.1 (WinBuild.160101.0800)" />
   </build:Metadata>
 </Package>
