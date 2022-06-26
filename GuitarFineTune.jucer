@@ -9,7 +9,7 @@
     <GROUP id="{8DC23B3F-98AC-AB1C-B26A-E693AF2DF0D2}" name="Source">
       <GROUP id="{53F01B09-4F3E-ED79-EE4F-43B6859E3FE0}" name="Resources">
         <FILE id="QjlzsO" name="Launch Screen.storyboard" compile="0" resource="0"
-              file="iOS_Special/Launch Screen.storyboard" xcodeResource="0"/>
+              file="iOS_Special/Launch Screen.storyboard" xcodeResource="1"/>
         <FILE id="RB4slw" name="fineTune_icon_Small.png" compile="0" resource="1"
               file="Source/fineTune_icon_Small.png" xcodeResource="1"/>
         <FILE id="DzMVX4" name="fineTune_icon_Large.png" compile="0" resource="1"

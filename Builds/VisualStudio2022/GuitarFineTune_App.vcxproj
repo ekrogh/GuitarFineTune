@@ -3366,7 +3366,6 @@
     <ClInclude Include="..\..\JuceLibraryCode\JuceHeader.h"/>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\iOS_Special\Launch Screen.storyboard"/>
     <None Include="..\..\JuceLibraryCode\modules\juce_audio_devices\native\oboe\CMakeLists.txt"/>
     <None Include="..\..\JuceLibraryCode\modules\juce_audio_devices\native\oboe\README.md"/>
     <None Include="..\..\JuceLibraryCode\modules\juce_audio_formats\codecs\flac\Flac Licence.txt"/>
