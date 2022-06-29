@@ -352,7 +352,7 @@
   },
   "packageFolders": {
     "D:\\Users\\eigil\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "D:\\Program_Files\\Microsoft_Visual_Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
@@ -364,7 +364,7 @@
       "outputPath": "D:\\Users\\eigil\\projects\\juceProjs\\GuitarFineTune\\Microsoft_Store\\packProj\\packProj\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        "D:\\Program_Files\\Microsoft_Visual_Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
         "D:\\Users\\eigil\\AppData\\Roaming\\NuGet\\NuGet.Config",
