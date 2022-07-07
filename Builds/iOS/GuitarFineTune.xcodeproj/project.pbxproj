@@ -57,7 +57,6 @@
 		E6E556E527BBB88118CF602F /* xmlGuitarFineTuneConfig.cpp */ = {isa = PBXBuildFile; fileRef = DE04C8CA3FF610024C6D4532; };
 		E7E9478A04047D9139E468C4 /* CoreGraphics.framework */ = {isa = PBXBuildFile; fileRef = 33C4473247508C6523457070; };
 		E85CA4C004ECE7697ED5A421 /* tuneComponent.cpp */ = {isa = PBXBuildFile; fileRef = 9A1F14BFB81F76671EE8E50B; };
-		F755A98BC7B98896FD08A74E /* Launch Screen.storyboard */ = {isa = PBXBuildFile; fileRef = 269F56875A5A8A228A302EE2; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -189,7 +188,6 @@
 				08DA5704A75BCDDB331E974D,
 				1AB7862EFDF64106B638A54D,
 				45E0F99B16D18737074F0FCA,
-				269F56875A5A8A228A302EE2,
 				C9F9E8F883FAD092F16C8D8F,
 				6118B4D234223C62182B82BD,
 			);
@@ -282,6 +280,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		81A274A7B7D44B16EEDA1BE6 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				269F56875A5A8A228A302EE2,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		9E39F32C1BF5217D902DEEE5 /* GuitarFineTune */ = {
 			isa = PBXGroup;
 			children = (
@@ -293,6 +299,7 @@
 		C7DA57C6F0483BBE545059A4 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				81A274A7B7D44B16EEDA1BE6,
 				8A01971D90B2D6D952341A1A,
 				88B8B6386C47D16D91AFC3CC,
 				8E089090ECC4288D875C6231,
@@ -420,7 +427,6 @@
 				1DC0D160E6DA83C30C34ABEC,
 				BA17570CEAFAB68B6386A524,
 				C6A374FEE166D72577DBD712,
-				F755A98BC7B98896FD08A74E,
 				70AB18BB3265004C3D061BA9,
 				9B311FAFFA1679033D1F165A,
 			);

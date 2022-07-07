@@ -30,6 +30,7 @@ add_library( ${BINARY_NAME}
 
     SHARED
 
+    "../../../iOS_Special/Launch Screen.storyboard"
     "../../../Source/AudioRecorder.cpp"
     "../../../Source/AudioRecorder.h"
     "../../../Source/audioRecorderThread.cpp"
@@ -1826,6 +1827,7 @@ add_library( ${BINARY_NAME}
 )
 
 set_source_files_properties(
+    "../../../iOS_Special/Launch Screen.storyboard"
     "../../../Source/AudioRecorder.h"
     "../../../Source/audioRecorderThread.h"
     "../../../Source/helpPage.h"

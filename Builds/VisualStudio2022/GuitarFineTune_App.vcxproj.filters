@@ -2,6 +2,9 @@
 
 <Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <Filter Include="GuitarFineTune\Source\Resources">
+      <UniqueIdentifier>{E1F152D7-96A2-012A-B33E-6AC0B46911E7}</UniqueIdentifier>
+    </Filter>
     <Filter Include="GuitarFineTune\Source">
       <UniqueIdentifier>{23940B52-2816-484D-3CB3-DBCCF81C5F8D}</UniqueIdentifier>
     </Filter>
@@ -5921,6 +5924,9 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\iOS_Special\Launch Screen.storyboard">
+      <Filter>GuitarFineTune\Source\Resources</Filter>
+    </None>
     <None Include="..\..\JuceLibraryCode\modules\juce_audio_devices\native\oboe\CMakeLists.txt">
       <Filter>JUCE Modules\juce_audio_devices\native\oboe</Filter>
     </None>
