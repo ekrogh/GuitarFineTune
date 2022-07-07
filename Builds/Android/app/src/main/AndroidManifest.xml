@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="64" android:versionName="9.8.2"
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="65" android:versionName="9.9.3"
           package="dk.eksit.guitarfinetune">
   <supports-screens android:smallScreens="true" android:normalScreens="true" android:largeScreens="true" android:anyDensity="true"
                     android:xlargeScreens="true"/>
