@@ -40,7 +40,7 @@ eksVariableToneCtrl::eksVariableToneCtrl (        std::shared_ptr<xmlGuitarFineT
     //[/Constructor_pre]
 
     FrequenceSlider.reset (new juce::Slider ("FrequenceSlider"));
-    //addAndMakeVisible (FrequenceSlider.get());
+    addAndMakeVisible (FrequenceSlider.get());
     FrequenceSlider->setRange (0, 20000, 0);
     FrequenceSlider->setSliderStyle (juce::Slider::LinearVertical);
     FrequenceSlider->setTextBoxStyle (juce::Slider::TextBoxLeft, false, 80, 20);

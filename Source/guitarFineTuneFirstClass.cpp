@@ -436,7 +436,6 @@ guitarFineTuneFirstClass::guitarFineTuneFirstClass()
 	pDisplayControlComponent->initControls();
 
 	// Variable Tone Control Window
-	//dw = new eksVariableToneCtrl(pXmlGuitarFineTuneConfig, pGuitarFineTuneLookAndFeel);
 	dw.reset(new eksVariableToneCtrl(pXmlGuitarFineTuneConfig, pGuitarFineTuneLookAndFeel));
 
 	Rectangle<int> area(0, 0, 300, 400);
@@ -768,8 +767,6 @@ void guitarFineTuneFirstClass::closeButtonPressed()
 
 guitarFineTuneFirstClass::~guitarFineTuneFirstClass()
 {
-	//dw.reset();
-
 	pTuneComponent = nullptr;
 
 	Component::setLookAndFeel(nullptr);

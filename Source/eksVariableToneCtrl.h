@@ -50,8 +50,8 @@ public:
 	void closeButtonPressed()
 	{
 		setVisible(false);
-		//delete this;
 	}
+	inline void addAndMakeVisible(juce::Component* const child)  {}; // Because Projucer insists on adding addAndMakeVisible(...)
 	//[/UserMethods]
 
 	void paint(juce::Graphics& g) override;
