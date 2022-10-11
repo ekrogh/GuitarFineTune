@@ -32,46 +32,50 @@ class eksLookAndFeel;
 
 //==============================================================================
 /**
-																	//[Comments]
+                                                                    //[Comments]
 	An auto-generated component, created by the Projucer.
 
 	Describe your class and how it works here!
-																	//[/Comments]
+                                                                    //[/Comments]
 */
-class eksVariableToneCtrl : public juce::DocumentWindow,
-	public juce::Slider::Listener
+class eksVariableToneCtrl  : public juce::DocumentWindow,
+                             public juce::Button::Listener,
+                             public juce::Slider::Listener
 {
 public:
-	//==============================================================================
-	eksVariableToneCtrl(std::shared_ptr<xmlGuitarFineTuneConfig> pXmlGFTConfig, std::shared_ptr<eksLookAndFeel> pGFTAF);
+    //==============================================================================
+    eksVariableToneCtrl (        std::shared_ptr<xmlGuitarFineTuneConfig> pXmlGFTConfig          , std::shared_ptr<eksLookAndFeel> pGFTAF  );
+    ~eksVariableToneCtrl() override;
 
-	//==============================================================================
-	//[UserMethods]     -- You can add your own custom methods in this section.
+    //==============================================================================
+    //[UserMethods]     -- You can add your own custom methods in this section.
 	void closeButtonPressed()
 	{
 		setVisible(false);
 	}
-	inline void addAndMakeVisible(juce::Component* const child)  {}; // Because Projucer insists on adding addAndMakeVisible(...)
-	//[/UserMethods]
+	inline void addAndMakeVisible(juce::Component* const child)  { setContentOwned(child, true); }; // Because Projucer insists on adding addAndMakeVisible(...)
+    //[/UserMethods]
 
-	void paint(juce::Graphics& g) override;
-	void resized() override;
-	void sliderValueChanged(juce::Slider* sliderThatWasMoved) override;
+    void paint (juce::Graphics& g) override;
+    void resized() override;
+    void buttonClicked (juce::Button* buttonThatWasClicked) override;
+    void sliderValueChanged (juce::Slider* sliderThatWasMoved) override;
 
 
 
 private:
-	//[UserVariables]   -- You can add your own custom variables in this section.
+    //[UserVariables]   -- You can add your own custom variables in this section.
 	std::shared_ptr<eksLookAndFeel> pGuitarFineTuneLookAndFeel = nullptr;
 	std::shared_ptr<xmlGuitarFineTuneConfig> pXmlGuitarFineTuneConfig = nullptr;
-	//[/UserVariables]
+    //[/UserVariables]
 
-	//==============================================================================
-	std::unique_ptr<juce::Slider> FrequenceSlider;
+    //==============================================================================
+    std::unique_ptr<juce::ToggleButton> sendOuttoggleButton;
+    std::unique_ptr<juce::Slider> FrequencySlider;
 
 
-	//==============================================================================
-	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(eksVariableToneCtrl)
+    //==============================================================================
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (eksVariableToneCtrl)
 };
 
 //[EndFile] You can add extra defines here...
