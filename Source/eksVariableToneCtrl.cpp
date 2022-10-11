@@ -31,14 +31,10 @@ extern std::shared_ptr<AudioDeviceManager> sharedAudioDeviceManager;
 //[/MiscUserDefs]
 
 //==============================================================================
-eksVariableToneCtrl::eksVariableToneCtrl
-(
-    std::shared_ptr<xmlGuitarFineTuneConfig> pXmlGFTConfig
-    , std::shared_ptr<eksLookAndFeel> pGFTAF
-)
-    : pGuitarFineTuneLookAndFeel(pGFTAF)
-    , pXmlGuitarFineTuneConfig(pXmlGFTConfig)
-    , DocumentWindow("Variable Tone Control", Colour(0xFF2B0720), DocumentWindow::allButtons)
+eksVariableToneCtrl::eksVariableToneCtrl (        std::shared_ptr<xmlGuitarFineTuneConfig> pXmlGFTConfig          , std::shared_ptr<eksLookAndFeel> pGFTAF  )
+    : pGuitarFineTuneLookAndFeel(pGFTAF),
+      pXmlGuitarFineTuneConfig(pXmlGFTConfig),
+      DocumentWindow("Variable Tone Control", Colour(0xFF2B0720), DocumentWindow::allButtons)
 {
     //[Constructor_pre] You can add your own custom stuff here..
     //[/Constructor_pre]
@@ -71,7 +67,7 @@ eksVariableToneCtrl::~eksVariableToneCtrl()
         //FrequenceSlider = nullptr;
     //[/Destructor_pre]
 
-    //FrequenceSlider = nullptr;
+    FrequenceSlider = nullptr;
 
 
     //[Destructor]. You can add your own custom destruction code here..
@@ -130,8 +126,8 @@ void eksVariableToneCtrl::sliderValueChanged (juce::Slider* sliderThatWasMoved)
 BEGIN_JUCER_METADATA
 
 <JUCER_COMPONENT documentType="Component" className="eksVariableToneCtrl" componentName=""
-                 parentClasses="public juce::Component" constructorParams="std::shared_ptr&lt;tuneComponent&gt; pTC, std::shared_ptr&lt;xmlGuitarFineTuneConfig&gt; pXmlGFTConfig, std::shared_ptr&lt;eksLookAndFeel&gt; pGFTAF, bool addVWP"
-                 variableInitialisers="pGuitarFineTuneLookAndFeel(pGFTAF),&#10;pTuneComponent(pTC),&#10;spAudioRecorderController(pTC-&gt;getAudioRecorderController()),&#10;pXmlGuitarFineTuneConfig(pXmlGFTConfig),&#10;viewPortAdded(addVWP)"
+                 parentClasses="public juce::DocumentWindow" constructorParams="        std::shared_ptr&lt;xmlGuitarFineTuneConfig&gt; pXmlGFTConfig          , std::shared_ptr&lt;eksLookAndFeel&gt; pGFTAF  "
+                 variableInitialisers="pGuitarFineTuneLookAndFeel(pGFTAF)&#10;pXmlGuitarFineTuneConfig(pXmlGFTConfig)&#10;DocumentWindow(&quot;Variable Tone Control&quot;, Colour(0xFF2B0720), DocumentWindow::allButtons)"
                  snapPixels="8" snapActive="1" snapShown="1" overlayOpacity="0.330"
                  fixedSize="0" initialWidth="600" initialHeight="400">
   <BACKGROUND backgroundColour="ff2b0720"/>

@@ -38,17 +38,12 @@ class eksLookAndFeel;
     Describe your class and how it works here!
                                                                     //[/Comments]
 */
-class eksVariableToneCtrl
-    : public juce::DocumentWindow
-    , public juce::Slider::Listener
+class eksVariableToneCtrl  : public juce::DocumentWindow,
+                             public juce::Slider::Listener
 {
 public:
     //==============================================================================
-    eksVariableToneCtrl
-    (
-        std::shared_ptr<xmlGuitarFineTuneConfig> pXmlGFTConfig
-        , std::shared_ptr<eksLookAndFeel> pGFTAF
-    );
+    eksVariableToneCtrl (        std::shared_ptr<xmlGuitarFineTuneConfig> pXmlGFTConfig          , std::shared_ptr<eksLookAndFeel> pGFTAF  );
     ~eksVariableToneCtrl() override;
 
     //==============================================================================
