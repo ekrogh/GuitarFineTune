@@ -60,20 +60,6 @@ eksVariableToneCtrl::eksVariableToneCtrl (        std::shared_ptr<xmlGuitarFineT
     //[/Constructor]
 }
 
-//eksVariableToneCtrl::~eksVariableToneCtrl()
-//{
-//    //[Destructor_pre]. You can add your own custom destruction code here..
-//        //FrequenceSlider->removeListener(this);
-//        //FrequenceSlider = nullptr;
-//    //[/Destructor_pre]
-//
-//    //FrequenceSlider = nullptr;
-//
-//
-//    //[Destructor]. You can add your own custom destruction code here..
-//    //[/Destructor]
-//}
-
 //==============================================================================
 void eksVariableToneCtrl::paint (juce::Graphics& g)
 {

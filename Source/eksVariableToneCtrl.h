@@ -44,15 +44,13 @@ class eksVariableToneCtrl : public juce::DocumentWindow,
 public:
 	//==============================================================================
 	eksVariableToneCtrl(std::shared_ptr<xmlGuitarFineTuneConfig> pXmlGFTConfig, std::shared_ptr<eksLookAndFeel> pGFTAF);
-	//~eksVariableToneCtrl() override;
 
 	//==============================================================================
 	//[UserMethods]     -- You can add your own custom methods in this section.
 	void closeButtonPressed()
 	{
-		//FrequenceSlider->removeListener(this);
-		//FrequenceSlider = nullptr;
-		delete this;
+		setVisible(false);
+		//delete this;
 	}
 	//[/UserMethods]
 

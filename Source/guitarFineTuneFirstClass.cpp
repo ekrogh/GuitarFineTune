@@ -171,7 +171,7 @@ guitarFineTuneFirstClass::guitarFineTuneFirstClass()
 	: DocumentWindow(std::string(ProjectInfo::projectName)
 		+ " v. " + std::string(ProjectInfo::versionString)
 		+ "." + std::to_string(ANDROID_VERSION_CODE)
-        , Colour(0xFF20072B)
+		, Colour(0xFF20072B)
 		, DocumentWindow::allButtons)
 	, curCompntBnds(0, 0, widthOfTuneWindow, hightOfTuneWindow)
 #else
@@ -236,7 +236,7 @@ guitarFineTuneFirstClass::guitarFineTuneFirstClass()
 		std::make_shared<eksTabbedComponent>
 		(
 			SafePointer(this)
-        );
+			);
 
 #if ( JUCE_IOS )
 	{
@@ -296,17 +296,17 @@ guitarFineTuneFirstClass::guitarFineTuneFirstClass()
 		pGuitarStringSoundsControlViewPort->setScrollBarsShown(true, true);
 		pGuitarStringSoundsControlViewPort->setScrollBarThickness(10);
 		pGuitarStringSoundsControlViewPort->setViewedComponent(pGuitarStringSoundsControl.get());
-		pGuitarStringSoundsControlViewPort->setScrollOnDragMode (juce::Viewport::ScrollOnDragMode::all);
+		pGuitarStringSoundsControlViewPort->setScrollOnDragMode(juce::Viewport::ScrollOnDragMode::all);
 		pDisplayControlComponentViewPort = std::make_shared<Viewport>("pDisplayControlComponentViewPort");
 		pDisplayControlComponentViewPort->setScrollBarsShown(true, true);
 		pDisplayControlComponentViewPort->setScrollBarThickness(10);
 		pDisplayControlComponentViewPort->setViewedComponent(pDisplayControlComponent.get());
-		pDisplayControlComponentViewPort->setScrollOnDragMode (juce::Viewport::ScrollOnDragMode::all);
+		pDisplayControlComponentViewPort->setScrollOnDragMode(juce::Viewport::ScrollOnDragMode::all);
 		pEksAudioControlComponentViewPort = std::make_shared<Viewport>("pEksAudioControlComponentViewPort");
 		pEksAudioControlComponentViewPort->setScrollBarsShown(true, true);
 		pEksAudioControlComponentViewPort->setScrollBarThickness(10);
 		pEksAudioControlComponentViewPort->setViewedComponent(pEksAudioControlComponent.get());
-		pEksAudioControlComponentViewPort->setScrollOnDragMode (juce::Viewport::ScrollOnDragMode::all);
+		pEksAudioControlComponentViewPort->setScrollOnDragMode(juce::Viewport::ScrollOnDragMode::all);
 
 		pEksTabbedComponent->addTab
 		(
@@ -395,12 +395,12 @@ guitarFineTuneFirstClass::guitarFineTuneFirstClass()
 	if (curCompntBnds.getWidth() >= curCompntBnds.getHeight())  // Landscape
 	{
 		curCompntBnds.setBounds
-				(
-						(double)(curCompntBnds.getX())
-						, (double)(curCompntBnds.getY())
-						, (double)(curCompntBnds.getWidth()) - (double)androidTuneTabSafeMargin
-						, (double)(curCompntBnds.getHeight())
-				);
+		(
+			(double)(curCompntBnds.getX())
+			, (double)(curCompntBnds.getY())
+			, (double)(curCompntBnds.getWidth()) - (double)androidTuneTabSafeMargin
+			, (double)(curCompntBnds.getHeight())
+		);
 	}
 #endif // #if ( JUCE_ANDROID )
 #if ( JUCE_IOS )
@@ -436,7 +436,8 @@ guitarFineTuneFirstClass::guitarFineTuneFirstClass()
 	pDisplayControlComponent->initControls();
 
 	// Variable Tone Control Window
-	auto* dw = new eksVariableToneCtrl(pXmlGuitarFineTuneConfig, pGuitarFineTuneLookAndFeel);
+	//dw = new eksVariableToneCtrl(pXmlGuitarFineTuneConfig, pGuitarFineTuneLookAndFeel);
+	dw.reset(new eksVariableToneCtrl(pXmlGuitarFineTuneConfig, pGuitarFineTuneLookAndFeel));
 
 	Rectangle<int> area(0, 0, 300, 400);
 
@@ -456,7 +457,7 @@ guitarFineTuneFirstClass::guitarFineTuneFirstClass()
 	dw->setUsingNativeTitleBar(true);
 	dw->setVisible(true);
 
-
+	toFront(true);
 }
 
 void guitarFineTuneFirstClass::currentTabChanged(int newCurrentTabIndex, const String& /*newCurrentTabName*/)
@@ -470,7 +471,7 @@ void guitarFineTuneFirstClass::currentTabChanged(int newCurrentTabIndex, const S
 		curCompntBnds = Desktop::getInstance().getDisplays().getPrimaryDisplay()->userArea;
 
 
-        // JUCE 7 takes care of safe areas !!!!
+		// JUCE 7 takes care of safe areas !!!!
 //#if ( JUCE_ANDROID )
 //		if
 //		(
@@ -767,7 +768,8 @@ void guitarFineTuneFirstClass::closeButtonPressed()
 
 guitarFineTuneFirstClass::~guitarFineTuneFirstClass()
 {
-	//dw = nullptr;
+	//dw.reset();
+
 	pTuneComponent = nullptr;
 
 	Component::setLookAndFeel(nullptr);
