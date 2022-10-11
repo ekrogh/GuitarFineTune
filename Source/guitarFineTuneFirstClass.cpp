@@ -22,6 +22,8 @@
 #include "xmlGuitarFineTuneConfig.h"
 #include "guitarFineTuneFirstClass.h"
 
+#include "eksVariableToneCtrl.h"
+
 #include <thread>         // std::this_thread::sleep_for
 
 //==============================================================================
@@ -432,6 +434,29 @@ guitarFineTuneFirstClass::guitarFineTuneFirstClass()
 	setLookAndFeel(pGuitarFineTuneLookAndFeel.get());
 
 	pDisplayControlComponent->initControls();
+
+	// Variable Tone Control Window
+	dw = std::make_shared<eksVariableToneCtrl>(pXmlGuitarFineTuneConfig, pGuitarFineTuneLookAndFeel);
+
+	Rectangle<int> area(0, 0, 300, 400);
+
+	RectanglePlacement placement
+	(
+		RectanglePlacement::xRight
+		| RectanglePlacement::yTop
+		| RectanglePlacement::doNotResize
+	);
+
+	auto result = placement.appliedTo(area, Desktop::getInstance().getDisplays()
+		.getPrimaryDisplay()->userArea.reduced(20));
+
+	dw.get()->setBounds(result);
+
+	dw.get()->setResizable(true, true);
+	dw.get()->setUsingNativeTitleBar(true);
+	dw.get()->setVisible(true);
+
+
 }
 
 void guitarFineTuneFirstClass::currentTabChanged(int newCurrentTabIndex, const String& /*newCurrentTabName*/)
@@ -742,6 +767,7 @@ void guitarFineTuneFirstClass::closeButtonPressed()
 
 guitarFineTuneFirstClass::~guitarFineTuneFirstClass()
 {
+	//dw = nullptr;
 	pTuneComponent = nullptr;
 
 	Component::setLookAndFeel(nullptr);

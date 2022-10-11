@@ -20,6 +20,8 @@ class eksAudioControlComponent;
 class testEksThreadWithProgressWindow;
 class eksLookAndFeel;
 
+class eksVariableToneCtrl;
+
 //==============================================================================
 /*
 */
@@ -187,6 +189,7 @@ private:
 	std::shared_ptr<displayControlComponent> pDisplayControlComponent = nullptr;
 	std::shared_ptr<Viewport> pDisplayControlComponentViewPort = nullptr;
 	std::shared_ptr<aboutPage> pAboutPage = nullptr;
+    std::shared_ptr<eksVariableToneCtrl> dw = nullptr;
 
 	int audioDeviceSelectorComponentHight;
 

@@ -150,6 +150,7 @@
     <ClCompile Include="..\..\Source\eksNotModalProgressWindowCallBacks.cpp"/>
     <ClCompile Include="..\..\Source\eksTabbedComponent.cpp"/>
     <ClCompile Include="..\..\Source\eksThreadWithProgressWindow.cpp"/>
+    <ClCompile Include="..\..\Source\eksVariableToneCtrl.cpp"/>
     <ClCompile Include="..\..\Source\guitarFineTuneFirstClass.cpp"/>
     <ClCompile Include="..\..\Source\guitarStringSoundsControl.cpp"/>
     <ClCompile Include="..\..\Source\Main.cpp"/>
@@ -2415,6 +2416,7 @@
     <ClInclude Include="..\..\Source\eksNotModalProgressWindowCallBacks.h"/>
     <ClInclude Include="..\..\Source\eksTabbedComponent.h"/>
     <ClInclude Include="..\..\Source\eksThreadWithProgressWindow.h"/>
+    <ClInclude Include="..\..\Source\eksVariableToneCtrl.h"/>
     <ClInclude Include="..\..\Source\Factory.h"/>
     <ClInclude Include="..\..\Source\gfft.h"/>
     <ClInclude Include="..\..\Source\guitarFineTuneFirstClass.h"/>

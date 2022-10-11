@@ -13,6 +13,7 @@
 		1D3FFCA83F9C73B8CDAE714F /* eksTabbedComponent.cpp */ = {isa = PBXBuildFile; fileRef = 69FFE19213704D12405A867A; };
 		1DC0D160E6DA83C30C34ABEC /* Images.xcassets */ = {isa = PBXBuildFile; fileRef = 08DA5704A75BCDDB331E974D; };
 		1EE32CA237B6C0890E0D527D /* CoreAudio.framework */ = {isa = PBXBuildFile; fileRef = DB21D09A506A56B642270FE8; };
+		20F73481B1CC69935C9A4F65 /* eksVariableToneCtrl.cpp */ = {isa = PBXBuildFile; fileRef = 0379BB3E7BB4ABA40D5AF521; };
 		25D4A7699E4D95E4562973C5 /* QuartzCore.framework */ = {isa = PBXBuildFile; fileRef = A44D165D613999DC222406FC; };
 		29C4E447DE915EDE71B69946 /* eksThreadWithProgressWindow.cpp */ = {isa = PBXBuildFile; fileRef = 2705345B21013135C78D354D; };
 		31283DB791CF5F682DEF07DE /* include_juce_audio_processors_ara.cpp */ = {isa = PBXBuildFile; fileRef = 2F6CC538521211C0B98C33C2; };
@@ -60,6 +61,7 @@
 
 /* Begin PBXFileReference section */
 		005D3FDA17BBCA6D812854C9 /* include_juce_audio_devices.mm */ /* include_juce_audio_devices.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_audio_devices.mm; path = ../../JuceLibraryCode/include_juce_audio_devices.mm; sourceTree = SOURCE_ROOT; };
+		0379BB3E7BB4ABA40D5AF521 /* eksVariableToneCtrl.cpp */ /* eksVariableToneCtrl.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = eksVariableToneCtrl.cpp; path = ../../Source/eksVariableToneCtrl.cpp; sourceTree = SOURCE_ROOT; };
 		04362EB52A445AD4041F6952 /* AudioToolbox.framework */ /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		0570076174A69261AF69AFAD /* AssocVector.h */ /* AssocVector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AssocVector.h; path = ../../Source/AssocVector.h; sourceTree = SOURCE_ROOT; };
 		08DA5704A75BCDDB331E974D /* Images.xcassets */ /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = GuitarFineTune/Images.xcassets; sourceTree = SOURCE_ROOT; };
@@ -124,6 +126,7 @@
 		91E77FC7323764D7613EC887 /* eksTabbedComponent.h */ /* eksTabbedComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = eksTabbedComponent.h; path = ../../Source/eksTabbedComponent.h; sourceTree = SOURCE_ROOT; };
 		9360CAB907D7131783FF4CC4 /* eksLookAndFeel.h */ /* eksLookAndFeel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = eksLookAndFeel.h; path = ../../Source/eksLookAndFeel.h; sourceTree = SOURCE_ROOT; };
 		96E421B9690E6CDA6D3A85F5 /* include_juce_audio_basics.mm */ /* include_juce_audio_basics.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_audio_basics.mm; path = ../../JuceLibraryCode/include_juce_audio_basics.mm; sourceTree = SOURCE_ROOT; };
+		98C2610776D45D559A356614 /* eksVariableToneCtrl.h */ /* eksVariableToneCtrl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = eksVariableToneCtrl.h; path = ../../Source/eksVariableToneCtrl.h; sourceTree = SOURCE_ROOT; };
 		9A1F14BFB81F76671EE8E50B /* tuneComponent.cpp */ /* tuneComponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = tuneComponent.cpp; path = ../../Source/tuneComponent.cpp; sourceTree = SOURCE_ROOT; };
 		9CAD7B3450E78CF7D4CE5294 /* helpPage.h */ /* helpPage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = helpPage.h; path = ../../Source/helpPage.h; sourceTree = SOURCE_ROOT; };
 		A44D165D613999DC222406FC /* QuartzCore.framework */ /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -318,6 +321,8 @@
 				91E77FC7323764D7613EC887,
 				2705345B21013135C78D354D,
 				CF829283834766D80BA82FAD,
+				98C2610776D45D559A356614,
+				0379BB3E7BB4ABA40D5AF521,
 				4C4854ABB7EFC25F0F95529D,
 				EE950B43055FE4BE1AEFFFA5,
 				DA0E44CCE765370592F7F300,
@@ -444,6 +449,7 @@
 				96754801B0CCC7C650CB75FB,
 				1D3FFCA83F9C73B8CDAE714F,
 				29C4E447DE915EDE71B69946,
+				20F73481B1CC69935C9A4F65,
 				46CBC32F4D35E3CB74BC07BA,
 				C12D3F18B2F263301E0B6E21,
 				18889B595A6C191595DE4138,

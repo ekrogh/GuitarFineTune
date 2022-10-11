@@ -81,6 +81,7 @@ OBJECTS_APP := \
   $(JUCE_OBJDIR)/eksNotModalProgressWindowCallBacks_239865d3.o \
   $(JUCE_OBJDIR)/eksTabbedComponent_c42240ad.o \
   $(JUCE_OBJDIR)/eksThreadWithProgressWindow_27db6dbb.o \
+  $(JUCE_OBJDIR)/eksVariableToneCtrl_a00b67c7.o \
   $(JUCE_OBJDIR)/guitarFineTuneFirstClass_d1db99ad.o \
   $(JUCE_OBJDIR)/guitarStringSoundsControl_3805b87f.o \
   $(JUCE_OBJDIR)/Main_90ebc5c2.o \
@@ -159,6 +160,11 @@ $(JUCE_OBJDIR)/eksTabbedComponent_c42240ad.o: ../../Source/eksTabbedComponent.cp
 $(JUCE_OBJDIR)/eksThreadWithProgressWindow_27db6dbb.o: ../../Source/eksThreadWithProgressWindow.cpp
 	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
 	@echo "Compiling eksThreadWithProgressWindow.cpp"
+	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
+
+$(JUCE_OBJDIR)/eksVariableToneCtrl_a00b67c7.o: ../../Source/eksVariableToneCtrl.cpp
+	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
+	@echo "Compiling eksVariableToneCtrl.cpp"
 	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
 
 $(JUCE_OBJDIR)/guitarFineTuneFirstClass_d1db99ad.o: ../../Source/guitarFineTuneFirstClass.cpp

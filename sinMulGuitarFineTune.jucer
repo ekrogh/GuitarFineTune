@@ -53,6 +53,10 @@
             resource="0" file="Source/eksThreadWithProgressWindow.cpp"/>
       <FILE id="HXoYwL" name="eksThreadWithProgressWindow.h" compile="0"
             resource="0" file="Source/eksThreadWithProgressWindow.h"/>
+      <FILE id="Zzp7rw" name="eksVariableToneCtrl.h" compile="0" resource="0"
+            file="Source/eksVariableToneCtrl.h"/>
+      <FILE id="wqCTxo" name="eksVariableToneCtrl.cpp" compile="1" resource="0"
+            file="Source/eksVariableToneCtrl.cpp"/>
       <FILE id="abjtzO" name="Factory.h" compile="0" resource="0" file="Source/Factory.h"/>
       <FILE id="bbd6ut" name="gfft.h" compile="0" resource="0" file="Source/gfft.h"/>
       <FILE id="CQoMbD" name="guitarFineTuneFirstClass.cpp" compile="1" resource="0"

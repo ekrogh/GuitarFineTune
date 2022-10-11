@@ -622,6 +622,9 @@
     <ClCompile Include="..\..\Source\eksThreadWithProgressWindow.cpp">
       <Filter>GuitarFineTune\Source</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\eksVariableToneCtrl.cpp">
+      <Filter>GuitarFineTune\Source</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\guitarFineTuneFirstClass.cpp">
       <Filter>GuitarFineTune\Source</Filter>
     </ClCompile>
@@ -3073,6 +3076,9 @@
       <Filter>GuitarFineTune\Source</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\eksThreadWithProgressWindow.h">
+      <Filter>GuitarFineTune\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\eksVariableToneCtrl.h">
       <Filter>GuitarFineTune\Source</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Factory.h">
