@@ -436,25 +436,25 @@ guitarFineTuneFirstClass::guitarFineTuneFirstClass()
 	pDisplayControlComponent->initControls();
 
 	// Variable Tone Control Window
-	dw = std::make_shared<eksVariableToneCtrl>(pXmlGuitarFineTuneConfig, pGuitarFineTuneLookAndFeel);
+	auto* dw = new eksVariableToneCtrl(pXmlGuitarFineTuneConfig, pGuitarFineTuneLookAndFeel);
 
 	Rectangle<int> area(0, 0, 300, 400);
 
 	RectanglePlacement placement
 	(
 		RectanglePlacement::xRight
-		| RectanglePlacement::yTop
+		| RectanglePlacement::yMid
 		| RectanglePlacement::doNotResize
 	);
 
 	auto result = placement.appliedTo(area, Desktop::getInstance().getDisplays()
 		.getPrimaryDisplay()->userArea.reduced(20));
 
-	dw.get()->setBounds(result);
+	dw->setBounds(result);
 
-	dw.get()->setResizable(true, true);
-	dw.get()->setUsingNativeTitleBar(true);
-	dw.get()->setVisible(true);
+	dw->setResizable(true, true);
+	dw->setUsingNativeTitleBar(true);
+	dw->setVisible(true);
 
 
 }

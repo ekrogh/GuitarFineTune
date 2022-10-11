@@ -32,9 +32,9 @@ extern std::shared_ptr<AudioDeviceManager> sharedAudioDeviceManager;
 
 //==============================================================================
 eksVariableToneCtrl::eksVariableToneCtrl (        std::shared_ptr<xmlGuitarFineTuneConfig> pXmlGFTConfig          , std::shared_ptr<eksLookAndFeel> pGFTAF  )
-    : pGuitarFineTuneLookAndFeel(pGFTAF),
-      pXmlGuitarFineTuneConfig(pXmlGFTConfig),
-      DocumentWindow("Variable Tone Control", Colour(0xFF2B0720), DocumentWindow::allButtons)
+    : DocumentWindow("Variable Tone Control", Colour(0xFF2B0720), DocumentWindow::allButtons)
+      //pGuitarFineTuneLookAndFeel(pGFTAF),
+      //pXmlGuitarFineTuneConfig(pXmlGFTConfig),
 {
     //[Constructor_pre] You can add your own custom stuff here..
     //[/Constructor_pre]
@@ -60,19 +60,19 @@ eksVariableToneCtrl::eksVariableToneCtrl (        std::shared_ptr<xmlGuitarFineT
     //[/Constructor]
 }
 
-eksVariableToneCtrl::~eksVariableToneCtrl()
-{
-    //[Destructor_pre]. You can add your own custom destruction code here..
-        //FrequenceSlider->removeListener(this);
-        //FrequenceSlider = nullptr;
-    //[/Destructor_pre]
-
-    FrequenceSlider = nullptr;
-
-
-    //[Destructor]. You can add your own custom destruction code here..
-    //[/Destructor]
-}
+//eksVariableToneCtrl::~eksVariableToneCtrl()
+//{
+//    //[Destructor_pre]. You can add your own custom destruction code here..
+//        //FrequenceSlider->removeListener(this);
+//        //FrequenceSlider = nullptr;
+//    //[/Destructor_pre]
+//
+//    //FrequenceSlider = nullptr;
+//
+//
+//    //[Destructor]. You can add your own custom destruction code here..
+//    //[/Destructor]
+//}
 
 //==============================================================================
 void eksVariableToneCtrl::paint (juce::Graphics& g)
