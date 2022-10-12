@@ -1149,7 +1149,7 @@ void tuneComponent::filterAndPushNextSampleIntoFifo(float sample)
 	}
 
 
-	static double yNew;
+	static double yNew = 0.0f;
 
 	if (usePowerGridFrequencyFilter)
 	{
@@ -1200,95 +1200,180 @@ void tuneComponent::filterAndPushNextSampleIntoFifo(float sample)
 	Thread::yield();
 }
 
-void tuneComponent::getNextAudioBlock(const AudioSourceChannelInfo& bufferToFill)
+void tuneComponent::pushNextSampleIntoFifo(float sample)
 {
-	if (generateNoiseToggleButtonOn)
+	// if the inBuffer contains enough data, set a flag to say
+	// that the next line should now be rendered..
+	if (noOfInputValues >= fftSize)
 	{
-		static std::random_device rd;   // non-deterministic generator
-		static std::mt19937 gen(rd());  // to seed mersenne twister.
-		static std::uniform_real_distribution<> dist(-1, 1);
-
-		bufferToFill.clearActiveBufferRegion();
-
-		for (int chan = 0; chan < bufferToFill.buffer->getNumChannels(); ++chan)
+		// Switch buffers
+		if (bSwitchBufferTo2)
 		{
-
-			float* const channelData = bufferToFill.buffer->getWritePointer(chan, bufferToFill.startSample);
-
-			while (generateNoiseIndxToSampleInInBuffer < bufferToFill.numSamples)
+			if (showFFTToggleButtonOn)
 			{
-				channelData[generateNoiseIndxToSampleInInBuffer] = (float)(dist(gen)); // Random
-				filterAndPushNextSampleIntoFifo(channelData[generateNoiseIndxToSampleInInBuffer]);
-				generateNoiseIndxToSampleInInBuffer += sampleSpace;
+				inBuffer = inBuffer2;
+				fftData = fftData2;
 			}
-			generateNoiseIndxToSampleInInBuffer -= bufferToFill.numSamples; // make ready for next buffertofill 
+			if (recorderSourceFilteredAudioOn)
+			{
+				audioRecordBufferOut = audioRecordBuffer1;
+				audioRecordBufferIn = audioRecordBuffer2;
+			}
+			pDqGoertzelBinsIn = &dqGoertzelBins2;
+			pDqGoertzelBinsOut = &dqGoertzelBins1;
+			bSwitchBufferTo2 = false;
 		}
+		else
+		{
+			if (showFFTToggleButtonOn)
+			{
+				inBuffer = inBuffer1;
+				fftData = fftData1;
+			}
+			if (recorderSourceFilteredAudioOn)
+			{
+				audioRecordBufferOut = audioRecordBuffer2;
+				audioRecordBufferIn = audioRecordBuffer1;
+			}
+			pDqGoertzelBinsIn = &dqGoertzelBins1;
+			pDqGoertzelBinsOut = &dqGoertzelBins2;
+			bSwitchBufferTo2 = true;
+		}
+
+
+		nextSpectrumDataBlockReady = true;
+
+		weSpectrumDataReady.signal();
+
+		if (recorderSourceFilteredAudioOn)
+		{
+			spTheAudioRecorderThread->recordingFilteredAudioBuffer(audioRecordBufferOut);
+		}
+
+		noOfInputValues = 0;
+
+		firstSampleIn = true;
+
+	}
+
+
+	float yNew = sample;
+
+	if (recorderSourceFilteredAudioOn)
+	{
+		audioRecordBufferIn[noOfInputValues] = yNew;
+	}
+
+	if (!hannWinCoefficients.empty())
+	{
+		// Hann window
+		yNew *= hannWinCoefficients[noOfInputValues];
+	}
+
+	if (showFFTToggleButtonOn)
+	{
+		inBuffer[noOfInputValues++] = yNew;
 	}
 	else
 	{
-		if (showFiltersToggleButtonOn)
-		{
-			if (bufferToFill.buffer->getNumChannels() != 0)
-			{
-				bufferToFill.clearActiveBufferRegion();
-				float* channelData = bufferToFill.buffer->getWritePointer(0, bufferToFill.startSample);
+		noOfInputValues++;
+	}
 
-				if (firstSampleIn)
+	Thread::yield();
+}
+
+void tuneComponent::getNextAudioBlock(const AudioSourceChannelInfo& bufferToFill)
+{
+	if (!doMulVariableTone || !doMulVariableToneFFT)
+	{
+		if (generateNoiseToggleButtonOn)
+		{
+			static std::random_device rd;   // non-deterministic generator
+			static std::mt19937 gen(rd());  // to seed mersenne twister.
+			static std::uniform_real_distribution<> dist(-1, 1);
+
+			bufferToFill.clearActiveBufferRegion();
+
+			for (int chan = 0; chan < bufferToFill.buffer->getNumChannels(); ++chan)
+			{
+
+				float* const channelData = bufferToFill.buffer->getWritePointer(chan, bufferToFill.startSample);
+
+				while (generateNoiseIndxToSampleInInBuffer < bufferToFill.numSamples)
 				{
-					channelData[generateImpulseIndxToSampleInInBuffer] = 1;
-					firstSampleIn = false;
+					channelData[generateNoiseIndxToSampleInInBuffer] = (float)(dist(gen)); // Random
+					filterAndPushNextSampleIntoFifo(channelData[generateNoiseIndxToSampleInInBuffer]);
+					generateNoiseIndxToSampleInInBuffer += sampleSpace;
+				}
+				generateNoiseIndxToSampleInInBuffer -= bufferToFill.numSamples; // make ready for next buffertofill 
+			}
+		}
+		else
+		{
+			if (showFiltersToggleButtonOn)
+			{
+				if (bufferToFill.buffer->getNumChannels() != 0)
+				{
+					bufferToFill.clearActiveBufferRegion();
+					float* channelData = bufferToFill.buffer->getWritePointer(0, bufferToFill.startSample);
+
+					if (firstSampleIn)
+					{
+						channelData[generateImpulseIndxToSampleInInBuffer] = 1;
+						firstSampleIn = false;
+					}
 				}
 			}
 		}
-	}
 
 
-	if (bufferToFill.buffer->getNumChannels() != 0)
-	{
-		const float* channelData = bufferToFill.buffer->getReadPointer(0, bufferToFill.startSample);
-
-		static double FIRFilteredInputSample;
-		if (preDecimationFilterIndxToSampleInInBuffer > 0)
+		if (bufferToFill.buffer->getNumChannels() != 0)
 		{
-			// Insert first of raw input samples in buffer into inBufferFIR
-			inBufferFIR.insert(inBufferFIR.end()
-				, channelData
-				, channelData + preDecimationFilterIndxToSampleInInBuffer
-			);
-			// Filter w. FIR filter
-			FIRFilteredInputSample = std::inner_product(bFIRCoeffsInvertedBegin
-				, bFIRCoeffsInvertedEnd
-				, inBufferFIR.begin()
-				, (double)0.0
-			);
-			filterAndPushNextSampleIntoFifo((float)FIRFilteredInputSample);
-		}
-		for (; preDecimationFilterIndxToSampleInInBuffer <= bufferToFill.numSamples - sampleSpace; preDecimationFilterIndxToSampleInInBuffer += sampleSpace)
-		{
+			const float* channelData = bufferToFill.buffer->getReadPointer(0, bufferToFill.startSample);
+
+			static double FIRFilteredInputSample;
+			if (preDecimationFilterIndxToSampleInInBuffer > 0)
+			{
+				// Insert first of raw input samples in buffer into inBufferFIR
+				inBufferFIR.insert(inBufferFIR.end()
+					, channelData
+					, channelData + preDecimationFilterIndxToSampleInInBuffer
+				);
+				// Filter w. FIR filter
+				FIRFilteredInputSample = std::inner_product(bFIRCoeffsInvertedBegin
+					, bFIRCoeffsInvertedEnd
+					, inBufferFIR.begin()
+					, (double)0.0
+				);
+				filterAndPushNextSampleIntoFifo((float)FIRFilteredInputSample);
+			}
+			for (; preDecimationFilterIndxToSampleInInBuffer <= bufferToFill.numSamples - sampleSpace; preDecimationFilterIndxToSampleInInBuffer += sampleSpace)
+			{
+				// erase the first sampleSpace elements (oldest samples)
+				inBufferFIR.erase(inBufferFIR.begin(), inBufferFIR.begin() + sampleSpace);
+				// Insert sampleSpace raw inputs into inBufferFIR
+				inBufferFIR.insert(inBufferFIR.end()
+					, channelData + preDecimationFilterIndxToSampleInInBuffer
+					, channelData + preDecimationFilterIndxToSampleInInBuffer + sampleSpace
+				);
+				// Filter w. FIR filter
+				FIRFilteredInputSample = std::inner_product(bFIRCoeffsInvertedBegin
+					, bFIRCoeffsInvertedEnd
+					, inBufferFIR.begin()
+					, (double)0.0
+				);
+				filterAndPushNextSampleIntoFifo((float)FIRFilteredInputSample);
+			}
 			// erase the first sampleSpace elements (oldest samples)
 			inBufferFIR.erase(inBufferFIR.begin(), inBufferFIR.begin() + sampleSpace);
-			// Insert sampleSpace raw inputs into inBufferFIR
+			// Insert rest of raw input samples in buffer into inBufferFIR
+			// (rest of raw samples will be inserted when getNextAudioBlock is called again)
 			inBufferFIR.insert(inBufferFIR.end()
 				, channelData + preDecimationFilterIndxToSampleInInBuffer
-				, channelData + preDecimationFilterIndxToSampleInInBuffer + sampleSpace
+				, channelData + bufferToFill.numSamples
 			);
-			// Filter w. FIR filter
-			FIRFilteredInputSample = std::inner_product(bFIRCoeffsInvertedBegin
-				, bFIRCoeffsInvertedEnd
-				, inBufferFIR.begin()
-				, (double)0.0
-			);
-			filterAndPushNextSampleIntoFifo((float)FIRFilteredInputSample);
+			preDecimationFilterIndxToSampleInInBuffer += sampleSpace - bufferToFill.numSamples; // make ready for next buffer full
 		}
-		// erase the first sampleSpace elements (oldest samples)
-		inBufferFIR.erase(inBufferFIR.begin(), inBufferFIR.begin() + sampleSpace);
-		// Insert rest of raw input samples in buffer into inBufferFIR
-		// (rest of raw samples will be inserted when getNextAudioBlock is called again)
-		inBufferFIR.insert(inBufferFIR.end()
-			, channelData + preDecimationFilterIndxToSampleInInBuffer
-			, channelData + bufferToFill.numSamples
-		);
-		preDecimationFilterIndxToSampleInInBuffer += sampleSpace - bufferToFill.numSamples; // make ready for next buffer full
 	}
 
 	if (!playGuitarStringSoundsRamp)
@@ -1350,16 +1435,31 @@ void tuneComponent::getNextAudioBlock(const AudioSourceChannelInfo& bufferToFill
 					{
 						phaseDeltaPerSample = variableToneSinePhases.phaseDeltaPerSample;
 						currentPhase = variableToneSinePhases.currentPhase;
-						std::transform
-						(
-							outBffrStart, outBffrEnd, outBffrStart,
-							[&currentPhase, phaseDeltaPerSample, &gainToUse]
-							(float guitarStringSoundsIn)
+
+						if (!doMulVariableToneFFT)
+						{
+							std::transform
+							(
+								outBffrStart, outBffrEnd, outBffrStart,
+								[&currentPhase, phaseDeltaPerSample, &gainToUse]
+								(float guitarStringSoundsIn)
+								{
+									currentPhase = std::fmod(currentPhase + phaseDeltaPerSample, (float)f2PI);
+									return guitarStringSoundsIn * (float)(gainToUse * std::sin(currentPhase));
+								}
+							);
+						}
+						else
+						{
+							for (int sno = 0; sno < bufferToFill.numSamples; sno++)
 							{
 								currentPhase = std::fmod(currentPhase + phaseDeltaPerSample, (float)f2PI);
-								return guitarStringSoundsIn * (float)(gainToUse * std::sin(currentPhase));
+								channelData[sno] = (float)(gainToUse * std::sin(currentPhase));
+								//channelData[sno] *=  (float)(gainToUse * std::sin(currentPhase));
+								pushNextSampleIntoFifo(channelData[sno]);
 							}
-						);
+						}
+
 						variableToneSinePhases.currentPhase = currentPhase;
 					}
 				}
@@ -1557,7 +1657,7 @@ void tuneComponent::run()
 			{
 				startTimer(1000);
 				break;
-	}
+			}
 			case eksAVAuthorizationStatusRestricted:
 			case eksAVAuthorizationStatusAuthorized:
 			{
@@ -1572,8 +1672,8 @@ void tuneComponent::run()
 			{
 				break;
 			}
-	}
-}
+			}
+		}
 #if (JUCE_MAC || JUCE_LINUX)
 	}
 #endif
@@ -1636,7 +1736,7 @@ void tuneComponent::gfftPerformFrequencyOnlyForwardTransform(double* d)
 	for (int i = 0; i < fftSize; i++)
 	{
 		d[i] = std::abs(pComplex[i]);
-	}
+}
 
 }
 #endif
@@ -1932,7 +2032,7 @@ void tuneComponent::drawSpectrogram()
 			, (int)buttomLine - 20
 		);
 #endif // EVAL_TIME_BETW_CALLS
-	}
+		}
 	Thread::yield();
 
 	if (showFFTToggleButtonOn)
@@ -1981,10 +2081,10 @@ void tuneComponent::drawSpectrogram()
 			spectrImGraphcs.setColour(Colours::red);
 			spectrImGraphcs.fillRect((float)((idxOMax - firstFftDataToDisplay) * resToDisply), 0., 2., (float)buttomLine);
 			spectrImGraphcs.drawSingleLineText(String(maxLevel) + ", " + String((long)maxValFreq) + ", " + String(idxOMax), (int)(((idxOMax - firstFftDataToDisplay) * resToDisply) + 4), (int)buttomLine);
-	}
+		}
 
 		Thread::yield();
-	}
+		}
 
 	if (showThreshold || showSpectrumToggleButtonOn)
 	{
@@ -2113,7 +2213,7 @@ void tuneComponent::drawSpectrogram()
 		spectrImGraphcs.setFont(savedFont);
 	}
 
-		}
+	}
 
 void tuneComponent::initObjects(std::weak_ptr<displayControlComponent> pObj1)
 {
@@ -3136,8 +3236,8 @@ void tuneComponent::controlGuitarStringSounds(std::deque<bool> guitarStringSound
 											, removedPtrsToGuitarStringsSinePhases
 											, theRamp
 										);
-							}
-						}
+									}
+								}
 
 								ptrsToGuitarStringsSinePhases = newPtrsToGuitarStringsSinePhases;
 								doPlayGuitarStringSounds = true;
@@ -3359,8 +3459,8 @@ void tuneComponent::controlGuitarStringSounds(std::deque<bool> guitarStringSound
 
 #endif // !(ALWAYS_USE_FULL_BUFFER_RAMPS)
 
-} // End scope of guitarStringSoundsLockMutex
-	}
+							} // End scope of guitarStringSoundsLockMutex
+						}
 						else
 						{
 							stringGainToUse = outputGain * stringsGain / (newPtrsToGuitarStringsSinePhases.size());
@@ -3385,6 +3485,7 @@ void tuneComponent::controlVariableTone(float freq, bool startOrStop, bool start
 		}
 		else
 		{
+			doMulVariableToneFFT = false;
 			doMulVariableTone = false;
 		}
 	}
@@ -3393,6 +3494,13 @@ void tuneComponent::controlVariableTone(float freq, bool startOrStop, bool start
 		variableToneSinePhases.freq = freq;
 		variableToneSinePhases.phaseDeltaPerSample = (float)(float_2PI * (float)freq / currentSampleRateInUse);
 	}
+}
+
+void tuneComponent::controlVariableToneFFT(bool enable)
+{
+	setShowFFT(enable);
+	doMulVariableToneFFT = enable;
+
 }
 
 void tuneComponent::setStringsGain(float gain)
@@ -3613,7 +3721,7 @@ void tuneComponent::doSetShowFFT(bool flagOn)
 	{
 		showFFTToggleButtonOn = flagOn;
 	}
-}
+	}
 
 void tuneComponent::setShowFFT(bool flagOn)
 {
@@ -3781,7 +3889,7 @@ void tuneComponent::setAirPlayOnFlags(bool setAirPlayOn)
 {
 	airPlayAllowed = setAirPlayOn;
 	//blueToothAllowed = setBlueToothOn;
-}
+	}
 #endif // THIS_IS_IOS
 
 void tuneComponent::setNotchFilters()

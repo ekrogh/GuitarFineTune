@@ -125,6 +125,7 @@ public:
 	void parentSizeChanged() override;
 
 	void filterAndPushNextSampleIntoFifo(float sample);
+	void pushNextSampleIntoFifo(float sample);
 
 #ifdef USE_JUCE_FFT
 	void jucePerformFrequencyOnlyForwardTransform(float* d);
@@ -156,6 +157,7 @@ public:
 	void allGuitarStringSoundsOff();
 	void controlGuitarStringSounds(std::deque<bool> guitarStringSoundsOn);
 	void controlVariableTone(float freq, bool startOrStop, bool start);
+	void controlVariableToneFFT(bool enable);
 
 	void setInputGain(float gain);
 	void setInputMuteToggleButtonOnFlag(bool flagValue);
@@ -445,6 +447,7 @@ private:
 	// Variable Tone sines phases
 	GUITARSTRINGSPHASES variableToneSinePhases;
 	bool doMulVariableTone = false;
+	bool doMulVariableToneFFT = false;
 
 	//Guitar strings xCoords and Names
 	typedef struct nameGUITARSTRINGTONEXCOORDANDNAME

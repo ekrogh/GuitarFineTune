@@ -48,7 +48,7 @@ eksVariableToneCtrl::eksVariableToneCtrl(std::shared_ptr<xmlGuitarFineTuneConfig
 	FrequencySlider.reset(new juce::Slider("FrequencySlider"));
 	addAndMakeVisible(FrequencySlider.get());
 	FrequencySlider->setTooltip(TRANS("Freq [Hz]"));
-	FrequencySlider->setRange(0, 20000, 0);
+	FrequencySlider->setRange(0, 400, 0);
 	FrequencySlider->setSliderStyle(juce::Slider::LinearVertical);
 	FrequencySlider->setTextBoxStyle(juce::Slider::TextBoxLeft, false, 80, 20);
 	FrequencySlider->addListener(this);
@@ -117,17 +117,26 @@ void eksVariableToneCtrl::buttonClicked(juce::Button* buttonThatWasClicked)
 	if (buttonThatWasClicked == sendOuttoggleButton.get())
 	{
 		//[UserButtonCode_sendOuttoggleButton] -- add your button handler code here..
+		bool toggleState = sendOuttoggleButton->getToggleState();
+		if (!toggleState)
+		{
+			showFftToggleButton->setToggleState(false, dontSendNotification);
+		}
 		pTuneComponent->controlVariableTone
 		(
-			  (float)(FrequencySlider->getValue())
+			(float)(FrequencySlider->getValue())
 			, true
-			, sendOuttoggleButton->getToggleState()
+			, toggleState
 		);
 		//[/UserButtonCode_sendOuttoggleButton]
 	}
 	else if (buttonThatWasClicked == showFftToggleButton.get())
 	{
 		//[UserButtonCode_showFftToggleButton] -- add your button handler code here..
+		pTuneComponent->controlVariableToneFFT
+		(
+			showFftToggleButton->getToggleState()
+		);
 		//[/UserButtonCode_showFftToggleButton]
 	}
 
