@@ -117,6 +117,12 @@ void eksVariableToneCtrl::buttonClicked(juce::Button* buttonThatWasClicked)
 	if (buttonThatWasClicked == sendOuttoggleButton.get())
 	{
 		//[UserButtonCode_sendOuttoggleButton] -- add your button handler code here..
+		pTuneComponent->controlVariableTone
+		(
+			  (float)(FrequencySlider->getValue())
+			, true
+			, sendOuttoggleButton->getToggleState()
+		);
 		//[/UserButtonCode_sendOuttoggleButton]
 	}
 	else if (buttonThatWasClicked == showFftToggleButton.get())
@@ -137,6 +143,12 @@ void eksVariableToneCtrl::sliderValueChanged(juce::Slider* sliderThatWasMoved)
 	if (sliderThatWasMoved == FrequencySlider.get())
 	{
 		//[UserSliderCode_FrequencySlider] -- add your slider handling code here..
+		pTuneComponent->controlVariableTone
+		(
+			(float)(FrequencySlider->getValue())
+			, false
+			, true
+		);
 		//[/UserSliderCode_FrequencySlider]
 	}
 

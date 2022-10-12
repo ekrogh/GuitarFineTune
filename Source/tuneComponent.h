@@ -155,6 +155,7 @@ public:
 
 	void allGuitarStringSoundsOff();
 	void controlGuitarStringSounds(std::deque<bool> guitarStringSoundsOn);
+	void controlVariableTone(float freq, bool startOrStop, bool start);
 
 	void setInputGain(float gain);
 	void setInputMuteToggleButtonOnFlag(bool flagValue);
@@ -434,12 +435,16 @@ private:
 	// Guitar strings sines phases
 	typedef struct /*tGUITARSTRINGSPHASES*/
 	{
-		float guitarStringFreq;
+		float freq;
 		float currentPhase;
 		float phaseDeltaPerSample;
 	} GUITARSTRINGSPHASES;
 	std::vector<GUITARSTRINGSPHASES> guitarStringsSinePhases;
 	std::vector<GUITARSTRINGSPHASES*> ptrsToGuitarStringsSinePhases;
+
+	// Variable Tone sines phases
+	GUITARSTRINGSPHASES variableToneSinePhases;
+	bool doMulVariableTone = false;
 
 	//Guitar strings xCoords and Names
 	typedef struct nameGUITARSTRINGTONEXCOORDANDNAME
