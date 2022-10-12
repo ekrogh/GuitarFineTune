@@ -20,9 +20,9 @@
     <key>CFBundleIdentifier</key>
     <string>dk.eksIt.guitarFineTune</string>
     <key>CFBundleName</key>
-    <string>GuitarFineTune</string>
+    <string>sinMulGuitarFineTune</string>
     <key>CFBundleDisplayName</key>
-    <string>GuitarFineTune</string>
+    <string>sinMulGuitarFineTune</string>
     <key>CFBundlePackageType</key>
     <string>APPL</string>
     <key>CFBundleSignature</key>

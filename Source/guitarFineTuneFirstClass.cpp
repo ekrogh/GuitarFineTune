@@ -22,7 +22,7 @@
 #include "xmlGuitarFineTuneConfig.h"
 #include "guitarFineTuneFirstClass.h"
 
-#include "eksVariableToneCtrl.h"
+#include "eksVariableToneCtrlDocWin.h"
 
 #include <thread>         // std::this_thread::sleep_for
 
@@ -436,9 +436,9 @@ guitarFineTuneFirstClass::guitarFineTuneFirstClass()
 	pDisplayControlComponent->initControls();
 
 	// Variable Tone Control Window
-	dw.reset(new eksVariableToneCtrl(pXmlGuitarFineTuneConfig, pGuitarFineTuneLookAndFeel));
+	dw.reset(new eksVariableToneCtrlDocWin(pXmlGuitarFineTuneConfig, pGuitarFineTuneLookAndFeel));
 
-	Rectangle<int> area(0, 0, 300, 400);
+	Rectangle<int> area(0, 0, 350, 450);
 
 	RectanglePlacement placement
 	(

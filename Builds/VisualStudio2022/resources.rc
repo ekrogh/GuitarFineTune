@@ -17,9 +17,9 @@ BEGIN
     BEGIN
       VALUE "CompanyName",  "eksit\0"
       VALUE "LegalCopyright",  "eksit\0"
-      VALUE "FileDescription",  "GuitarFineTune\0"
+      VALUE "FileDescription",  "sinMulGuitarFineTune\0"
       VALUE "FileVersion",  "9.9.4\0"
-      VALUE "ProductName",  "GuitarFineTune\0"
+      VALUE "ProductName",  "sinMulGuitarFineTune\0"
       VALUE "ProductVersion",  "9.9.4\0"
     END
   END

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="cgcxPd" name="GuitarFineTune" projectType="guiapp" version="9.9.4"
-              bundleIdentifier="dk.eksIt.guitarFineTune" includeBinaryInAppConfig="1"
+<JUCERPROJECT id="cgcxPd" name="sinMulGuitarFineTune" projectType="guiapp"
+              version="9.9.4" bundleIdentifier="dk.eksIt.guitarFineTune" includeBinaryInAppConfig="1"
               reportAppUsage="1" companyCopyright="eksit" companyName="eksit"
               companyWebsite="eksit.dk" companyEmail="guitarFineTune@eksit.dk"
               cppLanguageStandard="latest" jucerFormatVersion="1" displaySplashScreen="1">
-  <MAINGROUP id="rZCHr8" name="GuitarFineTune">
+  <MAINGROUP id="rZCHr8" name="sinMulGuitarFineTune">
     <GROUP id="{8DC23B3F-98AC-AB1C-B26A-E693AF2DF0D2}" name="Source">
       <GROUP id="{53F01B09-4F3E-ED79-EE4F-43B6859E3FE0}" name="Resources">
         <FILE id="QjlzsO" name="Launch Screen.storyboard" compile="0" resource="0"
@@ -57,6 +57,10 @@
             file="Source/eksVariableToneCtrl.h"/>
       <FILE id="wqCTxo" name="eksVariableToneCtrl.cpp" compile="1" resource="0"
             file="Source/eksVariableToneCtrl.cpp"/>
+      <FILE id="oI3k6J" name="eksVariableToneCtrlDocWin.cpp" compile="1"
+            resource="0" file="Source/eksVariableToneCtrlDocWin.cpp"/>
+      <FILE id="tKvNSJ" name="eksVariableToneCtrlDocWin.h" compile="0" resource="0"
+            file="Source/eksVariableToneCtrlDocWin.h"/>
       <FILE id="abjtzO" name="Factory.h" compile="0" resource="0" file="Source/Factory.h"/>
       <FILE id="bbd6ut" name="gfft.h" compile="0" resource="0" file="Source/gfft.h"/>
       <FILE id="CQoMbD" name="guitarFineTuneFirstClass.cpp" compile="1" resource="0"
@@ -240,18 +244,18 @@
     </VS2022>
   </EXPORTFORMATS>
   <MODULES>
-    <MODULES id="juce_audio_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
-    <MODULES id="juce_audio_devices" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
-    <MODULES id="juce_audio_formats" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
-    <MODULES id="juce_audio_processors" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
-    <MODULES id="juce_audio_utils" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
-    <MODULES id="juce_core" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
-    <MODULES id="juce_data_structures" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
-    <MODULE id="juce_dsp" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
-    <MODULES id="juce_events" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
-    <MODULES id="juce_graphics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
-    <MODULES id="juce_gui_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
-    <MODULES id="juce_gui_extra" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULES id="juce_audio_basics" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
+    <MODULES id="juce_audio_devices" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
+    <MODULES id="juce_audio_formats" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
+    <MODULES id="juce_audio_processors" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
+    <MODULES id="juce_audio_utils" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
+    <MODULES id="juce_core" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
+    <MODULES id="juce_data_structures" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
+    <MODULE id="juce_dsp" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
+    <MODULES id="juce_events" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
+    <MODULES id="juce_graphics" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
+    <MODULES id="juce_gui_basics" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
+    <MODULES id="juce_gui_extra" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
   </MODULES>
   <JUCEOPTIONS JUCE_USE_ANDROID_OBOE="0" JUCE_DISABLE_AUDIO_MIXING_WITH_OTHER_APPS="1"/>
   <LIVE_SETTINGS>

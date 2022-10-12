@@ -39,9 +39,9 @@ ifeq ($(CONFIG),Debug)
     TARGET_ARCH := -m64
   endif
 
-  JUCE_CPPFLAGS := $(DEPFLAGS) "-DLINUX=1" "-DDEBUG=1" "-D_DEBUG=1" "-DJUCER_LINUX_MAKE_6D53C8B4=1" "-DJUCE_APP_VERSION=9.9.4" "-DJUCE_APP_VERSION_HEX=0x90904" $(shell $(PKG_CONFIG) --cflags alsa freetype2 libcurl webkit2gtk-4.0 gtk+-x11-3.0) -pthread -I../../JuceLibraryCode -I$(HOME)/JUCE/modules $(CPPFLAGS)
+  JUCE_CPPFLAGS := $(DEPFLAGS) "-DLINUX=1" "-DDEBUG=1" "-D_DEBUG=1" "-DJUCER_LINUX_MAKE_6D53C8B4=1" "-DJUCE_APP_VERSION=9.9.4" "-DJUCE_APP_VERSION_HEX=0x90904" $(shell $(PKG_CONFIG) --cflags alsa freetype2 libcurl webkit2gtk-4.0 gtk+-x11-3.0) -pthread -I../../JuceLibraryCode -I../../JuceLibraryCode/modules $(CPPFLAGS)
   JUCE_CPPFLAGS_APP :=  "-DJucePlugin_Build_VST=0" "-DJucePlugin_Build_VST3=0" "-DJucePlugin_Build_AU=0" "-DJucePlugin_Build_AUv3=0" "-DJucePlugin_Build_AAX=0" "-DJucePlugin_Build_Standalone=0" "-DJucePlugin_Build_Unity=0" "-DJucePlugin_Build_LV2=0"
-  JUCE_TARGET_APP := GuitarFineTune
+  JUCE_TARGET_APP := sinMulGuitarFineTune
 
   JUCE_CFLAGS += $(JUCE_CPPFLAGS) $(TARGET_ARCH) -g -ggdb -O0 $(CFLAGS)
   JUCE_CXXFLAGS += $(JUCE_CFLAGS) -std=c++20 $(CXXFLAGS)
@@ -60,9 +60,9 @@ ifeq ($(CONFIG),Release)
     TARGET_ARCH := 
   endif
 
-  JUCE_CPPFLAGS := $(DEPFLAGS) "-DLINUX=1" "-DNDEBUG=1" "-DJUCER_LINUX_MAKE_6D53C8B4=1" "-DJUCE_APP_VERSION=9.9.4" "-DJUCE_APP_VERSION_HEX=0x90904" $(shell $(PKG_CONFIG) --cflags alsa freetype2 libcurl webkit2gtk-4.0 gtk+-x11-3.0) -pthread -I../../JuceLibraryCode -I$(HOME)/JUCE/modules $(CPPFLAGS)
+  JUCE_CPPFLAGS := $(DEPFLAGS) "-DLINUX=1" "-DNDEBUG=1" "-DJUCER_LINUX_MAKE_6D53C8B4=1" "-DJUCE_APP_VERSION=9.9.4" "-DJUCE_APP_VERSION_HEX=0x90904" $(shell $(PKG_CONFIG) --cflags alsa freetype2 libcurl webkit2gtk-4.0 gtk+-x11-3.0) -pthread -I../../JuceLibraryCode -I../../JuceLibraryCode/modules $(CPPFLAGS)
   JUCE_CPPFLAGS_APP :=  "-DJucePlugin_Build_VST=0" "-DJucePlugin_Build_VST3=0" "-DJucePlugin_Build_AU=0" "-DJucePlugin_Build_AUv3=0" "-DJucePlugin_Build_AAX=0" "-DJucePlugin_Build_Standalone=0" "-DJucePlugin_Build_Unity=0" "-DJucePlugin_Build_LV2=0"
-  JUCE_TARGET_APP := GuitarFineTune
+  JUCE_TARGET_APP := sinMulGuitarFineTune
 
   JUCE_CFLAGS += $(JUCE_CPPFLAGS) $(TARGET_ARCH) -O3 $(CFLAGS)
   JUCE_CXXFLAGS += $(JUCE_CFLAGS) -std=c++20 $(CXXFLAGS)
@@ -82,6 +82,7 @@ OBJECTS_APP := \
   $(JUCE_OBJDIR)/eksTabbedComponent_c42240ad.o \
   $(JUCE_OBJDIR)/eksThreadWithProgressWindow_27db6dbb.o \
   $(JUCE_OBJDIR)/eksVariableToneCtrl_a00b67c7.o \
+  $(JUCE_OBJDIR)/eksVariableToneCtrlDocWin_26856feb.o \
   $(JUCE_OBJDIR)/guitarFineTuneFirstClass_d1db99ad.o \
   $(JUCE_OBJDIR)/guitarStringSoundsControl_3805b87f.o \
   $(JUCE_OBJDIR)/Main_90ebc5c2.o \
@@ -111,7 +112,7 @@ all : $(JUCE_OUTDIR)/$(JUCE_TARGET_APP)
 $(JUCE_OUTDIR)/$(JUCE_TARGET_APP) : $(OBJECTS_APP) $(RESOURCES)
 	@command -v $(PKG_CONFIG) >/dev/null 2>&1 || { echo >&2 "pkg-config not installed. Please, install it."; exit 1; }
 	@$(PKG_CONFIG) --print-errors alsa freetype2 libcurl
-	@echo Linking "GuitarFineTune - App"
+	@echo Linking "sinMulGuitarFineTune - App"
 	-$(V_AT)mkdir -p $(JUCE_BINDIR)
 	-$(V_AT)mkdir -p $(JUCE_LIBDIR)
 	-$(V_AT)mkdir -p $(JUCE_OUTDIR)
@@ -165,6 +166,11 @@ $(JUCE_OBJDIR)/eksThreadWithProgressWindow_27db6dbb.o: ../../Source/eksThreadWit
 $(JUCE_OBJDIR)/eksVariableToneCtrl_a00b67c7.o: ../../Source/eksVariableToneCtrl.cpp
 	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
 	@echo "Compiling eksVariableToneCtrl.cpp"
+	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
+
+$(JUCE_OBJDIR)/eksVariableToneCtrlDocWin_26856feb.o: ../../Source/eksVariableToneCtrlDocWin.cpp
+	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
+	@echo "Compiling eksVariableToneCtrlDocWin.cpp"
 	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
 
 $(JUCE_OBJDIR)/guitarFineTuneFirstClass_d1db99ad.o: ../../Source/guitarFineTuneFirstClass.cpp
@@ -273,11 +279,11 @@ $(JUCE_OBJDIR)/include_juce_gui_extra_6dee1c1a.o: ../../JuceLibraryCode/include_
 	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
 
 clean:
-	@echo Cleaning GuitarFineTune
+	@echo Cleaning sinMulGuitarFineTune
 	$(V_AT)$(CLEANCMD)
 
 strip:
-	@echo Stripping GuitarFineTune
+	@echo Stripping sinMulGuitarFineTune
 	-$(V_AT)$(STRIP) --strip-unneeded $(JUCE_OUTDIR)/$(TARGET)
 
 -include $(OBJECTS_APP:%.o=%.d)
