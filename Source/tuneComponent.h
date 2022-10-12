@@ -354,6 +354,7 @@ private:
 	float resToDisply = 0;
 
 	bool showFFTToggleButtonOn = false;
+	bool saveShowFFTToggleButtonOn = false;
 	bool showFFTMaxIndictrToggleButtonOn = false;
 	bool showStringsOffTuneValues = false;
 	bool showIndicatorsToggleButtonOn = true;
