@@ -231,7 +231,7 @@ public:
 
     ~AudioDeviceSettingsPanel() override
     {
-        setup.manager->removeChangeListener (this);
+        //setup.manager->removeChangeListener (this);
     }
 
     void resized() override
@@ -1055,7 +1055,7 @@ AudioDeviceSelectorComponent::AudioDeviceSelectorComponent (AudioDeviceManager& 
 
 AudioDeviceSelectorComponent::~AudioDeviceSelectorComponent()
 {
-    deviceManager.removeChangeListener (this);
+    //deviceManager.removeChangeListener (this);
 }
 
 void AudioDeviceSelectorComponent::setItemHeight (int newItemHeight)
