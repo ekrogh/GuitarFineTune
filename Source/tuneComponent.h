@@ -171,6 +171,7 @@ public:
 	void setshowFFTMaxIndictr(bool flagOn);
 	void setShowstringsOffTuneValues(bool flagOn);
 	void setshowThreshold(bool doShowThreshold);
+	void setGenerateNoise(bool flagOn);
 
 	void setNoValsInAvgFreqsOutOfTuneCalc(int newNoValsInAvgFreqsOutOfTuneCalc);
 	int getNoValsInAvgFreqsOutOfTuneCalc();

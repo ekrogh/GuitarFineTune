@@ -1208,6 +1208,26 @@ void tuneComponent::getNextAudioBlock(const AudioSourceChannelInfo& bufferToFill
 		{
 			bufferToFill.clearActiveBufferRegion();
 		}
+		
+		if (generateNoiseToggleButtonOn)
+		{
+			static std::random_device rd;   // non-deterministic generator
+			static std::mt19937 gen(rd());  // to seed mersenne twister.
+			static std::uniform_real_distribution<> dist(-1, 1);
+
+			for (int chan = 0; chan < bufferToFill.buffer->getNumChannels(); ++chan)
+			{
+
+				float* const channelData = bufferToFill.buffer->getWritePointer(chan, bufferToFill.startSample);
+
+				while (generateNoiseIndxToSampleInInBuffer < bufferToFill.numSamples)
+				{
+					channelData[generateNoiseIndxToSampleInInBuffer] += (float)(dist(gen)); // Random
+					generateNoiseIndxToSampleInInBuffer += sampleSpace;
+				}
+				generateNoiseIndxToSampleInInBuffer -= bufferToFill.numSamples; // make ready for next buffertofill 
+			}
+		}
 
 		float currentPhase;
 		float phaseDeltaPerSample;
@@ -3705,6 +3725,11 @@ void tuneComponent::setShowFFT(bool flagOn)
 	const ScopedLock sl(drawSpectrogramLockMutex);
 
 	doSetShowFFT(flagOn);
+}
+
+void tuneComponent::setGenerateNoise(bool flagOn)
+{
+	generateNoiseToggleButtonOn = flagOn;
 }
 
 void tuneComponent::setshowFFTMaxIndictr(bool flagOn)

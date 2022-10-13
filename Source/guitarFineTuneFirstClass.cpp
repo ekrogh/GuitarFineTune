@@ -442,7 +442,7 @@ guitarFineTuneFirstClass::guitarFineTuneFirstClass()
 
 	RectanglePlacement placement
 	(
-		RectanglePlacement::xRight
+		RectanglePlacement::xLeft
 		| RectanglePlacement::yMid
 		| RectanglePlacement::doNotResize
 	);
