@@ -1202,8 +1202,13 @@ void tuneComponent::filterAndPushNextSampleIntoFifo(float sample)
 
 void tuneComponent::getNextAudioBlock(const AudioSourceChannelInfo& bufferToFill)
 {
-	if (doMulVariableTone && doMulVariableToneFFT)
+	if (doMulVariableTone/* && doMulVariableToneFFT*/)
 	{
+		if (inputMuteToggleButtonOn)
+		{
+			bufferToFill.clearActiveBufferRegion();
+		}
+
 		float currentPhase;
 		float phaseDeltaPerSample;
 
@@ -1250,12 +1255,18 @@ void tuneComponent::getNextAudioBlock(const AudioSourceChannelInfo& bufferToFill
 			(float guitarStringSoundsIn)
 				{
 					currentPhase = std::fmod(currentPhase + phaseDeltaPerSample, (float)f2PI);
-			return guitarStringSoundsIn * (float)(gainToUse * std::sin(currentPhase));
+			return guitarStringSoundsIn * (float)(/*gainToUse * */std::cos(currentPhase));
 				}
 			);
 
 			variableToneSinePhases.currentPhase = currentPhase;
 		}
+
+		if (!inputMuteToggleButtonOn)
+		{
+			bufferToFill.buffer->applyGain(0, bufferToFill.startSample, bufferToFill.numSamples, inputGain);
+		}
+
 	}
 	else if (generateNoiseToggleButtonOn)
 	{
@@ -1352,7 +1363,7 @@ void tuneComponent::getNextAudioBlock(const AudioSourceChannelInfo& bufferToFill
 		{
 			if (bufferToFill.buffer->getNumChannels() > 0)
 			{
-				if (!(doMulVariableTone && doMulVariableToneFFT && doPlayGuitarStringSounds && !stringsMuteToggleButtonOn))
+				if (!doMulVariableTone/* || !doMulVariableToneFFT*/)
 				{
 					if (inputMuteToggleButtonOn)
 					{

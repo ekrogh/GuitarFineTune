@@ -18,6 +18,7 @@
           <Add option="-DLINUX=&quot;1&quot;"/>
           <Add option="-DDEBUG=&quot;1&quot;"/>
           <Add option="-D_DEBUG=&quot;1&quot;"/>
+          <Add option="-D_SILENCE_CXX23_ALIGNED_STORAGE_DEPRECATION_WARNING="/>
           <Add option="-DJUCER_CODEBLOCKS_LINUX_191E0897=&quot;1&quot;"/>
           <Add option="-DJUCE_APP_VERSION=&quot;10.9.4&quot;"/>
           <Add option="-DJUCE_APP_VERSION_HEX=&quot;0xa0904&quot;"/>
@@ -61,6 +62,7 @@
         <Compiler>
           <Add option="-DLINUX=&quot;1&quot;"/>
           <Add option="-DNDEBUG=&quot;1&quot;"/>
+          <Add option="-D_SILENCE_CXX23_ALIGNED_STORAGE_DEPRECATION_WARNING="/>
           <Add option="-DJUCER_CODEBLOCKS_LINUX_191E0897=&quot;1&quot;"/>
           <Add option="-DJUCE_APP_VERSION=&quot;10.9.4&quot;"/>
           <Add option="-DJUCE_APP_VERSION_HEX=&quot;0xa0904&quot;"/>

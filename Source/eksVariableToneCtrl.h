@@ -66,8 +66,6 @@ private:
 	//[UserVariables]   -- You can add your own custom variables in this section.
 	std::shared_ptr<eksLookAndFeel> pGuitarFineTuneLookAndFeel = nullptr;
 	std::shared_ptr<xmlGuitarFineTuneConfig> pXmlGuitarFineTuneConfig = nullptr;
-	
-	bool showFftToggleButtonStateSave = false;
 	//[/UserVariables]
 
 	//==============================================================================

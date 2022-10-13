@@ -129,8 +129,10 @@ void eksVariableToneCtrl::buttonClicked(juce::Button* buttonThatWasClicked)
 		bool toggleState = sendOuttoggleButton->getToggleState();
 		if (!toggleState)
 		{
-			showFftToggleButtonStateSave = showFftToggleButton->getToggleState();
-			showFftToggleButton->setToggleState(false, dontSendNotification);
+			pTuneComponent->controlVariableToneFFT
+			(
+				false
+			);
 		}
 		pTuneComponent->controlVariableTone
 		(
@@ -140,17 +142,23 @@ void eksVariableToneCtrl::buttonClicked(juce::Button* buttonThatWasClicked)
 		);
 		if (toggleState)
 		{
-			showFftToggleButton->setToggleState(showFftToggleButtonStateSave, sendNotification);
+			pTuneComponent->controlVariableToneFFT
+			(
+				showFftToggleButton->getToggleState()
+			);
 		}
 		//[/UserButtonCode_sendOuttoggleButton]
 	}
 	else if (buttonThatWasClicked == showFftToggleButton.get())
 	{
 		//[UserButtonCode_showFftToggleButton] -- add your button handler code here..
-		pTuneComponent->controlVariableToneFFT
-		(
-			showFftToggleButton->getToggleState()
-		);
+		if (sendOuttoggleButton->getToggleState())
+		{
+			pTuneComponent->controlVariableToneFFT
+			(
+				showFftToggleButton->getToggleState()
+			);
+		}
 		//[/UserButtonCode_showFftToggleButton]
 	}
 	else if (buttonThatWasClicked == addNoiseToggleButton.get())
