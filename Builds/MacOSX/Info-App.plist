@@ -12,17 +12,17 @@
     <key>CFBundleIdentifier</key>
     <string>dk.eksIt.guitarFineTuneOSX</string>
     <key>CFBundleName</key>
-    <string>sinMulGuitarFineTune</string>
+    <string>experimentGuitarFineTune</string>
     <key>CFBundleDisplayName</key>
-    <string>sinMulGuitarFineTune</string>
+    <string>experimentGuitarFineTune</string>
     <key>CFBundlePackageType</key>
     <string>APPL</string>
     <key>CFBundleSignature</key>
     <string>????</string>
     <key>CFBundleShortVersionString</key>
-    <string>9.9.4</string>
+    <string>10.9.4</string>
     <key>CFBundleVersion</key>
-    <string>9.9.4</string>
+    <string>10.9.4</string>
     <key>NSHumanReadableCopyright</key>
     <string>eksit</string>
     <key>NSHighResolutionCapable</key>

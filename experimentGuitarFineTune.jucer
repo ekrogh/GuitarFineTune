@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="cgcxPd" name="sinMulGuitarFineTune" projectType="guiapp"
-              version="9.9.4" bundleIdentifier="dk.eksIt.guitarFineTune" includeBinaryInAppConfig="1"
+<JUCERPROJECT id="cgcxPd" name="experimentGuitarFineTune" projectType="guiapp"
+              version="10.9.4" bundleIdentifier="dk.eksIt.guitarFineTune" includeBinaryInAppConfig="1"
               reportAppUsage="1" companyCopyright="eksit" companyName="eksit"
               companyWebsite="eksit.dk" companyEmail="guitarFineTune@eksit.dk"
               cppLanguageStandard="latest" jucerFormatVersion="1" displaySplashScreen="1">
-  <MAINGROUP id="rZCHr8" name="sinMulGuitarFineTune">
+  <MAINGROUP id="rZCHr8" name="experimentGuitarFineTune">
     <GROUP id="{8DC23B3F-98AC-AB1C-B26A-E693AF2DF0D2}" name="Source">
       <GROUP id="{53F01B09-4F3E-ED79-EE4F-43B6859E3FE0}" name="Resources">
         <FILE id="QjlzsO" name="Launch Screen.storyboard" compile="0" resource="0"
