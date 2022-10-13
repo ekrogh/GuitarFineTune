@@ -38,7 +38,7 @@ class eksLookAndFeel;
 	Describe your class and how it works here!
 																	//[/Comments]
 */
-class eksVariableToneCtrl : public Component,
+class eksVariableToneCtrl : public juce::Component,
 	public juce::Button::Listener,
 	public juce::Slider::Listener
 {
@@ -49,6 +49,10 @@ public:
 
 	//==============================================================================
 	//[UserMethods]     -- You can add your own custom methods in this section.
+	void closeButtonPressed()
+	{
+		setVisible(false);
+	}
 	//[/UserMethods]
 
 	void paint(juce::Graphics& g) override;
@@ -62,12 +66,15 @@ private:
 	//[UserVariables]   -- You can add your own custom variables in this section.
 	std::shared_ptr<eksLookAndFeel> pGuitarFineTuneLookAndFeel = nullptr;
 	std::shared_ptr<xmlGuitarFineTuneConfig> pXmlGuitarFineTuneConfig = nullptr;
+	
+	bool showFftToggleButtonStateSave = false;
 	//[/UserVariables]
 
 	//==============================================================================
 	std::unique_ptr<juce::ToggleButton> sendOuttoggleButton;
 	std::unique_ptr<juce::Slider> FrequencySlider;
 	std::unique_ptr<juce::ToggleButton> showFftToggleButton;
+	std::unique_ptr<juce::ToggleButton> addNoiseToggleButton;
 
 
 	//==============================================================================

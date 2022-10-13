@@ -41,14 +41,15 @@ eksVariableToneCtrl::eksVariableToneCtrl(std::shared_ptr<xmlGuitarFineTuneConfig
 	sendOuttoggleButton.reset(new juce::ToggleButton("sendOuttoggleButton"));
 	addAndMakeVisible(sendOuttoggleButton.get());
 	sendOuttoggleButton->setButtonText(TRANS("Activate Multiply with tones"));
+	sendOuttoggleButton->setButtonText(TRANS("Multiply with tones"));
 	sendOuttoggleButton->addListener(this);
 
-	sendOuttoggleButton->setBounds(174, 64, 150, 24);
+	sendOuttoggleButton->setBounds(194, 64, 150, 24);
 
 	FrequencySlider.reset(new juce::Slider("FrequencySlider"));
 	addAndMakeVisible(FrequencySlider.get());
 	FrequencySlider->setTooltip(TRANS("Freq [Hz]"));
-	FrequencySlider->setRange(0, 400, 0);
+	FrequencySlider->setRange(0, 500, 0);
 	FrequencySlider->setSliderStyle(juce::Slider::LinearVertical);
 	FrequencySlider->setTextBoxStyle(juce::Slider::TextBoxLeft, false, 80, 20);
 	FrequencySlider->addListener(this);
@@ -60,14 +61,21 @@ eksVariableToneCtrl::eksVariableToneCtrl(std::shared_ptr<xmlGuitarFineTuneConfig
 	showFftToggleButton->setButtonText(TRANS("Show FFT"));
 	showFftToggleButton->addListener(this);
 
-	showFftToggleButton->setBounds(174, 160, 150, 24);
+	showFftToggleButton->setBounds(194, 130, 150, 24);
+
+	addNoiseToggleButton.reset(new juce::ToggleButton("addNoiseToggleButton"));
+	addAndMakeVisible(addNoiseToggleButton.get());
+	addNoiseToggleButton->setButtonText(TRANS("Add noise"));
+	addNoiseToggleButton->addListener(this);
+
+	addNoiseToggleButton->setBounds(194, 204, 150, 24);
 
 
 	//[UserPreSize]
 	//setContentOwned(FrequencySlider.get(), false);
 	//[/UserPreSize]
 
-	setSize(350, 450);
+	setSize(300, 450);
 
 
 	//[Constructor] You can add your own custom stuff here..
@@ -82,6 +90,7 @@ eksVariableToneCtrl::~eksVariableToneCtrl()
 	sendOuttoggleButton = nullptr;
 	FrequencySlider = nullptr;
 	showFftToggleButton = nullptr;
+	addNoiseToggleButton = nullptr;
 
 
 	//[Destructor]. You can add your own custom destruction code here..
@@ -120,6 +129,7 @@ void eksVariableToneCtrl::buttonClicked(juce::Button* buttonThatWasClicked)
 		bool toggleState = sendOuttoggleButton->getToggleState();
 		if (!toggleState)
 		{
+			showFftToggleButtonStateSave = showFftToggleButton->getToggleState();
 			showFftToggleButton->setToggleState(false, dontSendNotification);
 		}
 		pTuneComponent->controlVariableTone
@@ -128,6 +138,10 @@ void eksVariableToneCtrl::buttonClicked(juce::Button* buttonThatWasClicked)
 			, true
 			, toggleState
 		);
+		if (toggleState)
+		{
+			showFftToggleButton->setToggleState(showFftToggleButtonStateSave, sendNotification);
+		}
 		//[/UserButtonCode_sendOuttoggleButton]
 	}
 	else if (buttonThatWasClicked == showFftToggleButton.get())
@@ -138,6 +152,11 @@ void eksVariableToneCtrl::buttonClicked(juce::Button* buttonThatWasClicked)
 			showFftToggleButton->getToggleState()
 		);
 		//[/UserButtonCode_showFftToggleButton]
+	}
+	else if (buttonThatWasClicked == addNoiseToggleButton.get())
+	{
+		//[UserButtonCode_addNoiseToggleButton] -- add your button handler code here..
+		//[/UserButtonCode_addNoiseToggleButton]
 	}
 
 	//[UserbuttonClicked_Post]
@@ -181,21 +200,24 @@ void eksVariableToneCtrl::sliderValueChanged(juce::Slider* sliderThatWasMoved)
 BEGIN_JUCER_METADATA
 
 <JUCER_COMPONENT documentType="Component" className="eksVariableToneCtrl" componentName=""
-				 parentClasses="public Component" constructorParams="        std::shared_ptr&lt;xmlGuitarFineTuneConfig&gt; pXmlGFTConfig          , std::shared_ptr&lt;eksLookAndFeel&gt; pGFTAF  "
-				 variableInitialisers="pGuitarFineTuneLookAndFeel(pGFTAF)&#10;pXmlGuitarFineTuneConfig(pXmlGFTConfig)&#10"
+				 parentClasses="public juce::Component" constructorParams="        std::shared_ptr&lt;xmlGuitarFineTuneConfig&gt; pXmlGFTConfig          , std::shared_ptr&lt;eksLookAndFeel&gt; pGFTAF  "
+				 variableInitialisers="pGuitarFineTuneLookAndFeel(pGFTAF)&#10;pXmlGuitarFineTuneConfig(pXmlGFTConfig)&#10;DocumentWindow(&quot;Variable Tone Control&quot;, Colour(0xFF2B0720), DocumentWindow::allButtons)"
 				 snapPixels="8" snapActive="1" snapShown="1" overlayOpacity="0.330"
-				 fixedSize="0" initialWidth="350" initialHeight="450">
+				 fixedSize="0" initialWidth="300" initialHeight="450">
   <BACKGROUND backgroundColour="ff2b0720"/>
   <TOGGLEBUTTON name="sendOuttoggleButton" id="26573501e1f0d42" memberName="sendOuttoggleButton"
-				virtualName="" explicitFocusOrder="0" pos="174 64 150 24" buttonText="Activate Multiply with tones"
+				virtualName="" explicitFocusOrder="0" pos="194 64 150 24" buttonText="Multiply with tones"
 				connectedEdges="0" needsCallback="1" radioGroupId="0" state="0"/>
   <SLIDER name="FrequencySlider" id="b44be89bb3688130" memberName="FrequencySlider"
 		  virtualName="" explicitFocusOrder="0" pos="0 0 150 448" tooltip="Freq [Hz]"
-		  min="0.0" max="20000.0" int="0.0" style="LinearVertical" textBoxPos="TextBoxLeft"
+		  min="0.0" max="500.0" int="0.0" style="LinearVertical" textBoxPos="TextBoxLeft"
 		  textBoxEditable="1" textBoxWidth="80" textBoxHeight="20" skewFactor="1.0"
 		  needsCallback="1"/>
-  <TOGGLEBUTTON name="showFftToggleButton" id="724c6b8c12d09005" memberName="showFftToggleButton"
-				virtualName="" explicitFocusOrder="0" pos="174 160 150 24" buttonText="Show FFT"
+  <TOGGLEBUTTON name="showFftToggleButton" id="3728d4ec9e263c3f" memberName="showFftToggleButton"
+				virtualName="" explicitFocusOrder="0" pos="194 130 150 24" buttonText="Show FFT"
+				connectedEdges="0" needsCallback="1" radioGroupId="0" state="0"/>
+  <TOGGLEBUTTON name="addNoiseToggleButton" id="b8377889ac180534" memberName="addNoiseToggleButton"
+				virtualName="" explicitFocusOrder="0" pos="194 204 150 24" buttonText="Add noise"
 				connectedEdges="0" needsCallback="1" radioGroupId="0" state="0"/>
 </JUCER_COMPONENT>
 
