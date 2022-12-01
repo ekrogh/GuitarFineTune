@@ -122,7 +122,7 @@ public:
 	@param priority   the priority to use when starting the thread - see
 	Thread::startThread() for values
 	*/
-	void launchThread(int priority = 5);
+	void launchThread(Priority priority = Priority::high);
 
 	/** The thread should call this periodically to update the position of the progress bar.
 

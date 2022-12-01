@@ -1,7 +1,9 @@
-# Automatically generated makefile, created by the Projucer
+# Automatically generated CMakeLists, created by the Projucer
 # Don't edit this file! Your changes will be overwritten when you re-save the Projucer project!
 
 cmake_minimum_required(VERSION 3.4.1)
+
+project(juce_jni_project)
 
 set(BINARY_NAME "juce_jni")
 
@@ -958,6 +960,7 @@ add_library( ${BINARY_NAME}
     "../../../JuceLibraryCode/modules/juce_core/native/juce_mac_Strings.mm"
     "../../../JuceLibraryCode/modules/juce_core/native/juce_mac_SystemStats.mm"
     "../../../JuceLibraryCode/modules/juce_core/native/juce_mac_Threads.mm"
+    "../../../JuceLibraryCode/modules/juce_core/native/juce_native_ThreadPriorities.h"
     "../../../JuceLibraryCode/modules/juce_core/native/juce_posix_IPAddress.h"
     "../../../JuceLibraryCode/modules/juce_core/native/juce_posix_NamedPipe.cpp"
     "../../../JuceLibraryCode/modules/juce_core/native/juce_posix_SharedCode.h"
@@ -1658,6 +1661,7 @@ add_library( ${BINARY_NAME}
     "../../../JuceLibraryCode/modules/juce_gui_basics/native/juce_mac_MainMenu.mm"
     "../../../JuceLibraryCode/modules/juce_gui_basics/native/juce_mac_MouseCursor.mm"
     "../../../JuceLibraryCode/modules/juce_gui_basics/native/juce_mac_NSViewComponentPeer.mm"
+    "../../../JuceLibraryCode/modules/juce_gui_basics/native/juce_mac_PerScreenDisplayLinks.h"
     "../../../JuceLibraryCode/modules/juce_gui_basics/native/juce_mac_Windowing.mm"
     "../../../JuceLibraryCode/modules/juce_gui_basics/native/juce_MultiTouchMapper.h"
     "../../../JuceLibraryCode/modules/juce_gui_basics/native/juce_ScopedDPIAwarenessDisabler.h"
@@ -1742,6 +1746,8 @@ add_library( ${BINARY_NAME}
     "../../../JuceLibraryCode/modules/juce_gui_basics/windows/juce_TooltipWindow.h"
     "../../../JuceLibraryCode/modules/juce_gui_basics/windows/juce_TopLevelWindow.cpp"
     "../../../JuceLibraryCode/modules/juce_gui_basics/windows/juce_TopLevelWindow.h"
+    "../../../JuceLibraryCode/modules/juce_gui_basics/windows/juce_VBlankAttachement.cpp"
+    "../../../JuceLibraryCode/modules/juce_gui_basics/windows/juce_VBlankAttachement.h"
     "../../../JuceLibraryCode/modules/juce_gui_basics/juce_gui_basics.cpp"
     "../../../JuceLibraryCode/modules/juce_gui_basics/juce_gui_basics.mm"
     "../../../JuceLibraryCode/modules/juce_gui_basics/juce_gui_basics.h"
@@ -2742,6 +2748,7 @@ set_source_files_properties(
     "../../../JuceLibraryCode/modules/juce_core/native/juce_mac_Strings.mm"
     "../../../JuceLibraryCode/modules/juce_core/native/juce_mac_SystemStats.mm"
     "../../../JuceLibraryCode/modules/juce_core/native/juce_mac_Threads.mm"
+    "../../../JuceLibraryCode/modules/juce_core/native/juce_native_ThreadPriorities.h"
     "../../../JuceLibraryCode/modules/juce_core/native/juce_posix_IPAddress.h"
     "../../../JuceLibraryCode/modules/juce_core/native/juce_posix_NamedPipe.cpp"
     "../../../JuceLibraryCode/modules/juce_core/native/juce_posix_SharedCode.h"
@@ -3442,6 +3449,7 @@ set_source_files_properties(
     "../../../JuceLibraryCode/modules/juce_gui_basics/native/juce_mac_MainMenu.mm"
     "../../../JuceLibraryCode/modules/juce_gui_basics/native/juce_mac_MouseCursor.mm"
     "../../../JuceLibraryCode/modules/juce_gui_basics/native/juce_mac_NSViewComponentPeer.mm"
+    "../../../JuceLibraryCode/modules/juce_gui_basics/native/juce_mac_PerScreenDisplayLinks.h"
     "../../../JuceLibraryCode/modules/juce_gui_basics/native/juce_mac_Windowing.mm"
     "../../../JuceLibraryCode/modules/juce_gui_basics/native/juce_MultiTouchMapper.h"
     "../../../JuceLibraryCode/modules/juce_gui_basics/native/juce_ScopedDPIAwarenessDisabler.h"
@@ -3526,6 +3534,8 @@ set_source_files_properties(
     "../../../JuceLibraryCode/modules/juce_gui_basics/windows/juce_TooltipWindow.h"
     "../../../JuceLibraryCode/modules/juce_gui_basics/windows/juce_TopLevelWindow.cpp"
     "../../../JuceLibraryCode/modules/juce_gui_basics/windows/juce_TopLevelWindow.h"
+    "../../../JuceLibraryCode/modules/juce_gui_basics/windows/juce_VBlankAttachement.cpp"
+    "../../../JuceLibraryCode/modules/juce_gui_basics/windows/juce_VBlankAttachement.h"
     "../../../JuceLibraryCode/modules/juce_gui_basics/juce_gui_basics.cpp"
     "../../../JuceLibraryCode/modules/juce_gui_basics/juce_gui_basics.mm"
     "../../../JuceLibraryCode/modules/juce_gui_basics/juce_gui_basics.h"
@@ -3597,14 +3607,12 @@ set_source_files_properties(
     "../../../JuceLibraryCode/JuceHeader.h"
     PROPERTIES HEADER_FILE_ONLY TRUE)
 
-target_compile_options( ${BINARY_NAME} PRIVATE "-fsigned-char" )
-
 if( JUCE_BUILD_CONFIGURATION MATCHES "RELEASE" )
-    target_compile_options( ${BINARY_NAME} PRIVATE)
+    target_compile_options( ${BINARY_NAME} PRIVATE "-fsigned-char" )
 endif()
 
 if( JUCE_BUILD_CONFIGURATION MATCHES "DEBUG" )
-    target_compile_options( ${BINARY_NAME} PRIVATE)
+    target_compile_options( ${BINARY_NAME} PRIVATE "-fsigned-char" )
 endif()
 
 find_library(log "log")

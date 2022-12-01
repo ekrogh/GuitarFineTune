@@ -421,7 +421,7 @@ bool tuneComponent::audioSysInit()
 
 	// ChangeListner = this
 	sharedAudioDeviceManager->addChangeListener(this);
-	startThread(1); // priority 1
+	startThread(Priority::normal); // priority normal
 
 
 	return true;

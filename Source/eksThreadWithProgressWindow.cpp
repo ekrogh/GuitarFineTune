@@ -100,7 +100,7 @@ void eksThreadWithProgressWindow::launchWindow()
 	}
 }
 
-void eksThreadWithProgressWindow::launchThread(int priority)
+void eksThreadWithProgressWindow::launchThread(Priority priority)
 {
 	jassert(MessageManager::getInstance()->isThisTheMessageThread());
 

@@ -52,7 +52,7 @@ audioRecorderThread::audioRecorderThread(std::shared_ptr<AudioRecorderControl> s
 	: Thread("Filtered Audio Recording Control Thread")
 	, spTheAudioRecorderController(spTheAudioRecorderControllerInUse)
 {
-	startThread(1); // Priority 1
+	startThread(Priority::normal); // Priority normal
 }
 
 audioRecorderThread::~audioRecorderThread()
