@@ -1627,7 +1627,7 @@ void tuneComponent::gfftPerformFrequencyOnlyForwardTransform(double* d)
 inline std::string tuneComponent::eksLongDoubleToString(long double valueToConvert)
 {
 	char stringOfRoundedSecondsPerBufferBuffer[20] = { 0 };
-	std::sprintf(stringOfRoundedSecondsPerBufferBuffer, "%.Le", valueToConvert);
+	std::snprintf(stringOfRoundedSecondsPerBufferBuffer, 20, "%.Le", valueToConvert);
 	return stringOfRoundedSecondsPerBufferBuffer;
 }
 //inline std::string tuneComponent::eksLongDoubleToString(long double valueToConvert, int noOfDecimals)

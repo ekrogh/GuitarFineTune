@@ -641,7 +641,7 @@ inline std::string displayControlComponent::eksLongDoubleToString(long double va
 {
 	char stringOfRoundedSecondsPerBufferBuffer[20] = { 0 };
 	auto roundedSecondsPerBuffer = std::round(valueToConvert * std::pow(10, noOfDecimals)) / std::pow(10, noOfDecimals);
-	std::sprintf(stringOfRoundedSecondsPerBufferBuffer, "%.*Lf", noOfDecimals, roundedSecondsPerBuffer);
+	std::snprintf(stringOfRoundedSecondsPerBufferBuffer, 20, "%.*Lf", noOfDecimals, roundedSecondsPerBuffer);
 	return stringOfRoundedSecondsPerBufferBuffer;
 }
 

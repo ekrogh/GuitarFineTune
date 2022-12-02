@@ -11,8 +11,8 @@
 #define _USE_MATH_DEFINES // For use in math.h
 
 
-#define USE_JUCE_FFT
-//#undef USE_JUCE_FFT
+//#define USE_JUCE_FFT
+#undef USE_JUCE_FFT
 
 #ifndef USE_JUCE_FFT
 	#include "gfft.h"
