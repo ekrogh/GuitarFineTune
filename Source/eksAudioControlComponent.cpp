@@ -123,7 +123,7 @@ eksAudioControlComponent::~eksAudioControlComponent( )
 	pGuitarFineTuneLookAndFeel = nullptr;
 	//[/Destructor_pre]
 
-	pAudioDeviceSelectorComponent = nullptr;
+	//pAudioDeviceSelectorComponent = nullptr;
 	Use_50_Hz_FilterToggleButton = nullptr;
 	Use_60_Hz_FilterToggleButton = nullptr;
 	preProcessingToggleButton = nullptr;
