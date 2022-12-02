@@ -4,7 +4,7 @@
               bundleIdentifier="dk.eksIt.guitarFineTune" includeBinaryInAppConfig="1"
               reportAppUsage="1" companyCopyright="eksit" companyName="eksit"
               companyWebsite="eksit.dk" companyEmail="guitarFineTune@eksit.dk"
-              cppLanguageStandard="17" jucerFormatVersion="1" displaySplashScreen="1">
+              cppLanguageStandard="20" jucerFormatVersion="1" displaySplashScreen="1">
   <MAINGROUP id="rZCHr8" name="GuitarFineTune">
     <GROUP id="{8DC23B3F-98AC-AB1C-B26A-E693AF2DF0D2}" name="Source">
       <GROUP id="{53F01B09-4F3E-ED79-EE4F-43B6859E3FE0}" name="Resources">
