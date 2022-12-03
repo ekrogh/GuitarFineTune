@@ -1,2 +1,2 @@
-MainPackage=D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\packProj\packProj\bin\x64\Release\packProj_9.7.1.0_x64.appx
-SymbolPackage=D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\packProj\packProj\obj\x64\Release\Symbols\packProj_9.7.1.0_x64.appxsym
+MainPackage=D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\packProj\packProj\bin\x64\Release\packProj_10.1.1.0_x64.appx
+SymbolPackage=D:\Users\eigil\projects\juceProjs\GuitarFineTune\Microsoft_Store\packProj\packProj\obj\x64\Release\Symbols\packProj_10.1.1.0_x64.appxsym

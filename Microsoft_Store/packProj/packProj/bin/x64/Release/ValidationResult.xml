@@ -1,123 +1,122 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <?xml-stylesheet type='text/xsl' href='C:\ProgramData\Windows App Certification Kit\results.xsl'?>
-<REPORT xml:lang="da-DK" OVERALL_RESULT="PASS" VERSION="10.0.19041.685" LATEST_VERSION="TRUE" UPDATE_DOWNLOAD_URL="" TOOLSET_ARCHITECTURE="x64" SecureBoot="FALSE" APP_TYPE="Centennial" PUBLISHER_DISPLAY_NAME="CN=C2E1AE67-4CF2-4308-9E4D-4A6C24FA7B0B" APP_NAME="57158guitarFineTune.guitarFineTune" APP_VERSION="9.7.1.0" OSVERSION="10.0.22621.0" OS="Microsoft Windows 11 Pro" PER_USER_APPLICATION="" PARTIAL_RUN="FALSE" LCID="1030" X64_ONLY="FALSE" VALIDATION_TYPE="UI" ReportGenerationTime="24-06-2022 19:02:36" ID="f7ff43b0b60cb2d05d55bf7f0e458948">
+<REPORT xml:lang="da-DK" OVERALL_RESULT="PASS" VERSION="10.0.22621.755" LATEST_VERSION="TRUE" UPDATE_DOWNLOAD_URL="" TOOLSET_ARCHITECTURE="x64" SecureBoot="FALSE" APP_TYPE="Centennial" PUBLISHER_DISPLAY_NAME="CN=C2E1AE67-4CF2-4308-9E4D-4A6C24FA7B0B" APP_NAME="57158guitarFineTune.guitarFineTune" APP_VERSION="10.1.1.0" OSVERSION="10.0.22621.0" OS="Microsoft Windows 11 Pro" PER_USER_APPLICATION="" PARTIAL_RUN="FALSE" LCID="1030" X64_ONLY="FALSE" VALIDATION_TYPE="UI" ReportGenerationTime="03-12-2022 15:21:32" ID="6d6620def19be36a7f1f216b4f218439">
   <REQUIREMENTS>
     <REQUIREMENT NUMBER="3" TITLE="Digitally signed file test" RATIONALE="An Authenticode digital signature allows users to be sure that the software is genuine. It also allows detection if a file has been tampered with e.g. infected by a virus.">
-      <TEST INDEX="2" NAME="Install signed driver and executable files" DESCRIPTION="Install signed driver and executable files." EXECUTIONTIME="00h:00m:01s.62ms" OPTIONAL="TRUE">
+      <TEST INDEX="2" NAME="Install signed driver and executable files" DESCRIPTION="Install signed driver and executable files." EXECUTIONTIME="00h:00m:01s.71ms" OPTIONAL="TRUE">
         <MESSAGES />
         <RESULT><![CDATA[PASS]]></RESULT>
       </TEST>
     </REQUIREMENT>
     <REQUIREMENT NUMBER="6" TITLE="User account control (UAC) test" RATIONALE="Most applications do not require administrator privileges at run time, and should be just fine running as a standard-user. Windows applications must have a manifest (embedded or external) to define its execution level that tells OS the privileges needed to run the application.">
-      <TEST INDEX="11" NAME="User account control run level" DESCRIPTION="Windows® applications must have a manifest (embedded or external) to define its execution level that tells OS the privileges needed to run the application." EXECUTIONTIME="00h:00m:01s.04ms" OPTIONAL="TRUE">
+      <TEST INDEX="11" NAME="User account control run level" DESCRIPTION="Windows® applications must have a manifest (embedded or external) to define its execution level that tells OS the privileges needed to run the application." EXECUTIONTIME="00h:00m:01s.20ms" OPTIONAL="TRUE">
         <MESSAGES />
         <RESULT><![CDATA[PASS]]></RESULT>
       </TEST>
     </REQUIREMENT>
     <REQUIREMENT NUMBER="12" TITLE="Package compliance test" RATIONALE="The package does not satisfy Store compliance rules.">
-      <TEST INDEX="77" NAME="Application count" DESCRIPTION="One package should not define more than one app in the manifest." EXECUTIONTIME="00h:00m:01s.18ms" OPTIONAL="TRUE">
+      <TEST INDEX="77" NAME="Application count" DESCRIPTION="One package should not define more than one app in the manifest." EXECUTIONTIME="00h:00m:01s.37ms" OPTIONAL="TRUE">
         <MESSAGES />
         <RESULT><![CDATA[PASS]]></RESULT>
       </TEST>
-      <TEST INDEX="31" NAME="App manifest" DESCRIPTION="App manifest must include valid entries for all required fields." EXECUTIONTIME="00h:00m:01s.80ms" OPTIONAL="FALSE">
+      <TEST INDEX="31" NAME="App manifest" DESCRIPTION="App manifest must include valid entries for all required fields." EXECUTIONTIME="00h:00m:02s.02ms" OPTIONAL="FALSE">
         <MESSAGES />
         <RESULT><![CDATA[PASS]]></RESULT>
       </TEST>
-      <TEST INDEX="87" NAME="File association verbs" DESCRIPTION="Registry validation that no registered file association verbs are installed." EXECUTIONTIME="00h:00m:01s.26ms" OPTIONAL="TRUE">
+      <TEST INDEX="87" NAME="File association verbs" DESCRIPTION="Registry validation that no registered file association verbs are installed." EXECUTIONTIME="00h:00m:01s.25ms" OPTIONAL="TRUE">
         <MESSAGES />
         <RESULT><![CDATA[PASS]]></RESULT>
       </TEST>
-      <TEST INDEX="86" NAME="Registry checks" DESCRIPTION="Registry validation that drivers are not installed and NT Services are not installed." EXECUTIONTIME="00h:00m:01s.12ms" OPTIONAL="TRUE">
+      <TEST INDEX="86" NAME="Registry checks" DESCRIPTION="Registry validation that drivers are not installed and NT Services are not installed." EXECUTIONTIME="00h:00m:01s.16ms" OPTIONAL="TRUE">
         <MESSAGES />
         <RESULT><![CDATA[PASS]]></RESULT>
       </TEST>
-      <TEST INDEX="91" NAME="Enterprise Features" DESCRIPTION="Check if any enterprise-only features are in the package." EXECUTIONTIME="00h:00m:01s.13ms" OPTIONAL="FALSE">
+      <TEST INDEX="91" NAME="Enterprise Features" DESCRIPTION="Check if any enterprise-only features are in the package." EXECUTIONTIME="00h:00m:01s.40ms" OPTIONAL="FALSE">
         <MESSAGES />
         <RESULT><![CDATA[PASS]]></RESULT>
       </TEST>
-      <TEST INDEX="90" NAME="Resource Packages" DESCRIPTION="Check if any resource packages contain PE files." EXECUTIONTIME="00h:00m:01s.14ms" OPTIONAL="FALSE">
+      <TEST INDEX="90" NAME="Resource Packages" DESCRIPTION="Check if any resource packages contain PE files." EXECUTIONTIME="00h:00m:01s.35ms" OPTIONAL="FALSE">
         <MESSAGES />
         <RESULT><![CDATA[PASS]]></RESULT>
       </TEST>
     </REQUIREMENT>
     <REQUIREMENT NUMBER="14" TITLE="Windows security features test" RATIONALE="Applications must opt-into Windows security features.">
-      <TEST INDEX="70" NAME="Banned file analyzer" DESCRIPTION="Analysis of application to detect known insecure files" EXECUTIONTIME="00h:00m:01s.32ms" OPTIONAL="FALSE">
+      <TEST INDEX="70" NAME="Banned file analyzer" DESCRIPTION="Analysis of application to detect known insecure files" EXECUTIONTIME="00h:00m:01s.43ms" OPTIONAL="FALSE">
         <MESSAGES />
         <RESULT><![CDATA[PASS]]></RESULT>
       </TEST>
-      <TEST INDEX="62" NAME="Private code signing" DESCRIPTION="App should not package private code signing key files." EXECUTIONTIME="00h:00m:01s.36ms" OPTIONAL="FALSE">
+      <TEST INDEX="62" NAME="Private code signing" DESCRIPTION="App should not package private code signing key files." EXECUTIONTIME="00h:00m:01s.66ms" OPTIONAL="FALSE">
         <MESSAGES />
         <RESULT><![CDATA[PASS]]></RESULT>
       </TEST>
     </REQUIREMENT>
     <REQUIREMENT NUMBER="19" TITLE="App manifest resources tests" RATIONALE="The App Package Manifest should have valid resources defined in the resources.pri file, as per the App Packaging Specification and App Manifest Schema.">
-      <TEST INDEX="45" NAME="App resources" DESCRIPTION="The package should have valid resources defined in the resources.pri file." EXECUTIONTIME="00h:00m:00s.81ms" OPTIONAL="TRUE">
+      <TEST INDEX="45" NAME="App resources" DESCRIPTION="The package should have valid resources defined in the resources.pri file." EXECUTIONTIME="00h:00m:00s.82ms" OPTIONAL="TRUE">
         <MESSAGES />
         <RESULT><![CDATA[PASS]]></RESULT>
       </TEST>
-      <TEST INDEX="61" NAME="Branding" DESCRIPTION="App should not use the default images packed by windows SDK samples or Visual Studio." EXECUTIONTIME="00h:00m:02s.02ms" OPTIONAL="FALSE">
+      <TEST INDEX="61" NAME="Branding" DESCRIPTION="App should not use the default images packed by windows SDK samples or Visual Studio." EXECUTIONTIME="00h:00m:02s.29ms" OPTIONAL="FALSE">
         <MESSAGES />
         <RESULT><![CDATA[PASS]]></RESULT>
       </TEST>
     </REQUIREMENT>
     <REQUIREMENT NUMBER="20" TITLE="Debug configuration test" RATIONALE="The App should not install any debug binaries.">
-      <TEST INDEX="46" NAME="Debug configuration" DESCRIPTION="The App should not install any debug binaries." EXECUTIONTIME="00h:00m:01s.73ms" OPTIONAL="TRUE">
+      <TEST INDEX="46" NAME="Debug configuration" DESCRIPTION="The App should not install any debug binaries." EXECUTIONTIME="00h:00m:02s.02ms" OPTIONAL="TRUE">
         <MESSAGES />
         <RESULT><![CDATA[PASS]]></RESULT>
       </TEST>
     </REQUIREMENT>
     <REQUIREMENT NUMBER="23" TITLE="App Capabilities test" RATIONALE="Packages declaring special-use capabilities will have to provide justifications during the onboarding process.">
-      <TEST INDEX="52" NAME="Special use capabilities" DESCRIPTION="Packages declaring special-use capabilities will have to provide justifications during the onboarding process." EXECUTIONTIME="00h:00m:01s.26ms" OPTIONAL="FALSE">
+      <TEST INDEX="52" NAME="Special use capabilities" DESCRIPTION="Packages declaring special-use capabilities will have to provide justifications during the onboarding process." EXECUTIONTIME="00h:00m:01s.32ms" OPTIONAL="FALSE">
         <MESSAGES />
         <RESULT><![CDATA[PASS]]></RESULT>
       </TEST>
     </REQUIREMENT>
     <REQUIREMENT NUMBER="24" TITLE="Windows Runtime metadata validation" RATIONALE="Metadata needs to be conformant and consistent across all generation sources.">
-      <TEST INDEX="56" NAME="ExclusiveTo attribute" DESCRIPTION="A class must not implement an interface that is marked ExclusiveTo another class." EXECUTIONTIME="00h:00m:09s.98ms" OPTIONAL="FALSE">
+      <TEST INDEX="56" NAME="ExclusiveTo attribute" DESCRIPTION="A class must not implement an interface that is marked ExclusiveTo another class." EXECUTIONTIME="00h:00m:10s.56ms" OPTIONAL="FALSE">
         <MESSAGES />
         <RESULT><![CDATA[PASS]]></RESULT>
       </TEST>
-      <TEST INDEX="57" NAME="Type location" DESCRIPTION="Types must be defined in the metadata file with the longest matching namespace." EXECUTIONTIME="00h:00m:00s.88ms" OPTIONAL="FALSE">
+      <TEST INDEX="57" NAME="Type location" DESCRIPTION="Types must be defined in the metadata file with the longest matching namespace." EXECUTIONTIME="00h:00m:00s.92ms" OPTIONAL="FALSE">
         <MESSAGES />
         <RESULT><![CDATA[PASS]]></RESULT>
       </TEST>
-      <TEST INDEX="55" NAME="Type name case-sensitivity" DESCRIPTION="Namespace and type names must not vary only by casing." EXECUTIONTIME="00h:00m:00s.80ms" OPTIONAL="FALSE">
+      <TEST INDEX="55" NAME="Type name case-sensitivity" DESCRIPTION="Namespace and type names must not vary only by casing." EXECUTIONTIME="00h:00m:00s.88ms" OPTIONAL="FALSE">
         <MESSAGES />
         <RESULT><![CDATA[PASS]]></RESULT>
       </TEST>
-      <TEST INDEX="54" NAME="Type name correctness" DESCRIPTION="Only system types can be in the Windows namespace and no types can be in the global namespace." EXECUTIONTIME="00h:00m:00s.80ms" OPTIONAL="FALSE">
+      <TEST INDEX="54" NAME="Type name correctness" DESCRIPTION="Only system types can be in the Windows namespace and no types can be in the global namespace." EXECUTIONTIME="00h:00m:00s.88ms" OPTIONAL="FALSE">
         <MESSAGES />
         <RESULT><![CDATA[PASS]]></RESULT>
       </TEST>
-      <TEST INDEX="58" NAME="General metadata correctness" DESCRIPTION="Metadata files must meet various requirements in order to be valid and correct." EXECUTIONTIME="00h:00m:08s.21ms" OPTIONAL="TRUE">
+      <TEST INDEX="58" NAME="General metadata correctness" DESCRIPTION="Metadata files must meet various requirements in order to be valid and correct." EXECUTIONTIME="00h:00m:10s.68ms" OPTIONAL="TRUE">
         <MESSAGES />
         <RESULT><![CDATA[PASS]]></RESULT>
       </TEST>
-      <TEST INDEX="53" NAME="Properties" DESCRIPTION="Write-only and indexer properties may not be used. Corresponding getter and setter methods must match in type." EXECUTIONTIME="00h:00m:00s.78ms" OPTIONAL="FALSE">
+      <TEST INDEX="53" NAME="Properties" DESCRIPTION="Write-only and indexer properties may not be used. Corresponding getter and setter methods must match in type." EXECUTIONTIME="00h:00m:00s.89ms" OPTIONAL="FALSE">
         <MESSAGES />
         <RESULT><![CDATA[PASS]]></RESULT>
       </TEST>
     </REQUIREMENT>
     <REQUIREMENT NUMBER="25" TITLE="Package sanity test" RATIONALE="Validation of the app package contents to ensure correctness.">
-      <TEST INDEX="89" NAME="Archive files usage" DESCRIPTION="Packages should not contain PE files inside archive files." EXECUTIONTIME="00h:00m:01s.41ms" OPTIONAL="TRUE">
+      <TEST INDEX="89" NAME="Archive files usage" DESCRIPTION="Packages should not contain PE files inside archive files." EXECUTIONTIME="00h:00m:01s.68ms" OPTIONAL="TRUE">
         <MESSAGES />
         <RESULT><![CDATA[PASS]]></RESULT>
       </TEST>
-      <TEST INDEX="88" NAME="Blocked executables" DESCRIPTION="Detects if there are references to process launch APIs and blocked executables" EXECUTIONTIME="00h:00m:02s.03ms" OPTIONAL="TRUE">
+      <TEST INDEX="88" NAME="Blocked executables" DESCRIPTION="Detects if there are references to process launch APIs and blocked executables" EXECUTIONTIME="00h:00m:02s.36ms" OPTIONAL="TRUE">
         <MESSAGES>
           <MESSAGE TEXT="File GuitarFineTune_App\GuitarFineTune.exe contains a reference to a &quot;Launch Process&quot; related API shell32.dll!ShellExecuteW" />
-          <MESSAGE TEXT="File GuitarFineTune.exe contains a blocked executable reference to &quot;cmd&quot;." />
-          <MESSAGE TEXT="File GuitarFineTune.exe contains a blocked executable reference to &quot;CsI&quot;." />
+          <MESSAGE TEXT="File GuitarFineTune.exe contains a blocked executable reference to &quot;CMD&quot;." />
         </MESSAGES>
         <RESULT><![CDATA[FAIL]]></RESULT>
       </TEST>
-      <TEST INDEX="63" NAME="Platform appropriate files" DESCRIPTION="App should not install files that do not match the target processor architecture." EXECUTIONTIME="00h:00m:01s.45ms" OPTIONAL="TRUE">
+      <TEST INDEX="63" NAME="Platform appropriate files" DESCRIPTION="App should not install files that do not match the target processor architecture." EXECUTIONTIME="00h:00m:01s.61ms" OPTIONAL="TRUE">
         <MESSAGES />
         <RESULT><![CDATA[PASS]]></RESULT>
       </TEST>
     </REQUIREMENT>
     <REQUIREMENT NUMBER="26" TITLE="High-DPI support" RATIONALE="The application needs to set DPI-aware to make the UI look consistently good across a wide variety of high-DPI display settings.">
-      <TEST INDEX="92" NAME="DPIAwarenessValidation" DESCRIPTION="Applications should set DPI-aware to make its UI look consistently good across a wide variety of high-DPI display settings." EXECUTIONTIME="00h:00m:01s.71ms" OPTIONAL="FALSE">
+      <TEST INDEX="92" NAME="DPIAwarenessValidation" DESCRIPTION="Applications should set DPI-aware to make its UI look consistently good across a wide variety of high-DPI display settings." EXECUTIONTIME="00h:00m:01s.99ms" OPTIONAL="FALSE">
         <MESSAGES />
         <RESULT><![CDATA[PASS]]></RESULT>
       </TEST>
@@ -125,12 +124,12 @@
   </REQUIREMENTS>
   <APPLICATIONS>
     <Installed_Programs>
-      <Program Name="57158guitarFineTune.guitarFineTune" Type="Application" Source="AppxPackage" Publisher="CN=C2E1AE67-4CF2-4308-9E4D-4A6C24FA7B0B" Version="9.7.1.0" Language="8192" InstallDate="" OSVersionAtInstallTime="10.0.0.22621" RootDirPath="C:\WINDOWS\temp\appcert_4244\57158guitarFineTune.guitarFineTune_9.7.1.0_x64__my9557tv9enda" Id="0000ee7d64f4e5fbfaeda63f9d3ed1ef873400000020" HiddenArp="false">
+      <Program Name="57158guitarFineTune.guitarFineTune" Type="Application" Source="AppxPackage" Publisher="CN=C2E1AE67-4CF2-4308-9E4D-4A6C24FA7B0B" Version="10.1.1.0" Language="8192" InstallDate="" RootDirPath="C:\WINDOWS\temp\appcert_60D8\57158guitarFineTune.guitarFineTune_10.1.1.0_x64__my9557tv9enda" Id="00003026429b3efb8af90d57a9333ab58bb500000020" HiddenArp="false">
         <Indicators>
           <WindowsStoreAppManifestIndicators>
-            <PackageManifest PackageFullName="57158guitarFineTune.guitarFineTune_9.7.1.0_x64__my9557tv9enda">
+            <PackageManifest PackageFullName="57158guitarFineTune.guitarFineTune_10.1.1.0_x64__my9557tv9enda">
               <Package>
-                <Identity Name="57158guitarFineTune.guitarFineTune" Publisher="CN=C2E1AE67-4CF2-4308-9E4D-4A6C24FA7B0B" Version="9.7.1.0" ProcessorArchitecture="x64"></Identity>
+                <Identity Name="57158guitarFineTune.guitarFineTune" Publisher="CN=C2E1AE67-4CF2-4308-9E4D-4A6C24FA7B0B" Version="10.1.1.0" ProcessorArchitecture="x64"></Identity>
                 <Properties>
                   <DisplayName>GuitarFineTune</DisplayName>
                   <PublisherDisplayName>Eigil Krogh</PublisherDisplayName>
@@ -165,9 +164,9 @@
             </PackageManifest>
             <BundleManifest PackageFamilyName="57158guitarFineTune.guitarFineTune_my9557tv9enda">
               <Bundle SchemaVersion="5.0">
-                <Identity Name="57158guitarFineTune.guitarFineTune" Publisher="CN=C2E1AE67-4CF2-4308-9E4D-4A6C24FA7B0B" Version="9.7.1.0"></Identity>
+                <Identity Name="57158guitarFineTune.guitarFineTune" Publisher="CN=C2E1AE67-4CF2-4308-9E4D-4A6C24FA7B0B" Version="10.1.1.0"></Identity>
                 <Packages>
-                  <Package Type="application" Version="9.7.1.0" Architecture="x86" FileName="packProj_9.7.1.0_x86.appx" Offset="7982491" Size="2534319">
+                  <Package Type="application" Version="10.1.1.0" Architecture="x86" FileName="packProj_10.1.1.0_x86.appx" Offset="7998913" Size="2539785">
                     <Resources>
                       <Resource Language="EN-US"></Resource>
                       <Resource Scale="200"></Resource>
@@ -177,7 +176,7 @@
                       <TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.14393.0" MaxVersionTested="10.0.22621.0"></TargetDeviceFamily>
                     </Dependencies>
                   </Package>
-                  <Package Type="application" Version="9.7.1.0" Architecture="x64" FileName="packProj_9.7.1.0_x64.appx" Offset="5448093" Size="2534319">
+                  <Package Type="application" Version="10.1.1.0" Architecture="x64" FileName="packProj_10.1.1.0_x64.appx" Offset="5459045" Size="2539788">
                     <Resources>
                       <Resource Language="EN-US"></Resource>
                       <Resource Scale="200"></Resource>
@@ -187,7 +186,7 @@
                       <TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.14393.0" MaxVersionTested="10.0.22621.0"></TargetDeviceFamily>
                     </Dependencies>
                   </Package>
-                  <Package Type="application" Version="9.7.1.0" Architecture="arm" FileName="packProj_9.7.1.0_ARM.appx" Offset="55" Size="2534313">
+                  <Package Type="application" Version="10.1.1.0" Architecture="arm" FileName="packProj_10.1.1.0_ARM.appx" Offset="56" Size="2539784">
                     <Resources>
                       <Resource Language="EN-US"></Resource>
                       <Resource Scale="200"></Resource>
@@ -197,7 +196,7 @@
                       <TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.14393.0" MaxVersionTested="10.0.22621.0"></TargetDeviceFamily>
                     </Dependencies>
                   </Package>
-                  <Package Type="application" Version="9.7.1.0" Architecture="arm64" FileName="packProj_9.7.1.0_ARM64.appx" Offset="2534449" Size="2534315">
+                  <Package Type="application" Version="10.1.1.0" Architecture="arm64" FileName="packProj_10.1.1.0_ARM64.appx" Offset="2539922" Size="2539787">
                     <Resources>
                       <Resource Language="EN-US"></Resource>
                       <Resource Scale="200"></Resource>
@@ -207,7 +206,7 @@
                       <TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.14393.0" MaxVersionTested="10.0.22621.0"></TargetDeviceFamily>
                     </Dependencies>
                   </Package>
-                  <Package Type="resource" Version="9.7.1.0" ResourceId="split.scale-100" FileName="packProj_9.7.1.0_scale-100.appx" Offset="5068849" Size="36748" Architecture="neutral">
+                  <Package Type="resource" Version="10.1.1.0" ResourceId="split.scale-100" FileName="packProj_10.1.1.0_scale-100.appx" Offset="5079795" Size="36751" Architecture="neutral">
                     <Resources>
                       <Resource Scale="100"></Resource>
                     </Resources>
@@ -216,7 +215,7 @@
                       <TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.14393.0" MaxVersionTested="10.0.22621.0"></TargetDeviceFamily>
                     </Dependencies>
                   </Package>
-                  <Package Type="resource" Version="9.7.1.0" ResourceId="split.scale-125" FileName="packProj_9.7.1.0_scale-125.appx" Offset="5105682" Size="47894" Architecture="neutral">
+                  <Package Type="resource" Version="10.1.1.0" ResourceId="split.scale-125" FileName="packProj_10.1.1.0_scale-125.appx" Offset="5116632" Size="47892" Architecture="neutral">
                     <Resources>
                       <Resource Scale="125"></Resource>
                     </Resources>
@@ -225,7 +224,7 @@
                       <TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.14393.0" MaxVersionTested="10.0.22621.0"></TargetDeviceFamily>
                     </Dependencies>
                   </Package>
-                  <Package Type="resource" Version="9.7.1.0" ResourceId="split.scale-150" FileName="packProj_9.7.1.0_scale-150.appx" Offset="5153661" Size="60418" Architecture="neutral">
+                  <Package Type="resource" Version="10.1.1.0" ResourceId="split.scale-150" FileName="packProj_10.1.1.0_scale-150.appx" Offset="5164610" Size="60417" Architecture="neutral">
                     <Resources>
                       <Resource Scale="150"></Resource>
                     </Resources>
@@ -234,7 +233,7 @@
                       <TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.14393.0" MaxVersionTested="10.0.22621.0"></TargetDeviceFamily>
                     </Dependencies>
                   </Package>
-                  <Package Type="resource" Version="9.7.1.0" ResourceId="split.scale-400" FileName="packProj_9.7.1.0_scale-400.appx" Offset="5214164" Size="233850" Architecture="neutral">
+                  <Package Type="resource" Version="10.1.1.0" ResourceId="split.scale-400" FileName="packProj_10.1.1.0_scale-400.appx" Offset="5225113" Size="233852" Architecture="neutral">
                     <Resources>
                       <Resource Scale="400"></Resource>
                     </Resources>
@@ -250,16 +249,16 @@
         </Indicators>
         <StaticProperties>
           <Files Id="">
-            <File Id="0000302847d8a0ccb167624e24d9517eebf8da0576fa" Name="GuitarFineTune.exe" ProductName="guitarfinetune" CompanyName="eksit" ProductVersion="9.7.1" VerLanguage="1033" SwitchBackContext="0" FileVersion="9.7.1" Size="5357568" SizeOfImage="5357568" PeHeaderHash="010151d9acf1ad1642f7acb9bc3152e3d1580595daaf" PeChecksum="0" CrcChecksum="-2087268230" BinProductVersion="9.7.1" BinFileVersion="9.7.1.0" FileDescription="guitarfinetune" LegalCopyright="eksit" LinkDate="06/24/2022 17:01:06" BinaryType="pe64_amd64" LowerCaseLongPath="c:\windows\temp\appcert_4244\57158guitarfinetune.guitarfinetune_9.7.1.0_x64__my9557tv9enda\guitarfinetune_app\guitarfinetune.exe" />
-            <File Id="000005e102b24fa7461d38752a386c66a763646cb10b" Name="resources.pri" ProductName="" CompanyName="" ProductVersion="" VerLanguage="0" SwitchBackContext="0" FileVersion="" Size="0" SizeOfImage="0" PeHeaderHash="" PeChecksum="0" CrcChecksum="-247611280" BinProductVersion="" BinFileVersion="" FileDescription="" LegalCopyright="" LinkDate="" BinaryType="data_only" LowerCaseLongPath="c:\windows\temp\appcert_4244\57158guitarfinetune.guitarfinetune_9.7.1.0_x64__my9557tv9enda\resources.pri" />
+            <File Id="0000318da827f76ab820c315ba3f78ef74ad4ee033c5" Name="GuitarFineTune.exe" ProductName="guitarfinetune" CompanyName="eksit" ProductVersion="10.1.1" VerLanguage="1033" SwitchBackContext="0" FileVersion="10.1.1" OriginalFileName="" InternalName="" Size="5343232" SizeOfImage="5373952" PeHeaderHash="01017368b4c431a1d34ed2804e3e20d9258ac8f49858" PeChecksum="0" CrcChecksum="3745621247" BinProductVersion="10.1.1" BinFileVersion="10.1.1.0" FileDescription="guitarfinetune" LegalCopyright="eksit" LinkDate="12/03/2022 14:17:25" BinaryType="pe64_amd64" LowerCaseLongPath="c:\windows\temp\appcert_60d8\57158guitarfinetune.guitarfinetune_10.1.1.0_x64__my9557tv9enda\guitarfinetune_app\guitarfinetune.exe" SigPublisherName="" PeSubsystem="2" PeCharacteristics="34" Sha256="1104d64cf3eb3c09cccab5e831d9d1f38cac8edf0040b293bf7375601227e365" />
+            <File Id="000005e102b24fa7461d38752a386c66a763646cb10b" Name="resources.pri" ProductName="" CompanyName="" ProductVersion="" VerLanguage="0" SwitchBackContext="0" FileVersion="" OriginalFileName="" InternalName="" Size="4328" SizeOfImage="0" PeHeaderHash="" PeChecksum="0" CrcChecksum="4047356016" BinProductVersion="" BinFileVersion="" FileDescription="" LegalCopyright="" LinkDate="" BinaryType="data_only" LowerCaseLongPath="c:\windows\temp\appcert_60d8\57158guitarfinetune.guitarfinetune_10.1.1.0_x64__my9557tv9enda\resources.pri" SigPublisherName="" PeSubsystem="0" PeCharacteristics="0" Sha256="03b8b2636b37376f5deb2569ef12a784e1e51be702f6d27e09bf454002affbdb" />
           </Files>
         </StaticProperties>
       </Program>
     </Installed_Programs>
   </APPLICATIONS>
   <DEPENDENCY_INFORMATION>
-    <AitStaticAnalysis ProgramId="0000da39a3ee5e6b4b0d3255bfef95601890afd80709" AnalysisVersion="1.70" DictionaryVersion="3.6" Type="Max" Id="C:\WINDOWS\temp\appcert_4244\57158guitarFineTune.guitarFineTune_9.7.1.0_x64__my9557tv9enda">
-      <AitFile ErrorCode="0" Name="GuitarFineTune.exe" Id="0000302847d8a0ccb167624e24d9517eebf8da0576fa">
+    <AitStaticAnalysis ProgramId="0000da39a3ee5e6b4b0d3255bfef95601890afd80709" AnalysisVersion="1.80" DictionaryVersion="3.7" Type="Max" Id="C:\WINDOWS\temp\appcert_60D8\57158guitarFineTune.guitarFineTune_10.1.1.0_x64__my9557tv9enda">
+      <AitFile ErrorCode="0" Name="GuitarFineTune.exe" Id="0000318da827f76ab820c315ba3f78ef74ad4ee033c5">
         <AitCategory Id="Com">
           <AitFeature Name="{00000000-0000-0000-0000-000000000001}" />
           <AitFeature Name="{00000000-0000-0000-0000-000000000002}" />
@@ -270,10 +269,9 @@
           <AitFeature Name="{00000000-0000-0000-0000-000000000007}" />
           <AitFeature Name="{00000000-0000-0000-0000-000000000008}" />
           <AitFeature Name="{00000000-0000-0000-0000-000000000009}" />
-          <AitFeature Name="{00000000-0000-0000-0000-000000000011}" />
+          <AitFeature Name="{00000000-0000-0000-0000-000000000012}" />
           <AitFeature Name="{00000000-0000-0000-0000-000000000017}" />
           <AitFeature Name="{00000000-0000-0000-0000-000000000018}" />
-          <AitFeature Name="{00000000-0000-0000-0000-000000000023}" />
           <AitFeature Name="{00000000-0000-0000-c000-000000000046}" />
           <AitFeature Name="{0000000b-0000-0000-c000-000000000046}" />
           <AitFeature Name="{0000000c-0000-0000-c000-000000000046}" />
@@ -287,6 +285,7 @@
           <AitFeature Name="{00000119-0000-0000-c000-000000000046}" />
           <AitFeature Name="{00000121-0000-0000-c000-000000000046}" />
           <AitFeature Name="{00000122-0000-0000-c000-000000000046}" />
+          <AitFeature Name="{00020400-0000-0000-c000-000000000046}" />
           <AitFeature Name="{00021401-0000-0000-c000-000000000046}" />
           <AitFeature Name="{000214f9-0000-0000-c000-000000000046}" />
           <AitFeature Name="{06152247-6f50-465a-9245-118bfd3b6007}" />
@@ -294,6 +293,7 @@
           <AitFeature Name="{14f68475-ee1c-44f6-a869-d239381f0fe7}" />
           <AitFeature Name="{1be09788-6894-4089-8586-9a2a6c265ac5}" />
           <AitFeature Name="{1cb9ad4c-dbfa-4c32-b178-c2f568a703b2}" />
+          <AitFeature Name="{2360c714-4bf1-4b26-ba65-9b21316127eb}" />
           <AitFeature Name="{24918acc-64b3-37c1-8ca9-74a66e9957a8}" />
           <AitFeature Name="{2acad808-b2d4-452d-a407-91ff1ad167b2}" />
           <AitFeature Name="{2cd9069e-12e2-11dc-9fed-001143a055f9}" />
@@ -315,11 +315,14 @@
           <AitFeature Name="{96749377-3391-11d2-9ee3-00c04f797396}" />
           <AitFeature Name="{973510db-7d7f-452b-8975-74a85828d354}" />
           <AitFeature Name="{987df77b-db06-4d77-8f8a-86a9c3bb90b9}" />
+          <AitFeature Name="{9c860395-97b3-490a-b52a-858cc22af166}" />
           <AitFeature Name="{a5cd92ff-29be-454c-8d04-d82879fb3f1b}" />
           <AitFeature Name="{a95664d2-9614-4f35-a746-de8db63617e6}" />
           <AitFeature Name="{aa509086-5ca9-4c25-8f95-589d3c07b48a}" />
           <AitFeature Name="{b17d6187-0907-464b-a168-0ef17a1572b1}" />
+          <AitFeature Name="{b38b8077-1fc3-42a5-8cae-d40c2215055a}" />
           <AitFeature Name="{b4bfcc3a-db2c-424c-b029-7fe99a87c641}" />
+          <AitFeature Name="{b9734fa6-771f-4d78-9c90-2517999349cd}" />
           <AitFeature Name="{bcde0395-e52f-467c-8e3d-c4579291692e}" />
           <AitFeature Name="{c0b4e2f3-ba21-4773-8dba-335ec946eb8b}" />
           <AitFeature Name="{c7935180-6fb3-4201-b174-7df73adbf64a}" />
@@ -372,7 +375,6 @@
           <AitFeature Name="api-ms-win-crt-string-l1-1-0.dll!towlower" />
           <AitFeature Name="api-ms-win-crt-string-l1-1-0.dll!towupper" />
           <AitFeature Name="api-ms-win-crt-math-l1-1-0.dll!__setusermatherr" />
-          <AitFeature Name="api-ms-win-crt-math-l1-1-0.dll!_copysign" />
           <AitFeature Name="api-ms-win-crt-math-l1-1-0.dll!_fdclass" />
           <AitFeature Name="api-ms-win-crt-math-l1-1-0.dll!_finite" />
           <AitFeature Name="api-ms-win-crt-math-l1-1-0.dll!_hypot" />
@@ -397,6 +399,7 @@
           <AitFeature Name="api-ms-win-crt-math-l1-1-0.dll!log" />
           <AitFeature Name="api-ms-win-crt-math-l1-1-0.dll!log2" />
           <AitFeature Name="api-ms-win-crt-math-l1-1-0.dll!logf" />
+          <AitFeature Name="api-ms-win-crt-math-l1-1-0.dll!lround" />
           <AitFeature Name="api-ms-win-crt-math-l1-1-0.dll!pow" />
           <AitFeature Name="api-ms-win-crt-math-l1-1-0.dll!powf" />
           <AitFeature Name="api-ms-win-crt-math-l1-1-0.dll!round" />
@@ -491,6 +494,7 @@
           <AitFeature Name="msvcp140.dll!_Cnd_broadcast" />
           <AitFeature Name="msvcp140.dll!_Cnd_destroy_in_situ" />
           <AitFeature Name="msvcp140.dll!_Cnd_init_in_situ" />
+          <AitFeature Name="msvcp140.dll!_Cnd_signal" />
           <AitFeature Name="msvcp140.dll!_Cnd_timedwait" />
           <AitFeature Name="msvcp140.dll!_Cnd_wait" />
           <AitFeature Name="msvcp140.dll!_Mtx_current_owns" />
@@ -653,6 +657,7 @@
           <AitFeature Name="kernel32.dll!RemoveDirectoryW" />
           <AitFeature Name="kernel32.dll!ReplaceFileW" />
           <AitFeature Name="kernel32.dll!ResetEvent" />
+          <AitFeature Name="kernel32.dll!ResumeThread" />
           <AitFeature Name="kernel32.dll!RtlCaptureContext" />
           <AitFeature Name="kernel32.dll!RtlLookupFunctionEntry" />
           <AitFeature Name="kernel32.dll!RtlVirtualUnwind" />
@@ -821,7 +826,6 @@
           <AitFeature Name="winmm.dll!midiOutUnprepareHeader" />
           <AitFeature Name="winmm.dll!timeBeginPeriod" />
           <AitFeature Name="winmm.dll!timeGetTime" />
-          <AitFeature Name="winmm.dll!timeKillEvent" />
           <AitFeature Name="wininet.dll!FtpOpenFileW" />
           <AitFeature Name="wininet.dll!HttpEndRequestW" />
           <AitFeature Name="wininet.dll!HttpOpenRequestW" />
