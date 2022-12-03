@@ -47,11 +47,12 @@ namespace juce
 		// You can  use a MessageManagerLock if you need to call this from another thread.
 		JUCE_ASSERT_MESSAGE_MANAGER_IS_LOCKED
 
-		// eks 2. dec. 2022: Check size before remove (to prevent crash at shutdown)
+		// eks 3. dec. 2022: Check size before remove (to prevent crash at shutdown)
 		anyListeners = changeListeners.size() > 0;
 		if (anyListeners)
 		{
 			changeListeners.remove(listener);
+			anyListeners = changeListeners.size() > 0;
 		}
 	}
 
