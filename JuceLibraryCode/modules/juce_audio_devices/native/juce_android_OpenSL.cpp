@@ -601,7 +601,7 @@ public:
             }
         }
 
-        void process (const float** inputChannelData, float** outputChannelData)
+        void process (const float* const* inputChannelData, float* const* outputChannelData)
         {
             if (auto* cb = callback.exchange (nullptr))
             {
@@ -750,8 +750,8 @@ public:
                     T* recorderBuffer = (inputChannels  > 0 ? recorder->getNextBuffer() : nullptr);
                     T* playerBuffer   = (outputChannels > 0 ? player->getNextBuffer()   : nullptr);
 
-                    const float** inputChannelData = nullptr;
-                    float** outputChannelData = nullptr;
+                    const float* const* inputChannelData = nullptr;
+                    float* const* outputChannelData = nullptr;
 
                     if (recorderBuffer != nullptr)
                     {

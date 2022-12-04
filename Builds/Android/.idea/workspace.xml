@@ -4,11 +4,53 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="633561cf-6e69-4b8a-80c9-bf1b786e5193" name="Changes" comment="" />
+    <list default="true" id="633561cf-6e69-4b8a-80c9-bf1b786e5193" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/Android.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CodeBlocksLinux/icon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/../CodeBlocksLinux/icon.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../VisualStudio2022/GuitarFineTune.sln" beforeDir="false" afterPath="$PROJECT_DIR$/../VisualStudio2022/GuitarFineTune.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../VisualStudio2022/icon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/../VisualStudio2022/icon.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-29.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-29.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-29@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-29@2x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-29@3x.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-29@3x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-60@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-60@2x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-76.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-76.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-76@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-76@2x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-83.5@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-83.5@2x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-@3x.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-@3x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-Notification-20@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-Notification-20@2x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-Notification-20@3x.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-Notification-20@3x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-Notifications-20.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-Notifications-20.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-Notifications-20@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-Notifications-20@2x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-Small-1.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-Small-1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-Small@2x-1.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-Small@2x-1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-Spotlight-40.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-Spotlight-40.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-Spotlight-40@2x-1.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-Spotlight-40@2x-1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-Spotlight-40@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-Spotlight-40@2x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-Spotlight-40@3x.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-Spotlight-40@3x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../JuceLibraryCode/modules/juce_audio_devices/native/juce_android_OpenSL.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../JuceLibraryCode/modules/juce_audio_devices/native/juce_android_OpenSL.cpp" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[D:\Users\eigil\.android\avd\pixel_3_xl_-_api_33.avd]" />
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2C7Tctu3E9RCHrjCFatWwYJXnHC" />
   <component name="ProjectViewState">
@@ -16,10 +58,86 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
     <property name="cidr.known.project.marker" value="true" />
+    <property name="settings.editor.selected.configurable" value="memory.settings" />
+  </component>
+  <component name="RunManager">
+    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App">
+      <module name="GuitarFineTune.app.main" />
+      <option name="DEPLOY" value="true" />
+      <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
+      <option name="DEPLOY_AS_INSTANT" value="false" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="ALL_USERS" value="false" />
+      <option name="ALWAYS_INSTALL_WITH_PM" value="false" />
+      <option name="CLEAR_APP_STORAGE" value="false" />
+      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="INSPECTION_WITHOUT_ACTIVITY_RESTART" value="false" />
+      <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Hybrid>
+      <Java />
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Java/Kotlin Method Sample (legacy)" />
+        <option name="STARTUP_NATIVE_MEMORY_PROFILING_ENABLED" value="false" />
+        <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
+        <option name="PROFILING_MODE" value="NOT_SET" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <option name="SEARCH_ACTIVITY_IN_GLOBAL_SCOPE" value="false" />
+      <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="Android" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="Android" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
