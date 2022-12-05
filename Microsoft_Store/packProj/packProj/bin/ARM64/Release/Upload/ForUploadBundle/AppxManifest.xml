@@ -7,7 +7,7 @@
 
     For more information on package manifest files, see http://go.microsoft.com/fwlink/?LinkID=241727
   -->
-  <Identity Name="57158guitarFineTune.guitarFineTune" Publisher="CN=C2E1AE67-4CF2-4308-9E4D-4A6C24FA7B0B" Version="10.1.1.0" ProcessorArchitecture="arm64" />
+  <Identity Name="57158guitarFineTune.guitarFineTune" Publisher="CN=C2E1AE67-4CF2-4308-9E4D-4A6C24FA7B0B" Version="10.1.2.0" ProcessorArchitecture="arm64" />
   <Properties>
     <DisplayName>GuitarFineTune</DisplayName>
     <PublisherDisplayName>Eigil Krogh</PublisherDisplayName>
