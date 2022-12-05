@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 33
-    namespace "dk.eksit.guitarfinetune"
+    namespace "dk.eksit.guitarfinetunep"
     externalNativeBuild {
         cmake {
             path "CMakeLists.txt"
@@ -16,10 +16,16 @@ android {
             keyPassword   "6taura"
             storeType     "jks"
         }
+        Release {
+            storeFile file('D:\\Users\\eigil\\projects\\juceProjs\\GuitarFineTune\\Android_Special\\keystore.jks')
+            storePassword '6taura'
+            keyAlias 'upload'
+            keyPassword '6taura'
+        }
     }
 
     defaultConfig {
-        applicationId "dk.eksit.guitarfinetune"
+        applicationId "dk.eksit.guitarfinetunep"
         minSdkVersion    16
         targetSdkVersion 33
         externalNativeBuild {
@@ -30,7 +36,10 @@ android {
     }
 
     buildTypes {
-         debug {
+         release {
+             signingConfig signingConfigs.Release
+         }
+        debug {
              initWith debug
              debuggable    true
              jniDebuggable true

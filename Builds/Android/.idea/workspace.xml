@@ -1,92 +1,344 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AndroidLayouts">
+    <shared>
+      <config />
+    </shared>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="633561cf-6e69-4b8a-80c9-bf1b786e5193" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/bin/ARM/Release/AppxManifest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/bin/ARM/Release/GuitarFineTune_App/GuitarFineTune.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/bin/ARM/Release/GuitarFineTune_App/GuitarFineTune.pdb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/bin/ARM/Release/Upload/AppxManifest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/bin/ARM/Release/Upload/packProj.build.appxrecipe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/bin/ARM/Release/packProj.build.appxrecipe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/bin/ARM/Release/resources.pri" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/bin/ARM64/Release/AppxManifest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/bin/ARM64/Release/GuitarFineTune_App/GuitarFineTune.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/bin/ARM64/Release/GuitarFineTune_App/GuitarFineTune.pdb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/bin/ARM64/Release/Upload/AppxManifest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/bin/ARM64/Release/Upload/packProj.build.appxrecipe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/bin/ARM64/Release/packProj.build.appxrecipe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/bin/ARM64/Release/resources.pri" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/bin/x86/Release/AppxManifest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/bin/x86/Release/GuitarFineTune_App/GuitarFineTune.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/bin/x86/Release/GuitarFineTune_App/GuitarFineTune.pdb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/bin/x86/Release/Upload/AppxManifest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/bin/x86/Release/Upload/packProj.build.appxrecipe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/bin/x86/Release/packProj.build.appxrecipe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/bin/x86/Release/resources.pri" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM/Release/MultipleQualifiersPerDimensionFound.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM/Release/ProjectArchitectures.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM/Release/_IsIncrementalBuild" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM/Release/excluded.layout.resfiles" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM/Release/excluded.layout.resfiles.intermediate" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM/Release/filtered.layout.resfiles" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM/Release/filtered.layout.resfiles.intermediate" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM/Release/packProj.wapproj.CoreCompileInputs.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM/Release/packProj.wapproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM/Release/packProj.wapproj.FileListAbsolute.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM/Release/packProj.wapproj.LastBuild.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM/Release/pri.resfiles" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM/Release/pri.resfiles.intermediate" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM/Release/priconfig.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM/Release/priconfig.xml.intermediate" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM/Release/qualifiers.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM/Release/qualifiers.txt.intermediate" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM/Release/resources.resfiles" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM/Release/resources.resfiles.intermediate" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM/Release/unfiltered.layout.resfiles" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM/Release/unfiltered.layout.resfiles.intermediate" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM64/Release/MultipleQualifiersPerDimensionFound.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM64/Release/ProjectArchitectures.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM64/Release/_IsIncrementalBuild" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM64/Release/excluded.layout.resfiles" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM64/Release/excluded.layout.resfiles.intermediate" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM64/Release/filtered.layout.resfiles" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM64/Release/filtered.layout.resfiles.intermediate" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM64/Release/packProj.wapproj.CoreCompileInputs.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM64/Release/packProj.wapproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM64/Release/packProj.wapproj.FileListAbsolute.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM64/Release/packProj.wapproj.LastBuild.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM64/Release/pri.resfiles" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM64/Release/pri.resfiles.intermediate" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM64/Release/priconfig.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM64/Release/priconfig.xml.intermediate" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM64/Release/qualifiers.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM64/Release/qualifiers.txt.intermediate" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM64/Release/resources.resfiles" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM64/Release/resources.resfiles.intermediate" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM64/Release/unfiltered.layout.resfiles" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM64/Release/unfiltered.layout.resfiles.intermediate" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/x64/Release/packProj.wapproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/x64/Release/packProj.wapproj.FileListAbsolute.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/x86/Release/MultipleQualifiersPerDimensionFound.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/x86/Release/ProjectArchitectures.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/x86/Release/_IsIncrementalBuild" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/x86/Release/excluded.layout.resfiles" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/x86/Release/excluded.layout.resfiles.intermediate" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/x86/Release/filtered.layout.resfiles" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/x86/Release/filtered.layout.resfiles.intermediate" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/x86/Release/packProj.wapproj.CoreCompileInputs.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/x86/Release/packProj.wapproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/x86/Release/packProj.wapproj.FileListAbsolute.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/x86/Release/packProj.wapproj.LastBuild.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/x86/Release/pri.resfiles" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/x86/Release/pri.resfiles.intermediate" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/x86/Release/priconfig.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/x86/Release/priconfig.xml.intermediate" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/x86/Release/qualifiers.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/x86/Release/qualifiers.txt.intermediate" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/x86/Release/resources.resfiles" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/x86/Release/resources.resfiles.intermediate" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/x86/Release/unfiltered.layout.resfiles" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/x86/Release/unfiltered.layout.resfiles.intermediate" beforeDir="false" />
+    <list default="true" id="eada366c-ca5c-400e-8a14-11ad6dda099c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../Android_Special/private_key.pepk" beforeDir="false" afterPath="$PROJECT_DIR$/../../Android_Special/private_key.pepk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.3.3/checksums/checksums.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.3.3/dependencies-accessors/dependencies-accessors.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.3.3/dependencies-accessors/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.3.3/executionHistory/executionHistory.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.3.3/fileChanges/last-build.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.3.3/fileHashes/fileHashes.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.3.3/fileHashes/fileHashes.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.3.3/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/checksums/md5-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/checksums/sha1-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4/dependencies-accessors/dependencies-accessors.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/dependencies-accessors/dependencies-accessors.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/GuitarFineTune.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/app/GuitarFineTune.app.androidTest.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/app/GuitarFineTune.app.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/app/GuitarFineTune.app.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/app/GuitarFineTune.app.unitTest.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/arm64-v8a/.cmake/api/v1/query/client-agp/cache-v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/arm64-v8a/.cmake/api/v1/query/client-agp/cmakeFiles-v1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/arm64-v8a/.cmake/api/v1/query/client-agp/codemodel-v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/arm64-v8a/.cmake/api/v1/reply/cache-v2-016f5f26fd98fd188e14.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/arm64-v8a/.cmake/api/v1/reply/cmakeFiles-v1-78d228215532ac629aab.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/arm64-v8a/.cmake/api/v1/reply/codemodel-v2-af691e84984bd8b7f85b.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/arm64-v8a/.cmake/api/v1/reply/index-2022-12-04T17-57-19-0881.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/arm64-v8a/.cmake/api/v1/reply/target-cpufeatures-Debug-2a8288d8dc9575fbcc63.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/arm64-v8a/.cmake/api/v1/reply/target-juce_jni-Debug-fb623a018aff5864277d.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/arm64-v8a/.ninja_deps" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/arm64-v8a/.ninja_log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/arm64-v8a/CMakeCache.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/arm64-v8a/CMakeFiles/3.18.1-g262b901-dirty/CMakeASMCompiler.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/arm64-v8a/CMakeFiles/3.18.1-g262b901-dirty/CMakeCCompiler.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/arm64-v8a/CMakeFiles/3.18.1-g262b901-dirty/CMakeCXXCompiler.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/arm64-v8a/CMakeFiles/3.18.1-g262b901-dirty/CMakeDetermineCompilerABI_C.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/arm64-v8a/CMakeFiles/3.18.1-g262b901-dirty/CMakeDetermineCompilerABI_CXX.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/arm64-v8a/CMakeFiles/3.18.1-g262b901-dirty/CMakeSystem.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/arm64-v8a/CMakeFiles/CMakeError.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/arm64-v8a/CMakeFiles/CMakeOutput.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/arm64-v8a/CMakeFiles/TargetDirectories.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/arm64-v8a/CMakeFiles/cmake.check_cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/arm64-v8a/CMakeFiles/cpufeatures.dir/D_/Users/eigil/AppData/Local/Android/Sdk/ndk/23.1.7779620/sources/android/cpufeatures/cpu-features.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/arm64-v8a/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/JuceLibraryCode/BinaryData.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/arm64-v8a/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/JuceLibraryCode/include_juce_audio_basics.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/arm64-v8a/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/JuceLibraryCode/include_juce_audio_devices.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/arm64-v8a/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/JuceLibraryCode/include_juce_audio_formats.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/arm64-v8a/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/JuceLibraryCode/include_juce_audio_processors.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/arm64-v8a/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/JuceLibraryCode/include_juce_audio_processors_ara.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/arm64-v8a/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/JuceLibraryCode/include_juce_audio_processors_lv2_libs.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/arm64-v8a/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/JuceLibraryCode/include_juce_audio_utils.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/arm64-v8a/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/JuceLibraryCode/include_juce_core.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/arm64-v8a/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/JuceLibraryCode/include_juce_data_structures.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/arm64-v8a/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/JuceLibraryCode/include_juce_dsp.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/arm64-v8a/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/JuceLibraryCode/include_juce_events.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/arm64-v8a/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/JuceLibraryCode/include_juce_graphics.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/arm64-v8a/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/JuceLibraryCode/include_juce_gui_basics.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/arm64-v8a/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/JuceLibraryCode/include_juce_gui_extra.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/arm64-v8a/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/Source/AudioRecorder.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/arm64-v8a/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/Source/Main.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/arm64-v8a/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/Source/SimpleLevelMeter.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/arm64-v8a/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/Source/audioRecorderThread.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/arm64-v8a/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/Source/displayControlComponent.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/arm64-v8a/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/Source/eksAudioControlComponent.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/arm64-v8a/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/Source/eksNotModalProgressWindow.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/arm64-v8a/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/Source/eksNotModalProgressWindowCallBacks.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/arm64-v8a/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/Source/eksTabbedComponent.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/arm64-v8a/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/Source/eksThreadWithProgressWindow.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/arm64-v8a/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/Source/guitarFineTuneFirstClass.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/arm64-v8a/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/Source/guitarStringSoundsControl.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/arm64-v8a/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/Source/helpPage.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/arm64-v8a/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/Source/tuneComponent.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/arm64-v8a/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/Source/xmlGuitarFineTuneConfig.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/arm64-v8a/CMakeFiles/rules.ninja" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/arm64-v8a/android_gradle_build.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/arm64-v8a/build.ninja" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/arm64-v8a/cmake_install.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/arm64-v8a/compile_commands.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/arm64-v8a/compile_commands.json.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/arm64-v8a/libcpufeatures.a" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/arm64-v8a/metadata_generation_command.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/arm64-v8a/prefab_config.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/armeabi-v7a/.cmake/api/v1/query/client-agp/cache-v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/armeabi-v7a/.cmake/api/v1/query/client-agp/cmakeFiles-v1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/armeabi-v7a/.cmake/api/v1/query/client-agp/codemodel-v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/armeabi-v7a/.cmake/api/v1/reply/cache-v2-965e3e936effa8c54d38.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/armeabi-v7a/.cmake/api/v1/reply/cmakeFiles-v1-825b39a4a686b307e777.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/armeabi-v7a/.cmake/api/v1/reply/codemodel-v2-abf142caf5ed0bac70af.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/armeabi-v7a/.cmake/api/v1/reply/index-2022-12-04T17-57-47-0620.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/armeabi-v7a/.cmake/api/v1/reply/target-cpufeatures-Debug-0ff80653f79f4b2dc997.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/armeabi-v7a/.cmake/api/v1/reply/target-juce_jni-Debug-58d4112959e179187987.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/armeabi-v7a/.ninja_deps" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/armeabi-v7a/.ninja_log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/armeabi-v7a/CMakeCache.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/armeabi-v7a/CMakeFiles/3.18.1-g262b901-dirty/CMakeASMCompiler.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/armeabi-v7a/CMakeFiles/3.18.1-g262b901-dirty/CMakeCCompiler.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/armeabi-v7a/CMakeFiles/3.18.1-g262b901-dirty/CMakeCXXCompiler.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/armeabi-v7a/CMakeFiles/3.18.1-g262b901-dirty/CMakeDetermineCompilerABI_C.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/armeabi-v7a/CMakeFiles/3.18.1-g262b901-dirty/CMakeDetermineCompilerABI_CXX.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/armeabi-v7a/CMakeFiles/3.18.1-g262b901-dirty/CMakeSystem.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/armeabi-v7a/CMakeFiles/CMakeError.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/armeabi-v7a/CMakeFiles/CMakeOutput.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/armeabi-v7a/CMakeFiles/TargetDirectories.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/armeabi-v7a/CMakeFiles/cmake.check_cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/armeabi-v7a/CMakeFiles/cpufeatures.dir/D_/Users/eigil/AppData/Local/Android/Sdk/ndk/23.1.7779620/sources/android/cpufeatures/cpu-features.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/armeabi-v7a/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/JuceLibraryCode/BinaryData.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/armeabi-v7a/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/JuceLibraryCode/include_juce_audio_basics.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/armeabi-v7a/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/JuceLibraryCode/include_juce_audio_devices.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/armeabi-v7a/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/JuceLibraryCode/include_juce_audio_formats.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/armeabi-v7a/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/JuceLibraryCode/include_juce_audio_processors.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/armeabi-v7a/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/JuceLibraryCode/include_juce_audio_processors_ara.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/armeabi-v7a/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/JuceLibraryCode/include_juce_audio_processors_lv2_libs.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/armeabi-v7a/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/JuceLibraryCode/include_juce_audio_utils.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/armeabi-v7a/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/JuceLibraryCode/include_juce_core.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/armeabi-v7a/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/JuceLibraryCode/include_juce_data_structures.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/armeabi-v7a/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/JuceLibraryCode/include_juce_dsp.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/armeabi-v7a/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/JuceLibraryCode/include_juce_events.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/armeabi-v7a/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/JuceLibraryCode/include_juce_graphics.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/armeabi-v7a/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/JuceLibraryCode/include_juce_gui_basics.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/armeabi-v7a/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/JuceLibraryCode/include_juce_gui_extra.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/armeabi-v7a/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/Source/AudioRecorder.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/armeabi-v7a/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/Source/Main.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/armeabi-v7a/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/Source/SimpleLevelMeter.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/armeabi-v7a/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/Source/audioRecorderThread.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/armeabi-v7a/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/Source/displayControlComponent.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/armeabi-v7a/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/Source/eksAudioControlComponent.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/armeabi-v7a/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/Source/eksNotModalProgressWindow.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/armeabi-v7a/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/Source/eksNotModalProgressWindowCallBacks.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/armeabi-v7a/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/Source/eksTabbedComponent.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/armeabi-v7a/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/Source/eksThreadWithProgressWindow.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/armeabi-v7a/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/Source/guitarFineTuneFirstClass.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/armeabi-v7a/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/Source/guitarStringSoundsControl.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/armeabi-v7a/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/Source/helpPage.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/armeabi-v7a/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/Source/tuneComponent.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/armeabi-v7a/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/Source/xmlGuitarFineTuneConfig.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/armeabi-v7a/CMakeFiles/rules.ninja" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/armeabi-v7a/android_gradle_build.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/armeabi-v7a/build.ninja" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/armeabi-v7a/cmake_install.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/armeabi-v7a/compile_commands.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/armeabi-v7a/compile_commands.json.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/armeabi-v7a/libcpufeatures.a" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/armeabi-v7a/metadata_generation_command.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/armeabi-v7a/prefab_config.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86/.cmake/api/v1/reply/codemodel-v2-9326951e0e8a3d361f92.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86/.cmake/api/v1/reply/index-2022-12-04T17-46-11-0111.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86/.cmake/api/v1/reply/target-cpufeatures-Debug-b661cd643fc361a26d84.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86/.cmake/api/v1/reply/target-juce_jni-Debug-e62e78185a316c37c15b.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86/.ninja_deps" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86/.ninja_log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86/CMakeFiles/CMakeOutput.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86/CMakeFiles/cpufeatures.dir/D_/Users/eigil/AppData/Local/Android/Sdk/ndk/23.1.7779620/sources/android/cpufeatures/cpu-features.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/JuceLibraryCode/BinaryData.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/JuceLibraryCode/include_juce_audio_basics.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/JuceLibraryCode/include_juce_audio_devices.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/JuceLibraryCode/include_juce_audio_formats.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/JuceLibraryCode/include_juce_audio_processors.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/JuceLibraryCode/include_juce_audio_processors_ara.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/JuceLibraryCode/include_juce_audio_processors_lv2_libs.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/JuceLibraryCode/include_juce_audio_utils.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/JuceLibraryCode/include_juce_core.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/JuceLibraryCode/include_juce_data_structures.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/JuceLibraryCode/include_juce_dsp.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/JuceLibraryCode/include_juce_events.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/JuceLibraryCode/include_juce_graphics.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/JuceLibraryCode/include_juce_gui_basics.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/JuceLibraryCode/include_juce_gui_extra.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/Source/AudioRecorder.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/Source/Main.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/Source/SimpleLevelMeter.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/Source/audioRecorderThread.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/Source/displayControlComponent.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/Source/eksAudioControlComponent.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/Source/eksNotModalProgressWindow.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/Source/eksNotModalProgressWindowCallBacks.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/Source/eksTabbedComponent.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/Source/eksThreadWithProgressWindow.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/Source/guitarFineTuneFirstClass.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/Source/guitarStringSoundsControl.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/Source/helpPage.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/Source/tuneComponent.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/Source/xmlGuitarFineTuneConfig.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86/build.ninja" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86/compile_commands.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86/compile_commands.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86/compile_commands.json.bin" beforeDir="false" afterPath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86/compile_commands.json.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86/libcpufeatures.a" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86_64/.cmake/api/v1/query/client-agp/cache-v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86_64/.cmake/api/v1/query/client-agp/cmakeFiles-v1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86_64/.cmake/api/v1/query/client-agp/codemodel-v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86_64/.cmake/api/v1/reply/cache-v2-931cae89280d475d16e5.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86_64/.cmake/api/v1/reply/cmakeFiles-v1-adc2ae51bf6aad526c59.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86_64/.cmake/api/v1/reply/codemodel-v2-91813e63810beaa0e9f5.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86_64/.cmake/api/v1/reply/index-2022-12-04T17-47-29-0344.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86_64/.cmake/api/v1/reply/target-cpufeatures-Debug-2a8288d8dc9575fbcc63.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86_64/.cmake/api/v1/reply/target-juce_jni-Debug-5af87f2292f6ca975ca9.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86_64/.ninja_deps" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86_64/.ninja_log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86_64/CMakeCache.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86_64/CMakeFiles/3.18.1-g262b901-dirty/CMakeASMCompiler.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86_64/CMakeFiles/3.18.1-g262b901-dirty/CMakeCCompiler.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86_64/CMakeFiles/3.18.1-g262b901-dirty/CMakeCXXCompiler.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86_64/CMakeFiles/3.18.1-g262b901-dirty/CMakeDetermineCompilerABI_C.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86_64/CMakeFiles/3.18.1-g262b901-dirty/CMakeDetermineCompilerABI_CXX.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86_64/CMakeFiles/3.18.1-g262b901-dirty/CMakeSystem.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86_64/CMakeFiles/CMakeError.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86_64/CMakeFiles/CMakeOutput.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86_64/CMakeFiles/TargetDirectories.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86_64/CMakeFiles/cmake.check_cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86_64/CMakeFiles/cpufeatures.dir/D_/Users/eigil/AppData/Local/Android/Sdk/ndk/23.1.7779620/sources/android/cpufeatures/cpu-features.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86_64/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/JuceLibraryCode/BinaryData.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86_64/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/JuceLibraryCode/include_juce_audio_basics.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86_64/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/JuceLibraryCode/include_juce_audio_devices.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86_64/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/JuceLibraryCode/include_juce_audio_formats.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86_64/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/JuceLibraryCode/include_juce_audio_processors.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86_64/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/JuceLibraryCode/include_juce_audio_processors_ara.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86_64/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/JuceLibraryCode/include_juce_audio_processors_lv2_libs.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86_64/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/JuceLibraryCode/include_juce_audio_utils.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86_64/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/JuceLibraryCode/include_juce_core.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86_64/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/JuceLibraryCode/include_juce_data_structures.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86_64/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/JuceLibraryCode/include_juce_dsp.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86_64/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/JuceLibraryCode/include_juce_events.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86_64/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/JuceLibraryCode/include_juce_graphics.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86_64/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/JuceLibraryCode/include_juce_gui_basics.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86_64/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/JuceLibraryCode/include_juce_gui_extra.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86_64/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/Source/AudioRecorder.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86_64/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/Source/Main.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86_64/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/Source/SimpleLevelMeter.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86_64/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/Source/audioRecorderThread.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86_64/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/Source/displayControlComponent.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86_64/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/Source/eksAudioControlComponent.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86_64/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/Source/eksNotModalProgressWindow.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86_64/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/Source/eksNotModalProgressWindowCallBacks.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86_64/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/Source/eksTabbedComponent.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86_64/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/Source/eksThreadWithProgressWindow.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86_64/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/Source/guitarFineTuneFirstClass.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86_64/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/Source/guitarStringSoundsControl.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86_64/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/Source/helpPage.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86_64/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/Source/tuneComponent.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86_64/CMakeFiles/juce_jni.dir/D_/Users/eigil/projects/juceProjs/GuitarFineTune/Source/xmlGuitarFineTuneConfig.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86_64/CMakeFiles/rules.ninja" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86_64/android_gradle_build.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86_64/build.ninja" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86_64/cmake_install.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86_64/compile_commands.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86_64/compile_commands.json.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86_64/libcpufeatures.a" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86_64/metadata_generation_command.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/5k471s2c/x86_64/prefab_config.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/a1yeh3e1/x86/.cmake/api/v1/query/client-agp/cache-v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/a1yeh3e1/x86/.cmake/api/v1/query/client-agp/cmakeFiles-v1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/a1yeh3e1/x86/.cmake/api/v1/query/client-agp/codemodel-v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/a1yeh3e1/x86/.cmake/api/v1/reply/cache-v2-13e86dc1b39915131faf.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/a1yeh3e1/x86/.cmake/api/v1/reply/cmakeFiles-v1-48772dea16f369be02a7.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/a1yeh3e1/x86/.cmake/api/v1/reply/codemodel-v2-c9d8f2b23c9156341b96.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/a1yeh3e1/x86/.cmake/api/v1/reply/index-2022-12-04T17-44-22-0985.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/a1yeh3e1/x86/.cmake/api/v1/reply/target-cpufeatures-Debug-e75d2098bc3954625068.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/a1yeh3e1/x86/.cmake/api/v1/reply/target-juce_jni-Debug-37469e542026b4cc2810.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/a1yeh3e1/x86/CMakeCache.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/a1yeh3e1/x86/CMakeFiles/3.18.1-g262b901-dirty/CMakeASMCompiler.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/a1yeh3e1/x86/CMakeFiles/3.18.1-g262b901-dirty/CMakeCCompiler.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/a1yeh3e1/x86/CMakeFiles/3.18.1-g262b901-dirty/CMakeCXXCompiler.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/a1yeh3e1/x86/CMakeFiles/3.18.1-g262b901-dirty/CMakeDetermineCompilerABI_C.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/a1yeh3e1/x86/CMakeFiles/3.18.1-g262b901-dirty/CMakeDetermineCompilerABI_CXX.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/a1yeh3e1/x86/CMakeFiles/3.18.1-g262b901-dirty/CMakeSystem.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/a1yeh3e1/x86/CMakeFiles/CMakeError.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/a1yeh3e1/x86/CMakeFiles/CMakeOutput.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/a1yeh3e1/x86/CMakeFiles/TargetDirectories.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/a1yeh3e1/x86/CMakeFiles/cmake.check_cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/a1yeh3e1/x86/CMakeFiles/rules.ninja" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/a1yeh3e1/x86/android_gradle_build.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/a1yeh3e1/x86/build.ninja" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/a1yeh3e1/x86/cmake_install.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/a1yeh3e1/x86/compile_commands.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/a1yeh3e1/x86/compile_commands.json.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/a1yeh3e1/x86/metadata_generation_command.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.cxx/Debug/a1yeh3e1/x86/prefab_config.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CodeBlocksLinux/icon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/../CodeBlocksLinux/icon.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MacOSX/GuitarFineTune.xcodeproj/project.xcworkspace/contents.xcworkspacedata" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MacOSX/GuitarFineTune.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MacOSX/GuitarFineTune.xcodeproj/project.xcworkspace/xcuserdata/eks.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MacOSX/GuitarFineTune.xcodeproj/xcuserdata/eks.xcuserdatad/xcschemes/xcschememanagement.plist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../VisualStudio2022/GuitarFineTune.sln" beforeDir="false" afterPath="$PROJECT_DIR$/../VisualStudio2022/GuitarFineTune.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../VisualStudio2022/GuitarFineTune_App.vcxproj.user" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../VisualStudio2022/MajorMinorBuildRevisionNumbers.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../VisualStudio2022/icon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/../VisualStudio2022/icon.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iOS/GuitarFineTune.xcodeproj/project.xcworkspace/contents.xcworkspacedata" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iOS/GuitarFineTune.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iOS/GuitarFineTune.xcodeproj/project.xcworkspace/xcuserdata/eks.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iOS/GuitarFineTune.xcodeproj/xcuserdata/eks.xcuserdatad/xcschemes/xcschememanagement.plist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-29.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-29.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-29@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-29@2x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-29@3x.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-29@3x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-60@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-60@2x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-72.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-72@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-76.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-76.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-76@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-76@2x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-83.5@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-83.5@2x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-@3x.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-@3x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-Notification-20@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-Notification-20@2x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-Notification-20@3x.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-Notification-20@3x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-Notifications-20.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-Notifications-20.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-Notifications-20@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-Notifications-20@2x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-Small-1.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-Small-1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-Small-50.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-Small-50@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-Small@2x-1.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-Small@2x-1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-Spotlight-40.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-Spotlight-40.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-Spotlight-40@2x-1.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-Spotlight-40@2x-1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-Spotlight-40@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-Spotlight-40@2x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-Spotlight-40@3x.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-Spotlight-40@3x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iOS/build/Release/GuitarFineTune.app" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../package/Release/GuitarFineTune.msi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../package/Release/setup.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../package/package.vdproj" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,24 +351,50 @@
       <ProjectState />
     </projectState>
   </component>
+  <component name="GenerateSignedApkSettings">
+    <option name="EXPORT_PRIVATE_KEY" value="false" />
+    <option name="KEY_STORE_PATH" value="D:\Users\eigil\projects\juceProjs\GuitarFineTune\Android_Special\keystore.jks" />
+    <option name="KEY_ALIAS" value="upload" />
+    <option name="REMEMBER_PASSWORDS" value="true" />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2C7Tctu3E9RCHrjCFatWwYJXnHC" />
+  <component name="ProjectId" id="2IUudggIJkUIkTcxex2gMgDK1Do" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="BundleExportedModule" value="GuitarFineTune.app" />
+    <property name="ExportApk.ApkPath" value="D:\Users\eigil\projects\juceProjs\GuitarFineTune\Builds\Android\app" />
+    <property name="ExportApk.BuildVariants" value="release_Release" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
     <property name="cidr.known.project.marker" value="true" />
-    <property name="settings.editor.selected.configurable" value="memory.settings" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Android_Special" />
+    <property name="project.structure.last.edited" value="Build Variants" />
+    <property name="project.structure.proportion" value="0.17" />
+    <property name="project.structure.side.proportion" value="0.10384216" />
+  </component>
+  <component name="PsdUISettings">
+    <option name="MODULE_TAB" value="Signing Configs" />
+    <option name="LAST_EDITED_SIGNING_CONFIG" value="Release" />
+    <option name="LAST_EDITED_BUILD_TYPE" value="release" />
   </component>
   <component name="RunManager">
     <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App">
@@ -178,28 +456,15 @@
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="Android" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="Android" />
-      <option name="filePath" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="633561cf-6e69-4b8a-80c9-bf1b786e5193" name="Changes" comment="" />
-      <created>1658152714185</created>
+      <changelist id="eada366c-ca5c-400e-8a14-11ad6dda099c" name="Changes" comment="" />
+      <created>1670248574147</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1658152714185</updated>
+      <updated>1670248574147</updated>
     </task>
     <servers />
   </component>
