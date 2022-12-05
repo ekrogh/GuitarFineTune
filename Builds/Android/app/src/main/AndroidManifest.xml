@@ -12,7 +12,8 @@
   <uses-permission android:name="android.permission.RECORD_AUDIO"/>
   <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE"/>
   <uses-permission android:name="android.permission.INTERNET"/>
-  <application android:label="@string/app_name" android:name="com.rmsl.juce.JuceApp" android:icon="@drawable/icon" android:hardwareAccelerated="false">
+  <application android:label="@string/app_name" android:name="dk.eksit.guitarfinetunep" android:icon="@drawable/icon"
+               android:hardwareAccelerated="false">
     <activity android:name="android.app.Activity" android:configChanges="keyboardHidden|orientation|screenSize" android:screenOrientation="unspecified"
               android:launchMode="singleTask" android:hardwareAccelerated="true" android:exported="true">
       <intent-filter>
@@ -20,7 +21,7 @@
         <category android:name="android.intent.category.LAUNCHER"/>
       </intent-filter>
     </activity>
-    <provider android:name="com.rmsl.juce.JuceSharingContentProvider" android:authorities="dk.eksit.guitarfinetunep.sharingcontentprovider"
+    <provider android:name="com.rmsl.juce.JuceSharingContentProvider" android:authorities="dk.eksit.guitarfinetune.sharingcontentprovider"
               android:grantUriPermissions="true" android:exported="true"/>
   </application>
 </manifest>
