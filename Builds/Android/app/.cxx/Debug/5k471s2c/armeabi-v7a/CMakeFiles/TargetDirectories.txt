@@ -1,0 +1,4 @@
+D:/Users/eigil/projects/juceProjs/GuitarFineTune/Builds/Android/app/.cxx/Debug/5k471s2c/armeabi-v7a/CMakeFiles/cpufeatures.dir
+D:/Users/eigil/projects/juceProjs/GuitarFineTune/Builds/Android/app/.cxx/Debug/5k471s2c/armeabi-v7a/CMakeFiles/juce_jni.dir
+D:/Users/eigil/projects/juceProjs/GuitarFineTune/Builds/Android/app/.cxx/Debug/5k471s2c/armeabi-v7a/CMakeFiles/edit_cache.dir
+D:/Users/eigil/projects/juceProjs/GuitarFineTune/Builds/Android/app/.cxx/Debug/5k471s2c/armeabi-v7a/CMakeFiles/rebuild_cache.dir

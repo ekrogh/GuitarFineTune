@@ -5,35 +5,88 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="633561cf-6e69-4b8a-80c9-bf1b786e5193" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/Android.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CodeBlocksLinux/icon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/../CodeBlocksLinux/icon.ico" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../VisualStudio2022/GuitarFineTune.sln" beforeDir="false" afterPath="$PROJECT_DIR$/../VisualStudio2022/GuitarFineTune.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../VisualStudio2022/icon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/../VisualStudio2022/icon.ico" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-29.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-29.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-29@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-29@2x.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-29@3x.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-29@3x.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-60@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-60@2x.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-76.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-76.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-76@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-76@2x.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-83.5@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-83.5@2x.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-@3x.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-@3x.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-Notification-20@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-Notification-20@2x.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-Notification-20@3x.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-Notification-20@3x.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-Notifications-20.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-Notifications-20.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-Notifications-20@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-Notifications-20@2x.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-Small-1.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-Small-1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-Small@2x-1.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-Small@2x-1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-Spotlight-40.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-Spotlight-40.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-Spotlight-40@2x-1.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-Spotlight-40@2x-1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-Spotlight-40@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-Spotlight-40@2x.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-Spotlight-40@3x.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/GuitarFineTune/Images.xcassets/AppIcon.appiconset/Icon-Spotlight-40@3x.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../JuceLibraryCode/modules/juce_audio_devices/native/juce_android_OpenSL.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../JuceLibraryCode/modules/juce_audio_devices/native/juce_android_OpenSL.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/bin/ARM/Release/AppxManifest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/bin/ARM/Release/GuitarFineTune_App/GuitarFineTune.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/bin/ARM/Release/GuitarFineTune_App/GuitarFineTune.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/bin/ARM/Release/Upload/AppxManifest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/bin/ARM/Release/Upload/packProj.build.appxrecipe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/bin/ARM/Release/packProj.build.appxrecipe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/bin/ARM/Release/resources.pri" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/bin/ARM64/Release/AppxManifest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/bin/ARM64/Release/GuitarFineTune_App/GuitarFineTune.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/bin/ARM64/Release/GuitarFineTune_App/GuitarFineTune.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/bin/ARM64/Release/Upload/AppxManifest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/bin/ARM64/Release/Upload/packProj.build.appxrecipe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/bin/ARM64/Release/packProj.build.appxrecipe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/bin/ARM64/Release/resources.pri" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/bin/x86/Release/AppxManifest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/bin/x86/Release/GuitarFineTune_App/GuitarFineTune.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/bin/x86/Release/GuitarFineTune_App/GuitarFineTune.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/bin/x86/Release/Upload/AppxManifest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/bin/x86/Release/Upload/packProj.build.appxrecipe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/bin/x86/Release/packProj.build.appxrecipe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/bin/x86/Release/resources.pri" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM/Release/MultipleQualifiersPerDimensionFound.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM/Release/ProjectArchitectures.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM/Release/_IsIncrementalBuild" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM/Release/excluded.layout.resfiles" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM/Release/excluded.layout.resfiles.intermediate" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM/Release/filtered.layout.resfiles" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM/Release/filtered.layout.resfiles.intermediate" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM/Release/packProj.wapproj.CoreCompileInputs.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM/Release/packProj.wapproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM/Release/packProj.wapproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM/Release/packProj.wapproj.LastBuild.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM/Release/pri.resfiles" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM/Release/pri.resfiles.intermediate" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM/Release/priconfig.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM/Release/priconfig.xml.intermediate" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM/Release/qualifiers.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM/Release/qualifiers.txt.intermediate" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM/Release/resources.resfiles" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM/Release/resources.resfiles.intermediate" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM/Release/unfiltered.layout.resfiles" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM/Release/unfiltered.layout.resfiles.intermediate" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM64/Release/MultipleQualifiersPerDimensionFound.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM64/Release/ProjectArchitectures.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM64/Release/_IsIncrementalBuild" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM64/Release/excluded.layout.resfiles" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM64/Release/excluded.layout.resfiles.intermediate" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM64/Release/filtered.layout.resfiles" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM64/Release/filtered.layout.resfiles.intermediate" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM64/Release/packProj.wapproj.CoreCompileInputs.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM64/Release/packProj.wapproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM64/Release/packProj.wapproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM64/Release/packProj.wapproj.LastBuild.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM64/Release/pri.resfiles" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM64/Release/pri.resfiles.intermediate" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM64/Release/priconfig.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM64/Release/priconfig.xml.intermediate" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM64/Release/qualifiers.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM64/Release/qualifiers.txt.intermediate" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM64/Release/resources.resfiles" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM64/Release/resources.resfiles.intermediate" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM64/Release/unfiltered.layout.resfiles" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/ARM64/Release/unfiltered.layout.resfiles.intermediate" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/x64/Release/packProj.wapproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/x64/Release/packProj.wapproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/x86/Release/MultipleQualifiersPerDimensionFound.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/x86/Release/ProjectArchitectures.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/x86/Release/_IsIncrementalBuild" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/x86/Release/excluded.layout.resfiles" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/x86/Release/excluded.layout.resfiles.intermediate" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/x86/Release/filtered.layout.resfiles" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/x86/Release/filtered.layout.resfiles.intermediate" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/x86/Release/packProj.wapproj.CoreCompileInputs.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/x86/Release/packProj.wapproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/x86/Release/packProj.wapproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/x86/Release/packProj.wapproj.LastBuild.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/x86/Release/pri.resfiles" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/x86/Release/pri.resfiles.intermediate" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/x86/Release/priconfig.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/x86/Release/priconfig.xml.intermediate" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/x86/Release/qualifiers.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/x86/Release/qualifiers.txt.intermediate" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/x86/Release/resources.resfiles" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/x86/Release/resources.resfiles.intermediate" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/x86/Release/unfiltered.layout.resfiles" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microsoft_Store/packProj/packProj/obj/x86/Release/unfiltered.layout.resfiles.intermediate" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
