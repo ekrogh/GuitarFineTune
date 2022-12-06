@@ -112,7 +112,7 @@ public:
 
 	// Just launches the window. No thread is atarted
 	void launchWindow();
-	
+
 	/** Starts the thread and returns.
 
 	This will start the thread and make the dialog box appear in a NON modal state. When
@@ -122,7 +122,8 @@ public:
 	@param priority   the priority to use when starting the thread - see
 	Thread::startThread() for values
 	*/
-	void launchThread(Priority priority = Priority::high);
+	void launchThread(int priority = 5);
+//	void launchThread(Priority priority = Priority::high);
 
 	/** The thread should call this periodically to update the position of the progress bar.
 

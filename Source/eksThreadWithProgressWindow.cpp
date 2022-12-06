@@ -70,7 +70,7 @@ void eksThreadWithProgressWindow::launchWindow()
 		// Set colors
 		alertWindow->setColour(AlertWindow::textColourId, Colours::cornflowerblue);
 		alertWindow->setColour(AlertWindow::backgroundColourId, Colour(0xff20072b));
-		
+
 		int numChildComponents = alertWindow->getNumChildComponents();
 		// Set progress bar colors.
 		for (int i = 0; i < numChildComponents; ++i)
@@ -100,7 +100,8 @@ void eksThreadWithProgressWindow::launchWindow()
 	}
 }
 
-void eksThreadWithProgressWindow::launchThread(Priority priority)
+//void eksThreadWithProgressWindow::launchThread(Priority priority)
+void eksThreadWithProgressWindow::launchThread(int priority)
 {
 	jassert(MessageManager::getInstance()->isThisTheMessageThread());
 

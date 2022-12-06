@@ -421,7 +421,8 @@ bool tuneComponent::audioSysInit()
 
 	// ChangeListner = this
 	sharedAudioDeviceManager->addChangeListener(this);
-	startThread(Priority::normal); // priority normal
+    startThread(1); // priority 1
+//	startThread(Priority::normal); // priority normal
 
 
 	return true;
@@ -1221,7 +1222,7 @@ void tuneComponent::getNextAudioBlock(const AudioSourceChannelInfo& bufferToFill
 				filterAndPushNextSampleIntoFifo(channelData[generateNoiseIndxToSampleInInBuffer]);
 				generateNoiseIndxToSampleInInBuffer += sampleSpace;
 			}
-			generateNoiseIndxToSampleInInBuffer -= bufferToFill.numSamples; // make ready for next buffertofill 
+			generateNoiseIndxToSampleInInBuffer -= bufferToFill.numSamples; // make ready for next buffertofill
 		}
 	}
 	else
@@ -3042,7 +3043,7 @@ void tuneComponent::controlGuitarStringSounds(std::deque<bool> guitarStringSound
 						{
 							// There are some guitar string sounds added AND some tones removed
 
-							// Ramp down removed tones 
+							// Ramp down removed tones
 							calcGuitarStringSoundsRampFaktors
 							(
 								rampBackInsrtr
@@ -3257,7 +3258,7 @@ void tuneComponent::controlGuitarStringSounds(std::deque<bool> guitarStringSound
 						{
 							// There are some guitar string sounds added AND some tones removed
 
-							// Ramp down removed tones 
+							// Ramp down removed tones
 							calcGuitarStringSoundsRampFaktors
 							(
 								rampBackInsrtr
@@ -3639,7 +3640,7 @@ void tuneComponent::startThresholdAutoCalibrate()
 			//, this /*eksNotModalProgressWindowCallBacks* pTheClassToCallBack =*/
 			//, 1 /*unsigned int secsBetwTicks =*/
 			//, true /*bool hasButton =*/
-			//, "OK" /*const std::string& buttonText =*/ 
+			//, "OK" /*const std::string& buttonText =*/
 			);
 
 

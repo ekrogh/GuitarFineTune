@@ -178,11 +178,14 @@ inline void AudioRecorder::applyGain(const float* inputData, float* outputData, 
 }
 
 
-void AudioRecorder::audioDeviceIOCallbackWithContext(const float* const* inputChannelData, int numInputChannels,
-	float* const* outputChannelData, int numOutputChannels,
-	int numSamples, const AudioIODeviceCallbackContext& context)
+//void AudioRecorder::audioDeviceIOCallbackWithContext(const float* const* inputChannelData, int numInputChannels,
+//	float* const* outputChannelData, int numOutputChannels,
+//	int numSamples, const AudioIODeviceCallbackContext& context)
+void AudioRecorder::audioDeviceIOCallback(const float** inputChannelData, int numInputChannels,
+	float** outputChannelData, int numOutputChannels,
+	int numSamples)
 {
-	ignoreUnused(context);
+//	ignoreUnused(context);
 
 	auto RecordingLevelMeterIsShowing = (pRecordingLevelMeter.lock()) && (pRecordingLevelMeter.lock()->isShowing());
 

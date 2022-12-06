@@ -80,28 +80,31 @@ public:
 	~AudioRecorder();
 
 	void startRecording(const File& file);
-	
+
 	void stop();
-	
+
 	bool isRecording() const;
-	
+
 	void filteredAudioSourceAboutToStart(double theSampleRate, int bufferSize);
-	
+
 	void audioDeviceAboutToStart(AudioIODevice* device) override;
-	
+
 	void audioDeviceStopped() override;
 
 	inline float findMaxLevel(const float* inputData, int numSamples);
 
 	inline void applyGain(const float* inputData, float* outputData, int numSamples);
 
-	void audioDeviceIOCallbackWithContext(const float* const* inputChannelData, int numInputChannels,
-		float* const* outputChannelData, int numOutputChannels,
-		int numSamples, const AudioIODeviceCallbackContext& context) override;
+	void audioDeviceIOCallback(const float** inputChannelData, int numInputChannels,
+		float** outputChannelData, int numOutputChannels,
+		int numSamples) override;
+//	void audioDeviceIOCallbackWithContext(const float* const* inputChannelData, int numInputChannels,
+//		float* const* outputChannelData, int numOutputChannels,
+//		int numSamples, const AudioIODeviceCallbackContext& context) override;
 
 
 	void recordFilteredAudio(float* inputData);
-	
+
 	void setRecordingGain(float thegainToUse);
 	float getCurrentRecordingGain();
 	void setAutoGainOn(bool setAutoGainOn);
@@ -143,10 +146,10 @@ public:
 	AudioRecorderControl();
 
 	~AudioRecorderControl();
-	
+
 
 	void StopAudioDeviceIOCallback();
-		
+
 	void setSourceRaw();
 
 	void setSourceFiltered();
@@ -156,9 +159,9 @@ public:
 	void startAudioRecorderRecording();
 
 	void stopAudioRecorderRecording();
-	
+
 	void recordFilteredAudio(float* inputChannelData);
-	
+
 	void setCalcCurrentMaxLevel(bool shouldBeCalculated);
 
 	float getCurrentMaxLevel();
