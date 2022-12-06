@@ -73,7 +73,8 @@ parts:
     plugin: nil
     source: .
     override-build: |
-      snapcraftctl checkout -f --theirs ubuntu_Branch
+      snapcraftctl --help
+#      snapcraftctl checkout -f --theirs ubuntu_Branch
       g++ --version
       cd Builds/LinuxMakefile/
       pwd
