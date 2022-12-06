@@ -84,10 +84,9 @@ inline void writeUnaligned (void* dstPtr, Type value) noexcept
     to a region that has suitable alignment for `Type`, e.g. regions returned from
     malloc/calloc that should be suitable for any non-over-aligned type.
 */
-template <typename Type>
+template <typename Type, typename std::enable_if<std::is_pointer<Type>::value, int>::type = 0>
 inline Type unalignedPointerCast (void* ptr) noexcept
 {
-    static_assert (std::is_pointer_v<Type>);
     return reinterpret_cast<Type> (ptr);
 }
 
@@ -98,10 +97,9 @@ inline Type unalignedPointerCast (void* ptr) noexcept
     to a region that has suitable alignment for `Type`, e.g. regions returned from
     malloc/calloc that should be suitable for any non-over-aligned type.
 */
-template <typename Type>
+template <typename Type, typename std::enable_if<std::is_pointer<Type>::value, int>::type = 0>
 inline Type unalignedPointerCast (const void* ptr) noexcept
 {
-    static_assert (std::is_pointer_v<Type>);
     return reinterpret_cast<Type> (ptr);
 }
 

@@ -31,11 +31,12 @@ Image juce_createIconForFile (const File& file);
 
 //==============================================================================
 FileListComponent::FileListComponent (DirectoryContentsList& listToShow)
-    : ListBox ({}, this),
+    : ListBox ({}, nullptr),
       DirectoryContentsDisplayComponent (listToShow),
       lastDirectory (listToShow.getDirectory())
 {
     setTitle ("Files");
+    setModel (this);
     directoryContentsList.addChangeListener (this);
 }
 
@@ -66,18 +67,14 @@ void FileListComponent::scrollToTop()
 
 void FileListComponent::setSelectedFile (const File& f)
 {
-    if (! directoryContentsList.isStillLoading())
+    for (int i = directoryContentsList.getNumFiles(); --i >= 0;)
     {
-        for (int i = directoryContentsList.getNumFiles(); --i >= 0;)
+        if (directoryContentsList.getFile (i) == f)
         {
-            if (directoryContentsList.getFile (i) == f)
-            {
-                fileWaitingToBeSelected = File();
+            fileWaitingToBeSelected = File();
 
-                updateContent();
-                selectRow (i);
-                return;
-            }
+            selectRow (i);
+            return;
         }
     }
 

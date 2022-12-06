@@ -117,30 +117,39 @@ public:
         newList->addChangeListener (this);
     }
 
-    void selectFile (const File& target)
+    bool selectFile (const File& target)
     {
         if (file == target)
         {
             setSelected (true, true);
-            return;
+            return true;
         }
 
-        if (subContentsList != nullptr && subContentsList->isStillLoading())
+        if (target.isAChildOf (file))
         {
-            pendingFileSelection.emplace (*this, target);
-            return;
+            setOpen (true);
+
+            for (int maxRetries = 500; --maxRetries > 0;)
+            {
+                for (int i = 0; i < getNumSubItems(); ++i)
+                    if (auto* f = dynamic_cast<FileListTreeItem*> (getSubItem (i)))
+                        if (f->selectFile (target))
+                            return true;
+
+                // if we've just opened and the contents are still loading, wait for it..
+                if (subContentsList != nullptr && subContentsList->isStillLoading())
+                {
+                    Thread::sleep (10);
+                    rebuildItemsFromContentList();
+                }
+                else
+                {
+                    break;
+                }
+            }
         }
 
-        pendingFileSelection.reset();
-
-        if (! target.isAChildOf (file))
-            return;
-
-        setOpen (true);
-
-        for (int i = 0; i < getNumSubItems(); ++i)
-            if (auto* f = dynamic_cast<FileListTreeItem*> (getSubItem (i)))
-                f->selectFile (target);
+        return false;
     }
 
     void changeListenerCallback (ChangeBroadcaster*) override
@@ -215,33 +224,6 @@ public:
     const File file;
 
 private:
-    class PendingFileSelection   : private Timer
-    {
-    public:
-        PendingFileSelection (FileListTreeItem& item, const File& f)
-            : owner (item), fileToSelect (f)
-        {
-            startTimer (10);
-        }
-
-        ~PendingFileSelection() override
-        {
-            stopTimer();
-        }
-
-    private:
-        void timerCallback() override
-        {
-            // Take a copy of the file here, in case this PendingFileSelection
-            // object is destroyed during the call to selectFile.
-            owner.selectFile (File { fileToSelect });
-        }
-
-        FileListTreeItem& owner;
-        File fileToSelect;
-    };
-
-    Optional<PendingFileSelection> pendingFileSelection;
     FileTreeComponent& owner;
     DirectoryContentsList* parentContentsList;
     int indexInContentsList;
@@ -334,7 +316,8 @@ void FileTreeComponent::setDragAndDropDescription (const String& description)
 void FileTreeComponent::setSelectedFile (const File& target)
 {
     if (auto* t = dynamic_cast<FileListTreeItem*> (getRootItem()))
-        t->selectFile (target);
+        if (! t->selectFile (target))
+            clearSelectedItems();
 }
 
 void FileTreeComponent::setItemHeight (int newHeight)

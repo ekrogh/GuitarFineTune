@@ -66,8 +66,7 @@ public:
             Optional<Ptr> original (ptr);
             expect (ptr.use_count() == 2);
             auto other = std::move (original);
-            // A moved-from optional still contains a value!
-            expect (original.hasValue());
+            expect (! original.hasValue());
             expect (other.hasValue());
             expect (ptr.use_count() == 2);
         }
@@ -105,7 +104,7 @@ public:
             aOpt = std::move (bOpt);
 
             expect (aOpt.hasValue());
-            expect (bOpt.hasValue());
+            expect (! bOpt.hasValue());
 
             expect (a.use_count() == 1);
             expect (b.use_count() == 2);
@@ -159,7 +158,7 @@ public:
             empty = std::move (aOpt);
 
             expect (empty.hasValue());
-            expect (aOpt.hasValue());
+            expect (! aOpt.hasValue());
 
             expect (a.use_count() == 2);
         }
@@ -266,7 +265,7 @@ public:
             expect (! a.hasValue());
         }
 
-        beginTest ("Exception safety of contained type is maintained when copying over populated object");
+        beginTest ("Strong exception safety is maintained when copying over populated object");
         {
             bool threw = false;
             Optional<ThrowOnCopy> a = ThrowOnCopy();
@@ -284,7 +283,7 @@ public:
 
             expect (threw);
             expect (a.hasValue());
-            expect (a->value == -100);
+            expect (a->value == 5);
         }
 
         beginTest ("Assigning from nullopt clears the instance");

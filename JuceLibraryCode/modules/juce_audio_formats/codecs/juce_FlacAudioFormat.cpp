@@ -92,8 +92,8 @@ namespace FlacNamespace
 {
 #if JUCE_INCLUDE_FLAC_CODE || ! defined (JUCE_INCLUDE_FLAC_CODE)
 
- #undef PACKAGE_VERSION
- #define PACKAGE_VERSION "1.3.4"
+ #undef VERSION
+ #define VERSION "1.3.1"
 
  #define FLAC__NO_DLL 1
 
@@ -131,17 +131,11 @@ namespace FlacNamespace
   #define FLAC__HAS_X86INTRIN 1
  #endif
 
+ #undef __STDC_LIMIT_MACROS
+ #define __STDC_LIMIT_MACROS 1
  #define flac_max jmax
  #define flac_min jmin
-
- #pragma push_macro ("DEBUG")
- #pragma push_macro ("NDEBUG")
- #undef  DEBUG  // (some flac code dumps debug trace if the app defines this macro)
-
- #ifndef NDEBUG
-  #define NDEBUG // (some flac code prints cpu info if this isn't defined)
- #endif
-
+ #undef DEBUG // (some flac code dumps debug trace if the app defines this macro)
  #include "flac/all.h"
  #include "flac/libFLAC/bitmath.c"
  #include "flac/libFLAC/bitreader.c"
@@ -158,11 +152,7 @@ namespace FlacNamespace
  #include "flac/libFLAC/stream_encoder.c"
  #include "flac/libFLAC/stream_encoder_framing.c"
  #include "flac/libFLAC/window_flac.c"
-
- #pragma pop_macro ("DEBUG")
- #pragma pop_macro ("NDEBUG")
-
- #undef PACKAGE_VERSION
+ #undef VERSION
 
  JUCE_END_IGNORE_WARNINGS_GCC_LIKE
  JUCE_END_IGNORE_WARNINGS_MSVC
@@ -230,7 +220,7 @@ public:
         reservoir.setSize ((int) numChannels, 2 * (int) info.max_blocksize, false, false, true);
     }
 
-    bool readSamples (int* const* destSamples, int numDestChannels, int startOffsetInDestBuffer,
+    bool readSamples (int** destSamples, int numDestChannels, int startOffsetInDestBuffer,
                       int64 startSampleInFile, int numSamples) override
     {
         if (! ok)

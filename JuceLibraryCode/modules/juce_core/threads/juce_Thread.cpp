@@ -22,9 +22,9 @@
 
 namespace juce
 {
-//==============================================================================
-Thread::Thread (const String& name, size_t stackSize) : threadName (name),
-                                                        threadStackSize (stackSize)
+
+Thread::Thread (const String& name, size_t stackSize)
+   : threadName (name), threadStackSize (stackSize)
 {
 }
 
@@ -81,18 +81,12 @@ void Thread::threadEntryPoint()
     const CurrentThreadHolder::Ptr currentThreadHolder (getCurrentThreadHolder());
     currentThreadHolder->value = this;
 
-   #if JUCE_ANDROID
-    setPriority (priority);
-   #endif
-
     if (threadName.isNotEmpty())
         setCurrentThreadName (threadName);
 
-    // This 'startSuspensionEvent' protects 'threadId' which is initialised after the platform's native 'CreateThread' method.
-    // This ensures it has been initialised correctly before it reaches this point.
     if (startSuspensionEvent.wait (10000))
     {
-        jassert (getCurrentThreadId() == threadId);
+        jassert (getCurrentThreadId() == threadId.get());
 
         if (affinityMask != 0)
             setCurrentThreadAffinityMask (affinityMask);
@@ -125,65 +119,42 @@ void JUCE_API juce_threadEntryPoint (void* userData)
 }
 
 //==============================================================================
-bool Thread::startThreadInternal (Priority threadPriority)
+void Thread::startThread()
 {
-    shouldExit = false;
+    const ScopedLock sl (startStopLock);
 
-    // 'priority' is essentially useless on Linux as only realtime
-    // has any options but we need to set this here to satsify
-    // later queries, otherwise we get inconsistent results across
-    // platforms.
-   #if JUCE_LINUX || JUCE_BSD
-    priority = threadPriority;
-   #endif
+    shouldExit = 0;
 
-    if (createNativeThread (threadPriority))
+    if (threadHandle.get() == nullptr)
     {
+        launchThread();
+        setThreadPriority (threadHandle.get(), threadPriority);
         startSuspensionEvent.signal();
-        return true;
     }
-
-    return false;
 }
 
-bool Thread::startThread()
-{
-    return startThread (Priority::normal);
-}
-
-bool Thread::startThread (Priority threadPriority)
+void Thread::startThread (int priority)
 {
     const ScopedLock sl (startStopLock);
 
-    if (threadHandle == nullptr)
+    if (threadHandle.get() == nullptr)
     {
-        realtimeOptions.reset();
-        return startThreadInternal (threadPriority);
+       #if JUCE_ANDROID
+        isAndroidRealtimeThread = (priority == realtimeAudioPriority);
+       #endif
+
+        threadPriority = getAdjustedPriority (priority);
+        startThread();
     }
-
-    return false;
-}
-
-bool Thread::startRealtimeThread (const RealtimeOptions& options)
-{
-    const ScopedLock sl (startStopLock);
-
-    if (threadHandle == nullptr)
+    else
     {
-        realtimeOptions = makeOptional (options);
-
-        if (startThreadInternal (Priority::normal))
-            return true;
-
-        realtimeOptions.reset();
+        setPriority (priority);
     }
-
-    return false;
 }
 
 bool Thread::isThreadRunning() const
 {
-    return threadHandle != nullptr;
+    return threadHandle.get() != nullptr;
 }
 
 Thread* JUCE_CALLTYPE Thread::getCurrentThread()
@@ -193,19 +164,19 @@ Thread* JUCE_CALLTYPE Thread::getCurrentThread()
 
 Thread::ThreadID Thread::getThreadId() const noexcept
 {
-    return threadId;
+    return threadId.get();
 }
 
 //==============================================================================
 void Thread::signalThreadShouldExit()
 {
-    shouldExit = true;
+    shouldExit = 1;
     listeners.call ([] (Listener& l) { l.exitSignalSent(); });
 }
 
 bool Thread::threadShouldExit() const
 {
-    return shouldExit;
+    return shouldExit.get() != 0;
 }
 
 bool Thread::currentThreadShouldExit()
@@ -278,14 +249,50 @@ void Thread::removeListener (Listener* listener)
     listeners.remove (listener);
 }
 
-bool Thread::isRealtime() const
+//==============================================================================
+bool Thread::setPriority (int newPriority)
 {
-    return realtimeOptions.hasValue();
+    newPriority = getAdjustedPriority (newPriority);
+
+    // NB: deadlock possible if you try to set the thread prio from the thread itself,
+    // so using setCurrentThreadPriority instead in that case.
+    if (getCurrentThreadId() == getThreadId())
+        return setCurrentThreadPriority (newPriority);
+
+    const ScopedLock sl (startStopLock);
+
+   #if JUCE_ANDROID
+    bool isRealtime = (newPriority == realtimeAudioPriority);
+
+    // you cannot switch from or to an Android realtime thread once the
+    // thread is already running!
+    jassert (isThreadRunning() && (isRealtime == isAndroidRealtimeThread));
+
+    isAndroidRealtimeThread = isRealtime;
+   #endif
+
+    if ((! isThreadRunning()) || setThreadPriority (threadHandle.get(), newPriority))
+    {
+        threadPriority = newPriority;
+        return true;
+    }
+
+    return false;
+}
+
+bool Thread::setCurrentThreadPriority (const int newPriority)
+{
+    return setThreadPriority ({}, getAdjustedPriority (newPriority));
 }
 
 void Thread::setAffinityMask (const uint32 newAffinityMask)
 {
     affinityMask = newAffinityMask;
+}
+
+int Thread::getAdjustedPriority (int newPriority)
+{
+    return jlimit (0, 10, newPriority == realtimeAudioPriority ? 9 : newPriority);
 }
 
 //==============================================================================
@@ -302,7 +309,7 @@ void Thread::notify() const
 //==============================================================================
 struct LambdaThread  : public Thread
 {
-    LambdaThread (std::function<void()>&& f) : Thread ("anonymous"), fn (std::move (f)) {}
+    LambdaThread (std::function<void()> f) : Thread ("anonymous"), fn (f) {}
 
     void run() override
     {
@@ -315,23 +322,11 @@ struct LambdaThread  : public Thread
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (LambdaThread)
 };
 
-bool Thread::launch (std::function<void()> functionToRun)
+void Thread::launch (std::function<void()> functionToRun)
 {
-    return launch (Priority::normal, std::move (functionToRun));
-}
-
-bool Thread::launch (Priority priority, std::function<void()> functionToRun)
-{
-    auto anon = std::make_unique<LambdaThread> (std::move (functionToRun));
+    auto anon = new LambdaThread (functionToRun);
     anon->deleteOnThreadEnd = true;
-
-    if (anon->startThread (priority))
-    {
-        anon.release();
-        return true;
-    }
-
-    return false;
+    anon->startThread();
 }
 
 //==============================================================================
@@ -353,6 +348,7 @@ bool JUCE_CALLTYPE Process::isRunningUnderDebugger() noexcept
 {
     return juce_isRunningUnderDebugger();
 }
+
 
 //==============================================================================
 //==============================================================================

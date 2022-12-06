@@ -935,7 +935,7 @@ private:
 
     std::unique_ptr<AccessibilityHandler> createAccessibilityHandler() override;
     void itemsChanged() noexcept;
-    void updateVisibleItems (std::optional<Point<int>> viewportPosition = {});
+    void updateVisibleItems();
     void updateButtonUnderMouse (const MouseEvent&);
     void showDragHighlight (const InsertPoint&) noexcept;
     void hideDragHighlight() noexcept;

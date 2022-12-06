@@ -135,10 +135,9 @@ SystemStats::OperatingSystemType SystemStats::getOperatingSystemType()
 
         case 11: return MacOS_11;
         case 12: return MacOS_12;
-        case 13: return MacOS_13;
     }
 
-    return MacOSX;
+    return UnknownOS;
    #endif
 }
 
@@ -350,36 +349,6 @@ bool Time::setSystemTimeToThisTime() const
 int SystemStats::getPageSize()
 {
     return (int) NSPageSize();
-}
-
-String SystemStats::getUniqueDeviceID()
-{
-    static const auto deviceId = []
-    {
-        ChildProcess proc;
-
-        if (proc.start ("ioreg -rd1 -c IOPlatformExpertDevice", ChildProcess::wantStdOut))
-        {
-            constexpr const char key[] = "\"IOPlatformUUID\"";
-            constexpr const auto keyLen = (int) sizeof (key);
-
-            auto output = proc.readAllProcessOutput();
-            auto index = output.indexOf (key);
-
-            if (index >= 0)
-            {
-                auto start = output.indexOf (index + keyLen, "\"");
-                auto end = output.indexOf (start + 1, "\"");
-                return output.substring (start + 1, end).replace("-", "");
-            }
-        }
-
-        return String();
-    }();
-
-    // Please tell someone at JUCE if this occurs
-    jassert (deviceId.isNotEmpty());
-    return deviceId;
 }
 
 } // namespace juce

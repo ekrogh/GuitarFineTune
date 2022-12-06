@@ -49,10 +49,8 @@ public:
 
         if (isRadioButton)
         {
-            using namespace ComTypes::Constants;
-
             handler.getActions().invoke (AccessibilityActionType::press);
-            sendAccessibilityAutomationEvent (handler, UIA_SelectionItem_ElementSelectedEventId);
+            sendAccessibilityAutomationEvent (handler, ComTypes::UIA_SelectionItem_ElementSelectedEventId);
 
             return S_OK;
         }

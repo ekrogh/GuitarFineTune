@@ -28,18 +28,15 @@
 namespace juce
 {
 
-struct MimeTypeTable
+namespace MimeTypeTable
 {
 
 /*  @internal */
-static void registerCustomMimeTypeForFileExtension (const String& mimeType, const String& fileExtension);
+StringArray getMimeTypesForFileExtension (const String& fileExtension);
 
 /*  @internal */
-static StringArray getMimeTypesForFileExtension (const String& fileExtension);
+StringArray getFileExtensionsForMimeType (const String& mimeType);
 
-/*  @internal */
-static StringArray getFileExtensionsForMimeType (const String& mimeType);
-
-};
+} // namespace MimeTypeTable
 
 } // namespace juce

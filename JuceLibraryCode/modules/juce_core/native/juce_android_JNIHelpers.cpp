@@ -650,9 +650,8 @@ public:
 
     void onStart() override
     {
-        if (! std::exchange (activityHasStarted, true))
-            getEnv()->CallVoidMethod (getNativeHandle(), AndroidFragment.startActivityForResult,
-                                      intent.get(), requestCode);
+        getEnv()->CallVoidMethod (getNativeHandle(), AndroidFragment.startActivityForResult,
+                                  intent.get(), requestCode);
     }
 
     void onActivityResult (int activityRequestCode, int resultCode, LocalRef<jobject> data) override
@@ -668,7 +667,6 @@ private:
     GlobalRef intent;
     int requestCode;
     std::function<void (int, int, LocalRef<jobject>)> callback;
-    bool activityHasStarted = false;
 };
 
 void startAndroidActivityForResult (const LocalRef<jobject>& intent, int requestCode,

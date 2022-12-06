@@ -122,10 +122,10 @@ public:
         Before returning, the dialog box will be hidden.
 
         @param priority   the priority to use when starting the thread - see
-                          Thread::Priority for values
+                          Thread::startThread() for values
         @returns true if the thread finished normally; false if the user pressed cancel
     */
-    bool runThread (Priority Priority = Priority::normal);
+    bool runThread (int priority = 5);
    #endif
 
     /** Starts the thread and returns.
@@ -135,9 +135,9 @@ public:
         hidden and the threadComplete() method will be called.
 
         @param priority   the priority to use when starting the thread - see
-                          Thread::Priority for values
+                          Thread::startThread() for values
     */
-    void launchThread (Priority priority = Priority::normal);
+    void launchThread (int priority = 5);
 
     /** The thread should call this periodically to update the position of the progress bar.
 

@@ -33,7 +33,9 @@ namespace PushNotificationsDelegateDetailsOsx
     using Action = PushNotifications::Notification::Action;
 
     //==============================================================================
-    static NSUserNotification* juceNotificationToNSUserNotification (const PushNotifications::Notification& n)
+    NSUserNotification* juceNotificationToNSUserNotification (const PushNotifications::Notification& n,
+                                                              bool isEarlierThanMavericks,
+                                                              bool isEarlierThanYosemite)
     {
         auto notification = [[NSUserNotification alloc] init];
 
@@ -76,7 +78,7 @@ namespace PushNotificationsDelegateDetailsOsx
         if (n.actions.size() > 0)
             notification.actionButtonTitle = juceStringToNS (n.actions.getReference (0).title);
 
-        if (@available (macOS 10.9, *))
+        if (! isEarlierThanMavericks)
         {
             notification.identifier = juceStringToNS (n.identifier);
 
@@ -110,7 +112,7 @@ namespace PushNotificationsDelegateDetailsOsx
 
             notification.contentImage = [[NSImage alloc] initWithContentsOfFile: imagePath];
 
-            if (@available (macOS 10.10, *))
+            if (! isEarlierThanYosemite)
             {
                 if (n.actions.size() > 1)
                 {
@@ -131,7 +133,9 @@ namespace PushNotificationsDelegateDetailsOsx
     }
 
     //==============================================================================
-    static PushNotifications::Notification nsUserNotificationToJuceNotification (NSUserNotification* n)
+    PushNotifications::Notification nsUserNotificationToJuceNotification (NSUserNotification* n,
+                                                                          bool isEarlierThanMavericks,
+                                                                          bool isEarlierThanYosemite)
     {
         PushNotifications::Notification notif;
 
@@ -156,7 +160,7 @@ namespace PushNotificationsDelegateDetailsOsx
         notif.soundToPlay = URL (nsStringToJuce (n.soundName));
         notif.properties  = nsDictionaryToVar (n.userInfo);
 
-        if (@available (macOS 10.9, *))
+        if (! isEarlierThanMavericks)
         {
             notif.identifier = nsStringToJuce (n.identifier);
 
@@ -171,7 +175,7 @@ namespace PushNotificationsDelegateDetailsOsx
             Action action;
             action.title = nsStringToJuce (n.actionButtonTitle);
 
-            if (@available (macOS 10.9, *))
+            if (! isEarlierThanMavericks)
             {
                 if (n.hasReplyButton)
                     action.style = Action::text;
@@ -183,7 +187,7 @@ namespace PushNotificationsDelegateDetailsOsx
             actions.add (action);
         }
 
-        if (@available (macOS 10.10, *))
+        if (! isEarlierThanYosemite)
         {
             if (n.additionalActions != nil)
             {
@@ -202,7 +206,7 @@ namespace PushNotificationsDelegateDetailsOsx
     }
 
     //==============================================================================
-    static var getNotificationPropertiesFromDictionaryVar (const var& dictionaryVar)
+    var getNotificationPropertiesFromDictionaryVar (const var& dictionaryVar)
     {
         auto* dictionaryVarObject = dictionaryVar.getDynamicObject();
 
@@ -226,7 +230,7 @@ namespace PushNotificationsDelegateDetailsOsx
         return var (propsVarObject.get());
     }
 
-    static PushNotifications::Notification nsDictionaryToJuceNotification (NSDictionary* dictionary)
+    PushNotifications::Notification nsDictionaryToJuceNotification (NSDictionary* dictionary)
     {
         const var dictionaryVar = nsDictionaryToVar (dictionary);
 
@@ -358,48 +362,44 @@ struct PushNotifications::Pimpl : private PushNotificationsDelegate
 
     void requestPermissionsWithSettings (const PushNotifications::Settings& settingsToUse)
     {
-        if (@available (macOS 10.7, *))
-        {
-            settings = settingsToUse;
+        if (isEarlierThanLion)
+            return;
 
-            NSRemoteNotificationType types = NSUInteger ((bool) settings.allowBadge);
+        settings = settingsToUse;
 
-            if (@available (macOS 10.8, *))
-            {
-                types |= (NSUInteger) ((settings.allowSound ? NSRemoteNotificationTypeSound : 0)
-                                     | (settings.allowAlert ? NSRemoteNotificationTypeAlert : 0));
-            }
+        NSRemoteNotificationType types = NSUInteger ((bool) settings.allowBadge);
 
-            [[NSApplication sharedApplication] registerForRemoteNotificationTypes: types];
-        }
+        if (isAtLeastMountainLion)
+            types |= (NSUInteger) ((bool) settings.allowSound << 1 | (bool) settings.allowAlert << 2);
+
+        [[NSApplication sharedApplication] registerForRemoteNotificationTypes: types];
     }
 
     void requestSettingsUsed()
     {
-        if (@available (macOS 10.7, *))
-        {
-            settings.allowBadge = [NSApplication sharedApplication].enabledRemoteNotificationTypes & NSRemoteNotificationTypeBadge;
-
-            if (@available (macOS 10.8, *))
-            {
-                settings.allowSound = [NSApplication sharedApplication].enabledRemoteNotificationTypes & NSRemoteNotificationTypeSound;
-                settings.allowAlert = [NSApplication sharedApplication].enabledRemoteNotificationTypes & NSRemoteNotificationTypeAlert;
-            }
-
-            owner.listeners.call ([&] (Listener& l) { l.notificationSettingsReceived (settings); });
-        }
-        else
+        if (isEarlierThanLion)
         {
             // no settings available
             owner.listeners.call ([] (Listener& l) { l.notificationSettingsReceived ({}); });
+            return;
         }
+
+        settings.allowBadge = [NSApplication sharedApplication].enabledRemoteNotificationTypes & NSRemoteNotificationTypeBadge;
+
+        if (isAtLeastMountainLion)
+        {
+            settings.allowSound = [NSApplication sharedApplication].enabledRemoteNotificationTypes & NSRemoteNotificationTypeSound;
+            settings.allowAlert = [NSApplication sharedApplication].enabledRemoteNotificationTypes & NSRemoteNotificationTypeAlert;
+        }
+
+        owner.listeners.call ([&] (Listener& l) { l.notificationSettingsReceived (settings); });
     }
 
     bool areNotificationsEnabled() const { return true; }
 
     void sendLocalNotification (const Notification& n)
     {
-        auto* notification = PushNotificationsDelegateDetailsOsx::juceNotificationToNSUserNotification (n);
+        auto* notification = PushNotificationsDelegateDetailsOsx::juceNotificationToNSUserNotification (n, isEarlierThanMavericks, isEarlierThanYosemite);
 
         [[NSUserNotificationCenter defaultUserNotificationCenter] scheduleNotification: notification];
     }
@@ -409,7 +409,7 @@ struct PushNotifications::Pimpl : private PushNotificationsDelegate
         Array<PushNotifications::Notification> notifs;
 
         for (NSUserNotification* n in [NSUserNotificationCenter defaultUserNotificationCenter].deliveredNotifications)
-            notifs.add (PushNotificationsDelegateDetailsOsx::nsUserNotificationToJuceNotification (n));
+            notifs.add (PushNotificationsDelegateDetailsOsx::nsUserNotificationToJuceNotification (n, isEarlierThanMavericks, isEarlierThanYosemite));
 
         owner.listeners.call ([&] (Listener& l) { l.deliveredNotificationsListReceived (notifs); });
     }
@@ -424,7 +424,7 @@ struct PushNotifications::Pimpl : private PushNotificationsDelegate
         PushNotifications::Notification n;
         n.identifier = identifier;
 
-        auto nsNotification = PushNotificationsDelegateDetailsOsx::juceNotificationToNSUserNotification (n);
+        auto nsNotification = PushNotificationsDelegateDetailsOsx::juceNotificationToNSUserNotification (n, isEarlierThanMavericks, isEarlierThanYosemite);
 
         [[NSUserNotificationCenter defaultUserNotificationCenter] removeDeliveredNotification: nsNotification];
     }
@@ -439,7 +439,7 @@ struct PushNotifications::Pimpl : private PushNotificationsDelegate
         Array<PushNotifications::Notification> notifs;
 
         for (NSUserNotification* n in [NSUserNotificationCenter defaultUserNotificationCenter].scheduledNotifications)
-            notifs.add (PushNotificationsDelegateDetailsOsx::nsUserNotificationToJuceNotification (n));
+            notifs.add (PushNotificationsDelegateDetailsOsx::nsUserNotificationToJuceNotification (n, isEarlierThanMavericks, isEarlierThanYosemite));
 
         owner.listeners.call ([&] (Listener& l) { l.pendingLocalNotificationsListReceived (notifs); });
     }
@@ -449,7 +449,7 @@ struct PushNotifications::Pimpl : private PushNotificationsDelegate
         PushNotifications::Notification n;
         n.identifier = identifier;
 
-        auto nsNotification = PushNotificationsDelegateDetailsOsx::juceNotificationToNSUserNotification (n);
+        auto nsNotification = PushNotificationsDelegateDetailsOsx::juceNotificationToNSUserNotification (n, isEarlierThanMavericks, isEarlierThanYosemite);
 
         [[NSUserNotificationCenter defaultUserNotificationCenter] removeScheduledNotification: nsNotification];
     }
@@ -513,7 +513,7 @@ struct PushNotifications::Pimpl : private PushNotificationsDelegate
 
     void didActivateNotification (NSUserNotification* notification) override
     {
-        auto n = PushNotificationsDelegateDetailsOsx::nsUserNotificationToJuceNotification (notification);
+        auto n = PushNotificationsDelegateDetailsOsx::nsUserNotificationToJuceNotification (notification, isEarlierThanMavericks, isEarlierThanYosemite);
 
         if (notification.activationType == NSUserNotificationActivationTypeContentsClicked)
         {
@@ -521,14 +521,9 @@ struct PushNotifications::Pimpl : private PushNotificationsDelegate
         }
         else
         {
-            const auto actionIdentifier = nsStringToJuce ([&]
-            {
-                if (@available (macOS 10.10, *))
-                    if (notification.additionalActivationAction != nil)
-                        return notification.additionalActivationAction.identifier;
-
-                return notification.actionButtonTitle;
-            }());
+            auto actionIdentifier = (! isEarlierThanYosemite && notification.additionalActivationAction != nil)
+                                        ? nsStringToJuce (notification.additionalActivationAction.identifier)
+                                        : nsStringToJuce (notification.actionButtonTitle);
 
             auto reply = notification.activationType == NSUserNotificationActivationTypeReplied
                             ? nsStringToJuce ([notification.response string])
@@ -556,6 +551,11 @@ struct PushNotifications::Pimpl : private PushNotificationsDelegate
 
 private:
     PushNotifications& owner;
+
+    const bool isEarlierThanLion      = std::floor (NSFoundationVersionNumber) < std::floor (NSFoundationVersionNumber10_7);
+    const bool isAtLeastMountainLion  = std::floor (NSFoundationVersionNumber) >= NSFoundationVersionNumber10_7;
+    const bool isEarlierThanMavericks = std::floor (NSFoundationVersionNumber) < NSFoundationVersionNumber10_9;
+    const bool isEarlierThanYosemite  = std::floor (NSFoundationVersionNumber) <= NSFoundationVersionNumber10_9;
 
     bool initialised = false;
     String deviceToken;

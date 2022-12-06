@@ -71,34 +71,34 @@ public:
     using Category = AudioProcessorParameter::Category;
 
     /** An optional label for the parameter's value */
-    [[nodiscard]] auto withLabel (String x)            const { return withMember (*this, &This::label,          std::move (x)); }
+    JUCE_NODISCARD auto withLabel (String x)            const { return withMember (*this, &This::label,          std::move (x)); }
 
     /** The semantics of this parameter */
-    [[nodiscard]] auto withCategory (Category x)       const { return withMember (*this, &This::category,       std::move (x)); }
+    JUCE_NODISCARD auto withCategory (Category x)       const { return withMember (*this, &This::category,       std::move (x)); }
 
     /** @see AudioProcessorParameter::isMetaParameter() */
-    [[nodiscard]] auto withMeta (bool x)               const { return withMember (*this, &This::meta,           std::move (x)); }
+    JUCE_NODISCARD auto withMeta (bool x)               const { return withMember (*this, &This::meta,           std::move (x)); }
 
     /** @see AudioProcessorParameter::isAutomatable() */
-    [[nodiscard]] auto withAutomatable (bool x)        const { return withMember (*this, &This::automatable,    std::move (x)); }
+    JUCE_NODISCARD auto withAutomatable (bool x)        const { return withMember (*this, &This::automatable,    std::move (x)); }
 
     /** @see AudioProcessorParameter::isOrientationInverted() */
-    [[nodiscard]] auto withInverted (bool x)           const { return withMember (*this, &This::inverted,       std::move (x)); }
+    JUCE_NODISCARD auto withInverted (bool x)           const { return withMember (*this, &This::inverted,       std::move (x)); }
 
     /** An optional label for the parameter's value */
-    [[nodiscard]] auto getLabel()                      const { return label; }
+    JUCE_NODISCARD auto getLabel()                      const { return label; }
 
     /** The semantics of this parameter */
-    [[nodiscard]] auto getCategory()                   const { return category; }
+    JUCE_NODISCARD auto getCategory()                   const { return category; }
 
     /** @see AudioProcessorParameter::isMetaParameter() */
-    [[nodiscard]] auto getMeta()                       const { return meta; }
+    JUCE_NODISCARD auto getMeta()                       const { return meta; }
 
     /** @see AudioProcessorParameter::isAutomatable() */
-    [[nodiscard]] auto getAutomatable()                const { return automatable; }
+    JUCE_NODISCARD auto getAutomatable()                const { return automatable; }
 
     /** @see AudioProcessorParameter::isOrientationInverted() */
-    [[nodiscard]] auto getInverted()                   const { return inverted; }
+    JUCE_NODISCARD auto getInverted()                   const { return inverted; }
 
 private:
     String label;

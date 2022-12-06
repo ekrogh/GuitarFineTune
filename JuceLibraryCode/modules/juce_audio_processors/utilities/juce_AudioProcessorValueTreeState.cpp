@@ -251,7 +251,7 @@ AudioProcessorValueTreeState::AudioProcessorValueTreeState (AudioProcessor& proc
                 }
             }
 
-            state->processor.addParameterGroup (std::move (group));
+            state->processor.addParameterGroup (move (group));
         }
 
         AudioProcessorValueTreeState* state;

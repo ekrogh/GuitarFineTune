@@ -87,7 +87,7 @@ static UIInterfaceOrientation getWindowOrientation()
     JUCE_END_IGNORE_WARNINGS_GCC_LIKE
 }
 
-struct Orientations
+namespace Orientations
 {
     static Desktop::DisplayOrientation convertToJuce (UIInterfaceOrientation orientation)
     {
@@ -119,7 +119,8 @@ struct Orientations
         return UIInterfaceOrientationPortrait;
     }
 
-    static UIInterfaceOrientationMask getSupportedOrientations()
+
+    static NSUInteger getSupportedOrientations()
     {
         NSUInteger allowed = 0;
         auto& d = Desktop::getInstance();
@@ -131,7 +132,7 @@ struct Orientations
 
         return allowed;
     }
-};
+}
 
 enum class MouseEventFlags
 {
@@ -350,7 +351,7 @@ struct UIViewPeerControllerReceiver
 
 //==============================================================================
 class UIViewComponentPeer  : public ComponentPeer,
-                             public UIViewPeerControllerReceiver
+                             private UIViewPeerControllerReceiver
 {
 public:
     UIViewComponentPeer (Component&, int windowStyleFlags, UIView* viewToAttachTo);
@@ -919,10 +920,7 @@ MultiTouchMapper<UITouch*> UIViewComponentPeer::currentTouches;
     const auto rangeToDelete = range.isEmpty() ? range.withStartAndLength (jmax (range.getStart() - 1, 0),
                                                                            range.getStart() != 0 ? 1 : 0)
                                                : range;
-    const auto start = rangeToDelete.getStart();
 
-    // This ensures that the cursor is at the beginning, rather than the end, of the selection
-    target->setHighlightedRegion ({ start, start });
     target->setHighlightedRegion (rangeToDelete);
     target->insertTextAtCaret ("");
 }
@@ -1309,11 +1307,6 @@ MultiTouchMapper<UITouch*> UIViewComponentPeer::currentTouches;
 - (UITextAutocorrectionType) autocorrectionType
 {
     return UITextAutocorrectionTypeNo;
-}
-
-- (UITextSpellCheckingType) spellCheckingType
-{
-    return UITextSpellCheckingTypeNo;
 }
 
 - (BOOL) canBecomeFirstResponder
@@ -1761,10 +1754,8 @@ void UIViewComponentPeer::onScroll (UIPanGestureRecognizer* gesture)
     details.isSmooth = true;
     details.isInertial = false;
 
-    const auto reconstructedMousePosition = convertToPointFloat ([gesture locationInView: view]) - convertToPointFloat (offset);
-
     handleMouseWheel (MouseInputSource::InputSourceType::touch,
-                      reconstructedMousePosition,
+                      convertToPointFloat ([gesture locationInView: view]),
                       UIViewComponentPeer::getMouseTime ([[NSProcessInfo processInfo] systemUptime]),
                       details);
 }
@@ -1858,8 +1849,6 @@ BOOL UIViewComponentPeer::textViewReplaceCharacters (Range<int> range, const Str
 //==============================================================================
 void UIViewComponentPeer::displayLinkCallback()
 {
-    vBlankListeners.call ([] (auto& l) { l.onVBlank(); });
-
     if (deferredRepaints.isEmpty())
         return;
 
@@ -1924,40 +1913,6 @@ void Desktop::setKioskComponent (Component* kioskModeComp, bool enableOrDisable,
 
 void Desktop::allowedOrientationsChanged()
 {
-   #if defined (__IPHONE_16_0) && __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_16_0
-    if (@available (iOS 16.0, *))
-    {
-        UIApplication* sharedApplication = [UIApplication sharedApplication];
-
-        const NSUniquePtr<UIWindowSceneGeometryPreferencesIOS> preferences { [UIWindowSceneGeometryPreferencesIOS alloc] };
-        [preferences.get() initWithInterfaceOrientations: Orientations::getSupportedOrientations()];
-
-        for (UIScene* scene in [sharedApplication connectedScenes])
-        {
-            if ([scene isKindOfClass: [UIWindowScene class]])
-            {
-                [static_cast<UIWindowScene*> (scene) requestGeometryUpdateWithPreferences: preferences.get()
-                                                                             errorHandler: ^([[maybe_unused]] NSError* error)
-                 {
-                    // Failed to set the new set of supported orientations.
-                    // You may have hit this assertion because you're trying to restrict the supported orientations
-                    // of an app that allows multitasking (i.e. the app does not require fullscreen, and supports
-                    // all orientations).
-                    // iPadOS apps that allow multitasking must support all interface orientations,
-                    // so attempting to change the set of supported orientations will fail.
-                    // If you hit this assertion in an application that requires fullscreen, it may be because the
-                    // set of supported orientations declared in the app's plist doesn't have any entries in common
-                    // with the orientations passed to Desktop::setOrientationsEnabled.
-                    DBG (nsStringToJuce ([error localizedDescription]));
-                    jassertfalse;
-                }];
-            }
-        }
-
-        return;
-    }
-   #endif
-
     // if the current orientation isn't allowed anymore then switch orientations
     if (! isOrientationEnabled (getCurrentOrientation()))
     {

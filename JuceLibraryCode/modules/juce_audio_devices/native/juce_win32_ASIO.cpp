@@ -330,7 +330,7 @@ public:
         openDevice();
     }
 
-    ~ASIOAudioIODevice() override
+    ~ASIOAudioIODevice()
     {
         for (int i = 0; i < maxNumASIODevices; ++i)
             if (currentASIODev[i] == this)
@@ -1157,7 +1157,7 @@ private:
 
         // Get error message if init() failed, or if it's a buggy Denon driver,
         // which returns true from init() even when it fails.
-        if ((! initOk) || getName().containsIgnoreCase ("denon dj asio"))
+        if ((! initOk) || getName().containsIgnoreCase ("denon dj"))
             driverError = getLastDriverError();
 
         if ((! initOk) && driverError.isEmpty())
@@ -1326,7 +1326,7 @@ private:
                     inputFormat[i].convertToFloat (infos[i].buffers[bufferIndex], inBuffers[i], samps);
                 }
 
-                currentCallback->audioDeviceIOCallbackWithContext (inBuffers.getData(),
+                currentCallback->audioDeviceIOCallbackWithContext (const_cast<const float**> (inBuffers.getData()),
                                                                    numActiveInputChans,
                                                                    outBuffers,
                                                                    numActiveOutputChans,

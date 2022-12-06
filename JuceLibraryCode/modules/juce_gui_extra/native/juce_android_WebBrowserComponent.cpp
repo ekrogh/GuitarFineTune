@@ -175,8 +175,7 @@ DECLARE_JNI_CLASS (AndroidCookieManager, "android/webkit/CookieManager")
   METHOD (setBuiltInZoomControls,    "setBuiltInZoomControls",    "(Z)V") \
   METHOD (setDisplayZoomControls,    "setDisplayZoomControls",    "(Z)V") \
   METHOD (setJavaScriptEnabled,      "setJavaScriptEnabled",      "(Z)V") \
-  METHOD (setSupportMultipleWindows, "setSupportMultipleWindows", "(Z)V") \
-  METHOD (setUserAgentString,        "setUserAgentString",        "(Ljava/lang/String;)V")
+  METHOD (setSupportMultipleWindows, "setSupportMultipleWindows", "(Z)V")
 
 DECLARE_JNI_CLASS (WebSettings, "android/webkit/WebSettings")
 #undef JNI_CLASS_MEMBERS
@@ -198,7 +197,7 @@ class WebBrowserComponent::Pimpl    : public AndroidViewComponent,
                                       public AsyncUpdater
 {
 public:
-    Pimpl (WebBrowserComponent& o, const String& userAgent)
+    Pimpl (WebBrowserComponent& o)
         : owner (o)
     {
         auto* env = getEnv();
@@ -210,9 +209,6 @@ public:
         env->CallVoidMethod (settings, WebSettings.setBuiltInZoomControls, true);
         env->CallVoidMethod (settings, WebSettings.setDisplayZoomControls, false);
         env->CallVoidMethod (settings, WebSettings.setSupportMultipleWindows, true);
-
-        if (userAgent.isNotEmpty())
-            env->CallVoidMethod (settings, WebSettings.setUserAgentString, javaString (userAgent).get());
 
         juceWebChromeClient = GlobalRef (LocalRef<jobject> (env->NewObject (JuceWebChromeClient, JuceWebChromeClient.constructor,
                                                                             reinterpret_cast<jlong> (this))));
@@ -586,13 +582,13 @@ private:
 };
 
 //==============================================================================
-WebBrowserComponent::WebBrowserComponent (const Options& options)
+WebBrowserComponent::WebBrowserComponent (const bool unloadWhenHidden)
     : blankPageShown (false),
-      unloadPageWhenHidden (! options.keepsPageLoadedWhenBrowserIsHidden())
+      unloadPageWhenHidden (unloadWhenHidden)
 {
     setOpaque (true);
 
-    browser.reset (new Pimpl (*this, options.getUserAgent()));
+    browser.reset (new Pimpl (*this));
     addAndMakeVisible (browser.get());
 }
 
@@ -721,11 +717,6 @@ void WebBrowserComponent::clearCookies()
         clearCookiesMethod = env->GetMethodID (AndroidCookieManager, "removeAllCookie", "()V");
         env->CallVoidMethod (cookieManager, clearCookiesMethod);
     }
-}
-
-bool WebBrowserComponent::areOptionsSupported (const Options& options)
-{
-    return (options.getBackend() == Options::Backend::defaultBackend);
 }
 
 WebBrowserComponent::Pimpl::JuceWebViewClient16_Class   WebBrowserComponent::Pimpl::JuceWebViewClient16;

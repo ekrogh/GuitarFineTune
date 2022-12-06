@@ -258,7 +258,7 @@ uint32 BigInteger::getBitRangeAsInt (const int startBit, int numBits) const noex
     return n & (((uint32) 0xffffffff) >> endSpace);
 }
 
-BigInteger& BigInteger::setBitRangeAsInt (const int startBit, int numBits, uint32 valueToSet)
+void BigInteger::setBitRangeAsInt (const int startBit, int numBits, uint32 valueToSet)
 {
     if (numBits > 32)
     {
@@ -271,12 +271,10 @@ BigInteger& BigInteger::setBitRangeAsInt (const int startBit, int numBits, uint3
         setBit (startBit + i, (valueToSet & 1) != 0);
         valueToSet >>= 1;
     }
-
-    return *this;
 }
 
 //==============================================================================
-BigInteger& BigInteger::clear() noexcept
+void BigInteger::clear() noexcept
 {
     heapAllocation.free();
     allocatedSize = numPreallocatedInts;
@@ -285,11 +283,9 @@ BigInteger& BigInteger::clear() noexcept
 
     for (int i = 0; i < numPreallocatedInts; ++i)
         preallocated[i] = 0;
-
-    return *this;
 }
 
-BigInteger& BigInteger::setBit (const int bit)
+void BigInteger::setBit (const int bit)
 {
     if (bit >= 0)
     {
@@ -301,21 +297,17 @@ BigInteger& BigInteger::setBit (const int bit)
 
         getValues() [bitToIndex (bit)] |= bitToMask (bit);
     }
-
-    return *this;
 }
 
-BigInteger& BigInteger::setBit (const int bit, const bool shouldBeSet)
+void BigInteger::setBit (const int bit, const bool shouldBeSet)
 {
     if (shouldBeSet)
         setBit (bit);
     else
         clearBit (bit);
-
-    return *this;
 }
 
-BigInteger& BigInteger::clearBit (const int bit) noexcept
+void BigInteger::clearBit (const int bit) noexcept
 {
     if (bit >= 0 && bit <= highestBit)
     {
@@ -324,25 +316,20 @@ BigInteger& BigInteger::clearBit (const int bit) noexcept
         if (bit == highestBit)
             highestBit = getHighestBit();
     }
-
-    return *this;
 }
 
-BigInteger& BigInteger::setRange (int startBit, int numBits, const bool shouldBeSet)
+void BigInteger::setRange (int startBit, int numBits, const bool shouldBeSet)
 {
     while (--numBits >= 0)
         setBit (startBit++, shouldBeSet);
-
-    return *this;
 }
 
-BigInteger& BigInteger::insertBit (const int bit, const bool shouldBeSet)
+void BigInteger::insertBit (const int bit, const bool shouldBeSet)
 {
     if (bit >= 0)
         shiftBits (1, bit);
 
     setBit (bit, shouldBeSet);
-    return *this;
 }
 
 //==============================================================================
@@ -868,7 +855,7 @@ void BigInteger::shiftRight (int bits, const int startBit)
     }
 }
 
-BigInteger& BigInteger::shiftBits (int bits, const int startBit)
+void BigInteger::shiftBits (int bits, const int startBit)
 {
     if (highestBit >= 0)
     {
@@ -877,8 +864,6 @@ BigInteger& BigInteger::shiftBits (int bits, const int startBit)
         else if (bits > 0)
             shiftLeft (bits, startBit);
     }
-
-    return *this;
 }
 
 //==============================================================================

@@ -1,9 +1,7 @@
-# Automatically generated CMakeLists, created by the Projucer
+# Automatically generated makefile, created by the Projucer
 # Don't edit this file! Your changes will be overwritten when you re-save the Projucer project!
 
 cmake_minimum_required(VERSION 3.4.1)
-
-project(juce_jni_project)
 
 set(BINARY_NAME "juce_jni")
 
@@ -382,6 +380,7 @@ add_library( ${BINARY_NAME}
     "../../../JuceLibraryCode/modules/juce_audio_formats/codecs/flac/ordinals.h"
     "../../../JuceLibraryCode/modules/juce_audio_formats/codecs/flac/stream_decoder.h"
     "../../../JuceLibraryCode/modules/juce_audio_formats/codecs/flac/stream_encoder.h"
+    "../../../JuceLibraryCode/modules/juce_audio_formats/codecs/flac/win_utf8_io.h"
     "../../../JuceLibraryCode/modules/juce_audio_formats/codecs/oggvorbis/libvorbis-1.3.7/lib/books/coupled/res_books_51.h"
     "../../../JuceLibraryCode/modules/juce_audio_formats/codecs/oggvorbis/libvorbis-1.3.7/lib/books/coupled/res_books_stereo.h"
     "../../../JuceLibraryCode/modules/juce_audio_formats/codecs/oggvorbis/libvorbis-1.3.7/lib/books/floor/floor_books.h"
@@ -2169,6 +2168,7 @@ set_source_files_properties(
     "../../../JuceLibraryCode/modules/juce_audio_formats/codecs/flac/ordinals.h"
     "../../../JuceLibraryCode/modules/juce_audio_formats/codecs/flac/stream_decoder.h"
     "../../../JuceLibraryCode/modules/juce_audio_formats/codecs/flac/stream_encoder.h"
+    "../../../JuceLibraryCode/modules/juce_audio_formats/codecs/flac/win_utf8_io.h"
     "../../../JuceLibraryCode/modules/juce_audio_formats/codecs/oggvorbis/libvorbis-1.3.7/lib/books/coupled/res_books_51.h"
     "../../../JuceLibraryCode/modules/juce_audio_formats/codecs/oggvorbis/libvorbis-1.3.7/lib/books/coupled/res_books_stereo.h"
     "../../../JuceLibraryCode/modules/juce_audio_formats/codecs/oggvorbis/libvorbis-1.3.7/lib/books/floor/floor_books.h"
@@ -3605,12 +3605,14 @@ set_source_files_properties(
     "../../../JuceLibraryCode/JuceHeader.h"
     PROPERTIES HEADER_FILE_ONLY TRUE)
 
+target_compile_options( ${BINARY_NAME} PRIVATE "-fsigned-char" )
+
 if( JUCE_BUILD_CONFIGURATION MATCHES "RELEASE" )
-    target_compile_options( ${BINARY_NAME} PRIVATE "-fsigned-char" )
+    target_compile_options( ${BINARY_NAME} PRIVATE)
 endif()
 
 if( JUCE_BUILD_CONFIGURATION MATCHES "DEBUG" )
-    target_compile_options( ${BINARY_NAME} PRIVATE "-fsigned-char" )
+    target_compile_options( ${BINARY_NAME} PRIVATE)
 endif()
 
 find_library(log "log")

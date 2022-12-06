@@ -300,15 +300,14 @@ void TopLevelWindow::centreAroundComponent (Component* c, const int width, const
     {
         const auto scale = getDesktopScaleFactor() / Desktop::getInstance().getGlobalScaleFactor();
 
-        const auto [targetCentre, parentArea] = [&]
+        auto targetCentre = c->localPointToGlobal (c->getLocalBounds().getCentre()) / scale;
+        auto parentArea = getLocalArea (nullptr, c->getParentMonitorArea());
+
+        if (auto* parent = getParentComponent())
         {
-            const auto globalTargetCentre = c->localPointToGlobal (c->getLocalBounds().getCentre()) / scale;
-
-            if (auto* parent = getParentComponent())
-                return std::make_pair (parent->getLocalPoint (nullptr, globalTargetCentre), parent->getLocalBounds());
-
-            return std::make_pair (globalTargetCentre, c->getParentMonitorArea() / scale);
-        }();
+            targetCentre = parent->getLocalPoint (nullptr, targetCentre);
+            parentArea   = parent->getLocalBounds();
+        }
 
         setBounds (Rectangle<int> (targetCentre.x - width / 2,
                                    targetCentre.y - height / 2,

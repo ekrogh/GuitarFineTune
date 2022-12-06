@@ -66,6 +66,9 @@ JUCE_BEGIN_IGNORE_WARNINGS_MSVC (4355)
  #ifndef WM_APPCOMMAND
   #define WM_APPCOMMAND 0x0319
  #endif
+
+ extern "C" void _fpreset();
+ extern "C" void _clearfp();
 #elif ! JUCE_WINDOWS
  static void _fpreset() {}
  static void _clearfp() {}
@@ -704,7 +707,7 @@ struct ModuleHandle    : public ReferenceCountedObject
                 if (auto hGlob = LoadResource (dllModule, res))
                 {
                     auto* data = static_cast<const char*> (LockResource (hGlob));
-                    return String::fromUTF8 (data, (int) SizeofResource (dllModule, res));
+                    return String::fromUTF8 (data, SizeofResource (dllModule, res));
                 }
             }
         }
@@ -825,34 +828,6 @@ static const int defaultVSTSampleRateValue = 44100;
 static const int defaultVSTBlockSizeValue = 512;
 
 JUCE_BEGIN_IGNORE_WARNINGS_MSVC (4996)
-
-class TempChannelPointers
-{
-public:
-    template <typename T>
-    auto getArrayOfModifiableWritePointers (AudioBuffer<T>& buffer)
-    {
-        auto& pointers = getPointers (Tag<T>{});
-
-        jassert (buffer.getNumChannels() <= static_cast<int> (pointers.capacity()));
-        pointers.resize (jmax (pointers.size(), (size_t) buffer.getNumChannels()));
-
-        std::copy (buffer.getArrayOfWritePointers(),
-                   buffer.getArrayOfWritePointers() + buffer.getNumChannels(),
-                   pointers.begin());
-
-        return pointers.data();
-    }
-
-private:
-    template <typename> struct Tag {};
-
-    auto& getPointers (Tag<float>)  { return floatPointers; }
-    auto& getPointers (Tag<double>) { return doublePointers; }
-
-    std::vector<float*>  floatPointers  { 128 };
-    std::vector<double*> doublePointers { 128 };
-};
 
 //==============================================================================
 struct VSTPluginInstance final   : public AudioPluginInstance,
@@ -2051,7 +2026,6 @@ private:
     bool lastProcessBlockCallWasBypass = false, vstSupportsBypass = false;
     mutable StringArray programNames;
     AudioBuffer<float> outOfPlaceBuffer;
-    TempChannelPointers tempChannelPointers[2];
 
     CriticalSection midiInLock;
     MidiBuffer incomingMidi;
@@ -2482,16 +2456,16 @@ private:
     {
         if ((vstEffect->flags & Vst2::effFlagsCanReplacing) != 0)
         {
-            vstEffect->processReplacing (vstEffect, tempChannelPointers[0].getArrayOfModifiableWritePointers (buffer),
-                                                    tempChannelPointers[1].getArrayOfModifiableWritePointers (buffer), sampleFrames);
+            vstEffect->processReplacing (vstEffect, buffer.getArrayOfWritePointers(),
+                                                    buffer.getArrayOfWritePointers(), sampleFrames);
         }
         else
         {
             outOfPlaceBuffer.setSize (vstEffect->numOutputs, sampleFrames);
             outOfPlaceBuffer.clear();
 
-            vstEffect->process (vstEffect, tempChannelPointers[0].getArrayOfModifiableWritePointers (buffer),
-                                           tempChannelPointers[1].getArrayOfModifiableWritePointers (outOfPlaceBuffer), sampleFrames);
+            vstEffect->process (vstEffect, buffer.getArrayOfWritePointers(),
+                                           outOfPlaceBuffer.getArrayOfWritePointers(), sampleFrames);
 
             for (int i = vstEffect->numOutputs; --i >= 0;)
                 buffer.copyFrom (i, 0, outOfPlaceBuffer.getReadPointer (i), sampleFrames);
@@ -2500,8 +2474,8 @@ private:
 
     inline void invokeProcessFunction (AudioBuffer<double>& buffer, int32 sampleFrames)
     {
-        vstEffect->processDoubleReplacing (vstEffect, tempChannelPointers[0].getArrayOfModifiableWritePointers (buffer),
-                                                      tempChannelPointers[1].getArrayOfModifiableWritePointers (buffer), sampleFrames);
+        vstEffect->processDoubleReplacing (vstEffect, buffer.getArrayOfWritePointers(),
+                                                      buffer.getArrayOfWritePointers(), sampleFrames);
     }
 
     //==============================================================================
@@ -3136,10 +3110,10 @@ private:
         pluginWantsKeys = (dispatch (Vst2::effKeysRequired, 0, 0, nullptr, 0) == 0);
 
        #if JUCE_WINDOWS
-        originalWndProc = nullptr;
+        originalWndProc = 0;
         auto* pluginHWND = getPluginHWND();
 
-        if (pluginHWND == nullptr)
+        if (pluginHWND == 0)
         {
             isOpen = false;
             setSize (300, 150);
@@ -3179,7 +3153,7 @@ private:
                 {
                     ScopedThreadDPIAwarenessSetter threadDpiAwarenessSetter { pluginHWND };
 
-                    SetWindowPos (pluginHWND, nullptr,
+                    SetWindowPos (pluginHWND, 0,
                                   0, 0, rw, rh,
                                   SWP_NOMOVE | SWP_NOACTIVATE | SWP_NOOWNERZORDER | SWP_NOZORDER);
 
@@ -3249,11 +3223,11 @@ private:
             JUCE_BEGIN_IGNORE_WARNINGS_MSVC (4244)
             auto* pluginHWND = getPluginHWND();
 
-            if (originalWndProc != nullptr && pluginHWND != nullptr && IsWindow (pluginHWND))
+            if (originalWndProc != 0 && pluginHWND != 0 && IsWindow (pluginHWND))
                 SetWindowLongPtr (pluginHWND, GWLP_WNDPROC, (LONG_PTR) originalWndProc);
             JUCE_END_IGNORE_WARNINGS_MSVC
 
-            originalWndProc = nullptr;
+            originalWndProc = 0;
            #elif JUCE_LINUX || JUCE_BSD
             pluginWindow = 0;
            #endif
@@ -3444,10 +3418,8 @@ AudioProcessorEditor* VSTPluginInstance::createEditor()
 
 bool VSTPluginInstance::updateSizeFromEditor (int w, int h)
 {
-   #if ! JUCE_IOS && ! JUCE_ANDROID
     if (auto* editor = dynamic_cast<VSTPluginWindow*> (getActiveEditor()))
         return editor->updateSizeFromEditor (w, h);
-   #endif
 
     return false;
 }

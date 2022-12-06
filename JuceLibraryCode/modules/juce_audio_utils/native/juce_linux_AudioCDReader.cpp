@@ -50,7 +50,7 @@ void AudioCDReader::refreshTrackLengths()
 {
 }
 
-bool AudioCDReader::readSamples (int* const*, int, int,
+bool AudioCDReader::readSamples (int**, int, int,
                                  int64, int)
 {
     return false;

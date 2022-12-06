@@ -229,7 +229,7 @@ public:
     //==============================================================================
     /** Constructor. */
     SmoothedValue() noexcept
-        : SmoothedValue ((FloatType) (std::is_same_v<SmoothingType, ValueSmoothingTypes::Linear> ? 0 : 1))
+        : SmoothedValue ((FloatType) (std::is_same<SmoothingType, ValueSmoothingTypes::Linear>::value ? 0 : 1))
     {
     }
 
@@ -237,7 +237,7 @@ public:
     SmoothedValue (FloatType initialValue) noexcept
     {
         // Multiplicative smoothed values cannot ever reach 0!
-        jassert (! (std::is_same_v<SmoothingType, ValueSmoothingTypes::Multiplicative> && initialValue == 0));
+        jassert (! (std::is_same<SmoothingType, ValueSmoothingTypes::Multiplicative>::value && initialValue == 0));
 
         // Visual Studio can't handle base class initialisation with CRTP
         this->currentValue = initialValue;
@@ -280,7 +280,7 @@ public:
         }
 
         // Multiplicative smoothed values cannot ever reach 0!
-        jassert (! (std::is_same_v<SmoothingType, ValueSmoothingTypes::Multiplicative> && newValue == 0));
+        jassert (! (std::is_same<SmoothingType, ValueSmoothingTypes::Multiplicative>::value && newValue == 0));
 
         this->target = newValue;
         this->countdown = stepsToTarget;
@@ -352,45 +352,49 @@ public:
 
 private:
     //==============================================================================
+    template <typename T>
+    using LinearVoid = typename std::enable_if <std::is_same <T, ValueSmoothingTypes::Linear>::value, void>::type;
+
+    template <typename T>
+    using MultiplicativeVoid = typename std::enable_if <std::is_same <T, ValueSmoothingTypes::Multiplicative>::value, void>::type;
+
+    //==============================================================================
     template <typename T = SmoothingType>
-    void setStepSize() noexcept
+    LinearVoid<T> setStepSize() noexcept
     {
-        if constexpr (std::is_same_v<T, ValueSmoothingTypes::Linear>)
-        {
-            step = (this->target - this->currentValue) / (FloatType) this->countdown;
-        }
-        else if constexpr (std::is_same_v<T, ValueSmoothingTypes::Multiplicative>)
-        {
-            step = std::exp ((std::log (std::abs (this->target)) - std::log (std::abs (this->currentValue))) / (FloatType) this->countdown);
-        }
+        step = (this->target - this->currentValue) / (FloatType) this->countdown;
+    }
+
+    template <typename T = SmoothingType>
+    MultiplicativeVoid<T> setStepSize()
+    {
+        step = std::exp ((std::log (std::abs (this->target)) - std::log (std::abs (this->currentValue))) / (FloatType) this->countdown);
     }
 
     //==============================================================================
     template <typename T = SmoothingType>
-    void setNextValue() noexcept
+    LinearVoid<T> setNextValue() noexcept
     {
-        if constexpr (std::is_same_v<T, ValueSmoothingTypes::Linear>)
-        {
-            this->currentValue += step;
-        }
-        else if constexpr (std::is_same_v<T, ValueSmoothingTypes::Multiplicative>)
-        {
-            this->currentValue *= step;
-        }
+        this->currentValue += step;
+    }
+
+    template <typename T = SmoothingType>
+    MultiplicativeVoid<T> setNextValue() noexcept
+    {
+        this->currentValue *= step;
     }
 
     //==============================================================================
     template <typename T = SmoothingType>
-    void skipCurrentValue (int numSamples) noexcept
+    LinearVoid<T> skipCurrentValue (int numSamples) noexcept
     {
-        if constexpr (std::is_same_v<T, ValueSmoothingTypes::Linear>)
-        {
-            this->currentValue += step * (FloatType) numSamples;
-        }
-        else if constexpr (std::is_same_v<T, ValueSmoothingTypes::Multiplicative>)
-        {
-            this->currentValue *= (FloatType) std::pow (step, numSamples);
-        }
+        this->currentValue += step * (FloatType) numSamples;
+    }
+
+    template <typename T = SmoothingType>
+    MultiplicativeVoid<T> skipCurrentValue (int numSamples)
+    {
+        this->currentValue *= (FloatType) std::pow (step, numSamples);
     }
 
     //==============================================================================

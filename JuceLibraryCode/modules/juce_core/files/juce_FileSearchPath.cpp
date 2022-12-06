@@ -68,18 +68,13 @@ File FileSearchPath::operator[] (int index) const
 
 String FileSearchPath::toString() const
 {
-    return toStringWithSeparator (";");
-}
-
-String FileSearchPath::toStringWithSeparator (StringRef separator) const
-{
     auto dirs = directories;
 
     for (auto& d : dirs)
-        if (d.contains (separator))
+        if (d.containsChar (';'))
             d = d.quoted();
 
-    return dirs.joinIntoString (separator);
+    return dirs.joinIntoString (";");
 }
 
 void FileSearchPath::add (const File& dir, int insertIndex)

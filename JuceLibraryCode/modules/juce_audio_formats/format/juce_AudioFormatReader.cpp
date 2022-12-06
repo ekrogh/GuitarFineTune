@@ -86,7 +86,7 @@ bool AudioFormatReader::read (int* const* destChannels,
     if (numSamplesToRead <= 0)
         return true;
 
-    if (! readSamples (destChannels,
+    if (! readSamples (const_cast<int**> (destChannels),
                        jmin ((int) numChannels, numDestChannels), startOffsetInDestBuffer,
                        startSampleInSource, numSamplesToRead))
         return false;

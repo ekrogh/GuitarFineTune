@@ -649,7 +649,7 @@ public:
         @see add
     */
     template <class OtherArrayType>
-    std::enable_if_t<! std::is_pointer_v<OtherArrayType>, void>
+    typename std::enable_if<! std::is_pointer<OtherArrayType>::value, void>::type
     addArray (const OtherArrayType& arrayToAddFrom,
               int startIndex,
               int numElementsToAdd = -1)

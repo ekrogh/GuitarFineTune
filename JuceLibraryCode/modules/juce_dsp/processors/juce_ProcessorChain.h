@@ -38,11 +38,11 @@ namespace detail
     template <typename Fn, typename Tuple, size_t... Ix>
     constexpr void forEachInTuple (Fn&& fn, Tuple&& tuple, std::index_sequence<Ix...>)
     {
-        (fn (std::get<Ix> (tuple), std::integral_constant<size_t, Ix>()), ...);
+        (void) std::initializer_list<int> { ((void) fn (std::get<Ix> (tuple), std::integral_constant<size_t, Ix>()), 0)... };
     }
 
     template <typename T>
-    using TupleIndexSequence = std::make_index_sequence<std::tuple_size_v<std::remove_cv_t<std::remove_reference_t<T>>>>;
+    using TupleIndexSequence = std::make_index_sequence<std::tuple_size<std::remove_cv_t<std::remove_reference_t<T>>>::value>;
 
     template <typename Fn, typename Tuple>
     constexpr void forEachInTuple (Fn&& fn, Tuple&& tuple)
@@ -50,8 +50,12 @@ namespace detail
         forEachInTuple (std::forward<Fn> (fn), std::forward<Tuple> (tuple), TupleIndexSequence<Tuple>{});
     }
 
+    // This could be a template variable, but that code causes an internal compiler error in MSVC 19.00.24215
     template <typename Context, size_t Ix>
-    inline constexpr auto useContextDirectly = ! Context::usesSeparateInputAndOutputBlocks() || Ix == 0;
+    struct UseContextDirectly
+    {
+        static constexpr auto value = ! Context::usesSeparateInputAndOutputBlocks() || Ix == 0;
+    };
 }
 #endif
 
@@ -99,24 +103,23 @@ public:
     }
 
 private:
-    template <typename Context, typename Proc, size_t Ix>
+    template <typename Context, typename Proc, size_t Ix, std::enable_if_t<! detail::UseContextDirectly<Context, Ix>::value, int> = 0>
     void processOne (const Context& context, Proc& proc, std::integral_constant<size_t, Ix>) noexcept
     {
-        if constexpr (detail::useContextDirectly<Context, Ix>)
-        {
-            auto contextCopy = context;
-            contextCopy.isBypassed = (bypassed[Ix] || context.isBypassed);
+        jassert (context.getOutputBlock().getNumChannels() == context.getInputBlock().getNumChannels());
+        ProcessContextReplacing<typename Context::SampleType> replacingContext (context.getOutputBlock());
+        replacingContext.isBypassed = (bypassed[Ix] || context.isBypassed);
 
-            proc.process (contextCopy);
-        }
-        else
-        {
-            jassert (context.getOutputBlock().getNumChannels() == context.getInputBlock().getNumChannels());
-            ProcessContextReplacing<typename Context::SampleType> replacingContext (context.getOutputBlock());
-            replacingContext.isBypassed = (bypassed[Ix] || context.isBypassed);
+        proc.process (replacingContext);
+    }
 
-            proc.process (replacingContext);
-        }
+    template <typename Context, typename Proc, size_t Ix, std::enable_if_t<detail::UseContextDirectly<Context, Ix>::value, int> = 0>
+    void processOne (const Context& context, Proc& proc, std::integral_constant<size_t, Ix>) noexcept
+    {
+        auto contextCopy = context;
+        contextCopy.isBypassed = (bypassed[Ix] || context.isBypassed);
+
+        proc.process (contextCopy);
     }
 
     std::tuple<Processors...> processors;

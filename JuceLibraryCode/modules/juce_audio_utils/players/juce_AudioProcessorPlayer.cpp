@@ -30,10 +30,10 @@ template <typename Value>
 struct ChannelInfo
 {
     ChannelInfo() = default;
-    ChannelInfo (Value* const* dataIn, int numChannelsIn)
+    ChannelInfo (Value** dataIn, int numChannelsIn)
         : data (dataIn), numChannels (numChannelsIn)  {}
 
-    Value* const* data = nullptr;
+    Value** data = nullptr;
     int numChannels = 0;
 };
 
@@ -98,7 +98,7 @@ static void initialiseIoBuffers (ChannelInfo<const float> ins,
 
         for (auto i = processorOuts; i < processorIns; ++i)
         {
-            channels[totalNumChans] = tempBuffer.getWritePointer (i - processorOuts);
+            channels[totalNumChans] = tempBuffer.getWritePointer (i - outs.numChannels);
             prepareInputChannel (i);
             ++totalNumChans;
         }
@@ -235,9 +235,9 @@ void AudioProcessorPlayer::setMidiOutput (MidiOutput* midiOutputToUse)
 }
 
 //==============================================================================
-void AudioProcessorPlayer::audioDeviceIOCallbackWithContext (const float* const* const inputChannelData,
+void AudioProcessorPlayer::audioDeviceIOCallbackWithContext (const float** const inputChannelData,
                                                              const int numInputChannels,
-                                                             float* const* const outputChannelData,
+                                                             float** const outputChannelData,
                                                              const int numOutputChannels,
                                                              const int numSamples,
                                                              const AudioIODeviceCallbackContext& context)
@@ -281,14 +281,12 @@ void AudioProcessorPlayer::audioDeviceIOCallbackWithContext (const float* const*
                   sampleCount (sampleCountIn),
                   seconds ((double) sampleCountIn / sampleRateIn)
             {
-                if (useThisPlayhead)
-                    processor.setPlayHead (this);
+                processor.setPlayHead (this);
             }
 
             ~PlayHead() override
             {
-                if (useThisPlayhead)
-                    processor.setPlayHead (nullptr);
+                processor.setPlayHead (nullptr);
             }
 
         private:
@@ -305,7 +303,6 @@ void AudioProcessorPlayer::audioDeviceIOCallbackWithContext (const float* const*
             Optional<uint64_t> hostTimeNs;
             uint64_t sampleCount;
             double seconds;
-            bool useThisPlayhead = processor.getPlayHead() == nullptr;
         };
 
         PlayHead playHead { *processor,

@@ -231,8 +231,7 @@ public:
 
     ~AudioDeviceSettingsPanel() override
     {
-        // eks 2. dec. 2022 Readded setup.manager->removeChangeListener (this);
-        setup.manager->removeChangeListener (this);
+        //setup.manager->removeChangeListener (this);
     }
 
     void resized() override

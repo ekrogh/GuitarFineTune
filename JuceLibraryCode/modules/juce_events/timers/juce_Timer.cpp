@@ -303,7 +303,7 @@ private:
 
     void handleAsyncUpdate() override
     {
-        startThread (Priority::high);
+        startThread (7);
     }
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (TimerThread)

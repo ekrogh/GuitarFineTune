@@ -89,7 +89,6 @@ void TimeSliceThread::moveToFrontOfQueue (TimeSliceClient* client)
 
 int TimeSliceThread::getNumClients() const
 {
-    const ScopedLock sl (listLock);
     return clients.size();
 }
 
@@ -97,12 +96,6 @@ TimeSliceClient* TimeSliceThread::getClient (const int i) const
 {
     const ScopedLock sl (listLock);
     return clients[i];
-}
-
-bool TimeSliceThread::contains (const TimeSliceClient* c) const
-{
-    const ScopedLock sl (listLock);
-    return std::any_of (clients.begin(), clients.end(), [=] (auto* registered) { return registered == c; });
 }
 
 //==============================================================================

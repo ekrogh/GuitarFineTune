@@ -28,48 +28,26 @@ namespace juce
     live in juce_posix_SharedCode.h!
 */
 
-bool Thread::createNativeThread (Priority)
-{
-    PosixThreadAttribute attr { threadStackSize };
-    PosixSchedulerPriority::getNativeSchedulerAndPriority (realtimeOptions, {}).apply (attr);
-
-    threadId = threadHandle = makeThreadHandle (attr, this, [] (void* userData) -> void*
-    {
-        auto* myself = static_cast<Thread*> (userData);
-
-        juce_threadEntryPoint (myself);
-
-        return nullptr;
-    });
-
-    return threadId != nullptr;
-}
-
-void Thread::killThread()
-{
-    if (threadHandle != nullptr)
-        pthread_cancel ((pthread_t) threadHandle.load());
-}
-
-// Until we implement Nice awareness, these don't do anything on Linux.
-Thread::Priority Thread::getPriority() const
-{
-    jassert (Thread::getCurrentThreadId() == getThreadId());
-
-    return priority;
-}
-
-bool Thread::setPriority (Priority newPriority)
-{
-    jassert (Thread::getCurrentThreadId() == getThreadId());
-
-    // Return true to make it compatible with other platforms.
-    priority = newPriority;
-    return true;
-}
-
 //==============================================================================
-JUCE_API void JUCE_CALLTYPE Process::setPriority (ProcessPriority) {}
+JUCE_API void JUCE_CALLTYPE Process::setPriority (const ProcessPriority prior)
+{
+    auto policy = (prior <= NormalPriority) ? SCHED_OTHER : SCHED_RR;
+    auto minp = sched_get_priority_min (policy);
+    auto maxp = sched_get_priority_max (policy);
+
+    struct sched_param param;
+
+    switch (prior)
+    {
+        case LowPriority:
+        case NormalPriority:    param.sched_priority = 0; break;
+        case HighPriority:      param.sched_priority = minp + (maxp - minp) / 4; break;
+        case RealtimePriority:  param.sched_priority = minp + (3 * (maxp - minp) / 4); break;
+        default:                jassertfalse; break;
+    }
+
+    pthread_setschedparam (pthread_self(), policy, &param);
+}
 
 static bool swapUserAndEffectiveUser()
 {

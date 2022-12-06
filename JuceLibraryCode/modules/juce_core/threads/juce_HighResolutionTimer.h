@@ -93,7 +93,7 @@ public:
     int getTimerInterval() const noexcept;
 
 private:
-    class Pimpl;
+    struct Pimpl;
     std::unique_ptr<Pimpl> pimpl;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (HighResolutionTimer)

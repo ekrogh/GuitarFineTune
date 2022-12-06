@@ -57,13 +57,13 @@ public:
 
     //==============================================================================
     /** Sets the note-on velocity, or "strike", value that will be used when triggering new notes. */
-    void setVelocity (float newVelocity)                                 { velocity = jlimit (0.0f, 1.0f, newVelocity); }
+    void setVelocity (float newVelocity)                                 { velocity = jlimit (newVelocity, 0.0f, 1.0f); }
 
     /** Sets the pressure value that will be used for new notes. */
-    void setPressure (float newPressure)                                 { pressure = jlimit (0.0f, 1.0f, newPressure); }
+    void setPressure (float newPressure)                                 { pressure = jlimit (newPressure, 0.0f, 1.0f); }
 
     /** Sets the note-off velocity, or "lift", value that will be used when notes are released. */
-    void setLift (float newLift)                                         { lift = jlimit (0.0f, 1.0f, newLift); }
+    void setLift (float newLift)                                         { lift = jlimit (newLift, 0.0f, 1.0f); }
 
     /** Use this to enable the mouse source pressure to be used for the initial note-on
         velocity, or "strike", value if the mouse source supports it.

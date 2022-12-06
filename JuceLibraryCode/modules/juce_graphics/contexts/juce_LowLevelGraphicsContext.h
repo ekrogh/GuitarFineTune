@@ -86,7 +86,6 @@ public:
     virtual void setInterpolationQuality (Graphics::ResamplingQuality) = 0;
 
     //==============================================================================
-    virtual void fillAll() { fillRect (getClipBounds(), false); }
     virtual void fillRect (const Rectangle<int>&, bool replaceExistingContents) = 0;
     virtual void fillRect (const Rectangle<float>&) = 0;
     virtual void fillRectList (const RectangleList<float>&) = 0;

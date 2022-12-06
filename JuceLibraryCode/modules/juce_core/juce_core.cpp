@@ -186,7 +186,6 @@
 #include "zip/juce_ZipFile.cpp"
 #include "files/juce_FileFilter.cpp"
 #include "files/juce_WildcardFileFilter.cpp"
-#include "native/juce_native_ThreadPriorities.h"
 
 //==============================================================================
 #if ! JUCE_WINDOWS

@@ -98,20 +98,9 @@ void Synthesiser::clearVoices()
 
 SynthesiserVoice* Synthesiser::addVoice (SynthesiserVoice* const newVoice)
 {
-    SynthesiserVoice* voice;
-
-    {
-        const ScopedLock sl (lock);
-        newVoice->setCurrentPlaybackSampleRate (sampleRate);
-        voice = voices.add (newVoice);
-    }
-
-    {
-        const ScopedLock sl (stealLock);
-        usableVoicesToStealArray.ensureStorageAllocated (voices.size() + 1);
-    }
-
-    return voice;
+    const ScopedLock sl (lock);
+    newVoice->setCurrentPlaybackSampleRate (sampleRate);
+    return voices.add (newVoice);
 }
 
 void Synthesiser::removeVoice (const int index)
@@ -525,13 +514,9 @@ SynthesiserVoice* Synthesiser::findVoiceToSteal (SynthesiserSound* soundToPlay,
     SynthesiserVoice* low = nullptr; // Lowest sounding note, might be sustained, but NOT in release phase
     SynthesiserVoice* top = nullptr; // Highest sounding note, might be sustained, but NOT in release phase
 
-    // All major OSes use double-locking so this will be lock- and wait-free as long as the lock is not
-    // contended. This is always the case if you do not call findVoiceToSteal on multiple threads at
-    // the same time.
-    const ScopedLock sl (stealLock);
-
     // this is a list of voices we can steal, sorted by how long they've been running
-    usableVoicesToStealArray.clear();
+    Array<SynthesiserVoice*> usableVoices;
+    usableVoices.ensureStorageAllocated (voices.size());
 
     for (auto* voice : voices)
     {
@@ -539,7 +524,7 @@ SynthesiserVoice* Synthesiser::findVoiceToSteal (SynthesiserSound* soundToPlay,
         {
             jassert (voice->isVoiceActive()); // We wouldn't be here otherwise
 
-            usableVoicesToStealArray.add (voice);
+            usableVoices.add (voice);
 
             // NB: Using a functor rather than a lambda here due to scare-stories about
             // compilers generating code containing heap allocations..
@@ -548,7 +533,7 @@ SynthesiserVoice* Synthesiser::findVoiceToSteal (SynthesiserSound* soundToPlay,
                 bool operator() (const SynthesiserVoice* a, const SynthesiserVoice* b) const noexcept { return a->wasStartedBefore (*b); }
             };
 
-            std::sort (usableVoicesToStealArray.begin(), usableVoicesToStealArray.end(), Sorter());
+            std::sort (usableVoices.begin(), usableVoices.end(), Sorter());
 
             if (! voice->isPlayingButReleased()) // Don't protect released notes
             {
@@ -568,22 +553,22 @@ SynthesiserVoice* Synthesiser::findVoiceToSteal (SynthesiserSound* soundToPlay,
         top = nullptr;
 
     // The oldest note that's playing with the target pitch is ideal..
-    for (auto* voice : usableVoicesToStealArray)
+    for (auto* voice : usableVoices)
         if (voice->getCurrentlyPlayingNote() == midiNoteNumber)
             return voice;
 
     // Oldest voice that has been released (no finger on it and not held by sustain pedal)
-    for (auto* voice : usableVoicesToStealArray)
+    for (auto* voice : usableVoices)
         if (voice != low && voice != top && voice->isPlayingButReleased())
             return voice;
 
     // Oldest voice that doesn't have a finger on it:
-    for (auto* voice : usableVoicesToStealArray)
+    for (auto* voice : usableVoices)
         if (voice != low && voice != top && ! voice->isKeyDown())
             return voice;
 
     // Oldest voice that isn't protected
-    for (auto* voice : usableVoicesToStealArray)
+    for (auto* voice : usableVoices)
         if (voice != low && voice != top)
             return voice;
 

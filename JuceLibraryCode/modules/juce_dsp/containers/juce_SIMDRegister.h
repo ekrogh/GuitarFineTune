@@ -70,7 +70,7 @@ struct SIMDRegister
 
     /** The corresponding primitive integer type, for example, this will be int32_t
         if type is a float. */
-    using MaskType = SIMDInternal::MaskType<ElementType>;
+    using MaskType = typename SIMDInternal::MaskTypeFor<ElementType>::type;
 
     //==============================================================================
     // Here are some types which are needed internally

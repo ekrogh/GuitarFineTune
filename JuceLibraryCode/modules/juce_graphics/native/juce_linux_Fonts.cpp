@@ -113,85 +113,99 @@ bool TextLayout::createNativeLayout (const AttributedString&)
 //==============================================================================
 struct DefaultFontInfo
 {
+    struct Characteristics
+    {
+        explicit Characteristics (String nameIn) : name (nameIn) {}
+
+        Characteristics withStyle (String styleIn) const
+        {
+            auto copy = *this;
+            copy.style = std::move (styleIn);
+            return copy;
+        }
+
+        String name, style;
+    };
+
     DefaultFontInfo()
-        : defaultSans  (getDefaultSansSerifFontName()),
-          defaultSerif (getDefaultSerifFontName()),
-          defaultFixed (getDefaultMonospacedFontName())
+        : defaultSans  (getDefaultSansSerifFontCharacteristics()),
+          defaultSerif (getDefaultSerifFontCharacteristics()),
+          defaultFixed (getDefaultMonospacedFontCharacteristics())
     {
     }
 
-    String getRealFontName (const String& faceName) const
+    Characteristics getRealFontCharacteristics (const String& faceName) const
     {
         if (faceName == Font::getDefaultSansSerifFontName())    return defaultSans;
         if (faceName == Font::getDefaultSerifFontName())        return defaultSerif;
         if (faceName == Font::getDefaultMonospacedFontName())   return defaultFixed;
 
-        return faceName;
+        return Characteristics { faceName };
     }
 
-    String defaultSans, defaultSerif, defaultFixed;
+    Characteristics defaultSans, defaultSerif, defaultFixed;
 
 private:
     template <typename Range>
-    static String pickBestFont (const StringArray& names, Range&& choicesArray)
+    static Characteristics pickBestFont (const StringArray& names, Range&& choicesArray)
     {
         for (auto& choice : choicesArray)
-            if (names.contains (choice, true))
+            if (names.contains (choice.name, true))
                 return choice;
 
         for (auto& choice : choicesArray)
             for (auto& name : names)
-                if (name.startsWithIgnoreCase (choice))
-                    return name;
+                if (name.startsWithIgnoreCase (choice.name))
+                    return Characteristics { name }.withStyle (choice.style);
 
         for (auto& choice : choicesArray)
             for (auto& name : names)
-                if (name.containsIgnoreCase (choice))
-                    return name;
+                if (name.containsIgnoreCase (choice.name))
+                    return Characteristics { name }.withStyle (choice.style);
 
-        return names[0];
+        return Characteristics { names[0] };
     }
 
-    static String getDefaultSansSerifFontName()
+    static Characteristics getDefaultSansSerifFontCharacteristics()
     {
         StringArray allFonts;
         FTTypefaceList::getInstance()->getSansSerifNames (allFonts);
 
-        static constexpr const char* targets[] { "Verdana",
-                                                 "Bitstream Vera Sans",
-                                                 "Luxi Sans",
-                                                 "Liberation Sans",
-                                                 "DejaVu Sans",
-                                                 "Sans" };
+        static const Characteristics targets[] { Characteristics { "Verdana" },
+                                                 Characteristics { "Bitstream Vera Sans" }.withStyle ("Roman"),
+                                                 Characteristics { "Luxi Sans" },
+                                                 Characteristics { "Liberation Sans" },
+                                                 Characteristics { "DejaVu Sans" },
+                                                 Characteristics { "Sans" } };
         return pickBestFont (allFonts, targets);
     }
 
-    static String getDefaultSerifFontName()
+    static Characteristics getDefaultSerifFontCharacteristics()
     {
         StringArray allFonts;
         FTTypefaceList::getInstance()->getSerifNames (allFonts);
 
-        static constexpr const char* targets[] { "Bitstream Vera Serif",
-                                                 "Times",
-                                                 "Nimbus Roman",
-                                                 "Liberation Serif",
-                                                 "DejaVu Serif",
-                                                 "Serif" };
+        static const Characteristics targets[] { Characteristics { "Bitstream Vera Serif" }.withStyle ("Roman"),
+                                                 Characteristics { "Times" },
+                                                 Characteristics { "Nimbus Roman" },
+                                                 Characteristics { "Liberation Serif" },
+                                                 Characteristics { "DejaVu Serif" },
+                                                 Characteristics { "Serif" } };
         return pickBestFont (allFonts, targets);
     }
 
-    static String getDefaultMonospacedFontName()
+    static Characteristics getDefaultMonospacedFontCharacteristics()
     {
         StringArray allFonts;
         FTTypefaceList::getInstance()->getMonospacedNames (allFonts);
 
-        static constexpr const char* targets[] { "DejaVu Sans Mono",
-                                                 "Bitstream Vera Sans Mono",
-                                                 "Sans Mono",
-                                                 "Liberation Mono",
-                                                 "Courier",
-                                                 "DejaVu Mono",
-                                                 "Mono" };
+        static const Characteristics targets[] { Characteristics { "DejaVu Sans Mono" },
+                                                 Characteristics { "Bitstream Vera Sans Mono" }.withStyle ("Roman"),
+                                                 Characteristics { "Sans Mono" },
+                                                 Characteristics { "Liberation Mono" },
+                                                 Characteristics { "Courier" },
+                                                 Characteristics { "DejaVu Mono" },
+                                                 Characteristics { "Mono" } };
         return pickBestFont (allFonts, targets);
     }
 
@@ -205,13 +219,13 @@ Typeface::Ptr Font::getDefaultTypefaceForFont (const Font& font)
     Font f (font);
 
     const auto name = font.getTypefaceName();
-    const auto realName = defaultInfo.getRealFontName (name);
-    f.setTypefaceName (realName);
+    const auto characteristics = defaultInfo.getRealFontCharacteristics (name);
+    f.setTypefaceName (characteristics.name);
 
-    const auto styles = findAllTypefaceStyles (realName);
+    const auto styles = findAllTypefaceStyles (name);
 
     if (! styles.contains (font.getTypefaceStyle()))
-        f.setTypefaceStyle (styles[0]);
+        f.setTypefaceStyle (characteristics.style);
 
     return Typeface::createSystemTypefaceFor (f);
 }

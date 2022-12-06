@@ -147,12 +147,6 @@ namespace ActiveXHelpers
         ~JuceIOleClientSite()
         {
             inplaceSite->Release();
-
-            if (dispatchEventHandler != nullptr)
-            {
-                dispatchEventHandler->Release();
-                dispatchEventHandler = nullptr;
-            }
         }
 
         JUCE_COMRESULT QueryInterface (REFIID type, void** result)
@@ -163,12 +157,6 @@ namespace ActiveXHelpers
             {
                 inplaceSite->AddRef();
                 *result = static_cast<IOleInPlaceSite*> (inplaceSite);
-                return S_OK;
-            }
-            else if (type == __uuidof(IDispatch) && dispatchEventHandler != nullptr)
-            {
-                dispatchEventHandler->AddRef();
-                *result = dispatchEventHandler;
                 return S_OK;
             }
 
@@ -192,31 +180,7 @@ namespace ActiveXHelpers
             return S_FALSE;
         }
 
-        void setEventHandler (void* eventHandler)
-        {
-            IDispatch* newEventHandler = nullptr;
-
-            if (eventHandler != nullptr)
-            {
-                JUCE_BEGIN_IGNORE_WARNINGS_GCC_LIKE ("-Wlanguage-extension-token")
-
-                auto iidIDispatch = __uuidof (IDispatch);
-
-                if (static_cast<IUnknown*>(eventHandler)->QueryInterface (iidIDispatch, (void**) &newEventHandler) != S_OK
-                    || newEventHandler == nullptr)
-                    return;
-
-               JUCE_END_IGNORE_WARNINGS_GCC_LIKE
-            }
-
-            if (dispatchEventHandler != nullptr)
-                dispatchEventHandler->Release();
-
-            dispatchEventHandler = newEventHandler;
-        }
-
         JuceIOleInPlaceSite* inplaceSite;
-        IDispatch* dispatchEventHandler = nullptr;
     };
 
     //==============================================================================
@@ -287,11 +251,6 @@ public:
 
     ~Pimpl() override
     {
-        // If the wndproc of the ActiveX HWND isn't set back to it's original
-        // wndproc, then clientSite will leak when control is released
-        if (controlHWND != nullptr)
-            SetWindowLongPtr ((HWND) controlHWND, GWLP_WNDPROC, (LONG_PTR) originalWndProc);
-
         if (control != nullptr)
         {
             control->Close (OLECLOSE_NOSAVE);
@@ -524,12 +483,6 @@ intptr_t ActiveXControlComponent::offerEventToActiveXControlStatic (void* ptr)
     }
 
     return S_FALSE;
-}
-
-void ActiveXControlComponent::setEventHandler (void* eventHandler)
-{
-    if (control->clientSite != nullptr)
-        control->clientSite->setEventHandler (eventHandler);
 }
 
 LRESULT juce_offerEventToActiveXControl (::MSG& msg);

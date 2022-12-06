@@ -43,8 +43,8 @@ private:
     using ParameterType = typename TypeHelpers::ParameterType<ElementType>::type;
 
     template <class OtherElementType, class OtherCriticalSection>
-    using AllowConversion = std::enable_if_t<! std::is_same_v<std::tuple<ElementType, TypeOfCriticalSectionToUse>,
-                                                              std::tuple<OtherElementType, OtherCriticalSection>>>;
+    using AllowConversion = typename std::enable_if<! std::is_same<std::tuple<ElementType, TypeOfCriticalSectionToUse>,
+                                                                   std::tuple<OtherElementType, OtherCriticalSection>>::value>::type;
 
 public:
     //==============================================================================
@@ -304,7 +304,7 @@ public:
     }
 
     template <class OtherArrayType>
-    std::enable_if_t<! std::is_pointer_v<OtherArrayType>, int>
+    typename std::enable_if<! std::is_pointer<OtherArrayType>::value, int>::type
     addArray (const OtherArrayType& arrayToAddFrom,
               int startIndex, int numElementsToAdd = -1)
     {
@@ -385,49 +385,64 @@ public:
 
 private:
     //==============================================================================
+    template <typename T>
    #if defined(__GNUC__) && __GNUC__ < 5 && ! defined(__clang__)
-    static constexpr auto isTriviallyCopyable = std::is_scalar_v<ElementType>;
+    using IsTriviallyCopyable = std::is_scalar<T>;
    #else
-    static constexpr auto isTriviallyCopyable = std::is_trivially_copyable_v<ElementType>;
+    using IsTriviallyCopyable = std::is_trivially_copyable<T>;
    #endif
 
-    //==============================================================================
-    template <typename Type>
-    void addArrayInternal (const Type* otherElements, int numElements)
-    {
-        if constexpr (isTriviallyCopyable && std::is_same_v<Type, ElementType>)
-        {
-            if (numElements > 0)
-                memcpy (elements + numUsed, otherElements, (size_t) numElements * sizeof (ElementType));
-        }
-        else
-        {
-            auto* start = elements + numUsed;
+    template <typename T>
+    using TriviallyCopyableVoid = typename std::enable_if<IsTriviallyCopyable<T>::value, void>::type;
 
-            while (--numElements >= 0)
-                new (start++) ElementType (*(otherElements++));
-        }
+    template <typename T>
+    using NonTriviallyCopyableVoid = typename std::enable_if<! IsTriviallyCopyable<T>::value, void>::type;
+
+    //==============================================================================
+    template <typename T = ElementType>
+    TriviallyCopyableVoid<T> addArrayInternal (const ElementType* otherElements, int numElements)
+    {
+        if (numElements > 0)
+            memcpy (elements + numUsed, otherElements, (size_t) numElements * sizeof (ElementType));
+    }
+
+    template <typename Type, typename T = ElementType>
+    TriviallyCopyableVoid<T> addArrayInternal (const Type* otherElements, int numElements)
+    {
+        auto* start = elements + numUsed;
+
+        while (--numElements >= 0)
+            new (start++) ElementType (*(otherElements++));
+    }
+
+    template <typename Type, typename T = ElementType>
+    NonTriviallyCopyableVoid<T> addArrayInternal (const Type* otherElements, int numElements)
+    {
+        auto* start = elements + numUsed;
+
+        while (--numElements >= 0)
+            new (start++) ElementType (*(otherElements++));
     }
 
     //==============================================================================
-    void setAllocatedSizeInternal (int numElements)
+    template <typename T = ElementType>
+    TriviallyCopyableVoid<T> setAllocatedSizeInternal (int numElements)
     {
-        if constexpr (isTriviallyCopyable)
-        {
-            elements.realloc ((size_t) numElements);
-        }
-        else
-        {
-            HeapBlock<ElementType> newElements (numElements);
+        elements.realloc ((size_t) numElements);
+    }
 
-            for (int i = 0; i < numUsed; ++i)
-            {
-                new (newElements + i) ElementType (std::move (elements[i]));
-                elements[i].~ElementType();
-            }
+    template <typename T = ElementType>
+    NonTriviallyCopyableVoid<T> setAllocatedSizeInternal (int numElements)
+    {
+        HeapBlock<ElementType> newElements (numElements);
 
-            elements = std::move (newElements);
+        for (int i = 0; i < numUsed; ++i)
+        {
+            new (newElements + i) ElementType (std::move (elements[i]));
+            elements[i].~ElementType();
         }
+
+        elements = std::move (newElements);
     }
 
     //==============================================================================
@@ -443,99 +458,99 @@ private:
         return elements + indexToInsertAt;
     }
 
-    void createInsertSpaceInternal (int indexToInsertAt, int numElements)
+    template <typename T = ElementType>
+    TriviallyCopyableVoid<T> createInsertSpaceInternal (int indexToInsertAt, int numElements)
     {
-        if constexpr (isTriviallyCopyable)
-        {
-            auto* start = elements + indexToInsertAt;
-            auto numElementsToShift = numUsed - indexToInsertAt;
-            memmove (start + numElements, start, (size_t) numElementsToShift * sizeof (ElementType));
-        }
-        else
-        {
-            auto* end = elements + numUsed;
-            auto* newEnd = end + numElements;
-            auto numElementsToShift = numUsed - indexToInsertAt;
+        auto* start = elements + indexToInsertAt;
+        auto numElementsToShift = numUsed - indexToInsertAt;
+        memmove (start + numElements, start, (size_t) numElementsToShift * sizeof (ElementType));
+    }
 
-            for (int i = 0; i < numElementsToShift; ++i)
-            {
-                new (--newEnd) ElementType (std::move (*(--end)));
-                end->~ElementType();
-            }
+    template <typename T = ElementType>
+    NonTriviallyCopyableVoid<T> createInsertSpaceInternal (int indexToInsertAt, int numElements)
+    {
+        auto* end = elements + numUsed;
+        auto* newEnd = end + numElements;
+        auto numElementsToShift = numUsed - indexToInsertAt;
+
+        for (int i = 0; i < numElementsToShift; ++i)
+        {
+            new (--newEnd) ElementType (std::move (*(--end)));
+            end->~ElementType();
         }
     }
 
     //==============================================================================
-    void removeElementsInternal (int indexToRemoveAt, int numElementsToRemove)
+    template <typename T = ElementType>
+    TriviallyCopyableVoid<T> removeElementsInternal (int indexToRemoveAt, int numElementsToRemove)
     {
-        if constexpr (isTriviallyCopyable)
-        {
-            auto* start = elements + indexToRemoveAt;
-            auto numElementsToShift = numUsed - (indexToRemoveAt + numElementsToRemove);
-            memmove (start, start + numElementsToRemove, (size_t) numElementsToShift * sizeof (ElementType));
-        }
-        else
-        {
-            auto numElementsToShift = numUsed - (indexToRemoveAt + numElementsToRemove);
-            auto* destination = elements + indexToRemoveAt;
-            auto* source = destination + numElementsToRemove;
+        auto* start = elements + indexToRemoveAt;
+        auto numElementsToShift = numUsed - (indexToRemoveAt + numElementsToRemove);
+        memmove (start, start + numElementsToRemove, (size_t) numElementsToShift * sizeof (ElementType));
+    }
 
-            for (int i = 0; i < numElementsToShift; ++i)
-                moveAssignElement (destination++, std::move (*(source++)));
+    template <typename T = ElementType>
+    NonTriviallyCopyableVoid<T> removeElementsInternal (int indexToRemoveAt, int numElementsToRemove)
+    {
+        auto numElementsToShift = numUsed - (indexToRemoveAt + numElementsToRemove);
+        auto* destination = elements + indexToRemoveAt;
+        auto* source = destination + numElementsToRemove;
 
-            for (int i = 0; i < numElementsToRemove; ++i)
-                (destination++)->~ElementType();
-        }
+        for (int i = 0; i < numElementsToShift; ++i)
+            moveAssignElement (destination++, std::move (*(source++)));
+
+        for (int i = 0; i < numElementsToRemove; ++i)
+            (destination++)->~ElementType();
     }
 
     //==============================================================================
-    void moveInternal (int currentIndex, int newIndex) noexcept
+    template <typename T = ElementType>
+    TriviallyCopyableVoid<T> moveInternal (int currentIndex, int newIndex) noexcept
     {
-        if constexpr (isTriviallyCopyable)
+        char tempCopy[sizeof (ElementType)];
+        memcpy (tempCopy, elements + currentIndex, sizeof (ElementType));
+
+        if (newIndex > currentIndex)
         {
-            char tempCopy[sizeof (ElementType)];
-            memcpy (tempCopy, elements + currentIndex, sizeof (ElementType));
-
-            if (newIndex > currentIndex)
-            {
-                memmove (elements + currentIndex,
-                         elements + currentIndex + 1,
-                         (size_t) (newIndex - currentIndex) * sizeof (ElementType));
-            }
-            else
-            {
-                memmove (elements + newIndex + 1,
-                         elements + newIndex,
-                         (size_t) (currentIndex - newIndex) * sizeof (ElementType));
-            }
-
-            memcpy (elements + newIndex, tempCopy, sizeof (ElementType));
+            memmove (elements + currentIndex,
+                     elements + currentIndex + 1,
+                     (size_t) (newIndex - currentIndex) * sizeof (ElementType));
         }
         else
         {
-            auto* e = elements + currentIndex;
-            ElementType tempCopy (std::move (*e));
-            auto delta = newIndex - currentIndex;
-
-            if (delta > 0)
-            {
-                for (int i = 0; i < delta; ++i)
-                {
-                    moveAssignElement (e, std::move (*(e + 1)));
-                    ++e;
-                }
-            }
-            else
-            {
-                for (int i = 0; i < -delta; ++i)
-                {
-                    moveAssignElement (e, std::move (*(e - 1)));
-                    --e;
-                }
-            }
-
-            moveAssignElement (e, std::move (tempCopy));
+            memmove (elements + newIndex + 1,
+                     elements + newIndex,
+                     (size_t) (currentIndex - newIndex) * sizeof (ElementType));
         }
+
+        memcpy (elements + newIndex, tempCopy, sizeof (ElementType));
+    }
+
+    template <typename T = ElementType>
+    NonTriviallyCopyableVoid<T> moveInternal (int currentIndex, int newIndex) noexcept
+    {
+        auto* e = elements + currentIndex;
+        ElementType tempCopy (std::move (*e));
+        auto delta = newIndex - currentIndex;
+
+        if (delta > 0)
+        {
+            for (int i = 0; i < delta; ++i)
+            {
+                moveAssignElement (e, std::move (*(e + 1)));
+                ++e;
+            }
+        }
+        else
+        {
+            for (int i = 0; i < -delta; ++i)
+            {
+                moveAssignElement (e, std::move (*(e - 1)));
+                --e;
+            }
+        }
+
+        moveAssignElement (e, std::move (tempCopy));
     }
 
     //==============================================================================
@@ -554,17 +569,19 @@ private:
     }
 
     //==============================================================================
-    void moveAssignElement (ElementType* destination, ElementType&& source)
+    template <typename T = ElementType>
+    typename std::enable_if<std::is_move_assignable<T>::value, void>::type
+    moveAssignElement (ElementType* destination, ElementType&& source)
     {
-        if constexpr (std::is_move_assignable_v<ElementType>)
-        {
-            *destination = std::move (source);
-        }
-        else
-        {
-            destination->~ElementType();
-            new (destination) ElementType (std::move (source));
-        }
+        *destination = std::move (source);
+    }
+
+    template <typename T = ElementType>
+    typename std::enable_if<! std::is_move_assignable<T>::value, void>::type
+    moveAssignElement (ElementType* destination, ElementType&& source)
+    {
+        destination->~ElementType();
+        new (destination) ElementType (std::move (source));
     }
 
     void checkSourceIsNotAMember (const ElementType& element)

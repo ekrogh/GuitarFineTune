@@ -100,11 +100,6 @@ public:
     */
     String getQueryString() const;
 
-    /** If any anchor is set, returns URL-encoded anchor, including the "#"
-        prefix.
-    */
-    String getAnchorString() const;
-
     /** Returns the scheme of the URL.
 
         e.g. for "http://www.xyz.com/foobar", this will return "http" (it won't
@@ -149,7 +144,7 @@ public:
 
         @see withNewSubPath
     */
-    [[nodiscard]] URL withNewDomainAndPath (const String& newFullPath) const;
+    JUCE_NODISCARD URL withNewDomainAndPath (const String& newFullPath) const;
 
     /** Returns a new version of this URL with a different sub-path.
 
@@ -158,7 +153,7 @@ public:
 
         @see withNewDomainAndPath
     */
-    [[nodiscard]] URL withNewSubPath (const String& newPath) const;
+    JUCE_NODISCARD URL withNewSubPath (const String& newPath) const;
 
     /** Attempts to return a URL which is the parent folder containing this URL.
 
@@ -191,8 +186,8 @@ public:
 
         @see getParameterNames, getParameterValues
     */
-    [[nodiscard]] URL withParameter (const String& parameterName,
-                                     const String& parameterValue) const;
+    JUCE_NODISCARD URL withParameter (const String& parameterName,
+                                      const String& parameterValue) const;
 
     /** Returns a copy of this URL, with a set of GET or POST parameters added.
 
@@ -200,11 +195,7 @@ public:
 
         @see withParameter
     */
-    [[nodiscard]] URL withParameters (const StringPairArray& parametersToAdd) const;
-
-    /** Returns a copy of this URL, with an anchor added to the end of the URL.
-    */
-    [[nodiscard]] URL withAnchor (const String& anchor) const;
+    JUCE_NODISCARD URL withParameters (const StringPairArray& parametersToAdd) const;
 
     /** Returns a copy of this URL, with a file-upload type parameter added to it.
 
@@ -217,7 +208,7 @@ public:
 
         @see withDataToUpload
     */
-    [[nodiscard]] URL withFileToUpload (const String& parameterName,
+    JUCE_NODISCARD URL withFileToUpload (const String& parameterName,
                                          const File& fileToUpload,
                                          const String& mimeType) const;
 
@@ -231,7 +222,7 @@ public:
 
         @see withFileToUpload
     */
-    [[nodiscard]] URL withDataToUpload (const String& parameterName,
+    JUCE_NODISCARD URL withDataToUpload (const String& parameterName,
                                          const String& filename,
                                          const MemoryBlock& fileContentToUpload,
                                          const String& mimeType) const;
@@ -270,7 +261,7 @@ public:
         If no HTTP command is set when calling createInputStream() to read from
         this URL and some data has been set, it will do a POST request.
     */
-    [[nodiscard]] URL withPOSTData (const String& postData) const;
+    JUCE_NODISCARD URL withPOSTData (const String& postData) const;
 
     /** Returns a copy of this URL, with a block of data to send as the POST data.
 
@@ -280,7 +271,7 @@ public:
         If no HTTP command is set when calling createInputStream() to read from
         this URL and some data has been set, it will do a POST request.
     */
-    [[nodiscard]] URL withPOSTData (const MemoryBlock& postData) const;
+    JUCE_NODISCARD URL withPOSTData (const MemoryBlock& postData) const;
 
     /** Returns the data that was set using withPOSTData(). */
     String getPostData() const                                      { return postData.toString(); }
@@ -343,36 +334,36 @@ public:
 
             This can be useful for lengthy POST operations, so that you can provide user feedback.
         */
-        [[nodiscard]] InputStreamOptions withProgressCallback (std::function<bool (int bytesSent, int totalBytes)> progressCallback) const;
+        JUCE_NODISCARD InputStreamOptions withProgressCallback (std::function<bool (int bytesSent, int totalBytes)> progressCallback) const;
 
         /** A string that will be appended onto the headers that are used for the request.
 
             It must be a valid set of HTML header directives, separated by newlines.
         */
-        [[nodiscard]] InputStreamOptions withExtraHeaders (const String& extraHeaders) const;
+        JUCE_NODISCARD InputStreamOptions withExtraHeaders (const String& extraHeaders) const;
 
         /** Specifies a timeout for the request in milliseconds.
 
             If 0, this will use whatever default setting the OS chooses. If a negative
             number, it will be infinite.
         */
-        [[nodiscard]] InputStreamOptions withConnectionTimeoutMs (int connectionTimeoutMs) const;
+        JUCE_NODISCARD InputStreamOptions withConnectionTimeoutMs (int connectionTimeoutMs) const;
 
         /** If this is non-null, all the (key, value) pairs received as headers
             in the response will be stored in this array.
         */
-        [[nodiscard]] InputStreamOptions withResponseHeaders (StringPairArray* responseHeaders) const;
+        JUCE_NODISCARD InputStreamOptions withResponseHeaders (StringPairArray* responseHeaders) const;
 
         /** If this is non-null, it will get set to the http status code, if one
             is known, or 0 if a code isn't available.
         */
-        [[nodiscard]] InputStreamOptions withStatusCode (int* statusCode) const;
+        JUCE_NODISCARD InputStreamOptions withStatusCode (int* statusCode) const;
 
         /** Specifies the number of redirects that will be followed before returning a response.
 
             N.B. This will be ignored on Android which follows up to 5 redirects.
         */
-        [[nodiscard]] InputStreamOptions withNumRedirectsToFollow (int numRedirectsToFollow) const;
+        JUCE_NODISCARD InputStreamOptions withNumRedirectsToFollow (int numRedirectsToFollow) const;
 
         /** Specifies which HTTP request command to use.
 
@@ -381,7 +372,7 @@ public:
             via withPOSTData(), withFileToUpload(), or withDataToUpload(). Otherwise it
             will be GET.
         */
-        [[nodiscard]] InputStreamOptions withHttpRequestCmd (const String& httpRequestCmd) const;
+        JUCE_NODISCARD InputStreamOptions withHttpRequestCmd (const String& httpRequestCmd) const;
 
         //==============================================================================
         ParameterHandling getParameterHandling() const noexcept             { return parameterHandling; }
@@ -465,7 +456,7 @@ public:
         bool usePost = false;
 
         /** Specifies headers to add to the request. */
-        [[nodiscard]] auto withExtraHeaders (String value) const            { return with (&DownloadTaskOptions::extraHeaders, std::move (value)); }
+        JUCE_NODISCARD auto withExtraHeaders (String value) const            { return with (&DownloadTaskOptions::extraHeaders, std::move (value)); }
 
         /** On iOS, specifies the container where the downloaded file will be stored.
 
@@ -474,17 +465,17 @@ public:
 
             This is currently unused on other platforms.
         */
-        [[nodiscard]] auto withSharedContainer (String value) const         { return with (&DownloadTaskOptions::sharedContainer, std::move (value)); }
+        JUCE_NODISCARD auto withSharedContainer (String value) const         { return with (&DownloadTaskOptions::sharedContainer, std::move (value)); }
 
         /** Specifies an observer for the download task. */
-        [[nodiscard]] auto withListener (DownloadTaskListener* value) const { return with (&DownloadTaskOptions::listener, std::move (value)); }
+        JUCE_NODISCARD auto withListener (DownloadTaskListener* value) const { return with (&DownloadTaskOptions::listener, std::move (value)); }
 
         /** Specifies whether a post command should be used. */
-        [[nodiscard]] auto withUsePost (bool value) const                   { return with (&DownloadTaskOptions::usePost, value); }
+        JUCE_NODISCARD auto withUsePost (bool value) const                   { return with (&DownloadTaskOptions::usePost, value); }
 
     private:
         template <typename Member, typename Value>
-        [[nodiscard]] DownloadTaskOptions with (Member&& member, Value&& value) const
+        JUCE_NODISCARD DownloadTaskOptions with (Member&& member, Value&& value) const
         {
             auto copy = *this;
             copy.*member = std::forward<Value> (value);
@@ -732,7 +723,6 @@ private:
     String url;
     MemoryBlock postData;
     StringArray parameterNames, parameterValues;
-    String anchor;
 
     ReferenceCountedArray<Upload> filesToUpload;
 

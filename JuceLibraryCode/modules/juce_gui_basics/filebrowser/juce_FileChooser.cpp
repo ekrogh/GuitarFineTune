@@ -270,13 +270,6 @@ void FileChooser::finished (const Array<URL>& asyncResults)
          callback (*this);
 }
 
-#if ! JUCE_ANDROID
-void FileChooser::registerCustomMimeTypeForFileExtension ([[maybe_unused]] const String& mimeType,
-                                                          [[maybe_unused]] const String& fileExtension)
-{
-}
-#endif
-
 //==============================================================================
 FilePreviewComponent::FilePreviewComponent() {}
 FilePreviewComponent::~FilePreviewComponent() {}

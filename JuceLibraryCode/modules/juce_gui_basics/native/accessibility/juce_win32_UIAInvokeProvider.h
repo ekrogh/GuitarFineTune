@@ -43,10 +43,8 @@ public:
 
         if (handler.getActions().invoke (AccessibilityActionType::press))
         {
-            using namespace ComTypes::Constants;
-
             if (isElementValid())
-                sendAccessibilityAutomationEvent (handler, UIA_Invoke_InvokedEventId);
+                sendAccessibilityAutomationEvent (handler, ComTypes::UIA_Invoke_InvokedEventId);
 
             return S_OK;
         }

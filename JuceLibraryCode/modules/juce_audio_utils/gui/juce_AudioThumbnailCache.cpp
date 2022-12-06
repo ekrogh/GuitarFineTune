@@ -64,7 +64,7 @@ AudioThumbnailCache::AudioThumbnailCache (const int maxNumThumbs)
       maxNumThumbsToStore (maxNumThumbs)
 {
     jassert (maxNumThumbsToStore > 0);
-    thread.startThread (Thread::Priority::low);
+    thread.startThread (2);
 }
 
 AudioThumbnailCache::~AudioThumbnailCache()

@@ -277,10 +277,4 @@ bool FileChooser::isPlatformDialogAvailable()
    #endif
 }
 
-void FileChooser::registerCustomMimeTypeForFileExtension (const String& mimeType,
-                                                          const String& fileExtension)
-{
-    MimeTypeTable::registerCustomMimeTypeForFileExtension (mimeType, fileExtension);
-}
-
 } // namespace juce

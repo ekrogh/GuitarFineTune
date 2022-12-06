@@ -747,10 +747,9 @@ public:
 
     enum class Async { yes, no };
 
-    void recalculatePositions (Async useAsyncUpdate, std::optional<Point<int>> viewportPosition)
+    void recalculatePositions (Async useAsyncUpdate)
     {
         needsRecalculating = true;
-        viewportAfterRecalculation = std::move (viewportPosition);
 
         if (useAsyncUpdate == Async::yes)
             triggerAsyncUpdate();
@@ -766,13 +765,15 @@ private:
 
     void handleAsyncUpdate() override
     {
-        if (std::exchange (structureChanged, false))
+        if (structureChanged)
         {
             if (auto* handler = owner.getAccessibilityHandler())
                 handler->notifyAccessibilityEvent (AccessibilityEvent::structureChanged);
+
+            structureChanged = false;
         }
 
-        if (std::exchange (needsRecalculating, false))
+        if (needsRecalculating)
         {
             if (auto* root = owner.rootItem)
             {
@@ -789,8 +790,7 @@ private:
 
             updateComponents (false);
 
-            if (const auto viewportPosition = std::exchange (viewportAfterRecalculation, {}))
-                setViewPosition (viewportPosition->getX(), viewportPosition->getY());
+            needsRecalculating = false;
         }
     }
 
@@ -810,7 +810,6 @@ private:
     TreeView& owner;
     int lastX = -1;
     bool structureChanged = false, needsRecalculating = false;
-    std::optional<Point<int>> viewportAfterRecalculation;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (TreeViewport)
 };
@@ -859,7 +858,7 @@ void TreeView::setRootItem (TreeViewItem* const newRootItem)
             rootItem->setOpen (true);
         }
 
-        viewport->recalculatePositions (TreeViewport::Async::no, {});
+        viewport->recalculatePositions (TreeViewport::Async::no);
     }
 }
 
@@ -1021,6 +1020,10 @@ void TreeView::restoreOpennessState (const XmlElement& newState, bool restoreSto
     {
         rootItem->restoreOpennessState (newState);
 
+        if (newState.hasAttribute ("scrollPos"))
+            viewport->setViewPosition (viewport->getViewPositionX(),
+                                       newState.getIntAttribute ("scrollPos"));
+
         if (restoreStoredSelection)
         {
             clearSelectedItems();
@@ -1030,11 +1033,7 @@ void TreeView::restoreOpennessState (const XmlElement& newState, bool restoreSto
                     item->setSelected (true, false);
         }
 
-        const auto scrollPos = newState.hasAttribute ("scrollPos")
-                             ? std::make_optional<Point<int>> (viewport->getViewPositionX(), newState.getIntAttribute ("scrollPos"))
-                             : std::nullopt;
-
-        updateVisibleItems (std::move (scrollPos));
+        updateVisibleItems();
     }
 }
 
@@ -1217,9 +1216,9 @@ bool TreeView::keyPressed (const KeyPress& key)
     return false;
 }
 
-void TreeView::updateVisibleItems (std::optional<Point<int>> viewportPosition)
+void TreeView::updateVisibleItems()
 {
-    viewport->recalculatePositions (TreeViewport::Async::yes, std::move (viewportPosition));
+    viewport->recalculatePositions (TreeViewport::Async::yes);
 }
 
 //==============================================================================

@@ -27,7 +27,7 @@ namespace juce
 {
 
 DirectoryContentsList::DirectoryContentsList (const FileFilter* f, TimeSliceThread& t)
-    : fileFilter (f), thread (t)
+   : fileFilter (f), thread (t)
 {
 }
 
@@ -202,27 +202,33 @@ int DirectoryContentsList::useTimeSlice()
 
 bool DirectoryContentsList::checkNextFile (bool& hasChanged)
 {
-    if (fileFindHandle == nullptr)
-        return false;
-
-    if (*fileFindHandle == RangedDirectoryIterator())
+    if (fileFindHandle != nullptr)
     {
+        if (*fileFindHandle != RangedDirectoryIterator())
+        {
+            const auto entry = *(*fileFindHandle)++;
+
+            if (addFile (entry.getFile(),
+                         entry.isDirectory(),
+                         entry.getFileSize(),
+                         entry.getModificationTime(),
+                         entry.getCreationTime(),
+                         entry.isReadOnly()))
+            {
+                hasChanged = true;
+            }
+
+            return true;
+        }
+
         fileFindHandle = nullptr;
         isSearching = false;
-        hasChanged = true;
-        return false;
+
+        if (! wasEmpty && files.isEmpty())
+            hasChanged = true;
     }
 
-    const auto entry = *(*fileFindHandle)++;
-
-    hasChanged |= addFile (entry.getFile(),
-                           entry.isDirectory(),
-                           entry.getFileSize(),
-                           entry.getModificationTime(),
-                           entry.getCreationTime(),
-                           entry.isReadOnly());
-
-    return true;
+    return false;
 }
 
 bool DirectoryContentsList::addFile (const File& file, const bool isDir,

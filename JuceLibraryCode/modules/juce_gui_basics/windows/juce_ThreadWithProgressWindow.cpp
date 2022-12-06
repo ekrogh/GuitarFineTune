@@ -56,11 +56,11 @@ ThreadWithProgressWindow::~ThreadWithProgressWindow()
     stopThread (timeOutMsWhenCancelling);
 }
 
-void ThreadWithProgressWindow::launchThread (Priority threadPriority)
+void ThreadWithProgressWindow::launchThread (int priority)
 {
     JUCE_ASSERT_MESSAGE_THREAD
 
-    startThread (threadPriority);
+    startThread (priority);
     startTimer (100);
 
     {
@@ -105,9 +105,9 @@ void ThreadWithProgressWindow::timerCallback()
 void ThreadWithProgressWindow::threadComplete (bool) {}
 
 #if JUCE_MODAL_LOOPS_PERMITTED
-bool ThreadWithProgressWindow::runThread (Priority threadPriority)
+bool ThreadWithProgressWindow::runThread (const int priority)
 {
-    launchThread (threadPriority);
+    launchThread (priority);
 
     while (isTimerRunning())
         MessageManager::getInstance()->runDispatchLoopUntil (5);

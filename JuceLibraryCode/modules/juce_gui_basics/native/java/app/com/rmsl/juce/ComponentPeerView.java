@@ -35,7 +35,6 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.text.InputType;
-import android.view.Choreographer;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
@@ -54,7 +53,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class ComponentPeerView extends ViewGroup
-        implements View.OnFocusChangeListener, Application.ActivityLifecycleCallbacks, Choreographer.FrameCallback
+        implements View.OnFocusChangeListener, Application.ActivityLifecycleCallbacks
 {
     public ComponentPeerView (Context context, boolean opaque_, long host)
     {
@@ -112,8 +111,6 @@ public final class ComponentPeerView extends ViewGroup
             {
             }
         }
-
-        Choreographer.getInstance().postFrameCallback (this);
     }
 
     public void clear ()
@@ -131,19 +128,6 @@ public final class ComponentPeerView extends ViewGroup
             return;
 
         handlePaint (host, canvas, paint);
-    }
-
-    private native void handleDoFrame (long host, long frameTimeNanos);
-
-    @Override
-    public void doFrame (long frameTimeNanos)
-    {
-        if (host == 0)
-            return;
-
-        handleDoFrame (host, frameTimeNanos);
-
-        Choreographer.getInstance().postFrameCallback (this);
     }
 
     @Override

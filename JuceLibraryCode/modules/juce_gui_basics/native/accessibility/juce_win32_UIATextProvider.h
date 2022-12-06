@@ -303,17 +303,15 @@ private:
             {
                 VariantHelpers::clear (pRetVal);
 
-                using namespace ComTypes::Constants;
-
                 switch (attributeId)
                 {
-                    case UIA_IsReadOnlyAttributeId:
+                    case ComTypes::UIA_IsReadOnlyAttributeId:
                     {
                         VariantHelpers::setBool (textInterface.isReadOnly(), pRetVal);
                         break;
                     }
 
-                    case UIA_CaretPositionAttributeId:
+                    case ComTypes::UIA_CaretPositionAttributeId:
                     {
                         auto cursorPos = textInterface.getTextInsertionOffset();
 

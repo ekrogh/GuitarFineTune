@@ -83,7 +83,7 @@ public:
 
     ~ARAAudioSourceReader() override;
 
-    bool readSamples (int* const* destSamples,
+    bool readSamples (int** destSamples,
                       int numDestChannels,
                       int startOffsetInDestBuffer,
                       int64 startSampleInFile,
@@ -166,7 +166,7 @@ public:
     */
     void invalidate();
 
-    bool readSamples (int* const* destSamples,
+    bool readSamples (int** destSamples,
                       int numDestChannels,
                       int startOffsetInDestBuffer,
                       int64 startSampleInFile,

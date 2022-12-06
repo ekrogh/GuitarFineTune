@@ -462,7 +462,7 @@ private:
         if (callback != nullptr)
         {
             if ((numActiveInChans + numActiveOutChans) > 0)
-                callback->audioDeviceIOCallbackWithContext (inChans.getData(),
+                callback->audioDeviceIOCallbackWithContext (const_cast<const float**> (inChans.getData()),
                                                             numActiveInChans,
                                                             outChans,
                                                             numActiveOutChans,

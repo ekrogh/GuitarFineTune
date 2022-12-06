@@ -89,7 +89,7 @@ template <typename SampleType>
 template <typename ProcessContext, bool bypassed>
 void Filter<SampleType>::processInternal (const ProcessContext& context) noexcept
 {
-    static_assert (std::is_same_v<typename ProcessContext::SampleType, SampleType>,
+    static_assert (std::is_same<typename ProcessContext::SampleType, SampleType>::value,
                    "The sample-type of the IIR filter must match the sample-type supplied to this process callback");
     check();
 

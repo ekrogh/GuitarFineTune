@@ -42,38 +42,38 @@ class AudioProcessorValueTreeStateParameterAttributes
 
 public:
     /** @see RangedAudioParameterAttributes::withStringFromValueFunction() */
-    [[nodiscard]] auto withStringFromValueFunction (StringFromValue x) const { return withMember (*this, &This::attributes, attributes.withStringFromValueFunction (std::move (x))); }
+    JUCE_NODISCARD auto withStringFromValueFunction (StringFromValue x) const { return withMember (*this, &This::attributes, attributes.withStringFromValueFunction (std::move (x))); }
     /** @see RangedAudioParameterAttributes::withValueFromStringFunction() */
-    [[nodiscard]] auto withValueFromStringFunction (ValueFromString x) const { return withMember (*this, &This::attributes, attributes.withValueFromStringFunction (std::move (x))); }
+    JUCE_NODISCARD auto withValueFromStringFunction (ValueFromString x) const { return withMember (*this, &This::attributes, attributes.withValueFromStringFunction (std::move (x))); }
     /** @see RangedAudioParameterAttributes::withLabel() */
-    [[nodiscard]] auto withLabel (String x)                            const { return withMember (*this, &This::attributes, attributes.withLabel                   (std::move (x))); }
+    JUCE_NODISCARD auto withLabel (String x)                            const { return withMember (*this, &This::attributes, attributes.withLabel                   (std::move (x))); }
     /** @see RangedAudioParameterAttributes::withCategory() */
-    [[nodiscard]] auto withCategory (Category x)                       const { return withMember (*this, &This::attributes, attributes.withCategory                (std::move (x))); }
+    JUCE_NODISCARD auto withCategory (Category x)                       const { return withMember (*this, &This::attributes, attributes.withCategory                (std::move (x))); }
     /** @see RangedAudioParameterAttributes::withMeta() */
-    [[nodiscard]] auto withMeta (bool x)                               const { return withMember (*this, &This::attributes, attributes.withMeta                    (std::move (x))); }
+    JUCE_NODISCARD auto withMeta (bool x)                               const { return withMember (*this, &This::attributes, attributes.withMeta                    (std::move (x))); }
     /** @see RangedAudioParameterAttributes::withAutomatable() */
-    [[nodiscard]] auto withAutomatable (bool x)                        const { return withMember (*this, &This::attributes, attributes.withAutomatable             (std::move (x))); }
+    JUCE_NODISCARD auto withAutomatable (bool x)                        const { return withMember (*this, &This::attributes, attributes.withAutomatable             (std::move (x))); }
     /** @see RangedAudioParameterAttributes::withInverted() */
-    [[nodiscard]] auto withInverted (bool x)                           const { return withMember (*this, &This::attributes, attributes.withInverted                (std::move (x))); }
+    JUCE_NODISCARD auto withInverted (bool x)                           const { return withMember (*this, &This::attributes, attributes.withInverted                (std::move (x))); }
 
     /** Pass 'true' if this parameter has discrete steps, or 'false' if the parameter is continuous.
 
         Using an AudioParameterChoice or AudioParameterInt might be a better choice than setting this flag.
     */
-    [[nodiscard]] auto withDiscrete (bool x)                           const { return withMember (*this, &This::discrete,   std::move (x)); }
+    JUCE_NODISCARD auto withDiscrete (bool x)                           const { return withMember (*this, &This::discrete,   std::move (x)); }
 
     /** Pass 'true' if this parameter only has two valid states.
 
         Using an AudioParameterBool might be a better choice than setting this flag.
     */
-    [[nodiscard]] auto withBoolean (bool x)                            const { return withMember (*this, &This::boolean,    std::move (x)); }
+    JUCE_NODISCARD auto withBoolean (bool x)                            const { return withMember (*this, &This::boolean,    std::move (x)); }
 
     /** @returns all attributes that might also apply to an AudioParameterFloat */
-    [[nodiscard]] const auto& getAudioParameterFloatAttributes()       const { return attributes; }
+    JUCE_NODISCARD const auto& getAudioParameterFloatAttributes()       const { return attributes; }
     /** @returns 'true' if this parameter has discrete steps, or 'false' if the parameter is continuous. */
-    [[nodiscard]] const auto& getDiscrete()                            const { return discrete; }
+    JUCE_NODISCARD const auto& getDiscrete()                            const { return discrete; }
     /** @returns 'true' if this parameter only has two valid states. */
-    [[nodiscard]] const auto& getBoolean()                             const { return boolean; }
+    JUCE_NODISCARD const auto& getBoolean()                             const { return boolean; }
 
 private:
     AudioParameterFloatAttributes attributes;
@@ -498,7 +498,7 @@ public:
                          valueRange,
                          defaultParameterValue,
                          AudioProcessorValueTreeStateParameterAttributes().withLabel (labelText)
-                                                                          .withStringFromValueFunction (adaptSignature (std::move (valueToTextFunction)))
+                                                                          .withStringFromValueFunction ([valueToTextFunction] (float v, int) { return valueToTextFunction (v); })
                                                                           .withValueFromStringFunction (std::move (textToValueFunction))
                                                                           .withMeta (isMetaParameter)
                                                                           .withAutomatable (isAutomatableParameter)
@@ -515,14 +515,6 @@ public:
         bool isBoolean() const override;
 
     private:
-        static std::function<String (float, int)> adaptSignature (std::function<String (float)> func)
-        {
-            if (func == nullptr)
-                return nullptr;
-
-            return [func = std::move (func)] (float v, int) { return func (v); };
-        }
-
         void valueChanged (float) override;
 
         std::function<void()> onValueChanged;

@@ -1196,7 +1196,7 @@ String DSoundAudioIODevice::openDevice (const BigInteger& inputChannels,
         for (int i = 0; i < inChans.size(); ++i)
             inChans.getUnchecked(i)->synchronisePosition();
 
-        startThread (Priority::highest);
+        startThread (9);
         sleep (10);
 
         notify();
