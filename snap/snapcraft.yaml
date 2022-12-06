@@ -73,6 +73,7 @@ parts:
     plugin: nil
     source: .
     override-build: |
+      git checkout -f ubuntu_Branch
       g++ --version
       cd Builds/LinuxMakefile/
       pwd
