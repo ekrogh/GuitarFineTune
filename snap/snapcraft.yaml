@@ -71,6 +71,8 @@ parts:
   guitarfinetune:
     after: [alsa-mixin]
     plugin: nil
+    override-pull: |
+      snapcraftctl pull https://github.com/ekrogh/GuitarFineTune.git ubuntu_Branch
     source: .
     override-build: |
       g++ --version
