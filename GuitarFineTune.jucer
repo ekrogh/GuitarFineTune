@@ -116,7 +116,7 @@
         <MODULEPATH id="juce_dsp" path="../JUCE/modules"/>
       </MODULEPATHS>
     </XCODE_MAC>
-    <XCODE_IPHONE targetFolder="Builds/iOS" iosScreenOrientation="UIInterfaceOrientationLandscapeLeft,UIInterfaceOrientationLandscapeRight,UIInterfaceOrientationPortrait"
+    <XCODE_IPHONE targetFolder="Builds/iOS" iosScreenOrientation="UIInterfaceOrientationLandscapeLeft,UIInterfaceOrientationLandscapeRight,UIInterfaceOrientationPortrait,UIInterfaceOrientationPortraitUpsideDown"
                   iosDevelopmentTeamID="4657Q2Y6NH" smallIcon="RB4slw" bigIcon="DzMVX4"
                   iosBackgroundAudio="1" iosBackgroundBle="0" microphonePermissionNeeded="1"
                   keepCustomXcodeSchemes="1" useHeaderMap="1" extraDefs="THIS_IS_IOS = 1&#10;"
