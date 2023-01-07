@@ -40,14 +40,14 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "cpufeatures::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-cpufeatures-RelWithDebInfo-159a2a3c11d44fe7c632.json",
+					"jsonFile" : "target-cpufeatures-RelWithDebInfo-1384ce837eb7f3589203.json",
 					"name" : "cpufeatures",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "juce_jni::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-juce_jni-RelWithDebInfo-bc889725b99e4e05e7bf.json",
+					"jsonFile" : "target-juce_jni-RelWithDebInfo-bbe2b80a69d2e6ac6614.json",
 					"name" : "juce_jni",
 					"projectIndex" : 0
 				}
@@ -57,7 +57,7 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "D:/Users/eigil/projects/juceProjs/GuitarFineTune/Builds/Android/app/.cxx/RelWithDebInfo/1o3o5632/armeabi-v7a",
+		"build" : "D:/Users/eigil/projects/juceProjs/GuitarFineTune/Builds/Android/app/.cxx/RelWithDebInfo/1o3o5632/arm64-v8a",
 		"source" : "D:/Users/eigil/projects/juceProjs/GuitarFineTune/Builds/Android/app"
 	},
 	"version" : 
