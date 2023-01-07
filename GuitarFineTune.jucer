@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="cgcxPd" name="GuitarFineTune" projectType="guiapp" version="10.1.2"
+<JUCERPROJECT id="cgcxPd" name="GuitarFineTune" projectType="guiapp" version="10.3.3"
               bundleIdentifier="dk.eksIt.guitarFineTune" includeBinaryInAppConfig="1"
               reportAppUsage="1" companyCopyright="eksit" companyName="eksit"
               companyWebsite="eksit.dk" companyEmail="guitarFineTune@eksit.dk"
@@ -148,11 +148,11 @@
     <ANDROIDSTUDIO targetFolder="Builds/Android" androidSDKPath="${user.home}/AppData/Local/Android/Sdk"
                    androidNDKPath="${user.home}/AppData/Local/Android/Sdk/ndk-bundle"
                    microphonePermissionNeeded="1" cppLanguageStandard="-std=c++14"
-                   androidVersionCode="70" androidKeyStore="../../../Android_Special/keystore.jks"
+                   androidVersionCode="73" androidKeyStore="../../../Android_Special/keystore.jks"
                    androidKeyStorePass="6taura" androidKeyAlias="upload" androidKeyAliasPass="6taura"
                    buildToolsVersion="30" androidPushNotifications="0" androidEnableContentSharing="1"
                    gradleWrapperVersion="7.3.1" gradleVersion="7.4" smallIcon="RB4slw"
-                   bigIcon="DzMVX4" extraDefs="ANDROID_VERSION_CODE=70" androidExternalWriteNeeded="1"
+                   bigIcon="DzMVX4" extraDefs="ANDROID_VERSION_CODE=73" androidExternalWriteNeeded="1"
                    androidInternetNeeded="1" androidReadMediaAudioPermission="1"
                    androidReadMediaImagesPermission="1" androidReadMediaVideoPermission="1">
       <CONFIGURATIONS>
