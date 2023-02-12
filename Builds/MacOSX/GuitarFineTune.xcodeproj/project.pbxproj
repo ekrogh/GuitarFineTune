@@ -66,7 +66,6 @@
 		0E943A9EF57CD424DA2E8959 /* juce_audio_processors */ /* juce_audio_processors */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_audio_processors; path = ../../JuceLibraryCode/modules/juce_audio_processors; sourceTree = SOURCE_ROOT; };
 		1C1C43188A054835D251C5F4 /* Typelist.h */ /* Typelist.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Typelist.h; path = ../../Source/Typelist.h; sourceTree = SOURCE_ROOT; };
 		1C86227F5F0CE8D63F78F5A3 /* Main.cpp */ /* Main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Main.cpp; path = ../../Source/Main.cpp; sourceTree = SOURCE_ROOT; };
-		269F56875A5A8A228A302EE2 /* Launch Screen.storyboard */ /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "Launch Screen.storyboard"; path = "../../iOS_Special/Launch Screen.storyboard"; sourceTree = SOURCE_ROOT; };
 		2705345B21013135C78D354D /* eksThreadWithProgressWindow.cpp */ /* eksThreadWithProgressWindow.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = eksThreadWithProgressWindow.cpp; path = ../../Source/eksThreadWithProgressWindow.cpp; sourceTree = SOURCE_ROOT; };
 		2AD9CED9B05223793F797927 /* juce_audio_basics */ /* juce_audio_basics */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_audio_basics; path = ../../JuceLibraryCode/modules/juce_audio_basics; sourceTree = SOURCE_ROOT; };
 		2CB92281C5C417463EA20832 /* tuneComponent.h */ /* tuneComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = tuneComponent.h; path = ../../Source/tuneComponent.h; sourceTree = SOURCE_ROOT; };
@@ -269,14 +268,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		81A274A7B7D44B16EEDA1BE6 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				269F56875A5A8A228A302EE2,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
 		9E39F32C1BF5217D902DEEE5 /* GuitarFineTune */ = {
 			isa = PBXGroup;
 			children = (
@@ -288,7 +279,6 @@
 		C7DA57C6F0483BBE545059A4 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				81A274A7B7D44B16EEDA1BE6,
 				8A01971D90B2D6D952341A1A,
 				88B8B6386C47D16D91AFC3CC,
 				8E089090ECC4288D875C6231,
