@@ -149,9 +149,8 @@
                    androidVersionCode="77" androidKeyStore="../../../Android_Special/keystore.jks"
                    androidKeyStorePass="6taura" androidKeyAlias="upload" androidKeyAliasPass="6taura"
                    buildToolsVersion="30" androidPushNotifications="0" androidEnableContentSharing="1"
-                   gradleWrapperVersion="7.3.1" gradleVersion="7.4" smallIcon="RB4slw"
-                   bigIcon="DzMVX4" extraDefs="ANDROID_VERSION_CODE=77" androidExternalWriteNeeded="1"
-                   androidInternetNeeded="1" androidReadMediaAudioPermission="1"
+                   smallIcon="RB4slw" bigIcon="DzMVX4" extraDefs="ANDROID_VERSION_CODE=77"
+                   androidExternalWriteNeeded="1" androidInternetNeeded="1" androidReadMediaAudioPermission="1"
                    androidReadMediaImagesPermission="1" androidReadMediaVideoPermission="1">
       <CONFIGURATIONS>
         <CONFIGURATION name="Release" isDebug="0" targetName="GuitarFineTune" optimisation="3"/>
