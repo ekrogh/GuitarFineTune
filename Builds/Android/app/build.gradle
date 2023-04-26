@@ -2,19 +2,13 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 33
-    namespace "dk.eksit.guitarfinetunep"
+    namespace "dk.eksit.guitarfinetune"
     externalNativeBuild {
         cmake {
             path "CMakeLists.txt"
         }
     }
     signingConfigs {
-        debug {
-            storeFile file('D:\\Users\\eigil\\projects\\juceProjs\\GuitarFineTune\\Android_Special\\keystore.jks')
-            storePassword '6taura'
-            keyAlias 'upload'
-            keyPassword '6taura'
-        }
         juceSigning {
             storeFile     file("..${File.separator}..${File.separator}..${File.separator}Android_Special${File.separator}keystore.jks")
             storePassword "6taura"
@@ -25,7 +19,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "dk.eksit.guitarfinetunep"
+        applicationId "dk.eksit.guitarfinetune"
         minSdkVersion    16
         targetSdkVersion 33
         externalNativeBuild {
@@ -36,10 +30,7 @@ android {
     }
 
     buildTypes {
-         release {
-             signingConfig signingConfigs.debug
-         }
-        debug {
+         debug {
              initWith debug
              debuggable    true
              jniDebuggable true
