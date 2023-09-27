@@ -213,6 +213,7 @@ public:
 	void setAdaptiveNoSecondsComboBoxReady(bool isReady);
 	void setNoSecondsSoundPerCalcComboBoxReady(bool isReady);
 
+	void showAlertWindow(juce::String alertTitle, juce::String alertMessage);
 	bool audioSysInit( );
 
 	enum

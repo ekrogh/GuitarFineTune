@@ -87,7 +87,7 @@ AudioDeviceManager& getSharedAudioDeviceManager(int numInputChannels, int numOut
 					if (granted)
 					{
 						getSharedAudioDeviceManager(numInputChannels, numOutputChannels);
-						pTuneComponent->audioSysInit();
+						errorInGetSharedAudioDeviceManager = !(pTuneComponent->audioSysInit());
 					}
 					else
 					{
@@ -104,7 +104,7 @@ AudioDeviceManager& getSharedAudioDeviceManager(int numInputChannels, int numOut
 	{
 		if (!audioSysInitDone)
 		{
-			pTuneComponent->audioSysInit();
+			errorInGetSharedAudioDeviceManager = !(pTuneComponent->audioSysInit());
 
 			audioSysInitDone = true;
 		}
@@ -169,7 +169,7 @@ guitarFineTuneFirstClass::guitarFineTuneFirstClass()
 	: DocumentWindow(std::string(ProjectInfo::projectName)
 		+ " v. " + std::string(ProjectInfo::versionString)
 		+ "." + std::to_string(ANDROID_VERSION_CODE)
-        , Colour(0xFF20072B)
+		, Colour(0xFF20072B)
 		, DocumentWindow::allButtons)
 	, curCompntBnds(0, 0, widthOfTuneWindow, hightOfTuneWindow)
 #else
@@ -234,7 +234,7 @@ guitarFineTuneFirstClass::guitarFineTuneFirstClass()
 		std::make_shared<eksTabbedComponent>
 		(
 			SafePointer(this)
-        );
+		);
 
 #if ( JUCE_IOS )
 	{
@@ -242,7 +242,7 @@ guitarFineTuneFirstClass::guitarFineTuneFirstClass()
 			std::make_shared<tuneComponent>
 			(
 				pXmlGuitarFineTuneConfig, SafePointer(this)
-				);
+			);
 	}
 #else
 	{
@@ -250,7 +250,7 @@ guitarFineTuneFirstClass::guitarFineTuneFirstClass()
 			std::make_shared<tuneComponent>
 			(
 				pXmlGuitarFineTuneConfig
-				);
+			);
 	}
 #endif // #if ( JUCE_IOS )
 
@@ -260,19 +260,19 @@ guitarFineTuneFirstClass::guitarFineTuneFirstClass()
 			pXmlGuitarFineTuneConfig
 			, pGuitarFineTuneLookAndFeel
 			, addViewPort
-			);
+		);
 	pDisplayControlComponent = std::make_shared<displayControlComponent>
 		(
 			pXmlGuitarFineTuneConfig
 			, pGuitarFineTuneLookAndFeel
 			, addViewPort
-			);
+		);
 	pEksAudioControlComponent = std::make_shared<eksAudioControlComponent>
 		(
 			pXmlGuitarFineTuneConfig
 			, pGuitarFineTuneLookAndFeel
 			, addViewPort
-			);
+		);
 	pAboutPage = std::make_shared<aboutPage>();
 
 	pEksTabbedComponent->addTab
@@ -294,17 +294,17 @@ guitarFineTuneFirstClass::guitarFineTuneFirstClass()
 		pGuitarStringSoundsControlViewPort->setScrollBarsShown(true, true);
 		pGuitarStringSoundsControlViewPort->setScrollBarThickness(10);
 		pGuitarStringSoundsControlViewPort->setViewedComponent(pGuitarStringSoundsControl.get());
-		pGuitarStringSoundsControlViewPort->setScrollOnDragMode (juce::Viewport::ScrollOnDragMode::all);
+		pGuitarStringSoundsControlViewPort->setScrollOnDragMode(juce::Viewport::ScrollOnDragMode::all);
 		pDisplayControlComponentViewPort = std::make_shared<Viewport>("pDisplayControlComponentViewPort");
 		pDisplayControlComponentViewPort->setScrollBarsShown(true, true);
 		pDisplayControlComponentViewPort->setScrollBarThickness(10);
 		pDisplayControlComponentViewPort->setViewedComponent(pDisplayControlComponent.get());
-		pDisplayControlComponentViewPort->setScrollOnDragMode (juce::Viewport::ScrollOnDragMode::all);
+		pDisplayControlComponentViewPort->setScrollOnDragMode(juce::Viewport::ScrollOnDragMode::all);
 		pEksAudioControlComponentViewPort = std::make_shared<Viewport>("pEksAudioControlComponentViewPort");
 		pEksAudioControlComponentViewPort->setScrollBarsShown(true, true);
 		pEksAudioControlComponentViewPort->setScrollBarThickness(10);
 		pEksAudioControlComponentViewPort->setViewedComponent(pEksAudioControlComponent.get());
-		pEksAudioControlComponentViewPort->setScrollOnDragMode (juce::Viewport::ScrollOnDragMode::all);
+		pEksAudioControlComponentViewPort->setScrollOnDragMode(juce::Viewport::ScrollOnDragMode::all);
 
 		pEksTabbedComponent->addTab
 		(
@@ -376,62 +376,66 @@ guitarFineTuneFirstClass::guitarFineTuneFirstClass()
 
 	getSharedAudioDeviceManager(numInputChannels, numOutputChannels);
 
-	bGoSetSizes = true;
+	if (!errorInGetSharedAudioDeviceManager)
+	{
+		bGoSetSizes = true;
 
-	pTuneComponent->initObjects(pDisplayControlComponent);
-	//	pDisplayControlComponent->initControls();
+		pTuneComponent->initObjects(pDisplayControlComponent);
+		//	pDisplayControlComponent->initControls();
 
 #if (JUCE_WINDOWS || JUCE_MAC || JUCE_LINUX)
-	curCompntBnds.setBounds(0, 0, widthOfTuneWindow, hightOfTuneWindow + tabBarDepthMacWin);
-	setSize(curCompntBnds.getWidth(), curCompntBnds.getHeight()); // This
-	DocumentWindow::centreWithSize(widthOfGuitarStringSoundsControlWindowHorizontal, hightOfGuitarStringSoundsControlWindowHorizontal);
+		curCompntBnds.setBounds(0, 0, widthOfTuneWindow, hightOfTuneWindow + tabBarDepthMacWin);
+		setSize(curCompntBnds.getWidth(), curCompntBnds.getHeight()); // This
+		DocumentWindow::centreWithSize(widthOfGuitarStringSoundsControlWindowHorizontal, hightOfGuitarStringSoundsControlWindowHorizontal);
 #elif (JUCE_ANDROID || JUCE_IOS)
-	curCompntBnds = Desktop::getInstance().getDisplays().getPrimaryDisplay()->userArea;
-	BorderSize<int>  nonSafeArea = Desktop::getInstance().getDisplays().getPrimaryDisplay()->safeAreaInsets;
-	nonSafeArea.subtractFrom(curCompntBnds); // Remove non Safe area
+		curCompntBnds = Desktop::getInstance().getDisplays().getPrimaryDisplay()->userArea;
+		BorderSize<int>  nonSafeArea = Desktop::getInstance().getDisplays().getPrimaryDisplay()->safeAreaInsets;
+		nonSafeArea.subtractFrom(curCompntBnds); // Remove non Safe area
 #if ( JUCE_ANDROID )
-	if (curCompntBnds.getWidth() >= curCompntBnds.getHeight())  // Landscape
-	{
-		curCompntBnds.setBounds
-				(
-						(double)(curCompntBnds.getX())
-						, (double)(curCompntBnds.getY())
-						, (double)(curCompntBnds.getWidth()) - (double)androidTuneTabSafeMargin
-						, (double)(curCompntBnds.getHeight())
-				);
-	}
+		if (curCompntBnds.getWidth() >= curCompntBnds.getHeight())  // Landscape
+		{
+			curCompntBnds.setBounds
+			(
+				(double)(curCompntBnds.getX())
+				, (double)(curCompntBnds.getY())
+				, (double)(curCompntBnds.getWidth()) - (double)androidTuneTabSafeMargin
+				, (double)(curCompntBnds.getHeight())
+			);
+		}
 #endif // #if ( JUCE_ANDROID )
 #if ( JUCE_IOS )
-	if (thisiPhoneiPadNeedsSafeArea())
-	{
-		if (curCompntBnds.getHeight() >= curCompntBnds.getWidth())
+		if (thisiPhoneiPadNeedsSafeArea())
 		{
-			curCompntBnds.reduce(0, iOSSafeMargin);
+			if (curCompntBnds.getHeight() >= curCompntBnds.getWidth())
+			{
+				curCompntBnds.reduce(0, iOSSafeMargin);
+			}
+			else
+			{
+				curCompntBnds.removeFromLeft(iOSSafeMargin);
+				curCompntBnds.removeFromRight(iOSSafeMargin);
+			}
 		}
-		else
-		{
-			curCompntBnds.removeFromLeft(iOSSafeMargin);
-			curCompntBnds.removeFromRight(iOSSafeMargin);
-		}
-	}
 #endif
 #endif
-	setUsingNativeTitleBar(true);
+		setUsingNativeTitleBar(true);
 #if JUCE_MAC || JUCE_LINUX
-	setTitleBarButtonsRequired(closeButton | minimiseButton, true);
+		setTitleBarButtonsRequired(closeButton | minimiseButton, true);
 #else // JUCE_WINDOWS
-	setTitleBarButtonsRequired(closeButton | minimiseButton, false);
+		setTitleBarButtonsRequired(closeButton | minimiseButton, false);
 #endif // JUCE_MAC || JUCE_LINUX
-	setResizable(false, false);
-	//	setResizable(true, true);
-	DocumentWindow::setVisible(true);
-	setContentOwned(pEksTabbedComponent.get(), true);
+		setResizable(false, false);
+		//	setResizable(true, true);
+		DocumentWindow::setVisible(true);
+		setContentOwned(pEksTabbedComponent.get(), true);
 
-	pEksAudioControlComponent->resized();
+		pEksAudioControlComponent->resized();
 
-	setLookAndFeel(pGuitarFineTuneLookAndFeel.get());
+		setLookAndFeel(pGuitarFineTuneLookAndFeel.get());
 
-	pDisplayControlComponent->initControls();
+		pDisplayControlComponent->initControls();
+	}
+
 }
 
 void guitarFineTuneFirstClass::currentTabChanged(int newCurrentTabIndex, const String& /*newCurrentTabName*/)
@@ -445,7 +449,7 @@ void guitarFineTuneFirstClass::currentTabChanged(int newCurrentTabIndex, const S
 		curCompntBnds = Desktop::getInstance().getDisplays().getPrimaryDisplay()->userArea;
 
 
-        // JUCE 7 takes care of safe areas !!!!
+		// JUCE 7 takes care of safe areas !!!!
 //#if ( JUCE_ANDROID )
 //		if
 //		(

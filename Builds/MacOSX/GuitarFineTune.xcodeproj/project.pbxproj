@@ -54,6 +54,7 @@
 		E6E556E527BBB88118CF602F /* xmlGuitarFineTuneConfig.cpp */ = {isa = PBXBuildFile; fileRef = DE04C8CA3FF610024C6D4532; };
 		E85CA4C004ECE7697ED5A421 /* tuneComponent.cpp */ = {isa = PBXBuildFile; fileRef = 9A1F14BFB81F76671EE8E50B; };
 		F0E88D3D5F52185C0A75F733 /* DiscRecording.framework */ = {isa = PBXBuildFile; fileRef = BDCED611BD3BAFC0FD2DB205; };
+		F2B7AE95A6F95E65015CF22B /* Security.framework */ = {isa = PBXBuildFile; fileRef = C9C3FA25D6AC03D348D5E42C; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -131,6 +132,7 @@
 		BF256F6C10EF6FAFC2A585BB /* include_juce_core.mm */ /* include_juce_core.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_core.mm; path = ../../JuceLibraryCode/include_juce_core.mm; sourceTree = SOURCE_ROOT; };
 		C2B38450ACA722D49B2D29A2 /* helpPage.cpp */ /* helpPage.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = helpPage.cpp; path = ../../Source/helpPage.cpp; sourceTree = SOURCE_ROOT; };
 		C30445FF2F4399E1396CC52A /* eksAudioControlComponent.cpp */ /* eksAudioControlComponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = eksAudioControlComponent.cpp; path = ../../Source/eksAudioControlComponent.cpp; sourceTree = SOURCE_ROOT; };
+		C9C3FA25D6AC03D348D5E42C /* Security.framework */ /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		C9F9E8F883FAD092F16C8D8F /* fineTune_icon_Small.png */ /* fineTune_icon_Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fineTune_icon_Small.png; path = ../../Source/fineTune_icon_Small.png; sourceTree = SOURCE_ROOT; };
 		CCD63AFC809E66052D28C4CA /* CoreMIDI.framework */ /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = System/Library/Frameworks/CoreMIDI.framework; sourceTree = SDKROOT; };
 		CD1EED5A10971AA8EAF940B0 /* include_juce_events.mm */ /* include_juce_events.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_events.mm; path = ../../JuceLibraryCode/include_juce_events.mm; sourceTree = SOURCE_ROOT; };
@@ -165,6 +167,7 @@
 				1512CF295A23D592C1E8FC41,
 				5F3E28A9D8ABD4CC342D1965,
 				25D4A7699E4D95E4562973C5,
+				F2B7AE95A6F95E65015CF22B,
 				A76933CD947F74A1A340547E,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -217,6 +220,7 @@
 				A640E97D4B90CE3C55DC7600,
 				2DCE8865F812F11BFE50B518,
 				A44D165D613999DC222406FC,
+				C9C3FA25D6AC03D348D5E42C,
 				6A66D46C1FBEDAD6A106A536,
 			);
 			name = Frameworks;

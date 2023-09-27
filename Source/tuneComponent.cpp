@@ -180,14 +180,18 @@ bool tuneComponent::openAudioDeviceThatWillOpenWithLegalSampleRate()
 			, nullptr
 		);
 #else
-		juce::AlertWindow::showMessageBoxAsync
-		(
-			juce::AlertWindow::WarningIcon
-			, "Found no usable audio device!"
-			, "Try to connect another\naudio device"
-			, "Quit"
-			, nullptr
-		);
+		juce::String attle = "Found no usable audio device!";
+		juce::String amsg = "Try to connect another\naudio device,\nmicrophone and/or speaker";
+		showAlertWindow(attle, amsg);
+
+		//juce::AlertWindow::showMessageBoxAsync
+		//(
+		//	juce::AlertWindow::WarningIcon
+		//	, "Found no usable audio device!"
+		//	, "Try to connect another\naudio device"
+		//	, "Quit"
+		//	, nullptr
+		//);
 #endif
 		return false;
 	}
@@ -195,6 +199,68 @@ bool tuneComponent::openAudioDeviceThatWillOpenWithLegalSampleRate()
 	return true;
 }
 
+void tuneComponent::showAlertWindow(juce::String alertTitle, juce::String alertMessage)
+{
+	auto* alertWindow = new AlertWindow(alertTitle,
+		alertMessage,
+		MessageBoxIconType::WarningIcon);
+
+	//alertWindow->addTextBlock("Text block");
+	//alertWindow->addComboBox("Combo box", { "Combo box", "Item 2", "Item 3" });
+	//alertWindow->addTextEditor("Text editor", "Text editor");
+	//alertWindow->addTextEditor("Password", "password", "including for passwords", true);
+	//alertWindowCustomComponent.emplace();
+	//alertWindow->addCustomComponent(&(*alertWindowCustomComponent));
+	//alertWindow->addTextBlock("Progress bar");
+	//alertWindow->addProgressBarComponent(alertWindowCustomComponent->value, ProgressBar::Style::linear);
+	//alertWindow->addProgressBarComponent(alertWindowCustomComponent->value, ProgressBar::Style::circular);
+	alertWindow->addTextBlock("Press OK button to close the window");
+
+	enum AlertWindowResult
+	{
+		okButtonPressed,
+		button1Pressed,
+		button2Pressed
+	};
+
+	alertWindow->addButton("OK", AlertWindowResult::okButtonPressed);
+	//alertWindow->addButton("Button 2", AlertWindowResult::button2Pressed);
+
+	RectanglePlacement placement{ RectanglePlacement::yMid
+								   | RectanglePlacement::xLeft
+								   | RectanglePlacement::doNotResize };
+
+	//alertWindow->setBounds(placement.appliedTo(alertWindow->getBounds(), getDisplayArea()));
+
+	//alertWindowResult.setText("", dontSendNotification);
+	//alertWindow->enterModalState(true, nullptr, true);
+	alertWindow->enterModalState(true, ModalCallbackFunction::create([ref = SafePointer{ this }](int result)
+		{
+			if (ref == nullptr)
+				return;
+
+			const auto text = [&]
+				{
+					switch (result)
+					{
+					case okButtonPressed:
+						{
+							sharedAudioDeviceManager->closeAudioDevice();
+							JUCEApplication::getInstance()->systemRequestedQuit();
+
+							return "OK";
+						}
+					case button1Pressed:
+						return "Dismissed the Alert Window using Button 1";
+					case button2Pressed:
+						return "Dismissed the Alert Window using Button 2";
+					}
+
+					return "Unhandled event when dismissing the Alert Window";
+				}();
+
+		}), true);
+}
 
 bool tuneComponent::audioSysInit()
 {
@@ -217,7 +283,7 @@ bool tuneComponent::audioSysInit()
 			if (!openAudioDeviceThatWillOpenWithLegalSampleRate())
 			{
 				sharedAudioDeviceManager->closeAudioDevice();
-				JUCEApplication::getInstance()->systemRequestedQuit();
+				//JUCEApplication::getInstance()->systemRequestedQuit();
 				return false;
 			}
 		}
@@ -230,7 +296,7 @@ bool tuneComponent::audioSysInit()
 			if (!openAudioDeviceThatWillOpenWithLegalSampleRate())
 			{
 				sharedAudioDeviceManager->closeAudioDevice();
-				JUCEApplication::getInstance()->systemRequestedQuit();
+				//JUCEApplication::getInstance()->systemRequestedQuit();
 				return false;
 			}
 		}
@@ -247,7 +313,7 @@ bool tuneComponent::audioSysInit()
 		if (!openAudioDeviceThatWillOpenWithLegalSampleRate())
 		{
 			sharedAudioDeviceManager->closeAudioDevice();
-			JUCEApplication::getInstance()->systemRequestedQuit();
+			//JUCEApplication::getInstance()->systemRequestedQuit();
 			return false;
 		}
 	}
@@ -336,21 +402,20 @@ bool tuneComponent::audioSysInit()
 			possibleError = sharedAudioDeviceManager->setAudioDeviceSetup(currentAudioConfig, true);
 			if (possibleError.isNotEmpty())
 			{
-				//int lastIndxOfSound = possibleError.lastIndexOfIgnoreCase("Sound");
-				//if (lastIndxOfSound > 0)
-				//{
-				//	possibleError = possibleError.replaceSection(possibleError.indexOfChar(lastIndxOfSound, ' '), 1, "\n");
-				//}
-				AlertWindow::showOkCancelBox
-				(
-					AlertWindow::WarningIcon
-					, TRANS("Error when trying to\nconfigure audio!")
-					, possibleError + "\nHave you enabled access to the Microphone in Privacy Settings?"
-					, ""
-					, ""
-					, nullptr
-					, nullptr
-				);
+				juce::String attle = "Error when trying to\nconfigure audio!";
+				juce::String amsg = possibleError + "Is a speaker and microphone connected\nand have you enabled access to the Microphone in Privacy Settings?";
+				showAlertWindow(attle, amsg);
+
+				//AlertWindow::showOkCancelBox
+				//(
+				//	AlertWindow::WarningIcon
+				//	, TRANS("Error when trying to\nconfigure audio!")
+				//	, possibleError + "\nHave you enabled access to the Microphone in Privacy Settings?"
+				//	, ""
+				//	, ""
+				//	, nullptr
+				//	, nullptr
+				//);
 			}
 			// Get the actual config.
 			sharedAudioDeviceManager->getAudioDeviceSetup(currentAudioConfig);
