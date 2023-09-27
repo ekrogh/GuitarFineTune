@@ -205,15 +205,6 @@ void tuneComponent::showAlertWindow(juce::String alertTitle, juce::String alertM
 		alertMessage,
 		MessageBoxIconType::WarningIcon);
 
-	//alertWindow->addTextBlock("Text block");
-	//alertWindow->addComboBox("Combo box", { "Combo box", "Item 2", "Item 3" });
-	//alertWindow->addTextEditor("Text editor", "Text editor");
-	//alertWindow->addTextEditor("Password", "password", "including for passwords", true);
-	//alertWindowCustomComponent.emplace();
-	//alertWindow->addCustomComponent(&(*alertWindowCustomComponent));
-	//alertWindow->addTextBlock("Progress bar");
-	//alertWindow->addProgressBarComponent(alertWindowCustomComponent->value, ProgressBar::Style::linear);
-	//alertWindow->addProgressBarComponent(alertWindowCustomComponent->value, ProgressBar::Style::circular);
 	alertWindow->addTextBlock("Press OK button to close the window");
 
 	enum AlertWindowResult
@@ -224,16 +215,11 @@ void tuneComponent::showAlertWindow(juce::String alertTitle, juce::String alertM
 	};
 
 	alertWindow->addButton("OK", AlertWindowResult::okButtonPressed);
-	//alertWindow->addButton("Button 2", AlertWindowResult::button2Pressed);
 
 	RectanglePlacement placement{ RectanglePlacement::yMid
 								   | RectanglePlacement::xLeft
 								   | RectanglePlacement::doNotResize };
 
-	//alertWindow->setBounds(placement.appliedTo(alertWindow->getBounds(), getDisplayArea()));
-
-	//alertWindowResult.setText("", dontSendNotification);
-	//alertWindow->enterModalState(true, nullptr, true);
 	alertWindow->enterModalState(true, ModalCallbackFunction::create([ref = SafePointer{ this }](int result)
 		{
 			if (ref == nullptr)
@@ -250,13 +236,8 @@ void tuneComponent::showAlertWindow(juce::String alertTitle, juce::String alertM
 
 							return "OK";
 						}
-					case button1Pressed:
-						return "Dismissed the Alert Window using Button 1";
-					case button2Pressed:
-						return "Dismissed the Alert Window using Button 2";
 					}
 
-					return "Unhandled event when dismissing the Alert Window";
 				}();
 
 		}), true);
