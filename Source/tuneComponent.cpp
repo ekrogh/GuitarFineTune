@@ -207,14 +207,7 @@ void tuneComponent::showAlertWindow(juce::String alertTitle, juce::String alertM
 
 	alertWindow->addTextBlock("Press OK button to close the window");
 
-	enum AlertWindowResult
-	{
-		okButtonPressed,
-		button1Pressed,
-		button2Pressed
-	};
-
-	alertWindow->addButton("OK", AlertWindowResult::okButtonPressed);
+	alertWindow->addButton("OK", 0);
 
 	RectanglePlacement placement{ RectanglePlacement::yMid
 								   | RectanglePlacement::xLeft
@@ -222,23 +215,10 @@ void tuneComponent::showAlertWindow(juce::String alertTitle, juce::String alertM
 
 	alertWindow->enterModalState(true, ModalCallbackFunction::create([ref = SafePointer{ this }](int result)
 		{
-			if (ref == nullptr)
-				return;
+            sharedAudioDeviceManager->closeAudioDevice();
+            JUCEApplication::getInstance()->systemRequestedQuit();
 
-			const auto text = [&]
-				{
-					switch (result)
-					{
-					case okButtonPressed:
-						{
-							sharedAudioDeviceManager->closeAudioDevice();
-							JUCEApplication::getInstance()->systemRequestedQuit();
-
-							return "OK";
-						}
-					}
-
-				}();
+            return "OK";
 
 		}), true);
 }
