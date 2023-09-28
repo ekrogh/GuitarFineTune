@@ -420,7 +420,7 @@ void AudioRecorderControl::stopRecording()
 	SafePointer<AudioRecorderControl> safeThis(this);
 	File fileToShare = lastRecording;
 
-	ContentSharer::getInstance()->shareFiles(Array<URL>({ URL(fileToShare) }),
+	ContentSharer::shareFilesScoped(Array<URL>({ URL(fileToShare) }),
 		[safeThis, fileToShare](bool success, const String& error)
 		{
 			if (fileToShare.existsAsFile())
