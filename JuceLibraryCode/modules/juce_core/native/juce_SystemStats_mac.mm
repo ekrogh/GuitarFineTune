@@ -136,6 +136,8 @@ SystemStats::OperatingSystemType SystemStats::getOperatingSystemType()
         case 11: return MacOS_11;
         case 12: return MacOS_12;
         case 13: return MacOS_13;
+    // eks 28. sep. 2023 added case 14
+        case 14: return MacOS_14;
     }
 
     return MacOSX;

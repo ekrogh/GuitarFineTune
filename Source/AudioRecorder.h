@@ -68,6 +68,7 @@
 using namespace std;
 using namespace std::chrono;
 
+
 //==============================================================================
 /** A simple class that acts as an AudioIODeviceCallback and writes the
 	incoming audio data to a WAV file.
@@ -181,6 +182,11 @@ private:
 	File lastRecording;
 
 	std::unique_ptr<FileChooser> myChooser;
+
+//        struct MessageBoxOwnerComponent : public Component
+//        {
+            ScopedMessageBox messageBox;
+//        };
 
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(AudioRecorderControl)
 };

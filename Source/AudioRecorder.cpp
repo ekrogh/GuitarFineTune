@@ -52,6 +52,7 @@
 
 #include "AudioRecorder.h"
 
+
 //==============================================================================
 /** A simple class that acts as an AudioIODeviceCallback and writes the
 	incoming audio data to a WAV file.
@@ -420,18 +421,28 @@ void AudioRecorderControl::stopRecording()
 	SafePointer<AudioRecorderControl> safeThis(this);
 	File fileToShare = lastRecording;
 
-	ContentSharer::shareFilesScoped(Array<URL>({ URL(fileToShare) }),
+    messageBox =
+        ContentSharer::shareFilesScoped(Array<URL>({ URL(fileToShare) }),
 		[safeThis, fileToShare](bool success, const String& error)
 		{
-			if (fileToShare.existsAsFile())
-				fileToShare.deleteFile();
+            auto resultString = success ? String ("success") : ("failure\n (error: " + error + ")");
 
-			if (!success && error.isNotEmpty())
-			{
-				NativeMessageBox::showMessageBoxAsync(AlertWindow::WarningIcon,
-					"Sharing Error",
-					error);
-			}
+            safeThis->messageBox = AlertWindow::showScopedAsync (MessageBoxOptions()
+                                                                .withIconType (MessageBoxIconType::InfoIcon)
+                                                                .withTitle ("Sharing Files Result")
+                                                                .withMessage ("Sharing files finished\nwith " + resultString)
+                                                                .withButton ("OK"),
+                                                            nullptr);
+            
+//			if (fileToShare.existsAsFile())
+//				fileToShare.deleteFile();
+//
+//			if (!success && error.isNotEmpty())
+//			{
+//				NativeMessageBox::showMessageBoxAsync(AlertWindow::WarningIcon,
+//					"Sharing Error",
+//					error);
+//			}
 		});
 #else
 
