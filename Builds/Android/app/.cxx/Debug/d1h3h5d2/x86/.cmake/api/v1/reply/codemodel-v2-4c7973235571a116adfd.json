@@ -1,0 +1,69 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.6.0"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "juce_jni_project",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "cpufeatures::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-cpufeatures-Debug-54bd85519293764bf703.json",
+					"name" : "cpufeatures",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "juce_jni::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-juce_jni-Debug-4fbf4f5aa67f24f85e4e.json",
+					"name" : "juce_jni",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "D:/Users/eigil/projects/juceProjs/GuitarFineTune/Builds/Android/app/.cxx/Debug/d1h3h5d2/x86",
+		"source" : "D:/Users/eigil/projects/juceProjs/GuitarFineTune/Builds/Android/app"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}
