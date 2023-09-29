@@ -115,19 +115,19 @@
         <MODULEPATH id="juce_dsp" path="../JUCE/modules"/>
       </MODULEPATHS>
     </XCODE_MAC>
-    <XCODE_IPHONE targetFolder="Builds/iOS" iosScreenOrientation="UIInterfaceOrientationLandscapeLeft,UIInterfaceOrientationLandscapeRight,UIInterfaceOrientationPortrait"
+    <XCODE_IPHONE targetFolder="Builds/iOS" iosScreenOrientation="UIInterfaceOrientationLandscapeLeft,UIInterfaceOrientationLandscapeRight,UIInterfaceOrientationPortrait,UIInterfaceOrientationPortraitUpsideDown"
                   iosDevelopmentTeamID="4657Q2Y6NH" smallIcon="RB4slw" bigIcon="DzMVX4"
                   iosBackgroundAudio="1" iosBackgroundBle="0" microphonePermissionNeeded="1"
                   keepCustomXcodeSchemes="1" useHeaderMap="1" extraDefs="THIS_IS_IOS = 1&#10;"
                   iPadScreenOrientation="UIInterfaceOrientationLandscapeLeft,UIInterfaceOrientationLandscapeRight,UIInterfaceOrientationPortrait,UIInterfaceOrientationPortraitUpsideDown"
                   iosPushNotifications="0" microphonePermissionsText="This is an audio app which requires audio input. If you do not have an external audio interface connected it will use the microphone."
                   iCloudPermissions="1" pListPreprocess="1" customLaunchStoryboard="iOS_Special/Launch Screen.storyboard"
-                  UIFileSharingEnabled="1" iosBluetoothPermissionNeeded="1">
+                  UIFileSharingEnabled="1" iosBluetoothPermissionNeeded="1" buildNumber="79">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" isDebug="1" targetName="GuitarFineTune" cppLanguageStandard="c++14"
                        iosCompatibility="11.0" iosDeploymentTarget="11.0"/>
         <CONFIGURATION name="Release" isDebug="0" targetName="GuitarFineTune" cppLanguageStandard="c++14"
-                       iosCompatibility="11.0" linkTimeOptimisation="1" iosDeploymentTarget="11.0"/>
+                       iosCompatibility="12.0" linkTimeOptimisation="1" iosDeploymentTarget="12.0"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_gui_extra" path="../JUCE/modules"/>

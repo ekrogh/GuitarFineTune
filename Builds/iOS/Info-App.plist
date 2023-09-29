@@ -30,7 +30,7 @@
     <key>CFBundleShortVersionString</key>
     <string>10.9.3</string>
     <key>CFBundleVersion</key>
-    <string>10.9.3</string>
+    <string>79</string>
     <key>NSHumanReadableCopyright</key>
     <string>eksit</string>
     <key>NSHighResolutionCapable</key>
@@ -40,12 +40,6 @@
     <key>UIRequiresFullScreen</key>
     <true/>
     <key>UISupportedInterfaceOrientations</key>
-    <array>
-      <string>UIInterfaceOrientationLandscapeLeft</string>
-      <string>UIInterfaceOrientationLandscapeRight</string>
-      <string>UIInterfaceOrientationPortrait</string>
-    </array>
-    <key>UISupportedInterfaceOrientations~ipad</key>
     <array>
       <string>UIInterfaceOrientationLandscapeLeft</string>
       <string>UIInterfaceOrientationLandscapeRight</string>
