@@ -95,10 +95,12 @@
                buildNumber="79">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" isDebug="1" targetName="GuitarFineTune" binaryPath="/Applications"
-                       cppLanguageStandard="c++14" libraryPath="" headerPath="" customXcodeFlags="INSTALL_PATH = &quot;/Applications&quot;"/>
+                       cppLanguageStandard="c++14" libraryPath="" headerPath="" customXcodeFlags="INSTALL_PATH = &quot;/Applications&quot;"
+                       macOSDeploymentTarget="12.0" osxCompatibility="12.0 SDK"/>
         <CONFIGURATION name="Release" isDebug="0" targetName="GuitarFineTune" binaryPath=""
                        defines="" cppLanguageStandard="c++14" headerPath="" libraryPath=""
-                       customXcodeFlags="INSTALL_PATH = &quot;/Applications&quot;" linkTimeOptimisation="1"/>
+                       customXcodeFlags="INSTALL_PATH = &quot;/Applications&quot;" linkTimeOptimisation="1"
+                       macOSDeploymentTarget="12.0" osxCompatibility="12.0 SDK"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_gui_extra" path="../JUCE/modules"/>
@@ -122,10 +124,11 @@
                   iPadScreenOrientation="UIInterfaceOrientationLandscapeLeft,UIInterfaceOrientationLandscapeRight,UIInterfaceOrientationPortrait,UIInterfaceOrientationPortraitUpsideDown"
                   iosPushNotifications="0" microphonePermissionsText="This is an audio app which requires audio input. If you do not have an external audio interface connected it will use the microphone."
                   iCloudPermissions="1" pListPreprocess="1" customLaunchStoryboard="iOS_Special/Launch Screen.storyboard"
-                  UIFileSharingEnabled="1" iosBluetoothPermissionNeeded="1" buildNumber="79">
+                  UIFileSharingEnabled="1" iosBluetoothPermissionNeeded="1" buildNumber="79"
+                  customPList="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#10;&#10;&lt;!DOCTYPE plist PUBLIC &quot;-//Apple//DTD PLIST 1.0//EN&quot; &quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&quot;&gt;&#10;&lt;plist&gt;&#10;  &lt;dict&gt;&#10;    &lt;key&gt;LSMinimumSystemVersion&lt;/key&gt;&#10;    &lt;string&gt;12.0&lt;/string&gt;&#10;  &lt;/dict&gt;&#10;&lt;/plist&gt;&#10;">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" isDebug="1" targetName="GuitarFineTune" cppLanguageStandard="c++14"
-                       iosCompatibility="11.0" iosDeploymentTarget="11.0"/>
+                       iosCompatibility="12.0" iosDeploymentTarget="12.0"/>
         <CONFIGURATION name="Release" isDebug="0" targetName="GuitarFineTune" cppLanguageStandard="c++14"
                        iosCompatibility="12.0" linkTimeOptimisation="1" iosDeploymentTarget="12.0"/>
       </CONFIGURATIONS>
