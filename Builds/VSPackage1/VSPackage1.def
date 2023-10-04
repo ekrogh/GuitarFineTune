@@ -1,7 +1,0 @@
-﻿; VSPackage1.def : Declares the module parameters.
-
-LIBRARY      "VSPackage1.DLL"
-
-EXPORTS
-	DllCanUnloadNow            PRIVATE
-	DllGetClassObject          PRIVATE
