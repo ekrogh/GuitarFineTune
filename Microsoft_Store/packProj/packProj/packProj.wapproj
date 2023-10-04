@@ -162,4 +162,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\Builds\VisualStudio2022\GuitarFineTune_App.vcxproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
 </Project>
