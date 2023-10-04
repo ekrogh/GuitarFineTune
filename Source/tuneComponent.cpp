@@ -1554,7 +1554,8 @@ void tuneComponent::run()
 
 #if (JUCE_IOS || JUCE_MAC || JUCE_LINUX)
 #if (JUCE_MAC || JUCE_LINUX)
-	if (SystemStats::getOperatingSystemType() >= SystemStats::MacOSX_10_14)
+//    if (SystemStats::getOperatingSystemType() >= SystemStats::MacOSX_10_14)
+    if (!(SystemStats::getOperatingSystemType() < SystemStats::MacOSX_10_14))
 	{
 #endif
 		AudioIODevice* CurrentAudioDevice = sharedAudioDeviceManager->getCurrentAudioDevice();
