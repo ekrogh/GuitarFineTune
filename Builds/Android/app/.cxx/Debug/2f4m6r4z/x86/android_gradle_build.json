@@ -1,0 +1,51 @@
+{
+  "buildFiles": [
+    "D:\\Users\\eigil\\projects\\juceProjs\\GuitarFineTune\\Builds\\Android\\app\\CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "D:\\android\\android-sdk\\cmake\\3.22.1\\bin\\ninja.exe",
+      "-C",
+      "D:\\Users\\eigil\\projects\\juceProjs\\GuitarFineTune\\Builds\\Android\\app\\.cxx\\Debug\\2f4m6r4z\\x86",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "D:\\android\\android-sdk\\cmake\\3.22.1\\bin\\ninja.exe",
+    "-C",
+    "D:\\Users\\eigil\\projects\\juceProjs\\GuitarFineTune\\Builds\\Android\\app\\.cxx\\Debug\\2f4m6r4z\\x86",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {
+    "cpufeatures::@6890427a1f51a3e7e1df": {
+      "toolchain": "toolchain",
+      "abi": "x86",
+      "artifactName": "cpufeatures",
+      "output": "D:\\Users\\eigil\\projects\\juceProjs\\GuitarFineTune\\Builds\\Android\\app\\.cxx\\Debug\\2f4m6r4z\\x86\\libcpufeatures.a"
+    },
+    "juce_jni::@6890427a1f51a3e7e1df": {
+      "toolchain": "toolchain",
+      "abi": "x86",
+      "artifactName": "juce_jni",
+      "output": "D:\\Users\\eigil\\projects\\juceProjs\\GuitarFineTune\\Builds\\Android\\app\\build\\intermediates\\cxx\\Debug\\2f4m6r4z\\obj\\x86\\libjuce_jni.so",
+      "runtimeFiles": [
+        "D:\\android\\android-sdk\\ndk\\25.2.9519653\\toolchains\\llvm\\prebuilt\\windows-x86_64\\sysroot\\usr\\lib\\i686-linux-android\\19\\liblog.so",
+        "D:\\android\\android-sdk\\ndk\\25.2.9519653\\toolchains\\llvm\\prebuilt\\windows-x86_64\\sysroot\\usr\\lib\\i686-linux-android\\19\\libandroid.so",
+        "D:\\android\\android-sdk\\ndk\\25.2.9519653\\toolchains\\llvm\\prebuilt\\windows-x86_64\\sysroot\\usr\\lib\\i686-linux-android\\19\\libGLESv2.so",
+        "D:\\android\\android-sdk\\ndk\\25.2.9519653\\toolchains\\llvm\\prebuilt\\windows-x86_64\\sysroot\\usr\\lib\\i686-linux-android\\19\\libEGL.so"
+      ]
+    }
+  },
+  "toolchains": {
+    "toolchain": {
+      "cCompilerExecutable": "D:\\android\\android-sdk\\ndk\\25.2.9519653\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang.exe",
+      "cppCompilerExecutable": "D:\\android\\android-sdk\\ndk\\25.2.9519653\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang++.exe"
+    }
+  },
+  "cFileExtensions": [
+    "c"
+  ],
+  "cppFileExtensions": [
+    "cpp"
+  ]
+}

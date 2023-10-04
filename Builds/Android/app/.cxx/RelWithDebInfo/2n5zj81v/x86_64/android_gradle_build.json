@@ -1,0 +1,51 @@
+{
+  "buildFiles": [
+    "D:\\Users\\eigil\\projects\\juceProjs\\GuitarFineTune\\Builds\\Android\\app\\CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "D:\\Users\\eigil\\AppData\\Local\\Android\\Sdk\\cmake\\3.22.1\\bin\\ninja.exe",
+      "-C",
+      "D:\\Users\\eigil\\projects\\juceProjs\\GuitarFineTune\\Builds\\Android\\app\\.cxx\\RelWithDebInfo\\2n5zj81v\\x86_64",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "D:\\Users\\eigil\\AppData\\Local\\Android\\Sdk\\cmake\\3.22.1\\bin\\ninja.exe",
+    "-C",
+    "D:\\Users\\eigil\\projects\\juceProjs\\GuitarFineTune\\Builds\\Android\\app\\.cxx\\RelWithDebInfo\\2n5zj81v\\x86_64",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {
+    "cpufeatures::@6890427a1f51a3e7e1df": {
+      "toolchain": "toolchain",
+      "abi": "x86_64",
+      "artifactName": "cpufeatures",
+      "output": "D:\\Users\\eigil\\projects\\juceProjs\\GuitarFineTune\\Builds\\Android\\app\\.cxx\\RelWithDebInfo\\2n5zj81v\\x86_64\\libcpufeatures.a"
+    },
+    "juce_jni::@6890427a1f51a3e7e1df": {
+      "toolchain": "toolchain",
+      "abi": "x86_64",
+      "artifactName": "juce_jni",
+      "output": "D:\\Users\\eigil\\projects\\juceProjs\\GuitarFineTune\\Builds\\Android\\app\\build\\intermediates\\cxx\\RelWithDebInfo\\2n5zj81v\\obj\\x86_64\\libjuce_jni.so",
+      "runtimeFiles": [
+        "D:\\Users\\eigil\\AppData\\Local\\Android\\Sdk\\ndk\\25.2.9519653\\toolchains\\llvm\\prebuilt\\windows-x86_64\\sysroot\\usr\\lib\\x86_64-linux-android\\21\\liblog.so",
+        "D:\\Users\\eigil\\AppData\\Local\\Android\\Sdk\\ndk\\25.2.9519653\\toolchains\\llvm\\prebuilt\\windows-x86_64\\sysroot\\usr\\lib\\x86_64-linux-android\\21\\libandroid.so",
+        "D:\\Users\\eigil\\AppData\\Local\\Android\\Sdk\\ndk\\25.2.9519653\\toolchains\\llvm\\prebuilt\\windows-x86_64\\sysroot\\usr\\lib\\x86_64-linux-android\\21\\libGLESv2.so",
+        "D:\\Users\\eigil\\AppData\\Local\\Android\\Sdk\\ndk\\25.2.9519653\\toolchains\\llvm\\prebuilt\\windows-x86_64\\sysroot\\usr\\lib\\x86_64-linux-android\\21\\libEGL.so"
+      ]
+    }
+  },
+  "toolchains": {
+    "toolchain": {
+      "cCompilerExecutable": "D:\\Users\\eigil\\AppData\\Local\\Android\\Sdk\\ndk\\25.2.9519653\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang.exe",
+      "cppCompilerExecutable": "D:\\Users\\eigil\\AppData\\Local\\Android\\Sdk\\ndk\\25.2.9519653\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang++.exe"
+    }
+  },
+  "cFileExtensions": [
+    "c"
+  ],
+  "cppFileExtensions": [
+    "cpp"
+  ]
+}
