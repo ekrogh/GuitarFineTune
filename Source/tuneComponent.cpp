@@ -213,7 +213,7 @@ void tuneComponent::showAlertWindow(juce::String alertTitle, juce::String alertM
 								   | RectanglePlacement::xLeft
 								   | RectanglePlacement::doNotResize };
 
-	alertWindow->enterModalState(true, ModalCallbackFunction::create([ref = SafePointer{ this }](int result)
+	alertWindow->enterModalState(true, ModalCallbackFunction::create([ref = SafePointer{ this }](int)
 		{
             sharedAudioDeviceManager->closeAudioDevice();
             JUCEApplication::getInstance()->systemRequestedQuit();

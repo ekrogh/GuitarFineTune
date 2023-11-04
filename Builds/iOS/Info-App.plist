@@ -30,9 +30,9 @@
     <key>CFBundleSignature</key>
     <string>????</string>
     <key>CFBundleShortVersionString</key>
-    <string>10.10.4</string>
+    <string>10.11.5</string>
     <key>CFBundleVersion</key>
-    <string>80</string>
+    <string>81</string>
     <key>NSHumanReadableCopyright</key>
     <string>eksit</string>
     <key>NSHighResolutionCapable</key>
