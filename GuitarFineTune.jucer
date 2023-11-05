@@ -94,13 +94,12 @@
                bundleIdentifier="dk.eksIt.guitarFineTuneOSX" applicationCategory="public.app-category.utilities"
                buildNumber="81">
       <CONFIGURATIONS>
-        <CONFIGURATION name="Debug" isDebug="1" targetName="GuitarFineTune" binaryPath="/Applications"
-                       cppLanguageStandard="c++14" libraryPath="" headerPath="" customXcodeFlags="INSTALL_PATH = &quot;/Applications&quot;"
+        <CONFIGURATION name="Debug" isDebug="1" targetName="GuitarFineTune" cppLanguageStandard="c++14"
+                       libraryPath="" headerPath="" customXcodeFlags="INSTALL_PATH = &quot;/Applications&quot;"
                        macOSDeploymentTarget="12.0" osxCompatibility="12.0 SDK"/>
         <CONFIGURATION name="Release" isDebug="0" targetName="GuitarFineTune" binaryPath=""
                        defines="" cppLanguageStandard="c++14" headerPath="" libraryPath=""
-                       customXcodeFlags="INSTALL_PATH = &quot;/Applications&quot;" linkTimeOptimisation="1"
-                       macOSDeploymentTarget="12.0" osxCompatibility="12.0 SDK"/>
+                       linkTimeOptimisation="1" macOSDeploymentTarget="12.0" osxCompatibility="12.0 SDK"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_gui_extra" path="JUCE\modules"/>
