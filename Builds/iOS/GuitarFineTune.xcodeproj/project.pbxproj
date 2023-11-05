@@ -29,6 +29,7 @@
 		56A011EC51220996D4F00254 /* include_juce_core.mm */ = {isa = PBXBuildFile; fileRef = BF256F6C10EF6FAFC2A585BB; };
 		6D8F1CDC011290A48F8F4FF1 /* include_juce_audio_utils.mm */ = {isa = PBXBuildFile; fileRef = 8E2372BA8AF97FF946178E91; };
 		6FA8F7EF7871842425C686B2 /* CoreServices.framework */ = {isa = PBXBuildFile; fileRef = 3804CAD2E57451A8E9238059; };
+		6FB2C4F9D825C72F7F0B45EA /* Metal.framework */ = {isa = PBXBuildFile; fileRef = 23C88765224C23841F4FAD1B; settings = { ATTRIBUTES = (Weak, ); }; };
 		70AB18BB3265004C3D061BA9 /* fineTune_icon_Small.png */ = {isa = PBXBuildFile; fileRef = C9F9E8F883FAD092F16C8D8F; };
 		73163F759F77D81E035D01DC /* AVFoundation.framework */ = {isa = PBXBuildFile; fileRef = F96200A03AE92755D90A5C52; };
 		7E555610E1CC9AD61857DFCD /* displayControlComponent.cpp */ = {isa = PBXBuildFile; fileRef = 5C4D7D9DD7B11A0E6342DB5C; };
@@ -40,12 +41,14 @@
 		96754801B0CCC7C650CB75FB /* eksNotModalProgressWindowCallBacks.cpp */ = {isa = PBXBuildFile; fileRef = 41486511D23351627F58329B; };
 		9B311FAFFA1679033D1F165A /* fineTune_icon_Large.png */ = {isa = PBXBuildFile; fileRef = 6118B4D234223C62182B82BD; };
 		9CBB7904B8BEBB9181198B13 /* include_juce_audio_basics.mm */ = {isa = PBXBuildFile; fileRef = 96E421B9690E6CDA6D3A85F5; };
+		9CE18258AFCA3D209B564DD6 /* MetalKit.framework */ = {isa = PBXBuildFile; fileRef = F172B07E95155E158F79A103; settings = { ATTRIBUTES = (Weak, ); }; };
 		9D7FD54D83695FE355FF1D32 /* Accelerate.framework */ = {isa = PBXBuildFile; fileRef = 5C8B7D09E34F63CFA71E119F; };
 		A76933CD947F74A1A340547E /* WebKit.framework */ = {isa = PBXBuildFile; fileRef = 6A66D46C1FBEDAD6A106A536; };
 		A95D7EA8475526035C9B0DBE /* include_juce_audio_devices.mm */ = {isa = PBXBuildFile; fileRef = 005D3FDA17BBCA6D812854C9; };
 		B7E6F5F4B373593565102AAD /* AudioRecorder.cpp */ = {isa = PBXBuildFile; fileRef = 8A01971D90B2D6D952341A1A; };
 		BD735741B2636A595517B957 /* helpPage.cpp */ = {isa = PBXBuildFile; fileRef = C2B38450ACA722D49B2D29A2; };
 		C12D3F18B2F263301E0B6E21 /* guitarStringSoundsControl.cpp */ = {isa = PBXBuildFile; fileRef = 39AAB04B7C11B150245B9A23; };
+		C660575973A83E081A3D9773 /* UserNotifications.framework */ = {isa = PBXBuildFile; fileRef = 107A980C17979BC936719F60; settings = { ATTRIBUTES = (Weak, ); }; };
 		C6A374FEE166D72577DBD712 /* Icon.icns */ = {isa = PBXBuildFile; fileRef = 45E0F99B16D18737074F0FCA; };
 		C8531C8A2D23A2A5012B85A6 /* AudioToolbox.framework */ = {isa = PBXBuildFile; fileRef = 04362EB52A445AD4041F6952; };
 		C9DA5848661CB3E7257B75A6 /* CoreMIDI.framework */ = {isa = PBXBuildFile; fileRef = CCD63AFC809E66052D28C4CA; };
@@ -68,8 +71,10 @@
 		0A6C967BBB5D4418A23463EB /* CoreAudioKit.framework */ /* CoreAudioKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudioKit.framework; path = System/Library/Frameworks/CoreAudioKit.framework; sourceTree = SDKROOT; };
 		0DC6CFFB01133951B6601748 /* juce_audio_utils */ /* juce_audio_utils */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_audio_utils; path = ../../JuceLibraryCode/modules/juce_audio_utils; sourceTree = SOURCE_ROOT; };
 		0E943A9EF57CD424DA2E8959 /* juce_audio_processors */ /* juce_audio_processors */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_audio_processors; path = ../../JuceLibraryCode/modules/juce_audio_processors; sourceTree = SOURCE_ROOT; };
+		107A980C17979BC936719F60 /* UserNotifications.framework */ /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		1C1C43188A054835D251C5F4 /* Typelist.h */ /* Typelist.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Typelist.h; path = ../../Source/Typelist.h; sourceTree = SOURCE_ROOT; };
 		1C86227F5F0CE8D63F78F5A3 /* Main.cpp */ /* Main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Main.cpp; path = ../../Source/Main.cpp; sourceTree = SOURCE_ROOT; };
+		23C88765224C23841F4FAD1B /* Metal.framework */ /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
 		269F56875A5A8A228A302EE2 /* Launch Screen.storyboard */ /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "Launch Screen.storyboard"; path = "../../iOS_Special/Launch Screen.storyboard"; sourceTree = SOURCE_ROOT; };
 		2705345B21013135C78D354D /* eksThreadWithProgressWindow.cpp */ /* eksThreadWithProgressWindow.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = eksThreadWithProgressWindow.cpp; path = ../../Source/eksThreadWithProgressWindow.cpp; sourceTree = SOURCE_ROOT; };
 		2AD9CED9B05223793F797927 /* juce_audio_basics */ /* juce_audio_basics */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_audio_basics; path = ../../JuceLibraryCode/modules/juce_audio_basics; sourceTree = SOURCE_ROOT; };
@@ -151,6 +156,7 @@
 		EE0D3BCB57C6406D35958366 /* BinaryData.h */ /* BinaryData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BinaryData.h; path = ../../JuceLibraryCode/BinaryData.h; sourceTree = SOURCE_ROOT; };
 		EE950B43055FE4BE1AEFFFA5 /* gfft.h */ /* gfft.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = gfft.h; path = ../../Source/gfft.h; sourceTree = SOURCE_ROOT; };
 		EF31FEB33BE51DA1ADE85890 /* juce_data_structures */ /* juce_data_structures */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_data_structures; path = ../../JuceLibraryCode/modules/juce_data_structures; sourceTree = SOURCE_ROOT; };
+		F172B07E95155E158F79A103 /* MetalKit.framework */ /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = System/Library/Frameworks/MetalKit.framework; sourceTree = SDKROOT; };
 		F96200A03AE92755D90A5C52 /* AVFoundation.framework */ /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		FF95EC7ADBED0BFF63E32827 /* include_juce_gui_basics.mm */ /* include_juce_gui_basics.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_gui_basics.mm; path = ../../JuceLibraryCode/include_juce_gui_basics.mm; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -174,6 +180,9 @@
 				25D4A7699E4D95E4562973C5,
 				35825C350DC6A122E8C132F8,
 				A76933CD947F74A1A340547E,
+				6FB2C4F9D825C72F7F0B45EA,
+				9CE18258AFCA3D209B564DD6,
+				C660575973A83E081A3D9773,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -229,6 +238,9 @@
 				A44D165D613999DC222406FC,
 				CB6BB84C7C90EB9E3088B21C,
 				6A66D46C1FBEDAD6A106A536,
+				23C88765224C23841F4FAD1B,
+				F172B07E95155E158F79A103,
+				107A980C17979BC936719F60,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -361,6 +373,7 @@
 		CF307CC82EF6FB552266854D = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1340;
 				ORGANIZATIONNAME = "eksit";
 				TargetAttributes = {
@@ -486,8 +499,8 @@
 					"JUCE_CONTENT_SHARING=1",
 					"THIS_IS_IOS=1",
 					"JUCER_XCODE_IPHONE_5BC26AE3=1",
-					"JUCE_APP_VERSION=10.10.4",
-					"JUCE_APP_VERSION_HEX=0xa0a04",
+					"JUCE_APP_VERSION=10.11.5",
+					"JUCE_APP_VERSION_HEX=0xa0b05",
 					"JucePlugin_Build_VST=0",
 					"JucePlugin_Build_VST3=0",
 					"JucePlugin_Build_AU=0",
@@ -508,7 +521,6 @@
 				INSTALL_PATH = "$(HOME)/Applications";
 				LLVM_LTO = YES_THIN;
 				MTL_HEADER_SEARCH_PATHS = "$(SRCROOT)/../../JuceLibraryCode $(SRCROOT)/../../JuceLibraryCode/modules";
-				OTHER_LDFLAGS = "-weak_framework Metal -weak_framework MetalKit -weak_framework UserNotifications";
 				PRODUCT_BUNDLE_IDENTIFIER = dk.eksIt.guitarFineTune;
 				PRODUCT_NAME = "GuitarFineTune";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -537,8 +549,8 @@
 					"JUCE_CONTENT_SHARING=1",
 					"THIS_IS_IOS=1",
 					"JUCER_XCODE_IPHONE_5BC26AE3=1",
-					"JUCE_APP_VERSION=10.10.4",
-					"JUCE_APP_VERSION_HEX=0xa0a04",
+					"JUCE_APP_VERSION=10.11.5",
+					"JUCE_APP_VERSION_HEX=0xa0b05",
 					"JucePlugin_Build_VST=0",
 					"JucePlugin_Build_VST3=0",
 					"JucePlugin_Build_AU=0",
@@ -558,7 +570,6 @@
 				INFOPLIST_PREPROCESS = YES;
 				INSTALL_PATH = "$(HOME)/Applications";
 				MTL_HEADER_SEARCH_PATHS = "$(SRCROOT)/../../JuceLibraryCode $(SRCROOT)/../../JuceLibraryCode/modules";
-				OTHER_LDFLAGS = "-weak_framework Metal -weak_framework MetalKit -weak_framework UserNotifications";
 				PRODUCT_BUNDLE_IDENTIFIER = dk.eksIt.guitarFineTune;
 				PRODUCT_NAME = "GuitarFineTune";
 				PROVISIONING_PROFILE_SPECIFIER = "";

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="cgcxPd" name="GuitarFineTune" projectType="guiapp" version="10.10.4"
+<JUCERPROJECT id="cgcxPd" name="GuitarFineTune" projectType="guiapp" version="10.11.5"
               bundleIdentifier="dk.eksIt.guitarFineTune" includeBinaryInAppConfig="1"
               reportAppUsage="1" companyCopyright="eksit" companyName="eksit"
               companyWebsite="eksit.dk" companyEmail="guitarFineTune@eksit.dk"
@@ -182,17 +182,17 @@
         <CONFIGURATION isDebug="0" name="Release"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
-        <MODULEPATH id="juce_gui_extra" path="/home/eigil/projects/juceProjs/guitarFineTune/JUCE/modules"/>
-        <MODULEPATH id="juce_gui_basics" path="/home/eigil/projects/juceProjs/guitarFineTune/JUCE/modules"/>
-        <MODULEPATH id="juce_graphics" path="/home/eigil/projects/juceProjs/guitarFineTune/JUCE/modules"/>
-        <MODULEPATH id="juce_events" path="/home/eigil/projects/juceProjs/guitarFineTune/JUCE/modules"/>
-        <MODULEPATH id="juce_data_structures" path="/home/eigil/projects/juceProjs/guitarFineTune/JUCE/modules"/>
-        <MODULEPATH id="juce_core" path="/home/eigil/projects/juceProjs/guitarFineTune/JUCE/modules"/>
-        <MODULEPATH id="juce_audio_utils"/>
-        <MODULEPATH id="juce_audio_processors" path="/home/eigil/projects/juceProjs/guitarFineTune/JUCE/modules"/>
-        <MODULEPATH id="juce_audio_formats" path="/home/eigil/projects/juceProjs/guitarFineTune/JUCE/modules"/>
-        <MODULEPATH id="juce_audio_devices" path="/home/eigil/projects/juceProjs/guitarFineTune/JUCE/modules"/>
-        <MODULEPATH id="juce_audio_basics" path="/home/eigil/projects/juceProjs/guitarFineTune/JUCE/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_graphics" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_events" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_data_structures" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_core" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_utils" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_basics" path="../JUCE/modules"/>
         <MODULEPATH id="juce_dsp" path="../JUCE/modules"/>
       </MODULEPATHS>
     </CODEBLOCKS_LINUX>
@@ -202,17 +202,17 @@
         <CONFIGURATION isDebug="0" name="Release"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
-        <MODULEPATH id="juce_gui_extra"/>
-        <MODULEPATH id="juce_gui_basics"/>
-        <MODULEPATH id="juce_graphics"/>
-        <MODULEPATH id="juce_events"/>
-        <MODULEPATH id="juce_data_structures"/>
-        <MODULEPATH id="juce_core"/>
-        <MODULEPATH id="juce_audio_utils"/>
-        <MODULEPATH id="juce_audio_processors"/>
-        <MODULEPATH id="juce_audio_formats"/>
-        <MODULEPATH id="juce_audio_devices"/>
-        <MODULEPATH id="juce_audio_basics"/>
+        <MODULEPATH id="juce_gui_extra" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_graphics" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_events" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_data_structures" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_core" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_utils" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_basics" path="../JUCE/modules"/>
         <MODULEPATH id="juce_dsp" path="../JUCE/modules"/>
       </MODULEPATHS>
     </LINUX_MAKE>
@@ -222,17 +222,17 @@
         <CONFIGURATION isDebug="0" name="Release"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
-        <MODULEPATH id="juce_audio_basics" path="D:\Users\eigil\projects\juceProjs\JUCE\modules"/>
-        <MODULEPATH id="juce_audio_devices" path="D:\Users\eigil\projects\juceProjs\JUCE\modules"/>
-        <MODULEPATH id="juce_audio_formats" path="D:\Users\eigil\projects\juceProjs\JUCE\modules"/>
-        <MODULEPATH id="juce_audio_processors" path="D:\Users\eigil\projects\juceProjs\JUCE\modules"/>
-        <MODULEPATH id="juce_audio_utils" path="D:\Users\eigil\projects\juceProjs\JUCE\modules"/>
-        <MODULEPATH id="juce_core" path="D:\Users\eigil\projects\juceProjs\JUCE\modules"/>
-        <MODULEPATH id="juce_data_structures" path="D:\Users\eigil\projects\juceProjs\JUCE\modules"/>
-        <MODULEPATH id="juce_events" path="D:\Users\eigil\projects\juceProjs\JUCE\modules"/>
-        <MODULEPATH id="juce_graphics" path="D:\Users\eigil\projects\juceProjs\JUCE\modules"/>
-        <MODULEPATH id="juce_gui_basics" path="D:\Users\eigil\projects\juceProjs\JUCE\modules"/>
-        <MODULEPATH id="juce_gui_extra" path="D:\Users\eigil\projects\juceProjs\JUCE\modules"/>
+        <MODULEPATH id="juce_audio_basics" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_utils" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_core" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_data_structures" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_events" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_graphics" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="../JUCE/modules"/>
         <MODULEPATH id="juce_dsp" path="../JUCE/modules"/>
       </MODULEPATHS>
     </VS2022>
