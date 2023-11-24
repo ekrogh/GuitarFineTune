@@ -498,6 +498,7 @@
 					"NDEBUG=1",
 					"JUCE_CONTENT_SHARING=1",
 					"THIS_IS_IOS=1",
+					"JUCE_SILENCE_XCODE_15_LINKER_WARNING=1",
 					"JUCER_XCODE_IPHONE_5BC26AE3=1",
 					"JUCE_APP_VERSION=10.11.5",
 					"JUCE_APP_VERSION_HEX=0xa0b05",
@@ -521,6 +522,7 @@
 				INSTALL_PATH = "$(HOME)/Applications";
 				LLVM_LTO = YES_THIN;
 				MTL_HEADER_SEARCH_PATHS = "$(SRCROOT)/../../JuceLibraryCode $(SRCROOT)/../../JUCE/modules";
+				OTHER_LDFLAGS = "-Wl,-weak_reference_mismatches,weak";
 				PRODUCT_BUNDLE_IDENTIFIER = dk.eksIt.guitarFineTune;
 				PRODUCT_NAME = "GuitarFineTune";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -548,6 +550,7 @@
 					"DEBUG=1",
 					"JUCE_CONTENT_SHARING=1",
 					"THIS_IS_IOS=1",
+					"JUCE_SILENCE_XCODE_15_LINKER_WARNING=1",
 					"JUCER_XCODE_IPHONE_5BC26AE3=1",
 					"JUCE_APP_VERSION=10.11.5",
 					"JUCE_APP_VERSION_HEX=0xa0b05",
@@ -570,6 +573,7 @@
 				INFOPLIST_PREPROCESS = YES;
 				INSTALL_PATH = "$(HOME)/Applications";
 				MTL_HEADER_SEARCH_PATHS = "$(SRCROOT)/../../JuceLibraryCode $(SRCROOT)/../../JUCE/modules";
+				OTHER_LDFLAGS = "-Wl,-weak_reference_mismatches,weak";
 				PRODUCT_BUNDLE_IDENTIFIER = dk.eksIt.guitarFineTune;
 				PRODUCT_NAME = "GuitarFineTune";
 				PROVISIONING_PROFILE_SPECIFIER = "";
