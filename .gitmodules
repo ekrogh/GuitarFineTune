@@ -1,3 +1,0 @@
-[submodule "JUCE"]
-	path = JUCE
-	url = git@github.com:ekrogh/JUCE.git
