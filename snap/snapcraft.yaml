@@ -70,7 +70,6 @@ parts:
     plugin: nil
     source: .
     override-build: |
-      git submodule update --init --recursive --force
       g++ --version
       cd Builds/LinuxMakefile/
       pwd
