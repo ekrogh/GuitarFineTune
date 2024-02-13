@@ -86,4 +86,16 @@ void AudioAppComponent::shutdownAudio()
         deviceManager.closeAudioDevice();
 }
 
+void AudioAppComponent::eksShutdownAudio()
+{
+    audioSourcePlayer.setSource(nullptr);
+
+    // other audio callbacks may still be using the device
+    if (!usingCustomDeviceManager)
+    {
+        deviceManager.removeAudioCallback(&audioSourcePlayer);
+        deviceManager.closeAudioDevice();
+    }
+}
+
 } // namespace juce

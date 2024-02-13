@@ -121,6 +121,18 @@ public:
     void shutdownAudio();
 
 
+    /** Shuts down the audio device and clears the audio source.
+
+        But only calls deviceManager.removeAudioCallback if usingCustomDeviceManager
+
+        This method should be called in the destructor of the derived class
+        otherwise an assertion will be triggered.
+
+        eks  9. December 2023
+    */
+    void eksShutdownAudio();
+
+
     AudioDeviceManager& deviceManager;
 
 private:
