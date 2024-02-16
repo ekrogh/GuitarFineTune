@@ -95,6 +95,10 @@ void tuneComponent::modalStateFinished(int /*result*/)
 }
 
 
+static double extracted() {
+    return sharedAudioDeviceManager->getCurrentAudioDevice()->getCurrentSampleRate();
+}
+
 bool tuneComponent::openAudioDeviceThatWillOpenWithLegalSampleRate()
 {
 	using namespace decimationAndFilterConstants;
@@ -134,7 +138,7 @@ bool tuneComponent::openAudioDeviceThatWillOpenWithLegalSampleRate()
 							(
 								legalSampleFrequencies.begin()
 								, legalSampleFrequencies.end()
-								, sharedAudioDeviceManager->getCurrentAudioDevice()->getCurrentSampleRate()
+                             , extracted()
 							) != legalSampleFrequencies.end()
 							)
 						)
@@ -175,13 +179,14 @@ bool tuneComponent::openAudioDeviceThatWillOpenWithLegalSampleRate()
 		(
 			juce::AlertWindow::WarningIcon
 			, "Found no usable audio device!"
-			, "Try to connect another\naudio device"
+			, "Try to connect another\naudio device\nor uninstall and reinstall GuitarFineTune."
 			, "Quit"
 			, nullptr
 		);
 #else
 		juce::String attle = "Found no usable audio device!";
-		juce::String amsg = "Try to connect another\naudio device,\nmicrophone and/or speaker";
+		juce::String amsg =
+        "Try to connect another\naudio device,\nmicrophone and/or speaker\nor uninstall and reinstall GuitarFineTune.";
 		showAlertWindow(attle, amsg);
 
 		//juce::AlertWindow::showMessageBoxAsync
