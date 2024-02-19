@@ -279,7 +279,7 @@ float AudioRecorder::getCurrentMaxLevel()
 }
 
 //==============================================================================
-extern std::shared_ptr<AudioDeviceManager> sharedAudioDeviceManager;
+extern std::unique_ptr<AudioDeviceManager> sharedAudioDeviceManager;
 
 AudioRecorderControl::AudioRecorderControl()
 {
@@ -287,7 +287,7 @@ AudioRecorderControl::AudioRecorderControl()
 
 AudioRecorderControl::~AudioRecorderControl()
 {
-	sharedAudioDeviceManager->removeAudioCallback(spRecorder.get());
+	//sharedAudioDeviceManager->removeAudioCallback(spRecorder.get());
 	if (spRecorder->isRecording())
 	{
 		stopRecording();
@@ -315,12 +315,12 @@ void AudioRecorderControl::setSourceRaw()
 
 void AudioRecorderControl::setSourceFiltered()
 {
-	sharedAudioDeviceManager->removeAudioCallback(spRecorder.get());
+	//sharedAudioDeviceManager->removeAudioCallback(spRecorder.get());
 }
 
 void AudioRecorderControl::StopAudioDeviceIOCallback()
 {
-	sharedAudioDeviceManager->removeAudioCallback(spRecorder.get());
+	//sharedAudioDeviceManager->removeAudioCallback(spRecorder.get());
 }
 
 void AudioRecorderControl::filteredAudioSourceAboutToStart(double theSampleRate, int bufferSize)

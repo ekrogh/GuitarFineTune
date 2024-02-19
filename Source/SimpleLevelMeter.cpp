@@ -13,8 +13,8 @@
 #include "tuneComponent.h"
 #include "SimpleLevelMeter.h"
 
-extern std::shared_ptr<tuneComponent> pTuneComponent;
-extern std::shared_ptr<AudioDeviceManager> sharedAudioDeviceManager;
+extern std::unique_ptr<tuneComponent> pTuneComponent;
+extern std::unique_ptr<AudioDeviceManager> sharedAudioDeviceManager;
 
 SimpleLevelMeter::SimpleLevelMeter(std::shared_ptr<AudioRecorderControl> spARC)
 	: spAudioRecorderControl(spARC)

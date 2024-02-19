@@ -28,8 +28,8 @@
 // Init audio
 //==============================================================================
 bool errorInGetSharedAudioDeviceManager = false;
-std::shared_ptr<AudioDeviceManager> sharedAudioDeviceManager = nullptr;
-std::shared_ptr<tuneComponent> pTuneComponent = nullptr;
+std::unique_ptr<AudioDeviceManager> sharedAudioDeviceManager = nullptr;
+std::unique_ptr<tuneComponent> pTuneComponent = nullptr;
 
 bool audioSysInitDone = false;
 
@@ -52,7 +52,7 @@ String getCurrentDefaultAudioDeviceName(AudioDeviceManager& deviceManager, bool 
 AudioDeviceManager& getSharedAudioDeviceManager(int numInputChannels, int numOutputChannels)
 {
 	if (sharedAudioDeviceManager == nullptr)
-		sharedAudioDeviceManager = make_shared< AudioDeviceManager>();
+		sharedAudioDeviceManager = make_unique<AudioDeviceManager>();
 
 	auto* currentDevice = sharedAudioDeviceManager->getCurrentAudioDevice();
 
@@ -184,7 +184,7 @@ guitarFineTuneFirstClass::guitarFineTuneFirstClass()
 	// make sharedAudioDeviceManager
 	if (sharedAudioDeviceManager == nullptr)
 	{
-		sharedAudioDeviceManager = make_shared< AudioDeviceManager>();
+		sharedAudioDeviceManager = make_unique<AudioDeviceManager>();
 	}
 
 
@@ -247,7 +247,7 @@ guitarFineTuneFirstClass::guitarFineTuneFirstClass()
 #else
 	{
 		pTuneComponent =
-			std::make_shared<tuneComponent>
+			std::make_unique<tuneComponent>
 			(
 				pXmlGuitarFineTuneConfig
 			);
@@ -746,12 +746,13 @@ void guitarFineTuneFirstClass::closeButtonPressed()
 
 guitarFineTuneFirstClass::~guitarFineTuneFirstClass()
 {
-	pTuneComponent = nullptr;
-
 	Component::setLookAndFeel(nullptr);
 	LookAndFeel::setDefaultLookAndFeel(nullptr);
 
-
+	sharedAudioDeviceManager->closeAudioDevice();
+	pEksAudioControlComponent = nullptr;
+	pTuneComponent = nullptr;
+	sharedAudioDeviceManager = nullptr;
 }
 
 void guitarFineTuneFirstClass::setColorOfAllLabels(juce::Component* cmpontToHandle)

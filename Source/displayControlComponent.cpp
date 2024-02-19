@@ -29,7 +29,7 @@
 
 
 //[MiscUserDefs] You can add your own user definitions and misc code here...
-extern std::shared_ptr<tuneComponent> pTuneComponent;
+extern std::unique_ptr<tuneComponent> pTuneComponent;
 //[/MiscUserDefs]
 
 //==============================================================================

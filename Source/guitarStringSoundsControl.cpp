@@ -30,8 +30,8 @@
 
 
 //[MiscUserDefs] You can add your own user definitions and misc code here...
-extern std::shared_ptr<tuneComponent> pTuneComponent;
-extern std::shared_ptr<AudioDeviceManager> sharedAudioDeviceManager;
+extern std::unique_ptr<tuneComponent> pTuneComponent;
+extern std::unique_ptr<AudioDeviceManager> sharedAudioDeviceManager;
 //[/MiscUserDefs]
 
 //==============================================================================
@@ -518,8 +518,8 @@ guitarStringSoundsControl::~guitarStringSoundsControl()
 		spAudioRecorderController = nullptr;
 		spAudioRecorderController.reset();
 	}
-	pGuitarFineTuneLookAndFeel.reset();
-	pGuitarFineTuneLookAndFeel = nullptr;
+	//pGuitarFineTuneLookAndFeel.reset();
+	//pGuitarFineTuneLookAndFeel = nullptr;
 	//[/Destructor_pre]
 
 	PlayToneGroupComponent = nullptr;
@@ -562,7 +562,7 @@ guitarStringSoundsControl::~guitarStringSoundsControl()
 
 
 	//[Destructor]. You can add your own custom destruction code here..
-	sharedAudioDeviceManager = nullptr;
+	//sharedAudioDeviceManager = nullptr;
 	//[/Destructor]
 }
 

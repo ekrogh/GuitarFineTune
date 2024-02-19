@@ -28,7 +28,7 @@
 #include "tuneComponent.h"
 
 
-extern std::shared_ptr<AudioDeviceManager> sharedAudioDeviceManager;
+extern std::unique_ptr<AudioDeviceManager> sharedAudioDeviceManager;
 extern bool errorInGetSharedAudioDeviceManager;
 
 
