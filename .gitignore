@@ -67,3 +67,4 @@
 *.snap
 x64
 /Builds/MacOSX/.DS_Store
+/Builds/iOS/.DS_Store
