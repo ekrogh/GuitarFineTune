@@ -95,8 +95,9 @@ void tuneComponent::modalStateFinished(int /*result*/)
 }
 
 
-static double extracted() {
-    return sharedAudioDeviceManager->getCurrentAudioDevice()->getCurrentSampleRate();
+static double extracted()
+{
+	return sharedAudioDeviceManager->getCurrentAudioDevice()->getCurrentSampleRate();
 }
 
 bool tuneComponent::openAudioDeviceThatWillOpenWithLegalSampleRate()
@@ -138,7 +139,7 @@ bool tuneComponent::openAudioDeviceThatWillOpenWithLegalSampleRate()
 							(
 								legalSampleFrequencies.begin()
 								, legalSampleFrequencies.end()
-                             , extracted()
+								, extracted()
 							) != legalSampleFrequencies.end()
 							)
 						)
@@ -186,7 +187,7 @@ bool tuneComponent::openAudioDeviceThatWillOpenWithLegalSampleRate()
 #else
 		juce::String attle = "Found no usable audio device!";
 		juce::String amsg =
-        "Try to connect another\naudio device,\nmicrophone and/or speaker\nor uninstall and reinstall GuitarFineTune.";
+			"Try to connect another\naudio device,\nmicrophone and/or speaker\nor uninstall and reinstall GuitarFineTune.";
 		showAlertWindow(attle, amsg);
 
 		//juce::AlertWindow::showMessageBoxAsync
@@ -220,10 +221,10 @@ void tuneComponent::showAlertWindow(juce::String alertTitle, juce::String alertM
 
 	alertWindow->enterModalState(true, ModalCallbackFunction::create([ref = SafePointer{ this }](int)
 		{
-            sharedAudioDeviceManager->closeAudioDevice();
-            JUCEApplication::getInstance()->systemRequestedQuit();
+			sharedAudioDeviceManager->closeAudioDevice();
+			JUCEApplication::getInstance()->systemRequestedQuit();
 
-            return "OK";
+			return "OK";
 
 		}), true);
 }
@@ -445,10 +446,10 @@ bool tuneComponent::audioSysInit()
 
 	// Save state
 	curAudioState = sharedAudioDeviceManager->createStateXml();
-    if (!(curAudioState == nullptr))
-    {
-        curAudioState->writeTo(myAudioStateXmlFile);
-    }
+	if (!(curAudioState == nullptr))
+	{
+		curAudioState->writeTo(myAudioStateXmlFile);
+	}
 
 	// ChangeListner = this
 	//sharedAudioDeviceManager->addChangeListener(this);
@@ -923,6 +924,8 @@ void tuneComponent::guitarStringSoundsCleanUp
 void tuneComponent::prepareToPlay(int samplesPerBlockExpected, double newSampleRate)
 {
 	// do guitar strings sounds stuff
+	currentBufferSizeInUse = samplesPerBlockExpected;
+	currentaudioDeviceTypeInUse = (sharedAudioDeviceManager->getCurrentAudioDeviceType()).toStdString();
 	guitarStringSoundsCleanUp(newSampleRate);
 	calcHalfSinePeriodValues(samplesPerBlockExpected);
 	calcNewGuitarStringsSinePhasesFromSampleRate(newSampleRate);
@@ -956,9 +959,7 @@ void tuneComponent::prepareToPlay(int samplesPerBlockExpected, double newSampleR
 		}
 		else
 		{
-			currentBufferSizeInUse = samplesPerBlockExpected;
 			currentSampleRateInUse = newSampleRate;
-			currentaudioDeviceTypeInUse = (sharedAudioDeviceManager->getCurrentAudioDeviceType()).toStdString();
 
 			if (!setPreAndPostFiltersAndConstantsBasedOnSampleRate(newSampleRate))
 			{
@@ -1392,7 +1393,7 @@ void tuneComponent::resized()
 //							, (double)(r.getHeight())
 //					);
 //		}
-        double sizeScale = (double)(r.getWidth()) / (double)widthOfTuneWindow;
+		double sizeScale = (double)(r.getWidth()) / (double)widthOfTuneWindow;
 		setSize((int)(widthOfTuneWindow * sizeScale), (int)(hightOfTuneWindow * sizeScale));
 	}
 #elif ( JUCE_IOS )
@@ -1496,8 +1497,8 @@ void tuneComponent::run()
 
 #if (JUCE_IOS || JUCE_MAC || JUCE_LINUX)
 #if (JUCE_MAC || JUCE_LINUX)
-//    if (SystemStats::getOperatingSystemType() >= SystemStats::MacOSX_10_14)
-    if (!(SystemStats::getOperatingSystemType() < SystemStats::MacOSX_10_14))
+	//    if (SystemStats::getOperatingSystemType() >= SystemStats::MacOSX_10_14)
+	if (!(SystemStats::getOperatingSystemType() < SystemStats::MacOSX_10_14))
 	{
 #endif
 		AudioIODevice* CurrentAudioDevice = sharedAudioDeviceManager->getCurrentAudioDevice();
@@ -1574,7 +1575,7 @@ void tuneComponent::jucePerformFrequencyOnlyForwardTransform(float* d)
 {
 	// compute FFT
 		// then render our FFT data..
-	forwardFFT->performFrequencyOnlyForwardTransform(d);
+	forwardFFT->performFrequencyOnlyForwardTransform(d, true);
 
 }
 #else
@@ -1748,7 +1749,7 @@ void tuneComponent::drawSpectrogram()
 						, arrowsYStart
 						, (float)goertzelStatistics.meanOutOfTuneXCoordinat
 						, arrowsYEnd
-						)
+					)
 					, 4.0
 					, 28.0
 					, 24.0
@@ -1810,7 +1811,7 @@ void tuneComponent::drawSpectrogram()
 							, arrowsYStart
 							, (float)goertzelStatistics.meanOutOfTuneXCoordinat
 							, arrowsYEnd
-							);
+						);
 
 					rTheArrowParms.fadedAway = false;
 
@@ -2562,7 +2563,7 @@ void tuneComponent::calcHalfSinePeriodValues
 		(
 			fullBffrLgthHalfSinePeriodValues.begin(), fullBffrLgthHalfSinePeriodValues.end(),
 			[&/*sinArg, sinArgIncrement*/]
-		()
+			()
 			{
 				sinArg += sinArgIncrement;
 				return (std::sin(sinArg) * (double)0.5f) + (double)0.5f;
@@ -2578,7 +2579,7 @@ void tuneComponent::calcHalfSinePeriodValues
 		(
 			halfBffrLgthHalfSinePeriodValues.begin(), halfBffrLgthHalfSinePeriodValues.end(),
 			[&/*sinArg, sinArgIncrement*/]
-		()
+			()
 			{
 				sinArg += sinArgIncrement;
 				return (std::sin(sinArg) * (double)0.5f) + (double)0.5f;
@@ -2672,7 +2673,7 @@ void tuneComponent::guitarStringSoundsRampFillInRampedTones
 		(
 			rampFaktors.begin(), rampFaktors.end(), outGitarStringSoundsItrtr, outGitarStringSoundsItrtr,
 			[&currentPhase, phaseDeltaPerSample]
-		(double rampVal, float guitarStringSoundsIn) /*mutable*/
+			(double rampVal, float guitarStringSoundsIn) /*mutable*/
 			{
 				currentPhase = std::fmod(currentPhase + phaseDeltaPerSample, (float)f2PI);
 				return guitarStringSoundsIn + (float)(rampVal * std::sin(currentPhase));
@@ -2704,7 +2705,7 @@ void tuneComponent::guitarStringSoundsRampFillInTheUnRampedTones
 		(
 			outGitarStringSoundsBeginItrtr, outGitarStringSoundsEndItrtr, outGitarStringSoundsBeginItrtr,
 			[&currentPhase, phaseDeltaPerSample, gainToUse]
-		(float guitarStringSoundsIn)
+			(float guitarStringSoundsIn)
 			{
 				currentPhase = std::fmod(currentPhase + phaseDeltaPerSample, (float)f2PI);
 				return guitarStringSoundsIn + (float)(gainToUse * std::sin(currentPhase));
@@ -2728,15 +2729,23 @@ void tuneComponent::allGuitarStringSoundsOff()
 
 void tuneComponent::controlGuitarStringSounds(std::deque<bool> guitarStringSoundsOn)
 {
-	if (!std::any_of(guitarStringSoundsOn.begin(), guitarStringSoundsOn.end(), [](bool i)
-		{
-			return i;
-		})
-		&& std::any_of(guitarStringSoundsOnLastTime.begin(), guitarStringSoundsOnLastTime.end(), [](bool i)
-			{
-				return i;
-			})
-			)
+	if
+		(
+			!std::any_of(guitarStringSoundsOn.begin(), guitarStringSoundsOn.end()
+				,
+				[]
+				(bool i)
+				{
+					return i;
+				})
+			&& std::any_of(guitarStringSoundsOnLastTime.begin(), guitarStringSoundsOnLastTime.end()
+				,
+				[]
+				(bool i)
+				{
+					return i;
+				})
+		)
 	{ // Last string off. Sound output must be disabled
 
 		if (!outputMuteToggleButtonOn && !stringsMuteToggleButtonOn)
@@ -2782,539 +2791,539 @@ void tuneComponent::controlGuitarStringSounds(std::deque<bool> guitarStringSound
 		return;
 	}
 
-			std::vector<GUITARSTRINGSPHASES*> newPtrsToGuitarStringsSinePhases(0);
-			std::vector<GUITARSTRINGSPHASES*> addedPtrsToGuitarStringsSinePhases(0);
-			std::vector<GUITARSTRINGSPHASES*> removedPtrsToGuitarStringsSinePhases(0);
-			std::vector<GUITARSTRINGSPHASES*> unChangedPtrsToGuitarStringsSinePhases(0);
-			GUITARSTRINGSPHASES* guitarStringSinePhaseFound;
-			bool unChangedPtrsToGuitarStringsSinePhasesExists = false;
-			bool ptrsToGuitarStringsSinePhasesAdded = false;
-			bool ptrsToGuitarStringsSinePhasesRemoved = false;
+	std::vector<GUITARSTRINGSPHASES*> newPtrsToGuitarStringsSinePhases(0);
+	std::vector<GUITARSTRINGSPHASES*> addedPtrsToGuitarStringsSinePhases(0);
+	std::vector<GUITARSTRINGSPHASES*> removedPtrsToGuitarStringsSinePhases(0);
+	std::vector<GUITARSTRINGSPHASES*> unChangedPtrsToGuitarStringsSinePhases(0);
+	GUITARSTRINGSPHASES* guitarStringSinePhaseFound;
+	bool unChangedPtrsToGuitarStringsSinePhasesExists = false;
+	bool ptrsToGuitarStringsSinePhasesAdded = false;
+	bool ptrsToGuitarStringsSinePhasesRemoved = false;
 
-			for (int i = 0; i < 6; i++)
+	for (int i = 0; i < 6; i++)
+	{
+		if (guitarStringSoundsOn[i])
+		{
+			if (guitarStringSoundsOnLastTime[i])
 			{
-				if (guitarStringSoundsOn[i])
-				{
-					if (guitarStringSoundsOnLastTime[i])
-					{
-						// This string was on last time also. Find it in old ptrsToGuitarStringsSinePhases
-						guitarStringSinePhaseFound =
-							*(std::find_if(ptrsToGuitarStringsSinePhases.begin(), ptrsToGuitarStringsSinePhases.end()
-								, [&gFreq = guitar[i]](GUITARSTRINGSPHASES* gStrPhas) { return (*gStrPhas).guitarStringFreq == gFreq; }));
+				// This string was on last time also. Find it in old ptrsToGuitarStringsSinePhases
+				guitarStringSinePhaseFound =
+					*(std::find_if(ptrsToGuitarStringsSinePhases.begin(), ptrsToGuitarStringsSinePhases.end()
+						, [&gFreq = guitar[i]](GUITARSTRINGSPHASES* gStrPhas) { return (*gStrPhas).guitarStringFreq == gFreq; }));
 
-						newPtrsToGuitarStringsSinePhases.push_back(guitarStringSinePhaseFound);
+				newPtrsToGuitarStringsSinePhases.push_back(guitarStringSinePhaseFound);
 
-						unChangedPtrsToGuitarStringsSinePhases.push_back(newPtrsToGuitarStringsSinePhases.back());
-						unChangedPtrsToGuitarStringsSinePhasesExists = true;
-					}
-					else
-					{
-						guitarStringsSinePhases[i].guitarStringFreq = (float)guitar[i];
-						guitarStringsSinePhases[i].phaseDeltaPerSample = (float)(float_2PI * (float)guitar[i] / currentSampleRateInUse);
-						guitarStringsSinePhases[i].currentPhase = -(guitarStringsSinePhases[i].phaseDeltaPerSample); // So this sin starts w. phase = 0;
-
-						newPtrsToGuitarStringsSinePhases.push_back(&guitarStringsSinePhases[i]);
-
-						addedPtrsToGuitarStringsSinePhases.push_back(newPtrsToGuitarStringsSinePhases.back());
-						ptrsToGuitarStringsSinePhasesAdded = true;
-					}
-				}
-				else
-				{
-					if (guitarStringSoundsOnLastTime[i])
-					{
-						// This string was on last time also. Find it in old ptrsToGuitarStringsSinePhases and save it in removedPtrsToGuitarStringsSinePhases
-						removedPtrsToGuitarStringsSinePhases.push_back
-						(
-							*(std::find_if(ptrsToGuitarStringsSinePhases.begin(), ptrsToGuitarStringsSinePhases.end()
-								, [&gFreq = guitar[i]](GUITARSTRINGSPHASES* gStrPhas) { return (*gStrPhas).guitarStringFreq == gFreq; }))
-						);
-						ptrsToGuitarStringsSinePhasesRemoved = true;
-					}
-				}
+				unChangedPtrsToGuitarStringsSinePhases.push_back(newPtrsToGuitarStringsSinePhases.back());
+				unChangedPtrsToGuitarStringsSinePhasesExists = true;
 			}
-
-			if (!outputMuteToggleButtonOn && !stringsMuteToggleButtonOn)
+			else
 			{
-				// There are guitar string sounds to ramp
-				// Save old gain
-				double oldStringGainToUse = stringGainToUse;
-				// Calc new string gain to use based on # newPtrsToGuitarStringsSinePhases
-				stringGainToUse = outputGain * stringsGain / (newPtrsToGuitarStringsSinePhases.size());
+				guitarStringsSinePhases[i].guitarStringFreq = (float)guitar[i];
+				guitarStringsSinePhases[i].phaseDeltaPerSample = (float)(float_2PI * (float)guitar[i] / currentSampleRateInUse);
+				guitarStringsSinePhases[i].currentPhase = -(guitarStringsSinePhases[i].phaseDeltaPerSample); // So this sin starts w. phase = 0;
 
-				guitarStringSoundsRamp.clear();
-				guitarStringSoundsRamp.resize(currentBufferSizeInUse, 0.0f);
-				std::vector<double> theRamp(0);
-				std::back_insert_iterator< std::vector<double> > rampBackInsrtr(theRamp);
+				newPtrsToGuitarStringsSinePhases.push_back(&guitarStringsSinePhases[i]);
 
-				{ // Begin scope of guitarStringSoundsLockMutex
-					const ScopedLock sl(guitarStringSoundsLockMutex);
+				addedPtrsToGuitarStringsSinePhases.push_back(newPtrsToGuitarStringsSinePhases.back());
+				ptrsToGuitarStringsSinePhasesAdded = true;
+			}
+		}
+		else
+		{
+			if (guitarStringSoundsOnLastTime[i])
+			{
+				// This string was on last time also. Find it in old ptrsToGuitarStringsSinePhases and save it in removedPtrsToGuitarStringsSinePhases
+				removedPtrsToGuitarStringsSinePhases.push_back
+				(
+					*(std::find_if(ptrsToGuitarStringsSinePhases.begin(), ptrsToGuitarStringsSinePhases.end()
+						, [&gFreq = guitar[i]](GUITARSTRINGSPHASES* gStrPhas) { return (*gStrPhas).guitarStringFreq == gFreq; }))
+				);
+				ptrsToGuitarStringsSinePhasesRemoved = true;
+			}
+		}
+	}
+
+	if (!outputMuteToggleButtonOn && !stringsMuteToggleButtonOn)
+	{
+		// There are guitar string sounds to ramp
+		// Save old gain
+		double oldStringGainToUse = stringGainToUse;
+		// Calc new string gain to use based on # newPtrsToGuitarStringsSinePhases
+		stringGainToUse = outputGain * stringsGain / (newPtrsToGuitarStringsSinePhases.size());
+
+		guitarStringSoundsRamp.clear();
+		guitarStringSoundsRamp.resize(currentBufferSizeInUse, 0.0f);
+		std::vector<double> theRamp(0);
+		std::back_insert_iterator< std::vector<double> > rampBackInsrtr(theRamp);
+
+		{ // Begin scope of guitarStringSoundsLockMutex
+			const ScopedLock sl(guitarStringSoundsLockMutex);
 
 #define ALWAYS_USE_FULL_BUFFER_RAMPS 1
 #if !ALWAYS_USE_FULL_BUFFER_RAMPS
 
-					playGuitarStringSoundsRamp = true; // Lure getNextAudioBlock into part w. guitar strings ramp
-					if (unChangedPtrsToGuitarStringsSinePhasesExists)
-					{
-						// Some tones are still there as last time
+			playGuitarStringSoundsRamp = true; // Lure getNextAudioBlock into part w. guitar strings ramp
+			if (unChangedPtrsToGuitarStringsSinePhasesExists)
+			{
+				// Some tones are still there as last time
 
-						if (ptrsToGuitarStringsSinePhasesRemoved && ptrsToGuitarStringsSinePhasesAdded)
-						{
-							// There are guitar string sounds to ramp down AND guitar string sounds to ramp up
+				if (ptrsToGuitarStringsSinePhasesRemoved && ptrsToGuitarStringsSinePhasesAdded)
+				{
+					// There are guitar string sounds to ramp down AND guitar string sounds to ramp up
 
-							calcGuitarStringSoundsRampFaktors
-							(
-								rampBackInsrtr
-								, true
-								, (double)oldStringGainToUse
-								, (double)0.0f
-							);
-							guitarStringSoundsRampFillInRampedTones
-							(
-								guitarStringSoundsRamp.begin()
-								, removedPtrsToGuitarStringsSinePhases
-								, theRamp
-							);
+					calcGuitarStringSoundsRampFaktors
+					(
+						rampBackInsrtr
+						, true
+						, (double)oldStringGainToUse
+						, (double)0.0f
+					);
+					guitarStringSoundsRampFillInRampedTones
+					(
+						guitarStringSoundsRamp.begin()
+						, removedPtrsToGuitarStringsSinePhases
+						, theRamp
+					);
 
-							// Ramp untouched sounds to their new gain
-							// Make ramp
-							theRamp.clear();
-							calcGuitarStringSoundsRampFaktors
-							(
-								rampBackInsrtr
-								, true
-								, oldStringGainToUse
-								, (double)stringGainToUse
-							);
-							guitarStringSoundsRampFillInRampedTones
-							(
-								guitarStringSoundsRamp.begin()
-								, unChangedPtrsToGuitarStringsSinePhases
-								, theRamp
-							);
-							guitarStringSoundsRampFillInTheUnRampedTones
-							(
-								std::next(guitarStringSoundsRamp.begin(), currentBufferSizeInUse >> 1) // Point to last half of buffer
-								, guitarStringSoundsRamp.end() // End of buffer
-								, unChangedPtrsToGuitarStringsSinePhases
-								, (double)stringGainToUse
-							);
+					// Ramp untouched sounds to their new gain
+					// Make ramp
+					theRamp.clear();
+					calcGuitarStringSoundsRampFaktors
+					(
+						rampBackInsrtr
+						, true
+						, oldStringGainToUse
+						, (double)stringGainToUse
+					);
+					guitarStringSoundsRampFillInRampedTones
+					(
+						guitarStringSoundsRamp.begin()
+						, unChangedPtrsToGuitarStringsSinePhases
+						, theRamp
+					);
+					guitarStringSoundsRampFillInTheUnRampedTones
+					(
+						std::next(guitarStringSoundsRamp.begin(), currentBufferSizeInUse >> 1) // Point to last half of buffer
+						, guitarStringSoundsRamp.end() // End of buffer
+						, unChangedPtrsToGuitarStringsSinePhases
+						, (double)stringGainToUse
+					);
 
-							// Ramp new tones to the gain to use
-							theRamp.clear();
-							calcGuitarStringSoundsRampFaktors
-							(
-								rampBackInsrtr
-								, true
-								, (double)0.0f
-								, (double)stringGainToUse
-							);
-							guitarStringSoundsRampFillInRampedTones
-							(
-								std::next(guitarStringSoundsRamp.begin(), currentBufferSizeInUse >> 1) // Point to last half of buffer
-								, addedPtrsToGuitarStringsSinePhases
-								, theRamp
-							);
-						}
-						else if (ptrsToGuitarStringsSinePhasesAdded)
-						{
-							// There are guitar string sounds to ramp up
+					// Ramp new tones to the gain to use
+					theRamp.clear();
+					calcGuitarStringSoundsRampFaktors
+					(
+						rampBackInsrtr
+						, true
+						, (double)0.0f
+						, (double)stringGainToUse
+					);
+					guitarStringSoundsRampFillInRampedTones
+					(
+						std::next(guitarStringSoundsRamp.begin(), currentBufferSizeInUse >> 1) // Point to last half of buffer
+						, addedPtrsToGuitarStringsSinePhases
+						, theRamp
+					);
+				}
+				else if (ptrsToGuitarStringsSinePhasesAdded)
+				{
+					// There are guitar string sounds to ramp up
 
-							// Ramp untouched sounds to their new gain
+					// Ramp untouched sounds to their new gain
 
-							// Make ramp
-							calcGuitarStringSoundsRampFaktors
-							(
-								rampBackInsrtr
-								, true
-								, oldStringGainToUse
-								, (double)stringGainToUse
-							);
-							guitarStringSoundsRampFillInRampedTones
-							(
-								guitarStringSoundsRamp.begin()
-								, unChangedPtrsToGuitarStringsSinePhases
-								, theRamp
-							);
-							guitarStringSoundsRampFillInTheUnRampedTones
-							(
-								std::next(guitarStringSoundsRamp.begin(), currentBufferSizeInUse >> 1) // Point to last half of buffer
-								, guitarStringSoundsRamp.end() // End of buffer
-								, unChangedPtrsToGuitarStringsSinePhases
-								, (double)stringGainToUse
-							);
+					// Make ramp
+					calcGuitarStringSoundsRampFaktors
+					(
+						rampBackInsrtr
+						, true
+						, oldStringGainToUse
+						, (double)stringGainToUse
+					);
+					guitarStringSoundsRampFillInRampedTones
+					(
+						guitarStringSoundsRamp.begin()
+						, unChangedPtrsToGuitarStringsSinePhases
+						, theRamp
+					);
+					guitarStringSoundsRampFillInTheUnRampedTones
+					(
+						std::next(guitarStringSoundsRamp.begin(), currentBufferSizeInUse >> 1) // Point to last half of buffer
+						, guitarStringSoundsRamp.end() // End of buffer
+						, unChangedPtrsToGuitarStringsSinePhases
+						, (double)stringGainToUse
+					);
 
-							// Ramp new tones to the gain to use
-							theRamp.clear();
-							calcGuitarStringSoundsRampFaktors
-							(
-								rampBackInsrtr
-								, true
-								, (double)0.0f
-								, (double)stringGainToUse
-							);
-							guitarStringSoundsRampFillInRampedTones
-							(
-								std::next(guitarStringSoundsRamp.begin(), currentBufferSizeInUse >> 1) // Point to last half of buffer
-								, addedPtrsToGuitarStringsSinePhases
-								, theRamp
-							);
-						}
-						else if (ptrsToGuitarStringsSinePhasesRemoved)
-						{
-							// There are guitar string sounds to ramp down
+					// Ramp new tones to the gain to use
+					theRamp.clear();
+					calcGuitarStringSoundsRampFaktors
+					(
+						rampBackInsrtr
+						, true
+						, (double)0.0f
+						, (double)stringGainToUse
+					);
+					guitarStringSoundsRampFillInRampedTones
+					(
+						std::next(guitarStringSoundsRamp.begin(), currentBufferSizeInUse >> 1) // Point to last half of buffer
+						, addedPtrsToGuitarStringsSinePhases
+						, theRamp
+					);
+				}
+				else if (ptrsToGuitarStringsSinePhasesRemoved)
+				{
+					// There are guitar string sounds to ramp down
 
-							calcGuitarStringSoundsRampFaktors
-							(
-								rampBackInsrtr
-								, true
-								, (double)oldStringGainToUse
-								, (double)0.0f
-							);
-							guitarStringSoundsRampFillInRampedTones
-							(
-								guitarStringSoundsRamp.begin()
-								, removedPtrsToGuitarStringsSinePhases
-								, theRamp
-							);
-							guitarStringSoundsRampFillInTheUnRampedTones
-							(
-								guitarStringSoundsRamp.begin() // Point to first half of buffer
-								, std::prev(guitarStringSoundsRamp.end(), currentBufferSizeInUse >> 1) // End first half of buffer
-								, unChangedPtrsToGuitarStringsSinePhases
-								, (double)stringGainToUse
-							);
+					calcGuitarStringSoundsRampFaktors
+					(
+						rampBackInsrtr
+						, true
+						, (double)oldStringGainToUse
+						, (double)0.0f
+					);
+					guitarStringSoundsRampFillInRampedTones
+					(
+						guitarStringSoundsRamp.begin()
+						, removedPtrsToGuitarStringsSinePhases
+						, theRamp
+					);
+					guitarStringSoundsRampFillInTheUnRampedTones
+					(
+						guitarStringSoundsRamp.begin() // Point to first half of buffer
+						, std::prev(guitarStringSoundsRamp.end(), currentBufferSizeInUse >> 1) // End first half of buffer
+						, unChangedPtrsToGuitarStringsSinePhases
+						, (double)stringGainToUse
+					);
 
-							// Ramp untouched sounds to their new gain
-							// Make ramp
-							theRamp.clear();
-							calcGuitarStringSoundsRampFaktors
-							(
-								rampBackInsrtr
-								, true
-								, oldStringGainToUse
-								, (double)stringGainToUse
-							);
-							guitarStringSoundsRampFillInRampedTones
-							(
-								std::next(guitarStringSoundsRamp.begin(), currentBufferSizeInUse >> 1) // Last half of buffer
-								, unChangedPtrsToGuitarStringsSinePhases
-								, theRamp
-							);
-						}
-					}
-					else
-					{
-						// There are no untouched tones
-
-						if (ptrsToGuitarStringsSinePhasesRemoved && ptrsToGuitarStringsSinePhasesAdded)
-						{
-							// There are some guitar string sounds added AND some tones removed
-
-							// Ramp down removed tones 
-							calcGuitarStringSoundsRampFaktors
-							(
-								rampBackInsrtr
-								, true
-								, (double)oldStringGainToUse
-								, (double)0.0f
-							);
-							guitarStringSoundsRampFillInRampedTones
-							(
-								guitarStringSoundsRamp.begin()
-								, removedPtrsToGuitarStringsSinePhases
-								, theRamp
-							);
-
-							// Ramp added sounds to their new gain
-							// Ramp new tones to the gain to use
-							theRamp.clear();
-							calcGuitarStringSoundsRampFaktors
-							(
-								rampBackInsrtr
-								, true
-								, (double)0.0f
-								, (double)stringGainToUse
-							);
-							guitarStringSoundsRampFillInRampedTones
-							(
-								std::next(guitarStringSoundsRamp.begin(), currentBufferSizeInUse >> 1) // Point to last half of buffer
-								, addedPtrsToGuitarStringsSinePhases
-								, theRamp
-							);
-						}
-						else if (ptrsToGuitarStringsSinePhasesAdded)
-						{
-							// There are guitar string sounds added
-
-							// Ramp sounds to their new gain
-							// Ramp new tones to the gain to use
-							theRamp.clear();
-							calcGuitarStringSoundsRampFaktors
-							(
-								rampBackInsrtr
-								, false
-								, (double)0.0f
-								, (double)stringGainToUse
-							);
-							guitarStringSoundsRampFillInRampedTones
-							(
-								guitarStringSoundsRamp.begin() // Point to last half of buffer
-								, addedPtrsToGuitarStringsSinePhases
-								, theRamp
-							);
-
-						}
-						else if (ptrsToGuitarStringsSinePhasesRemoved)
-						{
-							// There are removed guitar string sounds
-
-							calcGuitarStringSoundsRampFaktors
-							(
-								rampBackInsrtr
-								, false
-								, (double)oldStringGainToUse
-								, (double)0.0f
-							);
-							guitarStringSoundsRampFillInRampedTones
-							(
-								guitarStringSoundsRamp.begin()
-								, removedPtrsToGuitarStringsSinePhases
-								, theRamp
-							);
-						}
-					}
-
-					ptrsToGuitarStringsSinePhases = newPtrsToGuitarStringsSinePhases;
-					doPlayGuitarStringSounds = true;
-
-#else // !(ALWAYS_USE_FULL_BUFFER_RAMPS)
-
-					playGuitarStringSoundsRamp = true; // Lure getNextAudioBlock into part w. guitar strings ramp
-					if (unChangedPtrsToGuitarStringsSinePhasesExists)
-					{
-						// Some tones are still there as last time
-
-						if (ptrsToGuitarStringsSinePhasesRemoved && ptrsToGuitarStringsSinePhasesAdded)
-						{
-							// There are guitar string sounds to ramp down AND guitar string sounds to ramp up
-
-							calcGuitarStringSoundsRampFaktors
-							(
-								rampBackInsrtr
-								, false
-								, (double)oldStringGainToUse
-								, (double)0.0f
-							);
-							guitarStringSoundsRampFillInRampedTones
-							(
-								guitarStringSoundsRamp.begin()
-								, removedPtrsToGuitarStringsSinePhases
-								, theRamp
-							);
-
-							// Ramp untouched sounds to their new gain
-							// Make ramp
-							theRamp.clear();
-							calcGuitarStringSoundsRampFaktors
-							(
-								rampBackInsrtr
-								, false
-								, oldStringGainToUse
-								, (double)stringGainToUse
-							);
-							guitarStringSoundsRampFillInRampedTones
-							(
-								guitarStringSoundsRamp.begin()
-								, unChangedPtrsToGuitarStringsSinePhases
-								, theRamp
-							);
-
-							// Ramp new tones to the gain to use
-							theRamp.clear();
-							calcGuitarStringSoundsRampFaktors
-							(
-								rampBackInsrtr
-								, false
-								, (double)0.0f
-								, (double)stringGainToUse
-							);
-							guitarStringSoundsRampFillInRampedTones
-							(
-								guitarStringSoundsRamp.begin()
-								, addedPtrsToGuitarStringsSinePhases
-								, theRamp
-							);
-						}
-						else if (ptrsToGuitarStringsSinePhasesAdded)
-						{
-							// There are guitar string sounds to ramp up
-
-							// Ramp untouched sounds to their new gain
-							// Make ramp
-							calcGuitarStringSoundsRampFaktors
-							(
-								rampBackInsrtr
-								, false
-								, oldStringGainToUse
-								, (double)stringGainToUse
-							);
-							guitarStringSoundsRampFillInRampedTones
-							(
-								guitarStringSoundsRamp.begin()
-								, unChangedPtrsToGuitarStringsSinePhases
-								, theRamp
-							);
-
-							// Ramp new tones to the gain to use
-							theRamp.clear();
-							calcGuitarStringSoundsRampFaktors
-							(
-								rampBackInsrtr
-								, false
-								, (double)0.0f
-								, (double)stringGainToUse
-							);
-							guitarStringSoundsRampFillInRampedTones
-							(
-								guitarStringSoundsRamp.begin()
-								, addedPtrsToGuitarStringsSinePhases
-								, theRamp
-							);
-						}
-						else if (ptrsToGuitarStringsSinePhasesRemoved)
-						{
-							// There are guitar string sounds to ramp down
-
-							calcGuitarStringSoundsRampFaktors
-							(
-								rampBackInsrtr
-								, false
-								, (double)oldStringGainToUse
-								, (double)0.0f
-							);
-							guitarStringSoundsRampFillInRampedTones
-							(
-								guitarStringSoundsRamp.begin()
-								, removedPtrsToGuitarStringsSinePhases
-								, theRamp
-							);
-
-							// Ramp untouched sounds to their new gain
-							// Make ramp
-							theRamp.clear();
-							calcGuitarStringSoundsRampFaktors
-							(
-								rampBackInsrtr
-								, false
-								, oldStringGainToUse
-								, (double)stringGainToUse
-							);
-							guitarStringSoundsRampFillInRampedTones
-							(
-								guitarStringSoundsRamp.begin()
-								, unChangedPtrsToGuitarStringsSinePhases
-								, theRamp
-							);
-						}
-					}
-					else
-					{
-						// There are no untouched tones
-
-						if (ptrsToGuitarStringsSinePhasesRemoved && ptrsToGuitarStringsSinePhasesAdded)
-						{
-							// There are some guitar string sounds added AND some tones removed
-
-							// Ramp down removed tones 
-							calcGuitarStringSoundsRampFaktors
-							(
-								rampBackInsrtr
-								, false
-								, (double)oldStringGainToUse
-								, (double)0.0f
-							);
-							guitarStringSoundsRampFillInRampedTones
-							(
-								guitarStringSoundsRamp.begin()
-								, removedPtrsToGuitarStringsSinePhases
-								, theRamp
-							);
-
-							// Ramp new tones to the gain to use
-							theRamp.clear();
-							calcGuitarStringSoundsRampFaktors
-							(
-								rampBackInsrtr
-								, false
-								, (double)0.0f
-								, (double)stringGainToUse
-							);
-							guitarStringSoundsRampFillInRampedTones
-							(
-								guitarStringSoundsRamp.begin()
-								, addedPtrsToGuitarStringsSinePhases
-								, theRamp
-							);
-						}
-						else if (ptrsToGuitarStringsSinePhasesAdded)
-						{
-							// There are guitar string sounds added
-
-							// Ramp sounds to their new gain
-
-							// Ramp new tones to the gain to use
-							theRamp.clear();
-							calcGuitarStringSoundsRampFaktors
-							(
-								rampBackInsrtr
-								, false
-								, (double)0.0f
-								, (double)stringGainToUse
-							);
-							guitarStringSoundsRampFillInRampedTones
-							(
-								guitarStringSoundsRamp.begin() // Point to last half of buffer
-								, addedPtrsToGuitarStringsSinePhases
-								, theRamp
-							);
-
-						}
-						else if (ptrsToGuitarStringsSinePhasesRemoved)
-						{
-							// There are removed guitar string sounds
-
-							calcGuitarStringSoundsRampFaktors
-							(
-								rampBackInsrtr
-								, false
-								, (double)oldStringGainToUse
-								, (double)0.0f
-							);
-							guitarStringSoundsRampFillInRampedTones
-							(
-								guitarStringSoundsRamp.begin()
-								, removedPtrsToGuitarStringsSinePhases
-								, theRamp
-							);
-						}
-					}
-
-					ptrsToGuitarStringsSinePhases = newPtrsToGuitarStringsSinePhases;
-					doPlayGuitarStringSounds = true;
-
-#endif // !(ALWAYS_USE_FULL_BUFFER_RAMPS)
-
-				} // End scope of guitarStringSoundsLockMutex
+					// Ramp untouched sounds to their new gain
+					// Make ramp
+					theRamp.clear();
+					calcGuitarStringSoundsRampFaktors
+					(
+						rampBackInsrtr
+						, true
+						, oldStringGainToUse
+						, (double)stringGainToUse
+					);
+					guitarStringSoundsRampFillInRampedTones
+					(
+						std::next(guitarStringSoundsRamp.begin(), currentBufferSizeInUse >> 1) // Last half of buffer
+						, unChangedPtrsToGuitarStringsSinePhases
+						, theRamp
+					);
+				}
 			}
 			else
 			{
-				stringGainToUse = outputGain * stringsGain / (newPtrsToGuitarStringsSinePhases.size());
-				ptrsToGuitarStringsSinePhases = newPtrsToGuitarStringsSinePhases;
-				doPlayGuitarStringSounds = true;
+				// There are no untouched tones
+
+				if (ptrsToGuitarStringsSinePhasesRemoved && ptrsToGuitarStringsSinePhasesAdded)
+				{
+					// There are some guitar string sounds added AND some tones removed
+
+					// Ramp down removed tones 
+					calcGuitarStringSoundsRampFaktors
+					(
+						rampBackInsrtr
+						, true
+						, (double)oldStringGainToUse
+						, (double)0.0f
+					);
+					guitarStringSoundsRampFillInRampedTones
+					(
+						guitarStringSoundsRamp.begin()
+						, removedPtrsToGuitarStringsSinePhases
+						, theRamp
+					);
+
+					// Ramp added sounds to their new gain
+					// Ramp new tones to the gain to use
+					theRamp.clear();
+					calcGuitarStringSoundsRampFaktors
+					(
+						rampBackInsrtr
+						, true
+						, (double)0.0f
+						, (double)stringGainToUse
+					);
+					guitarStringSoundsRampFillInRampedTones
+					(
+						std::next(guitarStringSoundsRamp.begin(), currentBufferSizeInUse >> 1) // Point to last half of buffer
+						, addedPtrsToGuitarStringsSinePhases
+						, theRamp
+					);
+				}
+				else if (ptrsToGuitarStringsSinePhasesAdded)
+				{
+					// There are guitar string sounds added
+
+					// Ramp sounds to their new gain
+					// Ramp new tones to the gain to use
+					theRamp.clear();
+					calcGuitarStringSoundsRampFaktors
+					(
+						rampBackInsrtr
+						, false
+						, (double)0.0f
+						, (double)stringGainToUse
+					);
+					guitarStringSoundsRampFillInRampedTones
+					(
+						guitarStringSoundsRamp.begin() // Point to last half of buffer
+						, addedPtrsToGuitarStringsSinePhases
+						, theRamp
+					);
+
+				}
+				else if (ptrsToGuitarStringsSinePhasesRemoved)
+				{
+					// There are removed guitar string sounds
+
+					calcGuitarStringSoundsRampFaktors
+					(
+						rampBackInsrtr
+						, false
+						, (double)oldStringGainToUse
+						, (double)0.0f
+					);
+					guitarStringSoundsRampFillInRampedTones
+					(
+						guitarStringSoundsRamp.begin()
+						, removedPtrsToGuitarStringsSinePhases
+						, theRamp
+					);
+				}
 			}
 
-			guitarStringSoundsOnLastTime = guitarStringSoundsOn;
+			ptrsToGuitarStringsSinePhases = newPtrsToGuitarStringsSinePhases;
+			doPlayGuitarStringSounds = true;
+
+#else // !(ALWAYS_USE_FULL_BUFFER_RAMPS)
+
+			playGuitarStringSoundsRamp = true; // Lure getNextAudioBlock into part w. guitar strings ramp
+			if (unChangedPtrsToGuitarStringsSinePhasesExists)
+			{
+				// Some tones are still there as last time
+
+				if (ptrsToGuitarStringsSinePhasesRemoved && ptrsToGuitarStringsSinePhasesAdded)
+				{
+					// There are guitar string sounds to ramp down AND guitar string sounds to ramp up
+
+					calcGuitarStringSoundsRampFaktors
+					(
+						rampBackInsrtr
+						, false
+						, (double)oldStringGainToUse
+						, (double)0.0f
+					);
+					guitarStringSoundsRampFillInRampedTones
+					(
+						guitarStringSoundsRamp.begin()
+						, removedPtrsToGuitarStringsSinePhases
+						, theRamp
+					);
+
+					// Ramp untouched sounds to their new gain
+					// Make ramp
+					theRamp.clear();
+					calcGuitarStringSoundsRampFaktors
+					(
+						rampBackInsrtr
+						, false
+						, oldStringGainToUse
+						, (double)stringGainToUse
+					);
+					guitarStringSoundsRampFillInRampedTones
+					(
+						guitarStringSoundsRamp.begin()
+						, unChangedPtrsToGuitarStringsSinePhases
+						, theRamp
+					);
+
+					// Ramp new tones to the gain to use
+					theRamp.clear();
+					calcGuitarStringSoundsRampFaktors
+					(
+						rampBackInsrtr
+						, false
+						, (double)0.0f
+						, (double)stringGainToUse
+					);
+					guitarStringSoundsRampFillInRampedTones
+					(
+						guitarStringSoundsRamp.begin()
+						, addedPtrsToGuitarStringsSinePhases
+						, theRamp
+					);
+				}
+				else if (ptrsToGuitarStringsSinePhasesAdded)
+				{
+					// There are guitar string sounds to ramp up
+
+					// Ramp untouched sounds to their new gain
+					// Make ramp
+					calcGuitarStringSoundsRampFaktors
+					(
+						rampBackInsrtr
+						, false
+						, oldStringGainToUse
+						, (double)stringGainToUse
+					);
+					guitarStringSoundsRampFillInRampedTones
+					(
+						guitarStringSoundsRamp.begin()
+						, unChangedPtrsToGuitarStringsSinePhases
+						, theRamp
+					);
+
+					// Ramp new tones to the gain to use
+					theRamp.clear();
+					calcGuitarStringSoundsRampFaktors
+					(
+						rampBackInsrtr
+						, false
+						, (double)0.0f
+						, (double)stringGainToUse
+					);
+					guitarStringSoundsRampFillInRampedTones
+					(
+						guitarStringSoundsRamp.begin()
+						, addedPtrsToGuitarStringsSinePhases
+						, theRamp
+					);
+				}
+				else if (ptrsToGuitarStringsSinePhasesRemoved)
+				{
+					// There are guitar string sounds to ramp down
+
+					calcGuitarStringSoundsRampFaktors
+					(
+						rampBackInsrtr
+						, false
+						, (double)oldStringGainToUse
+						, (double)0.0f
+					);
+					guitarStringSoundsRampFillInRampedTones
+					(
+						guitarStringSoundsRamp.begin()
+						, removedPtrsToGuitarStringsSinePhases
+						, theRamp
+					);
+
+					// Ramp untouched sounds to their new gain
+					// Make ramp
+					theRamp.clear();
+					calcGuitarStringSoundsRampFaktors
+					(
+						rampBackInsrtr
+						, false
+						, oldStringGainToUse
+						, (double)stringGainToUse
+					);
+					guitarStringSoundsRampFillInRampedTones
+					(
+						guitarStringSoundsRamp.begin()
+						, unChangedPtrsToGuitarStringsSinePhases
+						, theRamp
+					);
+				}
+			}
+			else
+			{
+				// There are no untouched tones
+
+				if (ptrsToGuitarStringsSinePhasesRemoved && ptrsToGuitarStringsSinePhasesAdded)
+				{
+					// There are some guitar string sounds added AND some tones removed
+
+					// Ramp down removed tones 
+					calcGuitarStringSoundsRampFaktors
+					(
+						rampBackInsrtr
+						, false
+						, (double)oldStringGainToUse
+						, (double)0.0f
+					);
+					guitarStringSoundsRampFillInRampedTones
+					(
+						guitarStringSoundsRamp.begin()
+						, removedPtrsToGuitarStringsSinePhases
+						, theRamp
+					);
+
+					// Ramp new tones to the gain to use
+					theRamp.clear();
+					calcGuitarStringSoundsRampFaktors
+					(
+						rampBackInsrtr
+						, false
+						, (double)0.0f
+						, (double)stringGainToUse
+					);
+					guitarStringSoundsRampFillInRampedTones
+					(
+						guitarStringSoundsRamp.begin()
+						, addedPtrsToGuitarStringsSinePhases
+						, theRamp
+					);
+				}
+				else if (ptrsToGuitarStringsSinePhasesAdded)
+				{
+					// There are guitar string sounds added
+
+					// Ramp sounds to their new gain
+
+					// Ramp new tones to the gain to use
+					theRamp.clear();
+					calcGuitarStringSoundsRampFaktors
+					(
+						rampBackInsrtr
+						, false
+						, (double)0.0f
+						, (double)stringGainToUse
+					);
+					guitarStringSoundsRampFillInRampedTones
+					(
+						guitarStringSoundsRamp.begin() // Point to last half of buffer
+						, addedPtrsToGuitarStringsSinePhases
+						, theRamp
+					);
+
+				}
+				else if (ptrsToGuitarStringsSinePhasesRemoved)
+				{
+					// There are removed guitar string sounds
+
+					calcGuitarStringSoundsRampFaktors
+					(
+						rampBackInsrtr
+						, false
+						, (double)oldStringGainToUse
+						, (double)0.0f
+					);
+					guitarStringSoundsRampFillInRampedTones
+					(
+						guitarStringSoundsRamp.begin()
+						, removedPtrsToGuitarStringsSinePhases
+						, theRamp
+					);
+				}
+			}
+
+			ptrsToGuitarStringsSinePhases = newPtrsToGuitarStringsSinePhases;
+			doPlayGuitarStringSounds = true;
+
+#endif // !(ALWAYS_USE_FULL_BUFFER_RAMPS)
+
+		} // End scope of guitarStringSoundsLockMutex
+	}
+	else
+	{
+		stringGainToUse = outputGain * stringsGain / (newPtrsToGuitarStringsSinePhases.size());
+		ptrsToGuitarStringsSinePhases = newPtrsToGuitarStringsSinePhases;
+		doPlayGuitarStringSounds = true;
+	}
+
+	guitarStringSoundsOnLastTime = guitarStringSoundsOn;
 
 }
 
@@ -3609,7 +3618,7 @@ void tuneComponent::startThresholdAutoCalibrate()
 			//, 1 /*unsigned int secsBetwTicks =*/
 			//, true /*bool hasButton =*/
 			//, "OK" /*const std::string& buttonText =*/ 
-			);
+		);
 
 
 	measuredNoise.clear();

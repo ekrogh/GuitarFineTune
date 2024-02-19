@@ -7,7 +7,7 @@
   the "//[xyz]" and "//[/xyz]" sections will be retained when the file is loaded
   and re-saved.
 
-  Created with Projucer version: 6.0.1
+  Created with Projucer version: 7.0.10
 
   ------------------------------------------------------------------------------
 
@@ -44,17 +44,17 @@ aboutPage::aboutPage ()
 
     aboutLabel->setBounds (42, 0, 215, 64);
 
-    hyperlinkButton.reset (new juce::HyperlinkButton (TRANS("http://eksit.dk"),
-                                                      URL ("http://eksit.dk")));
+    hyperlinkButton.reset (new juce::HyperlinkButton (TRANS ("http://eksit.dk"),
+                                                      juce::URL ("http://eksit.dk")));
     addAndMakeVisible (hyperlinkButton.get());
-    hyperlinkButton->setTooltip (TRANS("http://eksit.dk"));
-    hyperlinkButton->setButtonText (TRANS("http://eksit.dk"));
+    hyperlinkButton->setTooltip (TRANS ("http://eksit.dk"));
+    hyperlinkButton->setButtonText (TRANS ("http://eksit.dk"));
     hyperlinkButton->setColour (juce::HyperlinkButton::textColourId, juce::Colours::cornflowerblue);
 
     hyperlinkButton->setBounds (42, 115, 215, 24);
 
     eigilLabel.reset (new juce::Label ("eigilLabel",
-                                       TRANS("Eigil Krogh Sorensen\n")));
+                                       TRANS ("Eigil Krogh Sorensen\n")));
     addAndMakeVisible (eigilLabel.get());
     eigilLabel->setFont (juce::Font (16.00f, juce::Font::plain).withTypefaceStyle ("Regular"));
     eigilLabel->setJustificationType (juce::Justification::centred);
@@ -65,33 +65,46 @@ aboutPage::aboutPage ()
 
     eigilLabel->setBounds (42, 92, 215, 24);
 
-    emailButton.reset (new juce::HyperlinkButton (TRANS("guitarFineTune@eksit.dk"),
-                                                  URL ("mailto://guitarFineTune@eksit.dk")));
+    emailButton.reset (new juce::HyperlinkButton (TRANS ("guitarFineTune@eksit.dk"),
+                                                  juce::URL ("mailto://guitarFineTune@eksit.dk")));
     addAndMakeVisible (emailButton.get());
-    emailButton->setTooltip (TRANS("mailto://guitarFineTune@eksit.dk"));
-    emailButton->setButtonText (TRANS("guitarFineTune@eksit.dk"));
+    emailButton->setTooltip (TRANS ("mailto://guitarFineTune@eksit.dk"));
+    emailButton->setButtonText (TRANS ("guitarFineTune@eksit.dk"));
     emailButton->setColour (juce::HyperlinkButton::textColourId, juce::Colours::cornflowerblue);
 
     emailButton->setBounds (42, 139, 215, 24);
 
-    UsersGuide.reset (new juce::HyperlinkButton (TRANS("User\'s Guide"),
-                                                 URL ("http://eksit.dk/users-guide/")));
+    UsersGuide.reset (new juce::HyperlinkButton (TRANS ("User\'s Guide"),
+                                                 juce::URL ("http://eksit.dk/users-guide/")));
     addAndMakeVisible (UsersGuide.get());
-    UsersGuide->setTooltip (TRANS("http://eksit.dk/users-guide/"));
-    UsersGuide->setButtonText (TRANS("User\'s Guide"));
+    UsersGuide->setTooltip (TRANS ("http://eksit.dk/users-guide/"));
+    UsersGuide->setButtonText (TRANS ("User\'s Guide"));
     UsersGuide->setColour (juce::HyperlinkButton::textColourId, juce::Colours::cornflowerblue);
 
     UsersGuide->setBounds (42, 65, 215, 24);
 
+    juceVer__label.reset (new juce::Label ("juceVer label",
+                                           TRANS ("-")));
+    addAndMakeVisible (juceVer__label.get());
+    juceVer__label->setFont (juce::Font (15.00f, juce::Font::plain).withTypefaceStyle ("Regular"));
+    juceVer__label->setJustificationType (juce::Justification::centred);
+    juceVer__label->setEditable (false, false, false);
+    juceVer__label->setColour (juce::TextEditor::textColourId, juce::Colours::black);
+    juceVer__label->setColour (juce::TextEditor::backgroundColourId, juce::Colour (0x00000000));
+
+    juceVer__label->setBounds (72, 201, 150, 24);
+
 
     //[UserPreSize]
-    aboutLabel->setText(std::string(ProjectInfo::projectName)
-                        + "\nVer. "
-                        + std::string(ProjectInfo::versionString)
-                        #if (JUCE_ANDROID)
-                        + "." + std::to_string(ANDROID_VERSION_CODE)
+	aboutLabel->setText(std::string(ProjectInfo::projectName)
+		+ "\nVer. "
+		+ std::string(ProjectInfo::versionString)
+#if (JUCE_ANDROID)
+		+"." + std::to_string(ANDROID_VERSION_CODE)
 #endif
-            , juce::NotificationType::dontSendNotification);
+		, juce::NotificationType::dontSendNotification);
+
+	juceVer__label->setText(juce::String(SystemStats::getJUCEVersion()), juce::NotificationType::dontSendNotification);
     //[/UserPreSize]
 
     setSize (300, 260);
@@ -111,6 +124,7 @@ aboutPage::~aboutPage()
     eigilLabel = nullptr;
     emailButton = nullptr;
     UsersGuide = nullptr;
+    juceVer__label = nullptr;
 
 
     //[Destructor]. You can add your own custom destruction code here..
@@ -155,42 +169,44 @@ void aboutPage::scaleAllComponents()
 
 		int tabBarDepth = parent->getTabBarDepth();
 
-        auto curUserArea = Desktop::getInstance().getDisplays().getPrimaryDisplay()->userArea;
-        float bndsScaleHoriz = (float) (curUserArea.getWidth()) / (float) (widthOfAboutPage);
-        float bndsScaleVerti = ((float) (curUserArea.getHeight()) - (float) tabBarDepth) /
-                               ((float) hightOfAboutPage);
-        float scaleNow = bndsScaleVerti;
-        if (bndsScaleHoriz < bndsScaleVerti) {
-            scaleNow = bndsScaleHoriz;
-        }
+		auto curUserArea = Desktop::getInstance().getDisplays().getPrimaryDisplay()->userArea;
+		float bndsScaleHoriz = (float)(curUserArea.getWidth()) / (float)(widthOfAboutPage);
+		float bndsScaleVerti = ((float)(curUserArea.getHeight()) - (float)tabBarDepth) /
+			((float)hightOfAboutPage);
+		float scaleNow = bndsScaleVerti;
+		if (bndsScaleHoriz < bndsScaleVerti)
+		{
+			scaleNow = bndsScaleHoriz;
+		}
 
-        workRectangle.setBounds((300 - 215) / 2, 0, 215, 64);
-        aboutLabel->setBounds(workRectangle * scaleUsedLastTime);
-        workRectangle.setBounds((300 - 215) / 2, 65, 215, 24);
-        UsersGuide->setBounds(workRectangle * scaleUsedLastTime);
-        workRectangle.setBounds((300 - 215) / 2, 92, 215, 24);
-        eigilLabel->setBounds(workRectangle * scaleUsedLastTime);
-        workRectangle.setBounds((300 - 215) / 2, 115, 215, 24);
-        hyperlinkButton->setBounds(workRectangle * scaleUsedLastTime);
-        workRectangle.setBounds((300 - 215) / 2, 139, 215, 24);
-        emailButton->setBounds(workRectangle * scaleUsedLastTime);
-        workRectangle.setBounds((300 - 215) / 2 + 0, 169, 215, 24);
+		workRectangle.setBounds((300 - 215) / 2, 0, 215, 64);
+		aboutLabel->setBounds(workRectangle * scaleUsedLastTime);
+		workRectangle.setBounds((300 - 215) / 2, 65, 215, 24);
+		UsersGuide->setBounds(workRectangle * scaleUsedLastTime);
+		workRectangle.setBounds((300 - 215) / 2, 92, 215, 24);
+		eigilLabel->setBounds(workRectangle * scaleUsedLastTime);
+		workRectangle.setBounds((300 - 215) / 2, 115, 215, 24);
+		hyperlinkButton->setBounds(workRectangle * scaleUsedLastTime);
+		workRectangle.setBounds((300 - 215) / 2, 139, 215, 24);
+		emailButton->setBounds(workRectangle * scaleUsedLastTime);
+		workRectangle.setBounds((300 - 215) / 2 + 0, 169, 215, 24);
 
-        auto curbnds = getBounds();
+		auto curbnds = getBounds();
 
-        if (scaleNow != scaleUsedLastTime) {
-            float scaleToUse = scaleNow / scaleUsedLastTime;
+		if (scaleNow != scaleUsedLastTime)
+		{
+			float scaleToUse = scaleNow / scaleUsedLastTime;
 
-            curbnds = getBounds();
-            curUserArea.setHeight(curUserArea.getHeight() - parent->getTabBarDepth());
-            curUserArea.setY(parent->getTabBarDepth());
+			curbnds = getBounds();
+			curUserArea.setHeight(curUserArea.getHeight() - parent->getTabBarDepth());
+			curUserArea.setY(parent->getTabBarDepth());
 			setBoundsToFit(curUserArea, Justification::left, false);
 
 			int numChildComponents = this->getNumChildComponents();
 
 			for (int i = 0; i < numChildComponents; ++i)
 			{
-				if (Component *childComponent = this->getChildComponent(i))
+				if (Component* childComponent = this->getChildComponent(i))
 				{
 					auto curCpntBnds = childComponent->getBounds();
 					auto scaledBounds = curCpntBnds * scaleToUse;
@@ -261,6 +277,11 @@ BEGIN_JUCER_METADATA
                    virtualName="" explicitFocusOrder="0" pos="42 65 215 24" tooltip="http://eksit.dk/users-guide/"
                    textCol="ff6495ed" buttonText="User's Guide" connectedEdges="0"
                    needsCallback="0" radioGroupId="0" url="http://eksit.dk/users-guide/"/>
+  <LABEL name="juceVer label" id="4a131a76420e3a14" memberName="juceVer__label"
+         virtualName="" explicitFocusOrder="0" pos="72 201 150 24" edTextCol="ff000000"
+         edBkgCol="0" labelText="-" editableSingleClick="0" editableDoubleClick="0"
+         focusDiscardsChanges="0" fontname="Default font" fontsize="15.0"
+         kerning="0.0" bold="0" italic="0" justification="36"/>
 </JUCER_COMPONENT>
 
 END_JUCER_METADATA
