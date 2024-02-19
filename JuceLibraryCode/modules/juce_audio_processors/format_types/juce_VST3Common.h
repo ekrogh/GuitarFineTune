@@ -1490,14 +1490,12 @@ private:
         return e;
     }
 
-    static Steinberg::Vst::Event createSysExEvent (const MidiMessage& msg, const uint8* data) noexcept
+    static Steinberg::Vst::Event createSysExEvent (const MidiMessage& msg, const uint8* midiEventData) noexcept
     {
-        jassert (msg.isSysEx());
-
         Steinberg::Vst::Event e{};
         e.type          = Steinberg::Vst::Event::kDataEvent;
-        e.data.bytes    = data;
-        e.data.size     = (uint32) msg.getRawDataSize();
+        e.data.bytes    = midiEventData + 1;
+        e.data.size     = (uint32) msg.getSysExDataSize();
         e.data.type     = Steinberg::Vst::DataEvent::kMidiSysEx;
         return e;
     }
@@ -1651,28 +1649,6 @@ private:
         }
     }
 
-    static Optional<MidiMessage> toMidiMessage (const Steinberg::Vst::DataEvent& e)
-    {
-        if (e.type != Steinberg::Vst::DataEvent::kMidiSysEx || e.size < 2)
-        {
-            // Only sysex data messages can be converted to MIDI
-            jassertfalse;
-            return {};
-        }
-
-        const auto header = e.bytes[0];
-        const auto footer = e.bytes[e.size - 1];
-
-        if (header != 0xf0 || footer != 0xf7)
-        {
-            // The sysex header/footer bytes are missing
-            jassertfalse;
-            return {};
-        }
-
-        return MidiMessage::createSysExMessage (e.bytes + 1, (int) e.size - 2);
-    }
-
     static Optional<MidiMessage> toMidiMessage (const Steinberg::Vst::Event& e)
     {
         switch (e.type)
@@ -1693,7 +1669,7 @@ private:
                                                       (Steinberg::uint8) denormaliseToMidiValue (e.polyPressure.pressure));
 
             case Steinberg::Vst::Event::kDataEvent:
-                return toMidiMessage (e.data);
+                return MidiMessage::createSysExMessage (e.data.bytes, (int) e.data.size);
 
             case Steinberg::Vst::Event::kLegacyMIDICCOutEvent:
                 return toMidiMessage (e.midiCCOut);

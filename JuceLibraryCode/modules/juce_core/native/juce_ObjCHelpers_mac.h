@@ -435,7 +435,10 @@ constexpr auto getSignature (Result (Class::*) (Args...) const) { return Signatu
 template <typename Class, typename Fn, typename Result, typename... Params>
 auto createObjCBlockImpl (Class* object, Fn func, Signature<Result (Params...)>)
 {
-    return [[^Result (Params... params) { return (object->*func) (params...); } copy] autorelease];
+    __block auto _this = object;
+    __block auto _func = func;
+
+    return [[^Result (Params... params) { return (_this->*_func) (params...); } copy] autorelease];
 }
 } // namespace detail
 

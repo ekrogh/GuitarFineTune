@@ -183,12 +183,12 @@ public:
             startThread();
         }
 
-        ~WriteThread() override
+        ~WriteThread()
         {
             stopThread (5000);
         }
 
-        void run() override
+        void run()
         {
             int n = 0;
 

@@ -60,12 +60,12 @@ struct TabbedComponent::ButtonBar final : public TabbedButtonBar
     {
     }
 
-    void currentTabChanged (int newCurrentTabIndex, const String& newTabName) override
+    void currentTabChanged (int newCurrentTabIndex, const String& newTabName)
     {
         owner.changeCallback (newCurrentTabIndex, newTabName);
     }
 
-    void popupMenuClickOnTab (int tabIndex, const String& tabName) override
+    void popupMenuClickOnTab (int tabIndex, const String& tabName)
     {
         owner.popupMenuClickOnTab (tabIndex, tabName);
     }
@@ -75,7 +75,7 @@ struct TabbedComponent::ButtonBar final : public TabbedButtonBar
         return owner.tabs->getTabBackgroundColour (tabIndex);
     }
 
-    TabBarButton* createTabButton (const String& tabName, int tabIndex) override
+    TabBarButton* createTabButton (const String& tabName, int tabIndex)
     {
         return owner.createTabButton (tabName, tabIndex);
     }

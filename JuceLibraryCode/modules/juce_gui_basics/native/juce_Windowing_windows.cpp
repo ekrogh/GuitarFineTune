@@ -1654,6 +1654,31 @@ private:
 JUCE_IMPLEMENT_SINGLETON (VBlankDispatcher)
 
 //==============================================================================
+class SimpleTimer final : private Timer
+{
+public:
+    SimpleTimer (int intervalMs, std::function<void()> callbackIn)
+        : callback (std::move (callbackIn))
+    {
+        jassert (callback);
+        startTimer (intervalMs);
+    }
+
+    ~SimpleTimer() override
+    {
+        stopTimer();
+    }
+
+private:
+    void timerCallback() override
+    {
+        callback();
+    }
+
+    std::function<void()> callback;
+};
+
+//==============================================================================
 class HWNDComponentPeer final : public ComponentPeer,
                                 private VBlankListener,
                                 private Timer
@@ -1697,10 +1722,7 @@ public:
         updateCurrentMonitorAndRefreshVBlankDispatcher();
 
         if (parentToAddTo != nullptr)
-        {
-            monitorUpdateTimer.emplace ([this] { updateCurrentMonitorAndRefreshVBlankDispatcher(); });
-            monitorUpdateTimer->startTimer (1000);
-        }
+            monitorUpdateTimer.emplace (1000, [this] { updateCurrentMonitorAndRefreshVBlankDispatcher(); });
 
         suspendResumeRegistration = ScopedSuspendResumeNotificationRegistration { hwnd };
     }
@@ -3174,7 +3196,7 @@ private:
             doMouseEvent (getCurrentMousePos(), MouseInputSource::defaultPressure);
     }
 
-    std::tuple<ComponentPeer*, Point<float>> findPeerUnderMouse()
+    ComponentPeer* findPeerUnderMouse (Point<float>& localPos)
     {
         auto currentMousePos = getPOINTFromLParam ((LPARAM) GetMessagePos());
 
@@ -3185,7 +3207,8 @@ private:
         if (peer == nullptr)
             peer = this;
 
-        return std::tuple (peer, peer->globalToLocal (convertPhysicalScreenPointToLogical (pointFromPOINT (currentMousePos), hwnd).toFloat()));
+        localPos = peer->globalToLocal (convertPhysicalScreenPointToLogical (pointFromPOINT (currentMousePos), hwnd).toFloat());
+        return peer;
     }
 
     static MouseInputSource::InputSourceType getPointerType (WPARAM wParam)
@@ -3219,7 +3242,9 @@ private:
         wheel.isSmooth = false;
         wheel.isInertial = false;
 
-        if (const auto [peer, localPos] = findPeerUnderMouse(); peer != nullptr)
+        Point<float> localPos;
+
+        if (auto* peer = findPeerUnderMouse (localPos))
             peer->handleMouseWheel (getPointerType (wParam), localPos, getMouseEventTime(), wheel);
     }
 
@@ -3232,8 +3257,9 @@ private:
         if (getGestureInfo != nullptr && getGestureInfo ((HGESTUREINFO) lParam, &gi))
         {
             updateKeyModifiers();
+            Point<float> localPos;
 
-            if (const auto [peer, localPos] = findPeerUnderMouse(); peer != nullptr)
+            if (auto* peer = findPeerUnderMouse (localPos))
             {
                 switch (gi.dwID)
                 {
@@ -4705,7 +4731,7 @@ private:
 
     RectangleList<int> deferredRepaints;
     ScopedSuspendResumeNotificationRegistration suspendResumeRegistration;
-    std::optional<TimedCallback> monitorUpdateTimer;
+    std::optional<SimpleTimer> monitorUpdateTimer;
 
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (HWNDComponentPeer)
@@ -4731,14 +4757,29 @@ JUCE_IMPLEMENT_SINGLETON (HWNDComponentPeer::WindowClassHolder)
 //==============================================================================
 bool KeyPress::isKeyCurrentlyDown (const int keyCode)
 {
-    const auto k = [&]
-    {
-        if ((keyCode & extendedKeyModifier) != 0)
-            return keyCode;
+    auto k = (SHORT) keyCode;
 
-        const auto vk = BYTE (VkKeyScan ((WCHAR) keyCode) & 0xff);
-        return vk != (BYTE) -1 ? vk : keyCode;
-    }();
+    if ((keyCode & extendedKeyModifier) == 0)
+    {
+        if (k >= (SHORT) 'a' && k <= (SHORT) 'z')
+            k += (SHORT) 'A' - (SHORT) 'a';
+
+        // Only translate if extendedKeyModifier flag is not set
+        const SHORT translatedValues[] = { (SHORT) ',', VK_OEM_COMMA,
+                                           (SHORT) '+', VK_OEM_PLUS,
+                                           (SHORT) '-', VK_OEM_MINUS,
+                                           (SHORT) '.', VK_OEM_PERIOD,
+                                           (SHORT) ';', VK_OEM_1,
+                                           (SHORT) ':', VK_OEM_1,
+                                           (SHORT) '/', VK_OEM_2,
+                                           (SHORT) '?', VK_OEM_2,
+                                           (SHORT) '[', VK_OEM_4,
+                                           (SHORT) ']', VK_OEM_6 };
+
+        for (int i = 0; i < numElementsInArray (translatedValues); i += 2)
+            if (k == translatedValues[i])
+                k = translatedValues[i + 1];
+    }
 
     return HWNDComponentPeer::isKeyDown (k);
 }

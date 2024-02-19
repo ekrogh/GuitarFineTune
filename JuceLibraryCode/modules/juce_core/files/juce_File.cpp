@@ -360,14 +360,6 @@ File File::getParentDirectory() const
     return createFileWithoutCheckingPath (getPathUpToLastSlash());
 }
 
-bool File::isNonEmptyDirectory() const
-{
-    if (! isDirectory())
-        return false;
-
-    return RangedDirectoryIterator (*this, false, "*", findFilesAndDirectories) != RangedDirectoryIterator();
-}
-
 //==============================================================================
 String File::getFileName() const
 {

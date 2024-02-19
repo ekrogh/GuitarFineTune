@@ -87,7 +87,7 @@ namespace CDBurnerHelpers
 }
 
 //==============================================================================
-class AudioCDBurner::Pimpl  : public ComBaseClassHelper<IDiscMasterProgressEvents>,
+class AudioCDBurner::Pimpl  : public ComBaseClassHelper <IDiscMasterProgressEvents>,
                               public Timer
 {
 public:
@@ -104,6 +104,8 @@ public:
         startTimer (2000);
     }
 
+    ~Pimpl()  {}
+
     void releaseObjects()
     {
         discRecorder->Close();
@@ -114,7 +116,7 @@ public:
         Release();
     }
 
-    JUCE_COMRESULT QueryCancel (boolean* pbCancel) override
+    JUCE_COMRESULT QueryCancel (boolean* pbCancel)
     {
         if (listener != nullptr && ! shouldCancel)
             shouldCancel = listener->audioCDBurnProgress (progress);
@@ -124,7 +126,7 @@ public:
         return S_OK;
     }
 
-    JUCE_COMRESULT NotifyBlockProgress (long nCompleted, long nTotal) override
+    JUCE_COMRESULT NotifyBlockProgress (long nCompleted, long nTotal)
     {
         progress = nCompleted / (float) nTotal;
         shouldCancel = listener != nullptr && listener->audioCDBurnProgress (progress);
@@ -132,13 +134,13 @@ public:
         return E_NOTIMPL;
     }
 
-    JUCE_COMRESULT NotifyPnPActivity (void)                                            override  { return E_NOTIMPL; }
-    JUCE_COMRESULT NotifyAddProgress (long /*nCompletedSteps*/, long /*nTotalSteps*/)  override  { return E_NOTIMPL; }
-    JUCE_COMRESULT NotifyTrackProgress (long /*nCurrentTrack*/, long /*nTotalTracks*/) override  { return E_NOTIMPL; }
-    JUCE_COMRESULT NotifyPreparingBurn (long /*nEstimatedSeconds*/)                    override  { return E_NOTIMPL; }
-    JUCE_COMRESULT NotifyClosingDisc (long /*nEstimatedSeconds*/)                      override  { return E_NOTIMPL; }
-    JUCE_COMRESULT NotifyBurnComplete (HRESULT /*status*/)                             override  { return E_NOTIMPL; }
-    JUCE_COMRESULT NotifyEraseComplete (HRESULT /*status*/)                            override  { return E_NOTIMPL; }
+    JUCE_COMRESULT NotifyPnPActivity (void)                              { return E_NOTIMPL; }
+    JUCE_COMRESULT NotifyAddProgress (long /*nCompletedSteps*/, long /*nTotalSteps*/)    { return E_NOTIMPL; }
+    JUCE_COMRESULT NotifyTrackProgress (long /*nCurrentTrack*/, long /*nTotalTracks*/)   { return E_NOTIMPL; }
+    JUCE_COMRESULT NotifyPreparingBurn (long /*nEstimatedSeconds*/)      { return E_NOTIMPL; }
+    JUCE_COMRESULT NotifyClosingDisc (long /*nEstimatedSeconds*/)        { return E_NOTIMPL; }
+    JUCE_COMRESULT NotifyBurnComplete (HRESULT /*status*/)               { return E_NOTIMPL; }
+    JUCE_COMRESULT NotifyEraseComplete (HRESULT /*status*/)              { return E_NOTIMPL; }
 
     class ScopedDiscOpener
     {
@@ -171,34 +173,30 @@ public:
         return readOnlyDiskPresent;
     }
 
-    int getIntProperty (const wchar_t* name, const int defaultReturn) const
+    int getIntProperty (const LPOLESTR name, const int defaultReturn) const
     {
-        std::wstring copy { name };
-
         ComSmartPtr<IPropertyStorage> prop;
         if (FAILED (discRecorder->GetRecorderProperties (prop.resetAndGetPointerAddress())))
             return defaultReturn;
 
         PROPSPEC iPropSpec;
         iPropSpec.ulKind = PRSPEC_LPWSTR;
-        iPropSpec.lpwstr = copy.data();
+        iPropSpec.lpwstr = name;
 
         PROPVARIANT iPropVariant;
         return FAILED (prop->ReadMultiple (1, &iPropSpec, &iPropVariant))
                    ? defaultReturn : (int) iPropVariant.lVal;
     }
 
-    bool setIntProperty (const wchar_t* name, const int value) const
+    bool setIntProperty (const LPOLESTR name, const int value) const
     {
-        std::wstring copy { name };
-
         ComSmartPtr<IPropertyStorage> prop;
         if (FAILED (discRecorder->GetRecorderProperties (prop.resetAndGetPointerAddress())))
             return false;
 
         PROPSPEC iPropSpec;
         iPropSpec.ulKind = PRSPEC_LPWSTR;
-        iPropSpec.lpwstr = copy.data();
+        iPropSpec.lpwstr = name;
 
         PROPVARIANT iPropVariant;
         if (FAILED (prop->ReadMultiple (1, &iPropSpec, &iPropVariant)))
@@ -391,7 +389,7 @@ bool AudioCDBurner::addAudioTrack (AudioSource* audioSource, int numSamples)
         buffer.clear (bytesPerBlock);
 
         AudioData::interleaveSamples (AudioData::NonInterleavedSource<AudioData::Float32, AudioData::NativeEndian> { sourceBuffer.getArrayOfReadPointers(), 2 },
-                                      AudioData::InterleavedDest<AudioData::Int16, AudioData::LittleEndian>        { reinterpret_cast<uint16*> (buffer.get()), 2 },
+                                      AudioData::InterleavedDest<AudioData::Int16, Audiodata::LittleEndian>        { reinterpret_cast<uint16*> (buffer),    2 },
                                       samplesPerBlock);
 
         hr = pimpl->redbook->AddAudioTrackBlocks (buffer, bytesPerBlock);

@@ -230,9 +230,7 @@ namespace juce
                                         "-Wzero-as-null-pointer-constant",
                                         "-Winconsistent-missing-destructor-override",
                                         "-Wshadow-field-in-constructor",
-                                        "-Wshadow-field",
-                                        "-Wsign-conversion",
-                                        "-Wswitch-enum")
+                                        "-Wshadow-field")
    #include <oboe/Oboe.h>
    JUCE_END_IGNORE_WARNINGS_GCC_LIKE
 

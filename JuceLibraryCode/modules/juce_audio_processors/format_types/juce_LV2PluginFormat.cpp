@@ -1438,6 +1438,23 @@ private:
 };
 
 //==============================================================================
+class LambdaTimer final : private Timer
+{
+public:
+    explicit LambdaTimer (std::function<void()> c) : callback (c) {}
+
+    ~LambdaTimer() noexcept override { stopTimer(); }
+
+    using Timer::startTimer;
+    using Timer::startTimerHz;
+    using Timer::stopTimer;
+
+private:
+    void timerCallback() override { callback(); }
+
+    std::function<void()> callback;
+};
+
 struct UiEventListener : public MessageBufferInterface<MessageHeader>
 {
     virtual int idle() = 0;
@@ -1465,7 +1482,7 @@ public:
 private:
     Messages<UiMessageHeader, RealtimeWriteTrait> processorToUi;
     std::set<UiEventListener*> activeUis;
-    TimedCallback timer { [this]
+    LambdaTimer timer { [this]
     {
         for (auto* l : activeUis)
             if (l->idle() != 0)
@@ -1768,13 +1785,6 @@ private:
     SupportsTime time = SupportsTime::no;
 };
 
-struct FreeString { void operator() (void* ptr) const noexcept { lilv_free (ptr); } };
-
-static File bundlePathFromUri (const char* uri)
-{
-    return File { std::unique_ptr<char, FreeString> { lilv_file_uri_parse (uri, nullptr) }.get() };
-}
-
 class Plugins
 {
 public:
@@ -1788,17 +1798,6 @@ public:
     const LilvPlugin* getByUri (const NodeUri& uri) const
     {
         return lilv_plugins_get_by_uri (plugins, uri.get());
-    }
-
-    const LilvPlugin* getByFile (const File& file) const
-    {
-        for (const auto* plugin : *this)
-        {
-            if (bundlePathFromUri (lilv_node_as_uri (lilv_plugin_get_bundle_uri (plugin))) == file)
-                return plugin;
-        }
-
-        return nullptr;
     }
 
 private:
@@ -2135,6 +2134,8 @@ private:
     std::map<String, ControlPort*> symbolToControlPortMap;
     JUCE_LEAK_DETECTOR (PortMap)
 };
+
+struct FreeString { void operator() (void* ptr) const noexcept { lilv_free (ptr); } };
 
 class PluginState
 {
@@ -2582,6 +2583,11 @@ public:
     auto withBundlePath (File v) const noexcept { return withMember (*this, &UiInstanceArgs::bundlePath, std::move (v)); }
     auto withPluginUri  (URL v)  const noexcept { return withMember (*this, &UiInstanceArgs::pluginUri,  std::move (v)); }
 };
+
+static File bundlePathFromUri (const char* uri)
+{
+    return File { std::unique_ptr<char, FreeString> { lilv_file_uri_parse (uri, nullptr) }.get() };
+}
 
 /*
     Creates and holds a UI instance for a plugin with a specific URI, using the provided descriptor.
@@ -4318,7 +4324,7 @@ private:
     Component::SafePointer<Editor> editorPointer = nullptr;
     String uiBundleUri;
     UiDescriptor uiDescriptor;
-    TimedCallback changedParameterFlusher;
+    LambdaTimer changedParameterFlusher;
 };
 
 template <>
@@ -5207,17 +5213,10 @@ public:
     void findAllTypesForFile (OwnedArray<PluginDescription>& result,
                               const String& identifier)
     {
-        if (File::isAbsolutePath (identifier))
-            world->loadBundle (world->newFileUri (nullptr, File::addTrailingSeparator (identifier).toRawUTF8()));
+        auto desc = getDescription (findPluginByUri (identifier));
 
-        for (const auto& plugin : { findPluginByUri (identifier), findPluginByFile (identifier) })
-        {
-            if (auto desc = getDescription (plugin); desc.fileOrIdentifier.isNotEmpty())
-            {
-                result.add (std::make_unique<PluginDescription> (desc));
-                break;
-            }
-        }
+        if (desc.fileOrIdentifier.isNotEmpty())
+            result.add (std::make_unique<PluginDescription> (desc));
     }
 
     bool fileMightContainThisPluginType (const String& file) const
@@ -5227,7 +5226,7 @@ public:
         const auto numBytes = file.getNumBytesAsUTF8();
         std::vector<uint8_t> vec (numBytes + 1, 0);
         std::copy (data, data + numBytes, vec.begin());
-        return serd_uri_string_has_scheme (vec.data()) || file.endsWith (".lv2");
+        return serd_uri_string_has_scheme (vec.data());
     }
 
     String getNameOfPluginFromIdentifier (const String& identifier)
@@ -5487,11 +5486,6 @@ private:
     const LilvPlugin* findPluginByUri (const String& s)
     {
         return world->getAllPlugins().getByUri (world->newUri (s.toRawUTF8()));
-    }
-
-    const LilvPlugin* findPluginByFile (const File& f)
-    {
-        return world->getAllPlugins().getByFile (f);
     }
 
     template <typename Fn>

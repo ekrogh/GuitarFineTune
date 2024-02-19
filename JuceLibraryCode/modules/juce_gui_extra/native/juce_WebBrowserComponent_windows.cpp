@@ -987,12 +987,6 @@ private:
 
     inline static WebView2ConstructionHelper webView2ConstructionHelper;
 
-    NativeScaleFactorNotifier scaleFactorNotifier { this,
-                                                    [this] (auto)
-                                                    {
-                                                        componentMovedOrResized (true, true);
-                                                    } };
-
     //==============================================================================
     JUCE_DECLARE_WEAK_REFERENCEABLE (WebView2)
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (WebView2)

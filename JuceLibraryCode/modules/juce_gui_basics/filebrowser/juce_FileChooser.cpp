@@ -259,14 +259,15 @@ URL FileChooser::getURLResult() const
 
 void FileChooser::finished (const Array<URL>& asyncResults)
 {
-    const auto callback = std::exchange (asyncCallback, nullptr);
+     std::function<void (const FileChooser&)> callback;
+     std::swap (callback, asyncCallback);
 
-    results = asyncResults;
+     results = asyncResults;
 
-    pimpl.reset();
+     pimpl.reset();
 
-    if (callback)
-        callback (*this);
+     if (callback)
+         callback (*this);
 }
 
 #if ! JUCE_ANDROID

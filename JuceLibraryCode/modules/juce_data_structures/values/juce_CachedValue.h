@@ -105,12 +105,12 @@ public:
     Type get() const noexcept                        { return cachedValue; }
 
     /** Dereference operator. Provides direct access to the property.  */
-    const Type& operator*() const noexcept           { return cachedValue; }
+    Type& operator*() noexcept                       { return cachedValue; }
 
     /** Dereference operator. Provides direct access to members of the property
         if it is of object type.
     */
-    const Type* operator->() const noexcept          { return &cachedValue; }
+    Type* operator->() noexcept                      { return &cachedValue; }
 
     /** Returns true if the current value of the property (or the fallback value)
         is equal to other.
