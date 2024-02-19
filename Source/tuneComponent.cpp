@@ -451,7 +451,7 @@ bool tuneComponent::audioSysInit()
     }
 
 	// ChangeListner = this
-	sharedAudioDeviceManager->addChangeListener(this);
+	//sharedAudioDeviceManager->addChangeListener(this);
 	startThread(Priority::normal); // priority normal
 
 
@@ -478,8 +478,8 @@ tuneComponent::~tuneComponent()
 {
 	weSpectrumDataReady.signal();
 	stopThread(-10);
-	shutdownAudio();
-	sharedAudioDeviceManager->closeAudioDevice();
+	eksShutdownAudio();
+	//sharedAudioDeviceManager->closeAudioDevice();
 	// Make thread shut down
    //stopThread( 6000 );
 
@@ -956,6 +956,9 @@ void tuneComponent::prepareToPlay(int samplesPerBlockExpected, double newSampleR
 		}
 		else
 		{
+			currentBufferSizeInUse = samplesPerBlockExpected;
+			currentSampleRateInUse = newSampleRate;
+			currentaudioDeviceTypeInUse = (sharedAudioDeviceManager->getCurrentAudioDeviceType()).toStdString();
 
 			if (!setPreAndPostFiltersAndConstantsBasedOnSampleRate(newSampleRate))
 			{
@@ -975,72 +978,6 @@ void tuneComponent::prepareToPlay(int samplesPerBlockExpected, double newSampleR
 	}
 }
 
-
-void tuneComponent::changeListenerCallback(ChangeBroadcaster*)
-{
-	AudioDeviceManager::AudioDeviceSetup currentAudioConfig;
-	sharedAudioDeviceManager->getAudioDeviceSetup(currentAudioConfig);
-
-	if ((currentSampleRateInUse != currentAudioConfig.sampleRate)
-		|| (currentBufferSizeInUse != currentAudioConfig.bufferSize)
-		|| (currentaudioDeviceTypeInUse != sharedAudioDeviceManager->getCurrentAudioDeviceType())
-		)
-	{
-		if (auto curAudioDevice = sharedAudioDeviceManager->getCurrentAudioDevice())
-		{
-			currentaudioDeviceTypeInUse = (sharedAudioDeviceManager->getCurrentAudioDeviceType()).toStdString();
-			currentBufferSizeInUse = currentAudioConfig.bufferSize;
-			currentSampleRateInUse = currentAudioConfig.sampleRate;
-			if (currentSampleRateInUse < 44100)
-			{
-				// Try to set samplerate to at least 44100
-				// Get sample rates
-				juce::Array<double> availableSampleRates(curAudioDevice->getAvailableSampleRates());
-				availableSampleRates.sort();
-				auto it = std::find_if(std::begin(availableSampleRates), std::end(availableSampleRates), [](double SF)
-					{
-						return SF >= 44100;
-					});
-				if (it != std::end(availableSampleRates))
-				{
-					currentAudioConfig.sampleRate = *it;
-					sharedAudioDeviceManager->setAudioDeviceSetup(currentAudioConfig, true);
-					sharedAudioDeviceManager->getAudioDeviceSetup(currentAudioConfig);
-					currentaudioDeviceTypeInUse = (sharedAudioDeviceManager->getCurrentAudioDeviceType()).toStdString();
-					currentBufferSizeInUse = currentAudioConfig.bufferSize;
-					currentSampleRateInUse = currentAudioConfig.sampleRate;
-				}
-			}
-
-			// do guitar strins sounds stuff
-			guitarStringSoundsCleanUp(currentSampleRateInUse);
-			calcHalfSinePeriodValues(currentBufferSizeInUse);
-			calcNewGuitarStringsSinePhasesFromSampleRate(currentSampleRateInUse);
-
-			if (!setPreAndPostFiltersAndConstantsBasedOnSampleRate(currentAudioConfig.sampleRate))
-			{
-				AlertWindow::showOkCancelBox
-				(
-					juce::AlertWindow::AlertIconType::WarningIcon
-					, "Illegal sample rate"
-					, "Illegal sample rate"
-					, ""
-					, ""
-					, nullptr
-					, nullptr
-				);
-				return;
-			}
-		}
-	}
-
-	// Save state
-	curAudioState = sharedAudioDeviceManager->createStateXml();
-    if (!(curAudioState == nullptr))
-    {
-        curAudioState->writeTo(myAudioStateXmlFile);
-    }
-}
 
 void tuneComponent::calcNewGuitarStringsSinePhasesFromSampleRate(double sampleRate)
 {

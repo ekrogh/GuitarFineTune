@@ -11,8 +11,8 @@
 #define _USE_MATH_DEFINES // For use in math.h
 
 
-//#define USE_JUCE_FFT
-#undef USE_JUCE_FFT
+#define USE_JUCE_FFT
+//#undef USE_JUCE_FFT
 
 #ifndef USE_JUCE_FFT
 	#include "gfft.h"
@@ -62,8 +62,7 @@ using namespace std;
 using namespace std::chrono;
 
 class tuneComponent
-	: public ChangeListener
-	, private Thread
+	: private Thread
 	, private AsyncUpdater
 	, public AudioAppComponent
 	, public eksNotModalProgressWindowCallBacks
@@ -112,8 +111,6 @@ public:
 	void prepareToPlay(int samplesPerBlockExpected, double newSampleRate) override;
 
 	void handleAsyncUpdate() override; // Called from AsyncUpdater
-
-	void changeListenerCallback(ChangeBroadcaster*) override;
 
 	void releaseResources() override;
 
