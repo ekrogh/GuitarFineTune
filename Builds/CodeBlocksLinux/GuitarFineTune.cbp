@@ -19,8 +19,8 @@
           <Add option="-DDEBUG=&quot;1&quot;"/>
           <Add option="-D_DEBUG=&quot;1&quot;"/>
           <Add option="-DJUCER_CODEBLOCKS_LINUX_191E0897=&quot;1&quot;"/>
-          <Add option="-DJUCE_APP_VERSION=&quot;10.13.8&quot;"/>
-          <Add option="-DJUCE_APP_VERSION_HEX=&quot;0xa0d08&quot;"/>
+          <Add option="-DJUCE_APP_VERSION=&quot;10.14.9&quot;"/>
+          <Add option="-DJUCE_APP_VERSION_HEX=&quot;0xa0e09&quot;"/>
           <Add option="-DJucePlugin_Build_VST=&quot;0&quot;"/>
           <Add option="-DJucePlugin_Build_VST3=&quot;0&quot;"/>
           <Add option="-DJucePlugin_Build_AU=&quot;0&quot;"/>
@@ -62,8 +62,8 @@
           <Add option="-DLINUX=&quot;1&quot;"/>
           <Add option="-DNDEBUG=&quot;1&quot;"/>
           <Add option="-DJUCER_CODEBLOCKS_LINUX_191E0897=&quot;1&quot;"/>
-          <Add option="-DJUCE_APP_VERSION=&quot;10.13.8&quot;"/>
-          <Add option="-DJUCE_APP_VERSION_HEX=&quot;0xa0d08&quot;"/>
+          <Add option="-DJUCE_APP_VERSION=&quot;10.14.9&quot;"/>
+          <Add option="-DJUCE_APP_VERSION_HEX=&quot;0xa0e09&quot;"/>
           <Add option="-DJucePlugin_Build_VST=&quot;0&quot;"/>
           <Add option="-DJucePlugin_Build_VST3=&quot;0&quot;"/>
           <Add option="-DJucePlugin_Build_AU=&quot;0&quot;"/>
@@ -1074,6 +1074,24 @@
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_devices/native/oboe/include/oboe/FifoBuffer.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_devices/native/oboe/include/oboe/FifoControllerBase.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_devices/native/oboe/include/oboe/FullDuplexStream.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
     <Unit filename="../../JuceLibraryCode/modules/juce_audio_devices/native/oboe/include/oboe/LatencyTuner.h">
       <Option target="App | Debug"/>
       <Option target="App | Release"/>
@@ -1081,6 +1099,12 @@
       <Option link="0"/>
     </Unit>
     <Unit filename="../../JuceLibraryCode/modules/juce_audio_devices/native/oboe/include/oboe/Oboe.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_devices/native/oboe/include/oboe/OboeExtensions.h">
       <Option target="App | Debug"/>
       <Option target="App | Release"/>
       <Option compile="0"/>
@@ -1135,6 +1159,18 @@
       <Option link="0"/>
     </Unit>
     <Unit filename="../../JuceLibraryCode/modules/juce_audio_devices/native/oboe/src/aaudio/AudioStreamAAudio.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_devices/native/oboe/src/common/AdpfWrapper.cpp">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_devices/native/oboe/src/common/AdpfWrapper.h">
       <Option target="App | Debug"/>
       <Option target="App | Release"/>
       <Option compile="0"/>
@@ -1248,6 +1284,12 @@
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_devices/native/oboe/src/common/OboeExtensions.cpp">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
     <Unit filename="../../JuceLibraryCode/modules/juce_audio_devices/native/oboe/src/common/QuirksManager.cpp">
       <Option target="App | Debug"/>
       <Option target="App | Release"/>
@@ -1255,6 +1297,12 @@
       <Option link="0"/>
     </Unit>
     <Unit filename="../../JuceLibraryCode/modules/juce_audio_devices/native/oboe/src/common/QuirksManager.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_devices/native/oboe/src/common/README.md">
       <Option target="App | Debug"/>
       <Option target="App | Release"/>
       <Option compile="0"/>
@@ -1344,12 +1392,6 @@
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../JuceLibraryCode/modules/juce_audio_devices/native/oboe/src/fifo/FifoBuffer.h">
-      <Option target="App | Debug"/>
-      <Option target="App | Release"/>
-      <Option compile="0"/>
-      <Option link="0"/>
-    </Unit>
     <Unit filename="../../JuceLibraryCode/modules/juce_audio_devices/native/oboe/src/fifo/FifoController.cpp">
       <Option target="App | Debug"/>
       <Option target="App | Release"/>
@@ -1363,12 +1405,6 @@
       <Option link="0"/>
     </Unit>
     <Unit filename="../../JuceLibraryCode/modules/juce_audio_devices/native/oboe/src/fifo/FifoControllerBase.cpp">
-      <Option target="App | Debug"/>
-      <Option target="App | Release"/>
-      <Option compile="0"/>
-      <Option link="0"/>
-    </Unit>
-    <Unit filename="../../JuceLibraryCode/modules/juce_audio_devices/native/oboe/src/fifo/FifoControllerBase.h">
       <Option target="App | Debug"/>
       <Option target="App | Release"/>
       <Option compile="0"/>
@@ -1470,6 +1506,18 @@
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_devices/native/oboe/src/flowgraph/resampler/README.md">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_devices/native/oboe/src/flowgraph/resampler/ResamplerDefinitions.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
     <Unit filename="../../JuceLibraryCode/modules/juce_audio_devices/native/oboe/src/flowgraph/resampler/SincResampler.cpp">
       <Option target="App | Debug"/>
       <Option target="App | Release"/>
@@ -1536,6 +1584,18 @@
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_devices/native/oboe/src/flowgraph/Limiter.cpp">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_devices/native/oboe/src/flowgraph/Limiter.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
     <Unit filename="../../JuceLibraryCode/modules/juce_audio_devices/native/oboe/src/flowgraph/ManyToMultiConverter.cpp">
       <Option target="App | Debug"/>
       <Option target="App | Release"/>
@@ -1548,6 +1608,18 @@
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_devices/native/oboe/src/flowgraph/MonoBlend.cpp">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_devices/native/oboe/src/flowgraph/MonoBlend.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
     <Unit filename="../../JuceLibraryCode/modules/juce_audio_devices/native/oboe/src/flowgraph/MonoToMultiConverter.cpp">
       <Option target="App | Debug"/>
       <Option target="App | Release"/>
@@ -1555,6 +1627,18 @@
       <Option link="0"/>
     </Unit>
     <Unit filename="../../JuceLibraryCode/modules/juce_audio_devices/native/oboe/src/flowgraph/MonoToMultiConverter.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_devices/native/oboe/src/flowgraph/MultiToManyConverter.cpp">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_devices/native/oboe/src/flowgraph/MultiToManyConverter.h">
       <Option target="App | Debug"/>
       <Option target="App | Release"/>
       <Option compile="0"/>
@@ -1932,7 +2016,19 @@
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../JuceLibraryCode/modules/juce_audio_formats/codecs/flac/libFLAC/include/private/all.h">
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_formats/codecs/flac/libFLAC/deduplication/bitreader_read_rice_signed_block.c">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_formats/codecs/flac/libFLAC/deduplication/lpc_compute_autocorrelation_intrin.c">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_formats/codecs/flac/libFLAC/deduplication/lpc_compute_autocorrelation_intrin_neon.c">
       <Option target="App | Debug"/>
       <Option target="App | Release"/>
       <Option compile="0"/>
@@ -2004,12 +2100,6 @@
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../JuceLibraryCode/modules/juce_audio_formats/codecs/flac/libFLAC/include/private/metadata.h">
-      <Option target="App | Debug"/>
-      <Option target="App | Release"/>
-      <Option compile="0"/>
-      <Option link="0"/>
-    </Unit>
     <Unit filename="../../JuceLibraryCode/modules/juce_audio_formats/codecs/flac/libFLAC/include/private/stream_encoder.h">
       <Option target="App | Debug"/>
       <Option target="App | Release"/>
@@ -2023,12 +2113,6 @@
       <Option link="0"/>
     </Unit>
     <Unit filename="../../JuceLibraryCode/modules/juce_audio_formats/codecs/flac/libFLAC/include/private/window.h">
-      <Option target="App | Debug"/>
-      <Option target="App | Release"/>
-      <Option compile="0"/>
-      <Option link="0"/>
-    </Unit>
-    <Unit filename="../../JuceLibraryCode/modules/juce_audio_formats/codecs/flac/libFLAC/include/protected/all.h">
       <Option target="App | Debug"/>
       <Option target="App | Release"/>
       <Option compile="0"/>
@@ -2095,6 +2179,12 @@
       <Option link="0"/>
     </Unit>
     <Unit filename="../../JuceLibraryCode/modules/juce_audio_formats/codecs/flac/libFLAC/lpc_flac.c">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_formats/codecs/flac/libFLAC/lpc_intrin_neon.c">
       <Option target="App | Debug"/>
       <Option target="App | Release"/>
       <Option compile="0"/>
@@ -2190,6 +2280,12 @@
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_formats/codecs/flac/JUCE_CHANGES.txt">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
     <Unit filename="../../JuceLibraryCode/modules/juce_audio_formats/codecs/flac/metadata.h">
       <Option target="App | Debug"/>
       <Option target="App | Release"/>
@@ -2197,6 +2293,12 @@
       <Option link="0"/>
     </Unit>
     <Unit filename="../../JuceLibraryCode/modules/juce_audio_formats/codecs/flac/ordinals.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_audio_formats/codecs/flac/private.h">
       <Option target="App | Debug"/>
       <Option target="App | Release"/>
       <Option compile="0"/>
@@ -4758,18 +4860,6 @@
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/utilities/juce_NativeScaleFactorNotifier.cpp">
-      <Option target="App | Debug"/>
-      <Option target="App | Release"/>
-      <Option compile="0"/>
-      <Option link="0"/>
-    </Unit>
-    <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/utilities/juce_NativeScaleFactorNotifier.h">
-      <Option target="App | Debug"/>
-      <Option target="App | Release"/>
-      <Option compile="0"/>
-      <Option link="0"/>
-    </Unit>
     <Unit filename="../../JuceLibraryCode/modules/juce_audio_processors/utilities/juce_ParameterAttachments.cpp">
       <Option target="App | Debug"/>
       <Option target="App | Release"/>
@@ -5298,6 +5388,12 @@
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_core/detail/juce_CallbackListenerList.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
     <Unit filename="../../JuceLibraryCode/modules/juce_core/files/juce_AndroidDocument.h">
       <Option target="App | Debug"/>
       <Option target="App | Release"/>
@@ -5659,6 +5755,12 @@
       <Option link="0"/>
     </Unit>
     <Unit filename="../../JuceLibraryCode/modules/juce_core/memory/juce_SharedResourcePointer.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_core/memory/juce_SharedResourcePointer_test.cpp">
       <Option target="App | Debug"/>
       <Option target="App | Release"/>
       <Option compile="0"/>
@@ -7458,6 +7560,18 @@
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_events/interprocess/juce_ChildProcessManager.cpp">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_events/interprocess/juce_ChildProcessManager.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
     <Unit filename="../../JuceLibraryCode/modules/juce_events/interprocess/juce_ConnectedChildProcess.cpp">
       <Option target="App | Debug"/>
       <Option target="App | Release"/>
@@ -7675,6 +7789,12 @@
       <Option link="0"/>
     </Unit>
     <Unit filename="../../JuceLibraryCode/modules/juce_events/timers/juce_MultiTimer.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_events/timers/juce_TimedCallback.h">
       <Option target="App | Debug"/>
       <Option target="App | Release"/>
       <Option compile="0"/>
@@ -10861,6 +10981,18 @@
       <Option link="0"/>
     </Unit>
     <Unit filename="../../JuceLibraryCode/modules/juce_gui_basics/windows/juce_NativeMessageBox.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_gui_basics/windows/juce_NativeScaleFactorNotifier.cpp">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/modules/juce_gui_basics/windows/juce_NativeScaleFactorNotifier.h">
       <Option target="App | Debug"/>
       <Option target="App | Release"/>
       <Option compile="0"/>
