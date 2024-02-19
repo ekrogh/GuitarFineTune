@@ -239,7 +239,7 @@ guitarFineTuneFirstClass::guitarFineTuneFirstClass()
 #if ( JUCE_IOS )
 	{
 		pTuneComponent =
-			std::make_shared<tuneComponent>
+			std::make_unique<tuneComponent>
 			(
 				pXmlGuitarFineTuneConfig, SafePointer(this)
 			);
