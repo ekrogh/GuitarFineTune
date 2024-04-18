@@ -80,6 +80,7 @@ parts:
       - g++
       - make
       - git
+      - libc6-dev
       - libc++-dev
       - gnulib
       - libfreetype6-dev
