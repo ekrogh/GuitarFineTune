@@ -111,7 +111,6 @@ parts:
       - libkrb5-3
       - libgmp10
       - libnettle7
-      - libhogweed5
       - libgnutls30
       - libunistring2
       - libgssapi-krb5-2
