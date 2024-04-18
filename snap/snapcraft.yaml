@@ -99,6 +99,7 @@ parts:
       - freeglut3-dev
       - ladspa-sdk
     stage-packages:
+      - gnulib
       - libxfixes3
       - libmd0
       - libsqlite3-0
