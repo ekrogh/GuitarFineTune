@@ -110,7 +110,6 @@ parts:
       - libk5crypto3
       - libkrb5-3
       - libgmp10
-      - libnettle7
       - libhogweed5
       - libgnutls30
       - libunistring2
