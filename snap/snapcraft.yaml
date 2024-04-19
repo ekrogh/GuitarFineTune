@@ -106,7 +106,6 @@ parts:
       - libglu1-mesa-dev
       - mesa-common-dev
       - libasound2-dev
-      - libjack-jackd2-dev
       - libcurl4-openssl-dev
       - freeglut3-dev
       - ladspa-sdk
@@ -125,14 +124,10 @@ parts:
       - libgmp10
       - libgnutls30
       - libunistring2
-      - libgssapi-krb5-2
       - libssh-4
       - libidn2-0
-      - libbrotli1
       - libasn1-8-heimdal
-      - libcurl4
       - libfreetype6
-      - libgssapi3-heimdal
       - libhcrypto4-heimdal
       - libheimbase1-heimdal
       - libheimntlm0-heimdal
@@ -144,7 +139,6 @@ parts:
       - librtmp1
       - libsasl2-2
       - libwind0-heimdal
-      - libsdl-sound1.2
       - libsdl-net1.2
       - libxcursor1
       - libxi6
@@ -185,7 +179,6 @@ parts:
       - libtinfo5
       - libvorbis0a
       - libvorbisenc2
-      - libwrap0
       - libx11-6
       - libxau6
       - libxcb1
