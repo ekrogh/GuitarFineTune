@@ -94,7 +94,6 @@ parts:
     stage-packages:
       - libxfixes3
       - libmd0
-      - libsqlite3-0
       - libffi7
       - libkeyutils1
       - libtasn1-6
@@ -112,7 +111,6 @@ parts:
       - libfreetype6
       - libhcrypto4-heimdal
       - libheimbase1-heimdal
-      - libhx509-5-heimdal
       - libnghttp2-14
       - libpsl5
       - libroken18-heimdal
@@ -127,7 +125,6 @@ parts:
       - libwayland-client0
       - libwayland-cursor0
       - libxkbcommon0
-      - libglu1-mesa
       - libasound2
       - libasyncns0
       - libbsd0
@@ -142,8 +139,6 @@ parts:
       - liblzma5
       - libogg0
       - libpng16-16
-      - libpulse0
-      - libslang2
       - libsndfile1
       - libstdc++6
       - libsystemd0
@@ -155,7 +150,6 @@ parts:
       - libxdmcp6
       - libxext6
       - zlib1g
-      - freeglut3
 
 layout:
   /usr/lib/$SNAPCRAFT_ARCH_TRIPLET/alsa-lib:
