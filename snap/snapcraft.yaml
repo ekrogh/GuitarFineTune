@@ -19,8 +19,8 @@ architectures:
     build-for: armhf
   - build-on: i386
     build-for: i386
-  - build-on: powerpc
-    build-for: powerpc
+  # - build-on: powerpc
+  #   build-for: powerpc
   - build-on: ppc64el
     build-for: ppc64el
   - build-on: riscv64
