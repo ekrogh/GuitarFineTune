@@ -1,5 +1,5 @@
 name: guitarfinetune
-base: core20
+base: core22
 version: "10.15.10"
 summary: Guitar fine-tuning tool
 description: |
