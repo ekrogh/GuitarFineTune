@@ -113,7 +113,6 @@ parts:
       - libgnutls30
       - libunistring2
       - libgssapi-krb5-2
-      - libssl1.1
       - libssh-4
       - libidn2-0
       - libbrotli1
