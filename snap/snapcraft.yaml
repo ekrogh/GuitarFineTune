@@ -64,10 +64,6 @@ parts:
     plugin: nil
     source: .
     override-build: |
-      echo $SNAPCRAFT_ARCH_TRIPLET
-      echo $(SNAPCRAFT_ARCH_TRIPLET)
-      echo $CRAFT_ARCH_TRIPLET_BUILD_FOR
-      echo $(CRAFT_ARCH_TRIPLET_BUILD_FOR)
       g++ --version
       cd Builds/LinuxMakefile/
       pwd
@@ -112,7 +108,6 @@ parts:
       - libfreetype6
       - libnghttp2-14
       - libpsl5
-      - libroken18-heimdal
       - librtmp1
       - libsasl2-2
       - libxcursor1
