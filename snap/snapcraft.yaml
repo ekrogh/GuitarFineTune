@@ -64,10 +64,13 @@ parts:
     plugin: nil
     source: .
     override-build: |
+      echo $SNAPCRAFT_ARCH_TRIPLET
+      echo $(SNAPCRAFT_ARCH_TRIPLET)
+      echo $CRAFT_ARCH_TRIPLET_BUILD_FOR
+      echo $(CRAFT_ARCH_TRIPLET_BUILD_FOR)
       g++ --version
       cd Builds/LinuxMakefile/
       pwd
-      make clean
       make CONFIG=Release
       cp build/GuitarFineTune $SNAPCRAFT_PART_INSTALL/guitarfinetune
     build-packages:
@@ -106,9 +109,7 @@ parts:
       - libunistring2
       - libssh-4
       - libidn2-0
-      - libasn1-8-heimdal
       - libfreetype6
-      - libheimbase1-heimdal
       - libnghttp2-14
       - libpsl5
       - libroken18-heimdal
@@ -129,7 +130,6 @@ parts:
       - libflac8
       - libgcc1
       - libgcrypt20
-      - libglx0
       - libgpg-error0
       - liblz4-1
       - liblzma5
