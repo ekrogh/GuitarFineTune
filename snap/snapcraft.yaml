@@ -73,7 +73,8 @@ parts:
       g++ --version
       cd Builds/LinuxMakefile/
       pwd
-      make --trace CONFIG=Release
+      make clean
+      make CONFIG=Release
       cp build/GuitarFineTune $SNAPCRAFT_PART_INSTALL/guitarfinetune
     build-packages:
       - g++
