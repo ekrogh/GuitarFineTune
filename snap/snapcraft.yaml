@@ -194,7 +194,7 @@ layout:
     
 apps:
   guitarfinetune:
-    extensions: [gnome-3-38]
+    extensions: [gnome]
     command-chain: ["snap/command-chain/alsa-launch"]
     command: guitarfinetune
     plugs:
