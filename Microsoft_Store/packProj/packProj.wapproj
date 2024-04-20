@@ -64,7 +64,7 @@
     <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
     <PackageCertificateThumbprint>D19F3E9FAA9A51D6880FC745A738161983C7D860</PackageCertificateThumbprint>
     <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
-    <EntryPointProjectUniqueName>..\..\..\Builds\VisualStudio2022\GuitarFineTune_App.vcxproj</EntryPointProjectUniqueName>
+    <EntryPointProjectUniqueName>..\..\Builds\VisualStudio2022\GuitarFineTune_App.vcxproj</EntryPointProjectUniqueName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
     <AppxBundle>Always</AppxBundle>
@@ -160,9 +160,9 @@
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22621.3233" PrivateAssets="all" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Builds\VisualStudio2022\GuitarFineTune_App.vcxproj" />
+    <Folder Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Properties\" />
+    <ProjectReference Include="..\..\Builds\VisualStudio2022\GuitarFineTune_App.vcxproj" />
   </ItemGroup>
 </Project>

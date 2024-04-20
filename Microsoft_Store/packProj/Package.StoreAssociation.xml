@@ -372,7 +372,7 @@
     <MainPackageIdentityName>57158guitarFineTune.TimeDateCalculator</MainPackageIdentityName>
     <MainPackageIdentityName>57158guitarFineTune.TimeDateCalculatorP</MainPackageIdentityName>
   </AccountPackageIdentityNames>
-  <PackageInfoList LandingUrl="https://developer.microsoft.com/dashboard/Application?appId=9NHKTTRPVVK5">
+  <PackageInfoList LandingUrl="https://devcenterapi.dce.mp.microsoft.com/dashboard/Application?appId=9NHKTTRPVVK5">
     <BundleInfo>
       <PackageInfo>
         <OsMinVersion>0.0.0.0</OsMinVersion>
