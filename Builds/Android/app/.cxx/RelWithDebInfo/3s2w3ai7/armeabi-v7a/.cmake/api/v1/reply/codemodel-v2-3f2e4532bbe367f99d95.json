@@ -1,0 +1,69 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-RelWithDebInfo-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.6.0"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				}
+			],
+			"name" : "RelWithDebInfo",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "juce_jni_project",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "cpufeatures::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-cpufeatures-RelWithDebInfo-97cc9f2b7a6f91e50f1c.json",
+					"name" : "cpufeatures",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "juce_jni::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-juce_jni-RelWithDebInfo-5f2353fcaf1f6b5c5b52.json",
+					"name" : "juce_jni",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "D:/Users/eigil/projects/juceProjs/GuitarFineTune/Builds/Android/app/.cxx/RelWithDebInfo/3s2w3ai7/armeabi-v7a",
+		"source" : "D:/Users/eigil/projects/juceProjs/GuitarFineTune/Builds/Android/app"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}
