@@ -156,9 +156,11 @@
                    buildToolsVersion="30" androidPushNotifications="0" androidEnableContentSharing="1"
                    smallIcon="RB4slw" bigIcon="DzMVX4" extraDefs="ANDROID_VERSION_CODE=87"
                    androidExternalWriteNeeded="1" androidInternetNeeded="1" androidReadMediaAudioPermission="1"
-                   androidReadMediaImagesPermission="1" androidReadMediaVideoPermission="1">
+                   androidReadMediaImagesPermission="1" androidReadMediaVideoPermission="1"
+                   androidMinimumSDK="19" gradleWrapperVersion="8.3.2" gradleVersion="8.4">
       <CONFIGURATIONS>
-        <CONFIGURATION name="Release" isDebug="0" targetName="GuitarFineTune" optimisation="3"/>
+        <CONFIGURATION name="Release" isDebug="0" targetName="GuitarFineTune" optimisation="3"
+                       linkTimeOptimisation="1"/>
         <CONFIGURATION name="Debug" isDebug="1" targetName="GuitarFineTune" androidArchitectures="armeabi-v7a arm64-v8a x86 x86_64"/>
       </CONFIGURATIONS>
       <MODULEPATHS>

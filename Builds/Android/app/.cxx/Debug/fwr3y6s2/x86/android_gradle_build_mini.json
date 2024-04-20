@@ -1,0 +1,33 @@
+{
+  "buildFiles": [
+    "D:\\Users\\eigil\\projects\\juceProjs\\GuitarFineTune\\Builds\\Android\\app\\CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "D:\\android\\android-sdk\\cmake\\3.22.1\\bin\\ninja.exe",
+      "-C",
+      "D:\\Users\\eigil\\projects\\juceProjs\\GuitarFineTune\\Builds\\Android\\app\\.cxx\\Debug\\fwr3y6s2\\x86",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "D:\\android\\android-sdk\\cmake\\3.22.1\\bin\\ninja.exe",
+    "-C",
+    "D:\\Users\\eigil\\projects\\juceProjs\\GuitarFineTune\\Builds\\Android\\app\\.cxx\\Debug\\fwr3y6s2\\x86",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {
+    "juce_jni::@6890427a1f51a3e7e1df": {
+      "artifactName": "juce_jni",
+      "abi": "x86",
+      "output": "D:\\Users\\eigil\\projects\\juceProjs\\GuitarFineTune\\Builds\\Android\\app\\build\\intermediates\\cxx\\Debug\\fwr3y6s2\\obj\\x86\\libjuce_jni.so",
+      "runtimeFiles": []
+    },
+    "cpufeatures::@6890427a1f51a3e7e1df": {
+      "artifactName": "cpufeatures",
+      "abi": "x86",
+      "output": "D:\\Users\\eigil\\projects\\juceProjs\\GuitarFineTune\\Builds\\Android\\app\\.cxx\\Debug\\fwr3y6s2\\x86\\libcpufeatures.a",
+      "runtimeFiles": []
+    }
+  }
+}

@@ -21,7 +21,7 @@
         <category android:name="android.intent.category.LAUNCHER"/>
       </intent-filter>
     </activity>
-    <provider android:name="com.rmsl.juce.JuceSharingContentProvider" android:authorities="dk.eksit.guitarfinetune.sharingcontentprovider"
+    <provider android:name="com.rmsl.juce.JuceSharingContentProvider" android:authorities="dk.eksit.guitarfinetunep.sharingcontentprovider"
               android:grantUriPermissions="true" android:exported="true"/>
   </application>
 </manifest>
