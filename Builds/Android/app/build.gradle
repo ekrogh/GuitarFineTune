@@ -5,7 +5,7 @@ def ndkVersionString = "25.2.9519653"
 android {
     compileSdkVersion 33
     ndkVersion ndkVersionString
-    namespace "dk.eksit.guitarfinetunep"
+    namespace "dk.eksit.guitarfinetune"
     externalNativeBuild {
         cmake {
             path "CMakeLists.txt"
@@ -20,16 +20,10 @@ android {
             keyPassword   "6taura"
             storeType     "jks"
         }
-        release {
-            storeFile file('D:\\Users\\eigil\\projects\\juceProjs\\GuitarFineTune\\Android_Special\\keystore.jks')
-            storePassword '6taura'
-            keyAlias 'upload'
-            keyPassword '6taura'
-        }
     }
 
     defaultConfig {
-        applicationId "dk.eksit.guitarfinetunep"
+        applicationId "dk.eksit.guitarfinetune"
         minSdkVersion    19
         targetSdkVersion 33
         externalNativeBuild {
@@ -40,10 +34,7 @@ android {
     }
 
     buildTypes {
-         release {
-             signingConfig signingConfigs.release
-         }
-        debug {
+         debug {
              initWith debug
              debuggable    true
              jniDebuggable true
