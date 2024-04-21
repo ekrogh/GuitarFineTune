@@ -131,3 +131,12 @@ x64
 /Microsoft_Store/newPackProj/WapProj/obj
 /Microsoft_Store/newPackProj/WapProj/obj
 /Microsoft_Store/packProj/packProj/bin
+/Microsoft_Store/packProj/packProj/AppPackages
+/Microsoft_Store/packProj/packProj/BundleArtifacts/x86.txt
+/Microsoft_Store/packProj/packProj/BundleArtifacts/x64.txt
+/Microsoft_Store/packProj/packProj/BundleArtifacts/arm64.txt
+/Microsoft_Store/packProj/packProj/BundleArtifacts/arm.txt
+/Microsoft_Store/packProj/packProj/BundleArtifacts/Upload/x86.txt
+/Microsoft_Store/packProj/packProj/BundleArtifacts/Upload/x64.txt
+/Microsoft_Store/packProj/packProj/BundleArtifacts/Upload/arm64.txt
+/Microsoft_Store/packProj/packProj/BundleArtifacts/Upload/arm.txt
