@@ -89,7 +89,7 @@
     <XCODE_MAC targetFolder="Builds/MacOSX" iosDevelopmentTeamID="4657Q2Y6NH"
                bigIcon="DzMVX4" smallIcon="RB4slw" keepCustomXcodeSchemes="1"
                extraLinkerFlags="-Wl,-weak_reference_mismatches,weak" microphonePermissionNeeded="1"
-               pListPreprocess="1" appSandbox="1" appSandboxOptions="com.apple.security.device.microphone,com.apple.security.files.user-selected.read-write"
+               pListPreprocess="1" appSandbox="1" appSandboxOptions="com.apple.security.assets.music.read-write,com.apple.security.files.user-selected.read-write"
                extraFrameworks="AVFoundation" hardenedRuntime="1" hardenedRuntimeOptions="com.apple.security.device.audio-input"
                bundleIdentifier="dk.eksIt.guitarFineTuneOSX" applicationCategory="public.app-category.utilities"
                buildNumber="89" extraDefs="JUCE_SILENCE_XCODE_15_LINKER_WARNING=1">
