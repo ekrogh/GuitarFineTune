@@ -16,7 +16,7 @@ platforms:
     build-for: [arm64]
   amd64:
     build-on: [amd64, arm64]
-    build-for: [arm64]
+    # build-for: [arm64]
   armhf:
     build-on: [amd64, armhf]
     build-for: [armhf]
