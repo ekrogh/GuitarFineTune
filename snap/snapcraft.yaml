@@ -61,14 +61,15 @@ parts:
       
   guitarfinetune:
     after: [alsa-mixin]
-    plugin: nil
+    # plugin: nil
+    plugin: autotools
     source: .
-    override-build: |
-      g++ --version
-      cd Builds/LinuxMakefile/
-      pwd
-      make CONFIG=Release
-      cp build/GuitarFineTune $SNAPCRAFT_PART_INSTALL/guitarfinetune
+    # override-build: |
+    #   g++ --version
+    #   cd Builds/LinuxMakefile/
+    #   pwd
+    #   make CONFIG=Release
+    #   cp build/GuitarFineTune $SNAPCRAFT_PART_INSTALL/guitarfinetune
     build-packages:
       - g++
       - make
