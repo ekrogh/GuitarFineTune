@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="89" android:versionName="10.16.11">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="90" android:versionName="10.17.12">
   <supports-screens android:smallScreens="true" android:normalScreens="true" android:largeScreens="true" android:anyDensity="true"
                     android:xlargeScreens="true"/>
   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="28"/>
