@@ -59,6 +59,7 @@ parts:
       - usr/lib/$SNAPCRAFT_ARCH_TRIPLET/libvorbis*
       - usr/lib/$SNAPCRAFT_ARCH_TRIPLET/pulseaudio
       
+      
   guitarfinetune:
     after: [alsa-mixin]
     # plugin: nil
