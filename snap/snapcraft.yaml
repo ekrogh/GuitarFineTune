@@ -61,9 +61,9 @@ parts:
       
   guitarfinetune:
     after: [alsa-mixin]
-    source: .
     plugin: make
     make-parameters: [CONFIG=Release]
+    source: .
     makefile: Builds/LinuxMakefile//Makefile
     # override-build: |
     #   g++ --version
