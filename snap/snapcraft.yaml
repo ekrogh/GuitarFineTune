@@ -68,8 +68,9 @@ parts:
       - "CONFIG=Release"
     override-build: |
       g++ --version
+      cd Builds/LinuxMakefile
       pwd
-      make
+      make CONFIG=Release
       cp build/GuitarFineTune $SNAPCRAFT_PART_INSTALL/guitarfinetune
     build-packages:
       - libfreetype6-dev
