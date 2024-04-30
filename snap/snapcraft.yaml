@@ -66,12 +66,13 @@ parts:
     make-parameters:
       - "-C Builds/LinuxMakefile"
       - "CONFIG=Release"
-    override-build: |
-      g++ --version
-      cd Builds/LinuxMakefile
-      pwd
-      make CONFIG=Release
-      cp build/GuitarFineTune $SNAPCRAFT_PART_INSTALL/guitarfinetune
+    artifacts: ["Builds/LinuxMakefile/build/GuitarFineTune"]
+    # override-build: |
+    #   g++ --version
+    #   cd Builds/LinuxMakefile
+    #   pwd
+    #   make CONFIG=Release
+    #   cp build/GuitarFineTune $SNAPCRAFT_PART_INSTALL/guitarfinetune
     build-packages:
       - libfreetype6-dev
       - libx11-dev
