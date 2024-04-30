@@ -21,12 +21,19 @@ platforms:
   s390x:
     build-on: [armhf, arm64, amd64, i386, powerpc, ppc64el, riscv64, s390x]
     build-for: [armhf]
+    build-on: [armhf, arm64, amd64, i386, powerpc, ppc64el, riscv64, s390x]
     build-for: [arm64]
+    build-on: [armhf, arm64, amd64, i386, powerpc, ppc64el, riscv64, s390x]
     build-for: [amd64]
+    build-on: [armhf, arm64, amd64, i386, powerpc, ppc64el, riscv64, s390x]
     build-for: [i386]
+    build-on: [armhf, arm64, amd64, i386, powerpc, ppc64el, riscv64, s390x]
     build-for: [powerpc]
+    build-on: [armhf, arm64, amd64, i386, powerpc, ppc64el, riscv64, s390x]
     build-for: [ppc64el]
+    build-on: [armhf, arm64, amd64, i386, powerpc, ppc64el, riscv64, s390x]
     build-for: [riscv64]
+    build-on: [armhf, arm64, amd64, i386, powerpc, ppc64el, riscv64, s390x]
     build-for: [s390x]
 
 # architectures:
