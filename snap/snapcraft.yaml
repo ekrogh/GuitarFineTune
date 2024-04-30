@@ -20,7 +20,14 @@ platforms:
   riscv64:
   s390x:
     build-on: [armhf, arm64, amd64, i386, powerpc, ppc64el, riscv64, s390x]
-    build-for: [armhf, arm64, amd64, i386, powerpc, ppc64el, riscv64, s390x]
+    build-for: [armhf]
+    build-for: [arm64]
+    build-for: [amd64]
+    build-for: [i386]
+    build-for: [powerpc]
+    build-for: [ppc64el]
+    build-for: [riscv64]
+    build-for: [s390x]
 
 # architectures:
 #   - build-on: armhf
