@@ -1,5 +1,5 @@
 name: guitarfinetune
-base: core24
+base: core22
 version: "10.17.12"
 summary: Guitar fine-tuning tool
 description: |
@@ -10,65 +10,49 @@ grade: stable # must be 'stable' to release into candidate/stable channels
 confinement: strict # use 'strict' once you have the right plugs and slots
 # confinement: devmode # use 'strict' once you have the right plugs and slots
 
-platforms:
-  amd64:
-    build-on: [amd64]
-    build-for: [amd64]
-  arm64:
-    build-on: [amd64, arm64]
-    build-for: [arm64]
-  armhf:
-    build-on: [amd64, armhf]
-    build-for: [armhf]
-  i386:
-    build-on: [amd64, i386]
-    build-for: [i386]
-  powerpc:
-    build-on: [amd64, powerpc]
-    build-for: [powerpc]
-  ppc64el:
-    build-on: [amd64, ppc64el]
-    build-for: [ppc64el]
-  riscv64:
-    build-on: [amd64, riscv64]
-    build-for: [riscv64]
-  s390x:
-    build-on: [amd64, s390x]
-    build-for: [s390x]
-    # build-on: [armhf, arm64, amd64, i386, powerpc, ppc64el, riscv64, s390x]
-    # build-for: [armhf]
-    # build-on: [armhf, arm64, amd64, i386, powerpc, ppc64el, riscv64, s390x]
-    # build-for: [arm64]
-    # build-on: [armhf, arm64, amd64, i386, powerpc, ppc64el, riscv64, s390x]
-    # build-for: [amd64]
-    # build-on: [armhf, arm64, amd64, i386, powerpc, ppc64el, riscv64, s390x]
-    # build-for: [i386]
-    # build-on: [armhf, arm64, amd64, i386, powerpc, ppc64el, riscv64, s390x]
-    # build-for: [powerpc]
-    # build-on: [armhf, arm64, amd64, i386, powerpc, ppc64el, riscv64, s390x]
-    # build-for: [ppc64el]
-    # build-on: [armhf, arm64, amd64, i386, powerpc, ppc64el, riscv64, s390x]
-    # build-for: [riscv64]
-    # build-on: [armhf, arm64, amd64, i386, powerpc, ppc64el, riscv64, s390x]
-    # build-for: [s390x]
+# platforms:
+#   amd64:
+#     build-on: [amd64]
+#     build-for: [amd64]
+#   arm64:
+#     build-on: [amd64, arm64]
+  #   build-for: [arm64]
+  # armhf:
+  #   build-on: [amd64, armhf]
+  #   build-for: [armhf]
+  # i386:
+  #   build-on: [amd64, i386]
+  #   build-for: [i386]
+  # powerpc:
+  #   build-on: [amd64, powerpc]
+  #   build-for: [powerpc]
+  # ppc64el:
+  #   build-on: [amd64, ppc64el]
+  #   build-for: [ppc64el]
+  # riscv64:
+  #   build-on: [amd64, riscv64]
+  #   build-for: [riscv64]
+  # s390x:
+  #   build-on: [amd64, s390x]
+  #   build-for: [s390x]
 
-# architectures:
-#   - build-on: armhf
-#     build-for: armhf
-#   - build-on: arm64
-#     build-for: arm64
-#   - build-on: amd64
-#     build-for: amd64
-#   - build-on: i386
-#     build-for: i386
-#   - build-on: powerpc
-#     build-for: powerpc
-#   - build-on: ppc64el
-#     build-for: ppc64el
-#   - build-on: riscv64
-#     build-for: riscv64
-#   - build-on: s390x
-#     build-for: s390x
+architectures:
+  - build-on: armhf
+    build-for: armhf
+  - build-on: arm64
+    build-for: arm64
+  - build-on: amd64
+    build-for: amd64
+  - build-on: i386
+    build-for: i386
+  - build-on: powerpc
+    build-for: powerpc
+  - build-on: ppc64el
+    build-for: ppc64el
+  - build-on: riscv64
+    build-for: riscv64
+  - build-on: s390x
+    build-for: s390x
 
 parts:
   alsa-mixin:
@@ -121,7 +105,7 @@ parts:
       - libxrender-dev
       - libxcursor-dev
       - libgtk-3-dev
-      - libwebkit2gtk-4.0-dev
+      # - libwebkit2gtk-4.0-dev
       - libglu1-mesa-dev
       - mesa-common-dev
       - libasound2-dev
@@ -186,7 +170,9 @@ layout:
     bind: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/alsa-lib
   /usr/share/alsa:
     bind: $SNAP/usr/share/alsa
-
+   
+environment:
+  ALWAYS_USE_PULSEAUDIO: '1'
     
 apps:
   guitarfinetune:
