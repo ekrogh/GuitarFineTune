@@ -45,8 +45,6 @@ architectures:
     build-for: [armhf]
   - build-on: [arm64]
     build-for: [arm64]
-  - build-on: [amd64]
-    build-for: [amd64]
   - build-on: [ppc64el]
     build-for: [ppc64el]
   - build-on: [riscv64]
