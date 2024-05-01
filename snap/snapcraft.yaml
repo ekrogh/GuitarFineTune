@@ -1,5 +1,5 @@
 name: guitarfinetune
-base: core22
+base: core24
 version: "10.17.12"
 summary: Guitar fine-tuning tool
 description: |
@@ -36,25 +36,26 @@ confinement: strict # use 'strict' once you have the right plugs and slots
   #   build-on: [amd64, s390x]
   #   build-for: [s390x]
 
-architectures:
-  - build-on: [amd64]
-    build-for: [all]
+# architectures:
+#   - build-on: [amd64]
+#     build-for: [all]
   # - build-on: armhf
   #   build-for: armhf
   # - build-on: arm64
   #   build-for: arm64
   # - build-on: amd64
   #   build-for: amd64
-  # - build-on: i386
-  #   build-for: i386
-  # - build-on: powerpc
-  #   build-for: powerpc
   # - build-on: ppc64el
   #   build-for: ppc64el
   # - build-on: riscv64
   #   build-for: riscv64
   # - build-on: s390x
   #   build-for: s390x
+
+ # - build-on: powerpc
+ #   build-for: powerpc
+ # - build-on: i386
+ #   build-for: i386
 
 parts:
   alsa-mixin:
