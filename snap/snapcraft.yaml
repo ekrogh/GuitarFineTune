@@ -40,7 +40,7 @@ confinement: strict # use 'strict' once you have the right plugs and slots
 
 architectures:
   - build-on: [amd64]
-    build-for: [all]
+    build-for: [amd64]
   - build-on: [armhf]
     build-for: [armhf]
   - build-on: [arm64]
