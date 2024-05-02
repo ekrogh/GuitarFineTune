@@ -15,26 +15,26 @@ platforms:
     build-on: [amd64]
     build-for: [amd64]
   arm64:
-    build-on: [amd64, arm64]
+    build-on: [arm64]
     build-for: [arm64]
   armhf:
-    build-on: [amd64, armhf]
+    build-on: [armhf]
     build-for: [armhf]
-  ppc64el:
-    build-on: [amd64, ppc64el]
-    build-for: [ppc64el]
-  riscv64:
-    build-on: [amd64, riscv64]
-    build-for: [riscv64]
-  s390x:
-    build-on: [amd64, s390x]
-    build-for: [s390x]
-  i386:
-    build-on: [amd64, i386]
-    build-for: [i386]
-  powerpc:
-    build-on: [amd64, powerpc]
-    build-for: [powerpc]
+  # ppc64el:
+  #   build-on: [amd64, ppc64el]
+  #   build-for: [ppc64el]
+  # riscv64:
+  #   build-on: [amd64, riscv64]
+  #   build-for: [riscv64]
+  # s390x:
+  #   build-on: [amd64, s390x]
+  #   build-for: [s390x]
+  # i386:
+  #   build-on: [amd64, i386]
+  #   build-for: [i386]
+  # powerpc:
+  #   build-on: [amd64, powerpc]
+  #   build-for: [powerpc]
 
 
 
