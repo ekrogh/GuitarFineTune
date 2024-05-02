@@ -17,8 +17,8 @@ platforms:
   ppc64el:
   riscv64:
   s390x:
-  i386:
-  powerpc:
+  # i386:
+  # powerpc:
 
 # platforms:
 #   amd64:
