@@ -1692,8 +1692,8 @@ void tuneComponent::drawSpectrogram()
 	}
 
 
-	spectrogramImage.clear(spectrogramImage.getBounds(), Colours::white);
-
+	//spectrogramImage.clear(spectrogramImage.getBounds(), Colours::white);
+	spectrImGraphcs.fillAll(Colours::white);
 
 	// Mark guitar strings frequencies
 	spectrImGraphcs.setColour(Colours::green);

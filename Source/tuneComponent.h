@@ -294,7 +294,12 @@ private:
 
 	std::vector<double> hannWinCoefficients;
 
-	Image spectrogramImage{ Image::RGB, widthOfTuneWindow, hightOfTuneWindow, true };
+	// From JUCE Forum:
+	//juce::Image image{ juce::Image::ARGB, 100, 100, true, juce::SoftwareImageType{} };
+
+
+	Image spectrogramImage{ Image::RGB, widthOfTuneWindow, hightOfTuneWindow, true, juce::SoftwareImageType{} };
+	//Image spectrogramImage{ Image::RGB, widthOfTuneWindow, hightOfTuneWindow, true };
 	juce::Graphics spectrImGraphcs{ spectrogramImage };
 
 

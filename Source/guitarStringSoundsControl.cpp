@@ -152,7 +152,7 @@ guitarStringSoundsControl::guitarStringSoundsControl(std::shared_ptr<xmlGuitarFi
 	stringsVolLabel.reset(new juce::Label("stringsVolLabel",
 		TRANS("Strings")));
 	addAndMakeVisible(stringsVolLabel.get());
-	stringsVolLabel->setFont(juce::Font(15.00f, juce::Font::plain).withTypefaceStyle("Regular"));
+	stringsVolLabel->setFont(juce::Font(FontOptions(15.00f).withStyle("Regular")));
 	stringsVolLabel->setJustificationType(juce::Justification::centred);
 	stringsVolLabel->setEditable(false, false, false);
 	stringsVolLabel->setColour(juce::Label::textColourId, juce::Colours::cornflowerblue);
@@ -164,7 +164,7 @@ guitarStringSoundsControl::guitarStringSoundsControl(std::shared_ptr<xmlGuitarFi
 	inputVolLabel.reset(new juce::Label("inputVolLabel",
 		TRANS("Input")));
 	addAndMakeVisible(inputVolLabel.get());
-	inputVolLabel->setFont(juce::Font(15.00f, juce::Font::plain).withTypefaceStyle("Regular"));
+	inputVolLabel->setFont(juce::Font(FontOptions(15.00f).withStyle("Regular")));
 	inputVolLabel->setJustificationType(juce::Justification::centred);
 	inputVolLabel->setEditable(false, false, false);
 	inputVolLabel->setColour(juce::Label::textColourId, juce::Colours::cornflowerblue);
@@ -197,7 +197,7 @@ guitarStringSoundsControl::guitarStringSoundsControl(std::shared_ptr<xmlGuitarFi
 	outputVolLabel.reset(new juce::Label("outputVolLabel",
 		TRANS("Output")));
 	addAndMakeVisible(outputVolLabel.get());
-	outputVolLabel->setFont(juce::Font(15.00f, juce::Font::plain).withTypefaceStyle("Regular"));
+	outputVolLabel->setFont(juce::Font(FontOptions(15.00f).withStyle("Regular")));
 	outputVolLabel->setJustificationType(juce::Justification::centred);
 	outputVolLabel->setEditable(false, false, false);
 	outputVolLabel->setColour(juce::Label::textColourId, juce::Colours::cornflowerblue);
@@ -233,7 +233,7 @@ guitarStringSoundsControl::guitarStringSoundsControl(std::shared_ptr<xmlGuitarFi
 	E2label.reset(new juce::Label("E2label",
 		TRANS("E2")));
 	addAndMakeVisible(E2label.get());
-	E2label->setFont(juce::Font(15.00f, juce::Font::plain).withTypefaceStyle("Regular"));
+	E2label->setFont(juce::Font(FontOptions(15.00f).withStyle("Regular")));
 	E2label->setJustificationType(juce::Justification::centred);
 	E2label->setEditable(false, false, false);
 	E2label->setColour(Label::textColourId, Colours::cornflowerblue);
@@ -245,7 +245,7 @@ guitarStringSoundsControl::guitarStringSoundsControl(std::shared_ptr<xmlGuitarFi
 	A2label.reset(new juce::Label("A2label",
 		TRANS("A2")));
 	addAndMakeVisible(A2label.get());
-	A2label->setFont(juce::Font(15.00f, juce::Font::plain).withTypefaceStyle("Regular"));
+	A2label->setFont(juce::Font(FontOptions(15.00f).withStyle("Regular")));
 	A2label->setJustificationType(juce::Justification::centred);
 	A2label->setEditable(false, false, false);
 	A2label->setColour(Label::textColourId, Colours::cornflowerblue);
@@ -257,7 +257,7 @@ guitarStringSoundsControl::guitarStringSoundsControl(std::shared_ptr<xmlGuitarFi
 	D3label.reset(new juce::Label("D3label",
 		TRANS("D3")));
 	addAndMakeVisible(D3label.get());
-	D3label->setFont(juce::Font(15.00f, juce::Font::plain).withTypefaceStyle("Regular"));
+	D3label->setFont(juce::Font(FontOptions(15.00f).withStyle("Regular")));
 	D3label->setJustificationType(juce::Justification::centred);
 	D3label->setEditable(false, false, false);
 	D3label->setColour(Label::textColourId, Colours::cornflowerblue);
@@ -269,7 +269,7 @@ guitarStringSoundsControl::guitarStringSoundsControl(std::shared_ptr<xmlGuitarFi
 	G3label.reset(new juce::Label("G3label",
 		TRANS("G3")));
 	addAndMakeVisible(G3label.get());
-	G3label->setFont(juce::Font(15.00f, juce::Font::plain).withTypefaceStyle("Regular"));
+	G3label->setFont(juce::Font(FontOptions(15.00f).withStyle("Regular")));
 	G3label->setJustificationType(juce::Justification::centred);
 	G3label->setEditable(false, false, false);
 	G3label->setColour(Label::textColourId, Colours::cornflowerblue);
@@ -281,7 +281,7 @@ guitarStringSoundsControl::guitarStringSoundsControl(std::shared_ptr<xmlGuitarFi
 	B3label.reset(new juce::Label("B3label",
 		TRANS("B3")));
 	addAndMakeVisible(B3label.get());
-	B3label->setFont(juce::Font(15.00f, juce::Font::plain).withTypefaceStyle("Regular"));
+	B3label->setFont(juce::Font(FontOptions(15.00f).withStyle("Regular")));
 	B3label->setJustificationType(juce::Justification::centred);
 	B3label->setEditable(false, false, false);
 	B3label->setColour(Label::textColourId, Colours::cornflowerblue);
@@ -293,7 +293,7 @@ guitarStringSoundsControl::guitarStringSoundsControl(std::shared_ptr<xmlGuitarFi
 	E4label.reset(new juce::Label("E4label",
 		TRANS("E4")));
 	addAndMakeVisible(E4label.get());
-	E4label->setFont(juce::Font(15.00f, juce::Font::plain).withTypefaceStyle("Regular"));
+	E4label->setFont(juce::Font(FontOptions(15.00f).withStyle("Regular")));
 	E4label->setJustificationType(juce::Justification::centred);
 	E4label->setEditable(false, false, false);
 	E4label->setColour(Label::textColourId, Colours::cornflowerblue);
@@ -340,7 +340,7 @@ guitarStringSoundsControl::guitarStringSoundsControl(std::shared_ptr<xmlGuitarFi
 	rawSoundLabellabel.reset(new juce::Label("rawSoundLabellabel",
 		TRANS("Raw sound\n")));
 	addAndMakeVisible(rawSoundLabellabel.get());
-	rawSoundLabellabel->setFont(juce::Font(15.00f, juce::Font::plain).withTypefaceStyle("Regular"));
+	rawSoundLabellabel->setFont(juce::Font(FontOptions(15.00f).withStyle("Regular")));
 	rawSoundLabellabel->setJustificationType(juce::Justification::centred);
 	rawSoundLabellabel->setEditable(false, false, false);
 	rawSoundLabellabel->setColour(Label::textColourId, Colours::cornflowerblue);
@@ -352,7 +352,7 @@ guitarStringSoundsControl::guitarStringSoundsControl(std::shared_ptr<xmlGuitarFi
 	FilteredSoundLabel.reset(new juce::Label("FilteredSoundLabel",
 		TRANS("Filtered sound\n")));
 	addAndMakeVisible(FilteredSoundLabel.get());
-	FilteredSoundLabel->setFont(juce::Font(15.00f, juce::Font::plain).withTypefaceStyle("Regular"));
+	FilteredSoundLabel->setFont(juce::Font(FontOptions(15.00f).withStyle("Regular")));
 	FilteredSoundLabel->setJustificationType(juce::Justification::centred);
 	FilteredSoundLabel->setEditable(false, false, false);
 	FilteredSoundLabel->setColour(juce::Label::textColourId, juce::Colours::cornflowerblue);
@@ -364,7 +364,7 @@ guitarStringSoundsControl::guitarStringSoundsControl(std::shared_ptr<xmlGuitarFi
 	stopLabel.reset(new juce::Label("stopLabel",
 		TRANS("Stop")));
 	addAndMakeVisible(stopLabel.get());
-	stopLabel->setFont(juce::Font(15.00f, juce::Font::plain).withTypefaceStyle("Regular"));
+	stopLabel->setFont(juce::Font(FontOptions(15.00f).withStyle("Regular")));
 	stopLabel->setJustificationType(juce::Justification::centred);
 	stopLabel->setEditable(false, false, false);
 	stopLabel->setColour(juce::Label::textColourId, juce::Colours::cornflowerblue);
@@ -406,7 +406,7 @@ guitarStringSoundsControl::guitarStringSoundsControl(std::shared_ptr<xmlGuitarFi
 	startLabel.reset(new juce::Label("startLabel",
 		TRANS("Start")));
 	addAndMakeVisible(startLabel.get());
-	startLabel->setFont(juce::Font(15.00f, juce::Font::plain).withTypefaceStyle("Regular"));
+	startLabel->setFont(juce::Font(FontOptions(15.00f).withStyle("Regular")));
 	startLabel->setJustificationType(juce::Justification::centred);
 	startLabel->setEditable(false, false, false);
 	startLabel->setColour(juce::Label::textColourId, juce::Colours::cornflowerblue);
@@ -427,7 +427,7 @@ guitarStringSoundsControl::guitarStringSoundsControl(std::shared_ptr<xmlGuitarFi
 	allOffLabel.reset(new Label("allOffLabel",
 		TRANS("All off")));
 	addAndMakeVisible(allOffLabel.get());
-	allOffLabel->setFont(juce::Font(15.00f, juce::Font::plain).withTypefaceStyle("Regular"));
+	allOffLabel->setFont(juce::Font(FontOptions(15.00f).withStyle("Regular")));
 	allOffLabel->setJustificationType(juce::Justification::centred);
 	allOffLabel->setEditable(false, false, false);
 	allOffLabel->setColour(Label::textColourId, Colours::cornflowerblue);

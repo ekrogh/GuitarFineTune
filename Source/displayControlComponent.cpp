@@ -112,7 +112,7 @@ displayControlComponent::displayControlComponent (std::shared_ptr<xmlGuitarFineT
     noSecondsSoundPerCalcLabel.reset (new juce::Label ("noSecondsSoundPerCalcLabel",
                                                        TRANS("Seconds sound per calculation.")));
     addAndMakeVisible (noSecondsSoundPerCalcLabel.get());
-    noSecondsSoundPerCalcLabel->setFont (juce::Font (15.00f, juce::Font::plain).withTypefaceStyle ("Regular"));
+    noSecondsSoundPerCalcLabel->setFont(juce::Font(FontOptions(15.00f).withStyle("Regular")));
     noSecondsSoundPerCalcLabel->setJustificationType (juce::Justification::centredLeft);
     noSecondsSoundPerCalcLabel->setEditable (false, false, false);
     noSecondsSoundPerCalcLabel->setColour (juce::Label::textColourId, juce::Colours::cornflowerblue);
@@ -166,7 +166,7 @@ displayControlComponent::displayControlComponent (std::shared_ptr<xmlGuitarFineT
     labelLowestFreq.reset (new juce::Label ("labelLowestFreq",
                                             TRANS("Low frequency (1..69)")));
     addAndMakeVisible (labelLowestFreq.get());
-    labelLowestFreq->setFont (juce::Font (15.00f, juce::Font::plain).withTypefaceStyle ("Regular"));
+    labelLowestFreq->setFont(juce::Font(FontOptions(15.00f).withStyle("Regular")));
     labelLowestFreq->setJustificationType (juce::Justification::centredLeft);
     labelLowestFreq->setEditable (false, false, false);
     labelLowestFreq->setColour (juce::Label::textColourId, juce::Colours::cornflowerblue);
@@ -202,7 +202,7 @@ displayControlComponent::displayControlComponent (std::shared_ptr<xmlGuitarFineT
     labelHighstFreq.reset (new juce::Label ("labelHighstFreq",
                                             TRANS("High frequency (343 .. 441)")));
     addAndMakeVisible (labelHighstFreq.get());
-    labelHighstFreq->setFont (juce::Font (15.00f, juce::Font::plain).withTypefaceStyle ("Regular"));
+    labelHighstFreq->setFont(juce::Font(FontOptions(15.00f).withStyle("Regular")));
     labelHighstFreq->setJustificationType (juce::Justification::centredLeft);
     labelHighstFreq->setEditable (false, false, false);
     labelHighstFreq->setColour (juce::Label::textColourId, juce::Colours::cornflowerblue);
@@ -214,7 +214,7 @@ displayControlComponent::displayControlComponent (std::shared_ptr<xmlGuitarFineT
     calculationsLabel.reset (new juce::Label ("calculationsLabel",
                                               TRANS("calculations\n")));
     addAndMakeVisible (calculationsLabel.get());
-    calculationsLabel->setFont (juce::Font (15.00f, juce::Font::plain).withTypefaceStyle ("Regular"));
+    calculationsLabel->setFont(juce::Font(FontOptions(15.00f).withStyle("Regular")));
     calculationsLabel->setJustificationType (juce::Justification::centredLeft);
     calculationsLabel->setEditable (false, false, false);
     calculationsLabel->setColour (juce::Label::textColourId, juce::Colours::cornflowerblue);
@@ -258,7 +258,7 @@ displayControlComponent::displayControlComponent (std::shared_ptr<xmlGuitarFineT
     adaptiveNoSecondsLabel.reset (new juce::Label ("adaptiveNoSecondsLabel",
                                                    TRANS("Seconds sound in calcs.")));
     addAndMakeVisible (adaptiveNoSecondsLabel.get());
-    adaptiveNoSecondsLabel->setFont (juce::Font (15.00f, juce::Font::plain).withTypefaceStyle ("Regular"));
+    adaptiveNoSecondsLabel->setFont(juce::Font(FontOptions(15.00f).withStyle("Regular")));
     adaptiveNoSecondsLabel->setJustificationType (juce::Justification::centredLeft);
     adaptiveNoSecondsLabel->setEditable (false, false, false);
     adaptiveNoSecondsLabel->setColour (juce::Label::textColourId, juce::Colours::cornflowerblue);
