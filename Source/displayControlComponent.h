@@ -92,7 +92,7 @@ private:
 	std::unique_ptr<Label> sliderHighestFreqLabel;
 	std::unique_ptr<Label> averageSiderLabel;
 	std::shared_ptr<eksLookAndFeel> pGuitarFineTuneLookAndFeel = nullptr;
-	Font myComboBoxFont = Font(15.00f, Font::plain).withTypefaceStyle("Regular");
+    Font myComboBoxFont = juce::Font(FontOptions(15.00f).withStyle("Regular"));
 	bool itsLostFocus = false;
 	int currentFftOrderThatWasSelected = 0;
 

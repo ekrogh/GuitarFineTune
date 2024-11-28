@@ -93,7 +93,7 @@ public:
 		const float textEdgeGap = 4.0f;
 		auto cs = 5.0f;
 
-		Font f(textH);
+		Font f = juce::Font(FontOptions(textH).withStyle("Regular"));
 
 		Path p;
 		auto x = indent;
@@ -175,13 +175,13 @@ public:
 
 	void scaleEksLookAndFeelFonts(float scaleToUse)
 	{
-		eksLookAndFeelComboBoxFont.setHeight((Font(15.00f, Font::plain).withTypefaceStyle("Regular")).getHeight() * scaleToUse);
-		eksLookAndFeelTextButtonFont.setHeight((Font(15.00f, Font::plain).withTypefaceStyle("Regular")).getHeight() * scaleToUse);
+		eksLookAndFeelComboBoxFont.setHeight((juce::Font(FontOptions(15.00f).withStyle("Regular"))).getHeight() * scaleToUse);
+		eksLookAndFeelTextButtonFont.setHeight((juce::Font(FontOptions(15.00f).withStyle("Regular"))).getHeight() * scaleToUse);
 	}
 
 private:
-	Font eksLookAndFeelComboBoxFont = Font(15.00f, Font::plain).withTypefaceStyle("Regular");
-	Font eksLookAndFeelTextButtonFont = Font(15.00f, Font::plain).withTypefaceStyle("Regular");
+	Font eksLookAndFeelComboBoxFont = juce::Font(FontOptions(15.00f).withStyle("Regular"));
+	Font eksLookAndFeelTextButtonFont = juce::Font(FontOptions(15.00f).withStyle("Regular"));
 	bool viewPortAdded = false;
 	std::vector<Label*> pSliderTextBoxes;
 };
