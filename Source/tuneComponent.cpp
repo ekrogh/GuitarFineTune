@@ -74,7 +74,11 @@ tuneComponent::tuneComponent
 #endif // (JUCE_IOS || JUCE_ANDROID)
 	defaultFontOfSpectrImGraphcs = spectrImGraphcs.getCurrentFont();
 	hightOfDefaultFontOfSpectrImGraphcs = defaultFontOfSpectrImGraphcs.getHeight();
-	strHalfStringNamesWidth = (int)(defaultFontOfSpectrImGraphcs.getStringWidthFloat("D3") / 2);
+
+	juce::GlyphArrangement glyphArrangement;
+	glyphArrangement.addLineOfText(defaultFontOfSpectrImGraphcs, "D3", 0, 0);
+	strHalfStringNamesWidth = (int)(glyphArrangement.getBoundingBox(0, -1, true).getWidth() / 2);
+	//strHalfStringNamesWidth = (int)(defaultFontOfSpectrImGraphcs.getStringWidthFloat("D3") / 2);
 
 	spAudioRecorderController = std::make_shared<AudioRecorderControl>();
 
@@ -1764,7 +1768,12 @@ void tuneComponent::drawSpectrogram()
 					{
 						strOutOfTuneValue = juce::String((double)goertzelStatistics.meanFreqsOutOfTune, 1);
 					}
-					if ((txtStartX = (int)(guitarStringsTonesXCoordsAndNames[idxGuitarStringsTonesXCoordsAndNames].stringXCoord - defaultFontOfSpectrImGraphcs.getStringWidthFloat(strOutOfTuneValue) / 2.0f)) < 0.0f)
+					juce::GlyphArrangement glyphArrangement;
+					glyphArrangement.addLineOfText(defaultFontOfSpectrImGraphcs, strOutOfTuneValue, 0, 0);
+					float textWidth = glyphArrangement.getBoundingBox(0, -1, true).getWidth();
+
+					if ((txtStartX = (int)(guitarStringsTonesXCoordsAndNames[idxGuitarStringsTonesXCoordsAndNames].stringXCoord - textWidth / 2.0f)) < 0.0f)
+						//if ((txtStartX = (int)(guitarStringsTonesXCoordsAndNames[idxGuitarStringsTonesXCoordsAndNames].stringXCoord - defaultFontOfSpectrImGraphcs.getStringWidthFloat(strOutOfTuneValue) / 2.0f)) < 0.0f)
 					{
 						txtStartX = 0;
 					}
@@ -1777,7 +1786,11 @@ void tuneComponent::drawSpectrogram()
 				}
 				else
 				{
-					if ((txtStartX = (int)(guitarStringsTonesXCoordsAndNames[idxGuitarStringsTonesXCoordsAndNames].stringXCoord - defaultFontOfSpectrImGraphcs.getStringWidthFloat(goertzelStatistics.stringName) / 2.0f)) < 0.0f)
+					//if ((txtStartX = (int)(guitarStringsTonesXCoordsAndNames[idxGuitarStringsTonesXCoordsAndNames].stringXCoord - defaultFontOfSpectrImGraphcs.getStringWidthFloat(goertzelStatistics.stringName) / 2.0f)) < 0.0f)
+					juce::GlyphArrangement glyphArrangement;
+					glyphArrangement.addLineOfText(defaultFontOfSpectrImGraphcs, goertzelStatistics.stringName, 0, 0);
+					float stringWidth = glyphArrangement.getBoundingBox(0, -1, true).getWidth();
+					if ((txtStartX = (int)(guitarStringsTonesXCoordsAndNames[idxGuitarStringsTonesXCoordsAndNames].stringXCoord - stringWidth / 2.0f)) < 0.0f)
 					{
 						txtStartX = 0;
 					}
@@ -1846,7 +1859,13 @@ void tuneComponent::drawSpectrogram()
 						{
 							strOutOfTuneValue = juce::String((double)goertzelStatistics.meanFreqsOutOfTune, 1);
 						}
-						if ((txtStartX = (int)(guitarStringsTonesXCoordsAndNames[idxGuitarStringsTonesXCoordsAndNames].stringXCoord - defaultFontOfSpectrImGraphcs.getStringWidthFloat(strOutOfTuneValue) / 2.0f)) < 0.0f)
+						//if ((txtStartX = (int)(guitarStringsTonesXCoordsAndNames[idxGuitarStringsTonesXCoordsAndNames].stringXCoord - defaultFontOfSpectrImGraphcs.getStringWidthFloat(strOutOfTuneValue) / 2.0f)) < 0.0f)
+
+						juce::GlyphArrangement glyphArrangement;
+						glyphArrangement.addLineOfText(defaultFontOfSpectrImGraphcs, strOutOfTuneValue, 0, 0);
+						float textWidth = glyphArrangement.getBoundingBox(0, -1, true).getWidth();
+
+						if ((txtStartX = (int)(guitarStringsTonesXCoordsAndNames[idxGuitarStringsTonesXCoordsAndNames].stringXCoord - textWidth / 2.0f)) < 0.0f)
 						{
 							txtStartX = 0;
 						}
@@ -1859,7 +1878,13 @@ void tuneComponent::drawSpectrogram()
 					}
 					else
 					{
-						if ((txtStartX = (int)(guitarStringsTonesXCoordsAndNames[idxGuitarStringsTonesXCoordsAndNames].stringXCoord - defaultFontOfSpectrImGraphcs.getStringWidthFloat(goertzelStatistics.stringName) / 2.0f)) < 0.0f)
+						//if ((txtStartX = (int)(guitarStringsTonesXCoordsAndNames[idxGuitarStringsTonesXCoordsAndNames].stringXCoord - defaultFontOfSpectrImGraphcs.getStringWidthFloat(goertzelStatistics.stringName) / 2.0f)) < 0.0f)
+
+						juce::GlyphArrangement glyphArrangement;
+						glyphArrangement.addLineOfText(defaultFontOfSpectrImGraphcs, goertzelStatistics.stringName, 0, 0);
+						float stringWidth = glyphArrangement.getBoundingBox(0, -1, true).getWidth();
+
+						if ((txtStartX = (int)(guitarStringsTonesXCoordsAndNames[idxGuitarStringsTonesXCoordsAndNames].stringXCoord - stringWidth / 2.0f)) < 0.0f)
 						{
 							txtStartX = 0;
 						}
@@ -2005,7 +2030,12 @@ void tuneComponent::drawSpectrogram()
 
 			spectrImGraphcs.setColour(Colours::violet);
 
-			spectrImGraphcs.drawSingleLineText(theText, imageWidth - curFont.getStringWidth(theText), (int)curFont.getHeight());
+			//spectrImGraphcs.drawSingleLineText(theText, imageWidth - curFont.getStringWidth(theText), (int)curFont.getHeight());
+
+            juce::GlyphArrangement glyphArrangement;
+            glyphArrangement.addLineOfText(curFont, theText, 0, 0);
+            float textWidth = glyphArrangement.getBoundingBox(0, -1, true).getWidth();
+            spectrImGraphcs.drawSingleLineText(theText, imageWidth - textWidth, (int)curFont.getHeight());
 
 			for (auto& binToGetResult : *pDqGoertzelBinsOut)
 			{
@@ -2745,7 +2775,7 @@ void tuneComponent::controlGuitarStringSounds(std::deque<bool> guitarStringSound
 				{
 					return i;
 				})
-		)
+			)
 	{ // Last string off. Sound output must be disabled
 
 		if (!outputMuteToggleButtonOn && !stringsMuteToggleButtonOn)

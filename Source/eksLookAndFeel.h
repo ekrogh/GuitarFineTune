@@ -103,7 +103,15 @@ public:
 		cs = jmin(cs, w * 0.5f, h * 0.5f);
 		auto cs2 = 2.0f * cs;
 
-		auto textW = text.isEmpty() ? 0 : jlimit(0.0f, jmax(0.0f, w - cs2 - textEdgeGap * 2), f.getStringWidth(text) + textEdgeGap * 2.0f);
+		auto textW = 0.0f;
+		if (!text.isEmpty())
+		{
+			GlyphArrangement glyphs;
+			glyphs.addLineOfText(f, text, 0.0f, 0.0f);
+			textW = jlimit(0.0f, jmax(0.0f, w - cs2 - textEdgeGap * 2), glyphs.getBoundingBox(0, text.length(), true).getWidth() + textEdgeGap * 2.0f);
+		}
+
+		//auto textW = text.isEmpty() ? 0 : jlimit(0.0f, jmax(0.0f, w - cs2 - textEdgeGap * 2), f.getStringWidth(text) + textEdgeGap * 2.0f);
 		auto textX = cs + textEdgeGap;
 
 		if (position.testFlags(Justification::horizontallyCentred))
