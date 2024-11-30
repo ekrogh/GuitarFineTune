@@ -45,6 +45,7 @@ tuneComponent::tuneComponent
 	, ptrGuitarFineTuneFirstClass(pGuitarFineTuneFirstClass)
 #endif // #if ( JUCE_IOS )
 	, pXmlGuitarFineTuneConfig(pXmlGFTConfig)
+#pragma warning(suppress : 4996)
 {
 	if (errorInGetSharedAudioDeviceManager)
 	{
@@ -2035,7 +2036,7 @@ void tuneComponent::drawSpectrogram()
             juce::GlyphArrangement glyphArrangement;
             glyphArrangement.addLineOfText(curFont, theText, 0, 0);
             float textWidth = glyphArrangement.getBoundingBox(0, -1, true).getWidth();
-            spectrImGraphcs.drawSingleLineText(theText, imageWidth - textWidth, (int)curFont.getHeight());
+            spectrImGraphcs.drawSingleLineText(theText, (int)(imageWidth - textWidth), (int)curFont.getHeight());
 
 			for (auto& binToGetResult : *pDqGoertzelBinsOut)
 			{

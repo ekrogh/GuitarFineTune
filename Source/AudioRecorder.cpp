@@ -51,6 +51,7 @@
 //#endif //  (JUCE_WINDOWS && _DEBUG)
 
 #include "AudioRecorder.h"
+#include <span>
 
 
 //==============================================================================
@@ -165,10 +166,10 @@ inline void AudioRecorder::applyGain(const float* inputData, float* outputData, 
 #if (JUCE_WINDOWS && _DEBUG)
 	std::transform
 	(
-		stdext::make_unchecked_array_iterator(inputData)
-		, stdext::make_unchecked_array_iterator(inputData + numSamples)
-		, stdext::make_unchecked_array_iterator(outputData)
-		, [&](float inputDataElement) { return inputDataElement * gainToUse; }
+		std::span<const float>(inputData, numSamples).begin(),
+		std::span<const float>(inputData, numSamples).end(),
+		std::span<float>(outputData, numSamples).begin(),
+		[&](float inputDataElement) { return inputDataElement * gainToUse; }
 	);
 #else // (JUCE_WINDOWS && _DEBUG)
 	std::transform
