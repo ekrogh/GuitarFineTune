@@ -231,12 +231,20 @@ Colour::Colour (uint32 col) noexcept
 
 Colour::Colour (uint8 red, uint8 green, uint8 blue) noexcept
 {
+#if JUCE_IOS
+    argb.setARGB (0xff, blue, green, red);
+#else
     argb.setARGB (0xff, red, green, blue);
+#endif
 }
 
 Colour Colour::fromRGB (uint8 red, uint8 green, uint8 blue) noexcept
 {
+#if JUCE_IOS
+    return Colour (blue, green, red);
+#else
     return Colour (red, green, blue);
+#endif
 }
 
 Colour::Colour (uint8 red, uint8 green, uint8 blue, uint8 alpha) noexcept
