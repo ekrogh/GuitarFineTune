@@ -298,9 +298,13 @@ private:
 	//juce::Image image{ juce::Image::ARGB, 100, 100, true, juce::SoftwareImageType{} };
 
 
-	Image spectrogramImage{ Image::RGB, widthOfTuneWindow, hightOfTuneWindow, true, juce::SoftwareImageType{} };
-	//Image spectrogramImage{ Image::RGB, widthOfTuneWindow, hightOfTuneWindow, true };
-	juce::Graphics spectrImGraphcs{ spectrogramImage };
+
+#if ( JUCE_WINDOW )
+    Image spectrogramImage{ Image::RGB, widthOfTuneWindow, hightOfTuneWindow, true, juce::SoftwareImageType{} };
+#else
+    Image spectrogramImage{ Image::RGB, widthOfTuneWindow, hightOfTuneWindow, true };
+#endif
+    juce::Graphics spectrImGraphcs{ spectrogramImage };
 
 
 #ifdef USE_JUCE_FFT
