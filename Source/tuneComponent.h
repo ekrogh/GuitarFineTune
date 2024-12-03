@@ -299,7 +299,7 @@ private:
 
 
 
-#if ( JUCE_WINDOW )
+#if ( JUCE_WINDOWS )
     Image spectrogramImage{ Image::RGB, widthOfTuneWindow, hightOfTuneWindow, true, juce::SoftwareImageType{} };
 #else
     Image spectrogramImage{ Image::RGB, widthOfTuneWindow, hightOfTuneWindow, true };
