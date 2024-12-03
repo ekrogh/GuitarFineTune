@@ -158,7 +158,7 @@
                    smallIcon="RB4slw" bigIcon="DzMVX4" extraDefs="ANDROID_VERSION_CODE=92"
                    androidExternalWriteNeeded="1" androidInternetNeeded="1" androidReadMediaAudioPermission="1"
                    androidReadMediaImagesPermission="1" androidReadMediaVideoPermission="1"
-                   androidMinimumSDK="19" gradleWrapperVersion="8.3.2" gradleVersion="8.4">
+                   androidMinimumSDK="21" gradleWrapperVersion="8.7.3" gradleVersion="8.9">
       <CONFIGURATIONS>
         <CONFIGURATION name="Release" isDebug="0" targetName="GuitarFineTune" optimisation="3"
                        linkTimeOptimisation="1"/>
