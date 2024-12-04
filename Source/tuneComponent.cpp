@@ -45,7 +45,6 @@ tuneComponent::tuneComponent
 	, ptrGuitarFineTuneFirstClass(pGuitarFineTuneFirstClass)
 #endif // #if ( JUCE_IOS )
 	, pXmlGuitarFineTuneConfig(pXmlGFTConfig)
-#pragma warning(suppress : 4996)
 {
 	if (errorInGetSharedAudioDeviceManager)
 	{

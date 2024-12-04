@@ -457,7 +457,7 @@ private:
     struct PendingMessage
     {
         PendingMessage (const void* data, int len, double timeStamp)
-            : message (data, len, timeStamp)
+            : message(data, len, timeStamp), next(nullptr)
         {
         }
 
