@@ -32,7 +32,6 @@ extern std::unique_ptr<AudioDeviceManager> sharedAudioDeviceManager;
 extern bool errorInGetSharedAudioDeviceManager;
 
 
-#pragma warning(suppress : 4996)
 tuneComponent::tuneComponent
 (
 	std::shared_ptr<xmlGuitarFineTuneConfig> pXmlGFTConfig
