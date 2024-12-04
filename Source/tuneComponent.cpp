@@ -1697,10 +1697,11 @@ void tuneComponent::drawSpectrogram()
 		scaleFactr = std::accumulate(vScaleFactrs.begin(), vScaleFactrs.end(), (float)0.) / vScaleFactrs.size();
 	}
 
-
-	//spectrogramImage.clear(spectrogramImage.getBounds(), Colours::white);
-	spectrImGraphcs.fillAll(Colours::white);
-
+#if ( JUCE_WINDOWS )
+    spectrImGraphcs.fillAll(Colours::white);
+#else
+    spectrogramImage.clear(spectrogramImage.getBounds(), Colours::white);
+#endif
 	// Mark guitar strings frequencies
 	spectrImGraphcs.setColour(Colours::green);
 	float rectY = hightOfDefaultFontOfSpectrImGraphcs + 3.0f;
@@ -2097,7 +2098,6 @@ void tuneComponent::drawSpectrogram()
 
 		spectrImGraphcs.setFont(savedFont);
 	}
-
 }
 
 void tuneComponent::initObjects(std::weak_ptr<displayControlComponent> pObj1)
