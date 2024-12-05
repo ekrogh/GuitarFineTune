@@ -72,7 +72,7 @@ tuneComponent::tuneComponent
 	hightOfDefaultFontOfSpectrImGraphcs = defaultFontOfSpectrImGraphcs.getHeight();
 	spectrImGraphcs.setFont(hightOfDefaultFontOfSpectrImGraphcs * 2);
 #endif // (JUCE_IOS || JUCE_ANDROID)
-	defaultFontOfSpectrImGraphcs = spectrImGraphcs.getCurrentFont();
+	defaultFontOfSpectrImGraphcs = tuneImageGraphics.getCurrentFont();
 	hightOfDefaultFontOfSpectrImGraphcs = defaultFontOfSpectrImGraphcs.getHeight();
 
 	juce::GlyphArrangement glyphArrangement;
@@ -1369,7 +1369,7 @@ void tuneComponent::paint(Graphics& g)
 	g.fillAll(Colours::black);
 
 	g.setOpacity(1.0f);
-	g.drawImageWithin(spectrogramImage, 0, 0, getWidth(), getHeight(), RectanglePlacement::stretchToFit);
+	g.drawImageWithin(tuneImage, 0, 0, getWidth(), getHeight(), RectanglePlacement::stretchToFit);
 }
 
 void tuneComponent::parentSizeChanged()
@@ -1640,8 +1640,8 @@ void tuneComponent::drawSpectrogram()
 	string strAvgTime = std::to_string(avgTime) + " " + std::to_string(timeSecundsPerFullAudioRecordBuffer);
 #endif // EVAL_TIME_BETW_CALLS
 
-	const int imageHeight = spectrogramImage.getHeight();
-	const int imageWidth = spectrogramImage.getWidth();
+	const int imageHeight = tuneImage.getHeight();
+	const int imageWidth = tuneImage.getWidth();
 
 	long double buttomLine = imageHeight - 4;
 	//double txtYPos = buttomLine;
@@ -1696,12 +1696,13 @@ void tuneComponent::drawSpectrogram()
 	}
 
 #if ( JUCE_WINDOWS )
-    spectrImGraphcs.fillAll(Colours::white);
+    tuneImageGraphics.fillAll(Colours::white);
 #else
-    spectrogramImage.clear(spectrogramImage.getBounds(), Colours::white);
+    tuneImage.clear(tuneImage.getBounds(), Colours::white);
 #endif
+
 	// Mark guitar strings frequencies
-	spectrImGraphcs.setColour(Colours::green);
+	tuneImageGraphics.setColour(Colours::green);
 	float rectY = hightOfDefaultFontOfSpectrImGraphcs + 3.0f;
 	float rectHight = (float)(buttomLine - (rectY * 2.0f));
 	float arrowsYStart = rectY;
@@ -1710,8 +1711,8 @@ void tuneComponent::drawSpectrogram()
 
 	for (auto& xCoordAndName : guitarStringsTonesXCoordsAndNames)
 	{
-		spectrImGraphcs.drawArrow(Line<float>(xCoordAndName.stringXCoord, arrowsYStart, xCoordAndName.stringXCoord, arrowsYEnd), 4.0f, 28.0f, 24.0f);
-		spectrImGraphcs.drawSingleLineText(xCoordAndName.stringName, (int)(xCoordAndName.stringXCoord - strHalfStringNamesWidth), textBaseLine);
+		tuneImageGraphics.drawArrow(Line<float>(xCoordAndName.stringXCoord, arrowsYStart, xCoordAndName.stringXCoord, arrowsYEnd), 4.0f, 28.0f, 24.0f);
+		tuneImageGraphics.drawSingleLineText(xCoordAndName.stringName, (int)(xCoordAndName.stringXCoord - strHalfStringNamesWidth), textBaseLine);
 	}
 
 	Thread::yield();
@@ -1740,13 +1741,13 @@ void tuneComponent::drawSpectrogram()
 				goertzelStatistics.thisOneShownLastTime = true;
 
 				absFreqsOutOfTune = abs(goertzelStatistics.meanFreqsOutOfTune);
-				spectrImGraphcs.setColour
+				tuneImageGraphics.setColour
 				(
 					Colour((uint8)(absFreqsOutOfTune * redFactorForGuitarStringsOutOfTone)
 						, (uint8)(0x80 - (absFreqsOutOfTune * greenFactorForGuitarStringsOutOfTone))
 						, (uint8)0)
 				);
-				spectrImGraphcs.drawArrow
+				tuneImageGraphics.drawArrow
 				(
 					Line<float>
 					(
@@ -1778,7 +1779,7 @@ void tuneComponent::drawSpectrogram()
 					{
 						txtStartX = 0;
 					}
-					spectrImGraphcs.drawSingleLineText
+					tuneImageGraphics.drawSingleLineText
 					(
 						strOutOfTuneValue + " Hz"
 						, txtStartX
@@ -1795,7 +1796,7 @@ void tuneComponent::drawSpectrogram()
 					{
 						txtStartX = 0;
 					}
-					spectrImGraphcs.drawSingleLineText
+					tuneImageGraphics.drawSingleLineText
 					(
 						goertzelStatistics.stringName
 						, txtStartX
@@ -1839,11 +1840,11 @@ void tuneComponent::drawSpectrogram()
 						rTheArrowParms.colourAlpha = 0.0f;
 						rTheArrowParms.fadedAway = true;
 					}
-					spectrImGraphcs.setColour
+					tuneImageGraphics.setColour
 					(
 						rTheArrowParms.clour.withAlpha(rTheArrowParms.colourAlpha)
 					);
-					spectrImGraphcs.drawArrow
+					tuneImageGraphics.drawArrow
 					(
 						rTheArrowParms.line
 						, 4.0f
@@ -1870,7 +1871,7 @@ void tuneComponent::drawSpectrogram()
 						{
 							txtStartX = 0;
 						}
-						spectrImGraphcs.drawSingleLineText
+						tuneImageGraphics.drawSingleLineText
 						(
 							strOutOfTuneValue + " Hz"
 							, txtStartX
@@ -1889,7 +1890,7 @@ void tuneComponent::drawSpectrogram()
 						{
 							txtStartX = 0;
 						}
-						spectrImGraphcs.drawSingleLineText
+						tuneImageGraphics.drawSingleLineText
 						(
 							goertzelStatistics.stringName
 							, txtStartX
@@ -1902,7 +1903,7 @@ void tuneComponent::drawSpectrogram()
 			idxGuitarStringsTonesXCoordsAndNames++;
 		}
 #ifdef EVAL_TIME_BETW_CALLS
-		const int imageWidth = spectrogramImage.getWidth();
+		const int imageWidth = tuneImage.getWidth();
 		spectrImGraphcs.setColour(Colours::black);
 		spectrImGraphcs.drawSingleLineText
 		(
@@ -1916,14 +1917,14 @@ void tuneComponent::drawSpectrogram()
 
 	if (showFFTToggleButtonOn)
 	{
-		spectrImGraphcs.setColour(Colours::black);
+		tuneImageGraphics.setColour(Colours::black);
 
 		float newEndX = 0, oldEndX = 0;
 		float oldEndY = (float)buttomLine, newEndY = 0.;
 		for (int fftDataIdx = firstFftDataToDisplay; fftDataIdx < lastFftDataToDisplay; fftDataIdx += spaceBtwFftDataToDisplay)
 		{
 			newEndY = (float)(buttomLine - (fftData[fftDataIdx] * scaleFactr));
-			spectrImGraphcs.drawLine(oldEndX, oldEndY, newEndX, newEndY, 1.);
+			tuneImageGraphics.drawLine(oldEndX, oldEndY, newEndX, newEndY, 1.);
 			oldEndX = newEndX;
 			newEndX += resToDisply;
 			oldEndY = newEndY;
@@ -1936,19 +1937,19 @@ void tuneComponent::drawSpectrogram()
 		auto newFontHeight = currentFont.getHeightInPoints() / 2;
 		spectrImGraphcs.setFont(newFontHeight);
 #endif
-		spectrImGraphcs.setColour(Colours::orange);
-		spectrImGraphcs.fillRect((float)(freqToXCoordFactor * (50 - lowestFreqToDisplayDataForHz)), 0., 1., (float)(buttomLine - 6));
-		spectrImGraphcs.drawSingleLineText(std::to_string(50), (int)(freqToXCoordFactor * (50 - lowestFreqToDisplayDataForHz) + 1), (int)(buttomLine - 30));
-		spectrImGraphcs.fillRect((float)(freqToXCoordFactor * (100 - lowestFreqToDisplayDataForHz)), 0., 1., (float)(buttomLine - 6));
-		spectrImGraphcs.drawSingleLineText(std::to_string(100), (int)(freqToXCoordFactor * (100 - lowestFreqToDisplayDataForHz) + 1), (int)(buttomLine - 30));
-		spectrImGraphcs.fillRect((float)(freqToXCoordFactor * (150 - lowestFreqToDisplayDataForHz)), 0., 1., (float)(buttomLine - 6));
-		spectrImGraphcs.drawSingleLineText(std::to_string(150), (int)(freqToXCoordFactor * (150 - lowestFreqToDisplayDataForHz) + 1), (int)(buttomLine - 30));
-		spectrImGraphcs.fillRect((float)(freqToXCoordFactor * (60 - lowestFreqToDisplayDataForHz)), 0., 1., (float)(buttomLine - 6));
-		spectrImGraphcs.drawSingleLineText(std::to_string(60), (int)(freqToXCoordFactor * (60 - lowestFreqToDisplayDataForHz) + 1), (int)(buttomLine - 30));
-		spectrImGraphcs.fillRect((float)(freqToXCoordFactor * (120 - lowestFreqToDisplayDataForHz)), 0., 1., (float)(buttomLine - 6));
-		spectrImGraphcs.drawSingleLineText(std::to_string(120), (int)(freqToXCoordFactor * (120 - lowestFreqToDisplayDataForHz) + 1), (int)(buttomLine - 30));
-		spectrImGraphcs.fillRect((float)(freqToXCoordFactor * (180 - lowestFreqToDisplayDataForHz)), 0., 1., (float)(buttomLine - 6));
-		spectrImGraphcs.drawSingleLineText(std::to_string(180) + " Hz", (int)(freqToXCoordFactor * (180 - lowestFreqToDisplayDataForHz) + 1), (int)(buttomLine - 30));
+		tuneImageGraphics.setColour(Colours::orange);
+		tuneImageGraphics.fillRect((float)(freqToXCoordFactor * (50 - lowestFreqToDisplayDataForHz)), 0., 1., (float)(buttomLine - 6));
+		tuneImageGraphics.drawSingleLineText(std::to_string(50), (int)(freqToXCoordFactor * (50 - lowestFreqToDisplayDataForHz) + 1), (int)(buttomLine - 30));
+		tuneImageGraphics.fillRect((float)(freqToXCoordFactor * (100 - lowestFreqToDisplayDataForHz)), 0., 1., (float)(buttomLine - 6));
+		tuneImageGraphics.drawSingleLineText(std::to_string(100), (int)(freqToXCoordFactor * (100 - lowestFreqToDisplayDataForHz) + 1), (int)(buttomLine - 30));
+		tuneImageGraphics.fillRect((float)(freqToXCoordFactor * (150 - lowestFreqToDisplayDataForHz)), 0., 1., (float)(buttomLine - 6));
+		tuneImageGraphics.drawSingleLineText(std::to_string(150), (int)(freqToXCoordFactor * (150 - lowestFreqToDisplayDataForHz) + 1), (int)(buttomLine - 30));
+		tuneImageGraphics.fillRect((float)(freqToXCoordFactor * (60 - lowestFreqToDisplayDataForHz)), 0., 1., (float)(buttomLine - 6));
+		tuneImageGraphics.drawSingleLineText(std::to_string(60), (int)(freqToXCoordFactor * (60 - lowestFreqToDisplayDataForHz) + 1), (int)(buttomLine - 30));
+		tuneImageGraphics.fillRect((float)(freqToXCoordFactor * (120 - lowestFreqToDisplayDataForHz)), 0., 1., (float)(buttomLine - 6));
+		tuneImageGraphics.drawSingleLineText(std::to_string(120), (int)(freqToXCoordFactor * (120 - lowestFreqToDisplayDataForHz) + 1), (int)(buttomLine - 30));
+		tuneImageGraphics.fillRect((float)(freqToXCoordFactor * (180 - lowestFreqToDisplayDataForHz)), 0., 1., (float)(buttomLine - 6));
+		tuneImageGraphics.drawSingleLineText(std::to_string(180) + " Hz", (int)(freqToXCoordFactor * (180 - lowestFreqToDisplayDataForHz) + 1), (int)(buttomLine - 30));
 #if (JUCE_IOS || JUCE_ANDROID)
 		spectrImGraphcs.setFont(currentFont); //Restore font
 #endif
@@ -1957,9 +1958,9 @@ void tuneComponent::drawSpectrogram()
 		{
 			int idxOMax = std::accumulate(vIdxOMaxs.begin(), vIdxOMaxs.end(), (int)0) / (int)(vIdxOMaxs.size());
 			long double maxValFreq = (long double)idxOMax * fDelta;
-			spectrImGraphcs.setColour(Colours::red);
-			spectrImGraphcs.fillRect((float)((idxOMax - firstFftDataToDisplay) * resToDisply), 0., 2., (float)buttomLine);
-			spectrImGraphcs.drawSingleLineText(String(maxLevel) + ", " + String((long)maxValFreq) + ", " + String(idxOMax), (int)(((idxOMax - firstFftDataToDisplay) * resToDisply) + 4), (int)buttomLine);
+			tuneImageGraphics.setColour(Colours::red);
+			tuneImageGraphics.fillRect((float)((idxOMax - firstFftDataToDisplay) * resToDisply), 0., 2., (float)buttomLine);
+			tuneImageGraphics.drawSingleLineText(String(maxLevel) + ", " + String((long)maxValFreq) + ", " + String(idxOMax), (int)(((idxOMax - firstFftDataToDisplay) * resToDisply) + 4), (int)buttomLine);
 		}
 
 		Thread::yield();
@@ -1972,14 +1973,14 @@ void tuneComponent::drawSpectrogram()
 		static auto thresholdMaxValue = std::numeric_limits<long double>::min();
 		static auto thresholdScaleFctr = std::numeric_limits<long double>::max();
 
-		auto savedFont = spectrImGraphcs.getCurrentFont();
+		auto savedFont = tuneImageGraphics.getCurrentFont();
 #if (JUCE_IOS || JUCE_ANDROID)
 		spectrImGraphcs.setFont(savedFont.getHeightInPoints() / 2.25f);
 #else
-		spectrImGraphcs.setFont(savedFont.getHeightInPoints() / 1.1f);
+		tuneImageGraphics.setFont(savedFont.getHeightInPoints() / 1.1f);
 #endif // (JUCE_IOS || JUCE_ANDROID)
 
-		auto curFont = spectrImGraphcs.getCurrentFont();
+		auto curFont = tuneImageGraphics.getCurrentFont();
 
 		// Find scale factor
 		if (showSpectrumToggleButtonOn)
@@ -2029,14 +2030,14 @@ void tuneComponent::drawSpectrogram()
 			auto theText = eksLongDoubleToString((double)spectrumMaxValue);
 			//auto theText = eksLongDoubleToString((double)spectrumMaxValue, 2);
 
-			spectrImGraphcs.setColour(Colours::violet);
+			tuneImageGraphics.setColour(Colours::violet);
 
 			//spectrImGraphcs.drawSingleLineText(theText, imageWidth - curFont.getStringWidth(theText), (int)curFont.getHeight());
 
             juce::GlyphArrangement glyphArrangement;
             glyphArrangement.addLineOfText(curFont, theText, 0, 0);
             float textWidth = glyphArrangement.getBoundingBox(0, -1, true).getWidth();
-            spectrImGraphcs.drawSingleLineText(theText, (int)(imageWidth - textWidth), (int)curFont.getHeight());
+            tuneImageGraphics.drawSingleLineText(theText, (int)(imageWidth - textWidth), (int)curFont.getHeight());
 
 			for (auto& binToGetResult : *pDqGoertzelBinsOut)
 			{
@@ -2045,7 +2046,7 @@ void tuneComponent::drawSpectrogram()
 				{
 					spectrumTapY = 0.0f;
 				}
-				spectrImGraphcs.fillRect(binToGetResult.xCoordinat, spectrumTapY, 2.0f, (float)spectrumTapHeight);
+				tuneImageGraphics.fillRect(binToGetResult.xCoordinat, spectrumTapY, 2.0f, (float)spectrumTapHeight);
 			}
 			Thread::yield();
 		}
@@ -2056,12 +2057,12 @@ void tuneComponent::drawSpectrogram()
 
 		if (showThreshold)
 		{
-			spectrImGraphcs.setColour(Colours::blue);
+			tuneImageGraphics.setColour(Colours::blue);
 
 			auto theText = eksLongDoubleToString((double)thresholdMaxValue);
 			//auto theText = eksLongDoubleToString((double)thresholdMaxValue, 2);
 
-			spectrImGraphcs.drawSingleLineText(theText, 0, (int)curFont.getHeight());
+			tuneImageGraphics.drawSingleLineText(theText, 0, (int)curFont.getHeight());
 
 			idxGuitarStringsTonesXCoordsAndNames = 0;
 			int y_coord = 0;
@@ -2073,7 +2074,7 @@ void tuneComponent::drawSpectrogram()
 				}
 				float x_left = guitarStringsTonesXCoordsAndNames[idxGuitarStringsTonesXCoordsAndNames].stringXCoord - 10;
 				float x_right = x_left + 20;
-				spectrImGraphcs.drawHorizontalLine(y_coord, x_left, x_right);
+				tuneImageGraphics.drawHorizontalLine(y_coord, x_left, x_right);
 				idxGuitarStringsTonesXCoordsAndNames++;
 			}
 			Thread::yield();
@@ -2094,7 +2095,7 @@ void tuneComponent::drawSpectrogram()
 			thresholdScaleFctr = std::numeric_limits<long double>::max();
 		}
 
-		spectrImGraphcs.setFont(savedFont);
+		tuneImageGraphics.setFont(savedFont);
 	}
 }
 

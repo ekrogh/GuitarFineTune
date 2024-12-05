@@ -297,14 +297,8 @@ private:
 	// From JUCE Forum:
 	//juce::Image image{ juce::Image::ARGB, 100, 100, true, juce::SoftwareImageType{} };
 
-
-
-#if ( JUCE_WINDOWS )
-    Image spectrogramImage{ Image::RGB, widthOfTuneWindow, hightOfTuneWindow, true, juce::SoftwareImageType{} };
-#else
-    Image spectrogramImage{ Image::RGB, widthOfTuneWindow, hightOfTuneWindow, true };
-#endif
-    juce::Graphics spectrImGraphcs{ spectrogramImage };
+	Image tuneImage{ Image::RGB, widthOfTuneWindow, hightOfTuneWindow, true, juce::SoftwareImageType{} };
+    juce::Graphics tuneImageGraphics{ tuneImage };
 
 
 #ifdef USE_JUCE_FFT
