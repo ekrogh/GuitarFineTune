@@ -555,8 +555,8 @@ private:
 	double redFactorForGuitarStringsOutOfTone = (double)(255 / goertzelFreqsAroundGuitarStringFreqs);
 
 
-	juce::Font defaultFontOftuneImageGraphics = juce::Font(juce::FontOptions(15.00f).withStyle("Regular"));
-	float hightOfDefaultFontOftuneImageGraphics;
+	juce::Font defaultFontOfSpectrImGraphcs = juce::Font(juce::FontOptions(15.00f).withStyle("Regular"));
+	float hightOfDefaultFontOfSpectrImGraphcs;
 	int strHalfStringNamesWidth;
 
 

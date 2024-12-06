@@ -68,17 +68,17 @@ tuneComponent::tuneComponent
 
 	//EKSFONTHER
 #if (JUCE_IOS || JUCE_ANDROID)
-	defaultFontOftuneImageGraphics = tuneImageGraphics.getCurrentFont();
-	hightOfDefaultFontOftuneImageGraphics = defaultFontOftuneImageGraphics.getHeight();
-	tuneImageGraphics.setFont(hightOfDefaultFontOftuneImageGraphics * 2);
+	defaultFontOfSpectrImGraphcs = spectrImGraphcs.getCurrentFont();
+	hightOfDefaultFontOfSpectrImGraphcs = defaultFontOfSpectrImGraphcs.getHeight();
+	spectrImGraphcs.setFont(hightOfDefaultFontOfSpectrImGraphcs * 2);
 #endif // (JUCE_IOS || JUCE_ANDROID)
-	defaultFontOftuneImageGraphics = tuneImageGraphics.getCurrentFont();
-	hightOfDefaultFontOftuneImageGraphics = defaultFontOftuneImageGraphics.getHeight();
+	defaultFontOfSpectrImGraphcs = tuneImageGraphics.getCurrentFont();
+	hightOfDefaultFontOfSpectrImGraphcs = defaultFontOfSpectrImGraphcs.getHeight();
 
 	juce::GlyphArrangement glyphArrangement;
-	glyphArrangement.addLineOfText(defaultFontOftuneImageGraphics, "D3", 0, 0);
+	glyphArrangement.addLineOfText(defaultFontOfSpectrImGraphcs, "D3", 0, 0);
 	strHalfStringNamesWidth = (int)(glyphArrangement.getBoundingBox(0, -1, true).getWidth() / 2);
-	//strHalfStringNamesWidth = (int)(defaultFontOftuneImageGraphics.getStringWidthFloat("D3") / 2);
+	//strHalfStringNamesWidth = (int)(defaultFontOfSpectrImGraphcs.getStringWidthFloat("D3") / 2);
 
 	spAudioRecorderController = std::make_shared<AudioRecorderControl>();
 
@@ -1645,7 +1645,7 @@ void tuneComponent::drawSpectrogram()
 
 	long double buttomLine = imageHeight - 4;
 	//double txtYPos = buttomLine;
-	//double txtYPos = buttomLine - defaultFontOftuneImageGraphics.getHeight();
+	//double txtYPos = buttomLine - defaultFontOfSpectrImGraphcs.getHeight();
 
 	// then FFT data..
 	if (showFFTToggleButtonOn)
@@ -1703,11 +1703,11 @@ void tuneComponent::drawSpectrogram()
 
 	// Mark guitar strings frequencies
 	tuneImageGraphics.setColour(Colours::green);
-	float rectY = hightOfDefaultFontOftuneImageGraphics + 3.0f;
+	float rectY = hightOfDefaultFontOfSpectrImGraphcs + 3.0f;
 	float rectHight = (float)(buttomLine - (rectY * 2.0f));
 	float arrowsYStart = rectY;
 	float arrowsYEnd = arrowsYStart + rectHight / 2;
-	int textBaseLine = (int)(std::ceil(hightOfDefaultFontOftuneImageGraphics));
+	int textBaseLine = (int)(std::ceil(hightOfDefaultFontOfSpectrImGraphcs));
 
 	for (auto& xCoordAndName : guitarStringsTonesXCoordsAndNames)
 	{
@@ -1771,11 +1771,11 @@ void tuneComponent::drawSpectrogram()
 						strOutOfTuneValue = juce::String((double)goertzelStatistics.meanFreqsOutOfTune, 1);
 					}
 					juce::GlyphArrangement glyphArrangement;
-					glyphArrangement.addLineOfText(defaultFontOftuneImageGraphics, strOutOfTuneValue, 0, 0);
+					glyphArrangement.addLineOfText(defaultFontOfSpectrImGraphcs, strOutOfTuneValue, 0, 0);
 					float textWidth = glyphArrangement.getBoundingBox(0, -1, true).getWidth();
 
 					if ((txtStartX = (int)(guitarStringsTonesXCoordsAndNames[idxGuitarStringsTonesXCoordsAndNames].stringXCoord - textWidth / 2.0f)) < 0.0f)
-						//if ((txtStartX = (int)(guitarStringsTonesXCoordsAndNames[idxGuitarStringsTonesXCoordsAndNames].stringXCoord - defaultFontOftuneImageGraphics.getStringWidthFloat(strOutOfTuneValue) / 2.0f)) < 0.0f)
+						//if ((txtStartX = (int)(guitarStringsTonesXCoordsAndNames[idxGuitarStringsTonesXCoordsAndNames].stringXCoord - defaultFontOfSpectrImGraphcs.getStringWidthFloat(strOutOfTuneValue) / 2.0f)) < 0.0f)
 					{
 						txtStartX = 0;
 					}
@@ -1788,9 +1788,9 @@ void tuneComponent::drawSpectrogram()
 				}
 				else
 				{
-					//if ((txtStartX = (int)(guitarStringsTonesXCoordsAndNames[idxGuitarStringsTonesXCoordsAndNames].stringXCoord - defaultFontOftuneImageGraphics.getStringWidthFloat(goertzelStatistics.stringName) / 2.0f)) < 0.0f)
+					//if ((txtStartX = (int)(guitarStringsTonesXCoordsAndNames[idxGuitarStringsTonesXCoordsAndNames].stringXCoord - defaultFontOfSpectrImGraphcs.getStringWidthFloat(goertzelStatistics.stringName) / 2.0f)) < 0.0f)
 					juce::GlyphArrangement glyphArrangement;
-					glyphArrangement.addLineOfText(defaultFontOftuneImageGraphics, goertzelStatistics.stringName, 0, 0);
+					glyphArrangement.addLineOfText(defaultFontOfSpectrImGraphcs, goertzelStatistics.stringName, 0, 0);
 					float stringWidth = glyphArrangement.getBoundingBox(0, -1, true).getWidth();
 					if ((txtStartX = (int)(guitarStringsTonesXCoordsAndNames[idxGuitarStringsTonesXCoordsAndNames].stringXCoord - stringWidth / 2.0f)) < 0.0f)
 					{
@@ -1861,10 +1861,10 @@ void tuneComponent::drawSpectrogram()
 						{
 							strOutOfTuneValue = juce::String((double)goertzelStatistics.meanFreqsOutOfTune, 1);
 						}
-						//if ((txtStartX = (int)(guitarStringsTonesXCoordsAndNames[idxGuitarStringsTonesXCoordsAndNames].stringXCoord - defaultFontOftuneImageGraphics.getStringWidthFloat(strOutOfTuneValue) / 2.0f)) < 0.0f)
+						//if ((txtStartX = (int)(guitarStringsTonesXCoordsAndNames[idxGuitarStringsTonesXCoordsAndNames].stringXCoord - defaultFontOfSpectrImGraphcs.getStringWidthFloat(strOutOfTuneValue) / 2.0f)) < 0.0f)
 
 						juce::GlyphArrangement glyphArrangement;
-						glyphArrangement.addLineOfText(defaultFontOftuneImageGraphics, strOutOfTuneValue, 0, 0);
+						glyphArrangement.addLineOfText(defaultFontOfSpectrImGraphcs, strOutOfTuneValue, 0, 0);
 						float textWidth = glyphArrangement.getBoundingBox(0, -1, true).getWidth();
 
 						if ((txtStartX = (int)(guitarStringsTonesXCoordsAndNames[idxGuitarStringsTonesXCoordsAndNames].stringXCoord - textWidth / 2.0f)) < 0.0f)
@@ -1880,10 +1880,10 @@ void tuneComponent::drawSpectrogram()
 					}
 					else
 					{
-						//if ((txtStartX = (int)(guitarStringsTonesXCoordsAndNames[idxGuitarStringsTonesXCoordsAndNames].stringXCoord - defaultFontOftuneImageGraphics.getStringWidthFloat(goertzelStatistics.stringName) / 2.0f)) < 0.0f)
+						//if ((txtStartX = (int)(guitarStringsTonesXCoordsAndNames[idxGuitarStringsTonesXCoordsAndNames].stringXCoord - defaultFontOfSpectrImGraphcs.getStringWidthFloat(goertzelStatistics.stringName) / 2.0f)) < 0.0f)
 
 						juce::GlyphArrangement glyphArrangement;
-						glyphArrangement.addLineOfText(defaultFontOftuneImageGraphics, goertzelStatistics.stringName, 0, 0);
+						glyphArrangement.addLineOfText(defaultFontOfSpectrImGraphcs, goertzelStatistics.stringName, 0, 0);
 						float stringWidth = glyphArrangement.getBoundingBox(0, -1, true).getWidth();
 
 						if ((txtStartX = (int)(guitarStringsTonesXCoordsAndNames[idxGuitarStringsTonesXCoordsAndNames].stringXCoord - stringWidth / 2.0f)) < 0.0f)
@@ -1904,8 +1904,8 @@ void tuneComponent::drawSpectrogram()
 		}
 #ifdef EVAL_TIME_BETW_CALLS
 		const int imageWidth = tuneImage.getWidth();
-		tuneImageGraphics.setColour(Colours::black);
-		tuneImageGraphics.drawSingleLineText
+		spectrImGraphcs.setColour(Colours::black);
+		spectrImGraphcs.drawSingleLineText
 		(
 			strAvgTime
 			, imageWidth - 200
@@ -1933,9 +1933,9 @@ void tuneComponent::drawSpectrogram()
 
 		// Show 50, 100, 150, 60, 120 and 180 Hz indicators
 #if (JUCE_IOS || JUCE_ANDROID)
-		Font currentFont = tuneImageGraphics.getCurrentFont();
+		Font currentFont = spectrImGraphcs.getCurrentFont();
 		auto newFontHeight = currentFont.getHeightInPoints() / 2;
-		tuneImageGraphics.setFont(newFontHeight);
+		spectrImGraphcs.setFont(newFontHeight);
 #endif
 		tuneImageGraphics.setColour(Colours::orange);
 		tuneImageGraphics.fillRect((float)(freqToXCoordFactor * (50 - lowestFreqToDisplayDataForHz)), 0., 1., (float)(buttomLine - 6));
@@ -1951,7 +1951,7 @@ void tuneComponent::drawSpectrogram()
 		tuneImageGraphics.fillRect((float)(freqToXCoordFactor * (180 - lowestFreqToDisplayDataForHz)), 0., 1., (float)(buttomLine - 6));
 		tuneImageGraphics.drawSingleLineText(std::to_string(180) + " Hz", (int)(freqToXCoordFactor * (180 - lowestFreqToDisplayDataForHz) + 1), (int)(buttomLine - 30));
 #if (JUCE_IOS || JUCE_ANDROID)
-		tuneImageGraphics.setFont(currentFont); //Restore font
+		spectrImGraphcs.setFont(currentFont); //Restore font
 #endif
 
 		if (showFFTMaxIndictrToggleButtonOn)
@@ -1975,7 +1975,7 @@ void tuneComponent::drawSpectrogram()
 
 		auto savedFont = tuneImageGraphics.getCurrentFont();
 #if (JUCE_IOS || JUCE_ANDROID)
-		tuneImageGraphics.setFont(savedFont.getHeightInPoints() / 2.25f);
+		spectrImGraphcs.setFont(savedFont.getHeightInPoints() / 2.25f);
 #else
 		tuneImageGraphics.setFont(savedFont.getHeightInPoints() / 1.1f);
 #endif // (JUCE_IOS || JUCE_ANDROID)
@@ -2032,7 +2032,7 @@ void tuneComponent::drawSpectrogram()
 
 			tuneImageGraphics.setColour(Colours::violet);
 
-			//tuneImageGraphics.drawSingleLineText(theText, imageWidth - curFont.getStringWidth(theText), (int)curFont.getHeight());
+			//spectrImGraphcs.drawSingleLineText(theText, imageWidth - curFont.getStringWidth(theText), (int)curFont.getHeight());
 
             juce::GlyphArrangement glyphArrangement;
             glyphArrangement.addLineOfText(curFont, theText, 0, 0);
