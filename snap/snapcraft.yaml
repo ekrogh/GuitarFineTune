@@ -58,23 +58,23 @@ parts:
       - etc/asound.conf
       - snap/command-chain/alsa-launch
       - usr/bin/yad*
-      - usr/lib/$SNAPCRAFT_ARCH_TRIPLET/alsa-lib
-      - usr/lib/$SNAPCRAFT_ARCH_TRIPLET/libasound*
-      - usr/lib/$SNAPCRAFT_ARCH_TRIPLET/libdnsfile*
-      - usr/lib/$SNAPCRAFT_ARCH_TRIPLET/libFLAC*
-      - usr/lib/$SNAPCRAFT_ARCH_TRIPLET/libsamplerate*
-      - usr/lib/$SNAPCRAFT_ARCH_TRIPLET/libspeex*
-      - usr/lib/$SNAPCRAFT_ARCH_TRIPLET/libvorbis*
-      - usr/lib/$SNAPCRAFT_ARCH_TRIPLET/pulseaudio
+      - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/alsa-lib
+      - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libasound*
+      - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libdnsfile*
+      - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libFLAC*
+      - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libsamplerate*
+      - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libspeex*
+      - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libvorbis*
+      - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/pulseaudio
       
   guitarfinetune:
     after: [alsa-mixin]
     source: .
     plugin: make
     override-build: |
-      make clean  -C Builds/LinuxMakefile
-      make CONFIG=Release -j8 -C Builds/LinuxMakefile
-      cp build/GuitarFineTune $SNAPCRAFT_PART_INSTALL/guitarfinetune
+      make clean -j8 CONFIG=Release -C Builds/LinuxMakefile
+      make -j8 CONFIG=Release -C Builds/LinuxMakefile
+      cp Builds/LinuxMakefile/build/GuitarFineTune $SNAPCRAFT_PART_INSTALL/guitarfinetune
     build-packages:
       - libasound2-dev
       - libc++-18-dev
@@ -85,10 +85,9 @@ parts:
       - libgtk-3-dev
       - libm17n-dev
       - libstdc++6
-      - libwebkit2gtk-4.1-0
+      - libwebkit2gtk-4.1-dev
     stage-packages:
       - glib-networking
-      - libasound2
       - libcom-err2
       - libcurl4
       - libffi8
@@ -122,8 +121,8 @@ parts:
       - libzstd1
 
 layout:
-  /usr/lib/$SNAPCRAFT_ARCH_TRIPLET/alsa-lib:
-    bind: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/alsa-lib
+  /usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/alsa-lib:
+    bind: $SNAP/usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/alsa-lib
   /usr/share/alsa:
     bind: $SNAP/usr/share/alsa
    

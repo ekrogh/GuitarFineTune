@@ -1,8 +1,0 @@
-[Desktop Entry]
-Version=11.1.13
-Type=Application
-Terminal=false
-Exec=guitarfinetune
-Name=guitarfinetune
-Comment=Guitar fine tuning aid
-Icon=${SNAP}/meta/gui/guitarfinetune.png
