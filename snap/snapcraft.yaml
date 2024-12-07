@@ -47,6 +47,10 @@ parts:
       - libasound2
       - libasound2-plugins
       - yad
+      - libavcodec60
+      - libavutil58
+      - libjack-jackd2-0
+      - libswresample4
     stage:
       # restrict to only audio-related files - you need to ensure
       # that gtk3 is staged for yad to work correctly, to prompt
@@ -66,6 +70,10 @@ parts:
       - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libspeex*
       - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libvorbis*
       - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/pulseaudio
+      - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libavcodec*
+      - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libavutil*
+      - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libswresample*
+      - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libjack*
       
   guitarfinetune:
     after: [alsa-mixin]
@@ -109,6 +117,7 @@ parts:
       - libnghttp2-14
       - libp11-kit0
       - libpng16-16t64
+      - libproxy1v5
       - libpsl5
       - librtmp1
       - libsasl2-2
