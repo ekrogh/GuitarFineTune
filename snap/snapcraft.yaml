@@ -43,14 +43,32 @@ parts:
     source-subdir: snapcraft-assets
     build-packages:
       - libasound2-dev
+      - ocl-icd-opencl-dev
     stage-packages:
       - libasound2
       - libasound2-plugins
-      - yad
       - libavcodec60
       - libavutil58
+      - libcodec2-1.2
+      - libdav1d7
+      - libgsm1
+      - libhwy1t64
       - libjack-jackd2-0
+      - libjxl0.7
+      - libnuma1
+      - librav1e0
+      - libshine3
+      - libsnappy1v5
+      - libsoxr0
+      - libsvtav1enc1d1
       - libswresample4
+      - libvpl2
+      - libx264-164
+      - libx265-199
+      - libxvidcore4
+      - libzvbi0t64
+      - ocl-icd-libopencl1
+      - yad
     stage:
       # restrict to only audio-related files - you need to ensure
       # that gtk3 is staged for yad to work correctly, to prompt
@@ -64,16 +82,35 @@ parts:
       - usr/bin/yad*
       - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/alsa-lib
       - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libasound*
-      - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libdnsfile*
-      - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libFLAC*
-      - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libsamplerate*
-      - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libspeex*
-      - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libvorbis*
-      - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/pulseaudio
       - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libavcodec*
       - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libavutil*
+      - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libcodec*
+      - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libdav1d*
+      - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libdnsfile*
+      - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libFLAC*
+      - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libgsm*
+      - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libhwy.so.1*
+      - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libjack.so.0*
+      - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libjxl*
+      - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libnuma.so.1*
+      - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libOpenCL*
+      - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/librav1e*
+      - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libsamplerate*
+      - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libshine*
+      - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libsnappy*
+      - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libsoxr*
+      - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libspeex*
+      - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libSvtAv1Enc*
+      - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libsvtav1enc1d1*
       - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libswresample*
-      - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libjack*
+      - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libvorbis*
+      - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libvpl*
+      - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libx264*
+      - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libx265*
+      - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libxvidcore*
+      - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libzvbi.so.0*
+      - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/ocl-icd-libopencl1*
+      - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/pulseaudio
       
   guitarfinetune:
     after: [alsa-mixin]
@@ -82,13 +119,12 @@ parts:
     override-build: |
       make clean -j8 CONFIG=Release -C Builds/LinuxMakefile
       make -j8 CONFIG=Release -C Builds/LinuxMakefile
-      cp Builds/LinuxMakefile/build/GuitarFineTune $SNAPCRAFT_PART_INSTALL/guitarfinetune
+      cp -f Builds/LinuxMakefile/build/GuitarFineTune $SNAPCRAFT_PART_INSTALL/guitarfinetune
     build-packages:
       - libasound2-dev
       - libc++-18-dev
       - libcurlpp-dev
       - libfontconfig-dev
-      - libfreetype6-dev
       - libgcc-s1
       - libgtk-3-dev
       - libm17n-dev
