@@ -29,9 +29,9 @@ platforms:
   s390x:
     build-on: [s390x]
     build-for: [s390x]
-  i386:
-    build-on: [i386]
-    build-for: [i386]
+  # i386:
+  #   build-on: [amd64, i386]
+  #   build-for: [i386]
   # powerpc:
   #   build-on: [amd64, powerpc]
   #   build-for: [powerpc]
