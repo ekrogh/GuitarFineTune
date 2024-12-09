@@ -14,7 +14,7 @@ android {
     }
     signingConfigs {
         juceSigning {
-            storeFile     file("..${File.separator}..${File.separator}..${File.separator}Android_Special${File.separator}keystore.jks")
+            storeFile     file("D:${File.separator}Users${File.separator}eigil${File.separator}projects${File.separator}juceProjs${File.separator}GuitarFineTune${File.separator}Android_Special${File.separator}keystore.jks")
             storePassword "6taura"
             keyAlias      "upload"
             keyPassword   "6taura"
