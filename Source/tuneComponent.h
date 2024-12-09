@@ -296,10 +296,7 @@ private:
 
 	// From JUCE Forum:
 	//juce::Image image{ juce::Image::ARGB, 100, 100, true, juce::SoftwareImageType{} };
-
-	Image tuneImage{ Image::RGB, widthOfTuneWindow, hightOfTuneWindow, true, juce::SoftwareImageType{} };
-    juce::Graphics tuneImageGraphics{ tuneImage };
-
+	Image tuneImage{ Image::RGB, widthOfTuneWindow, hightOfTuneWindow, true };
 
 #ifdef USE_JUCE_FFT
 	std::unique_ptr<dsp::FFT> forwardFFT;

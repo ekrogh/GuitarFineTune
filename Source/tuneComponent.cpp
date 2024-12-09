@@ -67,6 +67,7 @@ tuneComponent::tuneComponent
 #endif
 
 	//EKSFONTHER
+	juce::Graphics tuneImageGraphics{ tuneImage };
 #if (JUCE_IOS || JUCE_ANDROID)
 	defaultFontOftuneImageGraphics = tuneImageGraphics.getCurrentFont();
 	hightOfDefaultFontOftuneImageGraphics = defaultFontOftuneImageGraphics.getHeight();
@@ -1695,11 +1696,8 @@ void tuneComponent::drawSpectrogram()
 		scaleFactr = std::accumulate(vScaleFactrs.begin(), vScaleFactrs.end(), (float)0.) / vScaleFactrs.size();
 	}
 
-#if ( JUCE_WINDOWS )
-    tuneImageGraphics.fillAll(Colours::white);
-#else
-    tuneImage.clear(tuneImage.getBounds(), Colours::white);
-#endif
+	tuneImage.clear(tuneImage.getBounds(), Colours::white);
+	juce::Graphics tuneImageGraphics{ tuneImage };
 
 	// Mark guitar strings frequencies
 	tuneImageGraphics.setColour(Colours::green);
@@ -2034,10 +2032,10 @@ void tuneComponent::drawSpectrogram()
 
 			//tuneImageGraphics.drawSingleLineText(theText, imageWidth - curFont.getStringWidth(theText), (int)curFont.getHeight());
 
-            juce::GlyphArrangement glyphArrangement;
-            glyphArrangement.addLineOfText(curFont, theText, 0, 0);
-            float textWidth = glyphArrangement.getBoundingBox(0, -1, true).getWidth();
-            tuneImageGraphics.drawSingleLineText(theText, (int)(imageWidth - textWidth), (int)curFont.getHeight());
+			juce::GlyphArrangement glyphArrangement;
+			glyphArrangement.addLineOfText(curFont, theText, 0, 0);
+			float textWidth = glyphArrangement.getBoundingBox(0, -1, true).getWidth();
+			tuneImageGraphics.drawSingleLineText(theText, (int)(imageWidth - textWidth), (int)curFont.getHeight());
 
 			for (auto& binToGetResult : *pDqGoertzelBinsOut)
 			{
