@@ -1167,7 +1167,7 @@ void guitarStringSoundsControl::scaleAllComponents()
 						{
 							Font currentFont = labelTestComponent->getFont();
 							auto newFontHeight = currentFont.getHeightInPoints() * scaleToUse * 0.9;
-							labelTestComponent->setFont(newFontHeight);
+							labelTestComponent->setFont(FontOptions(newFontHeight));
 						}
 					}
 				}
