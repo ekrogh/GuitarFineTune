@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <JUCERPROJECT id="cgcxPd" name="GuitarFineTune" projectType="guiapp" version="11.3.15"
-              bundleIdentifier="dk.eksit.guitarfinetune" includeBinaryInAppConfig="1"
+              bundleIdentifier="dk.eksIt.guitarFineTune" includeBinaryInAppConfig="1"
               reportAppUsage="1" companyCopyright="eksit" companyName="eksit"
               companyWebsite="eksit.dk" companyEmail="guitarFineTune@eksit.dk"
               jucerFormatVersion="1" displaySplashScreen="1" cppLanguageStandard="20"
