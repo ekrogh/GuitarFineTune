@@ -20,7 +20,7 @@
     <key>CFBundleExecutable</key>
     <string>${EXECUTABLE_NAME}</string>
     <key>CFBundleIdentifier</key>
-    <string>dk.eksIt.guitarFineTune</string>
+    <string>dk.eksit.guitarfinetune</string>
     <key>CFBundleName</key>
     <string>GuitarFineTune</string>
     <key>CFBundleDisplayName</key>

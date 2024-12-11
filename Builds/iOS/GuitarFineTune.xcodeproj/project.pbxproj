@@ -539,7 +539,7 @@
 				LLVM_LTO = YES_THIN;
 				MTL_HEADER_SEARCH_PATHS = "$(SRCROOT)/../../JuceLibraryCode $(SRCROOT)/../../JuceLibraryCode/modules";
 				OTHER_LDFLAGS = "-Wl,-weak_reference_mismatches,weak";
-				PRODUCT_BUNDLE_IDENTIFIER = dk.eksIt.guitarFineTune;
+				PRODUCT_BUNDLE_IDENTIFIER = dk.eksit.guitarfinetune;
 				PRODUCT_NAME = "GuitarFineTune";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				USE_HEADERMAP = YES;
@@ -590,7 +590,7 @@
 				INSTALL_PATH = "$(HOME)/Applications";
 				MTL_HEADER_SEARCH_PATHS = "$(SRCROOT)/../../JuceLibraryCode $(SRCROOT)/../../JuceLibraryCode/modules";
 				OTHER_LDFLAGS = "-Wl,-weak_reference_mismatches,weak";
-				PRODUCT_BUNDLE_IDENTIFIER = dk.eksIt.guitarFineTune;
+				PRODUCT_BUNDLE_IDENTIFIER = dk.eksit.guitarfinetune;
 				PRODUCT_NAME = "GuitarFineTune";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				USE_HEADERMAP = YES;
