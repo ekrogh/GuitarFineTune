@@ -15,7 +15,6 @@ platforms:
   arm64:
   armhf:
   ppc64el:
-  riscv64:
   s390x:
   # amd64:
   #   build-on: [amd64]
