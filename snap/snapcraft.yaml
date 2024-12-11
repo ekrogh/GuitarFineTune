@@ -12,23 +12,29 @@ confinement: strict # use 'strict' once you have the right plugs and slots
 
 platforms:
   amd64:
-    build-on: [amd64]
-    build-for: [amd64]
   arm64:
-    build-on: [arm64]
-    build-for: [arm64]
   armhf:
-    build-on: [armhf]
-    build-for: [armhf]
   ppc64el:
-    build-on: [ppc64el]
-    build-for: [ppc64el]
   riscv64:
-    build-on: [riscv64]
-    build-for: [riscv64]
   s390x:
-    build-on: [s390x]
-    build-for: [s390x]
+  # amd64:
+  #   build-on: [amd64]
+  #   build-for: [amd64]
+  # arm64:
+  #   build-on: [arm64]
+  #   build-for: [arm64]
+  # armhf:
+  #   build-on: [armhf]
+  #   build-for: [armhf]
+  # ppc64el:
+  #   build-on: [ppc64el]
+  #   build-for: [ppc64el]
+  # riscv64:
+  #   build-on: [riscv64]
+  #   build-for: [riscv64]
+  # s390x:
+  #   build-on: [s390x]
+  #   build-for: [s390x]
   # i386:
   #   build-on: [amd64, i386]
   #   build-for: [i386]
@@ -62,7 +68,6 @@ parts:
       - libsoxr0
       - libsvtav1enc1d1
       - libswresample4
-      - libvpl2
       - libx264-164
       - libx265-199
       - libxvidcore4
@@ -104,7 +109,6 @@ parts:
       - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libsvtav1enc1d1*
       - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libswresample*
       - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libvorbis*
-      - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libvpl*
       - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libx264*
       - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libx265*
       - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libxvidcore*
