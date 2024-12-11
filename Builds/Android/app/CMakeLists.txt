@@ -10,7 +10,7 @@ set(BINARY_NAME "juce_jni")
 add_library("cpufeatures" STATIC "${ANDROID_NDK}/sources/android/cpufeatures/cpu-features.c")
 set_source_files_properties("${ANDROID_NDK}/sources/android/cpufeatures/cpu-features.c" PROPERTIES COMPILE_FLAGS "-Wno-sign-conversion -Wno-gnu-statement-expression")
 
-add_definitions([[-DJUCE_ANDROID=1]] [[-DJUCE_ANDROID_API_VERSION=21]] [[-DJUCE_CONTENT_SHARING=1]] [[-DJUCE_ANDROID_GL_ES_VERSION_3_0=1]] [[-DANDROID_VERSION_CODE=92]] [[-DJUCER_ANDROIDSTUDIO_7F0E4A25=1]] [[-DJUCE_APP_VERSION=11.2.14]] [[-DJUCE_APP_VERSION_HEX=0xb020e]])
+add_definitions([[-DJUCE_ANDROID=1]] [[-DJUCE_ANDROID_API_VERSION=21]] [[-DJUCE_CONTENT_SHARING=1]] [[-DJUCE_ANDROID_GL_ES_VERSION_3_0=1]] [[-DANDROID_VERSION_CODE=93]] [[-DJUCER_ANDROIDSTUDIO_7F0E4A25=1]] [[-DJUCE_APP_VERSION=11.3.15]] [[-DJUCE_APP_VERSION_HEX=0xb030f]])
 
 include_directories( AFTER
     "../../../JuceLibraryCode"
@@ -21,14 +21,14 @@ include_directories( AFTER
 enable_language(ASM)
 
 if(JUCE_BUILD_CONFIGURATION MATCHES "RELEASE")
-    add_definitions([[-DANDROID_VERSION_CODE=92]] [[-DJUCER_ANDROIDSTUDIO_7F0E4A25=1]] [[-DJUCE_APP_VERSION=11.2.14]] [[-DJUCE_APP_VERSION_HEX=0xb020e]] [[-DNDEBUG=1]])
+    add_definitions([[-DANDROID_VERSION_CODE=93]] [[-DJUCER_ANDROIDSTUDIO_7F0E4A25=1]] [[-DJUCE_APP_VERSION=11.3.15]] [[-DJUCE_APP_VERSION_HEX=0xb030f]] [[-DNDEBUG=1]])
     if(NOT (ANDROID_ABI STREQUAL "mips" OR ANDROID_ABI STREQUAL "mips64"))
         set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -flto")
         set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -flto")
         set(CMAKE_EXE_LINKER_FLAGS_RELEASE "${CMAKE_EXE_LINKER_FLAGS_RELEASE} -flto")
     endif()
 elseif(JUCE_BUILD_CONFIGURATION MATCHES "DEBUG")
-    add_definitions([[-DANDROID_VERSION_CODE=92]] [[-DJUCER_ANDROIDSTUDIO_7F0E4A25=1]] [[-DJUCE_APP_VERSION=11.2.14]] [[-DJUCE_APP_VERSION_HEX=0xb020e]] [[-DDEBUG=1]] [[-D_DEBUG=1]])
+    add_definitions([[-DANDROID_VERSION_CODE=93]] [[-DJUCER_ANDROIDSTUDIO_7F0E4A25=1]] [[-DJUCE_APP_VERSION=11.3.15]] [[-DJUCE_APP_VERSION_HEX=0xb030f]] [[-DDEBUG=1]] [[-D_DEBUG=1]])
 else()
     message( FATAL_ERROR "No matching build-configuration found." )
 endif()

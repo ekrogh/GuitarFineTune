@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities" IgnorableNamespaces="uap rescap">
-  <Identity Name="57158guitarFineTune.guitarFineTune" Publisher="CN=C2E1AE67-4CF2-4308-9E4D-4A6C24FA7B0B" Version="11.1.13.0" />
+  <Identity Name="57158guitarFineTune.guitarFineTune" Publisher="CN=C2E1AE67-4CF2-4308-9E4D-4A6C24FA7B0B" Version="11.3.15.0" />
   <Properties>
     <DisplayName>GuitarFineTune</DisplayName>
     <PublisherDisplayName>Eigil Krogh</PublisherDisplayName>

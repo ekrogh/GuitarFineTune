@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="cgcxPd" name="GuitarFineTune" projectType="guiapp" version="11.2.14"
+<JUCERPROJECT id="cgcxPd" name="GuitarFineTune" projectType="guiapp" version="11.3.15"
               bundleIdentifier="dk.eksIt.guitarFineTune" includeBinaryInAppConfig="1"
               reportAppUsage="1" companyCopyright="eksit" companyName="eksit"
               companyWebsite="eksit.dk" companyEmail="guitarFineTune@eksit.dk"
@@ -93,7 +93,7 @@
                pListPreprocess="1" appSandbox="1" appSandboxOptions="com.apple.security.assets.music.read-write,com.apple.security.files.user-selected.read-write"
                extraFrameworks="AVFoundation" hardenedRuntime="1" hardenedRuntimeOptions="com.apple.security.device.audio-input"
                bundleIdentifier="dk.eksIt.guitarFineTuneOSX" applicationCategory="public.app-category.utilities"
-               buildNumber="92" extraDefs="JUCE_SILENCE_XCODE_15_LINKER_WARNING=1">
+               buildNumber="93" extraDefs="JUCE_SILENCE_XCODE_15_LINKER_WARNING=1">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" isDebug="1" targetName="GuitarFineTune" cppLanguageStandard="c++14"
                        libraryPath="" headerPath="" customXcodeFlags="INSTALL_PATH = &quot;/Applications&quot;"
@@ -125,7 +125,7 @@
                   iPadScreenOrientation="UIInterfaceOrientationLandscapeLeft,UIInterfaceOrientationLandscapeRight,UIInterfaceOrientationPortrait,UIInterfaceOrientationPortraitUpsideDown"
                   iosPushNotifications="0" microphonePermissionsText="This is an audio app which requires audio input. If you do not have an external audio interface connected it will use the microphone."
                   iCloudPermissions="1" pListPreprocess="1" customLaunchStoryboard="iOS_Special/Launch Screen.storyboard"
-                  UIFileSharingEnabled="1" iosBluetoothPermissionNeeded="1" buildNumber="92"
+                  UIFileSharingEnabled="1" iosBluetoothPermissionNeeded="1" buildNumber="93"
                   customPList="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#10;&#10;&lt;!DOCTYPE plist PUBLIC &quot;-//Apple//DTD PLIST 1.0//EN&quot; &quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&quot;&gt;&#10;&lt;plist&gt;&#10;  &lt;dict&gt;&#10;    &lt;key&gt;LSMinimumSystemVersion&lt;/key&gt;&#10;    &lt;string&gt;12.0&lt;/string&gt;&#10;  &lt;/dict&gt;&#10;&lt;/plist&gt;&#10;"
                   extraLinkerFlags="-Wl,-weak_reference_mismatches,weak">
       <CONFIGURATIONS>
@@ -152,12 +152,12 @@
     <ANDROIDSTUDIO targetFolder="Builds/Android" androidSDKPath="${user.home}/AppData/Local/Android/Sdk"
                    androidNDKPath="${user.home}/AppData/Local/Android/Sdk/ndk-bundle"
                    microphonePermissionNeeded="1" cppLanguageStandard="-std=c++14"
-                   androidVersionCode="92" androidKeyStore="D:/Users/eigil/projects/juceProjs/GuitarFineTune/Android_Special/keystore.jks"
+                   androidVersionCode="93" androidKeyStore="D:/Users/eigil/projects/juceProjs/GuitarFineTune/Android_Special/keystore.jks"
                    androidKeyStorePass="6taura" androidKeyAlias="upload" androidKeyAliasPass="6taura"
                    buildToolsVersion="30" androidPushNotifications="0" androidEnableContentSharing="1"
-                   smallIcon="RB4slw" bigIcon="DzMVX4" extraDefs="ANDROID_VERSION_CODE=92"
-                   androidExternalWriteNeeded="1" androidInternetNeeded="1" androidReadMediaAudioPermission="1"
-                   androidReadMediaImagesPermission="1" androidReadMediaVideoPermission="1"
+                   smallIcon="RB4slw" bigIcon="DzMVX4" extraDefs="ANDROID_VERSION_CODE=93"
+                   androidExternalWriteNeeded="1" androidInternetNeeded="1" androidReadMediaAudioPermission="0"
+                   androidReadMediaImagesPermission="0" androidReadMediaVideoPermission="0"
                    androidMinimumSDK="21" gradleWrapperVersion="8.7.3" gradleVersion="8.9">
       <CONFIGURATIONS>
         <CONFIGURATION name="Release" isDebug="0" targetName="GuitarFineTune" optimisation="3"
