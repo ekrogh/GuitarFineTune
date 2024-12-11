@@ -17,6 +17,7 @@ platforms:
   ppc64el:
   riscv64:
   s390x:
+  i386:
   # amd64:
   #   build-on: [amd64]
   #   build-for: [amd64]
