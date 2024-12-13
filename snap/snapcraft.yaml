@@ -10,12 +10,12 @@ grade: stable # must be 'stable' to release into candidate/stable channels
 confinement: strict # use 'strict' once you have the right plugs and slots
 # confinement: devmode # use 'strict' once you have the right plugs and slots
 
-platforms:
-  amd64:
-  arm64:
-  armhf:
-  ppc64el:
-  s390x:
+# platforms:
+#   amd64:
+#   arm64:
+#   armhf:
+#   ppc64el:
+#   s390x:
 
 parts:
   alsa-mixin:
