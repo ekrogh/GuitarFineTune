@@ -112,7 +112,7 @@ parts:
     stage-packages:
       - glib-networking
       - libcom-err2
-      - libcurl4
+      - libcurl4t64
       - libffi8
       - libfontconfig1
       - libfreetype6
