@@ -120,7 +120,7 @@ parts:
       - libgmp10
       - libgnutls30t64
       - libgssapi-krb5-2
-      - libhogweed6
+      - libhogweed6t64
       - libidn2-0
       - libk5crypto3
       - libkeyutils1
