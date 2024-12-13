@@ -133,7 +133,7 @@ parts:
       - libp11-kit0
       - libpng16-16t64
       - libproxy1v5
-      - libpsl5
+      - libpsl5t64
       - librtmp1
       - libsasl2-2
       - libssh-4
