@@ -1,6 +1,6 @@
 name: guitarfinetune
 base: core24
-version: "11.3.15"
+version: "111.4.16"
 summary: Guitar fine-tuning tool
 description: |
   guitarfinetune
