@@ -83,19 +83,19 @@ AudioDeviceManager& getSharedAudioDeviceManager(int numInputChannels, int numOut
 			audioSysInitDone = true;
 			RuntimePermissions::request(RuntimePermissions::recordAudio,
 				[numInputChannels, numOutputChannels](bool granted)
+			{
+				if (granted)
 				{
-					if (granted)
-					{
-						getSharedAudioDeviceManager(numInputChannels, numOutputChannels);
-						errorInGetSharedAudioDeviceManager = !(pTuneComponent->audioSysInit());
-					}
-					else
-					{
-						errorInGetSharedAudioDeviceManager = true;
-						JUCEApplication::getInstance()->systemRequestedQuit();
-						return;
-					}
-				});
+					getSharedAudioDeviceManager(numInputChannels, numOutputChannels);
+					errorInGetSharedAudioDeviceManager = !(pTuneComponent->audioSysInit());
+				}
+				else
+				{
+					errorInGetSharedAudioDeviceManager = true;
+					JUCEApplication::getInstance()->systemRequestedQuit();
+					return;
+				}
+			});
 
 			numInputChannels = 0;
 		}
@@ -167,10 +167,10 @@ AudioDeviceManager& getSharedAudioDeviceManager(int numInputChannels, int numOut
 guitarFineTuneFirstClass::guitarFineTuneFirstClass()
 #if (JUCE_ANDROID)
 	: DocumentWindow(std::string(ProjectInfo::projectName)
-		+ " v. " + std::string(ProjectInfo::versionString)
-		+ "." + std::to_string(ANDROID_VERSION_CODE)
-		, Colour(0xFF20072B)
-		, DocumentWindow::allButtons)
+	+ " v. " + std::string(ProjectInfo::versionString)
+	+ "." + std::to_string(ANDROID_VERSION_CODE)
+	, Colour(0xFF20072B)
+	, DocumentWindow::allButtons)
 	, curCompntBnds(0, 0, widthOfTuneWindow, hightOfTuneWindow)
 #else
 	: DocumentWindow(std::string(ProjectInfo::projectName) + " v. " + std::string(ProjectInfo::versionString), Colours::lightgrey, DocumentWindow::allButtons)
@@ -193,9 +193,9 @@ guitarFineTuneFirstClass::guitarFineTuneFirstClass()
 	Rectangle<int> r = Desktop::getInstance().getDisplays().getPrimaryDisplay()->userArea;
 	if
 		(
-			((r.getWidth() < r.getHeight()) && (r.getWidth() < 360 || r.getHeight() < 533))
-			|| ((r.getWidth() > r.getHeight()) && (r.getWidth() < 533 || r.getHeight() < 338))
-			)
+		((r.getWidth() < r.getHeight()) && (r.getWidth() < 360 || r.getHeight() < 533))
+		|| ((r.getWidth() > r.getHeight()) && (r.getWidth() < 533 || r.getHeight() < 338))
+		)
 	{
 		addViewPort = true;
 	}
@@ -233,7 +233,7 @@ guitarFineTuneFirstClass::guitarFineTuneFirstClass()
 	pEksTabbedComponent =
 		std::make_shared<eksTabbedComponent>
 		(
-			SafePointer(this)
+		SafePointer(this)
 		);
 
 #if ( JUCE_IOS )
@@ -241,7 +241,7 @@ guitarFineTuneFirstClass::guitarFineTuneFirstClass()
 		pTuneComponent =
 			std::make_unique<tuneComponent>
 			(
-				pXmlGuitarFineTuneConfig, SafePointer(this)
+			pXmlGuitarFineTuneConfig, SafePointer(this)
 			);
 	}
 #else
@@ -249,7 +249,7 @@ guitarFineTuneFirstClass::guitarFineTuneFirstClass()
 		pTuneComponent =
 			std::make_unique<tuneComponent>
 			(
-				pXmlGuitarFineTuneConfig
+			pXmlGuitarFineTuneConfig
 			);
 	}
 #endif // #if ( JUCE_IOS )
@@ -257,21 +257,21 @@ guitarFineTuneFirstClass::guitarFineTuneFirstClass()
 
 	pGuitarStringSoundsControl = std::make_shared<guitarStringSoundsControl>
 		(
-			pXmlGuitarFineTuneConfig
-			, pGuitarFineTuneLookAndFeel
-			, addViewPort
+		pXmlGuitarFineTuneConfig
+		, pGuitarFineTuneLookAndFeel
+		, addViewPort
 		);
 	pDisplayControlComponent = std::make_shared<displayControlComponent>
 		(
-			pXmlGuitarFineTuneConfig
-			, pGuitarFineTuneLookAndFeel
-			, addViewPort
+		pXmlGuitarFineTuneConfig
+		, pGuitarFineTuneLookAndFeel
+		, addViewPort
 		);
 	pEksAudioControlComponent = std::make_shared<eksAudioControlComponent>
 		(
-			pXmlGuitarFineTuneConfig
-			, pGuitarFineTuneLookAndFeel
-			, addViewPort
+		pXmlGuitarFineTuneConfig
+		, pGuitarFineTuneLookAndFeel
+		, addViewPort
 		);
 	pAboutPage = std::make_shared<aboutPage>();
 
@@ -334,7 +334,7 @@ guitarFineTuneFirstClass::guitarFineTuneFirstClass()
 	else
 	{
 		// No ViewPorts
-#endif // (JUCE_ANDROID)
+	#endif // (JUCE_ANDROID)
 		pEksTabbedComponent->addTab
 		(
 			TRANS("Sound Control")
@@ -359,7 +359,7 @@ guitarFineTuneFirstClass::guitarFineTuneFirstClass()
 			, true, tabEksAudioControlComponent
 		);
 
-#if (JUCE_ANDROID)
+	#if (JUCE_ANDROID)
 	}
 #endif // (JUCE_ANDROID)
 
@@ -383,27 +383,27 @@ guitarFineTuneFirstClass::guitarFineTuneFirstClass()
 		pTuneComponent->initObjects(pDisplayControlComponent);
 		//	pDisplayControlComponent->initControls();
 
-#if (JUCE_WINDOWS || JUCE_MAC || JUCE_LINUX)
+	#if (JUCE_WINDOWS || JUCE_MAC || JUCE_LINUX)
 		curCompntBnds.setBounds(0, 0, widthOfTuneWindow, hightOfTuneWindow + tabBarDepthMacWin);
 		setSize(curCompntBnds.getWidth(), curCompntBnds.getHeight()); // This
 		DocumentWindow::centreWithSize(widthOfGuitarStringSoundsControlWindowHorizontal, hightOfGuitarStringSoundsControlWindowHorizontal);
-#elif (JUCE_ANDROID || JUCE_IOS)
+	#elif (JUCE_ANDROID || JUCE_IOS)
 		curCompntBnds = Desktop::getInstance().getDisplays().getPrimaryDisplay()->userArea;
 		BorderSize<int>  nonSafeArea = Desktop::getInstance().getDisplays().getPrimaryDisplay()->safeAreaInsets;
 		nonSafeArea.subtractFrom(curCompntBnds); // Remove non Safe area
-//#if ( JUCE_ANDROID )
-//		if (curCompntBnds.getWidth() >= curCompntBnds.getHeight())  // Landscape
-//		{
-//			curCompntBnds.setBounds
-//			(
-//				(double)(curCompntBnds.getX())
-//				, (double)(curCompntBnds.getY())
-//				, (double)(curCompntBnds.getWidth()) - (double)androidTuneTabSafeMargin
-//				, (double)(curCompntBnds.getHeight())
-//			);
-//		}
-//#endif // #if ( JUCE_ANDROID )
-#if ( JUCE_IOS )
+		//#if ( JUCE_ANDROID )
+		//		if (curCompntBnds.getWidth() >= curCompntBnds.getHeight())  // Landscape
+		//		{
+		//			curCompntBnds.setBounds
+		//			(
+		//				(double)(curCompntBnds.getX())
+		//				, (double)(curCompntBnds.getY())
+		//				, (double)(curCompntBnds.getWidth()) - (double)androidSafeMargin
+		//				, (double)(curCompntBnds.getHeight())
+		//			);
+		//		}
+		//#endif // #if ( JUCE_ANDROID )
+	#if ( JUCE_IOS )
 		if (thisiPhoneiPadNeedsSafeArea())
 		{
 			if (curCompntBnds.getHeight() >= curCompntBnds.getWidth())
@@ -416,14 +416,14 @@ guitarFineTuneFirstClass::guitarFineTuneFirstClass()
 				curCompntBnds.removeFromRight(iOSSafeMargin);
 			}
 		}
-#endif
-#endif
+	#endif
+	#endif
 		setUsingNativeTitleBar(true);
-#if JUCE_MAC || JUCE_LINUX
+	#if JUCE_MAC || JUCE_LINUX
 		setTitleBarButtonsRequired(closeButton | minimiseButton, true);
-#else // JUCE_WINDOWS
+	#else // JUCE_WINDOWS
 		setTitleBarButtonsRequired(closeButton | minimiseButton, false);
-#endif // JUCE_MAC || JUCE_LINUX
+	#endif // JUCE_MAC || JUCE_LINUX
 		setResizable(false, false);
 		//	setResizable(true, true);
 		DocumentWindow::setVisible(true);
@@ -445,29 +445,35 @@ void guitarFineTuneFirstClass::currentTabChanged(int newCurrentTabIndex, const S
 	if (bGoSetSizes)
 	{
 
-#if ( JUCE_ANDROID || JUCE_IOS )
+	#if ( JUCE_ANDROID || JUCE_IOS )
 		curCompntBnds = Desktop::getInstance().getDisplays().getPrimaryDisplay()->userArea;
 
 
 		// JUCE 7 takes care of safe areas !!!!
-//#if ( JUCE_ANDROID )
+//	#if ( JUCE_ANDROID )
 //		if
-//		(
-//			(curCompntBnds.getWidth() >= curCompntBnds.getHeight())  // Landscape
-//			&&
-//			(newCurrentTabIndex == tabTuneWindow) // tune Window
-//		)
+//			(
+//				(curCompntBnds.getWidth() >= curCompntBnds.getHeight())  // Landscape
+//				&&
+//				(
+//					(newCurrentTabIndex == tabTuneWindow)
+//					||
+//					(newCurrentTabIndex == tabGuitarStringSoundsControlWindow)
+//					||
+//					(newCurrentTabIndex == tabDisplayControlWindow)
+//				)
+//			)
 //		{
 //			curCompntBnds.setBounds
 //			(
 //				(double)(curCompntBnds.getX())
 //				, (double)(curCompntBnds.getY())
-//				, (double)(curCompntBnds.getWidth()) - (double)androidTuneTabSafeMargin
-//				, (double)(curCompntBnds.getHeight())
+//				, (double)(curCompntBnds.getWidth())
+//				, (double)(curCompntBnds.getHeight()) - 100 //(double)androidSafeMargin
 //			);
 //		}
-//#endif // #if ( JUCE_ANDROID )
-#if ( JUCE_IOS )
+//	#endif // #if ( JUCE_ANDROID )
+	#if ( JUCE_IOS )
 
 		BorderSize<int>  nonSafeArea = Desktop::getInstance().getDisplays().getPrimaryDisplay()->safeAreaInsets;
 		nonSafeArea.subtractFrom(curCompntBnds); // Remove non Safe area
@@ -495,61 +501,61 @@ void guitarFineTuneFirstClass::currentTabChanged(int newCurrentTabIndex, const S
 				);
 			}
 		}
-#endif // #if ( JUCE_IOS )
-#else // (JUCE Win || JUCE_MAC || JUCE_LINUX)
+	#endif // #if ( JUCE_IOS )
+	#else // (JUCE Win || JUCE_MAC || JUCE_LINUX)
 		switch (newCurrentTabIndex)
 		{
-		case tabTuneWindow:
-		{
-			curCompntBnds.setBounds(0, 0, widthOfTuneWindow, hightOfTuneWindow + tabBarDepthMacWin);
-			break;
-		}
-		case tabEksAudioControlComponent:
-		{
-			curCompntBnds.setBounds(0, 0, widthOfEksAudioControlComponentWindow, hightOfEksAudioControlComponentWindow);
-			break;
-		}
-		case tabGuitarStringSoundsControlWindow:
-		{
-			Rectangle<int> r = Desktop::getInstance().getDisplays().getPrimaryDisplay()->userArea;
-			if (r.getWidth() >= r.getHeight())
-			{
-				curCompntBnds.setBounds(0, 0, widthOfGuitarStringSoundsControlWindowHorizontal, hightOfGuitarStringSoundsControlWindowHorizontal);
-			}
-			else
-			{
-				curCompntBnds.setBounds(0, 0, widthOfGuitarStringSoundsControlWindowVertical, hightOfGuitarStringSoundsControlWindowVertical);
-			}
-			break;
-		}
-		case tabDisplayControlWindow:
-		{
-			Rectangle<int> r = Desktop::getInstance().getDisplays().getPrimaryDisplay()->userArea;
-			if (r.getWidth() >= r.getHeight())
-			{
-				//Horizontal
-				curCompntBnds.setBounds(0, 0, widthOfDisplayControlWindowHorizontal, hightOfDisplayControlWindowHorizontal);
-			}
-			else
-			{
-				// Vertical
-				curCompntBnds.setBounds(0, 0, widthOfDisplayControlWindowVertical, hightOfDisplayControlWindowVertical);
-			}
-			break;
-		}
-		case tabAboutPage:
-		{
-			curCompntBnds.setBounds(0, 0, widthOfAboutPage, hightOfAboutPage);
-			break;
-		}
-		default:
-		{
-			break;
-		}
+			case tabTuneWindow:
+				{
+					curCompntBnds.setBounds(0, 0, widthOfTuneWindow, hightOfTuneWindow + tabBarDepthMacWin);
+					break;
+				}
+			case tabEksAudioControlComponent:
+				{
+					curCompntBnds.setBounds(0, 0, widthOfEksAudioControlComponentWindow, hightOfEksAudioControlComponentWindow);
+					break;
+				}
+			case tabGuitarStringSoundsControlWindow:
+				{
+					Rectangle<int> r = Desktop::getInstance().getDisplays().getPrimaryDisplay()->userArea;
+					if (r.getWidth() >= r.getHeight())
+					{
+						curCompntBnds.setBounds(0, 0, widthOfGuitarStringSoundsControlWindowHorizontal, hightOfGuitarStringSoundsControlWindowHorizontal);
+					}
+					else
+					{
+						curCompntBnds.setBounds(0, 0, widthOfGuitarStringSoundsControlWindowVertical, hightOfGuitarStringSoundsControlWindowVertical);
+					}
+					break;
+				}
+			case tabDisplayControlWindow:
+				{
+					Rectangle<int> r = Desktop::getInstance().getDisplays().getPrimaryDisplay()->userArea;
+					if (r.getWidth() >= r.getHeight())
+					{
+						//Horizontal
+						curCompntBnds.setBounds(0, 0, widthOfDisplayControlWindowHorizontal, hightOfDisplayControlWindowHorizontal);
+					}
+					else
+					{
+						// Vertical
+						curCompntBnds.setBounds(0, 0, widthOfDisplayControlWindowVertical, hightOfDisplayControlWindowVertical);
+					}
+					break;
+				}
+			case tabAboutPage:
+				{
+					curCompntBnds.setBounds(0, 0, widthOfAboutPage, hightOfAboutPage);
+					break;
+				}
+			default:
+				{
+					break;
+				}
 		}
 
 		setSize(curCompntBnds.getWidth(), curCompntBnds.getHeight()); // This
-#endif
+	#endif
 
 		resized();
 	}
@@ -573,7 +579,7 @@ void guitarFineTuneFirstClass::parentSizeChanged()
 }
 #endif
 
-#if (JUCE_IOS || JUCE_ANDROID)
+#if (JUCE_IOS)
 float guitarFineTuneFirstClass::scaleToGuitarStringSoundsControlWindow()
 {
 	float bndsScaleHoriz;
@@ -614,16 +620,58 @@ float guitarFineTuneFirstClass::scaleToGuitarStringSoundsControlWindow()
 
 	return scaleNow;
 }
-#endif // (JUCE_IOS || JUCE_ANDROID)
+#elif (JUCE_ANDROID)
+float guitarFineTuneFirstClass::scaleToGuitarStringSoundsControlWindow()
+{
+	float bndsScaleHoriz;
+	float bndsScaleVerti;
+	float scaleNow;
+	if (curCompntBnds.getWidth() >= curCompntBnds.getHeight())
+	{
+		// Horizontal
+		bndsScaleHoriz = (float)(curCompntBnds.getWidth()) / (float)(widthOfGuitarStringSoundsControlWindowHorizontal);
+		bndsScaleVerti = ((float)(curCompntBnds.getHeight())
+			- (float)tabBarDepthAndroidIosInHorizontal) / ((float)(hightOfGuitarStringSoundsControlWindowHorizontal));
+		if (bndsScaleHoriz < bndsScaleVerti)
+		{
+			scaleNow = bndsScaleHoriz;
+		}
+		else
+		{
+			scaleNow = bndsScaleVerti;
+		}
+		pEksTabbedComponent->setTabBarDepth(tabBarDepthAndroidIosInHorizontal * scaleNow);
+	}
+	else
+	{
+		// Vertical
+		bndsScaleHoriz = (float)(curCompntBnds.getWidth()) / (float)(widthOfGuitarStringSoundsControlWindowVertical);
+		bndsScaleVerti = ((float)(curCompntBnds.getHeight())
+			- (float)tabBarDepthAndroidIosInVertical) / ((float)(hightOfGuitarStringSoundsControlWindowVertical + 1));
+		if (bndsScaleHoriz < bndsScaleVerti)
+		{
+			scaleNow = bndsScaleHoriz;
+		}
+		else
+		{
+			scaleNow = bndsScaleVerti;
+		}
+		pEksTabbedComponent->setTabBarDepth(tabBarDepthAndroidIosInVertical * scaleNow);
+	}
+
+	return scaleNow;
+}
+#endif // (JUCE_ANDROID)
 
 void guitarFineTuneFirstClass::resized()
 {
 	//[UserPreResize] Add your own custom resize code here..
 //    pEksTabbedComponent->setSize(curCompntBnds.getWidth(), curCompntBnds.getHeight());
 #if (JUCE_ANDROID)
-        curCompntBnds.setY(20);
+	curCompntBnds.setY(androidSafeMargin);
+
 #endif
-		pEksTabbedComponent->setBounds(curCompntBnds);
+	pEksTabbedComponent->setBounds(curCompntBnds);
 
 #if (JUCE_IOS || JUCE_ANDROID)
 	setBounds(curCompntBnds);
@@ -636,98 +684,98 @@ void guitarFineTuneFirstClass::resized()
 		float scaleNow;
 		switch (currentTabIndex)
 		{
-		case tabTuneWindow:
-		{
-			scaleToGuitarStringSoundsControlWindow();
-			break;
-		}
-		case tabGuitarStringSoundsControlWindow:
-		{
-			scaleNow = scaleToGuitarStringSoundsControlWindow();
-			pGuitarFineTuneLookAndFeel->scaleEksLookAndFeelFonts(scaleNow);
-			pGuitarFineTuneLookAndFeel->scaleAllsliderTextBoxes(scaleNow);
-			pGuitarStringSoundsControl->scaleAllComponents();
-			break;
-		}
-		case tabDisplayControlWindow:
-		{
-			if (curCompntBnds.getWidth() >= curCompntBnds.getHeight())
-			{
-				// Horizontal
-				bndsScaleHoriz = (float)(curCompntBnds.getWidth()) / (float)(widthOfDisplayControlWindowHorizontal);
-				bndsScaleVerti = ((float)(curCompntBnds.getHeight())
-					- (float)tabBarDepthAndroidIosInHorizontal) / ((float)(hightOfDisplayControlWindowHorizontal));
-				if (bndsScaleHoriz < bndsScaleVerti)
+			case tabTuneWindow:
 				{
-					scaleNow = bndsScaleHoriz;
+					scaleToGuitarStringSoundsControlWindow();
+					break;
 				}
-				else
+			case tabGuitarStringSoundsControlWindow:
 				{
-					scaleNow = bndsScaleVerti;
+					scaleNow = scaleToGuitarStringSoundsControlWindow();
+					pGuitarFineTuneLookAndFeel->scaleEksLookAndFeelFonts(scaleNow);
+					pGuitarFineTuneLookAndFeel->scaleAllsliderTextBoxes(scaleNow);
+					pGuitarStringSoundsControl->scaleAllComponents();
+					break;
 				}
-				pEksTabbedComponent->setTabBarDepth(tabBarDepthAndroidIosInHorizontal * scaleNow);
-			}
-			else
-			{
-				// Vertical
-				bndsScaleHoriz = (float)(curCompntBnds.getWidth()) / (float)(widthOfDisplayControlWindowVertical);
-				bndsScaleVerti = ((float)(curCompntBnds.getHeight())
-					- (float)tabBarDepthAndroidIosInVertical) / ((float)(hightOfDisplayControlWindowVertical + 1));
-				if (bndsScaleHoriz < bndsScaleVerti)
+			case tabDisplayControlWindow:
 				{
-					scaleNow = bndsScaleHoriz;
+					if (curCompntBnds.getWidth() >= curCompntBnds.getHeight())
+					{
+						// Horizontal
+						bndsScaleHoriz = (float)(curCompntBnds.getWidth()) / (float)(widthOfDisplayControlWindowHorizontal);
+						bndsScaleVerti = ((float)(curCompntBnds.getHeight())
+							- (float)(tabBarDepthAndroidIosInHorizontal)) / ((float)(hightOfDisplayControlWindowHorizontal));
+						if (bndsScaleHoriz < bndsScaleVerti)
+						{
+							scaleNow = bndsScaleHoriz;
+						}
+						else
+						{
+							scaleNow = bndsScaleVerti;
+						}
+						pEksTabbedComponent->setTabBarDepth(tabBarDepthAndroidIosInHorizontal * scaleNow);
+					}
+					else
+					{
+						// Vertical
+						bndsScaleHoriz = (float)(curCompntBnds.getWidth()) / (float)(widthOfDisplayControlWindowVertical);
+						bndsScaleVerti = ((float)(curCompntBnds.getHeight())
+							- (float)(tabBarDepthAndroidIosInVertical)) / ((float)(hightOfDisplayControlWindowVertical + 1));
+						if (bndsScaleHoriz < bndsScaleVerti)
+						{
+							scaleNow = bndsScaleHoriz;
+						}
+						else
+						{
+							scaleNow = bndsScaleVerti;
+						}
+						pEksTabbedComponent->setTabBarDepth(tabBarDepthAndroidIosInVertical * scaleNow);
+					}
+					pGuitarFineTuneLookAndFeel->scaleEksLookAndFeelFonts(scaleNow);
+					pGuitarFineTuneLookAndFeel->scaleAllsliderTextBoxes(scaleNow);
+					pDisplayControlComponent->scaleAllComponents();
+					break;
 				}
-				else
+			case tabEksAudioControlComponent:
 				{
-					scaleNow = bndsScaleVerti;
+					bndsScaleHoriz = (float)(curCompntBnds.getWidth()) / (float)(widthOfEksAudioControlComponentWindow);
+					bndsScaleVerti = ((float)(curCompntBnds.getHeight())
+						- (float)(tabBarDepthAndroidIosInHorizontal)) / ((float)(hightOfEksAudioControlComponentWindow));
+					if (bndsScaleHoriz < bndsScaleVerti)
+					{
+						scaleNow = bndsScaleHoriz;
+					}
+					else
+					{
+						scaleNow = bndsScaleVerti;
+					}
+					if (curCompntBnds.getWidth() >= curCompntBnds.getHeight())
+					{
+						// Horizontal
+						pEksTabbedComponent->setTabBarDepth(tabBarDepthAndroidIosInHorizontal * scaleNow);
+					}
+					else
+					{
+						// Vertical
+						pEksTabbedComponent->setTabBarDepth(tabBarDepthAndroidIosInVertical * scaleNow);
+					}
+					pGuitarFineTuneLookAndFeel->scaleEksLookAndFeelFonts(scaleNow);
+					pGuitarFineTuneLookAndFeel->scaleAllsliderTextBoxes(scaleNow);
+					pEksAudioControlComponent->scaleAllComponents();
+					break;
 				}
-				pEksTabbedComponent->setTabBarDepth(tabBarDepthAndroidIosInVertical * scaleNow);
-			}
-			pGuitarFineTuneLookAndFeel->scaleEksLookAndFeelFonts(scaleNow);
-			pGuitarFineTuneLookAndFeel->scaleAllsliderTextBoxes(scaleNow);
-			pDisplayControlComponent->scaleAllComponents();
-			break;
-		}
-		case tabEksAudioControlComponent:
-		{
-			bndsScaleHoriz = (float)(curCompntBnds.getWidth()) / (float)(widthOfEksAudioControlComponentWindow);
-			bndsScaleVerti = ((float)(curCompntBnds.getHeight())
-				- (float)tabBarDepthAndroidIosInHorizontal) / ((float)(hightOfEksAudioControlComponentWindow));
-			if (bndsScaleHoriz < bndsScaleVerti)
-			{
-				scaleNow = bndsScaleHoriz;
-			}
-			else
-			{
-				scaleNow = bndsScaleVerti;
-			}
-			if (curCompntBnds.getWidth() >= curCompntBnds.getHeight())
-			{
-				// Horizontal
-				pEksTabbedComponent->setTabBarDepth(tabBarDepthAndroidIosInHorizontal * scaleNow);
-			}
-			else
-			{
-				// Vertical
-				pEksTabbedComponent->setTabBarDepth(tabBarDepthAndroidIosInVertical * scaleNow);
-			}
-			pGuitarFineTuneLookAndFeel->scaleEksLookAndFeelFonts(scaleNow);
-			pGuitarFineTuneLookAndFeel->scaleAllsliderTextBoxes(scaleNow);
-			pEksAudioControlComponent->scaleAllComponents();
-			break;
-		}
-		case tabAboutPage:
-		{
-			scaleNow = scaleToGuitarStringSoundsControlWindow();
-			pGuitarFineTuneLookAndFeel->scaleEksLookAndFeelFonts(scaleNow);
-			pGuitarFineTuneLookAndFeel->scaleAllsliderTextBoxes(scaleNow);
-			pAboutPage->scaleAllComponents();
-			break;
-		}
-		default:
-		{
-			break;
-		}
+			case tabAboutPage:
+				{
+					scaleNow = scaleToGuitarStringSoundsControlWindow();
+					pGuitarFineTuneLookAndFeel->scaleEksLookAndFeelFonts(scaleNow);
+					pGuitarFineTuneLookAndFeel->scaleAllsliderTextBoxes(scaleNow);
+					pAboutPage->scaleAllComponents();
+					break;
+				}
+			default:
+				{
+					break;
+				}
 		}
 	}
 #endif // (JUCE_IOS || JUCE_ANDROID)

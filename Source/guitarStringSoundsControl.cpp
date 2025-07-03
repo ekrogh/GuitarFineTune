@@ -1056,7 +1056,11 @@ void guitarStringSoundsControl::scaleAllComponents()
 
 			auto  curUserArea = Desktop::getInstance().getDisplays().getPrimaryDisplay()->userArea;
 			float bndsScaleHoriz = (float)(curUserArea.getWidth()) / (float)(widthOfGuitarStringSoundsControlWindowHorizontal);
-			float bndsScaleVerti = ((float)(curUserArea.getHeight()) - (float)tabBarDepth) / ((float)hightOfGuitarStringSoundsControlWindowHorizontal);
+#if JUCE_ANDROID
+            float bndsScaleVerti = ((float)(curUserArea.getHeight()) - (float)(tabBarDepth  + androidSafeMargin)) / ((float)hightOfGuitarStringSoundsControlWindowHorizontal);
+#else
+            float bndsScaleVerti = ((float)(curUserArea.getHeight()) - (float)tabBarDepth) / ((float)hightOfGuitarStringSoundsControlWindowHorizontal);
+#endif // JUCE_ANDROID
 			float scaleNow = bndsScaleVerti;
 			if (bndsScaleHoriz < bndsScaleVerti)
 			{
@@ -1100,7 +1104,11 @@ void guitarStringSoundsControl::scaleAllComponents()
 			{
 				// Vertical
 				bndsScaleHoriz = (float)(curUserArea.getWidth()) / (float)(widthOfGuitarStringSoundsControlWindowVertical);
-				bndsScaleVerti = ((float)(curUserArea.getHeight()) - (float)tabBarDepth) / ((float)(hightOfGuitarStringSoundsControlWindowVertical + 1));
+#if JUCE_ANDROID
+                bndsScaleVerti = ((float)(curUserArea.getHeight()) - (float)(tabBarDepth  + androidSafeMargin)) / ((float)(hightOfGuitarStringSoundsControlWindowVertical + 1));
+#else
+                bndsScaleVerti = ((float)(curUserArea.getHeight()) - (float)tabBarDepth) / ((float)(hightOfGuitarStringSoundsControlWindowVertical + 1));
+#endif // JUCE_ANDROID
 				if (bndsScaleHoriz < bndsScaleVerti)
 				{
 					scaleNow = bndsScaleHoriz;

@@ -1394,7 +1394,7 @@ void tuneComponent::resized()
 //					(
 //							(double)(r.getX())
 //							, (double)(r.getY())
-//							, (double)(r.getWidth()) - (double)androidTuneTabSafeMargin
+//							, (double)(r.getWidth()) - (double)androidSafeMargin
 //							, (double)(r.getHeight())
 //					);
 //		}

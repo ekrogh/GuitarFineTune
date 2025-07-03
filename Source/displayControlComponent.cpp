@@ -662,7 +662,11 @@ void displayControlComponent::scaleAllComponents()
 
 			auto  curUserArea = Desktop::getInstance().getDisplays().getPrimaryDisplay()->userArea;
 			float bndsScaleHoriz = (float)(curUserArea.getWidth()) / (float)(widthOfDisplayControlWindowHorizontal);
-			float bndsScaleVerti = ((float)(curUserArea.getHeight()) - (float)tabBarDepth) / ((float)hightOfDisplayControlWindowHorizontal);
+#if JUCE_ANDROID
+			float bndsScaleVerti = ((float)(curUserArea.getHeight()) - (float)(tabBarDepth  + androidSafeMargin)) / ((float)hightOfDisplayControlWindowHorizontal);
+#else
+            float bndsScaleVerti = ((float)(curUserArea.getHeight()) - (float)tabBarDepth) / ((float)hightOfDisplayControlWindowHorizontal);
+#endif // JUCE_ANDROID
 			float scaleNow = bndsScaleVerti;
 			if (bndsScaleHoriz < bndsScaleVerti)
 			{
@@ -692,7 +696,11 @@ void displayControlComponent::scaleAllComponents()
 			{
 				// Vertical
 				bndsScaleHoriz = (float)(curUserArea.getWidth()) / (float)(widthOfDisplayControlWindowVertical);
-				bndsScaleVerti = ((float)(curUserArea.getHeight()) - (float)tabBarDepth) / ((float)(hightOfDisplayControlWindowVertical + 1));
+#if JUCE_ANDROID
+                bndsScaleVerti = ((float)(curUserArea.getHeight()) - (float)(tabBarDepth  + androidSafeMargin)) / ((float)(hightOfDisplayControlWindowVertical + 1));
+#else
+                bndsScaleVerti = ((float)(curUserArea.getHeight()) - (float)tabBarDepth) / ((float)(hightOfDisplayControlWindowVertical + 1));
+#endif // JUCE_ANDROID
 				if (bndsScaleHoriz < bndsScaleVerti)
 				{
 					scaleNow = bndsScaleHoriz;
