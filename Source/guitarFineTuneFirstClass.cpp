@@ -16,7 +16,6 @@
 #include "displayControlComponent.h"
 #include "tuneComponent.h"
 #include "guitarStringSoundsControl.h"
-#include "displayControlComponent.h"
 #include "guitarFineTuneGlobalEnums.h"
 #include "eksTabbedComponent.h"
 #include "xmlGuitarFineTuneConfig.h"
@@ -33,7 +32,7 @@ std::unique_ptr<tuneComponent> pTuneComponent = nullptr;
 
 bool audioSysInitDone = false;
 
-String getCurrentDefaultAudioDeviceName(AudioDeviceManager& deviceManager, bool isInput)
+static String getCurrentDefaultAudioDeviceName(AudioDeviceManager& deviceManager, bool isInput)
 {
 	auto* deviceType = deviceManager.getCurrentDeviceTypeObject();
 	jassert(deviceType != nullptr);
@@ -49,7 +48,7 @@ String getCurrentDefaultAudioDeviceName(AudioDeviceManager& deviceManager, bool 
 
 
 // (returns a shared AudioDeviceManager object that all the can use)
-AudioDeviceManager& getSharedAudioDeviceManager(int numInputChannels, int numOutputChannels)
+static AudioDeviceManager& getSharedAudioDeviceManager(int numInputChannels, int numOutputChannels)
 {
 	if (sharedAudioDeviceManager == nullptr)
 		sharedAudioDeviceManager = make_unique<AudioDeviceManager>();
@@ -226,7 +225,7 @@ guitarFineTuneFirstClass::guitarFineTuneFirstClass()
 	// Look and Feel first
 	pGuitarFineTuneLookAndFeel = std::make_shared<eksLookAndFeel>(addViewPort);
 
-	// Instantiate clases
+	// Instantiate classes
 	// Open config from xml file
 	pXmlGuitarFineTuneConfig = std::make_shared<xmlGuitarFineTuneConfig>();
 	// Tabs
