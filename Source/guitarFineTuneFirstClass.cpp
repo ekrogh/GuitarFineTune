@@ -391,18 +391,18 @@ guitarFineTuneFirstClass::guitarFineTuneFirstClass()
 		curCompntBnds = Desktop::getInstance().getDisplays().getPrimaryDisplay()->userArea;
 		BorderSize<int>  nonSafeArea = Desktop::getInstance().getDisplays().getPrimaryDisplay()->safeAreaInsets;
 		nonSafeArea.subtractFrom(curCompntBnds); // Remove non Safe area
-#if ( JUCE_ANDROID )
-		if (curCompntBnds.getWidth() >= curCompntBnds.getHeight())  // Landscape
-		{
-			curCompntBnds.setBounds
-			(
-				(double)(curCompntBnds.getX())
-				, (double)(curCompntBnds.getY())
-				, (double)(curCompntBnds.getWidth()) - (double)androidTuneTabSafeMargin
-				, (double)(curCompntBnds.getHeight())
-			);
-		}
-#endif // #if ( JUCE_ANDROID )
+//#if ( JUCE_ANDROID )
+//		if (curCompntBnds.getWidth() >= curCompntBnds.getHeight())  // Landscape
+//		{
+//			curCompntBnds.setBounds
+//			(
+//				(double)(curCompntBnds.getX())
+//				, (double)(curCompntBnds.getY())
+//				, (double)(curCompntBnds.getWidth()) - (double)androidTuneTabSafeMargin
+//				, (double)(curCompntBnds.getHeight())
+//			);
+//		}
+//#endif // #if ( JUCE_ANDROID )
 #if ( JUCE_IOS )
 		if (thisiPhoneiPadNeedsSafeArea())
 		{
@@ -620,7 +620,10 @@ void guitarFineTuneFirstClass::resized()
 {
 	//[UserPreResize] Add your own custom resize code here..
 //    pEksTabbedComponent->setSize(curCompntBnds.getWidth(), curCompntBnds.getHeight());
-	pEksTabbedComponent->setBounds(curCompntBnds);
+#if (JUCE_ANDROID)
+        curCompntBnds.setY(20);
+#endif
+		pEksTabbedComponent->setBounds(curCompntBnds);
 
 #if (JUCE_IOS || JUCE_ANDROID)
 	setBounds(curCompntBnds);
