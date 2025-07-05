@@ -511,6 +511,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "Info-App.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_PREPROCESS = YES;
 				INSTALL_PATH = /Applications;
 				LLVM_LTO = YES_THIN;
@@ -565,6 +566,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "Info-App.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_PREPROCESS = YES;
 				INSTALL_PATH = /Applications;
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
