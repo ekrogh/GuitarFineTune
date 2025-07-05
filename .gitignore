@@ -153,3 +153,7 @@ x64
 /guitarfinetune_amd64-2024-05-02T11:21:11.txt
 guitarfinetune_*.txt
 /Builds/Android
+/Builds/Android
+/Builds/iOS
+/Builds/MacOSX
+/Builds/VisualStudio2022
