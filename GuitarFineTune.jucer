@@ -88,16 +88,16 @@
   </MAINGROUP>
   <EXPORTFORMATS>
     <XCODE_MAC targetFolder="Builds/MacOSX" iosDevelopmentTeamID="4657Q2Y6NH"
-               bigIcon="DzMVX4" smallIcon="RB4slw" keepCustomXcodeSchemes="1"
-               extraLinkerFlags="-Wl,-weak_reference_mismatches,weak" microphonePermissionNeeded="1"
-               pListPreprocess="1" appSandbox="1" appSandboxOptions="com.apple.security.assets.music.read-write,com.apple.security.files.user-selected.read-write"
+               bigIcon="DzMVX4" smallIcon="RB4slw" extraLinkerFlags="-Wl,-weak_reference_mismatches,weak"
+               microphonePermissionNeeded="1" pListPreprocess="1" appSandbox="1"
+               appSandboxOptions="com.apple.security.assets.music.read-write,com.apple.security.files.user-selected.read-write"
                extraFrameworks="AVFoundation" hardenedRuntime="1" hardenedRuntimeOptions="com.apple.security.device.audio-input"
                bundleIdentifier="dk.eksIt.guitarFineTuneOSX" applicationCategory="public.app-category.utilities"
-               buildNumber="93" extraDefs="JUCE_SILENCE_XCODE_15_LINKER_WARNING=1">
+               buildNumber="94" extraDefs="JUCE_SILENCE_XCODE_15_LINKER_WARNING=1">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" isDebug="1" targetName="GuitarFineTune" cppLanguageStandard="c++14"
                        libraryPath="" headerPath="" customXcodeFlags="INSTALL_PATH = &quot;/Applications&quot;"
-                       macOSDeploymentTarget="12.0" osxCompatibility="12.0 SDK"/>
+                       macOSDeploymentTarget="12.0" osxCompatibility="12.0 SDK" codeSigningIdentity="Eigil Krogh"/>
         <CONFIGURATION name="Release" isDebug="0" targetName="GuitarFineTune" binaryPath=""
                        defines="" cppLanguageStandard="c++14" headerPath="" libraryPath=""
                        linkTimeOptimisation="1" macOSDeploymentTarget="12.0" osxCompatibility="12.0 SDK"
@@ -126,7 +126,7 @@
                   iPadScreenOrientation="UIInterfaceOrientationLandscapeLeft,UIInterfaceOrientationLandscapeRight,UIInterfaceOrientationPortrait,UIInterfaceOrientationPortraitUpsideDown"
                   iosPushNotifications="0" microphonePermissionsText="This is an audio app which requires audio input. If you do not have an external audio interface connected it will use the microphone."
                   iCloudPermissions="1" pListPreprocess="1" customLaunchStoryboard="iOS_Special/Launch Screen.storyboard"
-                  UIFileSharingEnabled="1" iosBluetoothPermissionNeeded="1" buildNumber="93"
+                  UIFileSharingEnabled="1" iosBluetoothPermissionNeeded="1" buildNumber="94"
                   customPList="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#10;&#10;&lt;!DOCTYPE plist PUBLIC &quot;-//Apple//DTD PLIST 1.0//EN&quot; &quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&quot;&gt;&#10;&lt;plist&gt;&#10;  &lt;dict&gt;&#10;    &lt;key&gt;LSMinimumSystemVersion&lt;/key&gt;&#10;    &lt;string&gt;12.0&lt;/string&gt;&#10;  &lt;/dict&gt;&#10;&lt;/plist&gt;&#10;"
                   extraLinkerFlags="-Wl,-weak_reference_mismatches,weak">
       <CONFIGURATIONS>
