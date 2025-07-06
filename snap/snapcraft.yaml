@@ -13,9 +13,9 @@ confinement: strict # use 'strict' once you have the right plugs and slots
 platforms:
   amd64:
   arm64:
-  armhf:
-  ppc64el:
-  s390x:
+  # armhf:
+  # ppc64el:
+  # s390x:
 
 parts:
   alsa-mixin:
