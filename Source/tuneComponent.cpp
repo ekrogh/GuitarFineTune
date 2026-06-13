@@ -55,7 +55,7 @@ tuneComponent::tuneComponent
 
 #if (JUCE_IOS || JUCE_ANDROID)
 	{
-		Rectangle<int> r = Desktop::getInstance().getDisplays().getPrimaryDisplay()->userArea;
+		Rectangle<int> r = Desktop::getInstance().getDisplays().getPrimaryDisplay()->userBounds.toNearestInt();
 		double sizeScale;
 		sizeScale = (double)(r.getWidth()) / (double)widthOfTuneWindow;
 		setSize((int)(widthOfTuneWindow * sizeScale), (int)(hightOfTuneWindow * sizeScale));
@@ -1373,7 +1373,7 @@ void tuneComponent::resized()
 {
 #if ( JUCE_ANDROID )
 	{
-		Rectangle<int> r = Desktop::getInstance().getDisplays().getPrimaryDisplay()->userArea;
+		Rectangle<int> r = Desktop::getInstance().getDisplays().getPrimaryDisplay()->userBounds.toNearestInt();
 
 		// JUCE 7 takes care of safe areas !!!!
 //		BorderSize<int>  nonSafeArea = Desktop::getInstance().getDisplays().getPrimaryDisplay()->safeAreaInsets;
@@ -1394,7 +1394,7 @@ void tuneComponent::resized()
 	}
 #elif ( JUCE_IOS )
 	{
-		Rectangle<int> r = Desktop::getInstance().getDisplays().getPrimaryDisplay()->userArea;
+		Rectangle<int> r = Desktop::getInstance().getDisplays().getPrimaryDisplay()->userBounds.toNearestInt();
 		double sizeScale;
 		if (r.getHeight() >= r.getWidth()) // Portrait
 		{

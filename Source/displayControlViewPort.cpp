@@ -86,7 +86,7 @@ void displayControlViewPort::resized()
     //[UserResized] Add your own custom resize handling here..
 #if JUCE_IOS || JUCE_ANDROID
 // Set bounds for this
-	Rectangle<int> r = Desktop::getInstance().getDisplays().getMainDisplay().userArea;
+	Rectangle<int> r = Desktop::getInstance().getDisplays().getMainDisplay().userBounds.toNearestInt();
     viewport->setSize(viewport->getWidth(), r.getHeight());
     viewport->setScrollBarThickness (20);
 	setSize(getWidth(), r.getHeight());

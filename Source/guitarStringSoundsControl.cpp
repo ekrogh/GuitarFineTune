@@ -596,7 +596,7 @@ void guitarStringSoundsControl::resized()
 		rawSoundLabellabel->setBounds(10, 280, 85, 24);
 		startRecordingToggleButton->setBounds(220 - (24 / 2), 304, 24, 24);
 		//[UserResized] Add your own custom resize handling here..
-		auto  curUserArea = Desktop::getInstance().getDisplays().getPrimaryDisplay()->userArea;
+		auto  curUserArea = Desktop::getInstance().getDisplays().getPrimaryDisplay()->userBounds.toNearestInt();
 		if (curUserArea.getWidth() >= curUserArea.getHeight())
 		{
 			// Horizontal
@@ -1054,10 +1054,10 @@ void guitarStringSoundsControl::scaleAllComponents()
 
 			int tabBarDepth = parent->getTabBarDepth();
 
-			auto  curUserArea = Desktop::getInstance().getDisplays().getPrimaryDisplay()->userArea;
+			auto  curUserArea = Desktop::getInstance().getDisplays().getPrimaryDisplay()->userBounds.toNearestInt();
 			float bndsScaleHoriz = (float)(curUserArea.getWidth()) / (float)(widthOfGuitarStringSoundsControlWindowHorizontal);
 #if JUCE_ANDROID
-            float bndsScaleVerti = ((float)(curUserArea.getHeight()) - (float)(tabBarDepth  + androidSafeMargin)) / ((float)hightOfGuitarStringSoundsControlWindowHorizontal);
+			float bndsScaleVerti = ((float)(curUserArea.getHeight()) - (float)(tabBarDepth  + androidSafeMargin)) / ((float)hightOfGuitarStringSoundsControlWindowHorizontal);
 #else
             float bndsScaleVerti = ((float)(curUserArea.getHeight()) - (float)tabBarDepth) / ((float)hightOfGuitarStringSoundsControlWindowHorizontal);
 #endif // JUCE_ANDROID

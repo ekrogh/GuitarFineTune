@@ -189,7 +189,7 @@ guitarFineTuneFirstClass::guitarFineTuneFirstClass()
 
 #if (JUCE_ANDROID)
 	// Add viewport ?
-	Rectangle<int> r = Desktop::getInstance().getDisplays().getPrimaryDisplay()->userArea;
+	Rectangle<int> r = Desktop::getInstance().getDisplays().getPrimaryDisplay()->userBounds.toNearestInt();
 	if
 		(
 		((r.getWidth() < r.getHeight()) && (r.getWidth() < 360 || r.getHeight() < 533))
@@ -387,7 +387,7 @@ guitarFineTuneFirstClass::guitarFineTuneFirstClass()
 		setSize(curCompntBnds.getWidth(), curCompntBnds.getHeight()); // This
 		DocumentWindow::centreWithSize(widthOfGuitarStringSoundsControlWindowHorizontal, hightOfGuitarStringSoundsControlWindowHorizontal);
 	#elif (JUCE_ANDROID || JUCE_IOS)
-		curCompntBnds = Desktop::getInstance().getDisplays().getPrimaryDisplay()->userArea;
+		curCompntBnds = Desktop::getInstance().getDisplays().getPrimaryDisplay()->userBounds.toNearestInt();
 		BorderSize<int>  nonSafeArea = Desktop::getInstance().getDisplays().getPrimaryDisplay()->safeAreaInsets;
 		nonSafeArea.subtractFrom(curCompntBnds); // Remove non Safe area
 		//#if ( JUCE_ANDROID )
@@ -445,7 +445,7 @@ void guitarFineTuneFirstClass::currentTabChanged(int newCurrentTabIndex, const S
 	{
 
 	#if ( JUCE_ANDROID || JUCE_IOS )
-		curCompntBnds = Desktop::getInstance().getDisplays().getPrimaryDisplay()->userArea;
+		curCompntBnds = Desktop::getInstance().getDisplays().getPrimaryDisplay()->userBounds.toNearestInt();
 
 
 		// JUCE 7 takes care of safe areas !!!!
@@ -516,7 +516,7 @@ void guitarFineTuneFirstClass::currentTabChanged(int newCurrentTabIndex, const S
 				}
 			case tabGuitarStringSoundsControlWindow:
 				{
-					Rectangle<int> r = Desktop::getInstance().getDisplays().getPrimaryDisplay()->userArea;
+					Rectangle<int> r = Desktop::getInstance().getDisplays().getPrimaryDisplay()->userBounds.toNearestInt();
 					if (r.getWidth() >= r.getHeight())
 					{
 						curCompntBnds.setBounds(0, 0, widthOfGuitarStringSoundsControlWindowHorizontal, hightOfGuitarStringSoundsControlWindowHorizontal);
@@ -526,17 +526,17 @@ void guitarFineTuneFirstClass::currentTabChanged(int newCurrentTabIndex, const S
 						curCompntBnds.setBounds(0, 0, widthOfGuitarStringSoundsControlWindowVertical, hightOfGuitarStringSoundsControlWindowVertical);
 					}
 					break;
-				}
-			case tabDisplayControlWindow:
-				{
-					Rectangle<int> r = Desktop::getInstance().getDisplays().getPrimaryDisplay()->userArea;
-					if (r.getWidth() >= r.getHeight())
-					{
-						//Horizontal
-						curCompntBnds.setBounds(0, 0, widthOfDisplayControlWindowHorizontal, hightOfDisplayControlWindowHorizontal);
 					}
-					else
+				case tabDisplayControlWindow:
 					{
+						Rectangle<int> r = Desktop::getInstance().getDisplays().getPrimaryDisplay()->userBounds.toNearestInt();
+						if (r.getWidth() >= r.getHeight())
+						{
+							//Horizontal
+							curCompntBnds.setBounds(0, 0, widthOfDisplayControlWindowHorizontal, hightOfDisplayControlWindowHorizontal);
+						}
+						else
+						{
 						// Vertical
 						curCompntBnds.setBounds(0, 0, widthOfDisplayControlWindowVertical, hightOfDisplayControlWindowVertical);
 					}

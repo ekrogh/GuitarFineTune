@@ -267,7 +267,7 @@ void eksAudioControlComponent::scaleAllComponents()
 
 				int tabBarDepth = parent->getTabBarDepth();
 
-				auto curUserArea = Desktop::getInstance().getDisplays().getPrimaryDisplay()->userArea;
+				auto curUserArea = Desktop::getInstance().getDisplays().getPrimaryDisplay()->userBounds.toNearestInt();
 				float bndsScaleHoriz = (float)(curUserArea.getWidth()) /
 					(float)(widthOfEksAudioControlComponentWindow);
 				float bndsScaleVerti = ((float)(curUserArea.getHeight()) - (float)tabBarDepth) /
