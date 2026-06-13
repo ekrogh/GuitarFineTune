@@ -1563,7 +1563,7 @@ void CodeEditorComponent::mouseDown (const MouseEvent& e)
         m.setLookAndFeel (&getLookAndFeel());
         addPopupMenuItems (m, &e);
 
-        m.showMenuAsync (PopupMenu::Options(),
+        m.showMenuAsync (PopupMenu::Options().withTargetComponent (this).withMousePosition(),
                          ModalCallbackFunction::forComponent (codeEditorMenuCallback, this));
     }
     else
@@ -1696,11 +1696,7 @@ int CodeEditorComponent::columnToIndex (int lineNum, int column) const noexcept
 void CodeEditorComponent::setFont (const Font& newFont)
 {
     font = newFont;
-
-    JUCE_BEGIN_IGNORE_DEPRECATION_WARNINGS
-    charWidth = font.getStringWidthFloat ("0");
-    JUCE_END_IGNORE_DEPRECATION_WARNINGS
-
+    charWidth = TextLayout::getStringWidth (font, "0");
     lineHeight = roundToInt (font.getHeight());
     resized();
 }

@@ -92,8 +92,9 @@ OBJECTS_APP := \
   $(JUCE_OBJDIR)/include_juce_audio_devices_63111d02.o \
   $(JUCE_OBJDIR)/include_juce_audio_formats_15f82001.o \
   $(JUCE_OBJDIR)/include_juce_audio_processors_10c03666.o \
-  $(JUCE_OBJDIR)/include_juce_audio_processors_ara_2a4c6ef7.o \
-  $(JUCE_OBJDIR)/include_juce_audio_processors_lv2_libs_12bdca08.o \
+  $(JUCE_OBJDIR)/include_juce_audio_processors_headless_1902bafc.o \
+  $(JUCE_OBJDIR)/include_juce_audio_processors_headless_ara_8deeb88d.o \
+  $(JUCE_OBJDIR)/include_juce_audio_processors_headless_lv2_libs_36180e32.o \
   $(JUCE_OBJDIR)/include_juce_audio_utils_9f9fb2d6.o \
   $(JUCE_OBJDIR)/include_juce_core_f26d17db.o \
   $(JUCE_OBJDIR)/include_juce_core_CompilationTime_9257742c.o \
@@ -104,6 +105,10 @@ OBJECTS_APP := \
   $(JUCE_OBJDIR)/include_juce_graphics_Harfbuzz_60c52ba2.o \
   $(JUCE_OBJDIR)/include_juce_graphics_Sheenbidi_c310974d.o \
   $(JUCE_OBJDIR)/include_juce_gui_basics_e3f79785.o \
+  $(JUCE_OBJDIR)/include_juce_gui_basics_2_153c9db8.o \
+  $(JUCE_OBJDIR)/include_juce_gui_basics_3_154ab539.o \
+  $(JUCE_OBJDIR)/include_juce_gui_basics_4_1558ccba.o \
+  $(JUCE_OBJDIR)/include_juce_gui_basics_5_1566e43b.o \
   $(JUCE_OBJDIR)/include_juce_gui_extra_6dee1c1a.o \
 
 .PHONY: clean all strip
@@ -219,14 +224,19 @@ $(JUCE_OBJDIR)/include_juce_audio_processors_10c03666.o: ../../JuceLibraryCode/i
 	@echo "Compiling include_juce_audio_processors.cpp"
 	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
 
-$(JUCE_OBJDIR)/include_juce_audio_processors_ara_2a4c6ef7.o: ../../JuceLibraryCode/include_juce_audio_processors_ara.cpp
+$(JUCE_OBJDIR)/include_juce_audio_processors_headless_1902bafc.o: ../../JuceLibraryCode/include_juce_audio_processors_headless.cpp
 	-$(V_AT)mkdir -p $(@D)
-	@echo "Compiling include_juce_audio_processors_ara.cpp"
+	@echo "Compiling include_juce_audio_processors_headless.cpp"
 	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
 
-$(JUCE_OBJDIR)/include_juce_audio_processors_lv2_libs_12bdca08.o: ../../JuceLibraryCode/include_juce_audio_processors_lv2_libs.cpp
+$(JUCE_OBJDIR)/include_juce_audio_processors_headless_ara_8deeb88d.o: ../../JuceLibraryCode/include_juce_audio_processors_headless_ara.cpp
 	-$(V_AT)mkdir -p $(@D)
-	@echo "Compiling include_juce_audio_processors_lv2_libs.cpp"
+	@echo "Compiling include_juce_audio_processors_headless_ara.cpp"
+	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
+
+$(JUCE_OBJDIR)/include_juce_audio_processors_headless_lv2_libs_36180e32.o: ../../JuceLibraryCode/include_juce_audio_processors_headless_lv2_libs.cpp
+	-$(V_AT)mkdir -p $(@D)
+	@echo "Compiling include_juce_audio_processors_headless_lv2_libs.cpp"
 	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
 
 $(JUCE_OBJDIR)/include_juce_audio_utils_9f9fb2d6.o: ../../JuceLibraryCode/include_juce_audio_utils.cpp
@@ -277,6 +287,26 @@ $(JUCE_OBJDIR)/include_juce_graphics_Sheenbidi_c310974d.o: ../../JuceLibraryCode
 $(JUCE_OBJDIR)/include_juce_gui_basics_e3f79785.o: ../../JuceLibraryCode/include_juce_gui_basics.cpp
 	-$(V_AT)mkdir -p $(@D)
 	@echo "Compiling include_juce_gui_basics.cpp"
+	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
+
+$(JUCE_OBJDIR)/include_juce_gui_basics_2_153c9db8.o: ../../JuceLibraryCode/include_juce_gui_basics_2.cpp
+	-$(V_AT)mkdir -p $(@D)
+	@echo "Compiling include_juce_gui_basics_2.cpp"
+	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
+
+$(JUCE_OBJDIR)/include_juce_gui_basics_3_154ab539.o: ../../JuceLibraryCode/include_juce_gui_basics_3.cpp
+	-$(V_AT)mkdir -p $(@D)
+	@echo "Compiling include_juce_gui_basics_3.cpp"
+	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
+
+$(JUCE_OBJDIR)/include_juce_gui_basics_4_1558ccba.o: ../../JuceLibraryCode/include_juce_gui_basics_4.cpp
+	-$(V_AT)mkdir -p $(@D)
+	@echo "Compiling include_juce_gui_basics_4.cpp"
+	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
+
+$(JUCE_OBJDIR)/include_juce_gui_basics_5_1566e43b.o: ../../JuceLibraryCode/include_juce_gui_basics_5.cpp
+	-$(V_AT)mkdir -p $(@D)
+	@echo "Compiling include_juce_gui_basics_5.cpp"
 	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
 
 $(JUCE_OBJDIR)/include_juce_gui_extra_6dee1c1a.o: ../../JuceLibraryCode/include_juce_gui_extra.cpp

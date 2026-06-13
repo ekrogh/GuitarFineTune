@@ -141,8 +141,8 @@ public:
     /** Removes the property from the referenced ValueTree. */
     void resetToDefault() noexcept           { targetTree.removeProperty (targetProperty, nullptr); }
 
-    /** You can assign a lambda to this callback and it will called when the default
-        value is changed.
+    /** You can assign a lambda to this callback and it will be called when the
+        default value is changed.
 
         @see setDefault
     */
@@ -335,11 +335,11 @@ private:
 };
 
 //==============================================================================
-#ifndef DOXYGEN
+/** @cond */
 using ValueWithDefault  [[deprecated ("This class has been renamed to better describe what is does. "
                                       "This declaration is here for backwards compatibility and new "
                                       "code should use the new class name.")]]
     = ValueTreePropertyWithDefault;
-#endif
+/** @endcond */
 
 } // namespace juce

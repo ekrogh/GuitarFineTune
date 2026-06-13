@@ -1291,13 +1291,8 @@ void tuneComponent::getNextAudioBlock(const AudioSourceChannelInfo& bufferToFill
 					float phaseDeltaPerSample;
 
 					float* channelData = bufferToFill.buffer->getWritePointer(0, bufferToFill.startSample);
-#if (JUCE_WINDOWS && _DEBUG)
-					auto outBffrStart = stdext::make_unchecked_array_iterator(channelData);
-					auto outBffrEnd = stdext::make_unchecked_array_iterator(channelData + bufferToFill.numSamples);
-#else // (JUCE_WINDOWS && _DEBUG)
 					auto outBffrStart = channelData;
 					auto outBffrEnd = channelData + bufferToFill.numSamples;
-#endif // (JUCE_WINDOWS && _DEBUG)
 
 #define f2PI (6.28318530717958647692)
 					double gainToUse = stringGainToUse;
@@ -1344,11 +1339,7 @@ void tuneComponent::getNextAudioBlock(const AudioSourceChannelInfo& bufferToFill
 			{ // Begin scope of guitarStringSoundsLockMutex
 				const ScopedLock sl(guitarStringSoundsLockMutex);
 
-#if (JUCE_WINDOWS && _DEBUG)
-				std::transform(guitarStringSoundsRamp.begin(), guitarStringSoundsRamp.end(), stdext::make_unchecked_array_iterator(bufferToFill.buffer->getReadPointer(0, bufferToFill.startSample)), stdext::make_unchecked_array_iterator(bufferToFill.buffer->getWritePointer(0, bufferToFill.startSample)), std::plus<float>());
-#else // (JUCE_WINDOWS && _DEBUG)
 				std::transform(guitarStringSoundsRamp.begin(), guitarStringSoundsRamp.end(), bufferToFill.buffer->getReadPointer(0, bufferToFill.startSample), bufferToFill.buffer->getWritePointer(0, bufferToFill.startSample), std::plus<float>());
-#endif // (JUCE_WINDOWS && _DEBUG)
 
 				if (bufferToFill.buffer->getNumChannels() > 1)
 				{
