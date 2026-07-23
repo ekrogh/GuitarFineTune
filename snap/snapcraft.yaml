@@ -143,6 +143,17 @@ parts:
       - libunistring5
       - libz1
       - libzstd1
+lint:
+  ignore:
+    - library:
+      - usr/lib/x86_64-linux-gnu/libdconf.so.1.0.0
+    - metadata:
+      - title
+      - contact
+      - license
+      - issues
+      - source-code
+      - website
 
 layout:
   /usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/alsa-lib:
