@@ -20,7 +20,7 @@
 
 // [END_USER_CODE_SECTION]
 
-#define JUCE_PROJUCER_VERSION 0x8000d
+#define JUCE_PROJUCER_VERSION 0x90000
 
 //==============================================================================
 #define JUCE_MODULE_AVAILABLE_juce_audio_basics                   1
@@ -268,6 +268,10 @@
 
 #ifndef    JUCE_USE_XCURSOR
  //#define JUCE_USE_XCURSOR 1
+#endif
+
+#ifndef    JUCE_USE_XINPUT
+ //#define JUCE_USE_XINPUT 1
 #endif
 
 #ifndef    JUCE_WIN_PER_MONITOR_DPI_AWARE
