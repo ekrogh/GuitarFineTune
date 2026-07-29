@@ -63,9 +63,6 @@ public:
     /** Copies this point from another one. */
     Point& operator= (const Point&) = default;
 
-    //// 2. may 2024  Eigil Krogh
-    //auto operator<=>(const Point&) const = default;
-
     constexpr inline bool operator== (Point other) const noexcept
     {
         const auto tie = [] (const Point& p) { return std::tie (p.x, p.y); };

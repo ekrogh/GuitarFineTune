@@ -50,16 +50,6 @@ AudioIODevice::AudioIODevice (const String& deviceName, const String& deviceType
 
 AudioIODevice::~AudioIODevice() {}
 
-// eks 17. april. 2024 added
-// checkAudioInputAccessPermissions always
-// returns 3 (=eksAVAuthorizationStatusAuthorized) on Linux
-#if JUCE_LINUX
-int AudioIODevice::checkAudioInputAccessPermissions()           { return 3; };
-#else // #if JUCE_LINUX
-// eks 15. sept. 2020 added checkAudioInputAccessPermissions
-int AudioIODevice::checkAudioInputAccessPermissions( )          { return 0; };
-#endif // #if JUCE_LINUX
-
 void AudioIODeviceCallback::audioDeviceError (const String&)    {}
 bool AudioIODevice::setAudioPreprocessingEnabled (bool)         { return false; }
 bool AudioIODevice::hasControlPanel() const                     { return false; }

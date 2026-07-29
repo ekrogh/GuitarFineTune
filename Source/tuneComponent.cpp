@@ -484,7 +484,8 @@ tuneComponent::~tuneComponent()
 {
 	weSpectrumDataReady.signal();
 	stopThread(-10);
-	eksShutdownAudio();
+	shutdownAudio();
+	//eksShutdownAudio();
 	//sharedAudioDeviceManager->closeAudioDevice();
 	// Make thread shut down
    //stopThread( 6000 );
