@@ -90,7 +90,8 @@ enum FadingArrows
 enum  NumInAndOutputs
 {
 	  numInputChannels = 1
-	, numOutputChannels = 1
+    , numOutputChannels = 0
+//	, numOutputChannels = 1
 };
 
 enum
