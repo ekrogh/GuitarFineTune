@@ -165,10 +165,8 @@ void eksAudioControlComponent::resized()
     pAudioDeviceSelectorComponent->setBounds(area.removeFromTop(40));
     Use_50_Hz_FilterToggleButton->setBounds(area.removeFromBottom(30));
     Use_50_Hz_FilterToggleButton->setSize(150, 24);
-    auto b50Bounds = Use_50_Hz_FilterToggleButton->getBounds();
     Use_60_Hz_FilterToggleButton->setBounds(area.removeFromRight(140).removeFromBottom(0));
     Use_60_Hz_FilterToggleButton->setSize(149, 24);
-    auto b60Bounds = Use_60_Hz_FilterToggleButton->getBounds();
 //	auto actHeightAudioDeviceSelectorComponent = pAudioDeviceSelectorComponent->getHeight();
 //	Use_50_Hz_FilterToggleButton->setBounds(1, actHeightAudioDeviceSelectorComponent - 15, 150, 24);
 //	Use_60_Hz_FilterToggleButton->setBounds(147, actHeightAudioDeviceSelectorComponent - 15, 149, 24);
