@@ -42,7 +42,7 @@ eksAudioControlComponent::eksAudioControlComponent(std::shared_ptr<xmlGuitarFine
 	addAndMakeVisible(pAudioDeviceSelectorComponent.get());
 	pAudioDeviceSelectorComponent->setName("pAudioDeviceSelectorComponent");
 
-	pAudioDeviceSelectorComponent->setBounds(1, 1, 330, 360);
+//	pAudioDeviceSelectorComponent->setBounds(1, 1, 330, 360);
 
 	Use_50_Hz_FilterToggleButton.reset(new juce::ToggleButton("Use_50_Hz_FilterToggleButton"));
 	addAndMakeVisible(Use_50_Hz_FilterToggleButton.get());
@@ -50,7 +50,8 @@ eksAudioControlComponent::eksAudioControlComponent(std::shared_ptr<xmlGuitarFine
 	Use_50_Hz_FilterToggleButton->addListener(this);
 	Use_50_Hz_FilterToggleButton->setColour(juce::ToggleButton::textColourId, juce::Colours::cornflowerblue);
 
-	Use_50_Hz_FilterToggleButton->setBounds(1, 370, 150, 24);
+    Use_50_Hz_FilterToggleButton->setSize(75, 24);
+// Use_50_Hz_FilterToggleButton->setBounds(1, 370, 150, 24);
 
 	Use_60_Hz_FilterToggleButton.reset(new juce::ToggleButton("Use_60_Hz_FilterToggleButton"));
 	addAndMakeVisible(Use_60_Hz_FilterToggleButton.get());
@@ -58,7 +59,8 @@ eksAudioControlComponent::eksAudioControlComponent(std::shared_ptr<xmlGuitarFine
 	Use_60_Hz_FilterToggleButton->addListener(this);
 	Use_60_Hz_FilterToggleButton->setColour(juce::ToggleButton::textColourId, juce::Colours::cornflowerblue);
 
-	Use_60_Hz_FilterToggleButton->setBounds(147, 370, 149, 24);
+    Use_60_Hz_FilterToggleButton->setSize(75, 24);
+// Use_60_Hz_FilterToggleButton->setBounds(147, 370, 149, 24);
 
 	preProcessingToggleButton.reset(new juce::ToggleButton("preProcessingToggleButton"));
 	addAndMakeVisible(preProcessingToggleButton.get());
@@ -102,8 +104,8 @@ eksAudioControlComponent::eksAudioControlComponent(std::shared_ptr<xmlGuitarFine
 	preProcessingToggleButton->setBounds(1, heightAudioDeviceSelectorComponent + 1 + 24, 231, 24);
 #else
 	auto heightAudioDeviceSelectorComponent = pAudioDeviceSelectorComponent->getHeight();
-	Use_50_Hz_FilterToggleButton->setBounds(1, heightAudioDeviceSelectorComponent - 15, 150, 24);
-	Use_60_Hz_FilterToggleButton->setBounds(147, heightAudioDeviceSelectorComponent - 15, 149, 24);
+//	Use_50_Hz_FilterToggleButton->setBounds(1, heightAudioDeviceSelectorComponent - 15, 150, 24);
+//	Use_60_Hz_FilterToggleButton->setBounds(147, heightAudioDeviceSelectorComponent - 15, 149, 24);
 	preProcessingToggleButton->setBounds(1, heightAudioDeviceSelectorComponent + 24 - 15, 231, 24);
 #endif // JUCE_ANDROID
 	//[/UserPreSize]
@@ -159,10 +161,18 @@ void eksAudioControlComponent::resized()
 		preProcessingToggleButton->setBounds(1, heightAudioDeviceSelectorComponent + 1 + 24, 231, 24);
 	}
 #elif (JUCE_WINDOWS || JUCE_MAC || JUCE_LINUX)
-	auto actHeightAudioDeviceSelectorComponent = pAudioDeviceSelectorComponent->getHeight();
-	Use_50_Hz_FilterToggleButton->setBounds(1, actHeightAudioDeviceSelectorComponent - 15, 150, 24);
-	Use_60_Hz_FilterToggleButton->setBounds(147, actHeightAudioDeviceSelectorComponent - 15, 149, 24);
-	preProcessingToggleButton->setBounds(1, actHeightAudioDeviceSelectorComponent + 24 - 15, 231, 24);
+    auto area = getLocalBounds().reduced(10);
+    pAudioDeviceSelectorComponent->setBounds(area.removeFromTop(40));
+    Use_50_Hz_FilterToggleButton->setBounds(area.removeFromBottom(30));
+    Use_50_Hz_FilterToggleButton->setSize(150, 24);
+    auto b50Bounds = Use_50_Hz_FilterToggleButton->getBounds();
+    Use_60_Hz_FilterToggleButton->setBounds(area.removeFromRight(140).removeFromBottom(0));
+    Use_60_Hz_FilterToggleButton->setSize(149, 24);
+    auto b60Bounds = Use_60_Hz_FilterToggleButton->getBounds();
+//	auto actHeightAudioDeviceSelectorComponent = pAudioDeviceSelectorComponent->getHeight();
+//	Use_50_Hz_FilterToggleButton->setBounds(1, actHeightAudioDeviceSelectorComponent - 15, 150, 24);
+//	Use_60_Hz_FilterToggleButton->setBounds(147, actHeightAudioDeviceSelectorComponent - 15, 149, 24);
+//	preProcessingToggleButton->setBounds(1, actHeightAudioDeviceSelectorComponent + 24 - 15, 231, 24);
 #endif // JUCE_ANDROID
 	AudioIODevice* CurrentAudioDevice = sharedAudioDeviceManager->getCurrentAudioDevice();
 	if (CurrentAudioDevice != nullptr)
