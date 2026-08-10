@@ -1790,10 +1790,7 @@ private:
         };
 
 
-//        // eks 16. sept. 2020 added Pimpl
-//        std::unique_ptr<Pimpl> pimpl;
-
-        // eks 16. sept. 2020 added Pimpl
+        // eks 10. aug. 2026 added Pimpl
         struct Pimpl
         {
             Pimpl()
@@ -1804,7 +1801,6 @@ private:
             {
             }
 
-            // eks 16. sept. 2020 added checkAudioInputAccessPermissions
             int checkAudioInputAccessPermissions()
             {
                 if (@available(macOS 10.14, *)) // macOS 10.14 or newer
@@ -1860,13 +1856,15 @@ private:
             JUCE_DECLARE_NON_COPYABLE (Pimpl)
         };
 
+        std::unique_ptr<Pimpl> pimpl;
+
         CoreAudioIODevice (const String& devName,
                            std::array<AudioDevice, 2> ioDevicesIn,
                            Listener* listener)
             : AudioIODevice (devName, "CoreAudio"),
-              ioDevices (ioDevicesIn),
-              // eks 16. sept. 2020 added Pimpl & checkAudioInputAccessPermissions
+              // eks 10. aug. 2026 added Pimpl & checkAudioInputAccessPermissions
               pimpl (std::make_unique<Pimpl>()),
+              ioDevices (ioDevicesIn),
               onAnyDevicePropertyChanged (aggregateDevice.createPropertyListener (kAudioDevicePropertyDeviceHasChanged, [&, listener]
               {
                   JUCE_COREAUDIO_LOG ("Device property change detected");
@@ -2062,7 +2060,7 @@ private:
             return lastError;
         }
 
-        // eks 16. sept. 2020 added checkAudioInputAccessPermissions
+        // eks 10. aug. 2026 added checkAudioInputAccessPermissions
         int checkAudioInputAccessPermissions()
         {
             return pimpl->checkAudioInputAccessPermissions();
