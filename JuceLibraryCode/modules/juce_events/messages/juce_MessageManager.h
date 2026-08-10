@@ -16,7 +16,7 @@
    framework to you, and you must discontinue the installation or download
    process and cease use of the JUCE framework.
 
-   JUCE End User Licence Agreement: https://juce.com/legal/juce-8-licence/
+   JUCE End User Licence Agreement: https://juce.com/legal/juce-9-licence/
    JUCE Privacy Policy: https://juce.com/juce-privacy-policy
    JUCE Website Terms of Service: https://juce.com/juce-website-terms-of-service/
 
@@ -94,7 +94,7 @@ public:
 
     /** Returns true if the stopDispatchLoop() method has been called.
     */
-    bool hasStopMessageBeenSent() const noexcept        { return quitMessagePosted.get() != 0; }
+    bool hasStopMessageBeenSent() const noexcept        { return quitMessagePosted; }
 
    #if JUCE_MODAL_LOOPS_PERMITTED
     /** Synchronously dispatches messages until a given time has elapsed.
@@ -193,14 +193,14 @@ public:
 
     /** Called to tell the manager that the current thread is the one that's running the dispatch loop.
 
-        (Best to ignore this method unless you really know what you're doing..)
+        (Best to ignore this method unless you really know what you're doing.)
         @see getCurrentMessageThread
     */
     void setCurrentThreadAsMessageThread();
 
     /** Returns the ID of the current message thread, as set by setCurrentThreadAsMessageThread().
 
-        (Best to ignore this method unless you really know what you're doing..)
+        (Best to ignore this method unless you really know what you're doing.)
         @see setCurrentThreadAsMessageThread
     */
     Thread::ThreadID getCurrentMessageThread() const noexcept            { return messageThreadId; }
@@ -389,11 +389,11 @@ public:
     };
 
     //==============================================================================
-   #ifndef DOXYGEN
     // Internal methods - do not use!
+    /** @cond */
     void deliverBroadcastMessage (const String&);
     ~MessageManager() noexcept;
-   #endif
+    /** @endcond */
 
 private:
     //==============================================================================
@@ -407,9 +407,9 @@ private:
     friend class MessageManagerLock;
 
     std::unique_ptr<ActionBroadcaster> broadcaster;
-    Atomic<int> quitMessagePosted { 0 }, quitMessageReceived { 0 };
+    std::atomic<bool> quitMessagePosted { false }, quitMessageReceived { false };
     Thread::ThreadID messageThreadId;
-    Atomic<Thread::ThreadID> threadWithLock;
+    std::atomic<Thread::ThreadID> threadWithLock;
     mutable std::mutex messageThreadIdMutex;
 
     template <typename Function>
@@ -448,12 +448,12 @@ private:
         someData = 1234;
 
         const MessageManagerLock mmLock;
-        // the event loop will now be locked so it's safe to make a few calls..
+        // the event loop will now be locked so it's safe to make a few calls
 
         myComponent->setBounds (newBounds);
         myComponent->repaint();
 
-        // ..the event loop will now be unlocked as the MessageManagerLock goes out of scope
+        // the event loop will now be unlocked as the MessageManagerLock goes out of scope
     }
     @endcode
 
@@ -466,7 +466,7 @@ private:
     Another caveat is that using this in conjunction with other CriticalSections
     can create lots of interesting ways of producing a deadlock! In particular, if
     your message thread calls stopThread() for a thread that uses these locks,
-    you'll get an (occasional) deadlock..
+    you'll get an (occasional) deadlock.
 
     @see MessageManager, MessageManager::currentThreadHasLockedMessageManager
 
@@ -509,10 +509,10 @@ public:
                 if (! mml.lockWasGained())
                     return; // another thread is trying to kill us!
 
-                ..do some locked stuff here..
+                ...do some locked stuff here...
             }
 
-            ..and now the MM is now unlocked..
+            ...and now the MM is now unlocked...
         }
         @endcode
 

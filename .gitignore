@@ -2,10 +2,12 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/Builds/VisualStudio2022/
-/Builds/VisualStudio2026/
-/Builds/MacOSX/
-/Builds/iOS/
+/.vs
+/Builds/Android
+/Builds/iOS
+/Builds/MacOSX
+/Builds/VisualStudio2022
+/Builds/VisualStudio2026
 /guitarfinetune_9.4.6_amd64.snap
 *.snap
 x64
@@ -83,4 +85,3 @@ x64
 /guitarfinetune_riscv64-2024-05-01T05:15:36.txt
 /guitarfinetune_amd64-2024-05-02T11:21:11.txt
 guitarfinetune_*.txt
-/.vs/

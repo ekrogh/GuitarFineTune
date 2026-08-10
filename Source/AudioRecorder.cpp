@@ -79,21 +79,26 @@ void AudioRecorder::startRecording(const File& file)
 	{
 		// Create an OutputStream to write to our destination file...
 		file.deleteFile();
-		std::unique_ptr<FileOutputStream> fileStream(file.createOutputStream());
+		std::unique_ptr<OutputStream> fileStream(file.createOutputStream());
 
-		if (fileStream.get() != nullptr)
+		if (fileStream != nullptr)
 		{
 			// Now create a WAV writer object that writes to our output stream...
 			WavAudioFormat wavFormat;
-			auto* writer = wavFormat.createWriterFor(fileStream.get(), sampleRate, 1, 16, {}, 0);
 
-			if (writer != nullptr)
+			auto options = AudioFormatWriterOptions()
+				.withSampleRate(sampleRate)
+				.withNumChannels(1)
+				.withBitsPerSample(16)
+				.withQualityOptionIndex(0);
+
+			auto writerPtr = wavFormat.createWriterFor(fileStream, options);
+
+			if (writerPtr != nullptr)
 			{
-				fileStream.release(); // (passes responsibility for deleting the stream to the writer object that is now using it)
-
 				// Now we'll create one of these helper objects which will act as a FIFO buffer, and will
 				// write the data to disk on our background thread.
-				threadedWriter.reset(new AudioFormatWriter::ThreadedWriter(writer, backgroundThread, 32768));
+				threadedWriter.reset(new AudioFormatWriter::ThreadedWriter(writerPtr.release(), backgroundThread, 32768));
 
 				// And now, swap over our active writer pointer so that the audio callback will start using it..
 				const ScopedLock sl(writerLock);

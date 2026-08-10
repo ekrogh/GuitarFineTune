@@ -55,7 +55,7 @@ tuneComponent::tuneComponent
 
 #if (JUCE_IOS || JUCE_ANDROID)
 	{
-		Rectangle<int> r = Desktop::getInstance().getDisplays().getPrimaryDisplay()->userArea;
+		Rectangle<int> r = Desktop::getInstance().getDisplays().getPrimaryDisplay()->userBounds.toNearestInt();
 		double sizeScale;
 		sizeScale = (double)(r.getWidth()) / (double)widthOfTuneWindow;
 		setSize((int)(widthOfTuneWindow * sizeScale), (int)(hightOfTuneWindow * sizeScale));
@@ -1291,13 +1291,8 @@ void tuneComponent::getNextAudioBlock(const AudioSourceChannelInfo& bufferToFill
 					float phaseDeltaPerSample;
 
 					float* channelData = bufferToFill.buffer->getWritePointer(0, bufferToFill.startSample);
-#if (JUCE_WINDOWS && _DEBUG)
-					auto outBffrStart = stdext::make_unchecked_array_iterator(channelData);
-					auto outBffrEnd = stdext::make_unchecked_array_iterator(channelData + bufferToFill.numSamples);
-#else // (JUCE_WINDOWS && _DEBUG)
 					auto outBffrStart = channelData;
 					auto outBffrEnd = channelData + bufferToFill.numSamples;
-#endif // (JUCE_WINDOWS && _DEBUG)
 
 #define f2PI (6.28318530717958647692)
 					double gainToUse = stringGainToUse;
@@ -1344,11 +1339,7 @@ void tuneComponent::getNextAudioBlock(const AudioSourceChannelInfo& bufferToFill
 			{ // Begin scope of guitarStringSoundsLockMutex
 				const ScopedLock sl(guitarStringSoundsLockMutex);
 
-#if (JUCE_WINDOWS && _DEBUG)
-				std::transform(guitarStringSoundsRamp.begin(), guitarStringSoundsRamp.end(), stdext::make_unchecked_array_iterator(bufferToFill.buffer->getReadPointer(0, bufferToFill.startSample)), stdext::make_unchecked_array_iterator(bufferToFill.buffer->getWritePointer(0, bufferToFill.startSample)), std::plus<float>());
-#else // (JUCE_WINDOWS && _DEBUG)
 				std::transform(guitarStringSoundsRamp.begin(), guitarStringSoundsRamp.end(), bufferToFill.buffer->getReadPointer(0, bufferToFill.startSample), bufferToFill.buffer->getWritePointer(0, bufferToFill.startSample), std::plus<float>());
-#endif // (JUCE_WINDOWS && _DEBUG)
 
 				if (bufferToFill.buffer->getNumChannels() > 1)
 				{
@@ -1382,7 +1373,7 @@ void tuneComponent::resized()
 {
 #if ( JUCE_ANDROID )
 	{
-		Rectangle<int> r = Desktop::getInstance().getDisplays().getPrimaryDisplay()->userArea;
+		Rectangle<int> r = Desktop::getInstance().getDisplays().getPrimaryDisplay()->userBounds.toNearestInt();
 
 		// JUCE 7 takes care of safe areas !!!!
 //		BorderSize<int>  nonSafeArea = Desktop::getInstance().getDisplays().getPrimaryDisplay()->safeAreaInsets;
@@ -1403,7 +1394,7 @@ void tuneComponent::resized()
 	}
 #elif ( JUCE_IOS )
 	{
-		Rectangle<int> r = Desktop::getInstance().getDisplays().getPrimaryDisplay()->userArea;
+		Rectangle<int> r = Desktop::getInstance().getDisplays().getPrimaryDisplay()->userBounds.toNearestInt();
 		double sizeScale;
 		if (r.getHeight() >= r.getWidth()) // Portrait
 		{
