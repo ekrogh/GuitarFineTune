@@ -153,3 +153,6 @@ x64
 /guitarfinetune_amd64-2024-05-02T11:21:11.txt
 guitarfinetune_*.txt
 /Builds/Android
+/.vs/CopilotSnapshots
+/Builds/Android/app/src/debug/res/values/string.xml
+/Builds/Android/app/src/main/res/drawable-mdpi/icon.png
