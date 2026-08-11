@@ -874,6 +874,8 @@ const uint8 javaComponentPeerView[]
  void juce_firebaseRemoteMessagesDeleted();
  void juce_firebaseRemoteMessageSent (void*);
  void juce_firebaseRemoteMessageSendError (void*, void*);
+#else
+ static bool juce_handleNotificationIntent (void*) { return false; }
 #endif
 
 #if JUCE_IN_APP_PURCHASES && JUCE_MODULE_AVAILABLE_juce_product_unlocking
@@ -3111,7 +3113,10 @@ const int KeyPress::fastForwardKey          = extendedKeyModifier + 71;
 const int KeyPress::rewindKey               = extendedKeyModifier + 72;
 
 //==============================================================================
-#ifdef JUCE_PUSH_NOTIFICATIONS_ACTIVITY
+#ifndef JUCE_PUSH_NOTIFICATIONS_ACTIVITY
+ #define JUCE_PUSH_NOTIFICATIONS_ACTIVITY "com/rmsl/juce/JuceActivity"
+#endif
+
  struct JuceActivityNewIntentListener
  {
      #define JNI_CLASS_MEMBERS(METHOD, STATICMETHOD, FIELD, STATICFIELD, CALLBACK) \
@@ -3131,6 +3136,5 @@ const int KeyPress::rewindKey               = extendedKeyModifier + 72;
          juce_handleOnResume();
      }
  };
-#endif
 
 } // namespace juce

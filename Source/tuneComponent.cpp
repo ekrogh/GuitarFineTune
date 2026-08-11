@@ -1390,7 +1390,7 @@ void tuneComponent::resized()
 //					);
 //		}
 		double sizeScale = (double)(r.getWidth()) / (double)widthOfTuneWindow;
-		setSize((int)(widthOfTuneWindow * sizeScale), (int)(hightOfTuneWindow * sizeScale));
+		setSize((int)((double)widthOfTuneWindow * sizeScale), (int)((double)hightOfTuneWindow * sizeScale));
 	}
 #elif ( JUCE_IOS )
 	{

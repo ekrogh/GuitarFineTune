@@ -639,7 +639,7 @@ float guitarFineTuneFirstClass::scaleToGuitarStringSoundsControlWindow()
 		{
 			scaleNow = bndsScaleVerti;
 		}
-		pEksTabbedComponent->setTabBarDepth(tabBarDepthAndroidIosInHorizontal * scaleNow);
+		pEksTabbedComponent->setTabBarDepth((float)tabBarDepthAndroidIosInHorizontal * scaleNow);
 	}
 	else
 	{
@@ -655,7 +655,7 @@ float guitarFineTuneFirstClass::scaleToGuitarStringSoundsControlWindow()
 		{
 			scaleNow = bndsScaleVerti;
 		}
-		pEksTabbedComponent->setTabBarDepth(tabBarDepthAndroidIosInVertical * scaleNow);
+		pEksTabbedComponent->setTabBarDepth((float)tabBarDepthAndroidIosInVertical * scaleNow);
 	}
 
 	return scaleNow;
