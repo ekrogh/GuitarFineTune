@@ -71,6 +71,9 @@ private:
         //Label colours
 	int labelTextColorId = juce::Label::textColourId;
 	juce::Colour labelColor = juce::Colours::cornflowerblue;
+    
+    float scaleUsedLastTime = 1.0f;
+
     //[/UserVariables]
 
     //==============================================================================

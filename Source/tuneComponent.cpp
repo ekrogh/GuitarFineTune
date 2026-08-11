@@ -58,7 +58,7 @@ tuneComponent::tuneComponent
 		Rectangle<int> r = Desktop::getInstance().getDisplays().getPrimaryDisplay()->userBounds.toNearestInt();
 		double sizeScale;
 		sizeScale = (double)(r.getWidth()) / (double)widthOfTuneWindow;
-		setSize((int)(widthOfTuneWindow * sizeScale), (int)(hightOfTuneWindow * sizeScale));
+		setSize((int)((double)widthOfTuneWindow * sizeScale), (int)((double)hightOfTuneWindow * sizeScale));
 	}
 #else
 	{
@@ -1411,7 +1411,7 @@ void tuneComponent::resized()
 				sizeScale = (double)(r.getWidth()) / (double)widthOfTuneWindow;
 			}
 		}
-		setSize((int)(widthOfTuneWindow * sizeScale), (int)(hightOfTuneWindow * sizeScale));
+		setSize((int)((double)widthOfTuneWindow * sizeScale), (int)((double)hightOfTuneWindow * sizeScale));
 	}
 #else // macos or win
 	{

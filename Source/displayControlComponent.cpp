@@ -734,7 +734,7 @@ void displayControlComponent::scaleAllComponents()
 				curbnds = getBounds();
 				curUserArea.setHeight(curUserArea.getHeight() - parent->getTabBarDepth());
 				curUserArea.setY(parent->getTabBarDepth());
-				setBoundsToFit(curUserArea, Justification::left, false);
+				setBoundsToFit(curUserArea.toNearestInt(), Justification::left, false);
 
 				int numChildComponents = this->getNumChildComponents();
 
