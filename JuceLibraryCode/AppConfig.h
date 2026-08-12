@@ -16,7 +16,9 @@
 //==============================================================================
 // [BEGIN_USER_CODE_SECTION]
 
-// (You can add your own code in this section, and the Projucer will not overwrite it)
+#ifndef JUCE_USE_ANDROID_OBOE
+ #define JUCE_USE_ANDROID_OBOE 1
+#endif
 
 // [END_USER_CODE_SECTION]
 
@@ -75,7 +77,7 @@
 #endif
 
 #ifndef    JUCE_USE_ANDROID_OBOE
- #define   JUCE_USE_ANDROID_OBOE 1
+ //#define JUCE_USE_ANDROID_OBOE 1
 #endif
 
 #ifndef    JUCE_USE_OBOE_STABILIZED_CALLBACK
