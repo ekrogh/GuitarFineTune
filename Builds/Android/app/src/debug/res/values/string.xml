@@ -2,5 +2,4 @@
 
 <resources>
   <string name="app_name">GuitarFineTune</string>
-  <string name="tuner_audio_label">Guitar Tuner Audio</string>
 </resources>

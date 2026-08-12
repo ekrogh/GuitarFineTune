@@ -163,7 +163,8 @@
                    androidExternalWriteNeeded="1" androidInternetNeeded="1" androidReadMediaAudioPermission="0"
                    androidReadMediaImagesPermission="0" androidReadMediaVideoPermission="0"
                    androidMinimumSDK="21" gradleWrapperVersion="8.11.0" gradleVersion="8.13"
-                   androidTargetSDK="35">
+                   androidTargetSDK="35" androidManifestCustomXmlElements="&lt;attribution android:tag=&quot;tuner_audio&quot; android:label=&quot;@string/tuner_audio_label&quot; /&gt;"
+                   androidCustomResourceStrings="&lt;string name=&quot;tuner_audio_label&quot;&gt;Guitar Tuner Audio&lt;/string&gt;">
       <CONFIGURATIONS>
         <CONFIGURATION name="Release" isDebug="0" targetName="GuitarFineTune" optimisation="3"
                        linkTimeOptimisation="1"/>
