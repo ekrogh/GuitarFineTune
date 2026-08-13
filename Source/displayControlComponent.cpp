@@ -411,7 +411,7 @@ void displayControlComponent::resized()
 			autoCalibrateTextButton->setBounds(g.getX() + 139, g.getY() + 19, 107, 24);
 			adaptiveToggleButton->setBounds(g.getX() + 10, g.getY() + 53, 83, 24);
 			adaptiveNoSecondsComboBox->setBounds(g.getX() + 100, g.getY() + 53, 86, 24);
-			adaptiveNoSecondsLabel->setBounds(g.getX() + 190, g.getY() + 53, 130, 24);
+			adaptiveNoSecondsLabel->setBounds(g.getX() + 190, g.getY() + 53, g.getWidth() - 194, 24);
 		}
 		// Inner controls for averageGroup
 		{
@@ -420,7 +420,7 @@ void displayControlComponent::resized()
 			averageSider->setBounds(g.getX() + 66, g.getY() + 17, 55, 24);
 			calculationsLabel->setBounds(g.getX() + 124, g.getY() + 17, 96, 24);
 			noSecondsSoundPerCalcComboBox->setBounds(g.getX() + 10, g.getY() + 51, 86, 24);
-			noSecondsSoundPerCalcLabel->setBounds(g.getX() + 99, g.getY() + 51, 221, 24);
+			noSecondsSoundPerCalcLabel->setBounds(g.getX() + 99, g.getY() + 51, g.getWidth() - 103, 24);
 		}
 		// Inner controls for ShowGroup
 		{
@@ -436,10 +436,10 @@ void displayControlComponent::resized()
 		// Inner controls for freqRangeGroup
 		{
 			auto g = freqRangeGroupComponent->getBounds();
-			labelLowestFreq->setBounds(g.getX() + 5, g.getY() + 16, 189, 24);
+			labelLowestFreq->setBounds(g.getX() + 5, g.getY() + 16, g.getWidth() - 10, 24);
 			sliderLowestFreqLabel->setBounds(g.getX() + 10, g.getY() + 40, 50, 20);
 			sliderLowestFreq->setBounds(g.getX() + 66, g.getY() + 40, 55, 24);
-			labelHighstFreq->setBounds(g.getX() + 5, g.getY() + 72, 221, 24);
+			labelHighstFreq->setBounds(g.getX() + 5, g.getY() + 72, g.getWidth() - 10, 24);
 			sliderHighestFreqLabel->setBounds(g.getX() + 10, g.getY() + 99, 50, 20);
 			sliderHighestFreq->setBounds(g.getX() + 66, g.getY() + 99, 55, 24);
 		}

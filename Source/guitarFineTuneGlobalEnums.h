@@ -23,7 +23,7 @@ enum
 	, hightOfTuneWindow = 200
 
 	, tabGuitarStringSoundsControlWindow = 1
-	, widthOfGuitarStringSoundsControlWindowHorizontal = 558
+	, widthOfGuitarStringSoundsControlWindowHorizontal = 620
 	, hightOfGuitarStringSoundsControlWindowHorizontal = 295
 	, widthOfGuitarStringSoundsControlWindowVertical = 300
 	, hightOfGuitarStringSoundsControlWindowVertical = 430
@@ -45,7 +45,7 @@ enum
 	#if JUCE_LINUX
 		, hightOfEksAudioControlComponentWindow = 425
 	#else
-		, hightOfEksAudioControlComponentWindow = 400
+		, hightOfEksAudioControlComponentWindow = 480
 	#endif // JUCE_LINUX
 #endif // (JUCE_IOS || JUCE_ANDROID)
 

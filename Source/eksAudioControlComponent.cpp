@@ -171,8 +171,11 @@ void eksAudioControlComponent::resized()
 
 		enableZoomToggleButton->setBounds(area.removeFromBottom(rowH));
 		area.removeFromBottom(margin);
-		preProcessingToggleButton->setBounds(area.removeFromBottom(rowH));
-		area.removeFromBottom(margin);
+		if (preProcessingToggleButton->isVisible())
+		{
+			preProcessingToggleButton->setBounds(area.removeFromBottom(rowH));
+			area.removeFromBottom(margin);
+		}
 
 		// 50/60 Hz buttons side by side
 		auto hzRow = area.removeFromBottom(rowH);
@@ -311,13 +314,13 @@ void eksAudioControlComponent::scaleAllComponents()
 
 				auto actHeightAudioDeviceSelectorComponent = pAudioDeviceSelectorComponent->getHeight();
 				workRectangle.setBounds(1, (actHeightAudioDeviceSelectorComponent /
-					scaleUsedLastTime) - 15, 150, 24);
+					(int)scaleUsedLastTime) - 15, 150, 24);
 				Use_50_Hz_FilterToggleButton->setBounds(workRectangle * scaleUsedLastTime);
 				workRectangle.setBounds(147, (actHeightAudioDeviceSelectorComponent /
-					scaleUsedLastTime) - 15, 149, 24);
+					(int)scaleUsedLastTime) - 15, 149, 24);
 				Use_60_Hz_FilterToggleButton->setBounds(workRectangle * scaleUsedLastTime);
 				workRectangle.setBounds(1, (actHeightAudioDeviceSelectorComponent /
-					scaleUsedLastTime) + 24 - 15, 231, 24);
+					(int)scaleUsedLastTime) + 24 - 15, 231, 24);
 				preProcessingToggleButton->setBounds(workRectangle * scaleUsedLastTime);
 
 
@@ -346,7 +349,7 @@ void eksAudioControlComponent::scaleAllComponents()
 							{
 								Font currentFont = labelTestComponent->getFont();
 								currentFont.setHeight(
-									currentFont.getHeightInPoints() * scaleToUse * 0.9);
+									currentFont.getHeightInPoints() * scaleToUse * 0.9f);
 								labelTestComponent->setFont(currentFont);
 							}
 
@@ -356,7 +359,7 @@ void eksAudioControlComponent::scaleAllComponents()
 							{
 								Font currentFont = textEditorTestComponent->getFont();
 								currentFont.setHeight(
-									currentFont.getHeightInPoints() * scaleToUse * 1.3);
+									currentFont.getHeightInPoints() * scaleToUse * 1.3f);
 								textEditorTestComponent->applyFontToAllText(currentFont);
 								textEditorTestComponent->setJustification(Justification::centred);
 							}
@@ -365,7 +368,7 @@ void eksAudioControlComponent::scaleAllComponents()
 
 					// juce::AudioDeviceSelectorComponent
 					pAudioDeviceSelectorComponent->setItemHeight(
-						pAudioDeviceSelectorComponent->getItemHeight() * scaleToUse);
+						(int)(pAudioDeviceSelectorComponent->getItemHeight() * scaleToUse));
 
 					scaleUsedLastTime = scaleNow;
 					firstCall = false;
@@ -374,11 +377,11 @@ void eksAudioControlComponent::scaleAllComponents()
                     auto area = getLocalBounds().reduced(10);
                     pAudioDeviceSelectorComponent->setBounds(area.removeFromTop(40));
                     preProcessingToggleButton->setBounds(area.removeFromBottom(30));
-                    preProcessingToggleButton->setSize(scaleUsedLastTime*150, scaleUsedLastTime*24);
+                    preProcessingToggleButton->setSize((int)(scaleUsedLastTime*150), (int)(scaleUsedLastTime*24));
                     Use_50_Hz_FilterToggleButton->setBounds(area.removeFromBottom(30));
-                    Use_50_Hz_FilterToggleButton->setSize(scaleUsedLastTime*150, scaleUsedLastTime*24);
-                    Use_60_Hz_FilterToggleButton->setBounds(area.removeFromRight(scaleUsedLastTime*140).removeFromBottom(0));
-                    Use_60_Hz_FilterToggleButton->setSize(scaleUsedLastTime*149, scaleUsedLastTime*24);
+                    Use_50_Hz_FilterToggleButton->setSize((int)(scaleUsedLastTime*150), (int)(scaleUsedLastTime*24));
+                    Use_60_Hz_FilterToggleButton->setBounds(area.removeFromRight((int)(scaleUsedLastTime*140)).removeFromBottom(0));
+                    Use_60_Hz_FilterToggleButton->setSize((int)(scaleUsedLastTime*149), (int)(scaleUsedLastTime*24));
 
 //                    auto area = getLocalBounds().reduced(10);
 //                    pAudioDeviceSelectorComponent->setBounds(area.removeFromTop(40));

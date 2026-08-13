@@ -605,8 +605,8 @@ void guitarStringSoundsControl::resized()
 		}
 		else
 		{
-			// Landscape: left = PlayTone + outputMix; right = record | recordLevel side by side
-			auto left = bounds.removeFromLeft(juce::jmin(296, bounds.getWidth() / 2));
+			// Landscape: left = PlayTone + outputMix (needs >=285px for PlayTone controls); right = record | recordLevel
+			auto left = bounds.removeFromLeft(310);
 			juce::FlexBox leftFb;
 			leftFb.flexDirection = juce::FlexBox::Direction::column;
 			leftFb.items.add(juce::FlexItem(*PlayToneGroupComponent) .withHeight((float)playToneH).withFlex(0).withMargin({ 0, 0, gap, 0 }));
@@ -658,14 +658,32 @@ void guitarStringSoundsControl::resized()
 		// Inner controls for recordGroup
 		{
 			auto g = recordGroupComponent->getBounds();
-			rawSoundLabellabel->setBounds(g.getX()+10, g.getY()+14, 85, 24);
-			sourceRawToggleButton->setBounds(g.getX()+34, g.getY()+38, 24, 24);
-			FilteredSoundLabel->setBounds(g.getX()+94, g.getY()+14, 104, 24);
-			sourceFilteredToggleButton->setBounds(g.getX()+129, g.getY()+38, 24, 24);
-			startLabel->setBounds(g.getX()+208, g.getY()+14, 48, 24);
-			startRecordingToggleButton->setBounds(g.getX()+208, g.getY()+38, 24, 24);
-			stopLabel->setBounds(g.getX()+256, g.getY()+14, 48, 24);
-			stopRecordingToggleButton->setBounds(g.getX()+256, g.getY()+38, 24, 24);
+			if (!isLandscape)
+			{
+				// Portrait: wide group, lay out in two rows of 4 items
+				rawSoundLabellabel->setBounds(g.getX()+10, g.getY()+14, 85, 24);
+				sourceRawToggleButton->setBounds(g.getX()+34, g.getY()+38, 24, 24);
+				FilteredSoundLabel->setBounds(g.getX()+94, g.getY()+14, 104, 24);
+				sourceFilteredToggleButton->setBounds(g.getX()+129, g.getY()+38, 24, 24);
+				startLabel->setBounds(g.getX()+208, g.getY()+14, 48, 24);
+				startRecordingToggleButton->setBounds(g.getX()+208, g.getY()+38, 24, 24);
+				stopLabel->setBounds(g.getX()+256, g.getY()+14, 48, 24);
+				stopRecordingToggleButton->setBounds(g.getX()+256, g.getY()+38, 24, 24);
+			}
+			else
+			{
+				// Landscape: narrow group — two columns, two rows
+				const int col1x = g.getX() + 8;
+				const int col2x = g.getX() + g.getWidth() / 2;
+				rawSoundLabellabel->setBounds(col1x, g.getY()+24, g.getWidth()/2 - 8, 20);
+				sourceRawToggleButton->setBounds(col1x + 16, g.getY()+46, 24, 24);
+				FilteredSoundLabel->setBounds(col2x, g.getY()+24, g.getWidth()/2 - 8, 20);
+				sourceFilteredToggleButton->setBounds(col2x + 16, g.getY()+46, 24, 24);
+				startLabel->setBounds(col1x, g.getY()+80, g.getWidth()/2 - 8, 20);
+				startRecordingToggleButton->setBounds(col1x + 16, g.getY()+102, 24, 24);
+				stopLabel->setBounds(col2x, g.getY()+80, g.getWidth()/2 - 8, 20);
+				stopRecordingToggleButton->setBounds(col2x + 16, g.getY()+102, 24, 24);
+			}
 		}
 		// Inner controls for recordLevelGroup
 		{
@@ -679,9 +697,9 @@ void guitarStringSoundsControl::resized()
 			}
 			else
 			{
-				RecordingLevelMeter->setBounds(g.getX()+8, g.getY()+20, 24, g.getHeight()-32);
-				recordingLevelSliderLabel->setBounds(g.getX()+36, g.getY()+20, 50, 20);
-				recordingLevelSlider->setBounds(g.getX()+34, g.getY()+40, g.getWidth()-42, g.getHeight()-56);
+				RecordingLevelMeter->setBounds(g.getX()+8, g.getY()+24, 24, g.getHeight()-62);
+				recordingLevelSliderLabel->setBounds(g.getX()+36, g.getY()+24, 50, 20);
+				recordingLevelSlider->setBounds(g.getX()+34, g.getY()+46, g.getWidth()-42, g.getHeight()-76);
 				autoGainToggleButton->setBounds(g.getX()+4, g.getY()+g.getHeight()-28, 60, 24);
 			}
 		}
