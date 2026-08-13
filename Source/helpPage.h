@@ -22,6 +22,7 @@
 //[Headers]     -- You can add your own extra header files here --
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "guitarFineTuneGlobalEnums.h"
+#include "xmlGuitarFineTuneConfig.h"
 //[/Headers]
 
 
@@ -42,11 +43,12 @@ public:
     ~aboutPage() override;
 
     //==============================================================================
-    //[UserMethods]     -- You can add your own custom methods in this section.
+	//[UserMethods]     -- You can add your own custom methods in this section.
 #if (JUCE_IOS || JUCE_ANDROID)
 	void scaleAllComponents();
 #endif // (JUCE_IOS || JUCE_ANDROID)
-    //[/UserMethods]
+	void setConfig(xmlGuitarFineTuneConfig* config) { pXmlGuitarFineTuneConfig = config; }
+	//[/UserMethods]
 
     void paint (juce::Graphics& g) override;
     void resized() override;
@@ -55,6 +57,7 @@ public:
 
 private:
     //[UserVariables]   -- You can add your own custom variables in this section.
+    xmlGuitarFineTuneConfig* pXmlGuitarFineTuneConfig = nullptr;
     //[/UserVariables]
 
     //==============================================================================

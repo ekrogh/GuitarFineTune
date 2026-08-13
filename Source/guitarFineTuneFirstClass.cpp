@@ -273,6 +273,7 @@ guitarFineTuneFirstClass::guitarFineTuneFirstClass()
 		, addViewPort
 		);
 	pAboutPage = std::make_shared<aboutPage>();
+	pAboutPage->setConfig(pXmlGuitarFineTuneConfig.get());
 
 	pEksTabbedComponent->addTab
 	(
@@ -678,6 +679,11 @@ void guitarFineTuneFirstClass::resized()
 	{
 		DocumentWindow::setBounds(curCompntBnds);
 
+		// Read the user's zoom preference
+		bool enableZoom = false;
+		if (auto* audioCtrl = pXmlGuitarFineTuneConfig->getGuitarfinetuneconfig().getChildByName("AUDIOCONTROL"))
+			enableZoom = audioCtrl->getBoolAttribute("enableZoom");
+
 		float bndsScaleHoriz;
 		float bndsScaleVerti;
 		float scaleNow;
@@ -685,89 +691,75 @@ void guitarFineTuneFirstClass::resized()
 		{
 			case tabTuneWindow:
 				{
-					scaleToGuitarStringSoundsControlWindow();
+					if (enableZoom)
+						scaleToGuitarStringSoundsControlWindow();
 					break;
 				}
 			case tabGuitarStringSoundsControlWindow:
 				{
-					scaleNow = scaleToGuitarStringSoundsControlWindow();
-					pGuitarFineTuneLookAndFeel->scaleEksLookAndFeelFonts(scaleNow);
-					pGuitarFineTuneLookAndFeel->scaleAllsliderTextBoxes(scaleNow);
+					if (enableZoom)
+					{
+						scaleNow = scaleToGuitarStringSoundsControlWindow();
+						pGuitarFineTuneLookAndFeel->scaleEksLookAndFeelFonts(scaleNow);
+						pGuitarFineTuneLookAndFeel->scaleAllsliderTextBoxes(scaleNow);
+					}
 					pGuitarStringSoundsControl->scaleAllComponents();
 					break;
 				}
 			case tabDisplayControlWindow:
 				{
-					if (curCompntBnds.getWidth() >= curCompntBnds.getHeight())
+					if (enableZoom)
 					{
-						// Horizontal
-						bndsScaleHoriz = (float)(curCompntBnds.getWidth()) / (float)(widthOfDisplayControlWindowHorizontal);
-						bndsScaleVerti = ((float)(curCompntBnds.getHeight())
-							- (float)(tabBarDepthAndroidIosInHorizontal)) / ((float)(hightOfDisplayControlWindowHorizontal));
-						if (bndsScaleHoriz < bndsScaleVerti)
+						if (curCompntBnds.getWidth() >= curCompntBnds.getHeight())
 						{
-							scaleNow = bndsScaleHoriz;
+							// Horizontal
+							bndsScaleHoriz = (float)(curCompntBnds.getWidth()) / (float)(widthOfDisplayControlWindowHorizontal);
+							bndsScaleVerti = ((float)(curCompntBnds.getHeight())
+								- (float)(tabBarDepthAndroidIosInHorizontal)) / ((float)(hightOfDisplayControlWindowHorizontal));
+							scaleNow = (bndsScaleHoriz < bndsScaleVerti) ? bndsScaleHoriz : bndsScaleVerti;
+							pEksTabbedComponent->setTabBarDepth((float)tabBarDepthAndroidIosInHorizontal * scaleNow);
 						}
 						else
 						{
-							scaleNow = bndsScaleVerti;
+							// Vertical
+							bndsScaleHoriz = (float)(curCompntBnds.getWidth()) / (float)(widthOfDisplayControlWindowVertical);
+							bndsScaleVerti = ((float)(curCompntBnds.getHeight())
+								- (float)(tabBarDepthAndroidIosInVertical)) / ((float)(hightOfDisplayControlWindowVertical + 1));
+							scaleNow = (bndsScaleHoriz < bndsScaleVerti) ? bndsScaleHoriz : bndsScaleVerti;
+							pEksTabbedComponent->setTabBarDepth((float)tabBarDepthAndroidIosInVertical * scaleNow);
 						}
-						pEksTabbedComponent->setTabBarDepth((float)tabBarDepthAndroidIosInHorizontal * scaleNow);
+						pGuitarFineTuneLookAndFeel->scaleEksLookAndFeelFonts(scaleNow);
+						pGuitarFineTuneLookAndFeel->scaleAllsliderTextBoxes(scaleNow);
 					}
-					else
-					{
-						// Vertical
-						bndsScaleHoriz = (float)(curCompntBnds.getWidth()) / (float)(widthOfDisplayControlWindowVertical);
-						bndsScaleVerti = ((float)(curCompntBnds.getHeight())
-							- (float)(tabBarDepthAndroidIosInVertical)) / ((float)(hightOfDisplayControlWindowVertical + 1));
-						if (bndsScaleHoriz < bndsScaleVerti)
-						{
-							scaleNow = bndsScaleHoriz;
-						}
-						else
-						{
-							scaleNow = bndsScaleVerti;
-						}
-						pEksTabbedComponent->setTabBarDepth((float)tabBarDepthAndroidIosInVertical * scaleNow);
-					}
-					pGuitarFineTuneLookAndFeel->scaleEksLookAndFeelFonts(scaleNow);
-					pGuitarFineTuneLookAndFeel->scaleAllsliderTextBoxes(scaleNow);
 					pDisplayControlComponent->scaleAllComponents();
 					break;
 				}
 			case tabEksAudioControlComponent:
 				{
-					bndsScaleHoriz = (float)(curCompntBnds.getWidth()) / (float)(widthOfEksAudioControlComponentWindow);
-					bndsScaleVerti = ((float)(curCompntBnds.getHeight())
-						- (float)(tabBarDepthAndroidIosInHorizontal)) / ((float)(hightOfEksAudioControlComponentWindow));
-					if (bndsScaleHoriz < bndsScaleVerti)
+					if (enableZoom)
 					{
-						scaleNow = bndsScaleHoriz;
+						bndsScaleHoriz = (float)(curCompntBnds.getWidth()) / (float)(widthOfEksAudioControlComponentWindow);
+						bndsScaleVerti = ((float)(curCompntBnds.getHeight())
+							- (float)(tabBarDepthAndroidIosInHorizontal)) / ((float)(hightOfEksAudioControlComponentWindow));
+						scaleNow = (bndsScaleHoriz < bndsScaleVerti) ? bndsScaleHoriz : bndsScaleVerti;
+						if (curCompntBnds.getWidth() >= curCompntBnds.getHeight())
+							pEksTabbedComponent->setTabBarDepth((float)tabBarDepthAndroidIosInHorizontal * scaleNow);
+						else
+							pEksTabbedComponent->setTabBarDepth((float)tabBarDepthAndroidIosInVertical * scaleNow);
+						pGuitarFineTuneLookAndFeel->scaleEksLookAndFeelFonts(scaleNow);
+						pGuitarFineTuneLookAndFeel->scaleAllsliderTextBoxes(scaleNow);
 					}
-					else
-					{
-						scaleNow = bndsScaleVerti;
-					}
-					if (curCompntBnds.getWidth() >= curCompntBnds.getHeight())
-					{
-						// Horizontal
-						pEksTabbedComponent->setTabBarDepth((float)tabBarDepthAndroidIosInHorizontal * scaleNow);
-					}
-					else
-					{
-						// Vertical
-						pEksTabbedComponent->setTabBarDepth((float)tabBarDepthAndroidIosInVertical * scaleNow);
-					}
-					pGuitarFineTuneLookAndFeel->scaleEksLookAndFeelFonts(scaleNow);
-					pGuitarFineTuneLookAndFeel->scaleAllsliderTextBoxes(scaleNow);
 					pEksAudioControlComponent->scaleAllComponents();
 					break;
 				}
 			case tabAboutPage:
 				{
-					scaleNow = scaleToGuitarStringSoundsControlWindow();
-					pGuitarFineTuneLookAndFeel->scaleEksLookAndFeelFonts(scaleNow);
-					pGuitarFineTuneLookAndFeel->scaleAllsliderTextBoxes(scaleNow);
+					if (enableZoom)
+					{
+						scaleNow = scaleToGuitarStringSoundsControlWindow();
+						pGuitarFineTuneLookAndFeel->scaleEksLookAndFeelFonts(scaleNow);
+						pGuitarFineTuneLookAndFeel->scaleAllsliderTextBoxes(scaleNow);
+					}
 					pAboutPage->scaleAllComponents();
 					break;
 				}

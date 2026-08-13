@@ -47,9 +47,7 @@ public:
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
 	XmlElement* getXmlTagAUDIOCONTROL();
-#if (JUCE_IOS || JUCE_ANDROID)
-	void scaleAllComponents();
-#endif // (JUCE_IOS || JUCE_ANDROID)
+void scaleAllComponents();
 	void initControls();
 	void setColorOfAllLabels(juce::Component* cmpontToHandle);
     //[/UserMethods]
@@ -81,6 +79,7 @@ private:
     std::unique_ptr<juce::ToggleButton> Use_50_Hz_FilterToggleButton;
     std::unique_ptr<juce::ToggleButton> Use_60_Hz_FilterToggleButton;
     std::unique_ptr<juce::ToggleButton> preProcessingToggleButton;
+    std::unique_ptr<juce::ToggleButton> enableZoomToggleButton;
 
 
     //==============================================================================

@@ -370,54 +370,81 @@ void displayControlComponent::paint (juce::Graphics& g)
 
 void displayControlComponent::resized()
 {
-    //[UserPreResize] Add your own custom resize code here..
-#if  !(JUCE_IOS || JUCE_ANDROID) // Avoid running Projucers code if Android || iOS
-    //[/UserPreResize]
+	//[UserPreResize] Add your own custom resize code here..
+	//[/UserPreResize]
 
-    showFFTToggleButton->setBounds (119, 233, 55, 25);
-    showSpectrumToggleButton->setBounds (10, 233, 94, 25);
-    showFilterToggleButton->setBounds (183, 260, 78, 25);
-    showFFTMaxIndictrToggleButton->setBounds (10, 260, 136, 25);
-    stringsOffTuneValuesToggleButton->setBounds (119, 206, 176, 25);
-    //[UserResized] Add your own custom resize handling here..
-#endif  // !(JUCE_IOS || JUCE_ANDROID) End Avoid running Projucers code
-
-#if (JUCE_WINDOWS || JUCE_MAC || JUCE_LINUX || JUCE_ANDROID)
-#if JUCE_ANDROID
-	if (viewPortAdded)
+	//[UserResized] Add your own custom resize handling here..
 	{
-#endif // JUCE_ANDROID
-		auto  curUserArea = Desktop::getInstance().getDisplays().getPrimaryDisplay()->userBounds;
-		//auto  curUserArea = Desktop::getInstance().getDisplays().getMainDisplay().userBounds;
-		if (curUserArea.getWidth() >= curUserArea.getHeight())
+		auto bounds = getLocalBounds().reduced(4);
+		const bool isLandscape = (getWidth() >= getHeight());
+		const int bgsoundH = 88, averageH = 88, showH = 106, freqH = 136;
+		const float gap = 4.0f;
+
+		if (!isLandscape)
 		{
-			// Horizontal
-			setSize(widthOfDisplayControlWindowHorizontal, hightOfDisplayControlWindowHorizontal);
-			freqRangeGroupComponent->setBounds(323, 8, 203, 128);
-			labelLowestFreq->setBounds(325, 20, 199, 24);
-			sliderLowestFreq->setBounds(391, 44, 55, 24);
-			sliderLowestFreqLabel->setBounds(335, 44, 50, 24);
-			labelHighstFreq->setBounds(325, 72, 200, 24);
-			sliderHighestFreq->setBounds(391, 99, 55, 24);
-			sliderHighestFreqLabel->setBounds(335, 99, 50, 24);
+			// Portrait: stack all 4 groups vertically
+			juce::FlexBox fb;
+			fb.flexDirection = juce::FlexBox::Direction::column;
+			fb.items.add(juce::FlexItem(*bgsoundExclusionGroupComponent).withHeight((float)bgsoundH).withFlex(0).withMargin({ 0, 0, gap, 0 }));
+			fb.items.add(juce::FlexItem(*averageGroupComponent)         .withHeight((float)averageH).withFlex(0).withMargin({ 0, 0, gap, 0 }));
+			fb.items.add(juce::FlexItem(*ShowGroupComponent)            .withHeight((float)showH).withFlex(0).withMargin({ 0, 0, gap, 0 }));
+			fb.items.add(juce::FlexItem(*freqRangeGroupComponent)       .withHeight((float)freqH).withFlex(0));
+			fb.performLayout(bounds.toFloat());
 		}
 		else
 		{
-			//Vertical
-			setSize(widthOfDisplayControlWindowVertical, hightOfDisplayControlWindowVertical);
-			freqRangeGroupComponent->setBounds(0, 298, 320, 136);
-			labelLowestFreq->setBounds(5, 314, 189, 24);
-			sliderLowestFreq->setBounds(66, 338, 55, 24);
-			sliderLowestFreqLabel->setBounds(10, 338, 50, 20);
-			labelHighstFreq->setBounds(5, 370, 221, 24);
-			sliderHighestFreq->setBounds(66, 397, 55, 24);
-			sliderHighestFreqLabel->setBounds(10, 397, 50, 20);
+			// Landscape: left = bgsound + average + show stacked; right = freqRange
+			auto left = bounds.removeFromLeft(juce::jmin(320, bounds.getWidth() * 2 / 3));
+			juce::FlexBox leftFb;
+			leftFb.flexDirection = juce::FlexBox::Direction::column;
+			leftFb.items.add(juce::FlexItem(*bgsoundExclusionGroupComponent).withHeight((float)bgsoundH).withFlex(0).withMargin({ 0, 0, gap, 0 }));
+			leftFb.items.add(juce::FlexItem(*averageGroupComponent)         .withHeight((float)averageH).withFlex(0).withMargin({ 0, 0, gap, 0 }));
+			leftFb.items.add(juce::FlexItem(*ShowGroupComponent)            .withFlex(1));
+			leftFb.performLayout(left.toFloat());
+			freqRangeGroupComponent->setBounds(bounds.reduced(2));
 		}
-	#if JUCE_ANDROID
+
+		// Inner controls for bgsoundExclusionGroup
+		{
+			auto g = bgsoundExclusionGroupComponent->getBounds();
+			thresholdTextEditor->setBounds(g.getX() + 10, g.getY() + 19, 102, 24);
+			autoCalibrateTextButton->setBounds(g.getX() + 139, g.getY() + 19, 107, 24);
+			adaptiveToggleButton->setBounds(g.getX() + 10, g.getY() + 53, 83, 24);
+			adaptiveNoSecondsComboBox->setBounds(g.getX() + 100, g.getY() + 53, 86, 24);
+			adaptiveNoSecondsLabel->setBounds(g.getX() + 190, g.getY() + 53, 130, 24);
+		}
+		// Inner controls for averageGroup
+		{
+			auto g = averageGroupComponent->getBounds();
+			averageSiderLabel->setBounds(g.getX() + 10, g.getY() + 17, 50, 24);
+			averageSider->setBounds(g.getX() + 66, g.getY() + 17, 55, 24);
+			calculationsLabel->setBounds(g.getX() + 124, g.getY() + 17, 96, 24);
+			noSecondsSoundPerCalcComboBox->setBounds(g.getX() + 10, g.getY() + 51, 86, 24);
+			noSecondsSoundPerCalcLabel->setBounds(g.getX() + 99, g.getY() + 51, 221, 24);
+		}
+		// Inner controls for ShowGroup
+		{
+			auto g = ShowGroupComponent->getBounds();
+			showIndicatorsToggleButton->setBounds(g.getX() + 10, g.getY() + 16, 133, 25);
+			stringsOffTuneValuesToggleButton->setBounds(g.getX() + 119, g.getY() + 16, 176, 25);
+			showSpectrumToggleButton->setBounds(g.getX() + 10, g.getY() + 43, 94, 25);
+			showFFTToggleButton->setBounds(g.getX() + 119, g.getY() + 43, 55, 25);
+			thresholdToggleButton->setBounds(g.getX() + 183, g.getY() + 43, 112, 25);
+			showFFTMaxIndictrToggleButton->setBounds(g.getX() + 10, g.getY() + 70, 136, 25);
+			showFilterToggleButton->setBounds(g.getX() + 183, g.getY() + 70, 78, 25);
+		}
+		// Inner controls for freqRangeGroup
+		{
+			auto g = freqRangeGroupComponent->getBounds();
+			labelLowestFreq->setBounds(g.getX() + 5, g.getY() + 16, 189, 24);
+			sliderLowestFreqLabel->setBounds(g.getX() + 10, g.getY() + 40, 50, 20);
+			sliderLowestFreq->setBounds(g.getX() + 66, g.getY() + 40, 55, 24);
+			labelHighstFreq->setBounds(g.getX() + 5, g.getY() + 72, 221, 24);
+			sliderHighestFreqLabel->setBounds(g.getX() + 10, g.getY() + 99, 50, 20);
+			sliderHighestFreq->setBounds(g.getX() + 66, g.getY() + 99, 55, 24);
+		}
 	}
-#endif // JUCE_ANDROID
-#endif // (JUCE_WINDOWS || JUCE_MAC || JUCE_LINUX || JUCE_ANDROID)
-    //[/UserResized]
+	//[/UserResized]
 }
 
 void displayControlComponent::buttonClicked (juce::Button* buttonThatWasClicked)
@@ -648,6 +675,10 @@ inline std::string displayControlComponent::eksLongDoubleToString(long double va
 #if (JUCE_IOS || JUCE_ANDROID)
 void displayControlComponent::scaleAllComponents()
 {
+	auto* audioControlTag = pXmlGuitarFineTuneConfig->getGuitarfinetuneconfig().getChildByName("AUDIOCONTROL");
+	if (audioControlTag == nullptr || !audioControlTag->getBoolAttribute("enableZoom"))
+		return;
+
 #if JUCE_ANDROID
 	if (!viewPortAdded)
 	{

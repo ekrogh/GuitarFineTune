@@ -149,11 +149,27 @@ void aboutPage::paint (juce::Graphics& g)
 void aboutPage::resized()
 {
     //[UserPreResize] Add your own custom resize code here..
-#if (JUCE_WINDOWS || JUCE_MAC || JUCE_LINUX)
     //[/UserPreResize]
 
     //[UserResized] Add your own custom resize handling here..
-#endif // (JUCE_WINDOWS || JUCE_MAC || JUCE_LINUX)
+    {
+        const int rowH = 24;
+        const int margin = 8;
+
+        juce::FlexBox fb;
+        fb.flexDirection = juce::FlexBox::Direction::column;
+        fb.justifyContent = juce::FlexBox::JustifyContent::center;
+        fb.alignItems = juce::FlexBox::AlignItems::center;
+
+        fb.items.add(juce::FlexItem(*aboutLabel)      .withWidth(215).withHeight(64).withMargin({ (float)margin, 0, 0, 0 }));
+        fb.items.add(juce::FlexItem(*UsersGuide)       .withWidth(215).withHeight(rowH).withMargin({ (float)margin, 0, 0, 0 }));
+        fb.items.add(juce::FlexItem(*eigilLabel)       .withWidth(215).withHeight(rowH).withMargin({ (float)margin, 0, 0, 0 }));
+        fb.items.add(juce::FlexItem(*hyperlinkButton)  .withWidth(215).withHeight(rowH).withMargin({ (float)margin, 0, 0, 0 }));
+        fb.items.add(juce::FlexItem(*emailButton)      .withWidth(215).withHeight(rowH).withMargin({ (float)margin, 0, 0, 0 }));
+        fb.items.add(juce::FlexItem(*juceVer__label)   .withWidth(215).withHeight(rowH).withMargin({ (float)margin, 0, 0, 0 }));
+
+        fb.performLayout(getLocalBounds().toFloat());
+    }
     //[/UserResized]
 }
 
@@ -163,6 +179,10 @@ void aboutPage::resized()
 #if (JUCE_IOS || JUCE_ANDROID)
 void aboutPage::scaleAllComponents()
 {
+	if (auto* audioCtrl = pXmlGuitarFineTuneConfig->getGuitarfinetuneconfig().getChildByName("AUDIOCONTROL"))
+		if (!audioCtrl->getBoolAttribute("enableZoom"))
+			return;
+
 	if (auto parent = findParentComponentOfClass<TabbedComponent>())
 	{
 		static float scaleUsedLastTime = 1.0f;

@@ -70,13 +70,6 @@ eksAudioControlComponent::eksAudioControlComponent(std::shared_ptr<xmlGuitarFine
 
 	preProcessingToggleButton->setBounds(1, 403, 231, 24);
 
-	enableZoomToggleButton.reset(new juce::ToggleButton("enableZoomToggleButton"));
-	addAndMakeVisible(enableZoomToggleButton.get());
-	enableZoomToggleButton->setButtonText(TRANS("Scale UI to fit screen"));
-	enableZoomToggleButton->addListener(this);
-	enableZoomToggleButton->setColour(juce::ToggleButton::textColourId, juce::Colours::cornflowerblue);
-	enableZoomToggleButton->setBounds(1, 430, 231, 24);
-
 
 	//[UserPreSize]
 	// Check if system supports set Audio Preprocessing Enabled/Disabled and set off if so
@@ -115,8 +108,6 @@ eksAudioControlComponent::eksAudioControlComponent(std::shared_ptr<xmlGuitarFine
 //	Use_60_Hz_FilterToggleButton->setBounds(147, heightAudioDeviceSelectorComponent - 15, 149, 24);
 	preProcessingToggleButton->setBounds(1, heightAudioDeviceSelectorComponent + 24 - 15, 231, 24);
 #endif // JUCE_ANDROID
-	enableZoomToggleButton->setToggleState(
-		getXmlTagAUDIOCONTROL()->getBoolAttribute("enableZoom"), dontSendNotification);
 	//[/UserPreSize]
 
 	setSize(600, 400);
@@ -138,7 +129,6 @@ eksAudioControlComponent::~eksAudioControlComponent()
 	Use_50_Hz_FilterToggleButton = nullptr;
 	Use_60_Hz_FilterToggleButton = nullptr;
 	preProcessingToggleButton = nullptr;
-	enableZoomToggleButton = nullptr;
 
 
 	//[Destructor]. You can add your own custom destruction code here..
@@ -157,35 +147,44 @@ void eksAudioControlComponent::paint(juce::Graphics& g)
 
 	//[UserPaint] Add your own custom painting code here..
 	setColorOfAllLabels(pAudioDeviceSelectorComponent.get());
-	//[/UserPaint]
+	//[/UserPaint]|
 }
 
 void eksAudioControlComponent::resized()
 {
 	//[UserPreResize] Add your own custom resize code here..
+#if JUCE_ANDROID
+	if (viewPortAdded)
 	{
-		const int rowH = 28;
-		const int margin = 6;
-
-		auto area = getLocalBounds().reduced(margin);
-
-		enableZoomToggleButton->setBounds(area.removeFromBottom(rowH));
-		area.removeFromBottom(margin);
-		preProcessingToggleButton->setBounds(area.removeFromBottom(rowH));
-		area.removeFromBottom(margin);
-
-		// 50/60 Hz buttons side by side
-		auto hzRow = area.removeFromBottom(rowH);
-		area.removeFromBottom(margin);
-		juce::FlexBox hzFb;
-		hzFb.flexDirection = juce::FlexBox::Direction::row;
-		hzFb.items.add(juce::FlexItem(*Use_50_Hz_FilterToggleButton).withFlex(1).withMargin({ 0, (float)margin / 2, 0, 0 }));
-		hzFb.items.add(juce::FlexItem(*Use_60_Hz_FilterToggleButton).withFlex(1).withMargin({ 0, 0, 0, (float)margin / 2 }));
-		hzFb.performLayout(hzRow.toFloat());
-
-		// AudioDeviceSelectorComponent fills the rest
-		pAudioDeviceSelectorComponent->setBounds(area);
+		Use_50_Hz_FilterToggleButton->setBounds(1, heightAudioDeviceSelectorComponent + 1, 150, 24);
+		Use_60_Hz_FilterToggleButton->setBounds(147, heightAudioDeviceSelectorComponent + 1, 149, 24);
+		preProcessingToggleButton->setBounds(1, heightAudioDeviceSelectorComponent + 1 + 24, 231, 24);
 	}
+#elif (JUCE_IOS)
+    auto area = getLocalBounds().reduced(10);
+    pAudioDeviceSelectorComponent->setBounds(area.removeFromTop(40));
+    preProcessingToggleButton->setBounds(area.removeFromBottom(30));
+    preProcessingToggleButton->setSize(scaleUsedLastTime*150, scaleUsedLastTime*24);
+    Use_50_Hz_FilterToggleButton->setBounds(area.removeFromBottom(30));
+    Use_50_Hz_FilterToggleButton->setSize(scaleUsedLastTime*150, scaleUsedLastTime*24);
+    Use_60_Hz_FilterToggleButton->setBounds(area.removeFromRight(scaleUsedLastTime*140).removeFromBottom(0));
+    Use_60_Hz_FilterToggleButton->setSize(scaleUsedLastTime*149, scaleUsedLastTime*24);
+
+#elif (JUCE_WINDOWS || JUCE_MAC || JUCE_LINUX)
+    auto area = getLocalBounds().reduced(10);
+    pAudioDeviceSelectorComponent->setBounds(area.removeFromTop(40));
+    preProcessingToggleButton->setBounds(area.removeFromBottom(30));
+    preProcessingToggleButton->setSize(150, 24);
+    Use_50_Hz_FilterToggleButton->setBounds(area.removeFromBottom(30));
+    Use_50_Hz_FilterToggleButton->setSize(150, 24);
+    Use_60_Hz_FilterToggleButton->setBounds(area.removeFromRight(140).removeFromBottom(0));
+    Use_60_Hz_FilterToggleButton->setSize(149, 24);
+
+    //	auto actHeightAudioDeviceSelectorComponent = pAudioDeviceSelectorComponent->getHeight();
+//	Use_50_Hz_FilterToggleButton->setBounds(1, actHeightAudioDeviceSelectorComponent - 15, 150, 24);
+//	Use_60_Hz_FilterToggleButton->setBounds(147, actHeightAudioDeviceSelectorComponent - 15, 149, 24);
+//	preProcessingToggleButton->setBounds(1, actHeightAudioDeviceSelectorComponent + 24 - 15, 231, 24);
+#endif // JUCE_ANDROID
 	AudioIODevice* CurrentAudioDevice = sharedAudioDeviceManager->getCurrentAudioDevice();
 	if (CurrentAudioDevice != nullptr)
 	{
@@ -265,14 +264,6 @@ void eksAudioControlComponent::buttonClicked(juce::Button* buttonThatWasClicked)
 		//[/UserButtonCode_preProcessingToggleButton]
 	}
 
-	else if (buttonThatWasClicked == enableZoomToggleButton.get())
-	{
-		getXmlTagAUDIOCONTROL()->setAttribute("enableZoom", enableZoomToggleButton->getToggleState());
-		pXmlGuitarFineTuneConfig->writeConfigToXmlFile();
-		if (auto* topLevel = getTopLevelComponent())
-			topLevel->resized();
-	}
-
 	//[UserbuttonClicked_Post]
 	//[/UserbuttonClicked_Post]
 }
@@ -280,11 +271,9 @@ void eksAudioControlComponent::buttonClicked(juce::Button* buttonThatWasClicked)
 
 
 //[MiscUserCode] You can add your own definitions of your custom methods or any other code here...
+#if (JUCE_IOS || JUCE_ANDROID)
 void eksAudioControlComponent::scaleAllComponents()
 {
-	if (!getXmlTagAUDIOCONTROL()->getBoolAttribute("enableZoom"))
-		return;
-
 	static bool firstCall = true;
 	if (firstCall)
 	{
@@ -389,13 +378,14 @@ void eksAudioControlComponent::scaleAllComponents()
 //                    Use_60_Hz_FilterToggleButton->setBounds(area.removeFromRight(140).removeFromBottom(0));
 //                    Use_60_Hz_FilterToggleButton->setSize(149, 24);
 
-						}
-						}
-				#if JUCE_ANDROID
-						}
-				#endif // JUCE_ANDROID
-					}
 				}
+			}
+#if JUCE_ANDROID
+		}
+#endif // JUCE_ANDROID
+	}
+}
+#endif // (JUCE_IOS || JUCE_ANDROID)
 
 void eksAudioControlComponent::initControls()
 {
