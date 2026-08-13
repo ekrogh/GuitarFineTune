@@ -167,7 +167,13 @@ void eksAudioControlComponent::resized()
 		const int rowH = 28;
 		const int margin = 6;
 
-		auto area = getLocalBounds().reduced(margin);
+		auto localBounds = getLocalBounds();
+		int prefW = 600;
+		int prefH = 600;
+
+		auto area = localBounds.reduced(margin);
+		if (area.getWidth() > prefW)  area = area.withWidth(prefW).withCentre(localBounds.getCentre());
+		if (area.getHeight() > prefH) area = area.withHeight(prefH).withCentre(localBounds.getCentre());
 
 		enableZoomToggleButton->setBounds(area.removeFromBottom(rowH));
 		area.removeFromBottom(margin);

@@ -170,7 +170,7 @@ guitarFineTuneFirstClass::guitarFineTuneFirstClass()
 	+ "." + std::to_string(ANDROID_VERSION_CODE)
 	, Colour(0xFF20072B)
 	, DocumentWindow::allButtons)
-	, curCompntBnds(0, 0, widthOfTuneWindow, hightOfTuneWindow)
+	, curCompntBnds(0, 0, 0, 0)
 #else
 	: DocumentWindow(std::string(ProjectInfo::projectName) + " v. " + std::string(ProjectInfo::versionString), Colours::lightgrey, DocumentWindow::allButtons)
 #if (JUCE_IOS)
@@ -388,35 +388,8 @@ guitarFineTuneFirstClass::guitarFineTuneFirstClass()
 		setSize(curCompntBnds.getWidth(), curCompntBnds.getHeight()); // This
 		DocumentWindow::centreWithSize(widthOfGuitarStringSoundsControlWindowHorizontal, hightOfGuitarStringSoundsControlWindowHorizontal);
 	#elif (JUCE_ANDROID || JUCE_IOS)
-		curCompntBnds = Desktop::getInstance().getDisplays().getPrimaryDisplay()->userBounds.toNearestInt();
-		BorderSize<int>  nonSafeArea = Desktop::getInstance().getDisplays().getPrimaryDisplay()->safeAreaInsets;
-		nonSafeArea.subtractFrom(curCompntBnds); // Remove non Safe area
-		//#if ( JUCE_ANDROID )
-		//		if (curCompntBnds.getWidth() >= curCompntBnds.getHeight())  // Landscape
-		//		{
-		//			curCompntBnds.setBounds
-		//			(
-		//				(double)(curCompntBnds.getX())
-		//				, (double)(curCompntBnds.getY())
-		//				, (double)(curCompntBnds.getWidth()) - (double)androidSafeMargin
-		//				, (double)(curCompntBnds.getHeight())
-		//			);
-		//		}
-		//#endif // #if ( JUCE_ANDROID )
-	#if ( JUCE_IOS )
-		if (thisiPhoneiPadNeedsSafeArea())
-		{
-			if (curCompntBnds.getHeight() >= curCompntBnds.getWidth())
-			{
-				curCompntBnds.reduce(0, iOSSafeMargin);
-			}
-			else
-			{
-				curCompntBnds.removeFromLeft(iOSSafeMargin);
-				curCompntBnds.removeFromRight(iOSSafeMargin);
-			}
-		}
-	#endif
+		setBounds (Desktop::getInstance().getDisplays().getPrimaryDisplay()->userBounds.toNearestInt());
+		curCompntBnds = getLocalBounds();
 	#endif
 		setUsingNativeTitleBar(true);
 	#if JUCE_MAC || JUCE_LINUX
@@ -427,9 +400,14 @@ guitarFineTuneFirstClass::guitarFineTuneFirstClass()
 		setResizable(false, false);
 		//	setResizable(true, true);
 		DocumentWindow::setVisible(true);
-		setContentOwned(pEksTabbedComponent.get(), true);
 
-		pEksAudioControlComponent->resized();
+#if (JUCE_ANDROID || JUCE_IOS)
+		Desktop::getInstance().setKioskModeComponent (this);
+		setFullScreen (true);
+		setContentOwned (pEksTabbedComponent.get(), false);
+#else
+		setContentOwned(pEksTabbedComponent.get(), true);
+#endif
 
 		setLookAndFeel(pGuitarFineTuneLookAndFeel.get());
 
@@ -446,62 +424,7 @@ void guitarFineTuneFirstClass::currentTabChanged(int newCurrentTabIndex, const S
 	{
 
 	#if ( JUCE_ANDROID || JUCE_IOS )
-		curCompntBnds = Desktop::getInstance().getDisplays().getPrimaryDisplay()->userBounds.toNearestInt();
-
-
-		// JUCE 7 takes care of safe areas !!!!
-//	#if ( JUCE_ANDROID )
-//		if
-//			(
-//				(curCompntBnds.getWidth() >= curCompntBnds.getHeight())  // Landscape
-//				&&
-//				(
-//					(newCurrentTabIndex == tabTuneWindow)
-//					||
-//					(newCurrentTabIndex == tabGuitarStringSoundsControlWindow)
-//					||
-//					(newCurrentTabIndex == tabDisplayControlWindow)
-//				)
-//			)
-//		{
-//			curCompntBnds.setBounds
-//			(
-//				(double)(curCompntBnds.getX())
-//				, (double)(curCompntBnds.getY())
-//				, (double)(curCompntBnds.getWidth())
-//				, (double)(curCompntBnds.getHeight()) - 100 //(double)androidSafeMargin
-//			);
-//		}
-//	#endif // #if ( JUCE_ANDROID )
-	#if ( JUCE_IOS )
-
-		BorderSize<int>  nonSafeArea = Desktop::getInstance().getDisplays().getPrimaryDisplay()->safeAreaInsets;
-		nonSafeArea.subtractFrom(curCompntBnds); // Remove non Safe area
-
-		if (thisiPhoneiPadNeedsSafeArea())
-		{
-			if (curCompntBnds.getHeight() >= curCompntBnds.getWidth()) // Portrait
-			{
-				curCompntBnds.setBounds
-				(
-					(double)(curCompntBnds.getX())
-					, (double)(curCompntBnds.getY()) + (double)iOSSafeMargin
-					, (double)(curCompntBnds.getWidth())
-					, (double)(curCompntBnds.getHeight()) - ((double)iOSSafeMargin * (double)2)
-				);
-			}
-			else
-			{
-				curCompntBnds.setBounds
-				(
-					(double)(curCompntBnds.getX()) + (double)iOSSafeMargin
-					, (double)(curCompntBnds.getY())
-					, (double)(curCompntBnds.getWidth()) - ((double)iOSSafeMargin * (double)2)
-					, (double)(curCompntBnds.getHeight())
-				);
-			}
-		}
-	#endif // #if ( JUCE_IOS )
+		// On mobile, the window stays full screen, just need to re-layout content.
 	#else // (JUCE Win || JUCE_MAC || JUCE_LINUX)
 		switch (newCurrentTabIndex)
 		{
@@ -665,19 +588,21 @@ float guitarFineTuneFirstClass::scaleToGuitarStringSoundsControlWindow()
 
 void guitarFineTuneFirstClass::resized()
 {
-	//[UserPreResize] Add your own custom resize code here..
-//    pEksTabbedComponent->setSize(curCompntBnds.getWidth(), curCompntBnds.getHeight());
-#if (JUCE_ANDROID)
-	curCompntBnds.setY(androidSafeMargin);
+	DocumentWindow::resized();
 
+	//[UserPreResize] Add your own custom resize code here..
+    auto safeArea = Desktop::getInstance().getDisplays().getPrimaryDisplay()->safeAreaInsets;
+    curCompntBnds = getLocalBounds();
+
+#if (JUCE_ANDROID || JUCE_IOS)
+    curCompntBnds = safeArea.subtractedFrom (curCompntBnds);
 #endif
+
 	pEksTabbedComponent->setBounds(curCompntBnds);
 
 #if (JUCE_IOS || JUCE_ANDROID)
-	setBounds(curCompntBnds);
 	if (!addViewPort)
 	{
-		DocumentWindow::setBounds(curCompntBnds);
 
 		// Read the user's zoom preference
 		bool enableZoom = false;
@@ -703,7 +628,7 @@ void guitarFineTuneFirstClass::resized()
 						pGuitarFineTuneLookAndFeel->scaleEksLookAndFeelFonts(scaleNow);
 						pGuitarFineTuneLookAndFeel->scaleAllsliderTextBoxes(scaleNow);
 					}
-					pGuitarStringSoundsControl->scaleAllComponents();
+					// pGuitarStringSoundsControl->scaleAllComponents();
 					break;
 				}
 			case tabDisplayControlWindow:
@@ -731,7 +656,7 @@ void guitarFineTuneFirstClass::resized()
 						pGuitarFineTuneLookAndFeel->scaleEksLookAndFeelFonts(scaleNow);
 						pGuitarFineTuneLookAndFeel->scaleAllsliderTextBoxes(scaleNow);
 					}
-					pDisplayControlComponent->scaleAllComponents();
+					// pDisplayControlComponent->scaleAllComponents();
 					break;
 				}
 			case tabEksAudioControlComponent:
@@ -749,7 +674,7 @@ void guitarFineTuneFirstClass::resized()
 						pGuitarFineTuneLookAndFeel->scaleEksLookAndFeelFonts(scaleNow);
 						pGuitarFineTuneLookAndFeel->scaleAllsliderTextBoxes(scaleNow);
 					}
-					pEksAudioControlComponent->scaleAllComponents();
+					// pEksAudioControlComponent->scaleAllComponents();
 					break;
 				}
 			case tabAboutPage:
@@ -760,7 +685,7 @@ void guitarFineTuneFirstClass::resized()
 						pGuitarFineTuneLookAndFeel->scaleEksLookAndFeelFonts(scaleNow);
 						pGuitarFineTuneLookAndFeel->scaleAllsliderTextBoxes(scaleNow);
 					}
-					pAboutPage->scaleAllComponents();
+					// pAboutPage->scaleAllComponents();
 					break;
 				}
 			default:
@@ -773,9 +698,7 @@ void guitarFineTuneFirstClass::resized()
 	//[/UserPreResize]
 
 	//[UserResized] Add your own custom resize handling here..
-	DocumentWindow::resized();
-	//	pEksTabbedComponent->resized();
-		//[/UserResized]
+	//[/UserResized]
 }
 
 void guitarFineTuneFirstClass::closeButtonPressed()

@@ -23,6 +23,7 @@
 #include "xmlGuitarFineTuneConfig.h"
 #include "guitarStringSoundsControl.h"
 #include "guitarFineTuneGlobalEnums.h"
+#include <deque>
 //[/Headers]
 
 #include "displayControlComponent.h"
@@ -375,73 +376,108 @@ void displayControlComponent::resized()
 
 	//[UserResized] Add your own custom resize handling here..
 	{
-		auto bounds = getLocalBounds().reduced(4);
 		const bool isLandscape = (getWidth() >= getHeight());
-		const int bgsoundH = 88, averageH = 88, showH = 106, freqH = 136;
-		const float gap = 4.0f;
+		auto localBounds = getLocalBounds();
+
+		// Bounded area to prevent extreme stretching on tablets
+		int prefW = isLandscape ? 750 : 450;
+		int prefH = isLandscape ? 450 : 650;
+
+		auto bounds = localBounds.reduced(10);
+		if (bounds.getWidth() > prefW)  bounds = bounds.withWidth(prefW).withCentre(localBounds.getCentre());
+		if (bounds.getHeight() > prefH) bounds = bounds.withHeight(prefH).withCentre(localBounds.getCentre());
+
+		const int bgsoundH = 90, averageH = 90, showH = 110, freqH = 140;
+		const float gap = 6.0f;
 
 		if (!isLandscape)
 		{
 			// Portrait: stack all 4 groups vertically
 			juce::FlexBox fb;
 			fb.flexDirection = juce::FlexBox::Direction::column;
-			fb.items.add(juce::FlexItem(*bgsoundExclusionGroupComponent).withHeight((float)bgsoundH).withFlex(0).withMargin({ 0, 0, gap, 0 }));
-			fb.items.add(juce::FlexItem(*averageGroupComponent)         .withHeight((float)averageH).withFlex(0).withMargin({ 0, 0, gap, 0 }));
-			fb.items.add(juce::FlexItem(*ShowGroupComponent)            .withHeight((float)showH).withFlex(0).withMargin({ 0, 0, gap, 0 }));
-			fb.items.add(juce::FlexItem(*freqRangeGroupComponent)       .withHeight((float)freqH).withFlex(0));
+			fb.justifyContent = juce::FlexBox::JustifyContent::flexStart;
+			fb.items.add(juce::FlexItem(*bgsoundExclusionGroupComponent).withHeight((float)bgsoundH).withMargin({ 0, 0, gap, 0 }));
+			fb.items.add(juce::FlexItem(*averageGroupComponent)         .withHeight((float)averageH).withMargin({ 0, 0, gap, 0 }));
+			fb.items.add(juce::FlexItem(*ShowGroupComponent)            .withHeight((float)showH).withMargin({ 0, 0, gap, 0 }));
+			fb.items.add(juce::FlexItem(*freqRangeGroupComponent)       .withHeight((float)freqH));
 			fb.performLayout(bounds.toFloat());
 		}
 		else
 		{
 			// Landscape: left = bgsound + average + show stacked; right = freqRange
-			auto left = bounds.removeFromLeft(juce::jmin(320, bounds.getWidth() * 2 / 3));
+			auto leftArea = bounds.removeFromLeft(330);
 			juce::FlexBox leftFb;
 			leftFb.flexDirection = juce::FlexBox::Direction::column;
-			leftFb.items.add(juce::FlexItem(*bgsoundExclusionGroupComponent).withHeight((float)bgsoundH).withFlex(0).withMargin({ 0, 0, gap, 0 }));
-			leftFb.items.add(juce::FlexItem(*averageGroupComponent)         .withHeight((float)averageH).withFlex(0).withMargin({ 0, 0, gap, 0 }));
+			leftFb.items.add(juce::FlexItem(*bgsoundExclusionGroupComponent).withHeight((float)bgsoundH).withMargin({ 0, 0, gap, 0 }));
+			leftFb.items.add(juce::FlexItem(*averageGroupComponent)         .withHeight((float)averageH).withMargin({ 0, 0, gap, 0 }));
 			leftFb.items.add(juce::FlexItem(*ShowGroupComponent)            .withFlex(1));
-			leftFb.performLayout(left.toFloat());
+			leftFb.performLayout(leftArea.toFloat());
 			freqRangeGroupComponent->setBounds(bounds.reduced(2));
 		}
 
 		// Inner controls for bgsoundExclusionGroup
 		{
-			auto g = bgsoundExclusionGroupComponent->getBounds();
-			thresholdTextEditor->setBounds(g.getX() + 10, g.getY() + 19, 102, 24);
-			autoCalibrateTextButton->setBounds(g.getX() + 139, g.getY() + 19, 107, 24);
-			adaptiveToggleButton->setBounds(g.getX() + 10, g.getY() + 53, 83, 24);
-			adaptiveNoSecondsComboBox->setBounds(g.getX() + 100, g.getY() + 53, 86, 24);
-			adaptiveNoSecondsLabel->setBounds(g.getX() + 190, g.getY() + 53, g.getWidth() - 194, 24);
+			auto area = bgsoundExclusionGroupComponent->getBounds().withTrimmedTop(20).reduced(8, 2);
+			auto topRow = area.removeFromTop(24);
+			thresholdTextEditor->setBounds(topRow.removeFromLeft(102));
+			autoCalibrateTextButton->setBounds(topRow.removeFromRight(107));
+
+			auto bottomRow = area.removeFromTop(24);
+			adaptiveToggleButton->setBounds(bottomRow.removeFromLeft(90));
+			adaptiveNoSecondsComboBox->setBounds(bottomRow.removeFromLeft(86));
+			adaptiveNoSecondsLabel->setBounds(bottomRow);
 		}
 		// Inner controls for averageGroup
 		{
-			auto g = averageGroupComponent->getBounds();
-			averageSiderLabel->setBounds(g.getX() + 10, g.getY() + 17, 50, 24);
-			averageSider->setBounds(g.getX() + 66, g.getY() + 17, 55, 24);
-			calculationsLabel->setBounds(g.getX() + 124, g.getY() + 17, 96, 24);
-			noSecondsSoundPerCalcComboBox->setBounds(g.getX() + 10, g.getY() + 51, 86, 24);
-			noSecondsSoundPerCalcLabel->setBounds(g.getX() + 99, g.getY() + 51, g.getWidth() - 103, 24);
+			auto area = averageGroupComponent->getBounds().withTrimmedTop(20).reduced(8, 2);
+			auto topRow = area.removeFromTop(24);
+			averageSiderLabel->setBounds(topRow.removeFromLeft(50));
+			averageSider->setBounds(topRow.removeFromLeft(55));
+			calculationsLabel->setBounds(topRow);
+
+			auto bottomRow = area.removeFromTop(24);
+			noSecondsSoundPerCalcComboBox->setBounds(bottomRow.removeFromLeft(86));
+			noSecondsSoundPerCalcLabel->setBounds(bottomRow);
 		}
 		// Inner controls for ShowGroup
 		{
-			auto g = ShowGroupComponent->getBounds();
-			showIndicatorsToggleButton->setBounds(g.getX() + 10, g.getY() + 16, 133, 25);
-			stringsOffTuneValuesToggleButton->setBounds(g.getX() + 119, g.getY() + 16, 176, 25);
-			showSpectrumToggleButton->setBounds(g.getX() + 10, g.getY() + 43, 94, 25);
-			showFFTToggleButton->setBounds(g.getX() + 119, g.getY() + 43, 55, 25);
-			thresholdToggleButton->setBounds(g.getX() + 183, g.getY() + 43, 112, 25);
-			showFFTMaxIndictrToggleButton->setBounds(g.getX() + 10, g.getY() + 70, 136, 25);
-			showFilterToggleButton->setBounds(g.getX() + 183, g.getY() + 70, 78, 25);
+			auto area = ShowGroupComponent->getBounds().withTrimmedTop(20).reduced(8, 4);
+
+			juce::FlexBox fb;
+			fb.flexDirection = juce::FlexBox::Direction::column;
+			fb.justifyContent = juce::FlexBox::JustifyContent::spaceAround;
+
+			std::deque<juce::FlexBox> rows;
+
+			auto addRow = [&](Component& c1, float w1, Component& c2, float w2, Component* c3 = nullptr, float w3 = 0) {
+				rows.emplace_back();
+				auto& row = rows.back();
+				row.flexDirection = juce::FlexBox::Direction::row;
+				row.items.add(juce::FlexItem(c1).withWidth(w1).withFlex(0));
+				row.items.add(juce::FlexItem(c2).withWidth(w2).withFlex(0).withMargin({0, 0, 0, 10}));
+				if (c3) row.items.add(juce::FlexItem(*c3).withWidth(w3).withFlex(0));
+				fb.items.add(juce::FlexItem(row).withHeight(25).withFlex(0));
+			};
+
+			addRow(*showIndicatorsToggleButton, 133, *stringsOffTuneValuesToggleButton, 176);
+			addRow(*showSpectrumToggleButton, 94, *showFFTToggleButton, 55, thresholdToggleButton.get(), 112);
+			addRow(*showFFTMaxIndictrToggleButton, 136, *showFilterToggleButton, 78);
+
+			fb.performLayout(area.toFloat());
 		}
 		// Inner controls for freqRangeGroup
 		{
-			auto g = freqRangeGroupComponent->getBounds();
-			labelLowestFreq->setBounds(g.getX() + 5, g.getY() + 16, g.getWidth() - 10, 24);
-			sliderLowestFreqLabel->setBounds(g.getX() + 10, g.getY() + 40, 50, 20);
-			sliderLowestFreq->setBounds(g.getX() + 66, g.getY() + 40, 55, 24);
-			labelHighstFreq->setBounds(g.getX() + 5, g.getY() + 72, g.getWidth() - 10, 24);
-			sliderHighestFreqLabel->setBounds(g.getX() + 10, g.getY() + 99, 50, 20);
-			sliderHighestFreq->setBounds(g.getX() + 66, g.getY() + 99, 55, 24);
+			auto area = freqRangeGroupComponent->getBounds().withTrimmedTop(20).reduced(8, 2);
+			labelLowestFreq->setBounds(area.removeFromTop(24));
+			auto row1 = area.removeFromTop(24);
+			sliderLowestFreqLabel->setBounds(row1.removeFromLeft(50));
+			sliderLowestFreq->setBounds(row1.removeFromLeft(55));
+
+			area.removeFromTop(8);
+			labelHighstFreq->setBounds(area.removeFromTop(24));
+			auto row2 = area.removeFromTop(24);
+			sliderHighestFreqLabel->setBounds(row2.removeFromLeft(50));
+			sliderHighestFreq->setBounds(row2.removeFromLeft(55));
 		}
 	}
 	//[/UserResized]

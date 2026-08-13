@@ -22,15 +22,16 @@ eksTabbedComponent::eksTabbedComponent
 	, ptrGuitarFineTuneFirstClass(pGuitarFineTuneFirstClass)
 {
 #if (JUCE_IOS || JUCE_ANDROID)
-	curCompntBnds = Desktop::getInstance().getDisplays().getPrimaryDisplay()->userBounds.toNearestInt();
-	if (curCompntBnds.getHeight() >= curCompntBnds.getWidth())
+	auto safeArea = Desktop::getInstance().getDisplays().getPrimaryDisplay()->safeAreaInsets;
+	if (getWidth() < getHeight())
 	{
-		setTabBarDepth(tabBarDepthAndroidIosInVertical);
+		setTabBarDepth (jmax ((int) tabBarDepthAndroidIosInVertical, safeArea.getTop() + 10));
 	}
-	else {
-		setTabBarDepth(tabBarDepthAndroidIosInHorizontal);
+	else
+	{
+		setTabBarDepth (jmax ((int) tabBarDepthAndroidIosInHorizontal, safeArea.getTop() + 5));
 	}
-	setIndent(0);
+	setIndent(safeArea.getLeft());
 #else
 	setTabBarDepth(tabBarDepthMacWin);
 #endif // #if (JUCE_IOS || JUCE_ANDROID)
