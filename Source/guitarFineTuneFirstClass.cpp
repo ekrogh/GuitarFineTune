@@ -536,7 +536,7 @@ void guitarFineTuneFirstClass::resized()
 {
 	DocumentWindow::resized();
 
-	auto safeArea = Desktop::getInstance().getDisplays().getPrimaryDisplay()->safeAreaInsets;
+//	auto safeArea = Desktop::getInstance().getDisplays().getPrimaryDisplay()->safeAreaInsets;
 	curCompntBnds = getLocalBounds();
 
 #if (JUCE_ANDROID || JUCE_IOS)
