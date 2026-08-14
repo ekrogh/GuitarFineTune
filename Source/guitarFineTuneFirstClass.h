@@ -33,9 +33,9 @@ public:
 	void currentTabChanged(int newCurrentTabIndex, const String& /*newCurrentTabName*/);
 	void paint(Graphics& g) override;
 	void closeButtonPressed() override;
+	bool isTabletDevice() const;
+	float getMasterScaleFactor() const;
 #if (JUCE_IOS || JUCE_ANDROID)
-	float scaleToGuitarStringSoundsControlWindow();
-#endif // (JUCE_IOS || JUCE_ANDROID)
 	void resized() override;
 	void setColorOfAllLabels(juce::Component* cmpontToHandle);
 #if (JUCE_IOS || JUCE_ANDROID)
@@ -43,6 +43,7 @@ public:
 #endif
 #if (JUCE_IOS )
     bool thisiPhoneiPadNeedsSafeArea() { return thisIsASafeZoneiPhoneOriPad; }
+#endif
 #endif
     
 private:

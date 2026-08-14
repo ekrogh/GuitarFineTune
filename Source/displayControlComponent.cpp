@@ -378,17 +378,22 @@ void displayControlComponent::resized()
 	{
 		const bool isLandscape = (getWidth() >= getHeight());
 		auto localBounds = getLocalBounds();
+		auto* lf = dynamic_cast<eksLookAndFeel*> (&getLookAndFeel());
+		float scale = lf ? lf->getCurrentScale() : 1.0f;
 
-		// Bounded area to prevent extreme stretching on tablets
-		int prefW = isLandscape ? 750 : 450;
-		int prefH = isLandscape ? 450 : 650;
+		// Bounded area to prevent extreme stretching on tablets, scaled by master scale
+		int prefW = (int) ((isLandscape ? 750 : 450) * scale);
+		int prefH = (int) ((isLandscape ? 450 : 650) * scale);
 
 		auto bounds = localBounds.reduced(10);
 		if (bounds.getWidth() > prefW)  bounds = bounds.withWidth(prefW).withCentre(localBounds.getCentre());
 		if (bounds.getHeight() > prefH) bounds = bounds.withHeight(prefH).withCentre(localBounds.getCentre());
 
-		const int bgsoundH = 90, averageH = 90, showH = 110, freqH = 140;
-		const float gap = 6.0f;
+		const int bgsoundH = (int) (90 * scale);
+		const int averageH = (int) (90 * scale);
+		const int showH = (int) (110 * scale);
+		const int freqH = (int) (140 * scale);
+		const float gap = 6.0f * scale;
 
 		if (!isLandscape)
 		{
@@ -405,7 +410,7 @@ void displayControlComponent::resized()
 		else
 		{
 			// Landscape: left = bgsound + average + show stacked; right = freqRange
-			auto leftArea = bounds.removeFromLeft(330);
+			auto leftArea = bounds.removeFromLeft((int) (330 * scale));
 			juce::FlexBox leftFb;
 			leftFb.flexDirection = juce::FlexBox::Direction::column;
 			leftFb.items.add(juce::FlexItem(*bgsoundExclusionGroupComponent).withHeight((float)bgsoundH).withMargin({ 0, 0, gap, 0 }));
@@ -417,31 +422,31 @@ void displayControlComponent::resized()
 
 		// Inner controls for bgsoundExclusionGroup
 		{
-			auto area = bgsoundExclusionGroupComponent->getBounds().withTrimmedTop(20).reduced(8, 2);
-			auto topRow = area.removeFromTop(24);
-			thresholdTextEditor->setBounds(topRow.removeFromLeft(102));
-			autoCalibrateTextButton->setBounds(topRow.removeFromRight(107));
+			auto area = bgsoundExclusionGroupComponent->getBounds().withTrimmedTop((int)(20 * scale)).reduced((int)(8 * scale), (int)(2 * scale));
+			auto topRow = area.removeFromTop((int)(24 * scale));
+			thresholdTextEditor->setBounds(topRow.removeFromLeft((int)(102 * scale)));
+			autoCalibrateTextButton->setBounds(topRow.removeFromRight((int)(107 * scale)));
 
-			auto bottomRow = area.removeFromTop(24);
-			adaptiveToggleButton->setBounds(bottomRow.removeFromLeft(90));
-			adaptiveNoSecondsComboBox->setBounds(bottomRow.removeFromLeft(86));
+			auto bottomRow = area.removeFromTop((int)(24 * scale));
+			adaptiveToggleButton->setBounds(bottomRow.removeFromLeft((int)(90 * scale)));
+			adaptiveNoSecondsComboBox->setBounds(bottomRow.removeFromLeft((int)(86 * scale)));
 			adaptiveNoSecondsLabel->setBounds(bottomRow);
 		}
 		// Inner controls for averageGroup
 		{
-			auto area = averageGroupComponent->getBounds().withTrimmedTop(20).reduced(8, 2);
-			auto topRow = area.removeFromTop(24);
-			averageSiderLabel->setBounds(topRow.removeFromLeft(50));
-			averageSider->setBounds(topRow.removeFromLeft(55));
+			auto area = averageGroupComponent->getBounds().withTrimmedTop((int)(20 * scale)).reduced((int)(8 * scale), (int)(2 * scale));
+			auto topRow = area.removeFromTop((int)(24 * scale));
+			averageSiderLabel->setBounds(topRow.removeFromLeft((int)(50 * scale)));
+			averageSider->setBounds(topRow.removeFromLeft((int)(55 * scale)));
 			calculationsLabel->setBounds(topRow);
 
-			auto bottomRow = area.removeFromTop(24);
-			noSecondsSoundPerCalcComboBox->setBounds(bottomRow.removeFromLeft(86));
+			auto bottomRow = area.removeFromTop((int)(24 * scale));
+			noSecondsSoundPerCalcComboBox->setBounds(bottomRow.removeFromLeft((int)(86 * scale)));
 			noSecondsSoundPerCalcLabel->setBounds(bottomRow);
 		}
 		// Inner controls for ShowGroup
 		{
-			auto area = ShowGroupComponent->getBounds().withTrimmedTop(20).reduced(8, 4);
+			auto area = ShowGroupComponent->getBounds().withTrimmedTop((int)(20 * scale)).reduced((int)(8 * scale), (int)(4 * scale));
 
 			juce::FlexBox fb;
 			fb.flexDirection = juce::FlexBox::Direction::column;
@@ -453,10 +458,10 @@ void displayControlComponent::resized()
 				rows.emplace_back();
 				auto& row = rows.back();
 				row.flexDirection = juce::FlexBox::Direction::row;
-				row.items.add(juce::FlexItem(c1).withWidth(w1).withFlex(0));
-				row.items.add(juce::FlexItem(c2).withWidth(w2).withFlex(0).withMargin({0, 0, 0, 10}));
-				if (c3) row.items.add(juce::FlexItem(*c3).withWidth(w3).withFlex(0));
-				fb.items.add(juce::FlexItem(row).withHeight(25).withFlex(0));
+				row.items.add(juce::FlexItem(c1).withWidth(w1 * scale).withFlex(0));
+				row.items.add(juce::FlexItem(c2).withWidth(w2 * scale).withFlex(0).withMargin({0, 0, 0, 10 * scale}));
+				if (c3) row.items.add(juce::FlexItem(*c3).withWidth(w3 * scale).withFlex(0));
+				fb.items.add(juce::FlexItem(row).withHeight(25 * scale).withFlex(0));
 			};
 
 			addRow(*showIndicatorsToggleButton, 133, *stringsOffTuneValuesToggleButton, 176);
@@ -467,17 +472,17 @@ void displayControlComponent::resized()
 		}
 		// Inner controls for freqRangeGroup
 		{
-			auto area = freqRangeGroupComponent->getBounds().withTrimmedTop(20).reduced(8, 2);
-			labelLowestFreq->setBounds(area.removeFromTop(24));
-			auto row1 = area.removeFromTop(24);
-			sliderLowestFreqLabel->setBounds(row1.removeFromLeft(50));
-			sliderLowestFreq->setBounds(row1.removeFromLeft(55));
+			auto area = freqRangeGroupComponent->getBounds().withTrimmedTop((int)(20 * scale)).reduced((int)(8 * scale), (int)(2 * scale));
+			labelLowestFreq->setBounds(area.removeFromTop((int)(24 * scale)));
+			auto row1 = area.removeFromTop((int)(24 * scale));
+			sliderLowestFreqLabel->setBounds(row1.removeFromLeft((int)(50 * scale)));
+			sliderLowestFreq->setBounds(row1.removeFromLeft((int)(55 * scale)));
 
-			area.removeFromTop(8);
-			labelHighstFreq->setBounds(area.removeFromTop(24));
-			auto row2 = area.removeFromTop(24);
-			sliderHighestFreqLabel->setBounds(row2.removeFromLeft(50));
-			sliderHighestFreq->setBounds(row2.removeFromLeft(55));
+			area.removeFromTop((int)(8 * scale));
+			labelHighstFreq->setBounds(area.removeFromTop((int)(24 * scale)));
+			auto row2 = area.removeFromTop((int)(24 * scale));
+			sliderHighestFreqLabel->setBounds(row2.removeFromLeft((int)(50 * scale)));
+			sliderHighestFreq->setBounds(row2.removeFromLeft((int)(55 * scale)));
 		}
 	}
 	//[/UserResized]

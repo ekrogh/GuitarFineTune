@@ -163,31 +163,27 @@ public:
 
 	void scaleAllsliderTextBoxes(float scaleToUse)
 	{
-		static bool firstTime = true;
-		static Rectangle<int> curCpntBnds;
 		for (auto pSliderTextBox : pSliderTextBoxes)
 		{
-			if (firstTime)
+			if (pSliderTextBox != nullptr)
 			{
-				curCpntBnds = pSliderTextBox->getBounds();
-				firstTime = false;
+				pSliderTextBox->setFont(eksLookAndFeelTextButtonFont);
 			}
-//			auto scaledBounds = curCpntBnds * scaleToUse;
-			pSliderTextBox->setBounds(curCpntBnds * scaleToUse);
-//			Font currentFont = pSliderTextBox->getFont();
-//			currentFont.setHeight(currentFont.getHeightInPoints() * scaleToUse * 0.9f);
-//			pSliderTextBox->setFont(currentFont);
-			pSliderTextBox->setFont(eksLookAndFeelTextButtonFont);
 		}
 	}
 
 	void scaleEksLookAndFeelFonts(float scaleToUse)
 	{
-		eksLookAndFeelComboBoxFont.setHeight((juce::Font(FontOptions(15.00f).withStyle("Regular"))).getHeight() * scaleToUse);
-		eksLookAndFeelTextButtonFont.setHeight((juce::Font(FontOptions(15.00f).withStyle("Regular"))).getHeight() * scaleToUse);
+		currentScale = scaleToUse;
+		float baseSize = 15.0f;
+		eksLookAndFeelComboBoxFont.setHeight(baseSize * scaleToUse);
+		eksLookAndFeelTextButtonFont.setHeight(baseSize * scaleToUse);
 	}
 
+	float getCurrentScale() const { return currentScale; }
+
 private:
+	float currentScale = 1.0f;
 	Font eksLookAndFeelComboBoxFont = juce::Font(FontOptions(15.00f).withStyle("Regular"));
 	Font eksLookAndFeelTextButtonFont = juce::Font(FontOptions(15.00f).withStyle("Regular"));
 	bool viewPortAdded = false;

@@ -21,6 +21,7 @@
 #include "tuneComponent.h"
 #include "SimpleLevelMeter.h"
 #include "xmlGuitarFineTuneConfig.h"
+#include "eksLookAndFeel.h"
 //[/Headers]
 
 #include "guitarStringSoundsControl.h"
@@ -588,17 +589,22 @@ void guitarStringSoundsControl::resized()
 	{
 		const bool isLandscape = (getWidth() >= getHeight());
 		auto localBounds = getLocalBounds();
+		auto* lf = dynamic_cast<eksLookAndFeel*> (&getLookAndFeel());
+		float scale = lf ? lf->getCurrentScale() : 1.0f;
 
-		// Bounded area to prevent extreme stretching on tablets
-		int prefW = isLandscape ? 900 : 500;
-		int prefH = isLandscape ? 500 : 800;
+		// Bounded area to prevent extreme stretching on tablets, scaled by master scale
+		int prefW = (int) ((isLandscape ? 900 : 500) * scale);
+		int prefH = (int) ((isLandscape ? 500 : 800) * scale);
 
-		auto bounds = localBounds.reduced(10);
-		if (bounds.getWidth() > prefW)  bounds = bounds.withWidth(prefW).withCentre(localBounds.getCentre());
-		if (bounds.getHeight() > prefH) bounds = bounds.withHeight(prefH).withCentre(localBounds.getCentre());
+		auto bounds = localBounds.reduced (10);
+		if (bounds.getWidth() > prefW)  bounds = bounds.withWidth (prefW).withCentre (localBounds.getCentre());
+		if (bounds.getHeight() > prefH) bounds = bounds.withHeight (prefH).withCentre (localBounds.getCentre());
 
-		const float gap = 6.0f;
-		const int playToneH = 85, outputMixH = 185, recordH = 85, recordLevelH = 95;
+		const float gap = 6.0f * scale;
+		const int playToneH = (int) (85 * scale);
+		const int outputMixH = (int) (185 * scale);
+		const int recordH = (int) (85 * scale);
+		const int recordLevelH = (int) (95 * scale);
 
 		if (!isLandscape)
 		{
@@ -651,20 +657,20 @@ void guitarStringSoundsControl::resized()
 				fb.items.add(juce::FlexItem(col).withWidth(width).withFlex(0));
 			};
 
-			addItem(*E2label, *E2soundToggleButton, 30);
-			addItem(*A2label, *A2soundToggleButton, 30);
-			addItem(*D3label, *D3soundToggleButton, 30);
-			addItem(*G3label, *G3soundToggleButton, 30);
-			addItem(*B3label, *B3soundToggleButton, 30);
-			addItem(*E4label, *E4soundToggleButton, 30);
-			addItem(*allOffLabel, *guitarStringTonesOffToggleButton, 56);
+			addItem(*E2label, *E2soundToggleButton, 30 * scale);
+			addItem(*A2label, *A2soundToggleButton, 30 * scale);
+			addItem(*D3label, *D3soundToggleButton, 30 * scale);
+			addItem(*G3label, *G3soundToggleButton, 30 * scale);
+			addItem(*B3label, *B3soundToggleButton, 30 * scale);
+			addItem(*E4label, *E4soundToggleButton, 30 * scale);
+			addItem(*allOffLabel, *guitarStringTonesOffToggleButton, 56 * scale);
 
 			fb.performLayout(area.toFloat());
 		}
 		// Inner controls for outputMixGroup
 		{
 			auto g = outputMixGroupComponent->getBounds();
-			auto area = g.withTrimmedTop(20).reduced(8, 4);
+			auto area = g.withTrimmedTop((int)(20 * scale)).reduced((int)(8 * scale), (int)(4 * scale));
 
 			juce::FlexBox fb;
 			fb.flexDirection = juce::FlexBox::Direction::row;
@@ -676,66 +682,59 @@ void guitarStringSoundsControl::resized()
 				cols.emplace_back();
 				auto& col = cols.back();
 				col.flexDirection = juce::FlexBox::Direction::column;
-				col.items.add(juce::FlexItem(label).withHeight(26).withFlex(0));
-				col.items.add(juce::FlexItem(valLabel).withHeight(20).withFlex(0));
+				col.items.add(juce::FlexItem(label).withHeight(26 * scale).withFlex(0));
+				col.items.add(juce::FlexItem(valLabel).withHeight(20 * scale).withFlex(0));
 				col.items.add(juce::FlexItem(slider).withFlex(1));
-				col.items.add(juce::FlexItem(mute).withHeight(24).withFlex(0));
+				col.items.add(juce::FlexItem(mute).withHeight(24 * scale).withFlex(0));
 				fb.items.add(juce::FlexItem(col).withWidth(width).withFlex(0));
 			};
 
-			addItem(*stringsVolLabel, *stringSliderLabel, *stringSlider, *stringsMuteToggleButton, 60);
-			addItem(*inputVolLabel, *inputSliderLabel, *inputSlider, *inputMuteToggleButton, 60);
-			addItem(*outputVolLabel, *outputSliderLabel, *outputSlider, *outputMuteToggleButton, 64);
+			addItem(*stringsVolLabel, *stringSliderLabel, *stringSlider, *stringsMuteToggleButton, 60 * scale);
+			addItem(*inputVolLabel, *inputSliderLabel, *inputSlider, *inputMuteToggleButton, 60 * scale);
+			addItem(*outputVolLabel, *outputSliderLabel, *outputSlider, *outputMuteToggleButton, 64 * scale);
 
 			fb.performLayout(area.toFloat());
 		}
 		// Inner controls for recordGroup
 		{
 			auto g = recordGroupComponent->getBounds();
-			auto area = g.withTrimmedTop(20).reduced(6, 4);
+			auto area = g.withTrimmedTop((int)(20 * scale)).reduced((int)(8 * scale), (int)(4 * scale));
 
-			juce::FlexBox fb;
-			fb.flexDirection = juce::FlexBox::Direction::row;
-			fb.flexWrap = juce::FlexBox::Wrap::wrap;
-			fb.justifyContent = juce::FlexBox::JustifyContent::spaceAround;
+			const int numCols = 4;
+			const int colW = area.getWidth() / numCols;
+			const int labelH = (int)(24 * scale);
+			const int btnSize = (int)(24 * scale);
 
-			std::deque<juce::FlexBox> cols;
-
-			auto addItem = [&](Component& label, Component& button, float width) {
-				cols.emplace_back();
-				auto& col = cols.back();
-				col.flexDirection = juce::FlexBox::Direction::column;
-				col.items.add(juce::FlexItem(label).withHeight(24).withFlex(0));
-				col.items.add(juce::FlexItem(button).withHeight(24).withFlex(0));
-				fb.items.add(juce::FlexItem(col).withWidth(width).withFlex(0));
+			auto layoutItem = [&](Component& label, Component& button, int colIndex) {
+				int x = area.getX() + colIndex * colW;
+				label.setBounds(x, area.getY(), colW, labelH);
+				button.setBounds(x + (colW - btnSize) / 2, area.getY() + labelH, btnSize, btnSize);
 			};
 
-			addItem(*rawSoundLabellabel, *sourceRawToggleButton, isLandscape ? 80 : 70);
-			addItem(*FilteredSoundLabel, *sourceFilteredToggleButton, isLandscape ? 100 : 90);
-			addItem(*startLabel, *startRecordingToggleButton, 50);
-			addItem(*stopLabel, *stopRecordingToggleButton, 50);
-
-			fb.performLayout(area.toFloat());
+			layoutItem(*rawSoundLabellabel, *sourceRawToggleButton, 0);
+			layoutItem(*FilteredSoundLabel, *sourceFilteredToggleButton, 1);
+			layoutItem(*startLabel, *startRecordingToggleButton, 2);
+			layoutItem(*stopLabel, *stopRecordingToggleButton, 3);
 		}
 		// Inner controls for recordLevelGroup
 		{
 			auto g = recordLevelGroupComponent->getBounds();
-			auto area = g.withTrimmedTop(20).reduced(6, 4);
+			auto area = g.withTrimmedTop((int)(20 * scale)).reduced((int)(6 * scale), (int)(4 * scale));
 
 			if (!isLandscape)
 			{
-				RecordingLevelMeter->setBounds(area.removeFromTop(24));
-				auto bottomRow = area.removeFromTop(32);
-				recordingLevelSliderLabel->setBounds(bottomRow.removeFromLeft(50));
-				autoGainToggleButton->setBounds(bottomRow.removeFromRight(60));
+				RecordingLevelMeter->setBounds(area.removeFromTop((int)(24 * scale)));
+				auto bottomRow = area.removeFromTop((int)(32 * scale));
+				recordingLevelSliderLabel->setBounds(bottomRow.removeFromLeft((int)(50 * scale)));
+				autoGainToggleButton->setBounds(bottomRow.removeFromRight((int)(60 * scale)));
 				recordingLevelSlider->setBounds(bottomRow);
 			}
 			else
 			{
-				RecordingLevelMeter->setBounds(area.removeFromLeft(24));
-				area.removeFromLeft(8);
-				recordingLevelSliderLabel->setBounds(area.removeFromTop(20));
-				autoGainToggleButton->setBounds(area.removeFromBottom(24));
+				RecordingLevelMeter->setBounds(area.removeFromLeft((int)(24 * scale)));
+				area.removeFromLeft((int)(8 * scale));
+				recordingLevelSliderLabel->setBounds(area.removeFromTop((int)(20 * scale)));
+				autoGainToggleButton->setBounds(area.removeFromBottom((int)(24 * scale)));
 				recordingLevelSlider->setBounds(area);
 			}
 		}

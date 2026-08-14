@@ -20,6 +20,7 @@
 //[Headers] You can add your own extra header files here...
 #include "tuneComponent.h"
 #include "xmlGuitarFineTuneConfig.h"
+#include "eksLookAndFeel.h"
 //[/Headers]
 
 #include "eksAudioControlComponent.h"
@@ -71,12 +72,21 @@ eksAudioControlComponent::eksAudioControlComponent(std::shared_ptr<xmlGuitarFine
 	preProcessingToggleButton->setBounds(1, 403, 231, 24);
 
 	enableZoomToggleButton.reset(new juce::ToggleButton("enableZoomToggleButton"));
-	addAndMakeVisible(enableZoomToggleButton.get());
 	enableZoomToggleButton->setButtonText(TRANS("Scale UI to fit screen"));
 	enableZoomToggleButton->addListener(this);
 	enableZoomToggleButton->setColour(juce::ToggleButton::textColourId, juce::Colours::cornflowerblue);
 	enableZoomToggleButton->setBounds(1, 430, 231, 24);
 
+	// Scale UI is only for mobile tablets where it works
+	bool shouldShowScaleUI = false;
+#if (JUCE_IOS || JUCE_ANDROID)
+	auto r = juce::Desktop::getInstance().getDisplays().getPrimaryDisplay()->userBounds;
+	shouldShowScaleUI = juce::jmin(r.getWidth(), r.getHeight()) >= 600;
+#endif
+	if (shouldShowScaleUI)
+		addAndMakeVisible(enableZoomToggleButton.get());
+	else
+		enableZoomToggleButton->setVisible(false);
 
 	//[UserPreSize]
 	// Check if system supports set Audio Preprocessing Enabled/Disabled and set off if so
@@ -164,19 +174,25 @@ void eksAudioControlComponent::resized()
 {
 	//[UserPreResize] Add your own custom resize code here..
 	{
-		const int rowH = 28;
 		const int margin = 6;
-
 		auto localBounds = getLocalBounds();
-		int prefW = 600;
-		int prefH = 600;
+		auto* lf = dynamic_cast<eksLookAndFeel*> (&getLookAndFeel());
+		float scale = lf ? lf->getCurrentScale() : 1.0f;
 
-		auto area = localBounds.reduced(margin);
-		if (area.getWidth() > prefW)  area = area.withWidth(prefW).withCentre(localBounds.getCentre());
-		if (area.getHeight() > prefH) area = area.withHeight(prefH).withCentre(localBounds.getCentre());
+		const int rowH = (int) (28 * scale);
 
-		enableZoomToggleButton->setBounds(area.removeFromBottom(rowH));
-		area.removeFromBottom(margin);
+		int prefW = (int) (600 * scale);
+		int prefH = (int) (600 * scale);
+
+		auto area = localBounds.reduced (margin);
+		if (area.getWidth() > prefW)  area = area.withWidth (prefW).withCentre (localBounds.getCentre());
+		if (area.getHeight() > prefH) area = area.withHeight (prefH).withCentre (localBounds.getCentre());
+
+		if (enableZoomToggleButton->isVisible())
+		{
+			enableZoomToggleButton->setBounds(area.removeFromBottom(rowH));
+			area.removeFromBottom(margin);
+		}
 		if (preProcessingToggleButton->isVisible())
 		{
 			preProcessingToggleButton->setBounds(area.removeFromBottom(rowH));
@@ -185,11 +201,11 @@ void eksAudioControlComponent::resized()
 
 		// 50/60 Hz buttons side by side
 		auto hzRow = area.removeFromBottom(rowH);
-		area.removeFromBottom(margin);
+		area.removeFromBottom((int)(margin * scale));
 		juce::FlexBox hzFb;
 		hzFb.flexDirection = juce::FlexBox::Direction::row;
-		hzFb.items.add(juce::FlexItem(*Use_50_Hz_FilterToggleButton).withFlex(1).withMargin({ 0, (float)margin / 2, 0, 0 }));
-		hzFb.items.add(juce::FlexItem(*Use_60_Hz_FilterToggleButton).withFlex(1).withMargin({ 0, 0, 0, (float)margin / 2 }));
+		hzFb.items.add(juce::FlexItem(*Use_50_Hz_FilterToggleButton).withFlex(1).withMargin({ 0, (float)margin * scale / 2, 0, 0 }));
+		hzFb.items.add(juce::FlexItem(*Use_60_Hz_FilterToggleButton).withFlex(1).withMargin({ 0, 0, 0, (float)margin * scale / 2 }));
 		hzFb.performLayout(hzRow.toFloat());
 
 		// AudioDeviceSelectorComponent fills the rest

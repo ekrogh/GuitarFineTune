@@ -502,199 +502,62 @@ void guitarFineTuneFirstClass::parentSizeChanged()
 }
 #endif
 
-#if (JUCE_IOS)
-float guitarFineTuneFirstClass::scaleToGuitarStringSoundsControlWindow()
+bool guitarFineTuneFirstClass::isTabletDevice() const
 {
-	float bndsScaleHoriz;
-	float bndsScaleVerti;
-	float scaleNow;
-	if (curCompntBnds.getWidth() >= curCompntBnds.getHeight())
-	{
-		// Horizontal
-		bndsScaleHoriz = (float)(curCompntBnds.getWidth()) / (float)(widthOfGuitarStringSoundsControlWindowHorizontal);
-		bndsScaleVerti = ((float)(curCompntBnds.getHeight())
-			- (float)tabBarDepthAndroidIosInHorizontal) / ((float)(hightOfGuitarStringSoundsControlWindowHorizontal));
-		if (bndsScaleHoriz < bndsScaleVerti)
-		{
-			scaleNow = bndsScaleHoriz;
-		}
-		else
-		{
-			scaleNow = bndsScaleVerti;
-		}
-		pEksTabbedComponent->setTabBarDepth((float)tabBarDepthAndroidIosInHorizontal * scaleNow);
-	}
-	else
-	{
-		// Vertical
-		bndsScaleHoriz = (float)(curCompntBnds.getWidth()) / (float)(widthOfGuitarStringSoundsControlWindowVertical);
-		bndsScaleVerti = ((float)(curCompntBnds.getHeight())
-			- (float)tabBarDepthAndroidIosInVertical) / ((float)(hightOfGuitarStringSoundsControlWindowVertical + 1));
-		if (bndsScaleHoriz < bndsScaleVerti)
-		{
-			scaleNow = bndsScaleHoriz;
-		}
-		else
-		{
-			scaleNow = bndsScaleVerti;
-		}
-		pEksTabbedComponent->setTabBarDepth((float)tabBarDepthAndroidIosInVertical * scaleNow);
-	}
-
-	return scaleNow;
+	auto r = Desktop::getInstance().getDisplays().getPrimaryDisplay()->userBounds;
+	return jmin (r.getWidth(), r.getHeight()) >= 600;
 }
-#elif (JUCE_ANDROID)
-float guitarFineTuneFirstClass::scaleToGuitarStringSoundsControlWindow()
+
+float guitarFineTuneFirstClass::getMasterScaleFactor() const
 {
-	float bndsScaleHoriz;
-	float bndsScaleVerti;
-	float scaleNow;
-	if (curCompntBnds.getWidth() >= curCompntBnds.getHeight())
-	{
-		// Horizontal
-		bndsScaleHoriz = (float)(curCompntBnds.getWidth()) / (float)(widthOfGuitarStringSoundsControlWindowHorizontal);
-		bndsScaleVerti = ((float)(curCompntBnds.getHeight())
-			- (float)tabBarDepthAndroidIosInHorizontal) / ((float)(hightOfGuitarStringSoundsControlWindowHorizontal));
-		if (bndsScaleHoriz < bndsScaleVerti)
-		{
-			scaleNow = bndsScaleHoriz;
-		}
-		else
-		{
-			scaleNow = bndsScaleVerti;
-		}
-		pEksTabbedComponent->setTabBarDepth((float)tabBarDepthAndroidIosInHorizontal * scaleNow);
-	}
-	else
-	{
-		// Vertical
-		bndsScaleHoriz = (float)(curCompntBnds.getWidth()) / (float)(widthOfGuitarStringSoundsControlWindowVertical);
-		bndsScaleVerti = ((float)(curCompntBnds.getHeight())
-			- (float)tabBarDepthAndroidIosInVertical) / ((float)(hightOfGuitarStringSoundsControlWindowVertical + 1));
-		if (bndsScaleHoriz < bndsScaleVerti)
-		{
-			scaleNow = bndsScaleHoriz;
-		}
-		else
-		{
-			scaleNow = bndsScaleVerti;
-		}
-		pEksTabbedComponent->setTabBarDepth((float)tabBarDepthAndroidIosInVertical * scaleNow);
-	}
+	// Zoom is only active if enabled in config
+	bool enableZoom = false;
+	if (auto* audioCtrl = pXmlGuitarFineTuneConfig->getGuitarfinetuneconfig().getChildByName ("AUDIOCONTROL"))
+		enableZoom = audioCtrl->getBoolAttribute ("enableZoom");
 
-	return scaleNow;
+	if (! enableZoom)
+		return 1.0f;
+
+	// Zoom is primarily for tablets as requested
+	if (! isTabletDevice())
+		return 1.0f;
+
+	auto r = getLocalBounds();
+	if (r.isEmpty()) return 1.0f;
+
+	// Calculate scale based on how much larger the tablet is than a typical phone
+	float baseline = 400.0f; // Typical phone short dimension
+	float currentMin = (float) jmin (r.getWidth(), r.getHeight());
+
+	return jlimit (1.0f, 2.0f, currentMin / baseline);
 }
-#endif // (JUCE_ANDROID)
 
 void guitarFineTuneFirstClass::resized()
 {
 	DocumentWindow::resized();
 
-	//[UserPreResize] Add your own custom resize code here..
-    auto safeArea = Desktop::getInstance().getDisplays().getPrimaryDisplay()->safeAreaInsets;
-    curCompntBnds = getLocalBounds();
+	auto safeArea = Desktop::getInstance().getDisplays().getPrimaryDisplay()->safeAreaInsets;
+	curCompntBnds = getLocalBounds();
 
 #if (JUCE_ANDROID || JUCE_IOS)
-    curCompntBnds = safeArea.subtractedFrom (curCompntBnds);
+	curCompntBnds = safeArea.subtractedFrom (curCompntBnds);
 #endif
 
-	pEksTabbedComponent->setBounds(curCompntBnds);
+	pEksTabbedComponent->setBounds (curCompntBnds);
 
 #if (JUCE_IOS || JUCE_ANDROID)
-	if (!addViewPort)
-	{
+	float scaleNow = getMasterScaleFactor();
+	pGuitarFineTuneLookAndFeel->scaleEksLookAndFeelFonts (scaleNow);
+	pGuitarFineTuneLookAndFeel->scaleAllsliderTextBoxes (scaleNow);
 
-		// Read the user's zoom preference
-		bool enableZoom = false;
-		if (auto* audioCtrl = pXmlGuitarFineTuneConfig->getGuitarfinetuneconfig().getChildByName("AUDIOCONTROL"))
-			enableZoom = audioCtrl->getBoolAttribute("enableZoom");
+	// Propagate tab bar depth scale
+	float baseTabDepth = (curCompntBnds.getWidth() >= curCompntBnds.getHeight()) ?
+						 (float) tabBarDepthAndroidIosInHorizontal :
+						 (float) tabBarDepthAndroidIosInVertical;
+	pEksTabbedComponent->setTabBarDepth (baseTabDepth * scaleNow);
+#endif
 
-		float bndsScaleHoriz;
-		float bndsScaleVerti;
-		float scaleNow;
-		switch (currentTabIndex)
-		{
-			case tabTuneWindow:
-				{
-					if (enableZoom)
-						scaleToGuitarStringSoundsControlWindow();
-					break;
-				}
-			case tabGuitarStringSoundsControlWindow:
-				{
-					if (enableZoom)
-					{
-						scaleNow = scaleToGuitarStringSoundsControlWindow();
-						pGuitarFineTuneLookAndFeel->scaleEksLookAndFeelFonts(scaleNow);
-						pGuitarFineTuneLookAndFeel->scaleAllsliderTextBoxes(scaleNow);
-					}
-					// pGuitarStringSoundsControl->scaleAllComponents();
-					break;
-				}
-			case tabDisplayControlWindow:
-				{
-					if (enableZoom)
-					{
-						if (curCompntBnds.getWidth() >= curCompntBnds.getHeight())
-						{
-							// Horizontal
-							bndsScaleHoriz = (float)(curCompntBnds.getWidth()) / (float)(widthOfDisplayControlWindowHorizontal);
-							bndsScaleVerti = ((float)(curCompntBnds.getHeight())
-								- (float)(tabBarDepthAndroidIosInHorizontal)) / ((float)(hightOfDisplayControlWindowHorizontal));
-							scaleNow = (bndsScaleHoriz < bndsScaleVerti) ? bndsScaleHoriz : bndsScaleVerti;
-							pEksTabbedComponent->setTabBarDepth((float)tabBarDepthAndroidIosInHorizontal * scaleNow);
-						}
-						else
-						{
-							// Vertical
-							bndsScaleHoriz = (float)(curCompntBnds.getWidth()) / (float)(widthOfDisplayControlWindowVertical);
-							bndsScaleVerti = ((float)(curCompntBnds.getHeight())
-								- (float)(tabBarDepthAndroidIosInVertical)) / ((float)(hightOfDisplayControlWindowVertical + 1));
-							scaleNow = (bndsScaleHoriz < bndsScaleVerti) ? bndsScaleHoriz : bndsScaleVerti;
-							pEksTabbedComponent->setTabBarDepth((float)tabBarDepthAndroidIosInVertical * scaleNow);
-						}
-						pGuitarFineTuneLookAndFeel->scaleEksLookAndFeelFonts(scaleNow);
-						pGuitarFineTuneLookAndFeel->scaleAllsliderTextBoxes(scaleNow);
-					}
-					// pDisplayControlComponent->scaleAllComponents();
-					break;
-				}
-			case tabEksAudioControlComponent:
-				{
-					if (enableZoom)
-					{
-						bndsScaleHoriz = (float)(curCompntBnds.getWidth()) / (float)(widthOfEksAudioControlComponentWindow);
-						bndsScaleVerti = ((float)(curCompntBnds.getHeight())
-							- (float)(tabBarDepthAndroidIosInHorizontal)) / ((float)(hightOfEksAudioControlComponentWindow));
-						scaleNow = (bndsScaleHoriz < bndsScaleVerti) ? bndsScaleHoriz : bndsScaleVerti;
-						if (curCompntBnds.getWidth() >= curCompntBnds.getHeight())
-							pEksTabbedComponent->setTabBarDepth((float)tabBarDepthAndroidIosInHorizontal * scaleNow);
-						else
-							pEksTabbedComponent->setTabBarDepth((float)tabBarDepthAndroidIosInVertical * scaleNow);
-						pGuitarFineTuneLookAndFeel->scaleEksLookAndFeelFonts(scaleNow);
-						pGuitarFineTuneLookAndFeel->scaleAllsliderTextBoxes(scaleNow);
-					}
-					// pEksAudioControlComponent->scaleAllComponents();
-					break;
-				}
-			case tabAboutPage:
-				{
-					if (enableZoom)
-					{
-						scaleNow = scaleToGuitarStringSoundsControlWindow();
-						pGuitarFineTuneLookAndFeel->scaleEksLookAndFeelFonts(scaleNow);
-						pGuitarFineTuneLookAndFeel->scaleAllsliderTextBoxes(scaleNow);
-					}
-					// pAboutPage->scaleAllComponents();
-					break;
-				}
-			default:
-				{
-					break;
-				}
-		}
-	}
-#endif // (JUCE_IOS || JUCE_ANDROID)
+	//[UserPreResize] Add your own custom resize code here..
 	//[/UserPreResize]
 
 	//[UserResized] Add your own custom resize handling here..
