@@ -21,12 +21,6 @@ android {
             keyPassword("6taura")
             storeType("jks")
         }
-        Release {
-            storeFile file('D:\\Users\\eigil\\projects\\juceProjs\\GuitarFineTune\\Android_Special\\keystore.jks')
-            storePassword '6taura'
-            keyAlias 'upload'
-            keyPassword '6taura'
-        }
     }
 
     defaultConfig {
@@ -41,10 +35,7 @@ android {
     }
 
     buildTypes {
-         release {
-             signingConfig signingConfigs.Release
-         }
-        debug {
+         debug {
              initWith(debug)
              debuggable(true)
              jniDebuggable(true)
