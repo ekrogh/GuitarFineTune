@@ -1,78 +1,92 @@
 apply plugin: 'com.android.application'
 
+java.toolchain.languageVersion = JavaLanguageVersion.of(8)
+def ndkVersionString = "28.1.13356709"
+
 android {
-    compileSdkVersion 30
+    compileSdk(35)
+    ndkVersion = ndkVersionString
+    namespace = "dk.eksit.guitarfinetune"
     externalNativeBuild {
         cmake {
-            path "CMakeLists.txt"
+            path("CMakeLists.txt")
+            version = "3.22.1"
         }
     }
     signingConfigs {
         juceSigning {
-            storeFile     file("..${File.separator}..${File.separator}..${File.separator}Android_Special${File.separator}keystore.jks")
-            storePassword "6taura"
-            keyAlias      "upload"
-            keyPassword   "6taura"
-            storeType     "jks"
+            storeFile(file("D:${File.separator}Users${File.separator}eigil${File.separator}projects${File.separator}juceProjs${File.separator}GuitarFineTune${File.separator}Android_Special${File.separator}keystore.jks"))
+            storePassword("6taura")
+            keyAlias("upload")
+            keyPassword("6taura")
+            storeType("jks")
+        }
+        Release {
+            storeFile file('D:\\Users\\eigil\\projects\\juceProjs\\GuitarFineTune\\Android_Special\\keystore.jks')
+            storePassword '6taura'
+            keyAlias 'upload'
+            keyPassword '6taura'
         }
     }
 
     defaultConfig {
-        applicationId "dk.eksit.guitarfinetune"
-        minSdkVersion    16
-        targetSdkVersion 30
+        applicationId("dk.eksit.guitarfinetune")
+        minSdkVersion(21)
+        targetSdkVersion(35)
         externalNativeBuild {
             cmake {
-                arguments "-DANDROID_TOOLCHAIN=clang", "-DANDROID_PLATFORM=android-16", "-DANDROID_STL=c++_static", "-DANDROID_CPP_FEATURES=exceptions rtti", "-DANDROID_ARM_MODE=arm", "-DANDROID_ARM_NEON=TRUE", "-DCMAKE_CXX_STANDARD=17", "-DCMAKE_CXX_EXTENSIONS=OFF"
+                arguments("-DANDROID_TOOLCHAIN=clang", "-DANDROID_PLATFORM=android-21", "-DANDROID_STL=c++_static", "-DANDROID_CPP_FEATURES=exceptions rtti", "-DANDROID_ARM_MODE=arm", "-DANDROID_ARM_NEON=TRUE", "-DANDROID_WEAK_API_DEFS=ON", "-DCMAKE_CXX_STANDARD=20", "-DCMAKE_CXX_EXTENSIONS=OFF")
             }
         }
     }
 
     buildTypes {
-         debug {
-             initWith debug
-             debuggable    true
-             jniDebuggable true
-             signingConfig signingConfigs.juceSigning
+         release {
+             signingConfig signingConfigs.Release
+         }
+        debug {
+             initWith(debug)
+             debuggable(true)
+             jniDebuggable(true)
+             signingConfig = signingConfigs.juceSigning
          }
     }
 
-    flavorDimensions "default"
+    flavorDimensions("default")
     productFlavors {
         release_ {
             externalNativeBuild {
                 cmake {
-                    arguments "-DJUCE_BUILD_CONFIGURATION=RELEASE", "-DCMAKE_CXX_FLAGS_RELEASE=-O3", "-DCMAKE_C_FLAGS_RELEASE=-O3"
+                    cFlags("-O3")
+                    cppFlags("-O3")
+                    arguments("-DJUCE_BUILD_CONFIGURATION=RELEASE")
                 }
             }
 
-            dimension "default"
-            signingConfig signingConfigs.juceSigning
+            dimension("default")
         }
         debug_ {
             ndk {
-                abiFilters "armeabi-v7a", "arm64-v8a", "x86", "x86_64"
+                abiFilters("armeabi-v7a", "arm64-v8a", "x86", "x86_64")
             }
             externalNativeBuild {
                 cmake {
-                    arguments "-DJUCE_BUILD_CONFIGURATION=DEBUG", "-DCMAKE_CXX_FLAGS_DEBUG=-O0", "-DCMAKE_C_FLAGS_DEBUG=-O0"
+                    cFlags("-O0")
+                    cppFlags("-O0")
+                    arguments("-DJUCE_BUILD_CONFIGURATION=DEBUG")
                 }
             }
 
-            dimension "default"
-       }
+            dimension("default")
+        }
     }
 
-    variantFilter { variant ->
-        def names = variant.flavors*.name
-        if (names.contains ("release_")
-              && variant.buildType.name != "release") {
-            setIgnore(true)
-        }
-        if (names.contains ("debug_")
-              && variant.buildType.name != "debug") {
-            setIgnore(true)
-        }
+    androidComponents {
+        beforeVariants(selector().all(), { variant ->
+            variant.enabled = false
+            variant.enabled |= variant.productFlavors*.second.contains ("release_") && variant.buildType == "release"
+            variant.enabled |= variant.productFlavors*.second.contains ("debug_") && variant.buildType == "debug"
+        })
     }
 
     sourceSets {
@@ -84,7 +98,6 @@ android {
         main.res.srcDirs +=
             []
     }
-    ndkVersion '21.0.6113669'
 
     repositories {
     }
