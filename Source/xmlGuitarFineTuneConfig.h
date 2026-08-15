@@ -89,7 +89,6 @@ private:
 		  { "disableOsAudioPreProcessing", true }
 		, { "use50HzFilter", false }
 		, { "use60HzFilter", false }
-		, { "enableZoom", false }
 	};
 
 

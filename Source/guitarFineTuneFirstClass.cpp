@@ -386,7 +386,7 @@ guitarFineTuneFirstClass::guitarFineTuneFirstClass()
 	#if (JUCE_WINDOWS || JUCE_MAC || JUCE_LINUX)
 		curCompntBnds.setBounds(0, 0, widthOfTuneWindow, hightOfTuneWindow + tabBarDepthMacWin);
 		setSize(curCompntBnds.getWidth(), curCompntBnds.getHeight()); // This
-		DocumentWindow::centreWithSize(widthOfGuitarStringSoundsControlWindowHorizontal, hightOfGuitarStringSoundsControlWindowHorizontal);
+		DocumentWindow::centreWithSize(curCompntBnds.getWidth(), curCompntBnds.getHeight());
 	#elif (JUCE_ANDROID || JUCE_IOS)
 		setBounds (Desktop::getInstance().getDisplays().getPrimaryDisplay()->userBounds.toNearestInt());
 		curCompntBnds = getLocalBounds();
@@ -412,6 +412,10 @@ guitarFineTuneFirstClass::guitarFineTuneFirstClass()
 		setLookAndFeel(pGuitarFineTuneLookAndFeel.get());
 
 		pDisplayControlComponent->initControls();
+
+		// Ensure first visible page is Tune with its own geometry after all content is attached.
+		pEksTabbedComponent->setCurrentTabIndex(tabTuneWindow);
+		currentTabChanged(tabTuneWindow, "Tune");
 	}
 
 }
@@ -453,17 +457,8 @@ void guitarFineTuneFirstClass::currentTabChanged(int newCurrentTabIndex, const S
 				}
 			case tabDisplayControlWindow:
 				{
-					Rectangle<int> r = Desktop::getInstance().getDisplays().getPrimaryDisplay()->userBounds.toNearestInt();
-					if (r.getWidth() >= r.getHeight())
-					{
-						//Horizontal
-						curCompntBnds.setBounds(0, 0, widthOfDisplayControlWindowHorizontal, hightOfDisplayControlWindowHorizontal);
-					}
-					else
-					{
-						// Vertical
-						curCompntBnds.setBounds(0, 0, widthOfDisplayControlWindowVertical, hightOfDisplayControlWindowVertical);
-					}
+					// Display controls are authored around the vertical layout; keep this tab on its own preferred size.
+					curCompntBnds.setBounds(0, 0, widthOfDisplayControlWindowVertical, hightOfDisplayControlWindowVertical);
 					break;
 				}
 			case tabAboutPage:
@@ -502,36 +497,6 @@ void guitarFineTuneFirstClass::parentSizeChanged()
 }
 #endif
 
-bool guitarFineTuneFirstClass::isTabletDevice() const
-{
-	auto r = Desktop::getInstance().getDisplays().getPrimaryDisplay()->userBounds;
-	return jmin (r.getWidth(), r.getHeight()) >= 600;
-}
-
-float guitarFineTuneFirstClass::getMasterScaleFactor() const
-{
-	// Zoom is only active if enabled in config
-	bool enableZoom = false;
-	if (auto* audioCtrl = pXmlGuitarFineTuneConfig->getGuitarfinetuneconfig().getChildByName ("AUDIOCONTROL"))
-		enableZoom = audioCtrl->getBoolAttribute ("enableZoom");
-
-	if (! enableZoom)
-		return 1.0f;
-
-	// Zoom is primarily for tablets as requested
-	if (! isTabletDevice())
-		return 1.0f;
-
-	auto r = getLocalBounds();
-	if (r.isEmpty()) return 1.0f;
-
-	// Calculate scale based on how much larger the tablet is than a typical phone
-	float baseline = 400.0f; // Typical phone short dimension
-	float currentMin = (float) jmin (r.getWidth(), r.getHeight());
-
-	return jlimit (1.0f, 2.0f, currentMin / baseline);
-}
-
 void guitarFineTuneFirstClass::resized()
 {
 	DocumentWindow::resized();
@@ -546,15 +511,10 @@ void guitarFineTuneFirstClass::resized()
 	pEksTabbedComponent->setBounds (curCompntBnds);
 
 #if (JUCE_IOS || JUCE_ANDROID)
-	float scaleNow = getMasterScaleFactor();
-	pGuitarFineTuneLookAndFeel->scaleEksLookAndFeelFonts (scaleNow);
-	pGuitarFineTuneLookAndFeel->scaleAllsliderTextBoxes (scaleNow);
-
-	// Propagate tab bar depth scale
 	float baseTabDepth = (curCompntBnds.getWidth() >= curCompntBnds.getHeight()) ?
 						 (float) tabBarDepthAndroidIosInHorizontal :
 						 (float) tabBarDepthAndroidIosInVertical;
-	pEksTabbedComponent->setTabBarDepth (baseTabDepth * scaleNow);
+	pEksTabbedComponent->setTabBarDepth (baseTabDepth);
 #endif
 
 	//[UserPreResize] Add your own custom resize code here..

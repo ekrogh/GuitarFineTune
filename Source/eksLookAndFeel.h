@@ -161,25 +161,6 @@ public:
 		eksLookAndFeelTextButtonFont = fontToUse;
 	}
 
-	void scaleAllsliderTextBoxes(float scaleToUse)
-	{
-		for (auto pSliderTextBox : pSliderTextBoxes)
-		{
-			if (pSliderTextBox != nullptr)
-			{
-				pSliderTextBox->setFont(eksLookAndFeelTextButtonFont);
-			}
-		}
-	}
-
-	void scaleEksLookAndFeelFonts(float scaleToUse)
-	{
-		currentScale = scaleToUse;
-		float baseSize = 15.0f;
-		eksLookAndFeelComboBoxFont.setHeight(baseSize * scaleToUse);
-		eksLookAndFeelTextButtonFont.setHeight(baseSize * scaleToUse);
-	}
-
 	float getCurrentScale() const { return currentScale; }
 
 private:

@@ -73,9 +73,6 @@ public:
 	void mouseDown(const MouseEvent& e) override;
 	void mouseDrag(const MouseEvent& e) override;
 #endif
-#if (JUCE_IOS || JUCE_ANDROID)
-	void scaleAllComponents();
-#endif // (JUCE_IOS || JUCE_ANDROID)
     //[/UserMethods]
 
     void paint (juce::Graphics& g) override;

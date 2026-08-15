@@ -47,7 +47,6 @@ public:
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
 	XmlElement* getXmlTagAUDIOCONTROL();
-void scaleAllComponents();
 	void initControls();
 	void setColorOfAllLabels(juce::Component* cmpontToHandle);
     //[/UserMethods]
@@ -69,8 +68,6 @@ private:
         //Label colours
 	int labelTextColorId = juce::Label::textColourId;
 	juce::Colour labelColor = juce::Colours::cornflowerblue;
-    
-    float scaleUsedLastTime = 1.0f;
 
     //[/UserVariables]
 
@@ -79,7 +76,6 @@ private:
     std::unique_ptr<juce::ToggleButton> Use_50_Hz_FilterToggleButton;
     std::unique_ptr<juce::ToggleButton> Use_60_Hz_FilterToggleButton;
     std::unique_ptr<juce::ToggleButton> preProcessingToggleButton;
-    std::unique_ptr<juce::ToggleButton> enableZoomToggleButton;
 
 
     //==============================================================================

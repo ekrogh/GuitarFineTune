@@ -71,23 +71,6 @@ eksAudioControlComponent::eksAudioControlComponent(std::shared_ptr<xmlGuitarFine
 
 	preProcessingToggleButton->setBounds(1, 403, 231, 24);
 
-	enableZoomToggleButton.reset(new juce::ToggleButton("enableZoomToggleButton"));
-	enableZoomToggleButton->setButtonText(TRANS("Scale UI to fit screen"));
-	enableZoomToggleButton->addListener(this);
-	enableZoomToggleButton->setColour(juce::ToggleButton::textColourId, juce::Colours::cornflowerblue);
-	enableZoomToggleButton->setBounds(1, 430, 231, 24);
-
-	// Scale UI is only for mobile tablets where it works
-	bool shouldShowScaleUI = false;
-#if (JUCE_IOS || JUCE_ANDROID)
-	auto r = juce::Desktop::getInstance().getDisplays().getPrimaryDisplay()->userBounds;
-	shouldShowScaleUI = juce::jmin(r.getWidth(), r.getHeight()) >= 600;
-#endif
-	if (shouldShowScaleUI)
-		addAndMakeVisible(enableZoomToggleButton.get());
-	else
-		enableZoomToggleButton->setVisible(false);
-
 	//[UserPreSize]
 	// Check if system supports set Audio Preprocessing Enabled/Disabled and set off if so
 	AudioIODevice* CurrentAudioDevice = sharedAudioDeviceManager->getCurrentAudioDevice();
@@ -125,8 +108,6 @@ eksAudioControlComponent::eksAudioControlComponent(std::shared_ptr<xmlGuitarFine
 //	Use_60_Hz_FilterToggleButton->setBounds(147, heightAudioDeviceSelectorComponent - 15, 149, 24);
 	preProcessingToggleButton->setBounds(1, heightAudioDeviceSelectorComponent + 24 - 15, 231, 24);
 #endif // JUCE_ANDROID
-	enableZoomToggleButton->setToggleState(
-		getXmlTagAUDIOCONTROL()->getBoolAttribute("enableZoom"), dontSendNotification);
 	//[/UserPreSize]
 
 	setSize(600, 400);
@@ -148,7 +129,6 @@ eksAudioControlComponent::~eksAudioControlComponent()
 	Use_50_Hz_FilterToggleButton = nullptr;
 	Use_60_Hz_FilterToggleButton = nullptr;
 	preProcessingToggleButton = nullptr;
-	enableZoomToggleButton = nullptr;
 
 
 	//[Destructor]. You can add your own custom destruction code here..
@@ -188,11 +168,6 @@ void eksAudioControlComponent::resized()
 		if (area.getWidth() > prefW)  area = area.withWidth (prefW).withCentre (localBounds.getCentre());
 		if (area.getHeight() > prefH) area = area.withHeight (prefH).withCentre (localBounds.getCentre());
 
-		if (enableZoomToggleButton->isVisible())
-		{
-			enableZoomToggleButton->setBounds(area.removeFromBottom(rowH));
-			area.removeFromBottom(margin);
-		}
 		if (preProcessingToggleButton->isVisible())
 		{
 			preProcessingToggleButton->setBounds(area.removeFromBottom(rowH));
@@ -290,14 +265,6 @@ void eksAudioControlComponent::buttonClicked(juce::Button* buttonThatWasClicked)
 		//[/UserButtonCode_preProcessingToggleButton]
 	}
 
-	else if (buttonThatWasClicked == enableZoomToggleButton.get())
-	{
-		getXmlTagAUDIOCONTROL()->setAttribute("enableZoom", enableZoomToggleButton->getToggleState());
-		pXmlGuitarFineTuneConfig->writeConfigToXmlFile();
-		if (auto* topLevel = getTopLevelComponent())
-			topLevel->resized();
-	}
-
 	//[UserbuttonClicked_Post]
 	//[/UserbuttonClicked_Post]
 }
@@ -305,123 +272,6 @@ void eksAudioControlComponent::buttonClicked(juce::Button* buttonThatWasClicked)
 
 
 //[MiscUserCode] You can add your own definitions of your custom methods or any other code here...
-void eksAudioControlComponent::scaleAllComponents()
-{
-	if (!getXmlTagAUDIOCONTROL()->getBoolAttribute("enableZoom"))
-		return;
-
-	static bool firstCall = true;
-	if (firstCall)
-	{
-#if JUCE_ANDROID
-		if (!viewPortAdded)
-		{
-#endif // JUCE_ANDROID
-			if (auto parent = findParentComponentOfClass<TabbedComponent>())
-			{
-				Rectangle<int> workRectangle;
-
-				int tabBarDepth = parent->getTabBarDepth();
-
-				auto curUserArea = Desktop::getInstance().getDisplays().getPrimaryDisplay()->userBounds.toNearestInt();
-				float bndsScaleHoriz = (float)(curUserArea.getWidth()) /
-					(float)(widthOfEksAudioControlComponentWindow);
-				float bndsScaleVerti = ((float)(curUserArea.getHeight()) - (float)tabBarDepth) /
-					((float)hightOfEksAudioControlComponentWindow);
-				float scaleNow = bndsScaleVerti;
-				if (bndsScaleHoriz < bndsScaleVerti)
-				{
-					scaleNow = bndsScaleHoriz;
-				}
-
-				auto actHeightAudioDeviceSelectorComponent = pAudioDeviceSelectorComponent->getHeight();
-				workRectangle.setBounds(1, (actHeightAudioDeviceSelectorComponent /
-					(int)scaleUsedLastTime) - 15, 150, 24);
-				Use_50_Hz_FilterToggleButton->setBounds(workRectangle * scaleUsedLastTime);
-				workRectangle.setBounds(147, (actHeightAudioDeviceSelectorComponent /
-					(int)scaleUsedLastTime) - 15, 149, 24);
-				Use_60_Hz_FilterToggleButton->setBounds(workRectangle * scaleUsedLastTime);
-				workRectangle.setBounds(1, (actHeightAudioDeviceSelectorComponent /
-					(int)scaleUsedLastTime) + 24 - 15, 231, 24);
-				preProcessingToggleButton->setBounds(workRectangle * scaleUsedLastTime);
-
-
-				if (scaleNow != scaleUsedLastTime)
-				{
-					float scaleToUse = scaleNow / scaleUsedLastTime;
-
-					// Local components
-//					auto curbnds = getBounds();
-					curUserArea.setHeight(curUserArea.getHeight() - parent->getTabBarDepth());
-					curUserArea.setY(parent->getTabBarDepth());
-					setBoundsToFit(curUserArea, Justification::left, false);
-
-					int numChildComponents = this->getNumChildComponents();
-
-					for (int i = 0; i < numChildComponents; ++i)
-					{
-						if (Component* childComponent = this->getChildComponent(i))
-						{
-							auto curCpntBnds = childComponent->getBounds();
-							auto scaledBounds = curCpntBnds * scaleToUse;
-							childComponent->setBounds(scaledBounds);
-
-							auto labelTestComponent = dynamic_cast<juce::Label*> (childComponent);
-							if ((labelTestComponent != nullptr) && (scaleToUse > 1) && firstCall)
-							{
-								Font currentFont = labelTestComponent->getFont();
-								currentFont.setHeight(
-									currentFont.getHeightInPoints() * scaleToUse * 0.9f);
-								labelTestComponent->setFont(currentFont);
-							}
-
-							auto textEditorTestComponent = dynamic_cast<juce::TextEditor*> (childComponent);
-							if ((textEditorTestComponent != nullptr) && (scaleToUse > 1) &&
-								firstCall)
-							{
-								Font currentFont = textEditorTestComponent->getFont();
-								currentFont.setHeight(
-									currentFont.getHeightInPoints() * scaleToUse * 1.3f);
-								textEditorTestComponent->applyFontToAllText(currentFont);
-								textEditorTestComponent->setJustification(Justification::centred);
-							}
-						}
-					}
-
-					// juce::AudioDeviceSelectorComponent
-					pAudioDeviceSelectorComponent->setItemHeight(
-						(int)(pAudioDeviceSelectorComponent->getItemHeight() * scaleToUse));
-
-					scaleUsedLastTime = scaleNow;
-					firstCall = false;
-                    
-                    // TEST
-                    auto area = getLocalBounds().reduced(10);
-                    pAudioDeviceSelectorComponent->setBounds(area.removeFromTop(40));
-                    preProcessingToggleButton->setBounds(area.removeFromBottom(30));
-                    preProcessingToggleButton->setSize((int)(scaleUsedLastTime*150), (int)(scaleUsedLastTime*24));
-                    Use_50_Hz_FilterToggleButton->setBounds(area.removeFromBottom(30));
-                    Use_50_Hz_FilterToggleButton->setSize((int)(scaleUsedLastTime*150), (int)(scaleUsedLastTime*24));
-                    Use_60_Hz_FilterToggleButton->setBounds(area.removeFromRight((int)(scaleUsedLastTime*140)).removeFromBottom(0));
-                    Use_60_Hz_FilterToggleButton->setSize((int)(scaleUsedLastTime*149), (int)(scaleUsedLastTime*24));
-
-//                    auto area = getLocalBounds().reduced(10);
-//                    pAudioDeviceSelectorComponent->setBounds(area.removeFromTop(40));
-//                    preProcessingToggleButton->setBounds(area.removeFromBottom(30));
-//                    preProcessingToggleButton->setSize(150, 24);
-//                    Use_50_Hz_FilterToggleButton->setBounds(area.removeFromBottom(30));
-//                    Use_50_Hz_FilterToggleButton->setSize(150, 24);
-//                    Use_60_Hz_FilterToggleButton->setBounds(area.removeFromRight(140).removeFromBottom(0));
-//                    Use_60_Hz_FilterToggleButton->setSize(149, 24);
-
-						}
-						}
-				#if JUCE_ANDROID
-						}
-				#endif // JUCE_ANDROID
-					}
-				}
-
 void eksAudioControlComponent::initControls()
 {
 	if (deviceSupportsDisableAudioPreprocessing)

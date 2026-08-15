@@ -23,10 +23,10 @@ enum
 	, hightOfTuneWindow = 200
 
 	, tabGuitarStringSoundsControlWindow = 1
-	, widthOfGuitarStringSoundsControlWindowHorizontal = 620
-	, hightOfGuitarStringSoundsControlWindowHorizontal = 295
-	, widthOfGuitarStringSoundsControlWindowVertical = 300
-	, hightOfGuitarStringSoundsControlWindowVertical = 430
+	, widthOfGuitarStringSoundsControlWindowHorizontal = 760
+	, hightOfGuitarStringSoundsControlWindowHorizontal = 360
+	, widthOfGuitarStringSoundsControlWindowVertical = 360
+	, hightOfGuitarStringSoundsControlWindowVertical = 500
 
 	, tabDisplayControlWindow = 2
 	, widthOfDisplayControlWindowHorizontal = 528

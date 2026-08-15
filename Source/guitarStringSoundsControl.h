@@ -54,9 +54,6 @@ public:
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
 	void labelTextChanged(Label* labelThatHasChanged) override;
-#if (JUCE_IOS || JUCE_ANDROID)
-	void scaleAllComponents();
-#endif // (JUCE_IOS || JUCE_ANDROID)
 	void disableAllStringTonesAndMutes();
 	inline std::string eksLongDoubleToString(long double valueToConvert, int noOfDecimals);
 	inline void setRecordLevelSlider(bool newGainIsZero);

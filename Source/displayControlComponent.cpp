@@ -23,7 +23,6 @@
 #include "xmlGuitarFineTuneConfig.h"
 #include "guitarStringSoundsControl.h"
 #include "guitarFineTuneGlobalEnums.h"
-#include <deque>
 //[/Headers]
 
 #include "displayControlComponent.h"
@@ -303,7 +302,7 @@ displayControlComponent::displayControlComponent (std::shared_ptr<xmlGuitarFineT
 	averageSiderLabel->setKeyboardType(TextInputTarget::VirtualKeyboardType::decimalKeyboard);
     //[/UserPreSize]
 
-    setSize (310, 460);
+	setSize (346, 468);
 
 
     //[Constructor] You can add your own custom stuff here..
@@ -377,6 +376,7 @@ void displayControlComponent::resized()
 	//[UserResized] Add your own custom resize handling here..
 	{
 		const bool isLandscape = (getWidth() >= getHeight());
+		bool usePortraitLayout = !isLandscape;
 		auto localBounds = getLocalBounds();
 		auto* lf = dynamic_cast<eksLookAndFeel*> (&getLookAndFeel());
 		float scale = lf ? lf->getCurrentScale() : 1.0f;
@@ -395,7 +395,18 @@ void displayControlComponent::resized()
 		const int freqH = (int) (140 * scale);
 		const float gap = 6.0f * scale;
 
-		if (!isLandscape)
+		if (isLandscape)
+		{
+			const int minLeftW = (int) (360 * scale);
+			const int minRightW = (int) (260 * scale);
+			const int columnGap = (int) (8 * scale);
+			const int minNeededW = minLeftW + minRightW + columnGap;
+
+			if (bounds.getWidth() < minNeededW)
+				usePortraitLayout = true;
+		}
+
+		if (usePortraitLayout)
 		{
 			// Portrait: stack all 4 groups vertically
 			juce::FlexBox fb;
@@ -410,7 +421,15 @@ void displayControlComponent::resized()
 		else
 		{
 			// Landscape: left = bgsound + average + show stacked; right = freqRange
-			auto leftArea = bounds.removeFromLeft((int) (330 * scale));
+			const int columnGap = (int) (8 * scale);
+			const int minRightW = (int) (260 * scale);
+			const int preferredLeftW = (int) (bounds.getWidth() * 0.62f);
+			const int leftW = juce::jlimit((int) (360 * scale),
+				juce::jmax((int) (360 * scale), bounds.getWidth() - minRightW - columnGap),
+				preferredLeftW);
+
+			auto leftArea = bounds.removeFromLeft(leftW);
+			bounds.removeFromLeft(columnGap);
 			juce::FlexBox leftFb;
 			leftFb.flexDirection = juce::FlexBox::Direction::column;
 			leftFb.items.add(juce::FlexItem(*bgsoundExclusionGroupComponent).withHeight((float)bgsoundH).withMargin({ 0, 0, gap, 0 }));
@@ -447,28 +466,81 @@ void displayControlComponent::resized()
 		// Inner controls for ShowGroup
 		{
 			auto area = ShowGroupComponent->getBounds().withTrimmedTop((int)(20 * scale)).reduced((int)(8 * scale), (int)(4 * scale));
+			const bool compactLayout = area.getWidth() < (int)(320 * scale);
 
-			juce::FlexBox fb;
-			fb.flexDirection = juce::FlexBox::Direction::column;
-			fb.justifyContent = juce::FlexBox::JustifyContent::spaceAround;
+			const int rowH = (int)(25 * scale);
+			const int rowGap = (int)(2 * scale);
+			const int colGap = (int)(6 * scale);
 
-			std::deque<juce::FlexBox> rows;
-
-			auto addRow = [&](Component& c1, float w1, Component& c2, float w2, Component* c3 = nullptr, float w3 = 0) {
-				rows.emplace_back();
-				auto& row = rows.back();
-				row.flexDirection = juce::FlexBox::Direction::row;
-				row.items.add(juce::FlexItem(c1).withWidth(w1 * scale).withFlex(0));
-				row.items.add(juce::FlexItem(c2).withWidth(w2 * scale).withFlex(0).withMargin({0, 0, 0, 10 * scale}));
-				if (c3) row.items.add(juce::FlexItem(*c3).withWidth(w3 * scale).withFlex(0));
-				fb.items.add(juce::FlexItem(row).withHeight(25 * scale).withFlex(0));
+			auto consumeRowGap = [&]()
+			{
+				if (area.getHeight() > 0)
+				{
+					area.removeFromTop(rowGap);
+				}
 			};
 
-			addRow(*showIndicatorsToggleButton, 133, *stringsOffTuneValuesToggleButton, 176);
-			addRow(*showSpectrumToggleButton, 94, *showFFTToggleButton, 55, thresholdToggleButton.get(), 112);
-			addRow(*showFFTMaxIndictrToggleButton, 136, *showFilterToggleButton, 78);
+			if (compactLayout)
+			{
+				// Narrow widths: keep controls on stable columns so rows line up vertically.
+				const int totalW = juce::jmax(0, area.getWidth() - 2 * colGap);
+				const int col1W = juce::jmax((int)(98 * scale), (int)(totalW * 0.30f));
+				const int col2W = juce::jmax((int)(126 * scale), (int)(totalW * 0.40f));
+				const int col3W = juce::jmax(0, totalW - col1W - col2W);
 
-			fb.performLayout(area.toFloat());
+				auto splitToColumns = [&](juce::Rectangle<int> row, juce::Rectangle<int>& c1, juce::Rectangle<int>& c2, juce::Rectangle<int>& c3)
+				{
+					c1 = row.removeFromLeft(juce::jmin(col1W, row.getWidth()));
+					row.removeFromLeft(juce::jmin(colGap, row.getWidth()));
+					c2 = row.removeFromLeft(juce::jmin(col2W, row.getWidth()));
+					row.removeFromLeft(juce::jmin(colGap, row.getWidth()));
+					c3 = row.removeFromLeft(juce::jmin(col3W, row.getWidth()));
+				};
+
+				juce::Rectangle<int> c1, c2, c3;
+
+				auto row1 = area.removeFromTop((int)(28 * scale));
+				splitToColumns(row1, c1, c2, c3);
+				showIndicatorsToggleButton->setBounds(c1);
+				stringsOffTuneValuesToggleButton->setBounds(c2);
+				consumeRowGap();
+
+				auto row2 = area.removeFromTop((int)(24 * scale));
+				splitToColumns(row2, c1, c2, c3);
+				showSpectrumToggleButton->setBounds(c1);
+				showFFTToggleButton->setBounds(c2);
+				thresholdToggleButton->setBounds(c3);
+				consumeRowGap();
+
+				auto row3 = area.removeFromTop((int)(24 * scale));
+				splitToColumns(row3, c1, c2, c3);
+				showFFTMaxIndictrToggleButton->setBounds(c1.withRight(c2.getRight()));
+				showFilterToggleButton->setBounds(c3);
+			}
+			else
+			{
+				const int col1W = juce::jlimit((int)(120 * scale), (int)(170 * scale), (int)(area.getWidth() * 0.42f));
+				const int col2W = juce::jlimit((int)(80 * scale), (int)(170 * scale), (int)(area.getWidth() * 0.36f));
+
+				auto layoutRow = [&](Component* c1, Component* c2, Component* c3)
+				{
+					auto row = area.removeFromTop(rowH);
+					auto c1Area = row.removeFromLeft(col1W);
+					row.removeFromLeft(colGap);
+					auto c2Area = row.removeFromLeft(juce::jmin(col2W, row.getWidth()));
+					row.removeFromLeft(colGap);
+					auto c3Area = row;
+
+					if (c1 != nullptr) c1->setBounds(c1Area);
+					if (c2 != nullptr) c2->setBounds(c2Area);
+					if (c3 != nullptr) c3->setBounds(c3Area);
+					consumeRowGap();
+				};
+
+				layoutRow(showIndicatorsToggleButton.get(), stringsOffTuneValuesToggleButton.get(), nullptr);
+				layoutRow(showSpectrumToggleButton.get(), showFFTToggleButton.get(), thresholdToggleButton.get());
+				layoutRow(showFFTMaxIndictrToggleButton.get(), showFilterToggleButton.get(), nullptr);
+			}
 		}
 		// Inner controls for freqRangeGroup
 		{
@@ -712,140 +784,6 @@ inline std::string displayControlComponent::eksLongDoubleToString(long double va
 	std::snprintf(stringOfRoundedSecondsPerBufferBuffer, 20, "%.*Lf", noOfDecimals, roundedSecondsPerBuffer);
 	return stringOfRoundedSecondsPerBufferBuffer;
 }
-
-#if (JUCE_IOS || JUCE_ANDROID)
-void displayControlComponent::scaleAllComponents()
-{
-	auto* audioControlTag = pXmlGuitarFineTuneConfig->getGuitarfinetuneconfig().getChildByName("AUDIOCONTROL");
-	if (audioControlTag == nullptr || !audioControlTag->getBoolAttribute("enableZoom"))
-		return;
-
-#if JUCE_ANDROID
-	if (!viewPortAdded)
-	{
-#endif // JUCE_ANDROID
-		if (auto parent = findParentComponentOfClass<TabbedComponent>())
-		{
-			static float scaleUsedLastTime = 1.0f;
-			static bool firstCall = true;
-			Rectangle<int> workRectangle;
-
-			int tabBarDepth = parent->getTabBarDepth();
-
-			auto  curUserArea = Desktop::getInstance().getDisplays().getPrimaryDisplay()->userBounds;
-			float bndsScaleHoriz = (float)(curUserArea.getWidth()) / (float)(widthOfDisplayControlWindowHorizontal);
-#if JUCE_ANDROID
-			float bndsScaleVerti = ((float)(curUserArea.getHeight()) - (float)(tabBarDepth  + androidSafeMargin)) / ((float)hightOfDisplayControlWindowHorizontal);
-#else
-            float bndsScaleVerti = ((float)(curUserArea.getHeight()) - (float)tabBarDepth) / ((float)hightOfDisplayControlWindowHorizontal);
-#endif // JUCE_ANDROID
-			float scaleNow = bndsScaleVerti;
-			if (bndsScaleHoriz < bndsScaleVerti)
-			{
-				scaleNow = bndsScaleHoriz;
-			}
-
-
-			if (curUserArea.getWidth() >= curUserArea.getHeight())
-			{
-				// Horizontal
-				workRectangle.setBounds(323, 8, 203, 128);
-				freqRangeGroupComponent->setBounds(workRectangle * scaleUsedLastTime);
-				workRectangle.setBounds(325, 20, 199, 24);
-				labelLowestFreq->setBounds(workRectangle * scaleUsedLastTime);
-				workRectangle.setBounds(391, 44, 55, 24);
-				sliderLowestFreq->setBounds(workRectangle * scaleUsedLastTime);
-				workRectangle.setBounds(335, 44, 50, 24);
-				sliderLowestFreqLabel->setBounds(workRectangle * scaleUsedLastTime);
-				workRectangle.setBounds(325, 72, 200, 24);
-				labelHighstFreq->setBounds(workRectangle * scaleUsedLastTime);
-				workRectangle.setBounds(391, 99, 55, 24);
-				sliderHighestFreq->setBounds(workRectangle * scaleUsedLastTime);
-				workRectangle.setBounds(335, 99, 50, 24);
-				sliderHighestFreqLabel->setBounds(workRectangle * scaleUsedLastTime);
-			}
-			else
-			{
-				// Vertical
-				bndsScaleHoriz = (float)(curUserArea.getWidth()) / (float)(widthOfDisplayControlWindowVertical);
-#if JUCE_ANDROID
-                bndsScaleVerti = ((float)(curUserArea.getHeight()) - (float)(tabBarDepth  + androidSafeMargin)) / ((float)(hightOfDisplayControlWindowVertical + 1));
-#else
-                bndsScaleVerti = ((float)(curUserArea.getHeight()) - (float)tabBarDepth) / ((float)(hightOfDisplayControlWindowVertical + 1));
-#endif // JUCE_ANDROID
-				if (bndsScaleHoriz < bndsScaleVerti)
-				{
-					scaleNow = bndsScaleHoriz;
-				}
-				else
-				{
-					scaleNow = bndsScaleVerti;
-				}
-				workRectangle.setBounds(0, 298, 320, 136);
-				freqRangeGroupComponent->setBounds(workRectangle * scaleUsedLastTime);
-				workRectangle.setBounds(5, 314, 189, 24);
-				labelLowestFreq->setBounds(workRectangle * scaleUsedLastTime);
-				workRectangle.setBounds(66, 338, 55, 24);
-				sliderLowestFreq->setBounds(workRectangle * scaleUsedLastTime);
-				workRectangle.setBounds(10, 338, 50, 24);
-				sliderLowestFreqLabel->setBounds(workRectangle * scaleUsedLastTime);
-				workRectangle.setBounds(5, 370, 221, 24);
-				labelHighstFreq->setBounds(workRectangle * scaleUsedLastTime);
-				workRectangle.setBounds(66, 397, 55, 24);
-				sliderHighestFreq->setBounds(workRectangle * scaleUsedLastTime);
-				workRectangle.setBounds(10, 397, 50, 24);
-				sliderHighestFreqLabel->setBounds(workRectangle * scaleUsedLastTime);
-			}
-
-			auto curbnds = getBounds();
-
-			if (scaleNow != scaleUsedLastTime)
-			{
-				float scaleToUse = scaleNow / scaleUsedLastTime;
-
-				curbnds = getBounds();
-				curUserArea.setHeight(curUserArea.getHeight() - parent->getTabBarDepth());
-				curUserArea.setY(parent->getTabBarDepth());
-				setBoundsToFit(curUserArea.toNearestInt(), Justification::left, false);
-
-				int numChildComponents = this->getNumChildComponents();
-
-				for (int i = 0; i < numChildComponents; ++i)
-				{
-					if (Component *childComponent = this->getChildComponent(i))
-					{
-						auto curCpntBnds = childComponent->getBounds();
-						auto scaledBounds = curCpntBnds * scaleToUse;
-						childComponent->setBounds(scaledBounds);
-
-						auto labelTestComponent = dynamic_cast<juce::Label*> (childComponent);
-						if ((labelTestComponent != nullptr) && (scaleToUse > 1) && firstCall)
-						{
-							Font currentFont = labelTestComponent->getFont();
-							currentFont.setHeight(currentFont.getHeightInPoints() * scaleToUse * 0.9);
-							labelTestComponent->setFont(currentFont);
-						}
-
-						auto textEditorTestComponent = dynamic_cast<juce::TextEditor*> (childComponent);
-						if ((textEditorTestComponent != nullptr) && (scaleToUse > 1) && firstCall)
-						{
-							Font currentFont = textEditorTestComponent->getFont();
-							currentFont.setHeight(currentFont.getHeightInPoints() * scaleToUse * 1.3);
-							textEditorTestComponent->applyFontToAllText(currentFont);
-							textEditorTestComponent->setJustification(Justification::centred);
-						}
-					}
-				}
-
-				scaleUsedLastTime = scaleNow;
-				firstCall = false;
-			}
-		}
-#if JUCE_ANDROID
-	}
-#endif // JUCE_ANDROID
-}
-#endif // (JUCE_IOS || JUCE_ANDROID)
 
 XmlElement * displayControlComponent::getXmlTagDISPLAYCONTROL()
 {

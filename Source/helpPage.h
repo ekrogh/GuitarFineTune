@@ -44,9 +44,6 @@ public:
 
     //==============================================================================
 	//[UserMethods]     -- You can add your own custom methods in this section.
-#if (JUCE_IOS || JUCE_ANDROID)
-	void scaleAllComponents();
-#endif // (JUCE_IOS || JUCE_ANDROID)
 	void setConfig(xmlGuitarFineTuneConfig* config) { pXmlGuitarFineTuneConfig = config; }
 	//[/UserMethods]
 

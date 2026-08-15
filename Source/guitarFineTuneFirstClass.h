@@ -33,8 +33,6 @@ public:
 	void currentTabChanged(int newCurrentTabIndex, const String& /*newCurrentTabName*/);
 	void paint(Graphics& g) override;
 	void closeButtonPressed() override;
-	bool isTabletDevice() const;
-	float getMasterScaleFactor() const;
 	void resized() override;
 	void setColorOfAllLabels(juce::Component* cmpontToHandle);
 #if (JUCE_IOS || JUCE_ANDROID)

@@ -89,20 +89,19 @@
   <EXPORTFORMATS>
     <XCODE_MAC targetFolder="Builds/MacOSX" iosDevelopmentTeamID="4657Q2Y6NH"
                bigIcon="DzMVX4" smallIcon="RB4slw" extraLinkerFlags="-Wl,-weak_reference_mismatches,weak"
-               microphonePermissionNeeded="1" pListPreprocess="1" appSandbox="1"
-               appSandboxOptions="com.apple.security.assets.music.read-write,com.apple.security.files.user-selected.read-write"
-               extraFrameworks="AVFoundation" hardenedRuntime="1" hardenedRuntimeOptions="com.apple.security.device.audio-input"
+               microphonePermissionNeeded="1" pListPreprocess="1" appSandboxOptions="com.apple.security.assets.music.read-write,com.apple.security.files.user-selected.read-write"
+               extraFrameworks="AVFoundation" hardenedRuntimeOptions="com.apple.security.device.audio-input"
                bundleIdentifier="dk.eksIt.guitarFineTuneOSX" applicationCategory="public.app-category.utilities"
                buildNumber="94" extraDefs="JUCE_SILENCE_XCODE_15_LINKER_WARNING=1">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" isDebug="1" targetName="GuitarFineTune" cppLanguageStandard="c++14"
                        libraryPath="" headerPath="" customXcodeFlags="INSTALL_PATH = &quot;/Applications&quot;"
-                       macOSDeploymentTarget="12.0" osxCompatibility="12.0 SDK" codeSigningIdentity="Eigil Krogh"/>
+                       macOSDeploymentTarget="12.0" osxCompatibility="12.0 SDK" codeSigningIdentity="Apple Development"/>
         <CONFIGURATION name="Release" isDebug="0" targetName="GuitarFineTune" binaryPath=""
                        defines="" cppLanguageStandard="c++14" headerPath="" libraryPath=""
                        linkTimeOptimisation="1" macOSDeploymentTarget="12.0" osxCompatibility="12.0 SDK"
                        customXcodeFlags="INSTALL_PATH = &quot;/Applications&quot;&#10;"
-                       codeSigningIdentity="Eigil Krogh"/>
+                       codeSigningIdentity="Apple Development"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_gui_extra" path="../JUCE/modules"/>

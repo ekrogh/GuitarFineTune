@@ -139,3 +139,4 @@ guitarfinetune_*.txt
 /Android_Special/native
 /Android_Special/workers
 /Android_Special/wrapper
+.DS_Store

@@ -606,7 +606,20 @@ void guitarStringSoundsControl::resized()
 		const int recordH = (int) (85 * scale);
 		const int recordLevelH = (int) (95 * scale);
 
-		if (!isLandscape)
+		bool usePortraitLayout = !isLandscape;
+
+		if (isLandscape)
+		{
+			const int minLeftW = (int) (300 * scale);
+			const int minRecordW = (int) (240 * scale);
+			const int minLevelW = (int) (130 * scale);
+			const int minNeededW = minLeftW + minRecordW + minLevelW + (int) (2 * gap);
+
+			if (bounds.getWidth() < minNeededW)
+				usePortraitLayout = true;
+		}
+
+		if (usePortraitLayout)
 		{
 			// Portrait: stack all 4 groups as a column
 			juce::FlexBox fb;
@@ -621,19 +634,27 @@ void guitarStringSoundsControl::resized()
 		}
 		else
 		{
-			// Landscape: left = PlayTone + outputMix (fixed widths); right = record | recordLevel
-			auto leftArea = bounds.removeFromLeft(310);
+			// Landscape: left = PlayTone + outputMix, right = record + recordLevel with minimum widths
+			const int minLeftW = (int) (300 * scale);
+			const int minRecordW = (int) (240 * scale);
+			const int minLevelW = (int) (130 * scale);
+
+			int leftW = jmax(minLeftW, (int) (bounds.getWidth() * 0.50f));
+			leftW = jmin(leftW, bounds.getWidth() - (minRecordW + minLevelW + (int) gap));
+			auto leftArea = bounds.removeFromLeft(leftW);
+			bounds.removeFromLeft((int) gap);
+
 			juce::FlexBox leftFb;
 			leftFb.flexDirection = juce::FlexBox::Direction::column;
 			leftFb.items.add(juce::FlexItem(*PlayToneGroupComponent) .withHeight((float)playToneH).withMargin({ 0, 0, gap, 0 }));
 			leftFb.items.add(juce::FlexItem(*outputMixGroupComponent).withFlex(1));
 			leftFb.performLayout(leftArea.toFloat());
 
-			juce::FlexBox rightFb;
-			rightFb.flexDirection = juce::FlexBox::Direction::row;
-			rightFb.items.add(juce::FlexItem(*recordGroupComponent)      .withFlex(1).withMargin({ 0, gap, 0, 0 }));
-			rightFb.items.add(juce::FlexItem(*recordLevelGroupComponent) .withFlex(1));
-			rightFb.performLayout(bounds.toFloat());
+			int recordW = jmax(minRecordW, (int) (bounds.getWidth() * 0.62f));
+			recordW = jmin(recordW, bounds.getWidth() - minLevelW);
+			recordGroupComponent->setBounds(bounds.removeFromLeft(recordW));
+			bounds.removeFromLeft((int) gap);
+			recordLevelGroupComponent->setBounds(bounds);
 			recordingLevelSlider->setSliderStyle(Slider::LinearVertical);
 		}
 
@@ -700,21 +721,45 @@ void guitarStringSoundsControl::resized()
 			auto g = recordGroupComponent->getBounds();
 			auto area = g.withTrimmedTop((int)(20 * scale)).reduced((int)(8 * scale), (int)(4 * scale));
 
-			const int numCols = 4;
-			const int colW = area.getWidth() / numCols;
-			const int labelH = (int)(24 * scale);
+			const int labelH = (int)(22 * scale);
 			const int btnSize = (int)(24 * scale);
+			const bool useTwoRows = area.getWidth() < (int) (290 * scale);
 
-			auto layoutItem = [&](Component& label, Component& button, int colIndex) {
-				int x = area.getX() + colIndex * colW;
-				label.setBounds(x, area.getY(), colW, labelH);
-				button.setBounds(x + (colW - btnSize) / 2, area.getY() + labelH, btnSize, btnSize);
+			auto layoutItem = [&](Component& label, Component& button, int x, int y, int w)
+			{
+				label.setBounds(x, y, w, labelH);
+				button.setBounds(x + (w - btnSize) / 2, y + labelH, btnSize, btnSize);
 			};
 
-			layoutItem(*rawSoundLabellabel, *sourceRawToggleButton, 0);
-			layoutItem(*FilteredSoundLabel, *sourceFilteredToggleButton, 1);
-			layoutItem(*startLabel, *startRecordingToggleButton, 2);
-			layoutItem(*stopLabel, *stopRecordingToggleButton, 3);
+			if (useTwoRows)
+			{
+				const int numCols = 2;
+				const int colW = area.getWidth() / numCols;
+				const int rowH = area.getHeight() / 2;
+
+				layoutItem(*rawSoundLabellabel, *sourceRawToggleButton,
+					area.getX(), area.getY(), colW);
+				layoutItem(*FilteredSoundLabel, *sourceFilteredToggleButton,
+					area.getX() + colW, area.getY(), colW);
+				layoutItem(*startLabel, *startRecordingToggleButton,
+					area.getX(), area.getY() + rowH, colW);
+				layoutItem(*stopLabel, *stopRecordingToggleButton,
+					area.getX() + colW, area.getY() + rowH, colW);
+			}
+			else
+			{
+				const int numCols = 4;
+				const int colW = area.getWidth() / numCols;
+
+				layoutItem(*rawSoundLabellabel, *sourceRawToggleButton,
+					area.getX(), area.getY(), colW);
+				layoutItem(*FilteredSoundLabel, *sourceFilteredToggleButton,
+					area.getX() + colW, area.getY(), colW);
+				layoutItem(*startLabel, *startRecordingToggleButton,
+					area.getX() + 2 * colW, area.getY(), colW);
+				layoutItem(*stopLabel, *stopRecordingToggleButton,
+					area.getX() + 3 * colW, area.getY(), colW);
+			}
 		}
 		// Inner controls for recordLevelGroup
 		{
@@ -1134,161 +1179,6 @@ void guitarStringSoundsControl::labelTextChanged(Label* labelThatHasChanged)
 		}
 	}
 }
-
-#if (JUCE_IOS || JUCE_ANDROID)
-void guitarStringSoundsControl::scaleAllComponents()
-{
-	auto* audioControlTag = pXmlGuitarFineTuneConfig->getGuitarfinetuneconfig().getChildByName("AUDIOCONTROL");
-	if (audioControlTag == nullptr || !audioControlTag->getBoolAttribute("enableZoom"))
-		return;
-
-#if JUCE_ANDROID
-	if (!viewPortAdded)
-	{
-#endif // JUCE_ANDROID
-		if (auto parent = findParentComponentOfClass<TabbedComponent>())
-		{
-			static float scaleUsedLastTime = 1.0f;
-			static bool firstCall = true;
-			Rectangle<int> workRectangle;
-
-			int tabBarDepth = parent->getTabBarDepth();
-
-			auto  curUserArea = Desktop::getInstance().getDisplays().getPrimaryDisplay()->userBounds.toNearestInt();
-			float bndsScaleHoriz = (float)(curUserArea.getWidth()) / (float)(widthOfGuitarStringSoundsControlWindowHorizontal);
-#if JUCE_ANDROID
-            float bndsScaleVerti = ((float)(curUserArea.getHeight()) - (float)(tabBarDepth  + androidSafeMargin)) / ((float)hightOfGuitarStringSoundsControlWindowHorizontal);
-#else
-            float bndsScaleVerti = ((float)(curUserArea.getHeight()) - (float)tabBarDepth) / ((float)hightOfGuitarStringSoundsControlWindowHorizontal);
-#endif // JUCE_ANDROID
-			float scaleNow = bndsScaleVerti;
-			if (bndsScaleHoriz < bndsScaleVerti)
-			{
-				scaleNow = bndsScaleHoriz;
-			}
-
-			if (curUserArea.getWidth() >= curUserArea.getHeight())
-			{
-				// Horizontal
-				workRectangle.setBounds(298, 89, 120, 176);
-				recordGroupComponent->setBounds(workRectangle * scaleUsedLastTime);
-				workRectangle.setBounds(306, 103, roundToInt(104 * 1.0000f), 24);
-				rawSoundLabellabel->setBounds(workRectangle * scaleUsedLastTime);
-				workRectangle.setBounds(std::round(354 - (24 / 2)), 127, 24, 24);
-				sourceRawToggleButton->setBounds(workRectangle * scaleUsedLastTime);
-				workRectangle.setBounds(302, 149, 112, 24);
-				FilteredSoundLabel->setBounds(workRectangle * scaleUsedLastTime);
-				workRectangle.setBounds(std::round(354 - (24 / 2)), 173, 24, 24);
-				sourceFilteredToggleButton->setBounds(workRectangle * scaleUsedLastTime);
-				workRectangle.setBounds(303, 199, 48, 24);
-				startLabel->setBounds(workRectangle * scaleUsedLastTime);
-				workRectangle.setBounds(std::round(328 - (24 / 2)), 223, 24, 24);
-				startRecordingToggleButton->setBounds(workRectangle * scaleUsedLastTime);
-				workRectangle.setBounds(356, 199, 48, 24);
-				stopLabel->setBounds(workRectangle * scaleUsedLastTime);
-				workRectangle.setBounds(std::round(380 - (24 / 2)), 223, 24, 24);
-				stopRecordingToggleButton->setBounds(workRectangle * scaleUsedLastTime);
-				workRectangle.setBounds(419, 90, 134, 176);
-				recordLevelGroupComponent->setBounds(workRectangle * scaleUsedLastTime);
-				workRectangle.setBounds(439, 103, 24, 155);
-				RecordingLevelMeter->setBounds(workRectangle * scaleUsedLastTime);
-				workRectangle.setBounds(492 - 2, 105, 50, 20);
-				recordingLevelSliderLabel->setBounds(workRectangle * scaleUsedLastTime);
-				recordingLevelSlider->setSliderStyle(Slider::LinearVertical);
-				workRectangle.setBounds(490 - 2, 105 + 20, 55, 161 - 20 - 24 - 5);
-				recordingLevelSlider->setBounds(workRectangle * scaleUsedLastTime);
-				workRectangle.setBounds(std::round(486 - 1), 236, 60, 24);
-				autoGainToggleButton->setBounds(workRectangle * scaleUsedLastTime);
-			}
-			else
-			{
-				// Vertical
-				bndsScaleHoriz = (float)(curUserArea.getWidth()) / (float)(widthOfGuitarStringSoundsControlWindowVertical);
-#if JUCE_ANDROID
-                bndsScaleVerti = ((float)(curUserArea.getHeight()) - (float)(tabBarDepth  + androidSafeMargin)) / ((float)(hightOfGuitarStringSoundsControlWindowVertical + 1));
-#else
-                bndsScaleVerti = ((float)(curUserArea.getHeight()) - (float)tabBarDepth) / ((float)(hightOfGuitarStringSoundsControlWindowVertical + 1));
-#endif // JUCE_ANDROID
-				if (bndsScaleHoriz < bndsScaleVerti)
-				{
-					scaleNow = bndsScaleHoriz;
-				}
-				else
-				{
-					scaleNow = bndsScaleVerti;
-				}
-				workRectangle.setBounds(0, 266, 296, 78);
-				recordGroupComponent->setBounds(workRectangle * scaleUsedLastTime);
-				workRectangle.setBounds(1, 280, 87, 24);
-				rawSoundLabellabel->setBounds(workRectangle * scaleUsedLastTime);
-				workRectangle.setBounds(std::round(46 - (24 / 2)), 304, 24, 24);
-				sourceRawToggleButton->setBounds(workRectangle * scaleUsedLastTime);
-				workRectangle.setBounds(90, 280, 108, 24);
-				FilteredSoundLabel->setBounds(workRectangle * scaleUsedLastTime);
-				workRectangle.setBounds(std::round(141 - (24 / 2)), 304, 24, 24);
-				sourceFilteredToggleButton->setBounds(workRectangle * scaleUsedLastTime);
-				workRectangle.setBounds(195, 280, 48, 24);
-				startLabel->setBounds(workRectangle * scaleUsedLastTime);
-				workRectangle.setBounds(std::round(220 - (24 / 2)), 304, 24, 24);
-				startRecordingToggleButton->setBounds(workRectangle * scaleUsedLastTime);
-				workRectangle.setBounds(244, 280, 48, 24);
-				stopLabel->setBounds(workRectangle * scaleUsedLastTime);
-				workRectangle.setBounds(std::round(268 - (24 / 2)), 304, 24, 24);
-				stopRecordingToggleButton->setBounds(workRectangle * scaleUsedLastTime);
-				workRectangle.setBounds(0, 346, 296, 85);
-				recordLevelGroupComponent->setBounds(workRectangle * scaleUsedLastTime);
-				workRectangle.setBounds(8, 364, 280, 24);
-				RecordingLevelMeter->setBounds(workRectangle * scaleUsedLastTime);
-				workRectangle.setBounds(8, 398, 50, 20);
-				recordingLevelSliderLabel->setBounds(workRectangle * scaleUsedLastTime);
-				recordingLevelSlider->setSliderStyle(Slider::LinearHorizontal);
-				workRectangle.setBounds(8 + 50, 392, 215 - 50, 32);
-				recordingLevelSlider->setBounds(workRectangle * scaleUsedLastTime);
-				workRectangle.setBounds(std::round(231), 396, 60, 24);
-				autoGainToggleButton->setBounds(workRectangle * scaleUsedLastTime);
-			}
-
-			auto curbnds = getBounds();
-
-			if (scaleNow != scaleUsedLastTime)
-			{
-				float scaleToUse = scaleNow / scaleUsedLastTime;
-
-				curbnds = getBounds();
-				curUserArea.setHeight(curUserArea.getHeight() - parent->getTabBarDepth());
-				curUserArea.setY(parent->getTabBarDepth());
-				setBoundsToFit(curUserArea, Justification::left, false);
-
-				int numChildComponents = this->getNumChildComponents();
-
-				for (int i = 0; i < numChildComponents; ++i)
-				{
-					if (Component* childComponent = this->getChildComponent(i))
-					{
-						auto curCpntBnds = childComponent->getBounds();
-						auto scaledBounds = curCpntBnds * scaleToUse;
-						childComponent->setBounds(scaledBounds);
-						//						auto curCpntBndsAfter = childComponent->getBounds();
-
-						auto labelTestComponent = dynamic_cast<juce::Label*> (childComponent);
-						if ((labelTestComponent != nullptr) && (scaleToUse > 1) && firstCall)
-						{
-							Font currentFont = labelTestComponent->getFont();
-							auto newFontHeight = currentFont.getHeightInPoints() * scaleToUse * 0.9;
-							labelTestComponent->setFont(FontOptions(newFontHeight));
-						}
-					}
-				}
-
-				scaleUsedLastTime = scaleNow;
-				firstCall = false;
-			}
-		}
-#if JUCE_ANDROID
-	}
-#endif // JUCE_ANDROID
-}
-#endif // (JUCE_IOS || JUCE_ANDROID)
 
 void guitarStringSoundsControl::disableAllStringTonesAndMutes()
 {
