@@ -504,9 +504,9 @@ void guitarFineTuneFirstClass::resized()
 //	auto safeArea = Desktop::getInstance().getDisplays().getPrimaryDisplay()->safeAreaInsets;
 	curCompntBnds = getLocalBounds();
 
-#if (JUCE_ANDROID || JUCE_IOS)
-	curCompntBnds = safeArea.subtractedFrom (curCompntBnds);
-#endif
+//#if (JUCE_ANDROID || JUCE_IOS)
+//	curCompntBnds = safeArea.subtractedFrom (curCompntBnds);
+//#endif
 
 	pEksTabbedComponent->setBounds (curCompntBnds);
 
