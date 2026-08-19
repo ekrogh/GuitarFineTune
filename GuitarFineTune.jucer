@@ -11,7 +11,8 @@
       <GROUP id="{53F01B09-4F3E-ED79-EE4F-43B6859E3FE0}" name="Resources">
         <FILE id="RB4slw" name="fineTune_icon_Small.png" compile="0" resource="1"
               file="Source/fineTune_icon_Small.png" xcodeResource="1"/>
-        <FILE id="DzMVX4" name=""/>
+        <FILE id="DzMVX4" name="fineTune_icon_Large.png" compile="0" resource="1"
+              file="Source/fineTune_icon_Large.png" xcodeResource="1"/>
       </GROUP>
       <FILE id="tJWnCG" name="AudioRecorder.cpp" compile="1" resource="0"
             file="Source/AudioRecorder.cpp"/>
@@ -88,11 +89,11 @@
   <EXPORTFORMATS>
     <XCODE_MAC targetFolder="Builds/MacOSX" iosDevelopmentTeamID="4657Q2Y6NH"
                bigIcon="DzMVX4" smallIcon="RB4slw" extraLinkerFlags="-Wl,-weak_reference_mismatches,weak"
-               microphonePermissionNeeded="1" pListPreprocess="1" appSandboxOptions="com.apple.security.assets.music.read-write,com.apple.security.files.user-selected.read-write"
-               hardenedRuntimeOptions="com.apple.security.device.audio-input"
+               microphonePermissionNeeded="1" pListPreprocess="1" appSandbox="1"
+               appSandboxOptions="com.apple.security.assets.music.read-write,com.apple.security.files.user-selected.read-write"
+               extraFrameworks="AVFoundation" hardenedRuntime="1" hardenedRuntimeOptions="com.apple.security.device.audio-input"
                bundleIdentifier="dk.eksIt.guitarFineTuneOSX" applicationCategory="public.app-category.utilities"
-               buildNumber="94" extraDefs="JUCE_SILENCE_XCODE_15_LINKER_WARNING=1"
-               appSandbox="1" hardenedRuntime="1" extraFrameworks="AVFoundation">
+               buildNumber="94" extraDefs="JUCE_SILENCE_XCODE_15_LINKER_WARNING=1">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" isDebug="1" targetName="GuitarFineTune" cppLanguageStandard="c++14"
                        libraryPath="" headerPath="" customXcodeFlags="INSTALL_PATH = &quot;/Applications&quot;"
