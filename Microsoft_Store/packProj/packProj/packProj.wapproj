@@ -65,7 +65,7 @@
     <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
     <PackageCertificateThumbprint>D19F3E9FAA9A51D6880FC745A738161983C7D860</PackageCertificateThumbprint>
     <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
-    <EntryPointProjectUniqueName>..\..\..\Builds\VisualStudio2022\GuitarFineTune_App.vcxproj</EntryPointProjectUniqueName>
+    <EntryPointProjectUniqueName>..\..\..\Builds\VisualStudio2026\GuitarFineTune_App.vcxproj</EntryPointProjectUniqueName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
     <AppxBundle>Always</AppxBundle>
@@ -158,12 +158,12 @@
   </ItemGroup>
   <Import Project="$(WapProjPath)\Microsoft.DesktopBridge.targets" />
   <ItemGroup>
-    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.26100.1742" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.28000.2526" PrivateAssets="all" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Builds\VisualStudio2022\GuitarFineTune_App.vcxproj" />
+    <ProjectReference Include="..\..\..\Builds\VisualStudio2026\GuitarFineTune_App.vcxproj" />
   </ItemGroup>
 </Project>
