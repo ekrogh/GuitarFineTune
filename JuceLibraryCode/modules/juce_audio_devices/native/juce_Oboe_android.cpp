@@ -554,8 +554,6 @@ private:
             builder.setFormat (format);
             builder.setSampleRate (newSampleRate);
             builder.setPerformanceMode (oboe::PerformanceMode::LowLatency);
-            builder.setPackageName ("dk.eksit.guitarfinetune");
-            builder.setAttributionTag ("tuner_audio");
 
            #if JUCE_USE_ANDROID_OBOE_STABILIZED_CALLBACK
             if (newCallback != nullptr)
